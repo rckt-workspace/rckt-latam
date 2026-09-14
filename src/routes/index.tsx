@@ -45,7 +45,7 @@ const pageMarkup = `
 <main id="top">
 <!-- HERO — layout de la portada del brand deck: foto a la derecha, headline a la izquierda -->
 <section class="hero">
-<div class="hero-photo"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/><div class="hero-photo-overlay"></div>
+<div class="hero-photo"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/><span class="hero-photo-overlay"></span></div>
 <div class="container">
 <div class="hero-inner">
 <span class="kicker">AI-first growth systems</span>
