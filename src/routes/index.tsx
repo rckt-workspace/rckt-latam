@@ -523,8 +523,9 @@ function RcktLanding() {
 
   useEffect(() => {
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>(".rv"));
-    const observer = "IntersectionObserver" in window ? new IntersectionObserver((entries) => {
-      entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("in"); observer.unobserve(entry.target); } });
+    let observer: IntersectionObserver | undefined;
+    observer = "IntersectionObserver" in window ? new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("in"); observer?.unobserve(entry.target); } });
     }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }) : undefined;
     revealElements.forEach((el) => observer ? observer.observe(el) : el.classList.add("in"));
 
