@@ -100,7 +100,7 @@ const pageMarkup = `
 <div class="container hero-content">
 <div class="hero-inner">
 <span class="kicker hero-kicker">Crecimiento inteligente</span>
-<h1><span class="hero-line">Tu marketing</span><span class="hero-line">no necesita más manos.</span><span class="hero-line">Necesita un <em>sistema</em>.</span></h1>
+<h1><span class="hero-line">Tu marketing</span><span class="hero-line">no necesita más manos.</span><span class="hero-line">Necesita un <em class="type-target">sistema</em>.</span></h1>
 <p class="sub">Diseñamos y operamos sistemas de crecimiento impulsados por IA que trabajan 24/7 para atraer oportunidades, acelerar ventas y hacer crecer tu negocio. Tecnología, estrategia y ejecución enfocadas en resultados.</p>
 <div class="hero-actions">
 <a class="btn hero-primary-cta" href="#contacto">Solicitar diagnóstico →</a>
@@ -531,42 +531,26 @@ function RcktLanding() {
       counters.forEach((el) => counterObserver?.observe(el));
     }
 
-    // --- Máquina de escribir en el titular del hero ---
-    const heroTitle = document.querySelector<HTMLElement>(".hero-inner h1");
-    if (heroTitle && !reduceMotion) {
-      const lines = Array.from(heroTitle.querySelectorAll<HTMLElement>(".hero-line"));
-      const plan = lines.map((line) => Array.from(line.childNodes).map((node) => ({
-        text: node.textContent ?? "",
-        em: node.nodeType === 1 && (node as HTMLElement).tagName === "EM",
-      })));
-      lines.forEach((line) => { line.textContent = ""; });
-      heroTitle.classList.add("typing");
+    // --- Máquina de escribir solo en la palabra "sistema" ---
+    const typeTarget = document.querySelector<HTMLElement>(".hero-inner h1 .type-target");
+    if (typeTarget && !reduceMotion) {
+      const finalText = typeTarget.textContent ?? "";
+      typeTarget.textContent = "";
       const cursor = document.createElement("span");
       cursor.className = "type-cursor";
       cursor.setAttribute("aria-hidden", "true");
-      let li = 0, si = 0, ci = 0;
-      let current: HTMLElement | null = null;
+      typeTarget.appendChild(cursor);
+      let i = 0;
       const tick = () => {
-        if (li >= plan.length) {
-          timers.push(window.setTimeout(() => { cursor.remove(); heroTitle.classList.remove("typing"); }, 2600));
-          return;
+        if (i < finalText.length) {
+          typeTarget.insertBefore(document.createTextNode(finalText.charAt(i)), cursor);
+          i += 1;
+          timers.push(window.setTimeout(tick, 45));
+        } else {
+          timers.push(window.setTimeout(() => { cursor.remove(); }, 2200));
         }
-        const segments = plan[li] ?? [];
-        const lineEl = lines[li];
-        const seg = segments[si];
-        if (si >= segments.length || !seg || !lineEl) { li += 1; si = 0; ci = 0; current = null; timers.push(window.setTimeout(tick, 140)); return; }
-        if (ci === 0) {
-          current = seg.em ? document.createElement("em") : document.createElement("span");
-          lineEl.appendChild(current);
-        }
-        if (ci < seg.text.length) {
-          if (current) current.textContent = seg.text.slice(0, ci + 1);
-          lineEl.appendChild(cursor);
-          ci += 1;
-          timers.push(window.setTimeout(tick, 34));
-        } else { si += 1; ci = 0; timers.push(window.setTimeout(tick, 0)); }
       };
-      timers.push(window.setTimeout(tick, 380));
+      timers.push(window.setTimeout(tick, 480));
     }
 
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>(".rv"));
