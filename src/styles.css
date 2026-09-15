@@ -621,6 +621,25 @@
 .producto-block{padding:40px 0;margin-bottom:40px}
 .metodo-grid{margin-bottom:40px}
 
+/* 11) Manchas decorativas grandes: solo sobre fondos claros */
+.band > .container{position:relative; z-index:1;}
+#sistema.band::before,
+#servicios.band::before,
+#metodo.band::before{
+  content:'';
+  position:absolute;
+  width:420px;
+  height:420px;
+  border-radius:50%;
+  background:var(--mancha-suave);
+  filter:blur(72px);
+  pointer-events:none;
+  z-index:0;
+}
+#sistema.band::before{right:-120px; top:12%;}
+#servicios.band::before{left:-140px; top:18%;}
+#metodo.band::before{right:-100px; bottom:12%;}
+
 /* ===== Hero: restauración de elementos (v4) ===== */
 .hero h1 em{color:var(--naranja);font-style:italic}
 .hero-inner{padding:132px 0 104px}
