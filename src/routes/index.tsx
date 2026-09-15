@@ -202,15 +202,15 @@ const pageMarkup = `
 <div class="service-lead-grid">
 <div class="service-lead rv">
 <span class="kicker" style="display:inline-flex; padding:5px 12px; border-radius:999px; background:rgba(var(--mode-glow-rgb),0.22); color:var(--mode-accent-deep); text-transform:uppercase; letter-spacing:.05em; font-size:11.5px; font-weight:700;">D1 — AI Growth Audit</span>
-<p class="tag-line">La revisión completa</p>
-<p>Auditamos tus anuncios, tus datos, tu web y tu contenido. En 2–3 semanas recibes un informe que cuantifica cuánto dinero estás dejando en la mesa — y un plan priorizado para recuperarlo.</p>
-<a class="btn btn-ghost btn-sm" href="#contacto">Empezar por aquí →</a>
+<p class="tag-line">Todo bajo la lupa</p>
+<p>Revisamos tu inversión publicitaria, tus datos, tu sitio y tu contenido con la misma vara. En 2 a 3 semanas tienes un informe que pone en números cuánto estás dejando sobre la mesa, y en qué orden recuperarlo.</p>
+<a class="btn btn-ghost btn-sm" href="#contacto">Ver mi diagnóstico →</a>
 </div>
 <div class="service-lead rv">
 <span class="kicker" style="display:inline-flex; padding:5px 12px; border-radius:999px; background:rgba(var(--mode-glow-rgb),0.22); color:var(--mode-accent-deep); text-transform:uppercase; letter-spacing:.05em; font-size:11.5px; font-weight:700;">D2 — AI Visibility Snapshot</span>
-<p class="tag-line">¿La IA te recomienda?</p>
-<p>Le preguntamos a ChatGPT, Gemini y Perplexity lo mismo que pregunta tu cliente. Te mostramos, con capturas, si tu marca aparece en las respuestas — y qué hacer si no.</p>
-<a class="btn btn-ghost btn-sm" href="#contacto">Quiero mi snapshot →</a>
+<p class="tag-line">¿Existes para la IA?</p>
+<p>Hacemos las mismas preguntas que haría tu cliente potencial —en ChatGPT, Gemini y Perplexity— y te mostramos, con evidencia, si tu marca aparece en la respuesta. Si no aparece, te decimos exactamente qué mover.</p>
+<a class="btn btn-ghost btn-sm" href="#contacto">Ver si aparezco →</a>
 </div>
 </div>
 <div class="producto-block">
