@@ -99,15 +99,16 @@ const pageMarkup = `
 </header>
 <div class="container hero-content">
 <div class="hero-inner">
+<span class="kicker hero-kicker">Crecimiento inteligente</span>
 <h1><span class="hero-line">Tu marketing</span><span class="hero-line">no necesita más manos.</span><span class="hero-line">Necesita un <em>sistema</em>.</span></h1>
-<p class="sub">Diseñamos y operamos sistemas de crecimiento con IA que trabajan 24/7 — ligados a los resultados que producen, no a las horas que consumen.</p>
+<p class="sub">Diseñamos y operamos sistemas de crecimiento impulsados por IA que trabajan 24/7 para atraer oportunidades, acelerar ventas y hacer crecer tu negocio. Tecnología, estrategia y ejecución enfocadas en resultados.</p>
 <div class="hero-actions">
 <a class="btn hero-primary-cta" href="#contacto">Solicitar diagnóstico →</a>
-<a class="btn hero-outline-cta" href="#faq">¿Te recomienda la IA? Descúbrelo →</a>
+<a class="btn hero-outline-cta" href="#sistema">Descubre tu sistema de crecimiento →</a>
 </div>
 </div>
 </div>
-<p class="hero-caption">Sistemas de IA<br/>para crecimiento real.</p>
+<p class="hero-caption">Sistemas de IA.<br/>Crecimiento real.</p>
 </section>
 <!-- EL MERCADO CAMBIÓ DE LADO -->
 <section class="band" id="sistema">
@@ -119,8 +120,8 @@ const pageMarkup = `
 </div>
 <div class="mercado-grid">
 <div class="mercado-left">
-<h2 class="rv" style="font-size:clamp(26px,3.4vw,38px); margin:0 0 20px; line-height:1.25; font-weight:800;">El mercado cambió de lado</h2>
-<p>La IA absorbió las tareas del marketing: configurar campañas, producir piezas, armar reportes. Lo que quedó al descubierto es la única pregunta que importa: <em>¿quién responde por el resultado?</em> Nosotros. Ese es el modelo.</p>
+<h2 class="rv" style="font-size:clamp(26px,3.4vw,38px); margin:0 0 20px; line-height:1.25; font-weight:800;">La ejecución ya no es el diferencial.</h2>
+<p>La IA puede crear campañas, producir contenido, analizar datos y automatizar tareas en minutos. Eso cambió las reglas. Hoy, tener más manos no significa crecer más. La ventaja está en conectar estrategia, tecnología y ejecución alrededor de un mismo objetivo: generar resultados. Nosotros no vendemos horas, piezas ni tareas. Construimos sistemas que hacen que tu marketing avance.</p>
 </div>
 <div class="stats">
 <div class="stat-row rv">
