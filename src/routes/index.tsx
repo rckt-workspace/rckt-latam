@@ -74,13 +74,14 @@ export const Route = createFileRoute("/")({
 });
 
 const pageMarkup = `
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+<div class="hero-photo"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/><span class="hero-photo-overlay"></span></div>
 <header>
 <div class="container">
 <nav>
-<a class="logo" href="#top">
-<img alt="RCKT" class="logo-light-img" src="__LOGO_DARK__"/>
-<img alt="RCKT" class="logo-dark-img" src="__LOGO_LIGHT__"/>
-</a>
+<a class="logo" href="#top"><img alt="RCKT" src="__LOGO_LIGHT__"/></a>
 <div class="nav-links">
 <a href="#sistema">Sistema</a>
 <a href="#servicios">Servicios</a>
@@ -89,33 +90,22 @@ const pageMarkup = `
 <a href="#faq">FAQ</a>
 </div>
 <div class="nav-right">
-<div class="theme-switch">
-<button class="active" id="themeLight">Claro</button>
-<button id="themeDark">Oscuro</button>
-</div>
-<a class="btn btn-primary btn-sm" href="#contacto">Solicitar diagnóstico</a>
-<button aria-label="Abrir menú" class="nav-toggle" id="navToggle">
-<span></span><span></span><span></span>
-</button>
+<a class="btn hero-nav-cta btn-sm" href="#contacto">Solicitar diagnóstico</a>
+<button aria-label="Abrir menú" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
 </div>
 </nav>
 </div>
 </header>
-<main id="top">
-<!-- HERO — layout de la portada del brand deck: foto a la derecha, headline a la izquierda -->
-<section class="hero">
-<div class="hero-photo"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/><span class="hero-photo-overlay"></span></div>
-<div class="container">
+<div class="container hero-content">
 <div class="hero-inner">
-<span class="kicker">AI-first growth systems</span>
 <h1>Tu marketing no necesita más manos.<br/>Necesita un <em>sistema</em>.</h1>
 <p class="sub">Diseñamos y operamos sistemas de crecimiento con IA que trabajan 24/7 — ligados a los resultados que producen, no a las horas que consumen.</p>
 <div class="hero-actions">
-<a class="btn btn-primary" href="#contacto">Solicitar diagnóstico →</a>
-<a class="btn btn-ghost" href="#servicios">¿Te recomienda la IA? Descúbrelo →</a>
+<a class="btn hero-outline-cta" href="#contacto">Solicitar diagnóstico →</a>
 </div>
 </div>
 </div>
+<p class="hero-caption">Sistemas de IA<br/>para crecimiento real.</p>
 </section>
 <!-- EL MERCADO CAMBIÓ DE LADO -->
 <section class="band" id="sistema">
