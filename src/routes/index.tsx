@@ -100,7 +100,7 @@ const pageMarkup = `
 <div class="container hero-content">
 <div class="hero-inner">
 <span class="kicker hero-kicker">Crecimiento inteligente</span>
-<h1><span class="hero-line">Tu marketing</span><span class="hero-line">no necesita más manos.</span><span class="hero-line">Necesita un <em class="type-target">sistema</em>.</span></h1>
+<h1><span class="hero-line">Tu marketing</span><span class="hero-line">no necesita más manos.</span><span class="hero-line">Necesita un <span class="hero-nowrap"><em class="type-target">sistema</em>.</span></span></h1>
 <p class="sub">Diseñamos y operamos sistemas de crecimiento impulsados por IA que trabajan 24/7 para atraer oportunidades, acelerar ventas y hacer crecer tu negocio. Tecnología, estrategia y ejecución enfocadas en resultados.</p>
 <div class="hero-actions">
 <a class="btn hero-primary-cta" href="#contacto">Solicitar diagnóstico →</a>
