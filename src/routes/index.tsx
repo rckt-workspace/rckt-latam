@@ -74,7 +74,6 @@ const pageMarkup = `
 <main id="top">
 <!-- HERO -->
 <section class="hero">
-<div class="fx-layer" aria-hidden="true"><span class="fx-blob fx-blob-1"></span><span class="fx-blob fx-blob-2"></span><span class="fx-blob fx-blob-3"></span><span class="fx-dots"></span></div>
 <div class="hero-photo"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/><span class="hero-photo-overlay"></span></div>
 <header>
 <div class="container">
@@ -335,7 +334,6 @@ const pageMarkup = `
 </section>
 <!-- MANIFIESTO -->
 <section class="manifiesto" data-mode="editorial">
-<div class="fx-layer" aria-hidden="true"><span class="fx-blob fx-blob-1"></span><span class="fx-blob fx-blob-2"></span><span class="fx-blob fx-blob-3"></span><span class="fx-dots"></span></div>
 <div class="container">
 <div class="manifiesto-card rv">
 <span class="kicker" style="display:block; margin-bottom:22px;">Manifiesto</span>
@@ -377,7 +375,6 @@ const pageMarkup = `
 </section>
 <!-- CONTACTO / DIAGNÓSTICO -->
 <section class="band" data-mode="human" id="contacto">
-<div class="fx-layer" aria-hidden="true"><span class="fx-blob fx-blob-1"></span><span class="fx-blob fx-blob-2"></span><span class="fx-blob fx-blob-3"></span><span class="fx-dots"></span></div>
 <div class="container">
 <div class="contact-wrap">
 <div class="contact-left">
@@ -428,7 +425,6 @@ const pageMarkup = `
 </section>
 <!-- CTA FINAL -->
 <section class="cta-final">
-<div class="fx-layer" aria-hidden="true"><span class="fx-blob fx-blob-1"></span><span class="fx-blob fx-blob-2"></span><span class="fx-blob fx-blob-3"></span><span class="fx-dots"></span></div>
 <div class="container">
 <span class="kicker">Siguiente paso</span>
 <h2 class="rv">Empieza por saber dónde estás</h2>
