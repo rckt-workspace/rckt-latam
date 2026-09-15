@@ -564,3 +564,65 @@
 
 /* Textos justificados en todo el sitio */
 .rckt-site p,.rckt-site li,.legal-page p,.legal-page li{text-align:justify;text-justify:inter-word;hyphens:auto}
+
+/* ===== Ajustes de diseño (v3) ===== */
+
+/* 2) Hero más compacto: cabe en una pantalla */
+.hero{min-height:100svh}
+.hero-inner{padding:118px 0 92px}
+.hero h1{font-size:clamp(38px,5.2vw,64px);line-height:1.05;margin:0 0 20px}
+.hero p.sub{font-size:17px;margin:0 0 26px;max-width:620px}
+@media(max-height:820px){
+  .hero-inner{padding:104px 0 78px}
+  .hero h1{font-size:clamp(34px,4.4vw,54px)}
+  .hero p.sub{font-size:16px;margin:0 0 22px}
+}
+
+/* 5) "Qué es RCKT": tipografía consistente */
+.posn-left p,.posn-left li,.posn-left h4{font-family:'Switzer',sans-serif;font-style:normal}
+.posn-right p{font-family:'Newsreader',serif;font-style:italic;text-align:right;hyphens:none}
+.posn-right p.cap{font-family:'Switzer',sans-serif;font-style:normal;text-align:right}
+@media(max-width:980px){.posn-right p,.posn-right p.cap{text-align:left}}
+
+/* 6) Tarjetas de servicios: 3 arriba + 2 abajo centradas, con separación */
+.sys-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;background:transparent;border:none;border-radius:0;overflow:visible;margin-bottom:56px}
+.sys-grid .sys-card{flex:0 1 calc(33.333% - 16px);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:34px}
+.sys-grid .sys-card:last-child:nth-child(odd){grid-column:auto}
+.service-lead-grid{gap:24px}
+.lineas-grid,.metodo-grid{gap:24px;background:transparent;border:none;border-radius:0;overflow:visible}
+.linea-card,.metodo-step{background:var(--card);border:1px solid var(--line);border-radius:14px}
+@media(max-width:980px){.sys-grid .sys-card{flex:0 1 100%}}
+@media(min-width:561px) and (max-width:980px){.sys-grid .sys-card{flex:0 1 calc(50% - 12px)}}
+
+/* 7) Hover sutil: elevación + sombra, sin cambio de color */
+@media (prefers-reduced-motion: no-preference){
+  .sys-card,.service-lead,.linea-card,.metodo-step,.torre{transition:transform .3s ease,box-shadow .3s ease}
+  .sys-card:hover,.service-lead:hover,.linea-card:hover,.metodo-step:hover,.torre:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(0,0,0,.10)}
+}
+
+/* 8) Manifiesto con más presencia */
+.manifiesto-card{position:relative;overflow:hidden;border-top:3px solid var(--naranja);background:color-mix(in srgb,#FEC6AD 8%,#FFFDFB);padding:72px 64px;box-shadow:0 18px 40px rgba(0,0,0,.06)}
+.manifiesto-card::before{content:'\201C';position:absolute;left:24px;top:-38px;font-family:'Newsreader',serif;font-size:220px;line-height:1;color:rgba(244,88,29,.10);pointer-events:none}
+.manifiesto-card .kicker{position:relative;color:var(--naranja);letter-spacing:.18em}
+.manifiesto-card p{position:relative}
+@media(max-width:560px){.manifiesto-card{padding:48px 26px}}
+
+/* 9) FAQ como tarjetas */
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq-item{border:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:14px;background:var(--card);padding:0 24px;transition:border-color .3s ease,box-shadow .3s ease}
+.faq-item:hover{border-color:var(--naranja);box-shadow:0 8px 20px rgba(0,0,0,.06)}
+.faq-q{padding:22px 0;transition:transform .25s ease,color .2s ease}
+.faq-item:hover .faq-q{transform:translateX(4px)}
+.faq-item:hover .plus{color:var(--naranja)}
+.faq-a p{padding-bottom:22px}
+
+/* 10) Espaciado entre secciones más compacto y uniforme */
+.band{padding:56px 0}
+@media(max-width:980px){.band{padding:48px 0}}
+.section-head{margin-bottom:32px}
+.posn{margin:48px 0}
+.manifiesto{padding:56px 0}
+.cta-final{padding:64px 0}
+.service-lead-grid{margin-bottom:48px}
+.producto-block{padding:40px 0;margin-bottom:40px}
+.metodo-grid{margin-bottom:40px}
