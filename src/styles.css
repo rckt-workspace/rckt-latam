@@ -578,3 +578,6 @@
 .legal-page h2 { font-size: 20px; margin: 34px 0 10px; }
 .legal-page p { color: var(--carbon-soft); line-height: 1.7; margin: 0 0 14px; }
 .legal-page a { color: var(--naranja-deep); }
+
+/* Textos justificados en todo el sitio */
+.rckt-site p,.rckt-site li,.legal-page p,.legal-page li{text-align:justify;text-justify:inter-word;hyphens:auto}
