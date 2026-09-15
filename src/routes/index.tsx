@@ -102,7 +102,7 @@ const pageMarkup = `
 </header>
 <div class="container hero-content">
 <div class="hero-inner">
-<h1>Tu marketing no necesita más manos.<br/>Necesita un <em>sistema</em>.</h1>
+<h1><span class="hero-line">Tu marketing</span><span class="hero-line">no necesita más manos.</span><span class="hero-line">Necesita un <em>sistema</em>.</span></h1>
 <p class="sub">Diseñamos y operamos sistemas de crecimiento con IA que trabajan 24/7 — ligados a los resultados que producen, no a las horas que consumen.</p>
 <div class="hero-actions">
 <a class="btn hero-primary-cta" href="#contacto">Solicitar diagnóstico →</a>
