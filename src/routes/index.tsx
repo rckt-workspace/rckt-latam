@@ -463,7 +463,7 @@ const pageMarkup = `
 </div>
 </div>
 <div class="footer-bottom">
-<span><span class="dot"></span>sistema activo</span>
+<span>sistema activo</span>
 <span>2026© RCKT</span>
 </div>
 </div>
