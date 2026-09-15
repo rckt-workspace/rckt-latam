@@ -526,22 +526,10 @@
     .logo:hover img{transform:scale(1.05);}
 
     .sys-card, .service-lead, .linea-card, .metodo-step{
-      transition:transform .35s cubic-bezier(.16,.8,.3,1), box-shadow .35s ease;
+      transition:background-color .35s ease, border-color .35s ease;
     }
-    .sys-card:hover, .service-lead:hover, .linea-card:hover, .metodo-step:hover{
-      transform:translateY(-6px);
-      box-shadow:0 18px 34px -18px rgba(0,0,0,0.28);
-      position:relative; z-index:2;
-    }
-    [data-mode] .sys-card:hover, [data-mode] .service-lead:hover, [data-mode] .linea-card:hover, [data-mode] .metodo-step:hover{
-      box-shadow:0 20px 44px -14px rgba(var(--mode-glow-rgb),0.55);
-    }
-    .faq-q{transition:padding-left .25s ease;}
-    .faq-item:hover .faq-q{padding-left:6px;}
-    .stat-row{transition:transform .3s ease;}
-    .stat-row:hover{transform:translateX(4px);}
-    .pill{transition:transform .2s ease;}
-    .pill:hover{transform:translateY(-2px);}
+    .faq-q{transition:color .2s ease;}
+    .faq-item:hover .faq-q{color:var(--naranja-deep);}
     .dot{will-change:box-shadow;}
 
     .sys-grid .sys-card:nth-child(2), .lineas-grid .linea-card:nth-child(2), .metodo-grid .metodo-step:nth-child(2), .three-grid .three-card:nth-child(2), .service-lead-grid .service-lead:nth-child(2){transition-delay:.08s;}
