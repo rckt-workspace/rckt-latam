@@ -7,10 +7,8 @@ import logoLightAsset from "@/assets/rckt-logo-light.png.asset.json";
 const SITE_URL = "https://rckt-latam.lovable.app";
 
 const services = [
-  ["Diagnostic Sprint", "Cuando no está claro qué frena el crecimiento y se necesita visibilidad antes de decidir."],
-  ["Strategy Design", "Cuando ya se sabe que se quiere crecer, pero falta un plan — hay presupuesto y urgencia."],
-  ["System Build", "Cuando ya hay claridad estratégica y toca construir e implementar."],
-  ["Ongoing Partnership", "Cuando se necesita liderazgo externo sostenido y acompañamiento ejecutivo."],
+  ["AI Growth Audit", "Revisamos tu inversión publicitaria, tus datos, tu sitio y tu contenido con la misma vara, y entregamos un informe con lo que estás dejando sobre la mesa."],
+  ["AI Visibility Snapshot", "Comprobamos con evidencia si tu marca aparece cuando alguien pregunta por tu categoría en ChatGPT, Gemini o Perplexity."],
 ] as const;
 
 export const Route = createFileRoute("/")({

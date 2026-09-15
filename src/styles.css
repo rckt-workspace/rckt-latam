@@ -22,8 +22,8 @@
 
 
   :root{
-    --papel: color-mix(in srgb, #FEC6AD 18%, #EDECE7);
-    --papel-alt: color-mix(in srgb, #FEC6AD 28%, #EDECE7);
+    --papel: #FBF7F0;
+    --papel-alt: #FDEEE3;
     --carbon: #000000;
     --carbon-soft: #5B5751;
     --carbon-faint: #8A857D;
