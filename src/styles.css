@@ -716,7 +716,7 @@
 /* ===== Ajustes v7 ===== */
 /* 1) Tipografía del titular del hero (igual a rckt.es) */
 .hero h1{font-family:'Inter Tight','Inter',ui-sans-serif,system-ui,sans-serif;font-weight:600;letter-spacing:-.045em}
-.hero h1 em{font-family:'Switzer',sans-serif;font-weight:inherit;letter-spacing:-.045em}
+.hero h1 em{font-family:'Newsreader',serif;font-style:italic;font-weight:500;letter-spacing:0}
 
 /* 2) Estadísticas: balance vertical y alineación con el párrafo */
 .mercado-grid{align-items:stretch}
