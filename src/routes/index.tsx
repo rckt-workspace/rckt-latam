@@ -380,7 +380,7 @@ const pageMarkup = `
 <div class="contact-left">
 <span class="kicker" style="display:block; margin-top:14px;">Diagnóstico</span>
 <h2 class="rv">Empieza por saber dónde estás</h2>
-<p>Pide el diagnóstico. En 24–48 horas te respondemos con los próximos pasos.</p>
+<p>Solicita el diagnóstico. En 24–48 horas te respondemos con los próximos pasos.</p>
 <a class="mail" href="mailto:hola@rckt.es">hola@rckt.es</a>
 </div>
 <form id="diagForm">
