@@ -90,6 +90,10 @@ const pageMarkup = `
 <a href="#faq">FAQ</a>
 </div>
 <div class="nav-right">
+<div class="theme-switch hero-theme-switch">
+<button id="themeLight" class="active" type="button">Claro</button>
+<button id="themeDark" type="button">Oscuro</button>
+</div>
 <a class="btn hero-nav-cta btn-sm" href="#contacto">Solicitar diagnóstico</a>
 <button aria-label="Abrir menú" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
 </div>
@@ -102,6 +106,7 @@ const pageMarkup = `
 <p class="sub">Diseñamos y operamos sistemas de crecimiento con IA que trabajan 24/7 — ligados a los resultados que producen, no a las horas que consumen.</p>
 <div class="hero-actions">
 <a class="btn hero-outline-cta" href="#contacto">Solicitar diagnóstico →</a>
+<a class="btn hero-outline-cta" href="#faq">¿Te recomienda la IA? Descúbrelo →</a>
 </div>
 </div>
 </div>
@@ -467,8 +472,7 @@ const pageMarkup = `
 <div class="footer-top">
 <div>
 <a class="logo" href="#top">
-<img alt="RCKT" class="logo-light-img" src="__LOGO_DARK__"/>
-<img alt="RCKT" class="logo-dark-img" src="__LOGO_LIGHT__"/>
+<img alt="RCKT" src="__LOGO_DARK__"/>
 </a>
 <p>Menos ruido, más crecimiento.</p>
 </div>
