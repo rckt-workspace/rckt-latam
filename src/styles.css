@@ -185,7 +185,7 @@
   /* ---------- logo ---------- */
   .logo{ display:inline-flex; align-items:center; }
   .logo img{ height:30px; width:auto; display:block; }
-  .hero .logo img{filter:grayscale(1) brightness(0) invert(1);}
+  
 
   /* ---------- nav ---------- */
   header{

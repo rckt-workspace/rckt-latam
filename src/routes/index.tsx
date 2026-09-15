@@ -472,8 +472,7 @@ const pageMarkup = `
 <div class="footer-top">
 <div>
 <a class="logo" href="#top">
-<img alt="RCKT" class="logo-light-img" src="__LOGO_DARK__"/>
-<img alt="RCKT" class="logo-dark-img" src="__LOGO_LIGHT__"/>
+<img alt="RCKT" src="__LOGO_DARK__"/>
 </a>
 <p>Menos ruido, más crecimiento.</p>
 </div>
