@@ -589,15 +589,13 @@
 .posn-right p.cap{font-family:'Switzer',sans-serif;font-style:normal;text-align:right}
 @media(max-width:980px){.posn-right p,.posn-right p.cap{text-align:left}}
 
-/* 6) Tarjetas de servicios: 3 arriba + 2 abajo centradas, con separación */
-.sys-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;background:transparent;border:none;border-radius:0;overflow:visible;margin-bottom:56px}
-.sys-grid .sys-card{flex:0 1 calc(33.333% - 16px);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:34px}
-.sys-grid .sys-card:last-child:nth-child(odd){grid-column:auto}
+/* 6) Tarjetas de servicios: grid limpio 2x2 */
+.sys-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;background:transparent;border:none;border-radius:0;overflow:visible;margin-bottom:56px}
+.sys-grid .sys-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:34px}
 .service-lead-grid{gap:24px}
 .lineas-grid,.metodo-grid{gap:24px;background:transparent;border:none;border-radius:0;overflow:visible}
 .linea-card,.metodo-step{background:var(--card);border:1px solid var(--line);border-radius:14px}
-@media(max-width:980px){.sys-grid .sys-card{flex:0 1 100%}}
-@media(min-width:561px) and (max-width:980px){.sys-grid .sys-card{flex:0 1 calc(50% - 12px)}}
+@media(max-width:560px){.sys-grid{grid-template-columns:1fr}}
 
 /* 7) Hover sutil: elevación + sombra, sin cambio de color */
 @media (prefers-reduced-motion: no-preference){

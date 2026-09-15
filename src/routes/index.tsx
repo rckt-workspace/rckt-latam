@@ -7,11 +7,10 @@ import logoLightAsset from "@/assets/rckt-logo-light.png.asset.json";
 const SITE_URL = "https://rckt-latam.lovable.app";
 
 const services = [
-  ["AI Growth Diagnostic", "Diagnóstico del sistema de crecimiento: qué automatizar, qué no y en qué orden."],
-  ["AI Search & Discovery Intelligence", "Visibilidad de la marca en buscadores y en respuestas generadas con IA."],
-  ["AI Operating System Design", "Diseño del sistema operativo de marketing con IA de la empresa."],
-  ["AI-Powered Revenue Operations", "Operación de demanda, contenido y ventas por conversación con IA."],
-  ["Fractional CMO / AI Growth Office", "Dirección de crecimiento con IA integrada en el equipo."],
+  ["Diagnostic Sprint", "Cuando no está claro qué frena el crecimiento y se necesita visibilidad antes de decidir."],
+  ["Strategy Design", "Cuando ya se sabe que se quiere crecer, pero falta un plan — hay presupuesto y urgencia."],
+  ["System Build", "Cuando ya hay claridad estratégica y toca construir e implementar."],
+  ["Ongoing Partnership", "Cuando se necesita liderazgo externo sostenido y acompañamiento ejecutivo."],
 ] as const;
 
 export const Route = createFileRoute("/")({
@@ -216,37 +215,36 @@ const pageMarkup = `
 <a class="btn btn-ghost btn-sm" href="#contacto">Quiero mi snapshot →</a>
 </div>
 </div>
-<h2 class="rv" style="font-size:clamp(24px,3vw,32px); margin-bottom:36px; font-weight:800;">Los cinco servicios</h2>
+<h2 class="rv" style="font-size:clamp(24px,3vw,32px); margin-bottom:18px; font-weight:800;">Modelos de trabajo</h2>
+<p class="rv" style="font-size:17px; color:var(--carbon-soft); max-width:760px; margin:0 0 36px;">No vendemos por hora. Cada propuesta se estructura por el valor que entrega y por el modelo de trabajo que mejor encaja con el momento de tu negocio.</p>
 <div class="sys-grid">
 <div class="sys-card rv">
-<span class="sys-id">S1</span>
-<h3>AI Growth Diagnostic</h3>
-<p class="tag-line">Diagnóstico ejecutivo 360°</p>
-<p class="desc">Revisamos marketing, ventas, funnel, oferta y madurez en IA de punta a punta, y entregamos un roadmap accionable a 90 días.</p>
+<span class="sys-id">01</span>
+<h3>Diagnostic Sprint</h3>
+<p class="tag-line">Duración: 2–4 semanas</p>
+<p class="desc">Cuando no está claro qué frena el crecimiento y se necesita visibilidad antes de decidir.</p>
+<p class="medida"><b>Entregable:</b> Diagnóstico + roadmap + quick wins</p>
 </div>
 <div class="sys-card rv">
-<span class="sys-id">S2</span>
-<h3>AI Search &amp; Discovery Intelligence</h3>
-<p class="tag-line">Captura de demanda en búsqueda por IA</p>
-<p class="desc">Demanda zero-click: que tu marca aparezca cuando alguien le pregunta a ChatGPT, Gemini o Perplexity por tu categoría.</p>
+<span class="sys-id">02</span>
+<h3>Strategy Design</h3>
+<p class="tag-line">Duración: 4–8 semanas</p>
+<p class="desc">Cuando ya se sabe que se quiere crecer, pero falta un plan — hay presupuesto y urgencia.</p>
+<p class="medida"><b>Entregable:</b> Growth plan + priorización + roadmap a 90/180 días</p>
 </div>
 <div class="sys-card rv">
-<span class="sys-id">S3</span>
-<h3>AI Operating System Design</h3>
-<p class="tag-line">Nuestra mayor ventaja diferenciadora</p>
-<p class="desc">Arquitectura de agentes de IA, workflows y gobernanza como infraestructura operativa del negocio.</p>
+<span class="sys-id">03</span>
+<h3>System Build</h3>
+<p class="tag-line">Duración: 8–16 semanas</p>
+<p class="desc">Cuando ya hay claridad estratégica y toca construir e implementar.</p>
+<p class="medida"><b>Entregable:</b> Sistema implementado — IA, CRM, RevOps, demand gen</p>
 </div>
 <div class="sys-card rv">
-<span class="sys-id">S4</span>
-<h3>AI-Powered Revenue Operations</h3>
-<p class="tag-line">RevOps con IA</p>
-<p class="desc">Forecasting predictivo, pipeline dinámico y gobernanza de datos cross-funcional.</p>
-</div>
-<div class="sys-card rv">
-<span class="sys-id">S5</span>
-<h3>Fractional CMO / AI Growth Office</h3>
-<p class="tag-line">Dirección estratégica externa</p>
-<p class="desc">Liderazgo ejecutivo de marketing, growth e IA, integrado a tu comité de dirección.</p>
+<span class="sys-id">04</span>
+<h3>Ongoing Partnership</h3>
+<p class="tag-line">Duración: Continuo</p>
+<p class="desc">Cuando se necesita liderazgo externo sostenido y acompañamiento ejecutivo.</p>
+<p class="medida"><b>Entregable:</b> Dirección estratégica + cadencia + resultados medibles</p>
 </div>
 </div>
 <div class="producto-block">
