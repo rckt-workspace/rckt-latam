@@ -306,19 +306,6 @@
   .posn-left li{font-size:15.5px; color:var(--carbon-soft);}
   .posn-left .grp.si h4{color:var(--naranja-deep);}
   .posn-right{position:relative; text-align:right; padding:20px 40px 20px 0;}
-  .posn-right::before{
-    content:'';
-    position:absolute;
-    width:420px;
-    height:420px;
-    right:-120px;
-    top:50%;
-    border-radius:50%;
-    background:var(--mancha-suave);
-    filter:blur(72px);
-    transform:translateY(-50%);
-    pointer-events:none;
-  }
   .posn-right .glow{width:340px; height:340px; right:-140px; top:50%; transform:translateY(-50%); z-index:0;}
   .posn-right p{
     position:relative; z-index:1;
