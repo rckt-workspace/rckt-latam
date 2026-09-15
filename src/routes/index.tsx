@@ -149,7 +149,7 @@ const pageMarkup = `
 <section class="band" data-mode="motion" id="servicios">
 <div class="container">
 <div class="section-head">
-<span class="num">05.</span>
+<span class="num">04.</span>
 <span class="kicker ital-label">Servicios · empieza por aquí</span>
 <span class="divider"></span>
 </div>
@@ -167,39 +167,37 @@ const pageMarkup = `
 <a class="btn btn-ghost btn-sm" href="#contacto">Quiero mi snapshot →</a>
 </div>
 </div>
-<h2 class="rv" style="font-size:clamp(24px,3vw,32px); margin-bottom:36px; font-weight:800;">Los cuatro sistemas</h2>
+<h2 class="rv" style="font-size:clamp(24px,3vw,32px); margin-bottom:36px; font-weight:800;">Los cinco servicios</h2>
 <div class="sys-grid">
 <div class="sys-card rv">
 <span class="sys-id">S1</span>
-<h3>Performance Media System</h3>
-<p class="tag-line">Anuncios en piloto automático supervisado</p>
-<p class="desc">Un sistema vigila y ajusta tu inversión publicitaria 24/7: sube lo que vende, apaga lo que no. Un experto supervisa cada decisión de peso. Y tú lo ves todo en un solo panel: cuánto entra, cuánto sale.</p>
-<p class="incluye"><b>Incluye:</b> arquitectura de datos y señales · operación continua multiplataforma · experimentación estructurada · panel único de resultados.</p>
-<p class="medida"><b>Se mide en:</b> retorno por cada euro invertido.</p>
+<h3>AI Growth Diagnostic</h3>
+<p class="tag-line">Diagnóstico ejecutivo 360°</p>
+<p class="desc">Revisamos marketing, ventas, funnel, oferta y madurez en IA de punta a punta, y entregamos un roadmap accionable a 90 días.</p>
 </div>
 <div class="sys-card rv">
 <span class="sys-id">S2</span>
-<h3>Creative Performance System</h3>
-<p class="tag-line">La fábrica de anuncios</p>
-<p class="desc">Decenas de versiones de cada anuncio por semana — distintos mensajes, protagonistas y formatos — con tu marca siempre intacta. Las probamos con público real y escalamos solo las que venden.</p>
-<p class="incluye"><b>Incluye:</b> producción con IA (video, imagen, avatares) · sistema de marca · control de calidad humano · testing conectado a la inversión.</p>
-<p class="medida"><b>Se mide en:</b> costo por resultado de las piezas ganadoras.</p>
+<h3>AI Search &amp; Discovery Intelligence</h3>
+<p class="tag-line">Captura de demanda en búsqueda por IA</p>
+<p class="desc">Demanda zero-click: que tu marca aparezca cuando alguien le pregunta a ChatGPT, Gemini o Perplexity por tu categoría.</p>
 </div>
 <div class="sys-card rv">
 <span class="sys-id">S3</span>
-<h3>AI Visibility System</h3>
-<p class="tag-line">Que la IA hable bien de ti</p>
-<p class="desc">El nuevo posicionamiento: cuando alguien le pregunta a una IA por tu categoría, tu marca aparece en la respuesta. Trabajamos tu contenido, tu autoridad y tu presencia técnica — y lo mantenemos mes a mes, porque las respuestas de las IAs cambian constantemente.</p>
-<p class="incluye"><b>Incluye:</b> contenido que las IAs citan · autoridad ganada en medios · base técnica citable · monitoreo mensual de menciones.</p>
-<p class="medida"><b>Se mide en:</b> share of model — cuántas veces te nombra la IA.</p>
+<h3>AI Operating System Design</h3>
+<p class="tag-line">Nuestra mayor ventaja diferenciadora</p>
+<p class="desc">Arquitectura de agentes de IA, workflows y gobernanza como infraestructura operativa del negocio.</p>
 </div>
 <div class="sys-card rv">
 <span class="sys-id">S4</span>
-<h3>Conversational Revenue System</h3>
-<p class="tag-line">El vendedor que nunca duerme</p>
-<p class="desc">Un asistente con lenguaje natural que atiende en tu WhatsApp o tu web como tu mejor vendedor, pero sin horarios: responde al instante, resuelve dudas, agenda, cobra. Y persigue cada compra abandonada con buenos modales hasta recuperarla.</p>
-<p class="incluye"><b>Incluye:</b> agente en tu canal (WhatsApp, web, voz) · integración con tu CRM y tus pagos · recuperación de ventas · preparación para el comercio vía asistentes de IA.</p>
-<p class="medida"><b>Se mide en:</b> conversaciones convertidas en ventas o citas.</p>
+<h3>AI-Powered Revenue Operations</h3>
+<p class="tag-line">RevOps con IA</p>
+<p class="desc">Forecasting predictivo, pipeline dinámico y gobernanza de datos cross-funcional.</p>
+</div>
+<div class="sys-card rv">
+<span class="sys-id">S5</span>
+<h3>Fractional CMO / AI Growth Office</h3>
+<p class="tag-line">Dirección estratégica externa</p>
+<p class="desc">Liderazgo ejecutivo de marketing, growth e IA, integrado a tu comité de dirección.</p>
 </div>
 </div>
 <div class="producto-block">
@@ -233,7 +231,7 @@ const pageMarkup = `
 <section class="band band-alt" data-mode="motion">
 <div class="container">
 <div class="section-head">
-<span class="num">06.</span>
+<span class="num">05.</span>
 <span class="kicker ital-label">Cómo se organiza todo</span>
 <span class="divider"></span>
 </div>
@@ -276,7 +274,7 @@ const pageMarkup = `
 <section class="band" data-mode="human" id="metodo">
 <div class="container">
 <div class="section-head">
-<span class="num">07.</span>
+<span class="num">06.</span>
 <span class="kicker ital-label">Método</span>
 <span class="divider"></span>
 </div>
@@ -325,7 +323,7 @@ const pageMarkup = `
 <div class="container">
 <div class="manifiesto-card rv">
 <span class="kicker" style="display:block; margin-bottom:22px;">Manifiesto</span>
-<p>Creemos que el crecimiento real nace de la inteligencia aplicada con precisión. No perseguimos clientes — construimos relaciones que se quedan. Medimos todo, prometemos solo lo que entregamos, y entregamos más de lo que prometemos. Trabajamos profundo, donde no se ve, para que los resultados se vean. Nacimos sin fronteras, y crecemos donde el valor es valorado.</p>
+<p>Creemos que el crecimiento real nace de la inteligencia aplicada con precisión. No perseguimos clientes — construimos relaciones que se quedan. Medimos todo, y entregamos más de lo que prometemos.</p>
 </div>
 </div>
 </section>
@@ -333,7 +331,7 @@ const pageMarkup = `
 <section class="band band-alt" data-mode="human" id="faq">
 <div class="container">
 <div class="section-head">
-<span class="num">08.</span>
+<span class="num">07.</span>
 <span class="kicker ital-label">Preguntas frecuentes</span>
 <span class="divider"></span>
 </div>
@@ -403,7 +401,7 @@ const pageMarkup = `
 </div>
 </div>
 <div class="submit-row">
-<button class="btn btn-primary" type="submit">Pedir diagnóstico</button>
+<button class="btn btn-primary" type="submit">Solicitar diagnóstico</button>
 <span class="form-note">Sin compromiso. Sin spam. Respuesta humana.</span>
 </div>
 <p class="form-thanks" id="formThanks">Listo — te respondemos en 24–48 horas a tu correo.</p>
@@ -416,7 +414,7 @@ const pageMarkup = `
 <div class="container">
 <span class="kicker">Siguiente paso</span>
 <h2 class="rv">Empieza por saber dónde estás</h2>
-<a class="btn btn-primary" href="#contacto">Pedir diagnóstico →</a>
+<a class="btn btn-primary" href="#contacto">Solicitar diagnóstico →</a>
 </div>
 </section>
 </main>
@@ -429,10 +427,6 @@ const pageMarkup = `
 <img alt="RCKT" class="logo-dark-img" src="__LOGO_LIGHT__"/>
 </a>
 <p>Sistemas de crecimiento con IA. Ligados a resultados, no a horas.</p>
-<div class="theme-switch">
-<button class="active" id="themeLight">Claro</button>
-<button id="themeDark">Oscuro</button>
-</div>
 </div>
 <div class="footer-col">
 <h5>Navegar</h5>
