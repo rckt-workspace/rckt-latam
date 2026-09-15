@@ -506,7 +506,7 @@ function RcktLanding() {
       const numText = match[0].replace(",", ".");
       const target = parseFloat(numText);
       if (Number.isNaN(target)) return;
-      const decimals = numText.includes(".") ? numText.split(".")[1].length : 0;
+      const decimals = numText.includes(".") ? (numText.split(".")[1] ?? "").length : 0;
       const prefix = raw.slice(0, match.index ?? 0);
       const suffix = raw.slice((match.index ?? 0) + match[0].length);
       const duration = 1300;
