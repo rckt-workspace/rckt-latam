@@ -551,16 +551,17 @@ function RcktLanding() {
           timers.push(window.setTimeout(() => { cursor.remove(); heroTitle.classList.remove("typing"); }, 2600));
           return;
         }
-        const segments = plan[li];
-        if (si >= segments.length) { li += 1; si = 0; ci = 0; current = null; timers.push(window.setTimeout(tick, 140)); return; }
+        const segments = plan[li] ?? [];
+        const lineEl = lines[li];
         const seg = segments[si];
+        if (si >= segments.length || !seg || !lineEl) { li += 1; si = 0; ci = 0; current = null; timers.push(window.setTimeout(tick, 140)); return; }
         if (ci === 0) {
           current = seg.em ? document.createElement("em") : document.createElement("span");
-          lines[li].appendChild(current);
+          lineEl.appendChild(current);
         }
         if (ci < seg.text.length) {
-          current!.textContent = seg.text.slice(0, ci + 1);
-          lines[li].appendChild(cursor);
+          if (current) current.textContent = seg.text.slice(0, ci + 1);
+          lineEl.appendChild(cursor);
           ci += 1;
           timers.push(window.setTimeout(tick, 34));
         } else { si += 1; ci = 0; timers.push(window.setTimeout(tick, 0)); }
