@@ -560,3 +560,7 @@
 #diagForm.submitted .form-thanks{display:block}
 .faq-q:focus-visible,.btn:focus-visible,.theme-switch button:focus-visible,.nav-toggle:focus-visible{outline:2px solid var(--naranja);outline-offset:4px}
 @media(max-width:560px){.container{padding-inline:20px}.hero-actions .btn{width:100%;justify-content:center}.contact-left h2{font-size:32px}.footer-bottom{align-items:flex-start;gap:16px;flex-direction:column}}
+.nav-right .theme-switch{margin-top:0;padding:4px}
+.nav-right .theme-switch button{padding:5px 12px;font-size:12.5px}
+.stat-row .stat-num{display:block;text-align:left;}
+@media(max-width:980px){.nav-right .theme-switch{display:none}.nav-links.mobile-open .theme-switch{display:inline-flex}}
