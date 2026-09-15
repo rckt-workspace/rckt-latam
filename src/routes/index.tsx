@@ -426,7 +426,7 @@ const pageMarkup = `
 <img alt="RCKT" class="logo-light-img" src="__LOGO_DARK__"/>
 <img alt="RCKT" class="logo-dark-img" src="__LOGO_LIGHT__"/>
 </a>
-<p>Sistemas de crecimiento con IA. Ligados a resultados, no a horas.</p>
+<p>Menos ruido, más crecimiento.</p>
 </div>
 <div class="footer-col">
 <h5>Navegar</h5>
