@@ -4,7 +4,18 @@ import heroAsset from "@/assets/rckt-hero.jpg.asset.json";
 import logoDarkAsset from "@/assets/rckt-logo-dark.png.asset.json";
 import logoLightAsset from "@/assets/rckt-logo-light.png.asset.json";
 
+const SITE_URL = "https://rckt-latam.lovable.app";
+
+const services = [
+  ["AI Growth Diagnostic", "Diagnóstico del sistema de crecimiento: qué automatizar, qué no y en qué orden."],
+  ["AI Search & Discovery Intelligence", "Visibilidad de la marca en buscadores y en respuestas generadas con IA."],
+  ["AI Operating System Design", "Diseño del sistema operativo de marketing con IA de la empresa."],
+  ["AI-Powered Revenue Operations", "Operación de demanda, contenido y ventas por conversación con IA."],
+  ["Fractional CMO / AI Growth Office", "Dirección de crecimiento con IA integrada en el equipo."],
+] as const;
+
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "RCKT — Sistemas de crecimiento con IA" },
@@ -12,9 +23,52 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "RCKT — Sistemas de crecimiento con IA" },
       { property: "og:description", content: "Resultados, no horas. Sistemas de medios, creativo, visibilidad en IA y ventas por conversación." },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL + "/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: SITE_URL + "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": SITE_URL + "/#organization",
+              name: "RCKT",
+              url: SITE_URL + "/",
+              description: "Firma de sistemas de crecimiento con IA para el mercado hispanohablante.",
+              email: "hola@rckt.es",
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  contactType: "sales",
+                  email: "hola@rckt.es",
+                  availableLanguage: ["es"],
+                },
+              ],
+            },
+            {
+              "@type": "WebSite",
+              "@id": SITE_URL + "/#website",
+              url: SITE_URL + "/",
+              name: "RCKT",
+              inLanguage: "es",
+              publisher: { "@id": SITE_URL + "/#organization" },
+            },
+            ...services.map(([name, description]) => ({
+              "@type": "Service",
+              name,
+              description,
+              serviceType: name,
+              provider: { "@id": SITE_URL + "/#organization" },
+              areaServed: "Mercado hispanohablante",
+            })),
+          ],
+        }),
+      },
+    ],
   }),
   component: RcktLanding,
 });
@@ -441,9 +495,9 @@ const pageMarkup = `
 <div class="footer-col">
 <h5>Legal</h5>
 <ul>
-<li><a href="#">Aviso legal</a></li>
-<li><a href="#">Privacidad</a></li>
-<li><a href="#">Cookies</a></li>
+<li><a href="/aviso-legal">Aviso legal</a></li>
+<li><a href="/privacidad">Privacidad</a></li>
+<li><a href="/cookies">Cookies</a></li>
 </ul>
 <h5 style="margin-top:26px;">Correo</h5>
 <ul><li><a href="mailto:hola@rckt.es">hola@rckt.es</a></li></ul>
