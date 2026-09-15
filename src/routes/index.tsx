@@ -30,11 +30,16 @@ const pageMarkup = `
 <div class="nav-links">
 <a href="#sistema">Sistema</a>
 <a href="#servicios">Servicios</a>
+<a href="#quienes">Nosotros</a>
 <a href="#metodo">Método</a>
 <a href="#faq">FAQ</a>
 </div>
 <div class="nav-right">
-<a class="btn btn-primary btn-sm" href="#contacto">Pedir diagnóstico</a>
+<div class="theme-switch">
+<button class="active" id="themeLight">Claro</button>
+<button id="themeDark">Oscuro</button>
+</div>
+<a class="btn btn-primary btn-sm" href="#contacto">Solicitar diagnóstico</a>
 <button aria-label="Abrir menú" class="nav-toggle" id="navToggle">
 <span></span><span></span><span></span>
 </button>
@@ -52,7 +57,7 @@ const pageMarkup = `
 <h1>Tu marketing no necesita más manos.<br/>Necesita un <em>sistema</em>.</h1>
 <p class="sub">Diseñamos y operamos sistemas de crecimiento con IA que trabajan 24/7 — ligados a los resultados que producen, no a las horas que consumen.</p>
 <div class="hero-actions">
-<a class="btn btn-primary" href="#contacto">Pedir mi diagnóstico →</a>
+<a class="btn btn-primary" href="#contacto">Solicitar diagnóstico →</a>
 <a class="btn btn-ghost" href="#servicios">¿Te recomienda la IA? Descúbrelo →</a>
 </div>
 </div>
@@ -74,79 +79,49 @@ const pageMarkup = `
 <div class="stats">
 <div class="stat-row rv">
 <span class="stat-num up">+8.6%</span>
-<p>crece la inversión publicitaria mundial</p>
+<p>Crece la inversión publicitaria mundial</p>
 </div>
 <div class="stat-row rv">
 <span class="stat-num">–1.2%</span>
-<p>caen los ingresos de quienes venden ejecución</p>
+<p>Caen los ingresos de quienes venden ejecución</p>
 </div>
 <div class="stat-row rv">
 <span class="stat-num up">73%</span>
-<p>de los negocios son invisibles cuando alguien le pregunta a una IA</p>
+<p>De los negocios son invisibles cuando alguien le pregunta a una IA</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<!-- POR QUE EL TIMING ES NUESTRO -->
-<section class="band band-alt" data-mode="motion">
-<div class="container">
-<div class="section-head">
-<span class="num">02.</span>
-<span class="kicker ital-label">Por qué el timing es nuestro</span>
-<span class="divider"></span>
-</div>
-<div class="mercado-grid">
-<div class="mercado-left">
-<h2 class="rv" style="font-size:clamp(26px,3.4vw,36px); margin:0 0 20px; line-height:1.25; font-weight:800;">La ventana se estrecha mes a mes</h2>
-<p>La IA agéntica entró en producción real: el coste marginal de producir software y contenido se está colapsando, y cualquier servicio basado en horas tiene que repensar su precio. La oportunidad está en quien diseña los sistemas, no en quien los ejecuta a mano.</p>
-</div>
-<div class="stats">
-<div class="stat-row rv">
-<span class="stat-num up">x28</span>
-<p>crecen los pull requests completados por agentes de IA en GitHub en diez meses</p>
-</div>
-<div class="stat-row rv">
-<span class="stat-num">44–61%</span>
-<p>de adopción de IA en empresas en España — el doble que en 2025</p>
-</div>
-<div class="stat-row rv">
-<span class="stat-num up">2,6x</span>
-<p>crecerá la inversión publicitaria en LATAM entre 2025 y 2029</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- TRES FORMAS DE ENTRAR -->
+<!-- TRES RUTAS DE ENTRADA -->
 <section class="band">
 <div class="container">
 <div class="section-head">
-<span class="num">03.</span>
+<span class="num">02.</span>
 <span class="kicker ital-label">Un sistema operativo de crecimiento</span>
 <span class="divider"></span>
 </div>
-<h2 class="rv" style="font-size:clamp(26px,3.4vw,36px); margin:0 0 56px; max-width:680px; font-weight:800;">Tres formas de entrar</h2>
+<h2 class="rv" style="font-size:clamp(26px,3.4vw,36px); margin:0 0 56px; max-width:680px; font-weight:800;">Tres rutas de entrada</h2>
 <div class="three-grid">
 <div class="three-card rv">
 <span class="num">01.</span>
 <h3>Diagnosticar</h3>
-<p>Una radiografía en 2–3 semanas: dónde estás perdiendo dinero, qué oportunidades hay y qué arreglar primero, en qué orden.</p>
+<p>En dos o tres semanas ponemos números a la realidad: qué está drenando presupuesto, qué palancas están sin usar y por dónde conviene empezar.</p>
 </div>
 <div class="three-card rv">
 <span class="num">02.</span>
 <h3>Operar</h3>
-<p>Nos quedamos manejando los sistemas que hacen crecer el negocio: medios, creativo, visibilidad en IA y ventas por conversación.</p>
+<p>Tomamos el mando de los sistemas que mueven el negocio —inversión, creatividad, visibilidad en IA y conversación comercial— y respondemos por su rendimiento.</p>
 </div>
 <div class="three-card rv">
 <span class="num">03.</span>
 <h3>Producto</h3>
-<p>Lo que funciona una y otra vez se convierte en producto: se instala en tu negocio y pagas una suscripción. Construido una vez, probado muchas.</p>
+<p>Aquello que ya probó funcionar lo empaquetamos como software: se instala en tu operación y se paga por suscripción, sin proyectos interminables.</p>
 </div>
 </div>
 <div class="juicio">
 <span class="tag">Juicio</span>
-        Atravesándolo todo, el criterio: qué automatizar, qué no, y en qué orden. La IA no reemplaza el juicio. Lo multiplica.
+        Presente en todo el proceso: qué automatizar, qué no y en qué orden. La IA no reemplaza el criterio, lo potencia.
       </div>
 </div>
 </section>
@@ -154,45 +129,18 @@ const pageMarkup = `
 <section class="band band-alt" data-mode="editorial" id="quienes">
 <div class="container">
 <div class="section-head">
-<span class="num">04.</span>
+<span class="num">03.</span>
 <span class="kicker ital-label">Qué es RCKT</span>
 <span class="divider"></span>
 </div>
 <div class="posn">
 <div class="posn-left rv">
-<div class="grp no">
-<h4>No somos</h4>
-<ul>
-<li><strong>Una agencia de marketing digital.</strong> Las agencias ejecutan tácticas sueltas — SEO, pauta, redes. Nosotros diseñamos sistemas conectados a revenue.</li>
-<li><strong>Una consultora tradicional.</strong> Las consultoras entregan un PowerPoint y se van. Nosotros implementamos y operamos lo que diseñamos.</li>
-<li><strong>Un proveedor de herramientas.</strong> No vendemos «usar ChatGPT». Diseñamos arquitecturas de IA agéntica como infraestructura operativa.</li>
-</ul>
-</div>
+<p>RCKT es la firma nativa de IA para crecimiento y revenue del mercado hispanohablante. Diseñamos, implementamos y operamos sistemas inteligentes de crecimiento que conectan estrategia, demanda, conversión, retención y liderazgo ejecutivo. Somos la intersección de tres capacidades que nadie en el mercado hispano integra: estrategia de crecimiento con profundidad de negocio, IA aplicada como infraestructura operativa, y ejecución regional con entendimiento cultural.</p>
 </div>
 <div class="posn-right rv">
 <p>El socio que diseña, implementa y opera sistemas inteligentes de crecimiento — con la profundidad de una consultora top-tier, la velocidad de una startup y el entendimiento cultural de quien piensa en español.</p>
-<div class="divider-sm" style="background:var(--mode-accent);"></div>
+<div class="divider-sm" style="background:var(--naranja);"></div>
 <p class="cap">La firma nativa de IA para crecimiento<br/>y revenue del mercado hispanohablante</p>
-</div>
-</div>
-<div class="lenguaje">
-<div class="lenguaje-col">
-<span class="kicker" style="color:var(--mode-accent-deep); display:block; margin-bottom:18px;">Sí decimos</span>
-<ul>
-<li>Sistemas de crecimiento</li>
-<li>Agentes de IA</li>
-<li>Socio estratégico</li>
-<li>Pipeline, revenue y conversión</li>
-</ul>
-</div>
-<div class="lenguaje-col">
-<span class="kicker" style="display:block; margin-bottom:18px;">Nunca decimos</span>
-<ul>
-<li>Campañas</li>
-<li>Herramientas de IA</li>
-<li>Agencia o proveedor</li>
-<li>Más seguidores o más likes</li>
-</ul>
 </div>
 </div>
 </div>
