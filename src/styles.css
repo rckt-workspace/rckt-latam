@@ -36,7 +36,7 @@
     --papel-fija: #EDECE7;
     --line: rgba(28,27,25,0.14);
     --line-strong: rgba(28,27,25,0.24);
-    --card: color-mix(in srgb, #FEC6AD 8%, #FFFDFB);
+    --card: color-mix(in srgb, #FEC6AD 10%, #FFFDFB);
     --max: 1180px;
     /* sistema de acento por sección (por defecto = naranja de marca) */
     --mode-accent: var(--naranja);
