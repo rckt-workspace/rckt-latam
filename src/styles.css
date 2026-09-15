@@ -596,8 +596,7 @@
 }
 
 /* 8) Manifiesto con más presencia */
-.manifiesto-card{position:relative;overflow:hidden;border-top:3px solid var(--naranja);background:color-mix(in srgb,#FEC6AD 8%,#FFFDFB);padding:72px 64px;box-shadow:0 18px 40px rgba(0,0,0,.06)}
-.manifiesto-card::after{content:'';position:absolute;width:560px;height:560px;right:-180px;top:-260px;border-radius:50%;background:var(--mancha-suave);filter:blur(88px);pointer-events:none}
+.manifiesto-card{position:relative;overflow:hidden;border-top:3px solid var(--naranja);background:var(--card);padding:72px 64px;box-shadow:0 18px 40px rgba(0,0,0,.06)}
 .manifiesto-card .kicker{position:relative;z-index:1;color:var(--naranja);letter-spacing:.18em}
 .manifiesto-card p{position:relative;z-index:1}
 @media(max-width:560px){.manifiesto-card{padding:48px 26px}}
