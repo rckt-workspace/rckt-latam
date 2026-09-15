@@ -181,10 +181,10 @@ const pageMarkup = `
 </div>
 <div class="posn">
 <div class="posn-left rv">
-<p>RCKT es la firma nativa de IA para crecimiento y revenue del mercado hispanohablante. Diseñamos, implementamos y operamos sistemas inteligentes de crecimiento que conectan estrategia, demanda, conversión, retención y liderazgo ejecutivo. Somos la intersección de tres capacidades que nadie en el mercado hispano integra: estrategia de crecimiento con profundidad de negocio, IA aplicada como infraestructura operativa, y ejecución regional con entendimiento cultural.</p>
+<p>RCKT nació dentro del ecosistema de IA — no lo adoptó después. Somos el equipo que diseña, construye y opera la infraestructura de crecimiento de negocios hispanohablantes: estrategia, demanda, conversión, retención y dirección ejecutiva, todo conectado. Combinamos tres capacidades: profundidad de negocio para decidir dónde crecer, IA como columna operativa —no como experimento—, y ejecución con lectura cultural real de LATAM.</p>
 </div>
 <div class="posn-right rv">
-<p>El socio que diseña, implementa y opera sistemas inteligentes de crecimiento — con la profundidad de una consultora top-tier, la velocidad de una startup y el entendimiento cultural de quien piensa en español.</p>
+<p>Diseñamos, implementamos y operamos sistemas inteligentes de crecimiento para convertir el marketing en un motor real de negocio.</p>
 <div class="divider-sm" style="background:var(--naranja);"></div>
 <p class="cap">La firma nativa de IA para crecimiento<br/>y revenue del mercado hispanohablante</p>
 </div>
