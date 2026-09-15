@@ -7,10 +7,8 @@ import logoLightAsset from "@/assets/rckt-logo-light.png.asset.json";
 const SITE_URL = "https://rckt-latam.lovable.app";
 
 const services = [
-  ["Diagnostic Sprint", "Cuando no está claro qué frena el crecimiento y se necesita visibilidad antes de decidir."],
-  ["Strategy Design", "Cuando ya se sabe que se quiere crecer, pero falta un plan — hay presupuesto y urgencia."],
-  ["System Build", "Cuando ya hay claridad estratégica y toca construir e implementar."],
-  ["Ongoing Partnership", "Cuando se necesita liderazgo externo sostenido y acompañamiento ejecutivo."],
+  ["AI Growth Audit", "Revisamos tu inversión publicitaria, tus datos, tu sitio y tu contenido con la misma vara, y entregamos un informe con lo que estás dejando sobre la mesa."],
+  ["AI Visibility Snapshot", "Comprobamos con evidencia si tu marca aparece cuando alguien pregunta por tu categoría en ChatGPT, Gemini o Perplexity."],
 ] as const;
 
 export const Route = createFileRoute("/")({
@@ -101,15 +99,16 @@ const pageMarkup = `
 </header>
 <div class="container hero-content">
 <div class="hero-inner">
+<span class="kicker hero-kicker">Crecimiento inteligente</span>
 <h1><span class="hero-line">Tu marketing</span><span class="hero-line">no necesita más manos.</span><span class="hero-line">Necesita un <em>sistema</em>.</span></h1>
-<p class="sub">Diseñamos y operamos sistemas de crecimiento con IA que trabajan 24/7 — ligados a los resultados que producen, no a las horas que consumen.</p>
+<p class="sub">Diseñamos y operamos sistemas de crecimiento impulsados por IA que trabajan 24/7 para atraer oportunidades, acelerar ventas y hacer crecer tu negocio. Tecnología, estrategia y ejecución enfocadas en resultados.</p>
 <div class="hero-actions">
 <a class="btn hero-primary-cta" href="#contacto">Solicitar diagnóstico →</a>
-<a class="btn hero-outline-cta" href="#faq">¿Te recomienda la IA? Descúbrelo →</a>
+<a class="btn hero-outline-cta" href="#sistema">Descubre tu sistema de crecimiento →</a>
 </div>
 </div>
 </div>
-<p class="hero-caption">Sistemas de IA<br/>para crecimiento real.</p>
+<p class="hero-caption">Sistemas de IA.<br/>Crecimiento real.</p>
 </section>
 <!-- EL MERCADO CAMBIÓ DE LADO -->
 <section class="band" id="sistema">
@@ -121,8 +120,8 @@ const pageMarkup = `
 </div>
 <div class="mercado-grid">
 <div class="mercado-left">
-<h2 class="rv" style="font-size:clamp(26px,3.4vw,38px); margin:0 0 20px; line-height:1.25; font-weight:800;">El mercado cambió de lado</h2>
-<p>La IA absorbió las tareas del marketing: configurar campañas, producir piezas, armar reportes. Lo que quedó al descubierto es la única pregunta que importa: <em>¿quién responde por el resultado?</em> Nosotros. Ese es el modelo.</p>
+<h2 class="rv" style="font-size:clamp(26px,3.4vw,38px); margin:0 0 20px; line-height:1.25; font-weight:800;">La ejecución ya no es el diferencial.</h2>
+<p>La IA puede crear campañas, producir contenido, analizar datos y automatizar tareas en minutos. Eso cambió las reglas. Hoy, tener más manos no significa crecer más. La ventaja está en conectar estrategia, tecnología y ejecución alrededor de un mismo objetivo: generar resultados. Nosotros no vendemos horas, piezas ni tareas. Construimos sistemas que hacen que tu marketing avance.</p>
 </div>
 <div class="stats">
 <div class="stat-row rv">
@@ -183,10 +182,10 @@ const pageMarkup = `
 </div>
 <div class="posn">
 <div class="posn-left rv">
-<p>RCKT es la firma nativa de IA para crecimiento y revenue del mercado hispanohablante. Diseñamos, implementamos y operamos sistemas inteligentes de crecimiento que conectan estrategia, demanda, conversión, retención y liderazgo ejecutivo. Somos la intersección de tres capacidades que nadie en el mercado hispano integra: estrategia de crecimiento con profundidad de negocio, IA aplicada como infraestructura operativa, y ejecución regional con entendimiento cultural.</p>
+<p>RCKT nació dentro del ecosistema de IA — no lo adoptó después. Somos el equipo que diseña, construye y opera la infraestructura de crecimiento de negocios hispanohablantes: estrategia, demanda, conversión, retención y dirección ejecutiva, todo conectado. Combinamos tres capacidades: profundidad de negocio para decidir dónde crecer, IA como columna operativa —no como experimento—, y ejecución con lectura cultural real de LATAM.</p>
 </div>
 <div class="posn-right rv">
-<p>El socio que diseña, implementa y opera sistemas inteligentes de crecimiento — con la profundidad de una consultora top-tier, la velocidad de una startup y el entendimiento cultural de quien piensa en español.</p>
+<p>Diseñamos, implementamos y operamos sistemas inteligentes de crecimiento para convertir el marketing en un motor real de negocio.</p>
 <div class="divider-sm" style="background:var(--naranja);"></div>
 <p class="cap">La firma nativa de IA para crecimiento<br/>y revenue del mercado hispanohablante</p>
 </div>
@@ -204,73 +203,41 @@ const pageMarkup = `
 <div class="service-lead-grid">
 <div class="service-lead rv">
 <span class="kicker" style="display:inline-flex; padding:5px 12px; border-radius:999px; background:rgba(var(--mode-glow-rgb),0.22); color:var(--mode-accent-deep); text-transform:uppercase; letter-spacing:.05em; font-size:11.5px; font-weight:700;">D1 — AI Growth Audit</span>
-<p class="tag-line">La revisión completa</p>
-<p>Auditamos tus anuncios, tus datos, tu web y tu contenido. En 2–3 semanas recibes un informe que cuantifica cuánto dinero estás dejando en la mesa — y un plan priorizado para recuperarlo.</p>
-<a class="btn btn-ghost btn-sm" href="#contacto">Empezar por aquí →</a>
+<p class="tag-line">Todo bajo la lupa</p>
+<p>Revisamos tu inversión publicitaria, tus datos, tu sitio y tu contenido con la misma vara. En 2 a 3 semanas tienes un informe que pone en números cuánto estás dejando sobre la mesa, y en qué orden recuperarlo.</p>
+<a class="btn btn-ghost btn-sm" href="#contacto">Ver mi diagnóstico →</a>
 </div>
 <div class="service-lead rv">
 <span class="kicker" style="display:inline-flex; padding:5px 12px; border-radius:999px; background:rgba(var(--mode-glow-rgb),0.22); color:var(--mode-accent-deep); text-transform:uppercase; letter-spacing:.05em; font-size:11.5px; font-weight:700;">D2 — AI Visibility Snapshot</span>
-<p class="tag-line">¿La IA te recomienda?</p>
-<p>Le preguntamos a ChatGPT, Gemini y Perplexity lo mismo que pregunta tu cliente. Te mostramos, con capturas, si tu marca aparece en las respuestas — y qué hacer si no.</p>
-<a class="btn btn-ghost btn-sm" href="#contacto">Quiero mi snapshot →</a>
-</div>
-</div>
-<h2 class="rv" style="font-size:clamp(24px,3vw,32px); margin-bottom:18px; font-weight:800;">Modelos de trabajo</h2>
-<p class="rv" style="font-size:17px; color:var(--carbon-soft); max-width:760px; margin:0 0 36px;">No vendemos por hora. Cada propuesta se estructura por el valor que entrega y por el modelo de trabajo que mejor encaja con el momento de tu negocio.</p>
-<div class="sys-grid">
-<div class="sys-card rv">
-<span class="sys-id">01</span>
-<h3>Diagnostic Sprint</h3>
-<p class="tag-line">Duración: 2–4 semanas</p>
-<p class="desc">Cuando no está claro qué frena el crecimiento y se necesita visibilidad antes de decidir.</p>
-<p class="medida"><b>Entregable:</b> Diagnóstico + roadmap + quick wins</p>
-</div>
-<div class="sys-card rv">
-<span class="sys-id">02</span>
-<h3>Strategy Design</h3>
-<p class="tag-line">Duración: 4–8 semanas</p>
-<p class="desc">Cuando ya se sabe que se quiere crecer, pero falta un plan — hay presupuesto y urgencia.</p>
-<p class="medida"><b>Entregable:</b> Growth plan + priorización + roadmap a 90/180 días</p>
-</div>
-<div class="sys-card rv">
-<span class="sys-id">03</span>
-<h3>System Build</h3>
-<p class="tag-line">Duración: 8–16 semanas</p>
-<p class="desc">Cuando ya hay claridad estratégica y toca construir e implementar.</p>
-<p class="medida"><b>Entregable:</b> Sistema implementado — IA, CRM, RevOps, demand gen</p>
-</div>
-<div class="sys-card rv">
-<span class="sys-id">04</span>
-<h3>Ongoing Partnership</h3>
-<p class="tag-line">Duración: Continuo</p>
-<p class="desc">Cuando se necesita liderazgo externo sostenido y acompañamiento ejecutivo.</p>
-<p class="medida"><b>Entregable:</b> Dirección estratégica + cadencia + resultados medibles</p>
+<p class="tag-line">¿Existes para la IA?</p>
+<p>Hacemos las mismas preguntas que haría tu cliente potencial —en ChatGPT, Gemini y Perplexity— y te mostramos, con evidencia, si tu marca aparece en la respuesta. Si no aparece, te decimos exactamente qué mover.</p>
+<a class="btn btn-ghost btn-sm" href="#contacto">Ver si aparezco →</a>
 </div>
 </div>
 <div class="producto-block">
 <div>
 <span class="kicker" style="display:inline-flex; padding:5px 12px; border-radius:999px; background:rgba(var(--mode-glow-rgb),0.22); color:var(--mode-accent-deep); text-transform:uppercase; letter-spacing:.05em; font-size:11.5px; font-weight:700;">P — Producto</span>
-<h3>Software que ya demostró que funciona</h3>
-<p>Cuando un sistema funciona una y otra vez, lo enlatamos. Se convierte en un producto que se instala en tu negocio por una suscripción mensual. Sin proyectos eternos.</p>
+<h3>Lo que funciona, lo convertimos en sistema.</h3>
+<p>Cuando una solución funciona y genera resultados de forma consistente, la convertimos en un producto que puedes integrar a tu negocio mediante una suscripción mensual. Sin proyectos interminables. Sin empezar de cero.</p>
 </div>
 <div class="torres">
 <div class="torre rv">
 <b>T1 — Advisory</b>
-<p>Tu director de IA, a tiempo parcial. Decisiones con criterio: qué automatizar, qué comprar, por dónde empezar.</p>
+<p>Tu dirección de IA, cuando la necesitas. Te ayudamos a tomar mejores decisiones: qué automatizar, qué herramientas elegir y por dónde empezar.</p>
 </div>
 <div class="torre rv">
 <b>T2 — In-housing</b>
-<p>Te enseñamos a pescar: montamos la capacidad dentro de tu empresa y entrenamos a tu equipo para operarla.</p>
+<p>Llevamos el conocimiento a tu equipo. Diseñamos la capacidad dentro de tu empresa y formamos a las personas que la van a operar, para que puedas crecer con autonomía.</p>
 </div>
 <div class="torre rv">
 <b>T3 — Compliance</b>
-<p>El cinturón de seguridad: todo lo que automatices cumple la ley, en cada país donde operes.</p>
+<p>IA con respaldo y control. Diseñamos tus automatizaciones para que operen de forma segura y cumplan con las normativas aplicables en cada país donde tengas presencia.</p>
 </div>
 </div>
 </div>
 <div class="no-vendemos">
 <span class="kicker" style="display:block; margin-bottom:14px;">Lo que no vendemos</span>
-<p>No vendemos gestión de redes, contenido por pieza, SEO de palabras clave ni informes mensuales. No porque no sepamos — porque las máquinas ya lo hacen, y cobrártelo por separado sería cobrarte por algo que hoy es casi gratis. Todo eso vive automatizado dentro de los sistemas. <strong>Lo que tú compras es el resultado.</strong></p>
+<p>No vendemos manejo de redes sociales, contenido por pieza, SEO basado únicamente en palabras clave ni reportes que nadie termina de leer. No porque no sepamos hacerlo, sino porque la tecnología ya permite automatizar gran parte de estas tareas. Creemos que cobrar cada una por separado ya no tiene sentido. Por eso, las integramos dentro de nuestros sistemas y procesos para que trabajen de forma más eficiente, constante y escalable. <strong>No pagas por tareas. Inviertes en resultados.</strong></p>
 </div>
 </div>
 </section>
@@ -351,16 +318,16 @@ const pageMarkup = `
 <span class="kicker" style="display:block; margin-bottom:32px;">Cómo trabajamos</span>
 <div class="principios">
 <div class="principio rv">
-<p class="lead">Resultados, no horas.</p>
-<p>La base cubre la operación; el resto se gana con resultados medibles. Si tú creces, crecemos.</p>
+<p class="lead">Crecemos contigo.</p>
+<p>No vendemos tiempo. Ponemos resultados sobre la mesa.</p>
 </div>
 <div class="principio rv">
-<p class="lead">La IA multiplica el criterio, no lo abarata.</p>
-<p>Usamos IA en todo — no para cobrarte menos, sino para que el criterio experto llegue donde antes no alcanzaba.</p>
+<p class="lead">Más inteligencia. Más capacidad.</p>
+<p>La tecnología escala la capacidad de nuestro equipo. El criterio sigue siendo humano.</p>
 </div>
 <div class="principio rv">
-<p class="lead">Mostramos, no prometemos.</p>
-<p>Números antes que adjetivos. Si no hay dato, hay demo.</p>
+<p class="lead">La prueba está en los datos.</p>
+<p>Datos antes que adjetivos. Pruebas antes que promesas.</p>
 </div>
 </div>
 </div>
@@ -370,7 +337,7 @@ const pageMarkup = `
 <div class="container">
 <div class="manifiesto-card rv">
 <span class="kicker" style="display:block; margin-bottom:22px;">Manifiesto</span>
-<p>Creemos que el crecimiento real nace de la inteligencia aplicada con precisión. No perseguimos clientes — construimos relaciones que se quedan. Medimos todo, y entregamos más de lo que prometemos.</p>
+<p>Hacemos crecer lo que importa. Aplicamos inteligencia con precisión, medimos lo que hacemos y construimos relaciones que perduran. Porque el verdadero crecimiento no se persigue: se diseña, se demuestra y se sostiene.</p>
 </div>
 </div>
 </section>
