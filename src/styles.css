@@ -565,8 +565,9 @@
 .legal-page p { color: var(--carbon-soft); line-height: 1.7; margin: 0 0 14px; }
 .legal-page a { color: var(--naranja-deep); }
 
-/* Textos justificados en todo el sitio */
-.rckt-site p,.rckt-site li,.legal-page p,.legal-page li{text-align:justify;text-justify:inter-word;hyphens:auto}
+/* Textos justificados en todo el sitio; palabras nunca partidas */
+.rckt-site p,.rckt-site li,.legal-page p,.legal-page li{text-align:justify;text-justify:inter-word;word-break:normal;overflow-wrap:normal;hyphens:none}
+.rckt-site,.legal-page{word-break:normal;overflow-wrap:normal;hyphens:none}
 
 /* ===== Ajustes de diseño (v3) ===== */
 
