@@ -477,6 +477,98 @@ function RcktLanding() {
     .replaceAll("__LOGO_LIGHT__", logoLightAsset.url), []);
 
   useEffect(() => {
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+    const timers: number[] = [];
+
+    // --- Títulos de sección palabra por palabra ---
+    document.querySelectorAll<HTMLElement>(".band h2.rv, .cta-final h2.rv").forEach((h2) => {
+      if (reduceMotion || h2.querySelector("*")) return;
+      const words = (h2.textContent ?? "").trim().split(/\s+/);
+      if (words.length < 2) return;
+      h2.textContent = "";
+      words.forEach((word, i) => {
+        const span = document.createElement("span");
+        span.className = "word";
+        span.style.setProperty("--w", String(i));
+        span.textContent = word;
+        h2.appendChild(span);
+        if (i < words.length - 1) h2.appendChild(document.createTextNode(" "));
+      });
+      h2.classList.add("words");
+    });
+
+    // --- Contadores animados ---
+    const counters = Array.from(document.querySelectorAll<HTMLElement>(".stat-num"));
+    const runCounter = (el: HTMLElement) => {
+      const raw = (el.textContent ?? "").trim();
+      const match = raw.match(/-?[\d.,]+/);
+      if (!match) return;
+      const numText = match[0].replace(",", ".");
+      const target = parseFloat(numText);
+      if (Number.isNaN(target)) return;
+      const decimals = numText.includes(".") ? (numText.split(".")[1] ?? "").length : 0;
+      const prefix = raw.slice(0, match.index ?? 0);
+      const suffix = raw.slice((match.index ?? 0) + match[0].length);
+      const duration = 1300;
+      const start = performance.now();
+      const step = (now: number) => {
+        const t = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = `${prefix}${(target * eased).toFixed(decimals)}${suffix}`;
+        if (t < 1) requestAnimationFrame(step);
+      };
+      if (reduceMotion) return;
+      el.textContent = `${prefix}${(0).toFixed(decimals)}${suffix}`;
+      requestAnimationFrame(step);
+    };
+    let counterObserver: IntersectionObserver | undefined;
+    if (!reduceMotion && "IntersectionObserver" in window) {
+      counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { runCounter(entry.target as HTMLElement); counterObserver?.unobserve(entry.target); }
+        });
+      }, { threshold: 0.6 });
+      counters.forEach((el) => counterObserver?.observe(el));
+    }
+
+    // --- Máquina de escribir en el titular del hero ---
+    const heroTitle = document.querySelector<HTMLElement>(".hero-inner h1");
+    if (heroTitle && !reduceMotion) {
+      const lines = Array.from(heroTitle.querySelectorAll<HTMLElement>(".hero-line"));
+      const plan = lines.map((line) => Array.from(line.childNodes).map((node) => ({
+        text: node.textContent ?? "",
+        em: node.nodeType === 1 && (node as HTMLElement).tagName === "EM",
+      })));
+      lines.forEach((line) => { line.textContent = ""; });
+      heroTitle.classList.add("typing");
+      const cursor = document.createElement("span");
+      cursor.className = "type-cursor";
+      cursor.setAttribute("aria-hidden", "true");
+      let li = 0, si = 0, ci = 0;
+      let current: HTMLElement | null = null;
+      const tick = () => {
+        if (li >= plan.length) {
+          timers.push(window.setTimeout(() => { cursor.remove(); heroTitle.classList.remove("typing"); }, 2600));
+          return;
+        }
+        const segments = plan[li] ?? [];
+        const lineEl = lines[li];
+        const seg = segments[si];
+        if (si >= segments.length || !seg || !lineEl) { li += 1; si = 0; ci = 0; current = null; timers.push(window.setTimeout(tick, 140)); return; }
+        if (ci === 0) {
+          current = seg.em ? document.createElement("em") : document.createElement("span");
+          lineEl.appendChild(current);
+        }
+        if (ci < seg.text.length) {
+          if (current) current.textContent = seg.text.slice(0, ci + 1);
+          lineEl.appendChild(cursor);
+          ci += 1;
+          timers.push(window.setTimeout(tick, 34));
+        } else { si += 1; ci = 0; timers.push(window.setTimeout(tick, 0)); }
+      };
+      timers.push(window.setTimeout(tick, 380));
+    }
+
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>(".rv"));
     let observer: IntersectionObserver | undefined;
     observer = "IntersectionObserver" in window ? new IntersectionObserver((entries) => {
@@ -516,7 +608,7 @@ function RcktLanding() {
     const setDark = () => { document.documentElement.setAttribute("data-theme", "dark"); dark?.classList.add("active"); light?.classList.remove("active"); };
     light?.addEventListener("click", setLight); dark?.addEventListener("click", setDark);
 
-    return () => { observer?.disconnect(); window.removeEventListener("scroll", onScroll); toggle?.removeEventListener("click", onToggle); links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu)); faqButtons.forEach((button) => button.removeEventListener("click", onFaq)); form?.removeEventListener("submit", onSubmit); light?.removeEventListener("click", setLight); dark?.removeEventListener("click", setDark); document.documentElement.removeAttribute("data-theme"); };
+    return () => { timers.forEach((t) => window.clearTimeout(t)); counterObserver?.disconnect(); observer?.disconnect(); window.removeEventListener("scroll", onScroll); toggle?.removeEventListener("click", onToggle); links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu)); faqButtons.forEach((button) => button.removeEventListener("click", onFaq)); form?.removeEventListener("submit", onSubmit); light?.removeEventListener("click", setLight); dark?.removeEventListener("click", setDark); document.documentElement.removeAttribute("data-theme"); };
   }, []);
 
   return <div className="rckt-site" dangerouslySetInnerHTML={{ __html: markup }} />;
