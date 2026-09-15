@@ -105,7 +105,7 @@ const pageMarkup = `
 <h1>Tu marketing no necesita más manos.<br/>Necesita un <em>sistema</em>.</h1>
 <p class="sub">Diseñamos y operamos sistemas de crecimiento con IA que trabajan 24/7 — ligados a los resultados que producen, no a las horas que consumen.</p>
 <div class="hero-actions">
-<a class="btn hero-outline-cta" href="#contacto">Solicitar diagnóstico →</a>
+<a class="btn hero-primary-cta" href="#contacto">Solicitar diagnóstico →</a>
 <a class="btn hero-outline-cta" href="#faq">¿Te recomienda la IA? Descúbrelo →</a>
 </div>
 </div>
