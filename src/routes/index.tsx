@@ -607,7 +607,7 @@ function RcktLanding() {
     const setDark = () => { document.documentElement.setAttribute("data-theme", "dark"); dark?.classList.add("active"); light?.classList.remove("active"); };
     light?.addEventListener("click", setLight); dark?.addEventListener("click", setDark);
 
-    return () => { observer?.disconnect(); window.removeEventListener("scroll", onScroll); toggle?.removeEventListener("click", onToggle); links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu)); faqButtons.forEach((button) => button.removeEventListener("click", onFaq)); form?.removeEventListener("submit", onSubmit); light?.removeEventListener("click", setLight); dark?.removeEventListener("click", setDark); document.documentElement.removeAttribute("data-theme"); };
+    return () => { timers.forEach((t) => window.clearTimeout(t)); counterObserver?.disconnect(); observer?.disconnect(); window.removeEventListener("scroll", onScroll); toggle?.removeEventListener("click", onToggle); links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu)); faqButtons.forEach((button) => button.removeEventListener("click", onFaq)); form?.removeEventListener("submit", onSubmit); light?.removeEventListener("click", setLight); dark?.removeEventListener("click", setDark); document.documentElement.removeAttribute("data-theme"); };
   }, []);
 
   return <div className="rckt-site" dangerouslySetInnerHTML={{ __html: markup }} />;
