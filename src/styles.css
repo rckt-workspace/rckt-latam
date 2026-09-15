@@ -23,7 +23,7 @@
 
   :root{
     --papel: #FBF7F0;
-    --papel-alt: #FDEEE3;
+    --papel-alt: #FFF4EE;
     --carbon: #000000;
     --carbon-soft: #5B5751;
     --carbon-faint: #8A857D;
@@ -36,7 +36,7 @@
     --papel-fija: #EDECE7;
     --line: rgba(28,27,25,0.14);
     --line-strong: rgba(28,27,25,0.24);
-    --card: color-mix(in srgb, #FEC6AD 14%, #FFFDFB);
+    --card: color-mix(in srgb, #FEC6AD 10%, #FFFDFB);
     --max: 1180px;
     /* sistema de acento por sección (por defecto = naranja de marca) */
     --mode-accent: var(--naranja);
@@ -306,19 +306,6 @@
   .posn-left li{font-size:15.5px; color:var(--carbon-soft);}
   .posn-left .grp.si h4{color:var(--naranja-deep);}
   .posn-right{position:relative; text-align:right; padding:20px 40px 20px 0;}
-  .posn-right::before{
-    content:'';
-    position:absolute;
-    width:420px;
-    height:420px;
-    right:-120px;
-    top:50%;
-    border-radius:50%;
-    background:var(--mancha-suave);
-    filter:blur(72px);
-    transform:translateY(-50%);
-    pointer-events:none;
-  }
   .posn-right .glow{width:340px; height:340px; right:-140px; top:50%; transform:translateY(-50%); z-index:0;}
   .posn-right p{
     position:relative; z-index:1;
@@ -609,8 +596,7 @@
 }
 
 /* 8) Manifiesto con más presencia */
-.manifiesto-card{position:relative;overflow:hidden;border-top:3px solid var(--naranja);background:color-mix(in srgb,#FEC6AD 8%,#FFFDFB);padding:72px 64px;box-shadow:0 18px 40px rgba(0,0,0,.06)}
-.manifiesto-card::after{content:'';position:absolute;width:560px;height:560px;right:-180px;top:-260px;border-radius:50%;background:var(--mancha-suave);filter:blur(88px);pointer-events:none}
+.manifiesto-card{position:relative;overflow:hidden;border-top:3px solid var(--naranja);background:var(--card);padding:72px 64px;box-shadow:0 18px 40px rgba(0,0,0,.06)}
 .manifiesto-card .kicker{position:relative;z-index:1;color:var(--naranja);letter-spacing:.18em}
 .manifiesto-card p{position:relative;z-index:1}
 @media(max-width:560px){.manifiesto-card{padding:48px 26px}}
@@ -634,6 +620,25 @@
 .service-lead-grid{margin-bottom:48px}
 .producto-block{padding:40px 0;margin-bottom:40px}
 .metodo-grid{margin-bottom:40px}
+
+/* 11) Manchas decorativas grandes: solo sobre fondos claros */
+.band > .container{position:relative; z-index:1;}
+#sistema.band::before,
+#servicios.band::before,
+#metodo.band::before{
+  content:'';
+  position:absolute;
+  width:420px;
+  height:420px;
+  border-radius:50%;
+  background:var(--mancha-suave);
+  filter:blur(72px);
+  pointer-events:none;
+  z-index:0;
+}
+#sistema.band::before{right:-120px; top:12%;}
+#servicios.band::before{left:-140px; top:18%;}
+#metodo.band::before{right:-100px; bottom:12%;}
 
 /* ===== Hero: restauración de elementos (v4) ===== */
 .hero h1 em{color:var(--naranja);font-style:italic}
