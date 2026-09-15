@@ -626,3 +626,21 @@
 .service-lead-grid{margin-bottom:48px}
 .producto-block{padding:40px 0;margin-bottom:40px}
 .metodo-grid{margin-bottom:40px}
+
+/* ===== Hero: restauración de elementos (v4) ===== */
+.hero h1 em{color:var(--naranja);font-style:italic}
+.hero-inner{padding:132px 0 104px}
+.hero h1{font-size:clamp(44px,6.1vw,76px);margin:0 0 26px}
+.hero p.sub{font-size:18px;margin:0 0 34px}
+.hero-actions{gap:14px}
+@media(max-height:820px){
+  .hero-inner{padding:116px 0 88px}
+  .hero h1{font-size:clamp(38px,5.1vw,62px);margin:0 0 22px}
+  .hero p.sub{font-size:17px;margin:0 0 28px}
+}
+/* Toggle claro/oscuro dentro del nav del hero */
+.hero .theme-switch{border-color:var(--naranja);margin-top:0;padding:4px;background:transparent}
+.hero .theme-switch button{color:rgba(237,236,231,.72);padding:5px 14px;font-size:12.5px;transition:background-color .2s ease,color .2s ease}
+.hero .theme-switch button:hover{color:var(--papel-fija)}
+.hero .theme-switch button.active{background:var(--pdf-carbon);color:#fff}
+@media(max-width:560px){.hero .theme-switch button{padding:4px 10px;font-size:11.5px}}
