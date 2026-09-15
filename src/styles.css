@@ -23,7 +23,7 @@
 
   :root{
     --papel: #FBF7F0;
-    --papel-alt: #FFF4EE;
+    --papel-alt: #FFF8F4;
     --carbon: #000000;
     --carbon-soft: #5B5751;
     --carbon-faint: #8A857D;
@@ -31,7 +31,7 @@
     --naranja-deep: #D6470F;
     --durazno: #F5AB7A;
     --naranja-insignia: #F58A5F;
-    --mancha-suave: rgba(245,171,122,0.22);
+    --mancha-suave: rgba(244,130,80,0.34);
     --pdf-carbon: #202020;
     --papel-fija: #EDECE7;
     --line: rgba(28,27,25,0.14);
@@ -68,7 +68,7 @@
     --line: rgba(237,236,231,0.16);
     --line-strong: rgba(237,236,231,0.28);
     --card: #202020;
-    --mancha-suave: rgba(245,171,122,0.13);
+    --mancha-suave: rgba(245,171,122,0.20);
   }
 
   *{box-sizing:border-box;}
@@ -711,3 +711,25 @@
 .band-alt::before,.band-alt::after{content:'';position:absolute;left:0;right:0;height:56px;pointer-events:none;z-index:0}
 .band-alt::before{top:0;background:linear-gradient(to bottom,var(--papel),transparent)}
 .band-alt::after{bottom:0;background:linear-gradient(to top,var(--papel),transparent)}
+
+
+/* ===== Ajustes v7 ===== */
+/* 1) Tipografía del titular del hero (igual a rckt.es) */
+.hero h1{font-family:'Inter Tight','Inter',ui-sans-serif,system-ui,sans-serif;font-weight:600;letter-spacing:-.045em}
+.hero h1 em{font-family:'Switzer',sans-serif;font-weight:inherit;letter-spacing:-.045em}
+
+/* 2) Estadísticas: balance vertical y alineación con el párrafo */
+.mercado-grid{align-items:stretch}
+.stats{justify-content:center;height:100%}
+@media(max-width:980px){.stats{height:auto;justify-content:flex-start}}
+
+/* 3) Párrafos en gris oscuro suave */
+.rckt-site .band p:not(.cap):not(.kicker):not(.stat-num),
+.rckt-site .posn-right p,
+.rckt-site .mercado-left p,
+.rckt-site .no-vendemos,
+.rckt-site .faq-a p{color:var(--carbon-soft)}
+
+/* 4) Insignias numeradas menos saturadas */
+.rckt-site .num,
+.rckt-site .section-head > .num{background:var(--naranja-insignia)}
