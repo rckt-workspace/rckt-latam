@@ -208,8 +208,8 @@
   .nav-right{display:flex; align-items:center; gap:22px;}
   .nav-toggle{ display:none; flex-direction:column; gap:5px; background:none; border:none; padding:6px; }
   .nav-toggle span{width:22px; height:1.5px; background:var(--papel-fija);}
-  .hero-nav-cta{background:var(--papel-fija); color:var(--pdf-carbon); border-color:var(--papel-fija);}
-  .hero-nav-cta:hover{background:transparent; color:var(--papel-fija);}
+  .hero-nav-cta{background:var(--naranja); color:#fff; border-color:var(--naranja);}
+  .hero-nav-cta:hover{background:var(--naranja-deep); border-color:var(--naranja-deep); color:#fff;}
 
   /* ---------- hero ---------- */
   .hero{ position:relative; overflow:hidden; min-height:100svh; display:flex; align-items:center; color:var(--papel-fija); }
@@ -237,8 +237,10 @@
   .hero h1 em{ color:inherit; }
   .hero p.sub{ font-size:19px; line-height:1.55; color:rgba(237,236,231,.84); max-width:650px; margin:0 0 38px; text-align:left; }
   .hero-actions{display:flex; gap:16px; flex-wrap:wrap; justify-content:flex-start; margin:0;}
-  .hero-outline-cta{border-color:var(--naranja); color:#fff; background:var(--naranja);}
-  .hero-outline-cta:hover{background:var(--naranja-deep); border-color:var(--naranja-deep); color:#fff;}
+  .hero-primary-cta{background:var(--naranja); color:#fff; border-color:var(--naranja);}
+  .hero-primary-cta:hover{background:var(--naranja-deep); border-color:var(--naranja-deep); color:#fff;}
+  .hero-outline-cta{border-color:var(--papel-fija); color:var(--papel-fija); background:transparent;}
+  .hero-outline-cta:hover{background:var(--papel-fija); color:var(--pdf-carbon);}
   .hero-caption{position:absolute; right:max(32px, calc((100vw - var(--max)) / 2 + 32px)); bottom:38px; z-index:2; margin:0; color:var(--papel-fija); font-size:11px; line-height:1.6; font-weight:600; text-transform:uppercase; text-align:right!important; letter-spacing:.14em;}
 
   /* ---------- mercado ---------- */
