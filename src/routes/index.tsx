@@ -248,27 +248,27 @@ const pageMarkup = `
 <div class="producto-block">
 <div>
 <span class="kicker" style="display:inline-flex; padding:5px 12px; border-radius:999px; background:rgba(var(--mode-glow-rgb),0.22); color:var(--mode-accent-deep); text-transform:uppercase; letter-spacing:.05em; font-size:11.5px; font-weight:700;">P — Producto</span>
-<h3>Software que ya demostró que funciona</h3>
-<p>Cuando un sistema funciona una y otra vez, lo enlatamos. Se convierte en un producto que se instala en tu negocio por una suscripción mensual. Sin proyectos eternos.</p>
+<h3>Lo que funciona, lo convertimos en sistema.</h3>
+<p>Cuando una solución funciona y genera resultados de forma consistente, la convertimos en un producto que puedes integrar a tu negocio mediante una suscripción mensual. Sin proyectos interminables. Sin empezar de cero.</p>
 </div>
 <div class="torres">
 <div class="torre rv">
 <b>T1 — Advisory</b>
-<p>Tu director de IA, a tiempo parcial. Decisiones con criterio: qué automatizar, qué comprar, por dónde empezar.</p>
+<p>Tu dirección de IA, cuando la necesitas. Te ayudamos a tomar mejores decisiones: qué automatizar, qué herramientas elegir y por dónde empezar.</p>
 </div>
 <div class="torre rv">
 <b>T2 — In-housing</b>
-<p>Te enseñamos a pescar: montamos la capacidad dentro de tu empresa y entrenamos a tu equipo para operarla.</p>
+<p>Llevamos el conocimiento a tu equipo. Diseñamos la capacidad dentro de tu empresa y formamos a las personas que la van a operar, para que puedas crecer con autonomía.</p>
 </div>
 <div class="torre rv">
 <b>T3 — Compliance</b>
-<p>El cinturón de seguridad: todo lo que automatices cumple la ley, en cada país donde operes.</p>
+<p>IA con respaldo y control. Diseñamos tus automatizaciones para que operen de forma segura y cumplan con las normativas aplicables en cada país donde tengas presencia.</p>
 </div>
 </div>
 </div>
 <div class="no-vendemos">
 <span class="kicker" style="display:block; margin-bottom:14px;">Lo que no vendemos</span>
-<p>No vendemos gestión de redes, contenido por pieza, SEO de palabras clave ni informes mensuales. No porque no sepamos — porque las máquinas ya lo hacen, y cobrártelo por separado sería cobrarte por algo que hoy es casi gratis. Todo eso vive automatizado dentro de los sistemas. <strong>Lo que tú compras es el resultado.</strong></p>
+<p>No vendemos manejo de redes sociales, contenido por pieza, SEO basado únicamente en palabras clave ni reportes que nadie termina de leer. No porque no sepamos hacerlo, sino porque la tecnología ya permite automatizar gran parte de estas tareas. Creemos que cobrar cada una por separado ya no tiene sentido. Por eso, las integramos dentro de nuestros sistemas y procesos para que trabajen de forma más eficiente, constante y escalable. <strong>No pagas por tareas. Inviertes en resultados.</strong></p>
 </div>
 </div>
 </section>
@@ -349,16 +349,16 @@ const pageMarkup = `
 <span class="kicker" style="display:block; margin-bottom:32px;">Cómo trabajamos</span>
 <div class="principios">
 <div class="principio rv">
-<p class="lead">Resultados, no horas.</p>
-<p>La base cubre la operación; el resto se gana con resultados medibles. Si tú creces, crecemos.</p>
+<p class="lead">Crecemos contigo.</p>
+<p>No vendemos tiempo. Ponemos resultados sobre la mesa.</p>
 </div>
 <div class="principio rv">
-<p class="lead">La IA multiplica el criterio, no lo abarata.</p>
-<p>Usamos IA en todo — no para cobrarte menos, sino para que el criterio experto llegue donde antes no alcanzaba.</p>
+<p class="lead">Más inteligencia. Más capacidad.</p>
+<p>La tecnología escala la capacidad de nuestro equipo. El criterio sigue siendo humano.</p>
 </div>
 <div class="principio rv">
-<p class="lead">Mostramos, no prometemos.</p>
-<p>Números antes que adjetivos. Si no hay dato, hay demo.</p>
+<p class="lead">La prueba está en los datos.</p>
+<p>Datos antes que adjetivos. Pruebas antes que promesas.</p>
 </div>
 </div>
 </div>
@@ -368,7 +368,7 @@ const pageMarkup = `
 <div class="container">
 <div class="manifiesto-card rv">
 <span class="kicker" style="display:block; margin-bottom:22px;">Manifiesto</span>
-<p>Creemos que el crecimiento real nace de la inteligencia aplicada con precisión. No perseguimos clientes — construimos relaciones que se quedan. Medimos todo, y entregamos más de lo que prometemos.</p>
+<p>Hacemos crecer lo que importa. Aplicamos inteligencia con precisión, medimos lo que hacemos y construimos relaciones que perduran. Porque el verdadero crecimiento no se persigue: se diseña, se demuestra y se sostiene.</p>
 </div>
 </div>
 </section>
