@@ -488,16 +488,17 @@ const pageMarkup = `
 <li><a href="#contacto">Contacto</a></li>
 </ul>
 </div>
-<div class="footer-col">
-<h5>Legal</h5>
-<ul>
-<li><a href="/aviso-legal">Aviso legal</a></li>
-<li><a href="/privacidad">Privacidad</a></li>
-<li><a href="/cookies">Cookies</a></li>
-</ul>
-<h5 style="margin-top:26px;">Correo</h5>
-<ul><li><a href="mailto:hola@rckt.es">hola@rckt.es</a></li></ul>
-</div>
+          <div class="footer-col">
+            <h5>Legal</h5>
+            <ul>
+              <li><a href="/aviso-legal.pdf" download>Aviso legal</a></li>
+              <li><a href="/privacidad.pdf" download>Privacidad</a></li>
+              <li><a href="/cookies.pdf" download>Cookies</a></li>
+              <li><a href="/politica-tratamiento-datos.pdf" download>Política de Tratamiento de Datos</a></li>
+            </ul>
+            <h5 style="margin-top:26px;">Correo</h5>
+            <ul><li><a href="mailto:hola@rckt.es">hola@rckt.es</a></li></ul>
+          </div>
 </div>
 <div class="footer-bottom">
 <span>sistema activo</span>
