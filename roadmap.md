@@ -1,0 +1,1 @@
+- [ ] Replicar únicamente el fondo de las imágenes de referencia en toda la página, sin modificar otros elementos.
