@@ -849,16 +849,25 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 [data-theme="dark"] header .nav-toggle span{background:var(--hero-ink)}
 [data-theme="dark"] .hero-outline-cta{border-color:var(--hero-ink)}
 
-/* Las manchas mantienen el naranja de marca y suficiente contraste sobre carbón. */
+/* Selector legible sobre la fotografía en ambos estados. */
+.hero .theme-switch{border-color:rgba(0,0,0,.42);background:rgba(237,236,231,.14)}
+.hero .theme-switch button,
+[data-theme="dark"] .hero .theme-switch button{color:rgba(0,0,0,.68)}
+.hero .theme-switch button:hover,
+[data-theme="dark"] .hero .theme-switch button:hover{color:var(--hero-ink)}
+.hero .theme-switch button.active,
+[data-theme="dark"] .hero .theme-switch button.active{background:var(--hero-ink);color:var(--papel-fija)}
+
+/* En modo oscuro, el naranja permanece visible con una intensidad más suave. */
 [data-theme="dark"] .rckt-site{
   background-image:
-    radial-gradient(circle 220px at 94% 6%,  rgba(244,88,29,.95) 0%, rgba(244,88,29,.62) 32%, rgba(244,88,29,.22) 58%, transparent 78%),
-    radial-gradient(circle 260px at 6% 14%,  rgba(244,88,29,.90) 0%, rgba(244,88,29,.56) 30%, rgba(244,88,29,.20) 56%, transparent 76%),
-    radial-gradient(circle 180px at 76% 22%, rgba(244,88,29,.84) 0%, rgba(244,88,29,.50) 34%, rgba(244,88,29,.16) 60%, transparent 80%),
-    radial-gradient(circle 240px at 98% 34%, rgba(244,88,29,.95) 0%, rgba(244,88,29,.60) 32%, rgba(244,88,29,.21) 58%, transparent 78%),
-    radial-gradient(circle 200px at 2% 48%,  rgba(244,88,29,.88) 0%, rgba(244,88,29,.54) 34%, rgba(244,88,29,.18) 60%, transparent 78%),
-    radial-gradient(circle 300px at 48% 56%, rgba(244,88,29,.82) 0%, rgba(244,88,29,.48) 36%, rgba(244,88,29,.15) 62%, transparent 80%),
-    radial-gradient(circle 230px at 96% 68%, rgba(244,88,29,.94) 0%, rgba(244,88,29,.58) 32%, rgba(244,88,29,.20) 58%, transparent 78%),
-    radial-gradient(circle 190px at 4% 82%,  rgba(244,88,29,.86) 0%, rgba(244,88,29,.52) 34%, rgba(244,88,29,.17) 60%, transparent 78%),
-    radial-gradient(circle 280px at 92% 96%, rgba(244,88,29,.92) 0%, rgba(244,88,29,.56) 32%, rgba(244,88,29,.19) 58%, transparent 78%);
+    radial-gradient(circle 220px at 94% 6%,  rgba(244,88,29,.62) 0%, rgba(244,88,29,.34) 32%, rgba(244,88,29,.11) 58%, transparent 78%),
+    radial-gradient(circle 260px at 6% 14%,  rgba(244,88,29,.58) 0%, rgba(244,88,29,.30) 30%, rgba(244,88,29,.10) 56%, transparent 76%),
+    radial-gradient(circle 180px at 76% 22%, rgba(244,88,29,.52) 0%, rgba(244,88,29,.26) 34%, rgba(244,88,29,.08) 60%, transparent 80%),
+    radial-gradient(circle 240px at 98% 34%, rgba(244,88,29,.62) 0%, rgba(244,88,29,.32) 32%, rgba(244,88,29,.10) 58%, transparent 78%),
+    radial-gradient(circle 200px at 2% 48%,  rgba(244,88,29,.56) 0%, rgba(244,88,29,.28) 34%, rgba(244,88,29,.09) 60%, transparent 78%),
+    radial-gradient(circle 300px at 48% 56%, rgba(244,88,29,.48) 0%, rgba(244,88,29,.24) 36%, rgba(244,88,29,.07) 62%, transparent 80%),
+    radial-gradient(circle 230px at 96% 68%, rgba(244,88,29,.60) 0%, rgba(244,88,29,.31) 32%, rgba(244,88,29,.10) 58%, transparent 78%),
+    radial-gradient(circle 190px at 4% 82%,  rgba(244,88,29,.54) 0%, rgba(244,88,29,.27) 34%, rgba(244,88,29,.08) 60%, transparent 78%),
+    radial-gradient(circle 280px at 92% 96%, rgba(244,88,29,.58) 0%, rgba(244,88,29,.30) 32%, rgba(244,88,29,.09) 58%, transparent 78%);
 }
