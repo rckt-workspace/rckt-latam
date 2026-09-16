@@ -247,7 +247,7 @@
     color:var(--carbon);
   }
   .hero h1 .hero-line{ display:block; }
-  .hero h1 em{ color:var(--naranja); }
+  .hero h1 .type-target{ color:var(--carbon); font-style:normal; }
   .hero-nowrap{ white-space:nowrap; }
   .hero p.sub{ font-size:19px; line-height:1.55; color:var(--carbon-soft); max-width:650px; margin:0 0 38px; text-align:left; }
   .hero-actions{display:flex; gap:16px; flex-wrap:wrap; justify-content:flex-start; margin:0;}
@@ -655,7 +655,7 @@
 #metodo.band::before{right:-100px; bottom:12%;}
 
 /* ===== Hero: restauración de elementos (v4) ===== */
-.hero h1 em{color:var(--naranja);font-style:italic}
+.hero h1 .type-target{color:var(--carbon);font-style:normal}
 .hero-inner{padding:132px 0 104px}
 .hero h1{font-size:clamp(44px,6.1vw,76px);margin:0 0 26px}
 .hero p.sub{font-size:18px;margin:0 0 34px}
@@ -729,7 +729,7 @@
 /* ===== Ajustes v7 ===== */
 /* 1) Tipografía del titular del hero (igual a rckt.es) */
 .hero h1{font-family:'Inter Tight','Inter',ui-sans-serif,system-ui,sans-serif;font-weight:600;letter-spacing:-.045em}
-.hero h1 em{font-family:'Newsreader',serif;font-style:italic;font-weight:500;letter-spacing:0}
+.hero h1 .type-target{font-family:'Inter Tight','Inter',ui-sans-serif,system-ui,sans-serif;font-style:normal;font-weight:600;letter-spacing:-.045em;color:var(--carbon)}
 
 /* 2) Estadísticas: balance vertical y alineación con el párrafo */
 .mercado-grid{align-items:stretch}
@@ -762,7 +762,7 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 .hero-photo{inset:0;z-index:0}
 .hero-content{z-index:2}
 .hero-inner h1,.hero-inner h1 .hero-line{color:var(--carbon)}
-.hero-inner h1 em{color:var(--naranja)}
+.hero-inner h1 .type-target{color:var(--carbon)}
 .hero-inner p.sub{color:var(--carbon-soft)}
 
 /* Manchas difuminadas de acento: solo 3 en toda la página */
@@ -904,7 +904,7 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
   max-width:720px;
   margin:0 auto;
   padding:28px 36px;
-  background:color-mix(in srgb, #ffffff 30%, transparent);
+  background:color-mix(in srgb, #ffffff 16%, transparent);
   backdrop-filter:blur(10px);
   box-shadow:0 10px 26px rgba(0,0,0,.05);
 }
@@ -913,5 +913,5 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 [data-theme="dark"] .juicio,
 [data-theme="dark"] .no-vendemos,
 [data-theme="dark"] .manifiesto-card{
-  background:color-mix(in srgb, #ffffff 18%, transparent);
+  background:color-mix(in srgb, #ffffff 10%, transparent);
 }
