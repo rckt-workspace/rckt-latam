@@ -100,7 +100,7 @@ const pageMarkup = `
 <div class="container hero-content">
 <div class="hero-inner">
 <span class="kicker hero-kicker">Technology with a human pulse.</span>
-<h1><span class="hero-line">Un <span class="type-target">sistema</span> más <span class="hero-hand">humano</span></span><span class="hero-line">para lo que ya está aquí.</span></h1>
+<h1><span class="hero-line">Un sistema más <span class="type-target hero-hand">humano</span></span><span class="hero-line">para lo que ya está aquí.</span></h1>
 <p class="sub">Diseñamos y operamos sistemas de crecimiento impulsados por IA que trabajan 24/7 para atraer oportunidades, acelerar ventas y hacer crecer tu negocio. Tecnología, estrategia y ejecución enfocadas en resultados.</p>
 <div class="hero-actions">
 <a class="btn hero-primary-cta" href="#contacto">Solicitar diagnóstico →</a>
