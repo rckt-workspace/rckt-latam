@@ -568,7 +568,7 @@ function RcktLanding() {
       counters.forEach((el) => counterObserver?.observe(el));
     }
 
-    // --- Máquina de escribir solo en la palabra "sistema" ---
+    // --- Máquina de escribir solo en la palabra "humano" ---
     const typeTarget = document.querySelector<HTMLElement>(".hero-inner h1 .type-target");
     if (typeTarget && !reduceMotion) {
       const finalText = typeTarget.textContent ?? "";
