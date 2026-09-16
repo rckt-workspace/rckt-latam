@@ -892,10 +892,17 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 .rckt-site .pilares-grid h3{letter-spacing:.06em;}
 
 .rckt-site .manifiesto-card{
-  padding:36px 44px;
-  background:color-mix(in srgb, var(--card) 45%, transparent);
+  max-width:720px;
+  margin:0 auto;
+  padding:28px 36px;
+  background:color-mix(in srgb, #ffffff 86%, transparent);
   backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
   box-shadow:0 10px 26px rgba(0,0,0,.05);
 }
-@media(max-width:560px){ .rckt-site .manifiesto-card{padding:28px 22px;} }
+.rckt-site .manifiesto-card p{font-size:clamp(18px,2.2vw,24px); line-height:1.5;}
+@media(max-width:560px){ .rckt-site .manifiesto-card{padding:22px 24px;} }
+[data-theme="dark"] .juicio,
+[data-theme="dark"] .no-vendemos,
+[data-theme="dark"] .manifiesto-card{
+  background:color-mix(in srgb, var(--card) 88%, transparent);
+}
