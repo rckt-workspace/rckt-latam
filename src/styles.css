@@ -859,13 +859,13 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 .hero .theme-switch button.active,
 [data-theme="dark"] .hero .theme-switch button.active{background:var(--hero-ink);color:var(--papel-fija)}
 [data-theme="dark"] .hero .theme-switch{
-  background:rgba(255,255,255,.22);
-  border-color:rgba(255,255,255,.58);
+  background:rgba(237,236,231,.26);
+  border-color:rgba(0,0,0,.46);
 }
 [data-theme="dark"] .hero .theme-switch button.active{
-  background:rgba(255,255,255,.88);
-  color:var(--hero-ink);
-  box-shadow:0 2px 10px rgba(0,0,0,.2);
+  background:var(--hero-ink);
+  color:var(--papel-fija);
+  box-shadow:0 2px 10px rgba(0,0,0,.28);
 }
 
 /* En modo oscuro, el naranja permanece visible con una intensidad más suave. */
