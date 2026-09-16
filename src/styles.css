@@ -489,7 +489,7 @@
     .mercado-grid{grid-template-columns:1fr; gap:40px;}
     .mercado-left{border-right:none; padding-right:0; border-bottom:1px solid var(--line); padding-bottom:36px;}
     .three-grid{grid-template-columns:1fr; gap:36px;}
-    .three-card .num{background:transparent;color:var(--naranja);border:1.5px solid var(--naranja);}
+    .three-card .num{background:transparent;color:var(--carbon);border:1.5px solid var(--naranja);}
     .posn{grid-template-columns:1fr; gap:32px;}
     .posn-left{border-right:none; padding-right:0; border-bottom:1px solid var(--line); padding-bottom:32px;}
     .posn-right{text-align:left; padding:0;}
