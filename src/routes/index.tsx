@@ -99,8 +99,8 @@ const pageMarkup = `
 </header>
 <div class="container hero-content">
 <div class="hero-inner">
-<span class="kicker hero-kicker">Crecimiento inteligente</span>
-<h1><span class="hero-line">Tu marketing</span><span class="hero-line">no necesita más manos.</span><span class="hero-line">Necesita un <span class="hero-nowrap"><em class="type-target">sistema</em>.</span></span></h1>
+<span class="kicker hero-kicker">Technology with a human pulse.</span>
+<h1><span class="hero-line">Un <em class="type-target">sistema</em> más <span class="hero-hand">humano</span></span><span class="hero-line">para lo que ya está aquí.</span></h1>
 <p class="sub">Diseñamos y operamos sistemas de crecimiento impulsados por IA que trabajan 24/7 para atraer oportunidades, acelerar ventas y hacer crecer tu negocio. Tecnología, estrategia y ejecución enfocadas en resultados.</p>
 <div class="hero-actions">
 <a class="btn hero-primary-cta" href="#contacto">Solicitar diagnóstico →</a>
@@ -108,7 +108,7 @@ const pageMarkup = `
 </div>
 </div>
 </div>
-<p class="hero-caption">Sistemas de IA.<br/>Crecimiento real.</p>
+<p class="hero-caption">Less noise.<br/>More growth.</p>
 </section>
 <!-- EL MERCADO CAMBIÓ DE LADO -->
 <section class="band" id="sistema">
@@ -172,11 +172,48 @@ const pageMarkup = `
       </div>
 </div>
 </section>
+<!-- LOS 5 PILARES -->
+<section class="band" id="pilares">
+<div class="container">
+<div class="section-head">
+<span class="num">03.</span>
+<span class="kicker ital-label">Los 5 pilares</span>
+<span class="divider"></span>
+</div>
+<div class="pilares-grid">
+<div class="three-card rv">
+<span class="num">01.</span>
+<h3>SELL BETTER</h3>
+<p>Haz que cada oportunidad cuente.</p>
+</div>
+<div class="three-card rv">
+<span class="num">02.</span>
+<h3>THINK BETTER</h3>
+<p>Mejores decisiones, mejores resultados.</p>
+</div>
+<div class="three-card rv">
+<span class="num">03.</span>
+<h3>WORK SMARTER</h3>
+<p>La tecnología trabaja. El criterio dirige.</p>
+</div>
+<div class="three-card rv">
+<span class="num">04.</span>
+<h3>MOVE FIRST</h3>
+<p>Detecta antes. Actúa antes.</p>
+</div>
+<div class="three-card rv">
+<span class="num">05.</span>
+<h3>PROOF &gt; PROMISES</h3>
+<p>Resultados que hablan por sí solos.</p>
+</div>
+</div>
+</div>
+</section>
 <!-- QUE ES RCKT -->
 <section class="band band-alt" data-mode="editorial" id="quienes">
 <div class="container">
 <div class="section-head">
-<span class="num">03.</span>
+<span class="num">04.</span>
 <span class="kicker ital-label">Qué es RCKT</span>
 <span class="divider"></span>
 </div>
@@ -196,7 +233,7 @@ const pageMarkup = `
 <section class="band" data-mode="motion" id="servicios">
 <div class="container">
 <div class="section-head">
-<span class="num">04.</span>
+<span class="num">05.</span>
 <span class="kicker ital-label">Servicios · empieza por aquí</span>
 <span class="divider"></span>
 </div>
@@ -245,7 +282,7 @@ const pageMarkup = `
 <section class="band band-alt" data-mode="motion">
 <div class="container">
 <div class="section-head">
-<span class="num">05.</span>
+<span class="num">06.</span>
 <span class="kicker ital-label">Cómo se organiza todo</span>
 <span class="divider"></span>
 </div>
@@ -288,7 +325,7 @@ const pageMarkup = `
 <section class="band" data-mode="human" id="metodo">
 <div class="container">
 <div class="section-head">
-<span class="num">06.</span>
+<span class="num">07.</span>
 <span class="kicker ital-label">Método</span>
 <span class="divider"></span>
 </div>
@@ -345,7 +382,7 @@ const pageMarkup = `
 <section class="band band-alt" data-mode="human" id="faq">
 <div class="container">
 <div class="section-head">
-<span class="num">07.</span>
+<span class="num">08.</span>
 <span class="kicker ital-label">Preguntas frecuentes</span>
 <span class="divider"></span>
 </div>
@@ -379,7 +416,7 @@ const pageMarkup = `
 <div class="contact-wrap">
 <div class="contact-left">
 <span class="kicker" style="display:block; margin-top:14px;">Diagnóstico</span>
-<h2 class="rv">Empieza por saber dónde estás</h2>
+<h2 class="rv">El siguiente paso empieza con claridad.</h2>
 <p>Solicita el diagnóstico. En 24–48 horas te respondemos con los próximos pasos.</p>
 <a class="mail" href="mailto:hola@rckt.es">hola@rckt.es</a>
 </div>
@@ -427,7 +464,7 @@ const pageMarkup = `
 <section class="cta-final">
 <div class="container">
 <span class="kicker">Siguiente paso</span>
-<h2 class="rv">Empieza por saber dónde estás</h2>
+<h2 class="rv">El siguiente paso empieza con claridad.</h2>
 <a class="btn btn-primary" href="#contacto">Solicitar diagnóstico →</a>
 </div>
 </section>
