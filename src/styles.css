@@ -888,10 +888,10 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
   font-family:'Homemade Apple', cursive;
   font-weight:400;
   font-style:normal;
-  font-size:1.22em;
+  font-size:.98em;
   line-height:.88;
   letter-spacing:0;
-  color:var(--carbon);
+  color:var(--naranja);
   transform:rotate(-2deg) translateY(-.06em);
 }
 .rckt-site .pilares-grid{
