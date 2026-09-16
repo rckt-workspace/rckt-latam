@@ -293,7 +293,7 @@
   .three-card h3{ font-size:19px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; margin:0 0 14px; }
   .three-card p{color:var(--carbon-soft); font-size:15.5px; margin:0;}
   .juicio{
-    background:color-mix(in srgb, #ffffff 52%, transparent); border:1px solid var(--line); border-radius:16px;
+    background:color-mix(in srgb, #ffffff 30%, transparent); border:1px solid var(--line); border-radius:16px;
     padding:34px 44px; max-width:760px; margin:0 auto; text-align:center;
     font-family:'Newsreader', serif; font-style:italic; font-size:20px; line-height:1.45;
     backdrop-filter:blur(10px); transition:background-color .35s ease, border-color .35s ease;
@@ -393,7 +393,7 @@
   .torre b{display:block; font-size:15px; margin-bottom:4px;}
   .torre p{font-size:14.5px; color:var(--carbon-soft); margin:0;}
 
-  .no-vendemos{max-width:none; width:100%; font-size:16px; color:var(--carbon-soft); background:color-mix(in srgb, #ffffff 52%, transparent); border:1px solid var(--line); border-radius:16px; padding:34px 40px; backdrop-filter:blur(10px); transition:background-color .35s ease, border-color .35s ease;}
+  .no-vendemos{max-width:none; width:100%; font-size:16px; color:var(--carbon-soft); background:color-mix(in srgb, #ffffff 30%, transparent); border:1px solid var(--line); border-radius:16px; padding:34px 40px; backdrop-filter:blur(10px); transition:background-color .35s ease, border-color .35s ease;}
   .no-vendemos strong{color:var(--carbon);}
 
   /* ---------- metodo ---------- */
@@ -895,7 +895,7 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
   max-width:720px;
   margin:0 auto;
   padding:28px 36px;
-  background:color-mix(in srgb, #ffffff 52%, transparent);
+  background:color-mix(in srgb, #ffffff 30%, transparent);
   backdrop-filter:blur(10px);
   box-shadow:0 10px 26px rgba(0,0,0,.05);
 }
@@ -904,5 +904,5 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 [data-theme="dark"] .juicio,
 [data-theme="dark"] .no-vendemos,
 [data-theme="dark"] .manifiesto-card{
-  background:color-mix(in srgb, var(--card) 62%, transparent);
+  background:color-mix(in srgb, var(--card) 40%, transparent);
 }
