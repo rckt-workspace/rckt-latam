@@ -22,8 +22,8 @@
 
 
   :root{
-    --papel: #FBF7F0;
-    --papel-alt: #FDFAF6;
+    --papel: #EDECE7;
+    --papel-alt: #EDECE7;
     --carbon: #000000;
     --carbon-soft: #5B5751;
     --carbon-faint: #8A857D;
@@ -31,12 +31,12 @@
     --naranja-deep: #D6470F;
     --durazno: #F5AB7A;
     --naranja-insignia: #F58A5F;
-    --mancha-suave: rgba(244,130,80,0.34);
+    --mancha-suave: rgba(244,88,29,0.26);
     --pdf-carbon: #202020;
     --papel-fija: #EDECE7;
     --line: rgba(28,27,25,0.14);
     --line-strong: rgba(28,27,25,0.24);
-    --card: color-mix(in srgb, #FEC6AD 10%, #FFFDFB);
+    --card: #F6F5F1;
     --max: 1180px;
     /* sistema de acento por sección (por defecto = naranja de marca) */
     --mode-accent: var(--naranja);
@@ -737,3 +737,40 @@
 /* 4) Insignias numeradas menos saturadas */
 .rckt-site .num,
 .rckt-site .section-head > .num{background:var(--naranja-insignia)}
+
+/* ===== Guía de marca (v8) ===== */
+/* Fondo "Papel" uniforme en todo el sitio */
+.rckt-site,.band,.band-alt,.manifiesto,.cta-final{background:var(--papel)}
+[data-theme="dark"] .rckt-site,
+[data-theme="dark"] .band,
+[data-theme="dark"] .band-alt,
+[data-theme="dark"] .manifiesto,
+[data-theme="dark"] .cta-final{background:var(--papel)}
+
+/* Hero a sangre completa: foto desde el borde superior, nav transparente encima */
+.hero{margin-top:0}
+header,header.scrolled{background:transparent!important;border:none!important;box-shadow:none!important;backdrop-filter:none!important}
+.hero-photo{inset:0;z-index:0}
+.hero-content{z-index:2}
+.hero-inner h1,.hero-inner h1 .hero-line{color:var(--papel-fija)}
+.hero-inner p.sub{color:rgba(237,236,231,.88)}
+
+/* Manchas difuminadas de acento: solo 3 en toda la página */
+#servicios.band::before,#metodo.band::before{content:none}
+#sistema.band::before,
+.manifiesto::before,
+#contacto.band::before{
+  content:'';
+  position:absolute;
+  width:520px;height:520px;border-radius:50%;
+  background:var(--mancha-suave);
+  filter:blur(96px);
+  pointer-events:none;
+  z-index:0;
+}
+#sistema.band::before{right:-140px;top:-80px}
+#contacto.band::before{left:-160px;bottom:-60px}
+.manifiesto{position:relative;overflow:hidden}
+.manifiesto::before{right:-120px;top:-120px}
+#contacto.band,#sistema.band{position:relative;overflow:hidden}
+#contacto > .container{position:relative;z-index:1}
