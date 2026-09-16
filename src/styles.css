@@ -22,8 +22,8 @@
 
 
   :root{
-    --papel: #FBF7F0;
-    --papel-alt: #FDFAF6;
+    --papel: #EDECE7;
+    --papel-alt: #EDECE7;
     --carbon: #000000;
     --carbon-soft: #5B5751;
     --carbon-faint: #8A857D;
@@ -31,12 +31,12 @@
     --naranja-deep: #D6470F;
     --durazno: #F5AB7A;
     --naranja-insignia: #F58A5F;
-    --mancha-suave: rgba(244,130,80,0.34);
+    --mancha-suave: rgba(244,88,29,0.26);
     --pdf-carbon: #202020;
     --papel-fija: #EDECE7;
     --line: rgba(28,27,25,0.14);
     --line-strong: rgba(28,27,25,0.24);
-    --card: color-mix(in srgb, #FEC6AD 10%, #FFFDFB);
+    --card: #F6F5F1;
     --max: 1180px;
     /* sistema de acento por sección (por defecto = naranja de marca) */
     --mode-accent: var(--naranja);
