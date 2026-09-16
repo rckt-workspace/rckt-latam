@@ -785,92 +785,47 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 #contacto.band,#sistema.band{position:relative;overflow:hidden}
 #contacto > .container{position:relative;z-index:1}
 
-/* ===== Textura de papel + constelación de círculos (v9) ===== */
+/* ===== Fondo editorial continuo (v10) ===== */
+.rckt-site{
+  background-color:var(--papel);
+  background-image:
+    radial-gradient(circle 480px at 100% 8%, rgba(244,88,29,.29) 0%, rgba(244,88,29,.14) 34%, rgba(244,88,29,.04) 58%, transparent 74%),
+    radial-gradient(circle 390px at 0% 23%, rgba(244,88,29,.23) 0%, rgba(244,88,29,.11) 35%, rgba(244,88,29,.03) 60%, transparent 75%),
+    radial-gradient(circle 460px at 100% 39%, rgba(244,88,29,.27) 0%, rgba(244,88,29,.13) 35%, rgba(244,88,29,.035) 60%, transparent 75%),
+    radial-gradient(circle 420px at 0% 56%, rgba(244,88,29,.24) 0%, rgba(244,88,29,.12) 35%, rgba(244,88,29,.035) 60%, transparent 75%),
+    radial-gradient(circle 500px at 100% 72%, rgba(244,88,29,.28) 0%, rgba(244,88,29,.13) 35%, rgba(244,88,29,.04) 60%, transparent 75%),
+    radial-gradient(circle 390px at 0% 87%, rgba(244,88,29,.22) 0%, rgba(244,88,29,.1) 35%, rgba(244,88,29,.03) 60%, transparent 75%),
+    radial-gradient(circle 520px at 100% 100%, rgba(244,88,29,.27) 0%, rgba(244,88,29,.13) 35%, rgba(244,88,29,.04) 60%, transparent 75%);
+  background-repeat:no-repeat;
+}
 
-/* 1) Grano sutil de papel/cartón sobre el color base */
+/* Las bandas dejan ver el mismo fondo continuo en toda la página. */
+.rckt-site .band,
+.rckt-site .band-alt,
+.rckt-site .manifiesto,
+.rckt-site .cta-final{background-color:transparent;background-image:none}
+
+/* Grano fino, uniforme y de bajo contraste como el papel de la referencia. */
 .rckt-site::before{
   content:'';
   position:fixed;
   inset:0;
   pointer-events:none;
   z-index:0;
-  opacity:.5;
+  opacity:.16;
   mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.24'/%3E%3C/svg%3E");
-  background-size:220px 220px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' seed='8' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.20'/%3E%3C/svg%3E");
+  background-size:180px 180px;
 }
 .rckt-site > *{position:relative;z-index:1}
 
-/* 2) Círculos: blur radial perfecto, agrupados en racimos */
+/* Elimina los antiguos racimos por sección: el fondo ahora es uno solo. */
 #sistema.band::before,
 #servicios.band::before,
 #metodo.band::before,
 #contacto.band::before,
 .manifiesto::before,
-.cta-final::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
-  width:auto;height:auto;border-radius:0;
-  filter:none;
-  background-repeat:no-repeat;
-  background-image:
-    radial-gradient(circle, rgba(244,88,29,0.321) 0%, rgba(244,88,29,0.199) 32%, rgba(244,88,29,0.061) 58%, rgba(244,88,29,0) 72%),
-    radial-gradient(circle, rgba(244,88,29,0.260) 0%, rgba(244,88,29,0.153) 32%, rgba(244,88,29,0.046) 58%, rgba(244,88,29,0) 72%),
-    radial-gradient(circle, rgba(244,88,29,0.230) 0%, rgba(244,88,29,0.131) 32%, rgba(244,88,29,0.039) 58%, rgba(244,88,29,0) 72%),
-    radial-gradient(circle, rgba(244,88,29,0.199) 0%, rgba(244,88,29,0.116) 32%, rgba(244,88,29,0.031) 58%, rgba(244,88,29,0) 72%),
-    radial-gradient(circle, rgba(244,88,29,0.168) 0%, rgba(244,88,29,0.092) 32%, rgba(244,88,29,0.031) 58%, rgba(244,88,29,0) 72%),
-    radial-gradient(circle, rgba(244,88,29,0.138) 0%, rgba(244,88,29,0.076) 32%, rgba(244,88,29,0.022) 58%, rgba(244,88,29,0) 72%);
-}
+.cta-final::before,
+.hero::after{content:none}
 
-/* Racimo a la derecha (secciones impares) */
-#sistema.band::before,
-#metodo.band::before,
-.cta-final::before{
-  background-size:260px 260px,200px 200px,150px 150px,180px 180px,120px 120px,100px 100px;
-  background-position:
-    calc(100% + 60px) -60px,
-    calc(100% - 120px) 90px,
-    calc(100% - 300px) 30px,
-    calc(100% - 60px) 300px,
-    calc(100% - 240px) 240px,
-    calc(100% - 400px) 140px;
-}
-
-/* Racimo a la izquierda (secciones pares) */
-#servicios.band::before,
-#contacto.band::before,
-.manifiesto::before{
-  background-size:280px 280px,190px 190px,140px 140px,170px 170px,110px 110px,95px 95px;
-  background-position:
-    -90px -70px,
-    90px 110px,
-    280px 40px,
-    150px 300px,
-    330px 210px,
-    420px 110px;
-}
-
-#sistema.band,#servicios.band,#metodo.band,#contacto.band,.manifiesto,.cta-final{position:relative;overflow:hidden}
-#sistema.band > .container,
-#servicios.band > .container,
-#metodo.band > .container,
-#contacto.band > .container,
-.manifiesto > .container,
-.cta-final > .container{position:relative;z-index:1}
-
-/* Resplandor de esquina, mayor y sangrando fuera del borde */
-.hero::after{
-  content:'';
-  position:absolute;
-  right:-260px;top:-260px;
-  width:820px;height:820px;
-  border-radius:50%;
-  background:radial-gradient(circle, rgba(244,88,29,0.383) 0%, rgba(244,88,29,0.230) 34%, rgba(244,88,29,0.076) 60%, rgba(244,88,29,0) 74%);
-  pointer-events:none;
-  z-index:1;
-}
-
-[data-theme="dark"] .rckt-site::before{opacity:.28}
+[data-theme="dark"] .rckt-site::before{opacity:.1}
