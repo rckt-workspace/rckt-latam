@@ -761,8 +761,9 @@
 header,header.scrolled{background:transparent!important;border:none!important;box-shadow:none!important;backdrop-filter:none!important}
 .hero-photo{inset:0;z-index:0}
 .hero-content{z-index:2}
-.hero-inner h1,.hero-inner h1 .hero-line{color:var(--papel-fija)}
-.hero-inner p.sub{color:rgba(237,236,231,.88)}
+.hero-inner h1,.hero-inner h1 .hero-line{color:var(--carbon)}
+.hero-inner h1 em{color:var(--naranja)}
+.hero-inner p.sub{color:var(--carbon-soft)}
 
 /* Manchas difuminadas de acento: solo 3 en toda la página */
 #servicios.band::before,#metodo.band::before{content:none}
