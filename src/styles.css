@@ -871,3 +871,30 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
     radial-gradient(circle 190px at 4% 82%,  rgba(244,88,29,.54) 0%, rgba(244,88,29,.27) 34%, rgba(244,88,29,.08) 60%, transparent 78%),
     radial-gradient(circle 280px at 92% 96%, rgba(244,88,29,.58) 0%, rgba(244,88,29,.30) 32%, rgba(244,88,29,.09) 58%, transparent 78%);
 }
+
+/* ---------- Cambios v12: pilares, script "humano", manifiesto vidrio ---------- */
+.rckt-site .hero-hand{
+  font-family:'Caveat', cursive;
+  font-weight:600;
+  font-style:normal;
+  font-size:1.18em;
+  letter-spacing:0;
+  color:var(--naranja);
+}
+.rckt-site .pilares-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+@media(max-width:980px){ .rckt-site .pilares-grid{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:560px){ .rckt-site .pilares-grid{grid-template-columns:1fr;} }
+.rckt-site .pilares-grid h3{letter-spacing:.06em;}
+
+.rckt-site .manifiesto-card{
+  padding:36px 44px;
+  background:color-mix(in srgb, var(--card) 45%, transparent);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  box-shadow:0 10px 26px rgba(0,0,0,.05);
+}
+@media(max-width:560px){ .rckt-site .manifiesto-card{padding:28px 22px;} }
