@@ -812,7 +812,7 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 .rckt-site::before{
   content:'';
   position:fixed;
-  inset:0;
+  inset:-120px;
   pointer-events:none;
   z-index:0;
   opacity:.38;
