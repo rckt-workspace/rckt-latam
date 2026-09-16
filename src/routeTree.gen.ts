@@ -14,6 +14,17 @@ import { Route as AvisoLegalRouteImport } from './routes/aviso-legal'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ApiAdvisorChatRouteImport } from './routes/api/advisor-chat'
+import { Route as ApiLeadsRouteImport } from './routes/api/leads'
+import { Route as ApiSaveChatLeadRouteImport } from './routes/api/save-chat-lead'
+import { Route as ApiAdminDebugRouteImport } from './routes/api/admin/debug'
+import { Route as ApiAdminDebugVerifyRouteImport } from './routes/api/admin/debug-verify'
+import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
+import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
+import { Route as ApiAdminAiConfigRouteImport } from './routes/api/admin/ai/config'
+import { Route as ApiAdminAiModelsRouteImport } from './routes/api/admin/ai/models'
+import { Route as ApiAdminAiTestProviderRouteImport } from './routes/api/admin/ai/test-provider'
+import { Route as ApiAdminAiUsageRouteImport } from './routes/api/admin/ai/usage'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,6 +51,61 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdvisorChatRoute = ApiAdvisorChatRouteImport.update({
+  id: '/api/advisor-chat',
+  path: '/api/advisor-chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiLeadsRoute = ApiLeadsRouteImport.update({
+  id: '/api/leads',
+  path: '/api/leads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiSaveChatLeadRoute = ApiSaveChatLeadRouteImport.update({
+  id: '/api/save-chat-lead',
+  path: '/api/save-chat-lead',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminDebugRoute = ApiAdminDebugRouteImport.update({
+  id: '/api/admin/debug',
+  path: '/api/admin/debug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminDebugVerifyRoute = ApiAdminDebugVerifyRouteImport.update({
+  id: '/api/admin/debug-verify',
+  path: '/api/admin/debug-verify',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminLoginRoute = ApiAdminLoginRouteImport.update({
+  id: '/api/admin/login',
+  path: '/api/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminLogoutRoute = ApiAdminLogoutRouteImport.update({
+  id: '/api/admin/logout',
+  path: '/api/admin/logout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminAiConfigRoute = ApiAdminAiConfigRouteImport.update({
+  id: '/api/admin/ai/config',
+  path: '/api/admin/ai/config',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminAiModelsRoute = ApiAdminAiModelsRouteImport.update({
+  id: '/api/admin/ai/models',
+  path: '/api/admin/ai/models',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminAiTestProviderRoute = ApiAdminAiTestProviderRouteImport.update({
+  id: '/api/admin/ai/test-provider',
+  path: '/api/admin/ai/test-provider',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminAiUsageRoute = ApiAdminAiUsageRouteImport.update({
+  id: '/api/admin/ai/usage',
+  path: '/api/admin/ai/usage',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +113,17 @@ export interface FileRoutesByFullPath {
   '/cookies': typeof CookiesRoute
   '/privacidad': typeof PrivacidadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/advisor-chat': typeof ApiAdvisorChatRoute
+  '/api/leads': typeof ApiLeadsRoute
+  '/api/save-chat-lead': typeof ApiSaveChatLeadRoute
+  '/api/admin/debug': typeof ApiAdminDebugRoute
+  '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
+  '/api/admin/login': typeof ApiAdminLoginRoute
+  '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
+  '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
+  '/api/admin/ai/test-provider': typeof ApiAdminAiTestProviderRoute
+  '/api/admin/ai/usage': typeof ApiAdminAiUsageRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +131,17 @@ export interface FileRoutesByTo {
   '/cookies': typeof CookiesRoute
   '/privacidad': typeof PrivacidadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/advisor-chat': typeof ApiAdvisorChatRoute
+  '/api/leads': typeof ApiLeadsRoute
+  '/api/save-chat-lead': typeof ApiSaveChatLeadRoute
+  '/api/admin/debug': typeof ApiAdminDebugRoute
+  '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
+  '/api/admin/login': typeof ApiAdminLoginRoute
+  '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
+  '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
+  '/api/admin/ai/test-provider': typeof ApiAdminAiTestProviderRoute
+  '/api/admin/ai/usage': typeof ApiAdminAiUsageRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,12 +150,55 @@ export interface FileRoutesById {
   '/cookies': typeof CookiesRoute
   '/privacidad': typeof PrivacidadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/advisor-chat': typeof ApiAdvisorChatRoute
+  '/api/leads': typeof ApiLeadsRoute
+  '/api/save-chat-lead': typeof ApiSaveChatLeadRoute
+  '/api/admin/debug': typeof ApiAdminDebugRoute
+  '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
+  '/api/admin/login': typeof ApiAdminLoginRoute
+  '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
+  '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
+  '/api/admin/ai/test-provider': typeof ApiAdminAiTestProviderRoute
+  '/api/admin/ai/usage': typeof ApiAdminAiUsageRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/aviso-legal' | '/cookies' | '/privacidad' | '/sitemap.xml'
+  fullPaths:
+    | '/'
+    | '/aviso-legal'
+    | '/cookies'
+    | '/privacidad'
+    | '/sitemap.xml'
+    | '/api/advisor-chat'
+    | '/api/leads'
+    | '/api/save-chat-lead'
+    | '/api/admin/debug'
+    | '/api/admin/debug-verify'
+    | '/api/admin/login'
+    | '/api/admin/logout'
+    | '/api/admin/ai/config'
+    | '/api/admin/ai/models'
+    | '/api/admin/ai/test-provider'
+    | '/api/admin/ai/usage'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/aviso-legal' | '/cookies' | '/privacidad' | '/sitemap.xml'
+  to:
+    | '/'
+    | '/aviso-legal'
+    | '/cookies'
+    | '/privacidad'
+    | '/sitemap.xml'
+    | '/api/advisor-chat'
+    | '/api/leads'
+    | '/api/save-chat-lead'
+    | '/api/admin/debug'
+    | '/api/admin/debug-verify'
+    | '/api/admin/login'
+    | '/api/admin/logout'
+    | '/api/admin/ai/config'
+    | '/api/admin/ai/models'
+    | '/api/admin/ai/test-provider'
+    | '/api/admin/ai/usage'
   id:
     | '__root__'
     | '/'
@@ -75,6 +206,17 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/privacidad'
     | '/sitemap.xml'
+    | '/api/advisor-chat'
+    | '/api/leads'
+    | '/api/save-chat-lead'
+    | '/api/admin/debug'
+    | '/api/admin/debug-verify'
+    | '/api/admin/login'
+    | '/api/admin/logout'
+    | '/api/admin/ai/config'
+    | '/api/admin/ai/models'
+    | '/api/admin/ai/test-provider'
+    | '/api/admin/ai/usage'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -83,6 +225,17 @@ export interface RootRouteChildren {
   CookiesRoute: typeof CookiesRoute
   PrivacidadRoute: typeof PrivacidadRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ApiAdvisorChatRoute: typeof ApiAdvisorChatRoute
+  ApiLeadsRoute: typeof ApiLeadsRoute
+  ApiSaveChatLeadRoute: typeof ApiSaveChatLeadRoute
+  ApiAdminDebugRoute: typeof ApiAdminDebugRoute
+  ApiAdminDebugVerifyRoute: typeof ApiAdminDebugVerifyRoute
+  ApiAdminLoginRoute: typeof ApiAdminLoginRoute
+  ApiAdminLogoutRoute: typeof ApiAdminLogoutRoute
+  ApiAdminAiConfigRoute: typeof ApiAdminAiConfigRoute
+  ApiAdminAiModelsRoute: typeof ApiAdminAiModelsRoute
+  ApiAdminAiTestProviderRoute: typeof ApiAdminAiTestProviderRoute
+  ApiAdminAiUsageRoute: typeof ApiAdminAiUsageRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -122,6 +275,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/advisor-chat': {
+      id: '/api/advisor-chat'
+      path: '/api/advisor-chat'
+      fullPath: '/api/advisor-chat'
+      preLoaderRoute: typeof ApiAdvisorChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/leads': {
+      id: '/api/leads'
+      path: '/api/leads'
+      fullPath: '/api/leads'
+      preLoaderRoute: typeof ApiLeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/save-chat-lead': {
+      id: '/api/save-chat-lead'
+      path: '/api/save-chat-lead'
+      fullPath: '/api/save-chat-lead'
+      preLoaderRoute: typeof ApiSaveChatLeadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/debug': {
+      id: '/api/admin/debug'
+      path: '/api/admin/debug'
+      fullPath: '/api/admin/debug'
+      preLoaderRoute: typeof ApiAdminDebugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/debug-verify': {
+      id: '/api/admin/debug-verify'
+      path: '/api/admin/debug-verify'
+      fullPath: '/api/admin/debug-verify'
+      preLoaderRoute: typeof ApiAdminDebugVerifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/login': {
+      id: '/api/admin/login'
+      path: '/api/admin/login'
+      fullPath: '/api/admin/login'
+      preLoaderRoute: typeof ApiAdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/logout': {
+      id: '/api/admin/logout'
+      path: '/api/admin/logout'
+      fullPath: '/api/admin/logout'
+      preLoaderRoute: typeof ApiAdminLogoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/ai/config': {
+      id: '/api/admin/ai/config'
+      path: '/api/admin/ai/config'
+      fullPath: '/api/admin/ai/config'
+      preLoaderRoute: typeof ApiAdminAiConfigRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/ai/models': {
+      id: '/api/admin/ai/models'
+      path: '/api/admin/ai/models'
+      fullPath: '/api/admin/ai/models'
+      preLoaderRoute: typeof ApiAdminAiModelsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/ai/test-provider': {
+      id: '/api/admin/ai/test-provider'
+      path: '/api/admin/ai/test-provider'
+      fullPath: '/api/admin/ai/test-provider'
+      preLoaderRoute: typeof ApiAdminAiTestProviderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/ai/usage': {
+      id: '/api/admin/ai/usage'
+      path: '/api/admin/ai/usage'
+      fullPath: '/api/admin/ai/usage'
+      preLoaderRoute: typeof ApiAdminAiUsageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -131,6 +361,17 @@ const rootRouteChildren: RootRouteChildren = {
   CookiesRoute: CookiesRoute,
   PrivacidadRoute: PrivacidadRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ApiAdvisorChatRoute: ApiAdvisorChatRoute,
+  ApiLeadsRoute: ApiLeadsRoute,
+  ApiSaveChatLeadRoute: ApiSaveChatLeadRoute,
+  ApiAdminDebugRoute: ApiAdminDebugRoute,
+  ApiAdminDebugVerifyRoute: ApiAdminDebugVerifyRoute,
+  ApiAdminLoginRoute: ApiAdminLoginRoute,
+  ApiAdminLogoutRoute: ApiAdminLogoutRoute,
+  ApiAdminAiConfigRoute: ApiAdminAiConfigRoute,
+  ApiAdminAiModelsRoute: ApiAdminAiModelsRoute,
+  ApiAdminAiTestProviderRoute: ApiAdminAiTestProviderRoute,
+  ApiAdminAiUsageRoute: ApiAdminAiUsageRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
