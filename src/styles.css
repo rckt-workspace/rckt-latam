@@ -893,10 +893,10 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 }
 .rckt-site .pilares-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(5,1fr);
   gap:18px;
 }
-@media(max-width:980px){ .rckt-site .pilares-grid{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:1100px){ .rckt-site .pilares-grid{grid-template-columns:repeat(3,1fr);} }
 @media(max-width:560px){ .rckt-site .pilares-grid{grid-template-columns:1fr;} }
 .rckt-site .pilares-grid h3{letter-spacing:.06em;}
 
