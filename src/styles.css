@@ -758,7 +758,7 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 /* Manchas difuminadas de acento: solo 3 en toda la página */
 #servicios.band::before,#metodo.band::before{content:none}
 #sistema.band::before,
-#manifiesto.manifiesto::before,
+.manifiesto::before,
 #contacto.band::before{
   content:'';
   position:absolute;
@@ -771,6 +771,6 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 #sistema.band::before{right:-140px;top:-80px}
 #contacto.band::before{left:-160px;bottom:-60px}
 .manifiesto{position:relative;overflow:hidden}
-#manifiesto.manifiesto::before{right:-120px;top:-120px}
+.manifiesto::before{right:-120px;top:-120px}
 #contacto.band,#sistema.band{position:relative;overflow:hidden}
 #contacto > .container{position:relative;z-index:1}
