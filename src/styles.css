@@ -808,16 +808,16 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 .rckt-site .manifiesto,
 .rckt-site .cta-final{background-color:transparent;background-image:none}
 
-/* Grano de papel/cartón kraft visible pero limpio. */
+/* Grano de papel/cartón kraft visible, cálido y limpio. */
 .rckt-site::before{
   content:'';
   position:fixed;
   inset:0;
   pointer-events:none;
   z-index:0;
-  opacity:.50;
+  opacity:.38;
   mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='4' seed='8' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.48'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='4' seed='8' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0.45 0.80 0.20 0 0  0.35 0.65 0.18 0 0  0.25 0.48 0.13 0 0  0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.46'/%3E%3C/svg%3E");
   background-size:260px 260px;
 }
 .rckt-site > *{position:relative;z-index:1}
