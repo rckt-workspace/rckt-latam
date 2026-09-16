@@ -884,12 +884,12 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 
 /* ---------- Cambios v12: pilares, script "humano", manifiesto vidrio ---------- */
 .rckt-site .hero-hand{
-  font-family:'Caveat', cursive;
-  font-weight:600;
+  font-family:'Great Vibes', cursive;
+  font-weight:400;
   font-style:normal;
-  font-size:1.18em;
+  font-size:1.22em;
   letter-spacing:0;
-  color:var(--naranja);
+  color:var(--carbon);
 }
 .rckt-site .pilares-grid{
   display:grid;
