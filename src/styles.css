@@ -904,5 +904,5 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 [data-theme="dark"] .juicio,
 [data-theme="dark"] .no-vendemos,
 [data-theme="dark"] .manifiesto-card{
-  background:color-mix(in srgb, var(--card) 40%, transparent);
+  background:color-mix(in srgb, #ffffff 24%, transparent);
 }
