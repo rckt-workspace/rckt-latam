@@ -78,7 +78,7 @@ const pageMarkup = `
 <header>
 <div class="container">
 <nav>
-<a class="logo" href="#top"><img alt="RCKT" src="__LOGO_LIGHT__"/></a>
+<a class="logo" href="#top"><img alt="RCKT" src="__LOGO_DARK__"/></a>
 <div class="nav-links">
 <a href="#sistema">Sistema</a>
 <a href="#servicios">Servicios</a>
