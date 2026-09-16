@@ -290,7 +290,7 @@
 
   /* ---------- tres formas ---------- */
   .three-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-bottom:40px; }
-  .three-card .num{margin-bottom:14px; font-size:16px;}
+  .three-card .num{margin-bottom:14px; font-size:16px; color:var(--carbon);}
   .three-card h3{ font-size:19px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; margin:0 0 14px; }
   .three-card p{color:var(--carbon-soft); font-size:15.5px; margin:0;}
   .juicio{
