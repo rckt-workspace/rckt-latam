@@ -293,7 +293,7 @@
   .three-card h3{ font-size:19px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; margin:0 0 14px; }
   .three-card p{color:var(--carbon-soft); font-size:15.5px; margin:0;}
   .juicio{
-    background:color-mix(in srgb, #ffffff 86%, transparent); border:1px solid var(--line); border-radius:16px;
+    background:color-mix(in srgb, #ffffff 72%, transparent); border:1px solid var(--line); border-radius:16px;
     padding:34px 44px; max-width:760px; margin:0 auto; text-align:center;
     font-family:'Newsreader', serif; font-style:italic; font-size:20px; line-height:1.45;
     backdrop-filter:blur(10px); transition:background-color .35s ease, border-color .35s ease;
