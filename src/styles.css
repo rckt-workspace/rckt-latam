@@ -1116,7 +1116,7 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 .rckt-site .vacante-modal-close{position:absolute;top:12px;right:14px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:transparent;font-size:22px;line-height:1;cursor:pointer;color:var(--carbon)}
 .rckt-site .vacante-modal-close:hover{border-color:var(--naranja);color:var(--naranja)}
 
-.rckt-site .cv-input-hidden{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.rckt-site .cv-input-hidden{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;clip:rect(0 0 0 0)}
 .rckt-site .cv-drop{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding:26px 18px;border:2px dashed var(--line);border-radius:14px;cursor:pointer;transition:border-color .2s,background .2s}
 .rckt-site .cv-drop:hover,.rckt-site .cv-drop.dragging{border-color:var(--naranja);background:color-mix(in srgb,var(--naranja) 6%,transparent)}
 .rckt-site .cv-drop strong{font-size:14px;font-weight:600}
