@@ -43,7 +43,7 @@ function Privacidad() {
       <h2>Tus derechos</h2>
       <p>
         Puedes pedirnos acceder, rectificar o eliminar tus datos escribiendo a{" "}
-        <a href="mailto:hola@rckt.es">hola@rckt.es</a>.
+        <a href="mailto:hola@rckt.lat">hola@rckt.lat</a>.
       </p>
     </LegalPage>
   );

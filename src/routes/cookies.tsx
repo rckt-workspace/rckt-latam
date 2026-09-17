@@ -38,7 +38,7 @@ function Cookies() {
       <h2>Dudas</h2>
       <p>
         Si tienes cualquier pregunta sobre esta política, escríbenos a{" "}
-        <a href="mailto:hola@rckt.es">hola@rckt.es</a>.
+        <a href="mailto:hola@rckt.lat">hola@rckt.lat</a>.
       </p>
     </LegalPage>
   );

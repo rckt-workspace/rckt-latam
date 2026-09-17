@@ -36,12 +36,12 @@ export const Route = createFileRoute("/")({
               name: "RCKT",
               url: SITE_URL + "/",
               description: "Firma de sistemas de crecimiento con IA para el mercado hispanohablante.",
-              email: "hola@rckt.es",
+              email: "hola@rckt.lat",
               contactPoint: [
                 {
                   "@type": "ContactPoint",
                   contactType: "sales",
-                  email: "hola@rckt.es",
+                  email: "hola@rckt.lat",
                   availableLanguage: ["es"],
                 },
               ],
@@ -419,7 +419,7 @@ const pageMarkup = `
 <span class="kicker" style="display:block; margin-top:14px;">Diagnóstico</span>
 <h2 class="rv">El siguiente paso empieza con claridad.</h2>
 <p>Solicita el diagnóstico. En 24–48 horas te respondemos con los próximos pasos.</p>
-<a class="mail" href="mailto:hola@rckt.es">hola@rckt.es</a>
+<a class="mail" href="mailto:hola@rckt.lat">hola@rckt.lat</a>
 </div>
 <form id="diagForm">
 <div class="form-row">
@@ -499,7 +499,7 @@ const pageMarkup = `
               <li><a href="/politica-tratamiento-datos.pdf" download>Política de Tratamiento de Datos</a></li>
             </ul>
             <h5 style="margin-top:26px;">Correo</h5>
-            <ul><li><a href="mailto:hola@rckt.es">hola@rckt.es</a></li></ul>
+            <ul><li><a href="mailto:hola@rckt.lat">hola@rckt.lat</a></li></ul>
           </div>
 </div>
 <div class="footer-bottom">
