@@ -16,6 +16,7 @@ import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as RcktEquipoRouteImport } from './routes/rckt-equipo'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TrabajaConNosotrosRouteImport } from './routes/trabaja-con-nosotros'
+import { Route as TrabajaConNosotrosAplicarIdRouteImport } from './routes/trabaja-con-nosotros.aplicar.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -52,6 +53,12 @@ const TrabajaConNosotrosRoute = TrabajaConNosotrosRouteImport.update({
   path: '/trabaja-con-nosotros',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrabajaConNosotrosAplicarIdRoute =
+  TrabajaConNosotrosAplicarIdRouteImport.update({
+    id: '/aplicar/$id',
+    path: '/aplicar/$id',
+    getParentRoute: () => TrabajaConNosotrosRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -60,7 +67,8 @@ export interface FileRoutesByFullPath {
   '/privacidad': typeof PrivacidadRoute
   '/rckt-equipo': typeof RcktEquipoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/trabaja-con-nosotros': typeof TrabajaConNosotrosRoute
+  '/trabaja-con-nosotros': typeof TrabajaConNosotrosRouteWithChildren
+  '/trabaja-con-nosotros/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -69,7 +77,8 @@ export interface FileRoutesByTo {
   '/privacidad': typeof PrivacidadRoute
   '/rckt-equipo': typeof RcktEquipoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/trabaja-con-nosotros': typeof TrabajaConNosotrosRoute
+  '/trabaja-con-nosotros': typeof TrabajaConNosotrosRouteWithChildren
+  '/trabaja-con-nosotros/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -79,7 +88,8 @@ export interface FileRoutesById {
   '/privacidad': typeof PrivacidadRoute
   '/rckt-equipo': typeof RcktEquipoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/trabaja-con-nosotros': typeof TrabajaConNosotrosRoute
+  '/trabaja-con-nosotros': typeof TrabajaConNosotrosRouteWithChildren
+  '/trabaja-con-nosotros/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +101,7 @@ export interface FileRouteTypes {
     | '/rckt-equipo'
     | '/sitemap.xml'
     | '/trabaja-con-nosotros'
+    | '/trabaja-con-nosotros/aplicar/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +111,7 @@ export interface FileRouteTypes {
     | '/rckt-equipo'
     | '/sitemap.xml'
     | '/trabaja-con-nosotros'
+    | '/trabaja-con-nosotros/aplicar/$id'
   id:
     | '__root__'
     | '/'
@@ -109,6 +121,7 @@ export interface FileRouteTypes {
     | '/rckt-equipo'
     | '/sitemap.xml'
     | '/trabaja-con-nosotros'
+    | '/trabaja-con-nosotros/aplicar/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -118,7 +131,7 @@ export interface RootRouteChildren {
   PrivacidadRoute: typeof PrivacidadRoute
   RcktEquipoRoute: typeof RcktEquipoRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  TrabajaConNosotrosRoute: typeof TrabajaConNosotrosRoute
+  TrabajaConNosotrosRoute: typeof TrabajaConNosotrosRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -172,8 +185,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrabajaConNosotrosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/trabaja-con-nosotros/aplicar/$id': {
+      id: '/trabaja-con-nosotros/aplicar/$id'
+      path: '/aplicar/$id'
+      fullPath: '/trabaja-con-nosotros/aplicar/$id'
+      preLoaderRoute: typeof TrabajaConNosotrosAplicarIdRouteImport
+      parentRoute: typeof TrabajaConNosotrosRoute
+    }
   }
 }
+
+interface TrabajaConNosotrosRouteChildren {
+  TrabajaConNosotrosAplicarIdRoute: typeof TrabajaConNosotrosAplicarIdRoute
+}
+
+const TrabajaConNosotrosRouteChildren: TrabajaConNosotrosRouteChildren = {
+  TrabajaConNosotrosAplicarIdRoute: TrabajaConNosotrosAplicarIdRoute,
+}
+
+const TrabajaConNosotrosRouteWithChildren =
+  TrabajaConNosotrosRoute._addFileChildren(TrabajaConNosotrosRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -182,7 +213,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacidadRoute: PrivacidadRoute,
   RcktEquipoRoute: RcktEquipoRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  TrabajaConNosotrosRoute: TrabajaConNosotrosRoute,
+  TrabajaConNosotrosRoute: TrabajaConNosotrosRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
