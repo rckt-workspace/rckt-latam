@@ -24,9 +24,17 @@ export function PostulacionForm({
 
   function tomarArchivo(file: File | null | undefined) {
     setCvError(null);
-    if (!file) return;
+    console.log("[CV] archivo recibido:", file
+      ? { nombre: file.name, tipo: file.type, tamanoMB: (file.size / 1024 / 1024).toFixed(2) }
+      : file);
+    if (!file) {
+      setCvError("No recibimos ningún archivo. Intenta seleccionarlo de nuevo.");
+      return;
+    }
     const esPdf =
-      file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+      file.type === "application/pdf" ||
+      file.type === "application/x-pdf" ||
+      file.name.toLowerCase().endsWith(".pdf");
     if (!esPdf) {
       setArchivo(null);
       if (inputRef.current) inputRef.current.value = "";
