@@ -85,6 +85,7 @@ const pageMarkup = `
 <a href="#quienes">Nosotros</a>
 <a href="#metodo">Método</a>
 <a href="#faq">FAQ</a>
+<a href="/trabaja-con-nosotros">Trabaja con nosotros</a>
 </div>
 <div class="nav-right">
 <div class="theme-switch hero-theme-switch">
@@ -486,6 +487,7 @@ const pageMarkup = `
 <li><a href="#metodo">Método</a></li>
 <li><a href="#faq">FAQ</a></li>
 <li><a href="#contacto">Contacto</a></li>
+<li><a href="/trabaja-con-nosotros">Trabaja con nosotros</a></li>
 </ul>
 </div>
           <div class="footer-col">
