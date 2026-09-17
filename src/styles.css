@@ -1000,8 +1000,8 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
   .rckt-site.tcn-page .subpage-hero{min-height:62svh;padding:130px 0 44px;}
   .rckt-site.tcn-page .subpage-hero-photo img{object-position:58% center;}
   .rckt-site.tcn-page .subpage-hero-photo-overlay{background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.89) 50%,rgba(255,255,255,.42) 100%);}
-  .rckt-site.tcn-page .tcn-orb-hero-corner{width:280px;height:280px;right:-170px;top:-120px;}
-  .rckt-site.tcn-page .tcn-orb-hero{width:130px;height:130px;right:-20px;bottom:4%;}
+  .rckt-site.tcn-page .tcn-orb-hero-corner{width:420px;height:420px;right:-240px;top:-180px;}
+  .rckt-site.tcn-page .tcn-orb-hero{width:200px;height:200px;right:-60px;bottom:2%;}
 }
 
 /* Página de aplicar: mucho menos naranja, solo un par de manchas suaves. */
