@@ -260,11 +260,11 @@ function Dashboard({ email }: { email: string }) {
 
   return (
     <div>
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <h1 className="text-[26px] font-bold">Panel de RH</h1>
-          <p className="text-[14px] text-[var(--carbon-soft)]">{email}</p>
-        </div>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h1 className="text-[26px] font-bold">People & Culture</h1>
+            <p className="text-[14px] text-[var(--carbon-soft)]">{email}</p>
+          </div>
         <button className={btnGhost} onClick={() => supabase.auth.signOut()} type="button">
           Cerrar sesión
         </button>
