@@ -985,7 +985,9 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
   border-radius:50%;
   pointer-events:none;
   z-index:1;
-  background:radial-gradient(circle,rgba(244,88,29,.70) 0%,rgba(244,88,29,.34) 38%,rgba(244,88,29,.10) 62%,transparent 78%);
+  background:radial-gradient(circle closest-side,rgba(244,88,29,.70) 0%,rgba(244,88,29,.34) 34%,rgba(244,88,29,.10) 58%,rgba(244,88,29,0) 76%);
+  border-radius:0;
+  filter:blur(10px);
 }
 .rckt-site.tcn-page .tcn-orb-hero-corner{width:430px;height:430px;right:-230px;top:-210px;}
 .rckt-site.tcn-page .tcn-orb-hero{width:180px;height:180px;right:16%;bottom:7%;}
