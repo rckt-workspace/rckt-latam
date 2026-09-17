@@ -1065,10 +1065,11 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
   position:absolute; inset:0;
   pointer-events:none; z-index:0;
   background:
-    radial-gradient(circle 180px at 104% -4%, rgba(244,88,29,.22) 0%, rgba(244,88,29,.08) 45%, transparent 70%),
-    radial-gradient(circle 140px at 2% 96%, rgba(244,88,29,.18) 0%, rgba(244,88,29,.06) 45%, transparent 70%),
-    radial-gradient(circle 120px at 76% 64%, rgba(244,88,29,.14) 0%, rgba(244,88,29,.04) 45%, transparent 70%);
+    radial-gradient(circle 160px at 104% -4%, rgba(244,88,29,.72) 0%, rgba(244,88,29,.34) 34%, rgba(244,88,29,.10) 60%, transparent 78%),
+    radial-gradient(circle 120px at 2% 96%, rgba(244,88,29,.64) 0%, rgba(244,88,29,.30) 34%, rgba(244,88,29,.08) 60%, transparent 78%),
+    radial-gradient(circle 110px at 76% 64%, rgba(244,88,29,.56) 0%, rgba(244,88,29,.26) 36%, rgba(244,88,29,.07) 62%, transparent 78%);
 }
+[data-theme="dark"] .rckt-panel::after{opacity:.62;}
 .rckt-panel .panel-wrap{position:relative; z-index:1;}
 .rckt-panel .panel-wrap{max-width:1120px; margin:0 auto;}
 .rckt-panel .panel-card{
