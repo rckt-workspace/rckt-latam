@@ -247,6 +247,13 @@ function Dashboard({ email }: { email: string }) {
     void cargar();
   }
 
+  async function eliminarPostulacion(id: string) {
+    if (!window.confirm("¿Seguro que quieres eliminar esta postulación? Esta acción no se puede deshacer.")) return;
+    await supabase.from("postulaciones").delete().eq("id", id);
+    setDetalle((d) => (d?.id === id ? null : d));
+    void cargar();
+  }
+
   async function abrirCv(path: string) {
     const { data } = await supabase.storage.from("cvs").createSignedUrl(path, 300);
     if (data?.signedUrl) window.open(data.signedUrl, "_blank", "noopener");
@@ -369,7 +376,12 @@ function Dashboard({ email }: { email: string }) {
             {filtradas.map((p) => (
               <div key={p.id} className="panel-card hoverable flex flex-wrap items-center justify-between gap-4">
                 <div>
-                  <p className="text-[16px] font-bold">{p.nombre} <span className="text-[12px] font-medium text-[var(--naranja)]">{p.tipo}</span></p>
+                  <p className="flex flex-wrap items-center gap-2 text-[16px] font-bold">
+                    {p.nombre}
+                    <span className={`badge-tipo ${p.tipo === "candidato" ? "badge-candidato" : "badge-servicio"}`}>
+                      {p.tipo === "candidato" ? "Candidato a vacante" : "Servicio / Freelance"}
+                    </span>
+                  </p>
                   <p className="text-[13px] text-[var(--carbon-soft)]">
                     {p.email}{p.telefono ? ` · ${p.telefono}` : ""} · {new Date(p.fecha).toLocaleDateString("es-CO")}
                   </p>
@@ -378,10 +390,10 @@ function Dashboard({ email }: { email: string }) {
                   {p.cv_url && (
                     <button className={btnGhost} type="button" onClick={() => abrirCv(p.cv_url!)}>Ver CV</button>
                   )}
-                  {p.portafolio_url && (
-                    <a className={btnGhost} href={p.portafolio_url} rel="noopener noreferrer" target="_blank">Portafolio</a>
-                  )}
-                  <button className={btnGhost} type="button" onClick={() => setDetalle(p)}>Detalle</button>
+                  <button className={btnGhost} type="button" onClick={() => setDetalle(p)}>Ver detalle</button>
+                  <button className="panel-btn-danger" type="button" onClick={() => eliminarPostulacion(p.id)}>
+                    Eliminar
+                  </button>
                 </div>
               </div>
             ))}
@@ -390,20 +402,44 @@ function Dashboard({ email }: { email: string }) {
       )}
 
       {detalle && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/50 p-4 py-10" onClick={() => setDetalle(null)}>
-          <div className="panel-card w-full max-w-[560px] p-7" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-[20px] font-bold">{detalle.nombre}</h3>
-            <p className="mt-2 text-[14px] text-[var(--carbon-soft)]">{detalle.email}</p>
-            {detalle.telefono && <p className="text-[14px] text-[var(--carbon-soft)]">{detalle.telefono}</p>}
-            <p className="mt-2 text-[13px] text-[var(--carbon-soft)]">
-              Vacante: {vacantes.find((v) => v.id === detalle.vacante_id)?.titulo ?? "—"} · Tipo: {detalle.tipo}
-            </p>
-            {detalle.mensaje && <p className="mt-4 whitespace-pre-line text-[15px] leading-[1.6]">{detalle.mensaje}</p>}
-            <div className="mt-6 flex gap-2">
+        <div className="panel-modal-overlay" role="dialog" aria-modal="true" onClick={() => setDetalle(null)}>
+          <div className="panel-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="panel-modal-close" type="button" aria-label="Cerrar" onClick={() => setDetalle(null)}>
+              ×
+            </button>
+            <span className={`badge-tipo ${detalle.tipo === "candidato" ? "badge-candidato" : "badge-servicio"}`}>
+              {detalle.tipo === "candidato" ? "Candidato a vacante" : "Servicio / Freelance"}
+            </span>
+            <h3 className="mt-3">{detalle.nombre}</h3>
+
+            <div className="dato-grid">
+              <p className="dato"><span>Correo</span><span>{detalle.email}</span></p>
+              {detalle.telefono && <p className="dato"><span>Teléfono</span><span>{detalle.telefono}</span></p>}
+              <p className="dato">
+                <span>Vacante</span>
+                <span>{vacantes.find((v) => v.id === detalle.vacante_id)?.titulo ?? "—"}</span>
+              </p>
+              <p className="dato">
+                <span>Fecha</span>
+                <span>{new Date(detalle.fecha).toLocaleDateString("es-CO")}</span>
+              </p>
+            </div>
+
+            {detalle.mensaje && <p className="modal-mensaje">{detalle.mensaje}</p>}
+
+            <div className="modal-acciones">
               {detalle.cv_url && (
-                <button className={btnGhost} type="button" onClick={() => abrirCv(detalle.cv_url!)}>Ver CV</button>
+                <button className="panel-btn" type="button" onClick={() => abrirCv(detalle.cv_url!)}>Ver CV</button>
               )}
-              <button className={btnGhost} type="button" onClick={() => setDetalle(null)}>Cerrar</button>
+              {detalle.portafolio_url && (
+                <a className={btnGhost} href={detalle.portafolio_url} rel="noopener noreferrer" target="_blank">
+                  Ver portafolio
+                </a>
+              )}
+              <a className={btnGhost} href={`mailto:${detalle.email}`}>Contactar por correo</a>
+              <button className="panel-btn-danger" type="button" onClick={() => eliminarPostulacion(detalle.id)}>
+                Eliminar
+              </button>
             </div>
           </div>
         </div>
