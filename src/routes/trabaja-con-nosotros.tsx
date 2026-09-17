@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import { PostulacionForm } from "@/components/PostulacionForm";
+import heroAsset from "@/assets/rckt-hero.jpg.asset.json";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
@@ -76,9 +77,15 @@ function TrabajaConNosotros() {
   useSiteMotion([vacantes]);
 
   return (
-    <div className="rckt-site">
+    <div className="rckt-site tcn-page">
       <main id="top">
         <section className="subpage-hero">
+          <div className="subpage-hero-photo" aria-hidden="true">
+            <img src={heroAsset.url} alt="" />
+            <span className="subpage-hero-photo-overlay" />
+          </div>
+          <span className="tcn-orb tcn-orb-hero-corner" aria-hidden="true" />
+          <span className="tcn-orb tcn-orb-hero" aria-hidden="true" />
           <SiteHeader />
           <div className="container">
             <div className="subpage-hero-inner">
@@ -96,7 +103,9 @@ function TrabajaConNosotros() {
           </div>
         </section>
 
-        <section className="band">
+        <section className="band tcn-cultura">
+          <span className="tcn-orb tcn-orb-cultura-left" aria-hidden="true" />
+          <span className="tcn-orb tcn-orb-cultura-right" aria-hidden="true" />
           <div className="container">
             <div className="section-head">
               <span className="num">01.</span>
@@ -119,6 +128,7 @@ function TrabajaConNosotros() {
         </section>
 
         <section className="band band-alt" id="vacantes">
+          <span className="tcn-orb tcn-orb-vacantes" aria-hidden="true" />
           <div className="container">
             <div className="section-head">
               <span className="num">02.</span>
@@ -155,6 +165,7 @@ function TrabajaConNosotros() {
         </section>
 
         <section className="band" id="freelance">
+          <span className="tcn-orb tcn-orb-cta" aria-hidden="true" />
           <div className="container">
             <div className="section-head">
               <span className="num">03.</span>
