@@ -134,15 +134,17 @@ export function PostulacionForm({
 
       {tipo === "candidato" && (
         <div className="field">
-          <label htmlFor="cv">Hoja de vida (PDF)</label>
+          <label htmlFor={`cv-${tipo}`}>Hoja de vida (PDF)</label>
           <input
             ref={inputRef}
-            id="cv"
+            id={`cv-${tipo}`}
             name="cv"
             type="file"
-            accept="application/pdf"
+            accept="application/pdf,.pdf"
             className="cv-input-hidden"
-            onChange={(e) => tomarArchivo(e.target.files?.[0])}
+            onChange={(e) => {
+              tomarArchivo(e.target.files?.[0]);
+            }}
           />
           {archivo ? (
             <div className="cv-file">
@@ -153,7 +155,18 @@ export function PostulacionForm({
                 className="cv-remove"
                 type="button"
                 onClick={() => {
+                  if (inputRef.current) inputRef.current.value = "";
+                  inputRef.current?.click();
+                }}
+              >
+                Cambiar
+              </button>
+              <button
+                className="cv-remove"
+                type="button"
+                onClick={() => {
                   setArchivo(null);
+                  setCvError(null);
                   if (inputRef.current) inputRef.current.value = "";
                 }}
               >
@@ -162,9 +175,17 @@ export function PostulacionForm({
             </div>
           ) : (
             <div
-              className={`cv-drop${arrastrando ? " dragging" : ""}`}
-              onClick={() => inputRef.current?.click()}
+              ref={dropRef}
+              className={`cv-drop${arrastrando ? " dragging" : ""}${cvError ? " has-error" : ""}`}
+              onClick={() => {
+                if (inputRef.current) inputRef.current.value = "";
+                inputRef.current?.click();
+              }}
               onDragOver={(e) => {
+                e.preventDefault();
+                setArrastrando(true);
+              }}
+              onDragEnter={(e) => {
                 e.preventDefault();
                 setArrastrando(true);
               }}
@@ -172,12 +193,16 @@ export function PostulacionForm({
               onDrop={(e) => {
                 e.preventDefault();
                 setArrastrando(false);
-                tomarArchivo(e.dataTransfer.files?.[0]);
+                const f = e.dataTransfer.files?.[0] ?? e.dataTransfer.items?.[0]?.getAsFile();
+                tomarArchivo(f);
               }}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") inputRef.current?.click();
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  inputRef.current?.click();
+                }
               }}
             >
               <span className="cv-icon" aria-hidden="true">
@@ -191,6 +216,7 @@ export function PostulacionForm({
               <span className="cv-hint">PDF, máx. {MAX_MB} MB</span>
             </div>
           )}
+          {cvError && <p className="form-error cv-error">{cvError}</p>}
         </div>
       )}
 
