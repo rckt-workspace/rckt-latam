@@ -20,7 +20,7 @@ export function PostulacionForm({
   const [cvError, setCvError] = useState<string | null>(null);
   const [arrastrando, setArrastrando] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const dropRef = useRef<HTMLDivElement>(null);
+  const dropRef = useRef<HTMLLabelElement>(null);
 
   function tomarArchivo(file: File | null | undefined) {
     setCvError(null);
