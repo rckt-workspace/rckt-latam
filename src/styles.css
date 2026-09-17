@@ -978,6 +978,32 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 .rckt-site.tcn-page .subpage-hero header{z-index:4;}
 .rckt-site.tcn-page .subpage-hero .container{z-index:3;}
 .rckt-site.tcn-page .band{overflow:hidden;}
+
+/* El hero de /trabaja-con-nosotros usa imagen clara; en modo oscuro el texto debe seguir siendo negro. */
+[data-theme="dark"] .rckt-site.tcn-page .subpage-hero,
+[data-theme="dark"] .rckt-site.tcn-page .subpage-hero .kicker,
+[data-theme="dark"] .rckt-site.tcn-page .subpage-hero-inner h1,
+[data-theme="dark"] .rckt-site.tcn-page .subpage-hero-inner h1 .hero-hand,
+[data-theme="dark"] .rckt-site.tcn-page .subpage-hero-inner .sub{
+  color:#000;
+}
+[data-theme="dark"] .rckt-site.tcn-page .subpage-hero header,
+[data-theme="dark"] .rckt-site.tcn-page .subpage-hero .nav-links a,
+[data-theme="dark"] .rckt-site.tcn-page .subpage-hero .nav-toggle span,
+[data-theme="dark"] .rckt-site.tcn-page .subpage-hero .theme-switch button{
+  color:#000;
+}
+[data-theme="dark"] .rckt-site.tcn-page .subpage-hero .nav-links.mobile-open,
+[data-theme="dark"] .rckt-site.tcn-page .subpage-hero .nav-links.mobile-open a{
+  color:var(--carbon);
+}
+[data-theme="dark"] .rckt-site.tcn-page .subpage-hero .theme-switch{
+  border-color:rgba(0,0,0,.28);
+}
+[data-theme="dark"] .rckt-site.tcn-page .subpage-hero .theme-switch button.active{
+  background:#000;
+  color:#fff;
+}
 .rckt-site.tcn-page .band > .container{position:relative;z-index:2;}
 .rckt-site.tcn-page .tcn-orb{
   position:absolute;
