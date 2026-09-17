@@ -1062,7 +1062,7 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 .rckt-panel{min-height:100vh; padding:56px 20px 72px; position:relative; overflow:hidden;}
 .rckt-panel::after{
   content:"";
-  position:fixed; inset:0;
+  position:absolute; inset:0;
   pointer-events:none; z-index:0;
   background:
     radial-gradient(circle 180px at 104% -4%, rgba(244,88,29,.22) 0%, rgba(244,88,29,.08) 45%, transparent 70%),
