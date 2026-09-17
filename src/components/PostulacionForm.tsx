@@ -48,7 +48,7 @@ export function PostulacionForm({
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError(null);
-    if (tipo === "candidato" && !archivo) {
+    if (!archivo) {
       setCvError("Adjunta tu hoja de vida en PDF antes de enviar.");
       dropRef.current?.scrollIntoView({ block: "center", behavior: "smooth" });
       dropRef.current?.focus();
@@ -132,7 +132,7 @@ export function PostulacionForm({
         </div>
       </div>
 
-      {tipo === "candidato" && (
+      {(tipo === "candidato" || tipo === "servicio") && (
         <div className="field">
           <label htmlFor={`cv-${tipo}`}>Hoja de vida (PDF)</label>
           <input
