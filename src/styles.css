@@ -477,7 +477,7 @@
     border:1px solid var(--line-strong); border-radius:999px; padding:5px; width:fit-content;
   }
   .theme-switch button{ border:none; background:none; padding:6px 14px; font-size:13px; border-radius:999px; color:var(--carbon-soft); }
-  .theme-switch button.active{background:var(--carbon); color:var(--papel);}
+  .theme-switch button.active{background:var(--carbon); color:#fff;}
   .footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top:28px; font-size:13px; color:var(--carbon-faint); }
   /* ---------- responsive ---------- */
   @media (max-width:980px){
