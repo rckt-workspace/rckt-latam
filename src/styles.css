@@ -858,7 +858,7 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 .hero .theme-switch button:hover,
 [data-theme="dark"] .hero .theme-switch button:hover{color:var(--hero-ink)}
 .hero .theme-switch button.active,
-[data-theme="dark"] .hero .theme-switch button.active{background:var(--hero-ink);color:var(--papel-fija)}
+[data-theme="dark"] .hero .theme-switch button.active{background:var(--hero-ink);color:#fff}
 [data-theme="dark"] .hero .theme-switch{
   background:rgba(237,236,231,.26);
   border-color:rgba(0,0,0,.46);
