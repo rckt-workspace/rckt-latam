@@ -132,7 +132,7 @@ export function PostulacionForm({
         </div>
       </div>
 
-      {tipo === "candidato" && (
+      {(tipo === "candidato" || tipo === "servicio") && (
         <div className="field">
           <label htmlFor={`cv-${tipo}`}>Hoja de vida (PDF)</label>
           <input
