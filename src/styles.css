@@ -846,6 +846,7 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 [data-theme="dark"] .hero-outline-cta{
   color:var(--hero-ink);
 }
+[data-theme="dark"] header .theme-switch button{color:#fff}
 [data-theme="dark"] .hero p.sub,
 [data-theme="dark"] .hero-kicker{color:var(--hero-muted)}
 [data-theme="dark"] header .nav-toggle span{background:var(--hero-ink)}
