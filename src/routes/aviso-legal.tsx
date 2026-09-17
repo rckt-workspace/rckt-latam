@@ -23,7 +23,7 @@ function AvisoLegal() {
     <LegalPage title="Aviso legal">
       <p>
         Este sitio es titularidad de RCKT, firma de sistemas de crecimiento con IA. Puedes
-        escribirnos a <a href="mailto:hola@rckt.es">hola@rckt.es</a>.
+        escribirnos a <a href="mailto:hola@rckt.lat">hola@rckt.lat</a>.
       </p>
       <h2>Condiciones de uso</h2>
       <p>

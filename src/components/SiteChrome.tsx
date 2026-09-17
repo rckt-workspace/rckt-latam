@@ -66,7 +66,7 @@ export function SiteFooter() {
               <li><a href="/politica-tratamiento-datos.pdf" download>Política de Tratamiento de Datos</a></li>
             </ul>
             <h5 style={{ marginTop: 26 }}>Correo</h5>
-            <ul><li><a href="mailto:hola@rckt.es">hola@rckt.es</a></li></ul>
+            <ul><li><a href="mailto:hola@rckt.lat">hola@rckt.lat</a></li></ul>
           </div>
         </div>
         <div className="footer-bottom">

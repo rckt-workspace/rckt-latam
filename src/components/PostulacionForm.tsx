@@ -82,7 +82,7 @@ export function PostulacionForm({
           const status = (upErr as unknown as { statusCode?: string | number }).statusCode;
           throw new Error(
             `No pudimos subir el PDF (${status ?? "sin código"}): ${upErr.message}. ` +
-              "Si el problema sigue, envíanos tu CV a hola@rckt.es.",
+              "Si el problema sigue, envíanos tu CV a hola@rckt.lat.",
           );
         }
         console.log("[CV] subida OK:", upData);
