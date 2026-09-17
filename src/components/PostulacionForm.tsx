@@ -196,13 +196,10 @@ export function PostulacionForm({
               </button>
             </div>
           ) : (
-            <div
+            <label
               ref={dropRef}
+              htmlFor={`cv-${tipo}`}
               className={`cv-drop${arrastrando ? " dragging" : ""}${cvError ? " has-error" : ""}`}
-              onClick={() => {
-                if (inputRef.current) inputRef.current.value = "";
-                inputRef.current?.click();
-              }}
               onDragOver={(e) => {
                 e.preventDefault();
                 setArrastrando(true);
