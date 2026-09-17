@@ -147,7 +147,7 @@ function Login() {
   return (
     <div className="panel-card panel-login">
       <span className="logo"><img alt="RCKT" src={logoDarkAsset.url} /></span>
-      <h1 className="text-[24px] font-bold">Panel interno RCKT</h1>
+      <h1 className="text-[24px] font-bold">People & Culture</h1>
       <p className="mt-2 text-[14px] text-[var(--carbon-soft)]">Acceso solo para el equipo.</p>
 
       {modo === "login" ? (
