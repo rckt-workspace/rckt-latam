@@ -83,7 +83,13 @@ function TrabajaConNosotros() {
           <div className="container">
             <div className="subpage-hero-inner">
               <span className="kicker">Trabaja con nosotros</span>
-              <h1>Construye el futuro del trabajo con nosotros.</h1>
+              <h1>
+                Construye el futuro del trabajo con{" "}
+                <span className="hero-hand" style={{ whiteSpace: "nowrap" }}>
+                  nosotros
+                </span>
+                .
+              </h1>
               <p className="sub">
                 En RCKT buscamos personas curiosas, autónomas, colaborativas y abiertas a aprender constantemente. Si
                 quieres hacer parte de una cultura flexible, humana, diversa y preparada para el futuro, queremos
