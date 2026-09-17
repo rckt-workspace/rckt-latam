@@ -64,6 +64,7 @@ const cultura = [
 
 function TrabajaConNosotros() {
   const [vacantes, setVacantes] = useState<Vacante[] | null>(null);
+  const [detalle, setDetalle] = useState<Vacante | null>(null);
 
   useEffect(() => {
     supabase
@@ -183,6 +184,32 @@ function TrabajaConNosotros() {
         </section>
       </main>
       <SiteFooter />
+
+      {detalle && (
+        <div className="vacante-modal-overlay" role="dialog" aria-modal="true" onClick={() => setDetalle(null)}>
+          <div className="vacante-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="vacante-modal-close" type="button" aria-label="Cerrar" onClick={() => setDetalle(null)}>
+              ×
+            </button>
+            <h3>{detalle.titulo}</h3>
+            <p className="vacante-meta">{[detalle.area, "Remoto"].filter(Boolean).join(" · ")}</p>
+            {detalle.descripcion && <p style={{ whiteSpace: "pre-line" }}>{detalle.descripcion}</p>}
+            {detalle.requisitos && (
+              <>
+                <h4>Requisitos</h4>
+                <p style={{ whiteSpace: "pre-line" }}>{detalle.requisitos}</p>
+              </>
+            )}
+            <Link
+              className="btn btn-primary"
+              params={{ id: detalle.id }}
+              to="/trabaja-con-nosotros/aplicar/$id"
+            >
+              Aplicar →
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
