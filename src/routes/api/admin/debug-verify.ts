@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { verifyAdminSessionFromRequest } from "@/lib/admin-auth";
 
 export const Route = createFileRoute("/api/admin/debug-verify")({
+  staticData: { sitemap: false },
   server: {
     handlers: {
       GET: async ({ request }) => {

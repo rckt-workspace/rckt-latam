@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { extractSessionCookie } from "@/lib/admin-auth";
 
 export const Route = createFileRoute("/api/admin/debug")({
+  staticData: { sitemap: false },
   server: {
     handlers: {
       GET: async ({ request }) => {

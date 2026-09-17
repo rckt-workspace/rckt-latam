@@ -3,6 +3,7 @@ import { verifyAdminSessionFromRequest } from "@/lib/admin-auth";
 import { proxyUpstreamResponse, fetchWithTimeout, handleFetchError } from "@/lib/admin-proxy";
 
 export const Route = createFileRoute("/api/admin/ai/test-provider")({
+  staticData: { sitemap: false },
   server: {
     handlers: {
       POST: async ({ request }) => {

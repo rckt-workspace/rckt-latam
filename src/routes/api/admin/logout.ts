@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { clearSessionCookie } from "@/lib/admin-auth";
 
 export const Route = createFileRoute("/api/admin/logout")({
+  staticData: { sitemap: false },
   server: {
     handlers: {
       POST: async () => {

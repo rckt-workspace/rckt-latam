@@ -11,6 +11,7 @@ const LeadSchema = z.object({
 });
 
 export const Route = createFileRoute("/api/leads")({
+  staticData: { sitemap: false },
   server: {
     handlers: {
       POST: async ({ request }) => {

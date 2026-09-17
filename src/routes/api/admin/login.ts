@@ -7,6 +7,7 @@ import {
 } from "@/lib/admin-auth";
 
 export const Route = createFileRoute("/api/admin/login")({
+  staticData: { sitemap: false },
   server: {
     handlers: {
       POST: async ({ request }) => {

@@ -23,6 +23,7 @@ function sanitize(value: unknown, max: number): string | null {
 }
 
 export const Route = createFileRoute("/api/save-chat-lead")({
+  staticData: { sitemap: false },
   server: {
     handlers: {
       POST: async ({ request }) => {

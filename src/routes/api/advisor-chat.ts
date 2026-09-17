@@ -14,6 +14,7 @@ Tu rol:
 - Cierra invitando al siguiente paso (conversación con el equipo) cuando el contexto sea suficiente.`;
 
 export const Route = createFileRoute("/api/advisor-chat")({
+  staticData: { sitemap: false },
   server: {
     handlers: {
       POST: async ({ request }) => {
