@@ -56,25 +56,36 @@ export function PostulacionForm({
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError(null);
-    if (!archivo) {
+    const archivoFinal = archivo ?? inputRef.current?.files?.[0] ?? null;
+    console.log("[CV] envío; archivo en estado:", archivo?.name ?? null, "| en input:", inputRef.current?.files?.[0]?.name ?? null);
+    if (!archivoFinal) {
       setCvError("Adjunta tu hoja de vida en PDF antes de enviar.");
       dropRef.current?.scrollIntoView({ block: "center", behavior: "smooth" });
       dropRef.current?.focus();
       return;
     }
     setEnviando(true);
-    setPaso(archivo ? "Subiendo tu hoja de vida…" : "Enviando…");
+    setPaso("Subiendo tu hoja de vida…");
     const form = e.currentTarget;
     const fd = new FormData(form);
     try {
       let cvUrl: string | null = null;
-      if (archivo) {
-        const path = `${crypto.randomUUID()}-${archivo.name.replace(/[^\w.\-]+/g, "_")}`;
-        const { error: upErr } = await supabase.storage.from("cvs").upload(path, archivo, {
-          contentType: "application/pdf",
-          upsert: false,
-        });
-        if (upErr) throw new Error(`No pudimos subir el PDF: ${upErr.message}`);
+      {
+        const path = `${crypto.randomUUID()}-${archivoFinal.name.replace(/[^\w.\-]+/g, "_")}`;
+        console.log("[CV] subiendo a bucket 'cvs' →", path, archivoFinal.type, archivoFinal.size);
+        const { data: upData, error: upErr } = await supabase.storage
+          .from("cvs")
+          .upload(path, archivoFinal, { contentType: "application/pdf", upsert: false });
+        if (upErr) {
+          const detalle = JSON.stringify(upErr);
+          console.error("[CV] error al subir al Storage:", upErr, detalle);
+          const status = (upErr as unknown as { statusCode?: string | number }).statusCode;
+          throw new Error(
+            `No pudimos subir el PDF (${status ?? "sin código"}): ${upErr.message}. ` +
+              "Si el problema sigue, envíanos tu CV a hola@rckt.es.",
+          );
+        }
+        console.log("[CV] subida OK:", upData);
         cvUrl = path;
       }
       setPaso("Enviando tu postulación…");
