@@ -1105,3 +1105,25 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
   border-radius:999px; background:var(--carbon); color:var(--papel);
   padding:8px 18px; font-size:13px; font-weight:600;
 }
+
+/* ===== v14: modal de vacante + carga de CV ===== */
+.rckt-site .vacante-modal-overlay{position:fixed;inset:0;z-index:80;background:rgba(20,18,16,.52);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:24px;overflow-y:auto}
+.rckt-site .vacante-modal{position:relative;width:min(640px,100%);max-height:86vh;overflow-y:auto;background:var(--papel,#EDECE7);border:1px solid var(--line);border-radius:18px;padding:34px 32px;box-shadow:0 24px 70px rgba(0,0,0,.24)}
+.rckt-site .vacante-modal h3{margin:0 0 6px;font-size:24px;font-weight:800}
+.rckt-site .vacante-modal h4{margin:22px 0 6px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--carbon-soft)}
+.rckt-site .vacante-modal p{margin:0 0 12px}
+.rckt-site .vacante-modal .btn{margin-top:18px}
+.rckt-site .vacante-modal-close{position:absolute;top:12px;right:14px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:transparent;font-size:22px;line-height:1;cursor:pointer;color:var(--carbon)}
+.rckt-site .vacante-modal-close:hover{border-color:var(--naranja);color:var(--naranja)}
+
+.rckt-site .cv-input-hidden{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.rckt-site .cv-drop{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding:26px 18px;border:2px dashed var(--line);border-radius:14px;cursor:pointer;transition:border-color .2s,background .2s}
+.rckt-site .cv-drop:hover,.rckt-site .cv-drop.dragging{border-color:var(--naranja);background:color-mix(in srgb,var(--naranja) 6%,transparent)}
+.rckt-site .cv-drop strong{font-size:14px;font-weight:600}
+.rckt-site .cv-icon{color:var(--naranja);display:flex}
+.rckt-site .cv-hint{font-size:12px;color:var(--carbon-soft)}
+.rckt-site .cv-file{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,#fff 46%,transparent)}
+.rckt-site .cv-check{width:22px;height:22px;border-radius:50%;background:var(--naranja);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px}
+.rckt-site .cv-name{font-size:14px;font-weight:600;word-break:break-all}
+.rckt-site .cv-size{font-size:12px;color:var(--carbon-soft)}
+.rckt-site .cv-remove{margin-left:auto;background:none;border:none;font-size:13px;color:var(--naranja);cursor:pointer;text-decoration:underline}

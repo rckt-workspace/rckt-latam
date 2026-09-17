@@ -189,7 +189,7 @@ function Login() {
 const vacanteVacia = {
   titulo: "",
   area: "",
-  modalidad: "",
+  modalidad: "Remoto",
   ubicacion: "",
   descripcion: "",
   requisitos: "",
@@ -223,7 +223,7 @@ function Dashboard({ email }: { email: string }) {
     const payload = {
       titulo: editando.titulo,
       area: editando.area || null,
-      modalidad: editando.modalidad || null,
+      modalidad: "Remoto",
       ubicacion: editando.ubicacion || null,
       descripcion: editando.descripcion || null,
       requisitos: editando.requisitos || null,
@@ -297,11 +297,9 @@ function Dashboard({ email }: { email: string }) {
             <form className="mt-5 grid gap-3 panel-card" onSubmit={guardar}>
               <input placeholder="Título" required value={editando.titulo}
                 onChange={(e) => setEditando({ ...editando, titulo: e.target.value })} />
-              <div className="grid gap-3 sm:grid-cols-3">
+              <div className="grid gap-3 sm:grid-cols-2">
                 <input placeholder="Área" value={editando.area}
                   onChange={(e) => setEditando({ ...editando, area: e.target.value })} />
-                <input placeholder="Modalidad" value={editando.modalidad}
-                  onChange={(e) => setEditando({ ...editando, modalidad: e.target.value })} />
                 <input placeholder="Ubicación" value={editando.ubicacion}
                   onChange={(e) => setEditando({ ...editando, ubicacion: e.target.value })} />
               </div>

@@ -64,6 +64,7 @@ const cultura = [
 
 function TrabajaConNosotros() {
   const [vacantes, setVacantes] = useState<Vacante[] | null>(null);
+  const [detalle, setDetalle] = useState<Vacante | null>(null);
 
   useEffect(() => {
     supabase
@@ -151,13 +152,11 @@ function TrabajaConNosotros() {
                 <article className="vacante-card rv" key={v.id}>
                   <div className="vacante-info">
                     <h3>{v.titulo}</h3>
-                    <p className="vacante-meta">{[v.area, v.modalidad, v.ubicacion].filter(Boolean).join(" · ")}</p>
-                    {v.descripcion && <p>{v.descripcion}</p>}
-                    {v.requisitos && <p style={{ whiteSpace: "pre-line" }}>{v.requisitos}</p>}
+                    <p className="vacante-meta">{[v.area, "Remoto"].filter(Boolean).join(" · ")}</p>
                   </div>
-                  <Link className="btn btn-primary btn-sm" params={{ id: v.id }} to="/trabaja-con-nosotros/aplicar/$id">
-                    Aplicar →
-                  </Link>
+                  <button className="btn btn-primary btn-sm" type="button" onClick={() => setDetalle(v)}>
+                    Ver vacante →
+                  </button>
                 </article>
               ))}
             </div>
@@ -185,6 +184,32 @@ function TrabajaConNosotros() {
         </section>
       </main>
       <SiteFooter />
+
+      {detalle && (
+        <div className="vacante-modal-overlay" role="dialog" aria-modal="true" onClick={() => setDetalle(null)}>
+          <div className="vacante-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="vacante-modal-close" type="button" aria-label="Cerrar" onClick={() => setDetalle(null)}>
+              ×
+            </button>
+            <h3>{detalle.titulo}</h3>
+            <p className="vacante-meta">{[detalle.area, "Remoto"].filter(Boolean).join(" · ")}</p>
+            {detalle.descripcion && <p style={{ whiteSpace: "pre-line" }}>{detalle.descripcion}</p>}
+            {detalle.requisitos && (
+              <>
+                <h4>Requisitos</h4>
+                <p style={{ whiteSpace: "pre-line" }}>{detalle.requisitos}</p>
+              </>
+            )}
+            <Link
+              className="btn btn-primary"
+              params={{ id: detalle.id }}
+              to="/trabaja-con-nosotros/aplicar/$id"
+            >
+              Aplicar →
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
