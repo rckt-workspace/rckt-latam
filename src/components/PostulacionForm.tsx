@@ -20,13 +20,21 @@ export function PostulacionForm({
   const [cvError, setCvError] = useState<string | null>(null);
   const [arrastrando, setArrastrando] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const dropRef = useRef<HTMLDivElement>(null);
+  const dropRef = useRef<HTMLLabelElement>(null);
 
   function tomarArchivo(file: File | null | undefined) {
     setCvError(null);
-    if (!file) return;
+    console.log("[CV] archivo recibido:", file
+      ? { nombre: file.name, tipo: file.type, tamanoMB: (file.size / 1024 / 1024).toFixed(2) }
+      : file);
+    if (!file) {
+      setCvError("No recibimos ningún archivo. Intenta seleccionarlo de nuevo.");
+      return;
+    }
     const esPdf =
-      file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+      file.type === "application/pdf" ||
+      file.type === "application/x-pdf" ||
+      file.name.toLowerCase().endsWith(".pdf");
     if (!esPdf) {
       setArchivo(null);
       if (inputRef.current) inputRef.current.value = "";
@@ -48,25 +56,36 @@ export function PostulacionForm({
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError(null);
-    if (!archivo) {
+    const archivoFinal = archivo ?? inputRef.current?.files?.[0] ?? null;
+    console.log("[CV] envío; archivo en estado:", archivo?.name ?? null, "| en input:", inputRef.current?.files?.[0]?.name ?? null);
+    if (!archivoFinal) {
       setCvError("Adjunta tu hoja de vida en PDF antes de enviar.");
       dropRef.current?.scrollIntoView({ block: "center", behavior: "smooth" });
       dropRef.current?.focus();
       return;
     }
     setEnviando(true);
-    setPaso(archivo ? "Subiendo tu hoja de vida…" : "Enviando…");
+    setPaso("Subiendo tu hoja de vida…");
     const form = e.currentTarget;
     const fd = new FormData(form);
     try {
       let cvUrl: string | null = null;
-      if (archivo) {
-        const path = `${crypto.randomUUID()}-${archivo.name.replace(/[^\w.\-]+/g, "_")}`;
-        const { error: upErr } = await supabase.storage.from("cvs").upload(path, archivo, {
-          contentType: "application/pdf",
-          upsert: false,
-        });
-        if (upErr) throw new Error(`No pudimos subir el PDF: ${upErr.message}`);
+      {
+        const path = `${crypto.randomUUID()}-${archivoFinal.name.replace(/[^\w.\-]+/g, "_")}`;
+        console.log("[CV] subiendo a bucket 'cvs' →", path, archivoFinal.type, archivoFinal.size);
+        const { data: upData, error: upErr } = await supabase.storage
+          .from("cvs")
+          .upload(path, archivoFinal, { contentType: "application/pdf", upsert: false });
+        if (upErr) {
+          const detalle = JSON.stringify(upErr);
+          console.error("[CV] error al subir al Storage:", upErr, detalle);
+          const status = (upErr as unknown as { statusCode?: string | number }).statusCode;
+          throw new Error(
+            `No pudimos subir el PDF (${status ?? "sin código"}): ${upErr.message}. ` +
+              "Si el problema sigue, envíanos tu CV a hola@rckt.es.",
+          );
+        }
+        console.log("[CV] subida OK:", upData);
         cvUrl = path;
       }
       setPaso("Enviando tu postulación…");
@@ -140,8 +159,11 @@ export function PostulacionForm({
             id={`cv-${tipo}`}
             name="cv"
             type="file"
-            accept="application/pdf,.pdf"
+            accept=".pdf,application/pdf"
             className="cv-input-hidden"
+            onClick={(e) => {
+              (e.currentTarget as HTMLInputElement).value = "";
+            }}
             onChange={(e) => {
               tomarArchivo(e.target.files?.[0]);
             }}
@@ -174,13 +196,10 @@ export function PostulacionForm({
               </button>
             </div>
           ) : (
-            <div
+            <label
               ref={dropRef}
+              htmlFor={`cv-${tipo}`}
               className={`cv-drop${arrastrando ? " dragging" : ""}${cvError ? " has-error" : ""}`}
-              onClick={() => {
-                if (inputRef.current) inputRef.current.value = "";
-                inputRef.current?.click();
-              }}
               onDragOver={(e) => {
                 e.preventDefault();
                 setArrastrando(true);
@@ -214,7 +233,7 @@ export function PostulacionForm({
               </span>
               <strong>Arrastra tu CV aquí o haz clic para seleccionar</strong>
               <span className="cv-hint">PDF, máx. {MAX_MB} MB</span>
-            </div>
+            </label>
           )}
           {cvError && <p className="form-error cv-error">{cvError}</p>}
         </div>
