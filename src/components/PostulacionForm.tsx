@@ -233,7 +233,7 @@ export function PostulacionForm({
               </span>
               <strong>Arrastra tu CV aquí o haz clic para seleccionar</strong>
               <span className="cv-hint">PDF, máx. {MAX_MB} MB</span>
-            </div>
+            </label>
           )}
           {cvError && <p className="form-error cv-error">{cvError}</p>}
         </div>
