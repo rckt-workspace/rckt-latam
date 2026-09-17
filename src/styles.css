@@ -1133,3 +1133,44 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 /* v15 — zona de subida de CV: estado de error */
 .rckt-site .cv-drop.has-error{border-color:#c0392b;background:color-mix(in srgb,#c0392b 6%,transparent)}
 .rckt-site .cv-error{margin-top:8px;font-size:13px;color:#c0392b}
+
+/* ===== v15: panel People & Culture — badges y modal de detalle ===== */
+.rckt-panel .badge-tipo{
+  display:inline-block; border-radius:999px; padding:4px 11px;
+  font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  border:1px solid transparent; white-space:nowrap;
+}
+.rckt-panel .badge-candidato{background:var(--naranja); color:#fff; border-color:var(--naranja);}
+.rckt-panel .badge-servicio{background:transparent; color:var(--carbon); border-color:var(--carbon);}
+.rckt-panel .panel-btn-danger{
+  border-radius:999px; border:1px solid rgba(180,40,20,.45); background:transparent;
+  padding:8px 16px; font-size:13px; font-weight:600; color:#a8331c; transition:all .2s ease;
+}
+.rckt-panel .panel-btn-danger:hover{background:#a8331c; border-color:#a8331c; color:#fff;}
+
+.panel-modal-overlay{
+  position:fixed; inset:0; z-index:90; display:flex; align-items:flex-start; justify-content:center;
+  padding:24px; overflow-y:auto; background:rgba(20,18,16,.52); backdrop-filter:blur(4px);
+}
+.panel-modal{
+  position:relative; width:100%; max-width:600px; margin:6vh auto;
+  border:1px solid var(--line); border-radius:18px; padding:30px 32px;
+  background:var(--papel); box-shadow:0 26px 60px rgba(0,0,0,.22);
+}
+.panel-modal h3{font-size:22px; font-weight:800; margin:0;}
+.panel-modal .panel-modal-close{
+  position:absolute; top:12px; right:16px; font-size:26px; line-height:1;
+  color:var(--carbon-soft); background:none; border:none; cursor:pointer;
+}
+.panel-modal .panel-modal-close:hover{color:var(--naranja-deep);}
+.panel-modal .dato-grid{display:grid; gap:10px; margin-top:18px;}
+.panel-modal .dato{display:flex; gap:10px; font-size:14.5px; line-height:1.5;}
+.panel-modal .dato span:first-child{
+  min-width:112px; color:var(--carbon-soft); font-size:12px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; padding-top:3px;
+}
+.panel-modal .modal-mensaje{
+  margin-top:18px; border-top:1px solid var(--line); padding-top:16px;
+  white-space:pre-line; font-size:15px; line-height:1.65; color:var(--carbon);
+}
+.panel-modal .modal-acciones{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;}
