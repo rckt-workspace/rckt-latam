@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
+import { registrarEquipo } from "@/lib/registro.functions";
 import { useCallback, useEffect, useState } from "react";
 import type { Session } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
@@ -87,10 +89,12 @@ function Shell({ children }: { children: React.ReactNode }) {
 }
 
 function Login() {
+  const [modo, setModo] = useState<"login" | "registro">("login");
   const [error, setError] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
+  const registrar = useServerFn(registrarEquipo);
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setEnviando(true);
     setError(null);
@@ -103,18 +107,84 @@ function Login() {
     setEnviando(false);
   }
 
+  async function onRegistro(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError(null);
+    const fd = new FormData(e.currentTarget);
+    const nombre = String(fd.get("nombre")).trim();
+    const email = String(fd.get("email")).trim().toLowerCase();
+    const password = String(fd.get("password"));
+    const password2 = String(fd.get("password2"));
+
+    if (!email.endsWith("@rckt.es")) {
+      setError("El registro está restringido al equipo de RCKT.");
+      return;
+    }
+    if (password.length < 8) {
+      setError("La contraseña debe tener al menos 8 caracteres.");
+      return;
+    }
+    if (password !== password2) {
+      setError("Las contraseñas no coinciden.");
+      return;
+    }
+
+    setEnviando(true);
+    try {
+      const res = await registrar({ data: { nombre, email, password } });
+      if (!res.ok) {
+        setError(res.error);
+        setEnviando(false);
+        return;
+      }
+      const { error: err } = await supabase.auth.signInWithPassword({ email, password });
+      if (err) {
+        setError("Cuenta creada. Inicia sesión con tus datos.");
+        setModo("login");
+      }
+    } catch {
+      setError("No pudimos crear la cuenta. Inténtalo de nuevo.");
+    }
+    setEnviando(false);
+  }
+
   return (
     <div className="mx-auto max-w-[400px] rounded-[16px] border border-[var(--line)] bg-white/50 p-7 backdrop-blur-[10px]">
       <h1 className="text-[24px] font-bold">Panel interno RCKT</h1>
       <p className="mt-2 text-[14px] text-[var(--carbon-soft)]">Acceso solo para el equipo.</p>
-      <form className="mt-6 grid gap-4" onSubmit={onSubmit}>
-        <input className={input} name="email" type="email" placeholder="Correo" required />
-        <input className={input} name="password" type="password" placeholder="Contraseña" required />
-        {error && <p className="text-[14px] text-[var(--naranja-deep)]">{error}</p>}
-        <button className={btn} disabled={enviando} type="submit">
-          {enviando ? "Entrando…" : "Entrar"}
-        </button>
-      </form>
+
+      {modo === "login" ? (
+        <form className="mt-6 grid gap-4" onSubmit={onLogin}>
+          <input className={input} name="email" type="email" placeholder="Correo" required />
+          <input className={input} name="password" type="password" placeholder="Contraseña" required />
+          {error && <p className="text-[14px] text-[var(--naranja-deep)]">{error}</p>}
+          <button className={btn} disabled={enviando} type="submit">
+            {enviando ? "Entrando…" : "Entrar"}
+          </button>
+        </form>
+      ) : (
+        <form className="mt-6 grid gap-4" onSubmit={onRegistro}>
+          <input className={input} name="nombre" type="text" placeholder="Nombre completo" required />
+          <input className={input} name="email" type="email" placeholder="Correo @rckt.es" required />
+          <input className={input} name="password" type="password" placeholder="Contraseña" required minLength={8} />
+          <input className={input} name="password2" type="password" placeholder="Confirmar contraseña" required minLength={8} />
+          {error && <p className="text-[14px] text-[var(--naranja-deep)]">{error}</p>}
+          <button className={btn} disabled={enviando} type="submit">
+            {enviando ? "Creando cuenta…" : "Crear cuenta"}
+          </button>
+        </form>
+      )}
+
+      <button
+        type="button"
+        className="mt-4 text-[13px] font-semibold text-[var(--naranja-deep)] underline"
+        onClick={() => {
+          setError(null);
+          setModo(modo === "login" ? "registro" : "login");
+        }}
+      >
+        {modo === "login" ? "¿No tienes cuenta? Regístrate" : "¿Ya tienes cuenta? Inicia sesión"}
+      </button>
     </div>
   );
 }
