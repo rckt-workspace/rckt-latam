@@ -6,7 +6,7 @@ import { PostulacionForm } from "@/components/PostulacionForm";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
-export const Route = createFileRoute("/trabaja-con-nosotros/aplicar/$id")({
+export const Route = createFileRoute("/trabaja-con-nosotros_/aplicar/$id")({
   staticData: { sitemap: false },
   head: () => ({
     meta: [
