@@ -927,10 +927,7 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
   position:absolute; inset:0; z-index:0; pointer-events:none;
   background-color:var(--papel);
   background-image:
-    radial-gradient(circle 420px at 102% -8%, rgba(244,88,29,.92) 0%, rgba(244,88,29,.50) 28%, rgba(244,88,29,.16) 54%, transparent 76%),
-    radial-gradient(circle 180px at 18% 26%, rgba(244,88,29,.62) 0%, rgba(244,88,29,.30) 38%, transparent 70%),
-    radial-gradient(circle 220px at 74% 58%, rgba(244,88,29,.58) 0%, rgba(244,88,29,.26) 40%, transparent 72%),
-    radial-gradient(circle 260px at 38% 96%, rgba(244,88,29,.52) 0%, rgba(244,88,29,.22) 42%, transparent 70%);
+    radial-gradient(circle 300px at 102% -6%, rgba(244,88,29,.56) 0%, rgba(244,88,29,.22) 32%, transparent 68%);
 }
 .rckt-site .subpage-hero .container{position:relative; z-index:1;}
 .rckt-site .subpage-hero.subpage-hero-sm{padding:150px 0 20px;}
@@ -1002,6 +999,13 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
   .rckt-site.tcn-page .subpage-hero-photo-overlay{background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.89) 50%,rgba(255,255,255,.42) 100%);}
   .rckt-site.tcn-page .tcn-orb-hero-corner{width:280px;height:280px;right:-170px;top:-120px;}
   .rckt-site.tcn-page .tcn-orb-hero{width:130px;height:130px;right:-20px;bottom:4%;}
+}
+
+/* Página de aplicar: mucho menos naranja, solo un par de manchas suaves. */
+.rckt-site.apply-page{
+  background-image:
+    radial-gradient(circle 260px at 96% 12%, rgba(244,88,29,.42) 0%, rgba(244,88,29,.18) 34%, transparent 68%),
+    radial-gradient(circle 200px at 4% 88%, rgba(244,88,29,.34) 0%, rgba(244,88,29,.12) 36%, transparent 70%);
 }
 
 .rckt-site .vacantes-list{display:grid; gap:18px;}
