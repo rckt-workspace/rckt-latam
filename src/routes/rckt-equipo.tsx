@@ -10,16 +10,16 @@ export const Route = createFileRoute("/rckt-equipo")({
   staticData: { sitemap: false },
   head: () => ({
     meta: [
-      { title: "Panel interno — RCKT" },
-      { name: "description", content: "Acceso restringido al equipo de RCKT." },
+      { title: "People & Culture — RCKT" },
+      { name: "description", content: "Acceso restringido al equipo People & Culture de RCKT." },
       { name: "robots", content: "noindex, nofollow" },
-      { property: "og:title", content: "Panel interno — RCKT" },
-      { property: "og:description", content: "Acceso restringido al equipo de RCKT." },
+      { property: "og:title", content: "People & Culture — RCKT" },
+      { property: "og:description", content: "Acceso restringido al equipo People & Culture de RCKT." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
   }),
-  component: PanelRH,
+  component: PanelPC,
 });
 
 type Vacante = {
@@ -50,7 +50,7 @@ type Postulacion = {
 const btn = "panel-btn";
 const btnGhost = "panel-btn-ghost";
 
-function PanelRH() {
+function PanelPC() {
   const [session, setSession] = useState<Session | null>(null);
   const [cargando, setCargando] = useState(true);
 
@@ -147,7 +147,7 @@ function Login() {
   return (
     <div className="panel-card panel-login">
       <span className="logo"><img alt="RCKT" src={logoDarkAsset.url} /></span>
-      <h1 className="text-[24px] font-bold">Panel interno RCKT</h1>
+      <h1 className="text-[24px] font-bold">People & Culture</h1>
       <p className="mt-2 text-[14px] text-[var(--carbon-soft)]">Acceso solo para el equipo.</p>
 
       {modo === "login" ? (
@@ -260,11 +260,11 @@ function Dashboard({ email }: { email: string }) {
 
   return (
     <div>
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <h1 className="text-[26px] font-bold">Panel de RH</h1>
-          <p className="text-[14px] text-[var(--carbon-soft)]">{email}</p>
-        </div>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h1 className="text-[26px] font-bold">People & Culture</h1>
+            <p className="text-[14px] text-[var(--carbon-soft)]">{email}</p>
+          </div>
         <button className={btnGhost} onClick={() => supabase.auth.signOut()} type="button">
           Cerrar sesión
         </button>

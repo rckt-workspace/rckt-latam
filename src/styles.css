@@ -1058,6 +1058,7 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 .rckt-site .form-exito{font-size:16.5px; color:var(--carbon); font-weight:600; line-height:1.6;}
 
 /* Panel interno: mismo lenguaje visual, sin manchas. */
+.rckt-site.rckt-panel{background-image:none}
 .rckt-panel{min-height:100vh; padding:56px 20px 72px;}
 .rckt-panel .panel-wrap{max-width:1120px; margin:0 auto;}
 .rckt-panel .panel-card{
