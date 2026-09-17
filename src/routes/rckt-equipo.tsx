@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import logoDarkAsset from "@/assets/rckt-logo-dark.png.asset.json";
 import { useServerFn } from "@tanstack/react-start";
 import { registrarEquipo } from "@/lib/registro.functions";
 import { useCallback, useEffect, useState } from "react";
@@ -46,11 +47,9 @@ type Postulacion = {
   fecha: string;
 };
 
-const input =
-  "w-full rounded-[10px] border border-[var(--line-strong)] bg-white/70 px-3 py-2 text-[15px] text-[var(--carbon)] outline-none focus:border-[var(--naranja)]";
-const btn = "rounded-full bg-[var(--naranja)] px-5 py-2.5 text-[14px] font-semibold text-white disabled:opacity-60";
-const btnGhost =
-  "rounded-full border border-[var(--line-strong)] px-4 py-2 text-[13px] font-semibold text-[var(--carbon)]";
+const input = "";
+const btn = "panel-btn";
+const btnGhost = "panel-btn-ghost";
 
 function PanelRH() {
   const [session, setSession] = useState<Session | null>(null);
@@ -80,10 +79,8 @@ function PanelRH() {
 
 function Shell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="rckt-site">
-      <main className="min-h-screen bg-[var(--papel)] px-5 py-14 text-[var(--carbon)]">
-        <div className="mx-auto max-w-[1180px]">{children}</div>
-      </main>
+    <div className="rckt-site rckt-panel">
+      <div className="panel-wrap">{children}</div>
     </div>
   );
 }
@@ -149,14 +146,15 @@ function Login() {
   }
 
   return (
-    <div className="mx-auto max-w-[400px] rounded-[16px] border border-[var(--line)] bg-white/50 p-7 backdrop-blur-[10px]">
+    <div className="panel-card panel-login">
+      <span className="logo"><img alt="RCKT" src={logoDarkAsset.url} /></span>
       <h1 className="text-[24px] font-bold">Panel interno RCKT</h1>
       <p className="mt-2 text-[14px] text-[var(--carbon-soft)]">Acceso solo para el equipo.</p>
 
       {modo === "login" ? (
         <form className="mt-6 grid gap-4" onSubmit={onLogin}>
-          <input className={input} name="email" type="email" placeholder="Correo" required />
-          <input className={input} name="password" type="password" placeholder="Contraseña" required />
+          <input name="email" type="email" placeholder="Correo" required />
+          <input name="password" type="password" placeholder="Contraseña" required />
           {error && <p className="text-[14px] text-[var(--naranja-deep)]">{error}</p>}
           <button className={btn} disabled={enviando} type="submit">
             {enviando ? "Entrando…" : "Entrar"}
@@ -164,10 +162,10 @@ function Login() {
         </form>
       ) : (
         <form className="mt-6 grid gap-4" onSubmit={onRegistro}>
-          <input className={input} name="nombre" type="text" placeholder="Nombre completo" required />
-          <input className={input} name="email" type="email" placeholder="Correo @rckt.es" required />
-          <input className={input} name="password" type="password" placeholder="Contraseña" required minLength={8} />
-          <input className={input} name="password2" type="password" placeholder="Confirmar contraseña" required minLength={8} />
+          <input name="nombre" type="text" placeholder="Nombre completo" required />
+          <input name="email" type="email" placeholder="Correo @rckt.es" required />
+          <input name="password" type="password" placeholder="Contraseña" required minLength={8} />
+          <input name="password2" type="password" placeholder="Confirmar contraseña" required minLength={8} />
           {error && <p className="text-[14px] text-[var(--naranja-deep)]">{error}</p>}
           <button className={btn} disabled={enviando} type="submit">
             {enviando ? "Creando cuenta…" : "Crear cuenta"}
@@ -281,7 +279,7 @@ function Dashboard({ email }: { email: string }) {
             onClick={() => setTab(t)}
             className={
               tab === t
-                ? "rounded-full bg-[var(--carbon)] px-4 py-2 text-[13px] font-semibold text-[var(--papel)]"
+                ? "panel-tab-active"
                 : btnGhost
             }
           >
@@ -297,20 +295,20 @@ function Dashboard({ email }: { email: string }) {
           </button>
 
           {editando && (
-            <form className="mt-5 grid gap-3 rounded-[14px] border border-[var(--line)] bg-white/50 p-5" onSubmit={guardar}>
-              <input className={input} placeholder="Título" required value={editando.titulo}
+            <form className="mt-5 grid gap-3 panel-card" onSubmit={guardar}>
+              <input placeholder="Título" required value={editando.titulo}
                 onChange={(e) => setEditando({ ...editando, titulo: e.target.value })} />
               <div className="grid gap-3 sm:grid-cols-3">
-                <input className={input} placeholder="Área" value={editando.area}
+                <input placeholder="Área" value={editando.area}
                   onChange={(e) => setEditando({ ...editando, area: e.target.value })} />
-                <input className={input} placeholder="Modalidad" value={editando.modalidad}
+                <input placeholder="Modalidad" value={editando.modalidad}
                   onChange={(e) => setEditando({ ...editando, modalidad: e.target.value })} />
-                <input className={input} placeholder="Ubicación" value={editando.ubicacion}
+                <input placeholder="Ubicación" value={editando.ubicacion}
                   onChange={(e) => setEditando({ ...editando, ubicacion: e.target.value })} />
               </div>
-              <textarea className={input} placeholder="Descripción" rows={3} value={editando.descripcion}
+              <textarea placeholder="Descripción" rows={3} value={editando.descripcion}
                 onChange={(e) => setEditando({ ...editando, descripcion: e.target.value })} />
-              <textarea className={input} placeholder="Requisitos" rows={3} value={editando.requisitos}
+              <textarea placeholder="Requisitos" rows={3} value={editando.requisitos}
                 onChange={(e) => setEditando({ ...editando, requisitos: e.target.value })} />
               <div className="flex gap-2">
                 <button className={btn} type="submit">Guardar</button>
@@ -322,7 +320,7 @@ function Dashboard({ email }: { email: string }) {
           <div className="mt-6 grid gap-3">
             {vacantes.length === 0 && <p className="text-[var(--carbon-soft)]">Aún no hay vacantes creadas.</p>}
             {vacantes.map((v) => (
-              <div key={v.id} className="flex flex-wrap items-center justify-between gap-4 rounded-[14px] border border-[var(--line)] bg-white/50 p-4">
+              <div key={v.id} className="panel-card hoverable flex flex-wrap items-center justify-between gap-4">
                 <div>
                   <p className="text-[17px] font-bold">{v.titulo}</p>
                   <p className="text-[13px] text-[var(--carbon-soft)]">
@@ -356,13 +354,13 @@ function Dashboard({ email }: { email: string }) {
       {tab === "postulaciones" && (
         <section className="mt-7">
           <div className="flex flex-wrap gap-3">
-            <select className={`${input} max-w-[260px]`} value={filtroVacante} onChange={(e) => setFiltroVacante(e.target.value)}>
+            <select className="max-w-[260px]" value={filtroVacante} onChange={(e) => setFiltroVacante(e.target.value)}>
               <option value="todas">Todas las vacantes</option>
               {vacantes.map((v) => (
                 <option key={v.id} value={v.id}>{v.titulo}</option>
               ))}
             </select>
-            <select className={`${input} max-w-[200px]`} value={filtroTipo} onChange={(e) => setFiltroTipo(e.target.value)}>
+            <select className="max-w-[200px]" value={filtroTipo} onChange={(e) => setFiltroTipo(e.target.value)}>
               <option value="todos">Todos los tipos</option>
               <option value="candidato">Candidatos</option>
               <option value="servicio">Servicios</option>
@@ -372,7 +370,7 @@ function Dashboard({ email }: { email: string }) {
           <div className="mt-5 grid gap-3">
             {filtradas.length === 0 && <p className="text-[var(--carbon-soft)]">No hay postulaciones con estos filtros.</p>}
             {filtradas.map((p) => (
-              <div key={p.id} className="flex flex-wrap items-center justify-between gap-4 rounded-[14px] border border-[var(--line)] bg-white/50 p-4">
+              <div key={p.id} className="panel-card hoverable flex flex-wrap items-center justify-between gap-4">
                 <div>
                   <p className="text-[16px] font-bold">{p.nombre} <span className="text-[12px] font-medium text-[var(--naranja)]">{p.tipo}</span></p>
                   <p className="text-[13px] text-[var(--carbon-soft)]">
@@ -396,7 +394,7 @@ function Dashboard({ email }: { email: string }) {
 
       {detalle && (
         <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/50 p-4 py-10" onClick={() => setDetalle(null)}>
-          <div className="w-full max-w-[560px] rounded-[16px] border border-[var(--line)] bg-[var(--papel)] p-7" onClick={(e) => e.stopPropagation()}>
+          <div className="panel-card w-full max-w-[560px] p-7" onClick={(e) => e.stopPropagation()}>
             <h3 className="text-[20px] font-bold">{detalle.nombre}</h3>
             <p className="mt-2 text-[14px] text-[var(--carbon-soft)]">{detalle.email}</p>
             {detalle.telefono && <p className="text-[14px] text-[var(--carbon-soft)]">{detalle.telefono}</p>}
