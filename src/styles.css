@@ -1057,9 +1057,19 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 .rckt-site .form-error{font-size:14px; color:var(--naranja-deep); font-weight:600;}
 .rckt-site .form-exito{font-size:16.5px; color:var(--carbon); font-weight:600; line-height:1.6;}
 
-/* Panel interno: mismo lenguaje visual, sin manchas. */
+/* Panel interno: mismo lenguaje visual, con 2-3 manchas naranjas muy suaves. */
 .rckt-site.rckt-panel{background-image:none}
-.rckt-panel{min-height:100vh; padding:56px 20px 72px;}
+.rckt-panel{min-height:100vh; padding:56px 20px 72px; position:relative; overflow:hidden;}
+.rckt-panel::after{
+  content:"";
+  position:fixed; inset:0;
+  pointer-events:none; z-index:0;
+  background:
+    radial-gradient(circle 180px at 104% -4%, rgba(244,88,29,.22) 0%, rgba(244,88,29,.08) 45%, transparent 70%),
+    radial-gradient(circle 140px at 2% 96%, rgba(244,88,29,.18) 0%, rgba(244,88,29,.06) 45%, transparent 70%),
+    radial-gradient(circle 120px at 76% 64%, rgba(244,88,29,.14) 0%, rgba(244,88,29,.04) 45%, transparent 70%);
+}
+.rckt-panel .panel-wrap{position:relative; z-index:1;}
 .rckt-panel .panel-wrap{max-width:1120px; margin:0 auto;}
 .rckt-panel .panel-card{
   border:1px solid var(--line); border-radius:16px; padding:22px 24px;
