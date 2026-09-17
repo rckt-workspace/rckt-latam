@@ -151,13 +151,11 @@ function TrabajaConNosotros() {
                 <article className="vacante-card rv" key={v.id}>
                   <div className="vacante-info">
                     <h3>{v.titulo}</h3>
-                    <p className="vacante-meta">{[v.area, v.modalidad, v.ubicacion].filter(Boolean).join(" · ")}</p>
-                    {v.descripcion && <p>{v.descripcion}</p>}
-                    {v.requisitos && <p style={{ whiteSpace: "pre-line" }}>{v.requisitos}</p>}
+                    <p className="vacante-meta">{[v.area, "Remoto"].filter(Boolean).join(" · ")}</p>
                   </div>
-                  <Link className="btn btn-primary btn-sm" params={{ id: v.id }} to="/trabaja-con-nosotros/aplicar/$id">
-                    Aplicar →
-                  </Link>
+                  <button className="btn btn-primary btn-sm" type="button" onClick={() => setDetalle(v)}>
+                    Ver vacante →
+                  </button>
                 </article>
               ))}
             </div>
