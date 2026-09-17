@@ -24,7 +24,7 @@ export const Route = createFileRoute("/trabaja-con-nosotros_/aplicar/$id")({
 });
 
 function AplicarVacante() {
-  const { id } = useParams({ from: "/trabaja-con-nosotros/aplicar/$id" });
+  const { id } = useParams({ from: "/trabaja-con-nosotros_/aplicar/$id" });
   const navigate = useNavigate();
   const [titulo, setTitulo] = useState<string | null>(null);
   const [meta, setMeta] = useState<string>("");
