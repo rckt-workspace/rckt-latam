@@ -865,7 +865,7 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 }
 [data-theme="dark"] .hero .theme-switch button.active{
   background:var(--hero-ink);
-  color:var(--papel-fija);
+  color:#fff;
   box-shadow:0 2px 10px rgba(0,0,0,.28);
 }
 
