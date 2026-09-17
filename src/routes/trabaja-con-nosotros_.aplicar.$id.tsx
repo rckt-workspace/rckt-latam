@@ -51,7 +51,7 @@ function AplicarVacante() {
   }
 
   return (
-    <div className="rckt-site">
+    <div className="rckt-site apply-page">
       <main id="top">
         <section className="subpage-hero subpage-hero-sm">
           <SiteHeader />
