@@ -17,20 +17,31 @@ export function PostulacionForm({
   const [listo, setListo] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [archivo, setArchivo] = useState<File | null>(null);
+  const [cvError, setCvError] = useState<string | null>(null);
   const [arrastrando, setArrastrando] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const dropRef = useRef<HTMLDivElement>(null);
 
   function tomarArchivo(file: File | null | undefined) {
-    setError(null);
+    setCvError(null);
     if (!file) return;
-    if (file.type !== "application/pdf" && !file.name.toLowerCase().endsWith(".pdf")) {
-      setError("El archivo debe ser un PDF.");
+    const esPdf =
+      file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+    if (!esPdf) {
+      setArchivo(null);
+      if (inputRef.current) inputRef.current.value = "";
+      setCvError("El archivo debe ser un PDF.");
       return;
     }
     if (file.size > MAX_MB * 1024 * 1024) {
-      setError(`El archivo pesa ${(file.size / 1024 / 1024).toFixed(1)} MB. El máximo es ${MAX_MB} MB.`);
+      setArchivo(null);
+      if (inputRef.current) inputRef.current.value = "";
+      setCvError(
+        `El archivo pesa ${(file.size / 1024 / 1024).toFixed(1)} MB. El máximo es ${MAX_MB} MB.`,
+      );
       return;
     }
+    setError(null);
     setArchivo(file);
   }
 
@@ -38,7 +49,9 @@ export function PostulacionForm({
     e.preventDefault();
     setError(null);
     if (tipo === "candidato" && !archivo) {
-      setError("Adjunta tu hoja de vida en PDF.");
+      setCvError("Adjunta tu hoja de vida en PDF antes de enviar.");
+      dropRef.current?.scrollIntoView({ block: "center", behavior: "smooth" });
+      dropRef.current?.focus();
       return;
     }
     setEnviando(true);
