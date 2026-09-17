@@ -14,7 +14,92 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      postulaciones: {
+        Row: {
+          cv_url: string | null
+          email: string
+          fecha: string
+          id: string
+          mensaje: string | null
+          nombre: string
+          portafolio_url: string | null
+          telefono: string | null
+          tipo: Database["public"]["Enums"]["postulacion_tipo"]
+          vacante_id: string | null
+        }
+        Insert: {
+          cv_url?: string | null
+          email: string
+          fecha?: string
+          id?: string
+          mensaje?: string | null
+          nombre: string
+          portafolio_url?: string | null
+          telefono?: string | null
+          tipo?: Database["public"]["Enums"]["postulacion_tipo"]
+          vacante_id?: string | null
+        }
+        Update: {
+          cv_url?: string | null
+          email?: string
+          fecha?: string
+          id?: string
+          mensaje?: string | null
+          nombre?: string
+          portafolio_url?: string | null
+          telefono?: string | null
+          tipo?: Database["public"]["Enums"]["postulacion_tipo"]
+          vacante_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "postulaciones_vacante_id_fkey"
+            columns: ["vacante_id"]
+            isOneToOne: false
+            referencedRelation: "vacantes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      vacantes: {
+        Row: {
+          area: string | null
+          created_at: string
+          descripcion: string | null
+          estado: Database["public"]["Enums"]["vacante_estado"]
+          fecha_publicacion: string
+          id: string
+          modalidad: string | null
+          requisitos: string | null
+          titulo: string
+          ubicacion: string | null
+        }
+        Insert: {
+          area?: string | null
+          created_at?: string
+          descripcion?: string | null
+          estado?: Database["public"]["Enums"]["vacante_estado"]
+          fecha_publicacion?: string
+          id?: string
+          modalidad?: string | null
+          requisitos?: string | null
+          titulo: string
+          ubicacion?: string | null
+        }
+        Update: {
+          area?: string | null
+          created_at?: string
+          descripcion?: string | null
+          estado?: Database["public"]["Enums"]["vacante_estado"]
+          fecha_publicacion?: string
+          id?: string
+          modalidad?: string | null
+          requisitos?: string | null
+          titulo?: string
+          ubicacion?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +108,8 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      postulacion_tipo: "candidato" | "servicio"
+      vacante_estado: "activa" | "cerrada"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +236,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      postulacion_tipo: ["candidato", "servicio"],
+      vacante_estado: ["activa", "cerrada"],
+    },
   },
 } as const
