@@ -112,7 +112,7 @@ function Login() {
     const password = String(fd.get("password"));
     const password2 = String(fd.get("password2"));
 
-    if (!email.endsWith("@rckt.lat")) {
+    if (!email.endsWith("@rckt.es")) {
       setError("El registro está restringido al equipo de RCKT.");
       return;
     }
@@ -162,7 +162,7 @@ function Login() {
       ) : (
         <form className="mt-6 grid gap-4" onSubmit={onRegistro}>
           <input name="nombre" type="text" placeholder="Nombre completo" required />
-          <input name="email" type="email" placeholder="Correo @rckt.lat" required />
+          <input name="email" type="email" placeholder="Correo @rckt.es" required />
           <input name="password" type="password" placeholder="Contraseña" required minLength={8} />
           <input name="password2" type="password" placeholder="Confirmar contraseña" required minLength={8} />
           {error && <p className="text-[14px] text-[var(--naranja-deep)]">{error}</p>}

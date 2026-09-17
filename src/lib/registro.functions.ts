@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
-const DOMINIO = "@rckt.lat";
+const DOMINIO = "@rckt.es";
 
 const schema = z.object({
   nombre: z.string().trim().min(2).max(120),
