@@ -84,6 +84,8 @@ export function PostulacionForm({
       setListo(true);
       form.reset();
       setArchivo(null);
+      setCvError(null);
+      if (inputRef.current) inputRef.current.value = "";
       onExito?.();
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
