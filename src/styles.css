@@ -1127,3 +1127,7 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 .rckt-site .cv-name{font-size:14px;font-weight:600;word-break:break-all}
 .rckt-site .cv-size{font-size:12px;color:var(--carbon-soft)}
 .rckt-site .cv-remove{margin-left:auto;background:none;border:none;font-size:13px;color:var(--naranja);cursor:pointer;text-decoration:underline}
+
+/* v15 — zona de subida de CV: estado de error */
+.rckt-site .cv-drop.has-error{border-color:#c0392b;background:color-mix(in srgb,#c0392b 6%,transparent)}
+.rckt-site .cv-error{margin-top:8px;font-size:13px;color:#c0392b}
