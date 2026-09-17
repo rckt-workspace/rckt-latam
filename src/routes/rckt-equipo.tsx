@@ -247,6 +247,13 @@ function Dashboard({ email }: { email: string }) {
     void cargar();
   }
 
+  async function eliminarPostulacion(id: string) {
+    if (!window.confirm("¿Seguro que quieres eliminar esta postulación? Esta acción no se puede deshacer.")) return;
+    await supabase.from("postulaciones").delete().eq("id", id);
+    setDetalle((d) => (d?.id === id ? null : d));
+    void cargar();
+  }
+
   async function abrirCv(path: string) {
     const { data } = await supabase.storage.from("cvs").createSignedUrl(path, 300);
     if (data?.signedUrl) window.open(data.signedUrl, "_blank", "noopener");
