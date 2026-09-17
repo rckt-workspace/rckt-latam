@@ -19,7 +19,7 @@ export const Route = createFileRoute("/api/admin/login")({
           if (isRateLimited(normalizedIp)) {
             return Response.json(
               { error: "Too many login attempts. Try again later." },
-              { status: 429 }
+              { status: 429 },
             );
           }
 
@@ -50,10 +50,7 @@ export const Route = createFileRoute("/api/admin/login")({
           // Create HMAC-SHA256 signed session token
           const sessionSecret = process.env.ADMIN_SESSION_SECRET;
           if (!sessionSecret) {
-            return Response.json(
-              { error: "Server configuration error." },
-              { status: 500 }
-            );
+            return Response.json({ error: "Server configuration error." }, { status: 500 });
           }
 
           // Create payload

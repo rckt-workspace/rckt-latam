@@ -6,9 +6,16 @@ export const Route = createFileRoute("/cookies")({
   head: () => ({
     meta: [
       { title: "Política de cookies — RCKT" },
-      { name: "description", content: "Qué cookies y almacenamiento utiliza el sitio de RCKT y cómo puedes controlarlos desde tu navegador." },
+      {
+        name: "description",
+        content:
+          "Qué cookies y almacenamiento utiliza el sitio de RCKT y cómo puedes controlarlos desde tu navegador.",
+      },
       { property: "og:title", content: "Política de cookies — RCKT" },
-      { property: "og:description", content: "Qué cookies utiliza el sitio de RCKT y cómo controlarlas." },
+      {
+        property: "og:description",
+        content: "Qué cookies utiliza el sitio de RCKT y cómo controlarlas.",
+      },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "https://rckt-latam.lovable.app/cookies" },
       { name: "twitter:card", content: "summary" },

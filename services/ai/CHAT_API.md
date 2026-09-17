@@ -11,6 +11,7 @@ The `/chat` endpoint provides a Claude-first interface for the RCKT AI Service. 
 Accepts messages and returns Claude's response.
 
 **Request:**
+
 ```json
 {
   "messages": [
@@ -25,6 +26,7 @@ Accepts messages and returns Claude's response.
 ```
 
 **Response (HTTP 200):**
+
 ```json
 {
   "message": {
@@ -37,6 +39,7 @@ Accepts messages and returns Claude's response.
 ```
 
 **Error Responses:**
+
 - `400`: Invalid request format
 - `503`: Anthropic not configured (missing ANTHROPIC_API_KEY or ANTHROPIC_MODEL)
 - `502`: Claude API error
@@ -45,12 +48,14 @@ Accepts messages and returns Claude's response.
 ## Configuration
 
 ### Required Environment Variables
+
 ```bash
 ANTHROPIC_API_KEY=sk-ant-YOUR_API_KEY_HERE
 ANTHROPIC_MODEL=claude-sonnet-5
 ```
 
 ### Optional Environment Variables
+
 ```bash
 LOG_LEVEL=INFO                          # DEBUG, INFO, WARNING, ERROR
 SUPABASE_URL=https://your-project...   # For metrics persistence
@@ -60,6 +65,7 @@ LANGFUSE_SECRET_KEY=...                # For observability (LangFuse)
 ## Usage Examples
 
 ### Basic Chat
+
 ```bash
 curl -X POST http://localhost:8000/chat \
   -H "Content-Type: application/json" \
@@ -71,6 +77,7 @@ curl -X POST http://localhost:8000/chat \
 ```
 
 ### With System Prompt
+
 ```bash
 curl -X POST http://localhost:8000/chat \
   -H "Content-Type: application/json" \
@@ -84,6 +91,7 @@ curl -X POST http://localhost:8000/chat \
 ```
 
 ### Multi-turn Conversation
+
 ```bash
 curl -X POST http://localhost:8000/chat \
   -H "Content-Type: application/json" \
@@ -99,6 +107,7 @@ curl -X POST http://localhost:8000/chat \
 ## Running Locally
 
 1. **Setup**
+
    ```bash
    cd services/ai
    cp .env.example .env
@@ -106,16 +115,19 @@ curl -X POST http://localhost:8000/chat \
    ```
 
 2. **Install**
+
    ```bash
    pip install -e ".[dev]"
    ```
 
 3. **Run Tests**
+
    ```bash
    pytest
    ```
 
 4. **Start Server**
+
    ```bash
    python -m uvicorn app.main:app --reload
    ```
@@ -159,14 +171,14 @@ docker run -p 8000:8000 \
 The chat endpoint is designed to be called from the React frontend (rckt-web) over HTTP:
 
 ```typescript
-const response = await fetch('https://rckt-ai.onrender.com/chat', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
+const response = await fetch("https://rckt-ai.onrender.com/chat", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
-    messages: [{ role: 'user', content: userInput }],
-    system: 'Your system prompt',
-    max_tokens: 1024
-  })
+    messages: [{ role: "user", content: userInput }],
+    system: "Your system prompt",
+    max_tokens: 1024,
+  }),
 });
 
 const data = await response.json();
@@ -176,10 +188,12 @@ console.log(data.message.content);
 ## Monitoring & Observability
 
 Health checks:
+
 - `GET /healthz`: Liveness (no dependencies)
 - `GET /readyz`: Readiness (validates Anthropic configuration)
 
 Both endpoints return structured JSON:
+
 ```json
 {
   "status": "ok",

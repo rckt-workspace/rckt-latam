@@ -5,6 +5,7 @@
 RCKT LATAM is a sibling project of RCKT Spain (rckt-web-builder). Both share the same technical foundation but maintain separate regional configurations, content, and business logic.
 
 **Shared Foundation:**
+
 - TanStack Start + React 19 + TypeScript
 - Vite build system
 - Tailwind CSS 4
@@ -14,6 +15,7 @@ RCKT LATAM is a sibling project of RCKT Spain (rckt-web-builder). Both share the
 - Bun package manager
 
 **Regional Separation:**
+
 - Configuration layer: `src/config/`
 - Market-specific content
 - Regional compliance & features
@@ -34,12 +36,14 @@ OpenRouter / Anthropic Claude  ← LLM providers
 ## Prerequisites
 
 ### Local Development
+
 - **Bun** 1.2+ (https://bun.sh)
 - **Node.js** 20+ (optional, for fallback)
 - **Python** 3.11+ (for services/ai)
 - **Git**
 
 ### Production (Render.com or similar)
+
 - Docker support
 - Environment variable configuration
 - Health check endpoints
@@ -130,6 +134,7 @@ docker run -p 10000:10000 \
    - Start: Uses Dockerfile CMD
 
 3. **Environment Variables**
+
    ```
    PORT=10000
    VITE_SUPABASE_URL=<production-url>
@@ -153,19 +158,20 @@ Edit `src/config/market.ts` for LATAM-specific settings:
 
 ```typescript
 export const marketConfig = {
-  region: 'latam',
+  region: "latam",
   brand: {
-    domain: 'rckt.latam',
-    email: 'hola@rckt.latam',
-    phone: '+1-XXX-XXX-XXXX',
+    domain: "rckt.latam",
+    email: "hola@rckt.latam",
+    phone: "+1-XXX-XXX-XXXX",
   },
   // ... more settings
-}
+};
 ```
 
 ### SEO Configuration
 
 `src/config/seo.ts` for search engine optimization:
+
 - Meta tags
 - Schema markup
 - Sitemap configuration
@@ -174,6 +180,7 @@ export const marketConfig = {
 ### Contact Configuration
 
 `src/config/contact.ts` for support channels:
+
 - Email addresses
 - Phone numbers
 - Business hours
@@ -186,20 +193,21 @@ export const marketConfig = {
 ```typescript
 export const featuresConfig = {
   core: {
-    advisorChat: true,      // AI chat on landing page
-    leadCapture: true,      // Contact forms
+    advisorChat: true, // AI chat on landing page
+    leadCapture: true, // Contact forms
   },
   advanced: {
-    performanceMetrics: false,  // Enable when dashboard ready
-    adminPanel: false,          // Enable when operations ready
+    performanceMetrics: false, // Enable when dashboard ready
+    adminPanel: false, // Enable when operations ready
   },
   // ... more flags
-}
+};
 ```
 
 ## Verification Checklist
 
 ### Before Committing
+
 - [ ] `bun install` completes without errors
 - [ ] `bun run build` succeeds
 - [ ] `python -m compileall services/ai -q` passes
@@ -207,6 +215,7 @@ export const featuresConfig = {
 - [ ] ESLint check: `bun run lint`
 
 ### Before Deploying
+
 - [ ] Environment variables configured
 - [ ] Supabase project created and keys added
 - [ ] Anthropic API key obtained
@@ -219,10 +228,12 @@ export const featuresConfig = {
 ### Build Issues
 
 **Error: Vite configuration not found**
+
 - Ensure `vite.config.ts` exists in root
 - Check `@lovable.dev/vite-tanstack-config` is installed
 
 **Error: Nitro build fails**
+
 - Clear `.output/` directory
 - Run `bun run build` again
 - Check `src/server.ts` and `src/start.ts` exist
@@ -230,16 +241,19 @@ export const featuresConfig = {
 ### Runtime Issues
 
 **FastAPI not starting**
+
 - Check Python version: `python --version` (need 3.11+)
 - Verify dependencies: `pip list | grep fastapi`
 - Check `.env` file in `services/ai/`
 
 **Port conflicts**
+
 - Default port: 10000 (can override with PORT env var)
 - FastAPI uses 127.0.0.1:8000 internally
 - Check: `netstat -an | grep LISTEN`
 
 **Health check failing**
+
 - Verify Nitro is responding: `curl http://localhost:10000/`
 - Check logs for startup errors
 - Increase `start-period` in Dockerfile if needed
@@ -267,16 +281,19 @@ export const featuresConfig = {
 ## Monitoring & Observability
 
 ### Logs
+
 - Frontend: Browser console + Sentry (if enabled)
 - Backend: FastAPI logs in container
 - Nitro: Server logs in container
 
 ### Health Checks
+
 - Public: `GET http://localhost:10000/`
 - AI Service: `GET http://127.0.0.1:8000/healthz`
 - Supabase: Connection status in admin panel
 
 ### Metrics
+
 - Configure Langfuse (optional): Set `LANGFUSE_PUBLIC_KEY` and `LANGFUSE_SECRET_KEY`
 - Track API usage in `services/ai/app/services/usage_tracker.py`
 
@@ -304,6 +321,7 @@ export const featuresConfig = {
 ## Support & Troubleshooting
 
 For issues:
+
 1. Check logs: `docker logs <container-id>`
 2. Verify environment variables
 3. Check Render deployment logs

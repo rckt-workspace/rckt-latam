@@ -17,6 +17,7 @@ RCKT es un sistema de crecimiento con IA para empresas de habla hispana. Diseña
 RCKT LATAM and RCKT Spain share the same technical stack but maintain complete regional separation:
 
 ### Shared Technical Stack
+
 - **Frontend**: TanStack Start + React 19 + TypeScript
 - **Build**: Vite 7 + Tailwind CSS 4
 - **Server**: Nitro (SSR)
@@ -26,7 +27,9 @@ RCKT LATAM and RCKT Spain share the same technical stack but maintain complete r
 - **Deployment**: Docker + Render
 
 ### Regional Separation
+
 Each region has its own:
+
 - **Configuration**: `src/config/` (market, SEO, contact, features)
 - **Content**: Region-specific copy, branding, images
 - **Business Logic**: Regional features and compliance
@@ -128,32 +131,36 @@ rckt-latam/
 All regional settings are controlled through `src/config/`:
 
 ### Market Configuration (`src/config/market.ts`)
+
 ```typescript
-marketConfig.brand.domain      // LATAM domain
-marketConfig.brand.email       // Support email
-marketConfig.business.currency // Currency (USD, etc.)
-marketConfig.api.aiServiceUrl  // AI service URL
+marketConfig.brand.domain; // LATAM domain
+marketConfig.brand.email; // Support email
+marketConfig.business.currency; // Currency (USD, etc.)
+marketConfig.api.aiServiceUrl; // AI service URL
 ```
 
 ### SEO Configuration (`src/config/seo.ts`)
+
 ```typescript
-seoConfig.siteUrl              // LATAM website URL
-seoConfig.organization         // Organization details
-seoConfig.geo.regions          // Geographic targeting
+seoConfig.siteUrl; // LATAM website URL
+seoConfig.organization; // Organization details
+seoConfig.geo.regions; // Geographic targeting
 ```
 
 ### Contact Configuration (`src/config/contact.ts`)
+
 ```typescript
-contactConfig.contacts.sales   // Sales email/phone
-contactConfig.businessHours    // LATAM business hours
-contactConfig.channels         // Communication channels
+contactConfig.contacts.sales; // Sales email/phone
+contactConfig.businessHours; // LATAM business hours
+contactConfig.channels; // Communication channels
 ```
 
 ### Feature Flags (`src/config/features.ts`)
+
 ```typescript
-featuresConfig.core.advisorChat      // Enable AI chat
-featuresConfig.admin.adminPanel      // Admin interface
-featuresConfig.integrations.supabase // Backend integration
+featuresConfig.core.advisorChat; // Enable AI chat
+featuresConfig.admin.adminPanel; // Admin interface
+featuresConfig.integrations.supabase; // Backend integration
 ```
 
 ---
@@ -161,16 +168,19 @@ featuresConfig.integrations.supabase // Backend integration
 ## 🏭 Development vs. Production
 
 ### Development Build
+
 ```bash
 bun run build:dev
 ```
 
 ### Production Build
+
 ```bash
 bun run build
 ```
 
 ### Docker Build & Run
+
 ```bash
 docker build -t rckt-latam:latest .
 docker run -p 10000:10000 -e PORT=10000 rckt-latam:latest
@@ -202,15 +212,15 @@ pytest tests/
 
 ## 📚 Key Differences from Spain
 
-| Aspect | Spain | LATAM |
-|--------|-------|-------|
-| Domain | rckt.es | rckt.latam |
-| Email | hola@rckt.es | hola@rckt.latam |
-| Language | Spanish | Spanish |
-| Compliance | GDPR + Spanish regs | LATAM local regs |
-| Features | Full feature set | Configurable per region |
-| Content | Spain-specific | LATAM-specific |
-| Knowledge Base | Spain market knowledge | LATAM market knowledge |
+| Aspect         | Spain                  | LATAM                   |
+| -------------- | ---------------------- | ----------------------- |
+| Domain         | rckt.es                | rckt.latam              |
+| Email          | hola@rckt.es           | hola@rckt.latam         |
+| Language       | Spanish                | Spanish                 |
+| Compliance     | GDPR + Spanish regs    | LATAM local regs        |
+| Features       | Full feature set       | Configurable per region |
+| Content        | Spain-specific         | LATAM-specific          |
+| Knowledge Base | Spain market knowledge | LATAM market knowledge  |
 
 ---
 
@@ -257,19 +267,19 @@ See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
 
 ## 🛠️ Technology Stack
 
-| Layer | Technology | Version |
-|-------|-----------|---------|
-| Frontend | React | 19.2.0 |
-| Router | TanStack Router | 1.170+ |
-| Framework | TanStack Start | 1.168+ |
-| Styling | Tailwind CSS | 4.2.1 |
-| Build Tool | Vite | 7.3.1 |
-| Package Manager | Bun | 1.2+ |
-| Server | Nitro | 3.0.260603-beta |
-| Backend API | FastAPI | 0.141.1 |
-| Database | Supabase (PostgreSQL) | Latest |
-| Python | Python | 3.11+ |
-| Container | Docker | Latest |
+| Layer           | Technology            | Version         |
+| --------------- | --------------------- | --------------- |
+| Frontend        | React                 | 19.2.0          |
+| Router          | TanStack Router       | 1.170+          |
+| Framework       | TanStack Start        | 1.168+          |
+| Styling         | Tailwind CSS          | 4.2.1           |
+| Build Tool      | Vite                  | 7.3.1           |
+| Package Manager | Bun                   | 1.2+            |
+| Server          | Nitro                 | 3.0.260603-beta |
+| Backend API     | FastAPI               | 0.141.1         |
+| Database        | Supabase (PostgreSQL) | Latest          |
+| Python          | Python                | 3.11+           |
+| Container       | Docker                | Latest          |
 
 ---
 
@@ -303,6 +313,7 @@ Built with [Lovable](https://lovable.dev).
 ## 📞 Support
 
 For RCKT LATAM specific issues:
+
 - Email: hola@rckt.latam (TODO: Update)
 - Sales: ventas@rckt.latam (TODO: Update)
 

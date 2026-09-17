@@ -3,17 +3,22 @@
  * Central configuration for RCKT LATAM
  */
 
-export { marketConfig, default as market } from './market';
-export { seoConfig, default as seo } from './seo';
-export { contactConfig, default as contact } from './contact';
-export { featureConfig, default as features } from './features';
+import { marketConfig } from "./market";
+import { seoConfig } from "./seo";
+import { contactConfig } from "./contact";
+import { featureConfig } from "./features";
+
+export { marketConfig };
+export { seoConfig };
+export { contactConfig };
+export { featureConfig };
 
 // Combined config object
 export const config = {
-  market: require('./market').marketConfig,
-  seo: require('./seo').seoConfig,
-  contact: require('./contact').contactConfig,
-  features: require('./features').featureConfig,
+  market: marketConfig,
+  seo: seoConfig,
+  contact: contactConfig,
+  features: featureConfig,
 };
 
 export default config;

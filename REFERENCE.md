@@ -11,56 +11,60 @@ This document catalogs all found references to Spain/Spanish market and their cl
 
 ## Contact Information
 
-| Type | Value | Location | Classification | LATAM Status |
-|------|-------|----------|-----------------|-------------|
-| Domain | rckt.es | SEO schema, config | SPAIN_ONLY | ✅ [market.ts] TODO |
-| Email (General) | hola@rckt.es | SEO schema, config | SPAIN_ONLY | ✅ [market.ts] TODO |
-| Email (Sales) | - | - | NEEDS_LATAM_VALUE | ⏳ Pending |
-| Email (Support) | - | - | NEEDS_LATAM_VALUE | ⏳ Pending |
-| Phone | - | - | NEEDS_LATAM_VALUE | ⏳ Pending |
+| Type            | Value        | Location           | Classification    | LATAM Status        |
+| --------------- | ------------ | ------------------ | ----------------- | ------------------- |
+| Domain          | rckt.es      | SEO schema, config | SPAIN_ONLY        | ✅ [market.ts] TODO |
+| Email (General) | hola@rckt.es | SEO schema, config | SPAIN_ONLY        | ✅ [market.ts] TODO |
+| Email (Sales)   | -            | -                  | NEEDS_LATAM_VALUE | ⏳ Pending          |
+| Email (Support) | -            | -                  | NEEDS_LATAM_VALUE | ⏳ Pending          |
+| Phone           | -            | -                  | NEEDS_LATAM_VALUE | ⏳ Pending          |
 
 ## Content References
 
 ### Landing Page Text
-| Content | Location | Classification | Status |
-|---------|----------|-----------------|--------|
-| "Sistemas de crecimiento con IA para negocios de habla hispana" | src/routes/index.tsx | SHARED | ✅ Works for both |
-| "Diseñamos, operamos y escalamos..." | src/routes/index.tsx | SHARED | ✅ Works for both |
-| Business model description (pricing, results-linked) | src/routes/index.tsx | SHARED | ✅ Works for both |
-| Service descriptions (Auditoría, Snapshot, Media, Creative) | src/components/rckt/Services.tsx | SHARED | ✅ Works for both |
+
+| Content                                                         | Location                         | Classification | Status            |
+| --------------------------------------------------------------- | -------------------------------- | -------------- | ----------------- |
+| "Sistemas de crecimiento con IA para negocios de habla hispana" | src/routes/index.tsx             | SHARED         | ✅ Works for both |
+| "Diseñamos, operamos y escalamos..."                            | src/routes/index.tsx             | SHARED         | ✅ Works for both |
+| Business model description (pricing, results-linked)            | src/routes/index.tsx             | SHARED         | ✅ Works for both |
+| Service descriptions (Auditoría, Snapshot, Media, Creative)     | src/components/rckt/Services.tsx | SHARED         | ✅ Works for both |
 
 ### Components with Regional Content
-| Component | Content | Classification | LATAM Status |
-|-----------|---------|-----------------|-------------|
-| src/components/rckt/Hero.tsx | Hero copy | NEEDS_LATAM_VALUE | ⏳ Pending custom design |
-| src/components/rckt/Services.tsx | Service descriptions | SHARED | ✅ Reusable |
-| src/components/rckt/Footer.tsx | Footer links, contact | SPAIN_ONLY | ⏳ Update needed |
-| src/components/rckt/Nav.tsx | Navigation | SHARED | ✅ Reusable |
-| src/components/rckt/Pillars.tsx | Pillar descriptions | SHARED | ✅ Reusable |
+
+| Component                        | Content               | Classification    | LATAM Status             |
+| -------------------------------- | --------------------- | ----------------- | ------------------------ |
+| src/components/rckt/Hero.tsx     | Hero copy             | NEEDS_LATAM_VALUE | ⏳ Pending custom design |
+| src/components/rckt/Services.tsx | Service descriptions  | SHARED            | ✅ Reusable              |
+| src/components/rckt/Footer.tsx   | Footer links, contact | SPAIN_ONLY        | ⏳ Update needed         |
+| src/components/rckt/Nav.tsx      | Navigation            | SHARED            | ✅ Reusable              |
+| src/components/rckt/Pillars.tsx  | Pillar descriptions   | SHARED            | ✅ Reusable              |
 
 ### Legal Documents
-| Document | Path | Reference | Status |
-|----------|------|-----------|--------|
-| Privacy Policy | src/routes/privacidad.tsx | Spanish specific | ⏳ LATAM version needed |
+
+| Document         | Path                       | Reference        | Status                  |
+| ---------------- | -------------------------- | ---------------- | ----------------------- |
+| Privacy Policy   | src/routes/privacidad.tsx  | Spanish specific | ⏳ LATAM version needed |
 | Terms of Service | src/routes/aviso-legal.tsx | Spanish specific | ⏳ LATAM version needed |
-| Cookies Policy | src/routes/cookies.tsx | Spanish specific | ⏳ LATAM version needed |
+| Cookies Policy   | src/routes/cookies.tsx     | Spanish specific | ⏳ LATAM version needed |
 
 ## Configuration Files
 
-| File | Key | Current Value | LATAM Status |
-|------|-----|----------------|-------------|
-| src/config/market.ts | domain | rckt.latam | ✅ Configured |
-| src/config/market.ts | email | hola@rckt.latam | ✅ Configured (TODO in code) |
-| src/config/market.ts | phone | +1-XXX-XXX-XXXX | ⏳ Update with LATAM number |
-| src/config/market.ts | currency | USD | ✅ Configured |
-| src/config/market.ts | timezone | America/Bogota | ✅ Configured (TODO review) |
-| src/config/seo.ts | siteUrl | https://rckt.latam | ✅ Configured (TODO in code) |
+| File                  | Key           | Current Value      | LATAM Status                 |
+| --------------------- | ------------- | ------------------ | ---------------------------- |
+| src/config/market.ts  | domain        | rckt.latam         | ✅ Configured                |
+| src/config/market.ts  | email         | hola@rckt.latam    | ✅ Configured (TODO in code) |
+| src/config/market.ts  | phone         | +1-XXX-XXX-XXXX    | ⏳ Update with LATAM number  |
+| src/config/market.ts  | currency      | USD                | ✅ Configured                |
+| src/config/market.ts  | timezone      | America/Bogota     | ✅ Configured (TODO review)  |
+| src/config/seo.ts     | siteUrl       | https://rckt.latam | ✅ Configured (TODO in code) |
 | src/config/contact.ts | support email | soporte@rckt.latam | ✅ Configured (TODO in code) |
-| src/config/contact.ts | businessHours | 8-6 America/Bogota | ✅ Configured |
+| src/config/contact.ts | businessHours | 8-6 America/Bogota | ✅ Configured                |
 
 ## Code References (Not Content)
 
 ### Safe for Both Regions (SHARED)
+
 - ✅ Supabase integration (database-agnostic)
 - ✅ FastAPI LLM service (generic AI service)
 - ✅ TanStack router structure
@@ -71,6 +75,7 @@ This document catalogs all found references to Spain/Spanish market and their cl
 - ✅ Configuration injection pattern
 
 ### Region-Agnostic Code
+
 - ✅ services/ai/ (all backend code)
 - ✅ src/lib/utils.ts
 - ✅ src/lib/error-capture.ts
@@ -80,12 +85,14 @@ This document catalogs all found references to Spain/Spanish market and their cl
 ## Regionalization Strategy
 
 ### Phase 1: Foundation ✅ (Complete)
+
 - [x] Copy technical architecture from Spain
 - [x] Create configuration layer (src/config/)
 - [x] Update documentation
 - [x] Placeholder LATAM values in configs
 
 ### Phase 2: Content (Pending)
+
 - [ ] Customize hero section for LATAM
 - [ ] Update footer with LATAM contact info
 - [ ] Create LATAM-specific legal documents
@@ -93,12 +100,14 @@ This document catalogs all found references to Spain/Spanish market and their cl
 - [ ] Localize any region-specific copy
 
 ### Phase 3: Features (Pending)
+
 - [ ] Enable/disable advisor chat per region
 - [ ] Configure AI agent knowledge base (shared vs. LATAM)
 - [ ] Set up LATAM-specific metrics
 - [ ] Configure admin panel for LATAM ops
 
 ### Phase 4: Business Logic (Pending)
+
 - [ ] Implement LATAM payment methods
 - [ ] Add region-specific pricing rules
 - [ ] Configure LATAM compliance checks

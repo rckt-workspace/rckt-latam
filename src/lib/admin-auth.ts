@@ -41,7 +41,7 @@ export function extractSessionCookie(cookieHeader: string): string | null {
  */
 export async function verifyAdminSessionFromRequest(
   request: Request,
-  secret: string
+  secret: string,
 ): Promise<boolean> {
   const cookieHeader = request.headers.get("cookie");
   const sessionToken = extractSessionCookie(cookieHeader || "");

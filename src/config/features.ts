@@ -10,7 +10,7 @@ export const featureConfig = {
     streaming: true,
     multiLanguage: true,
   },
-  
+
   // Admin features
   admin: {
     enabled: true,
@@ -18,26 +18,26 @@ export const featureConfig = {
     userManagement: true,
     contentManagement: true,
   },
-  
+
   // Regional specific features
   regional: {
     multiCurrency: true,
     taxCalculation: true,
     localization: true,
   },
-  
+
   // Analytics and tracking
   analytics: {
     googleAnalytics: true,
     customTracking: true,
   },
-  
+
   // Payment features (to be configured)
   payments: {
     enabled: false,
-    methods: ['credit_card', 'bank_transfer'],
+    methods: ["credit_card", "bank_transfer"],
   },
-  
+
   // Beta features
   beta: {
     advancedAI: false,

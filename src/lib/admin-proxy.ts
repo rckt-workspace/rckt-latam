@@ -7,7 +7,7 @@ const PROXY_TIMEOUT_MS = 30_000;
 
 export async function proxyUpstreamResponse(
   response: Response,
-  upstreamUrl: string
+  upstreamUrl: string,
 ): Promise<Response> {
   const contentType = response.headers.get("content-type") || "";
   const upstreamStatus = response.status;
@@ -16,7 +16,7 @@ export async function proxyUpstreamResponse(
   // Log diagnostics server-side (no secrets exposed)
   const urlObj = new URL(upstreamUrl);
   console.error(
-    `[admin-proxy] ${response.ok ? "OK" : "ERROR"}: ${urlObj.hostname} → ${upstreamStatus} ${upstreamStatusText} (${contentType})`
+    `[admin-proxy] ${response.ok ? "OK" : "ERROR"}: ${urlObj.hostname} → ${upstreamStatus} ${upstreamStatusText} (${contentType})`,
   );
 
   // If successful and Content-Type is JSON, proxy as-is
@@ -28,7 +28,7 @@ export async function proxyUpstreamResponse(
       console.error(`[admin-proxy] JSON parse failed on 200 response:`, parseErr);
       return Response.json(
         { error: "AI service returned invalid JSON despite 200 status" },
-        { status: 502 }
+        { status: 502 },
       );
     }
   }
@@ -40,34 +40,34 @@ export async function proxyUpstreamResponse(
       return Response.json(errorData, { status: upstreamStatus });
     } catch (parseErr) {
       console.error(
-        `[admin-proxy] Non-JSON error response from ${urlObj.hostname}: ${upstreamStatus}`
+        `[admin-proxy] Non-JSON error response from ${urlObj.hostname}: ${upstreamStatus}`,
       );
       return Response.json(
         {
           error: "AI service error (non-JSON response)",
           upstream_status: upstreamStatus,
         },
-        { status: 502 }
+        { status: 502 },
       );
     }
   }
 
   // Non-JSON response (HTML, text, etc.)
   console.error(
-    `[admin-proxy] Non-JSON response from ${urlObj.hostname}: status=${upstreamStatus}, content-type=${contentType}`
+    `[admin-proxy] Non-JSON response from ${urlObj.hostname}: status=${upstreamStatus}, content-type=${contentType}`,
   );
   return Response.json(
     {
       error: "AI service returned non-JSON response",
       upstream_status: upstreamStatus,
     },
-    { status: 502 }
+    { status: 502 },
   );
 }
 
 export async function fetchWithTimeout(
   url: string,
-  options: RequestInit & { timeout?: number } = {}
+  options: RequestInit & { timeout?: number } = {},
 ): Promise<Response> {
   const { timeout = PROXY_TIMEOUT_MS, ...fetchOptions } = options;
   const controller = new AbortController();
@@ -89,10 +89,7 @@ export function handleFetchError(error: unknown): Response {
       console.error("[admin-proxy] Request timeout");
       return Response.json({ error: "AI service request timed out" }, { status: 504 });
     }
-    if (
-      error.message.includes("ECONNREFUSED") ||
-      error.message.includes("ENOTFOUND")
-    ) {
+    if (error.message.includes("ECONNREFUSED") || error.message.includes("ENOTFOUND")) {
       console.error("[admin-proxy] Connection refused or DNS failed");
       return Response.json({ error: "AI service unreachable" }, { status: 502 });
     }

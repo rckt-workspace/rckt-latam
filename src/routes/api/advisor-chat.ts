@@ -39,9 +39,7 @@ export const Route = createFileRoute("/api/advisor-chat")({
           const safeMessages = messages
             .filter(
               (m) =>
-                m &&
-                (m.role === "user" || m.role === "assistant") &&
-                typeof m.content === "string",
+                m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string",
             )
             .slice(-MAX_MESSAGES)
             .map((m) => ({ role: m.role, content: m.content.slice(0, MAX_CONTENT) }));

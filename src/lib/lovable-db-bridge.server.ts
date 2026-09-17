@@ -20,10 +20,7 @@ class LovableBridge {
   private internalSecret: string;
 
   constructor() {
-    this.bridgeUrl =
-      process.env.LOVABLE_DB_BRIDGE_URL ||
-      process.env.SUPABASE_FUNCTIONS_URL ||
-      "";
+    this.bridgeUrl = process.env.LOVABLE_DB_BRIDGE_URL || process.env.SUPABASE_FUNCTIONS_URL || "";
     this.internalSecret = process.env.RCKT_INTERNAL_SECRET || "";
 
     if (!this.bridgeUrl) {
@@ -34,10 +31,7 @@ class LovableBridge {
     }
   }
 
-  private async call<T>(
-    action: string,
-    payload?: Record<string, any>
-  ): Promise<BridgeResponse<T>> {
+  private async call<T>(action: string, payload?: Record<string, any>): Promise<BridgeResponse<T>> {
     if (!this.bridgeUrl || !this.internalSecret) {
       return {
         ok: false,

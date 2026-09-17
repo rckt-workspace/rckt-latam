@@ -36,16 +36,19 @@ python -m uvicorn app.main:app --reload
 ### Core Components
 
 **LLM Layer** (`app/llm/`)
+
 - Abstract `LLMProvider` interface
 - `AnthropicProvider` for Claude integration
 - Pluggable design for future providers
 
 **Metrics** (`app/metrics/`)
+
 - Canonical `MetricPoint` and `MetricsSnapshot` schema
 - Adapters for GA4, Search Console, CrUX, Render
 - `RCKTProductEvent` contract for internal events
 
 **Configuration** (`app/core/`)
+
 - Centralized `Settings` from environment
 - Never read env vars directly from modules
 - Methods: `anthropic_configured()`, `supabase_configured()`, etc.

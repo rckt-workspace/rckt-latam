@@ -48,9 +48,7 @@ export const Route = createFileRoute("/api/save-chat-lead")({
           const messages: Msg[] = body.messages
             .filter(
               (m) =>
-                m &&
-                (m.role === "user" || m.role === "assistant") &&
-                typeof m.content === "string",
+                m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string",
             )
             .slice(-50)
             .map((m) => ({ role: m.role, content: m.content.slice(0, 4000) }));
@@ -79,7 +77,7 @@ export const Route = createFileRoute("/api/save-chat-lead")({
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${process.env.SUPABASE_ANON_KEY}`,
+              Authorization: `Bearer ${process.env.SUPABASE_ANON_KEY}`,
             },
             body: JSON.stringify({
               action: "save_chat_lead",
