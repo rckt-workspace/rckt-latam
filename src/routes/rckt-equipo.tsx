@@ -369,7 +369,12 @@ function Dashboard({ email }: { email: string }) {
             {filtradas.map((p) => (
               <div key={p.id} className="panel-card hoverable flex flex-wrap items-center justify-between gap-4">
                 <div>
-                  <p className="text-[16px] font-bold">{p.nombre} <span className="text-[12px] font-medium text-[var(--naranja)]">{p.tipo}</span></p>
+                  <p className="flex flex-wrap items-center gap-2 text-[16px] font-bold">
+                    {p.nombre}
+                    <span className={`badge-tipo ${p.tipo === "candidato" ? "badge-candidato" : "badge-servicio"}`}>
+                      {p.tipo === "candidato" ? "Candidato a vacante" : "Servicio / Freelance"}
+                    </span>
+                  </p>
                   <p className="text-[13px] text-[var(--carbon-soft)]">
                     {p.email}{p.telefono ? ` · ${p.telefono}` : ""} · {new Date(p.fecha).toLocaleDateString("es-CO")}
                   </p>
@@ -378,10 +383,10 @@ function Dashboard({ email }: { email: string }) {
                   {p.cv_url && (
                     <button className={btnGhost} type="button" onClick={() => abrirCv(p.cv_url!)}>Ver CV</button>
                   )}
-                  {p.portafolio_url && (
-                    <a className={btnGhost} href={p.portafolio_url} rel="noopener noreferrer" target="_blank">Portafolio</a>
-                  )}
-                  <button className={btnGhost} type="button" onClick={() => setDetalle(p)}>Detalle</button>
+                  <button className={btnGhost} type="button" onClick={() => setDetalle(p)}>Ver detalle</button>
+                  <button className="panel-btn-danger" type="button" onClick={() => eliminarPostulacion(p.id)}>
+                    Eliminar
+                  </button>
                 </div>
               </div>
             ))}
