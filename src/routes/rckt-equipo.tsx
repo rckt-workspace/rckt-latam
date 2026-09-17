@@ -189,7 +189,7 @@ function Login() {
 const vacanteVacia = {
   titulo: "",
   area: "",
-  modalidad: "",
+  modalidad: "Remoto",
   ubicacion: "",
   descripcion: "",
   requisitos: "",
@@ -223,7 +223,7 @@ function Dashboard({ email }: { email: string }) {
     const payload = {
       titulo: editando.titulo,
       area: editando.area || null,
-      modalidad: editando.modalidad || null,
+      modalidad: "Remoto",
       ubicacion: editando.ubicacion || null,
       descripcion: editando.descripcion || null,
       requisitos: editando.requisitos || null,
