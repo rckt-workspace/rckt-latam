@@ -993,6 +993,10 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 [data-theme="dark"] .rckt-site.tcn-page .subpage-hero .theme-switch button{
   color:#000;
 }
+[data-theme="dark"] .rckt-site.tcn-page .subpage-hero .nav-links.mobile-open,
+[data-theme="dark"] .rckt-site.tcn-page .subpage-hero .nav-links.mobile-open a{
+  color:var(--carbon);
+}
 [data-theme="dark"] .rckt-site.tcn-page .subpage-hero .theme-switch{
   border-color:rgba(0,0,0,.28);
 }
