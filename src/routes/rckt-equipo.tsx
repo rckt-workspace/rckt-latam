@@ -10,16 +10,16 @@ export const Route = createFileRoute("/rckt-equipo")({
   staticData: { sitemap: false },
   head: () => ({
     meta: [
-      { title: "Panel interno — RCKT" },
-      { name: "description", content: "Acceso restringido al equipo de RCKT." },
+      { title: "People & Culture — RCKT" },
+      { name: "description", content: "Acceso restringido al equipo People & Culture de RCKT." },
       { name: "robots", content: "noindex, nofollow" },
-      { property: "og:title", content: "Panel interno — RCKT" },
-      { property: "og:description", content: "Acceso restringido al equipo de RCKT." },
+      { property: "og:title", content: "People & Culture — RCKT" },
+      { property: "og:description", content: "Acceso restringido al equipo People & Culture de RCKT." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
   }),
-  component: PanelRH,
+  component: PanelPC,
 });
 
 type Vacante = {
