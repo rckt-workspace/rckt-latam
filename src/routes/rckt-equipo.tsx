@@ -50,7 +50,7 @@ type Postulacion = {
 const btn = "panel-btn";
 const btnGhost = "panel-btn-ghost";
 
-function PanelRH() {
+function PanelPC() {
   const [session, setSession] = useState<Session | null>(null);
   const [cargando, setCargando] = useState(true);
 
