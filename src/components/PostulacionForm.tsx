@@ -159,8 +159,11 @@ export function PostulacionForm({
             id={`cv-${tipo}`}
             name="cv"
             type="file"
-            accept="application/pdf,.pdf"
+            accept=".pdf,application/pdf"
             className="cv-input-hidden"
+            onClick={(e) => {
+              (e.currentTarget as HTMLInputElement).value = "";
+            }}
             onChange={(e) => {
               tomarArchivo(e.target.files?.[0]);
             }}
