@@ -47,7 +47,6 @@ type Postulacion = {
   fecha: string;
 };
 
-const input = "";
 const btn = "panel-btn";
 const btnGhost = "panel-btn-ghost";
 
