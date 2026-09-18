@@ -76,7 +76,8 @@ function AplicarVacante() {
             <div className="subpage-hero-inner">
               <span className="kicker">Postulación</span>
               <h1>{titulo ?? "Aplicar a la vacante"}</h1>
-              {meta && <p className="vacante-meta">{meta}</p>}
+              {cargando && <p className="vacante-meta">Cargando vacante…</p>}
+              {!cargando && meta && <p className="vacante-meta">{meta}</p>}
             </div>
           </div>
         </section>
