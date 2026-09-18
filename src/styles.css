@@ -904,6 +904,15 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 
 /* Selector legible sobre la fotografía en ambos estados. */
 .hero .theme-switch{border-color:rgba(0,0,0,.42);background:rgba(237,236,231,.14)}
+.hero header .nav-right .theme-switch button,
+[data-theme="dark"] .hero header .nav-right .theme-switch button{
+  color:#fff;
+}
+.hero header .nav-right .theme-switch button:hover,
+[data-theme="dark"] .hero header .nav-right .theme-switch button:hover{
+  color:#fff;
+  background:rgba(255,255,255,.12);
+}
 .hero .theme-switch button,
 [data-theme="dark"] .hero .theme-switch button{color:rgba(0,0,0,.68)}
 .hero .theme-switch button:hover,
