@@ -85,6 +85,14 @@ function AplicarVacante() {
         <section className="band">
           <div className="container">
             <div className="form-card form-card-center rv in">
+              {errorVacante && (
+                <div role="alert" style={{ marginBottom: 18 }}>
+                  <p>No pudimos cargar los datos de la vacante, intenta de nuevo.</p>
+                  <button className="btn btn-primary btn-sm" type="button" onClick={() => void cargar()}>
+                    Intentar de nuevo
+                  </button>
+                </div>
+              )}
               {exito ? (
                 <p className="form-exito">¡Gracias! Recibimos tu postulación. Te llevamos de vuelta…</p>
               ) : (
