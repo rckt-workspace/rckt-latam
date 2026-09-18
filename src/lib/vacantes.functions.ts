@@ -17,8 +17,11 @@ function nullableText(value: unknown): string | null {
 }
 
 export const getActiveVacancies = createServerFn({ method: "GET" }).handler(async () => {
-  const url = process.env["SUPABASE_URL"];
-  const publishableKey = process.env["SUPABASE_PUBLISHABLE_KEY"];
+  const url = process.env["SUPABASE_URL"] || process.env["VITE_SUPABASE_URL"];
+  const publishableKey =
+    process.env["SUPABASE_PUBLISHABLE_KEY"] ||
+    process.env["SUPABASE_ANON_KEY"] ||
+    process.env["VITE_SUPABASE_PUBLISHABLE_KEY"];
 
   if (!url || !publishableKey) {
     throw new Error("La configuración de vacantes no está disponible.");
