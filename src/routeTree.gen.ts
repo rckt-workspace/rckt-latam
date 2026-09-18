@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AvisoLegalRouteImport } from './routes/aviso-legal'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as RcktEquipoRouteImport } from './routes/rckt-equipo'
@@ -19,6 +20,7 @@ import { Route as TrabajaConNosotrosRouteImport } from './routes/trabaja-con-nos
 import { Route as ApiAdvisorChatRouteImport } from './routes/api/advisor-chat'
 import { Route as ApiLeadsRouteImport } from './routes/api/leads'
 import { Route as ApiSaveChatLeadRouteImport } from './routes/api/save-chat-lead'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as OpsAiControlRouteImport } from './routes/ops/ai-control'
 import { Route as OpsLoginRouteImport } from './routes/ops/login'
 import { Route as ApiAdminDebugRouteImport } from './routes/api/admin/debug'
@@ -39,6 +41,11 @@ const IndexRoute = IndexRouteImport.update({
 const AvisoLegalRoute = AvisoLegalRouteImport.update({
   id: '/aviso-legal',
   path: '/aviso-legal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CookiesRoute = CookiesRouteImport.update({
@@ -80,6 +87,11 @@ const ApiSaveChatLeadRoute = ApiSaveChatLeadRouteImport.update({
   id: '/api/save-chat-lead',
   path: '/api/save-chat-lead',
   getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
 } as any)
 const OpsAiControlRoute = OpsAiControlRouteImport.update({
   id: '/ops/ai-control',
@@ -141,6 +153,7 @@ const ApiAdminAiUsageRoute = ApiAdminAiUsageRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/aviso-legal': typeof AvisoLegalRoute
+  '/blog': typeof BlogRouteWithChildren
   '/cookies': typeof CookiesRoute
   '/privacidad': typeof PrivacidadRoute
   '/rckt-equipo': typeof RcktEquipoRoute
@@ -149,6 +162,7 @@ export interface FileRoutesByFullPath {
   '/api/advisor-chat': typeof ApiAdvisorChatRoute
   '/api/leads': typeof ApiLeadsRoute
   '/api/save-chat-lead': typeof ApiSaveChatLeadRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
@@ -164,6 +178,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/aviso-legal': typeof AvisoLegalRoute
+  '/blog': typeof BlogRouteWithChildren
   '/cookies': typeof CookiesRoute
   '/privacidad': typeof PrivacidadRoute
   '/rckt-equipo': typeof RcktEquipoRoute
@@ -172,6 +187,7 @@ export interface FileRoutesByTo {
   '/api/advisor-chat': typeof ApiAdvisorChatRoute
   '/api/leads': typeof ApiLeadsRoute
   '/api/save-chat-lead': typeof ApiSaveChatLeadRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
@@ -188,6 +204,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/aviso-legal': typeof AvisoLegalRoute
+  '/blog': typeof BlogRouteWithChildren
   '/cookies': typeof CookiesRoute
   '/privacidad': typeof PrivacidadRoute
   '/rckt-equipo': typeof RcktEquipoRoute
@@ -196,6 +213,7 @@ export interface FileRoutesById {
   '/api/advisor-chat': typeof ApiAdvisorChatRoute
   '/api/leads': typeof ApiLeadsRoute
   '/api/save-chat-lead': typeof ApiSaveChatLeadRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
@@ -213,6 +231,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/aviso-legal'
+    | '/blog'
     | '/cookies'
     | '/privacidad'
     | '/rckt-equipo'
@@ -221,6 +240,7 @@ export interface FileRouteTypes {
     | '/api/advisor-chat'
     | '/api/leads'
     | '/api/save-chat-lead'
+    | '/blog/$slug'
     | '/ops/ai-control'
     | '/ops/login'
     | '/api/admin/debug'
@@ -236,6 +256,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/aviso-legal'
+    | '/blog'
     | '/cookies'
     | '/privacidad'
     | '/rckt-equipo'
@@ -244,6 +265,7 @@ export interface FileRouteTypes {
     | '/api/advisor-chat'
     | '/api/leads'
     | '/api/save-chat-lead'
+    | '/blog/$slug'
     | '/ops/ai-control'
     | '/ops/login'
     | '/api/admin/debug'
@@ -259,6 +281,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/aviso-legal'
+    | '/blog'
     | '/cookies'
     | '/privacidad'
     | '/rckt-equipo'
@@ -267,6 +290,7 @@ export interface FileRouteTypes {
     | '/api/advisor-chat'
     | '/api/leads'
     | '/api/save-chat-lead'
+    | '/blog/$slug'
     | '/ops/ai-control'
     | '/ops/login'
     | '/api/admin/debug'
@@ -283,6 +307,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AvisoLegalRoute: typeof AvisoLegalRoute
+  BlogRoute: typeof BlogRouteWithChildren
   CookiesRoute: typeof CookiesRoute
   PrivacidadRoute: typeof PrivacidadRoute
   RcktEquipoRoute: typeof RcktEquipoRoute
@@ -318,6 +343,13 @@ declare module '@tanstack/react-router' {
       path: '/aviso-legal'
       fullPath: '/aviso-legal'
       preLoaderRoute: typeof AvisoLegalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cookies': {
@@ -375,6 +407,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/api/save-chat-lead'
       preLoaderRoute: typeof ApiSaveChatLeadRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
     }
     '/ops/ai-control': {
       id: '/ops/ai-control'
@@ -456,9 +495,20 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface BlogRouteChildren {
+  BlogSlugRoute: typeof BlogSlugRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogSlugRoute: BlogSlugRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AvisoLegalRoute: AvisoLegalRoute,
+  BlogRoute: BlogRouteWithChildren,
   CookiesRoute: CookiesRoute,
   PrivacidadRoute: PrivacidadRoute,
   RcktEquipoRoute: RcktEquipoRoute,
