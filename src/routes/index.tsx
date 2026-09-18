@@ -102,7 +102,6 @@ const pageMarkup = `
 <a href="#faq">FAQ</a>
 <a href="/trabaja-con-nosotros">Trabaja con nosotros</a>
 <div class="nav-menu-footer">
-<a class="btn hero-nav-cta nav-menu-cta" href="#contacto">Solicitar diagnóstico</a>
 <div class="theme-switch hero-theme-switch">
 <button id="themeLightMobile" class="active" type="button">Claro</button>
 <button id="themeDarkMobile" type="button">Oscuro</button>

@@ -29,7 +29,6 @@ export function SiteHeader() {
             <a href="/trabaja-con-nosotros">Trabaja con nosotros</a>
 
             <div className="nav-menu-footer">
-              <a className="btn hero-nav-cta nav-menu-cta" href="/#contacto">Solicitar diagnóstico</a>
               <ThemeSwitch suffix="Mobile" />
             </div>
           </div>
