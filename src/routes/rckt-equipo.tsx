@@ -245,7 +245,7 @@ const vacanteVacia = {
 
 function Dashboard({ email }: { email: string }) {
   const supabase = useSb();
-  const [tab, setTab] = useState<"vacantes" | "postulaciones">("vacantes");
+  const [tab, setTab] = useState<"vacantes" | "postulaciones" | "blog">("vacantes");
   const [vacantes, setVacantes] = useState<Vacante[]>([]);
   const [postulaciones, setPostulaciones] = useState<Postulacion[]>([]);
   const [editando, setEditando] = useState<(typeof vacanteVacia & { id?: string }) | null>(null);
@@ -327,7 +327,7 @@ function Dashboard({ email }: { email: string }) {
       </div>
 
       <div className="mt-6 flex gap-2">
-        {(["vacantes", "postulaciones"] as const).map((t) => (
+        {(["vacantes", "postulaciones", "blog"] as const).map((t) => (
           <button
             key={t}
             type="button"
@@ -338,10 +338,13 @@ function Dashboard({ email }: { email: string }) {
                 : btnGhost
             }
           >
-            {t === "vacantes" ? "Vacantes" : "Postulaciones"}
+            {t === "vacantes" ? "Vacantes" : t === "postulaciones" ? "Postulaciones" : "Blog"}
           </button>
         ))}
       </div>
+
+      {tab === "blog" && <BlogAdmin />}
+
 
       {tab === "vacantes" && (
         <section className="mt-7">
