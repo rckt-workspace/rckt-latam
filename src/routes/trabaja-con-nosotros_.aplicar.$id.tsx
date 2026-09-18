@@ -106,3 +106,29 @@ function AplicarVacante() {
     </div>
   );
 }
+
+function AplicarError() {
+  const router = useRouter();
+
+  return (
+    <div className="rckt-site apply-page">
+      <SiteHeader />
+      <main className="band">
+        <div className="container">
+          <div className="form-card" role="alert">
+            <span className="kicker">Postulación</span>
+            <h1>No pudimos mostrar esta página.</h1>
+            <p>Intenta cargarla nuevamente. Si el problema continúa, vuelve a las vacantes.</p>
+            <div className="form-actions">
+              <button className="btn btn-primary" type="button" onClick={() => void router.invalidate()}>
+                Intentar de nuevo
+              </button>
+              <a className="btn" href="/trabaja-con-nosotros">Ver vacantes</a>
+            </div>
+          </div>
+        </div>
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}
