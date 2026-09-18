@@ -8,6 +8,13 @@
       "when": 1789616215806,
       "tag": "0000_create_vacantes_postulaciones",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1789753613366,
+      "tag": "0001_restrict_postulaciones_to_staff",
+      "breakpoints": true
     }
   ]
 }

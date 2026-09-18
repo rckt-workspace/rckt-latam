@@ -339,7 +339,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_rckt_staff: { Args: never; Returns: boolean }
     }
     Enums: {
       postulacion_tipo: "candidato" | "servicio"
