@@ -44,9 +44,9 @@ type Vacante = {
 const cultura = [
   {
     n: "01.",
-    titulo: "Equidad y enfoque de género",
+    titulo: "Todos somos RCKT",
     texto:
-      "Estamos comprometidos con la construcción de entornos laborales más equitativos e inclusivos. Impulsamos iniciativas con enfoque de género orientadas a promover la igualdad de oportunidades, prevenir sesgos y fortalecer una cultura basada en el respeto, la diversidad y el reconocimiento de las capacidades de cada persona.",
+      "Tanto hombres como mujeres estamos comprometidos con la construcción de entornos laborales más equitativos e inclusivos. Impulsamos iniciativas para prevenir sesgos, fomentar el respeto y reconocer el talento sin distinción de género.",
   },
   {
     n: "02.",
@@ -114,7 +114,7 @@ function TrabajaConNosotros() {
               <span className="divider"></span>
             </div>
             <h2 className="rv" style={{ fontSize: "clamp(26px,3.4vw,36px)", margin: "0 0 48px", fontWeight: 800 }}>
-              Nuestra cultura se construye cada día
+              Desde Talento Humano, así nos diferenciamos.
             </h2>
             <div className="three-grid">
               {cultura.map((c) => (
