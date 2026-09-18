@@ -123,7 +123,7 @@ function TrabajaConNosotros() {
               <span className="divider"></span>
             </div>
             <h2 className="rv" style={{ fontSize: "clamp(26px,3.4vw,36px)", margin: "0 0 48px", fontWeight: 800 }}>
-              Desde Talento Humano, así nos diferenciamos.
+              Desde People and Culture, así nos diferenciamos.
             </h2>
             <div className="three-grid">
               {cultura.map((c) => (
