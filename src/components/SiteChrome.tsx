@@ -26,6 +26,7 @@ export function SiteHeader() {
             <a href="/#quienes">Nosotros</a>
             <a href="/#metodo">Método</a>
             <a href="/#faq">FAQ</a>
+            <a href="/blog">Blog</a>
             <a href="/trabaja-con-nosotros">Trabaja con nosotros</a>
 
             <div className="nav-menu-footer">
@@ -66,6 +67,7 @@ export function SiteFooter() {
               <li><a href="/#metodo">Método</a></li>
               <li><a href="/#faq">FAQ</a></li>
               <li><a href="/#contacto">Contacto</a></li>
+              <li><a href="/blog">Blog</a></li>
               <li><a href="/trabaja-con-nosotros">Trabaja con nosotros</a></li>
             </ul>
           </div>
