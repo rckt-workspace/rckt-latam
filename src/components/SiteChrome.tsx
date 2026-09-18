@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import logoDarkAsset from "@/assets/rckt-logo-dark.png.asset.json";
+import logoDarkAsset from "@/assets/rckt-logo-dark.png";
 
 /** Navegación y pie compartidos con la home, más las animaciones del sitio. */
 
@@ -9,7 +9,7 @@ export function SiteHeader() {
       <div className="container">
         <nav>
           <a className="logo" href="/">
-            <img alt="RCKT" src={logoDarkAsset.url} />
+            <img alt="RCKT" src={logoDarkAsset} />
           </a>
           <div className="nav-links">
             <a href="/#sistema">Sistema</a>
@@ -42,7 +42,7 @@ export function SiteFooter() {
         <div className="footer-top">
           <div>
             <a className="logo" href="/">
-              <img alt="RCKT" src={logoDarkAsset.url} />
+              <img alt="RCKT" src={logoDarkAsset} />
             </a>
             <p>Menos ruido, más crecimiento.</p>
           </div>

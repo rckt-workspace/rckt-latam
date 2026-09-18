@@ -1,9 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
+import { useCallback, useEffect, useState } from "react";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import { PostulacionForm } from "@/components/PostulacionForm";
-import heroAsset from "@/assets/rckt-hero.jpg.asset.json";
+import heroAsset from "@/assets/rckt-hero.jpg";
+import { getActiveVacancies, type VacantePublica } from "@/lib/vacantes.functions";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
@@ -29,17 +30,11 @@ export const Route = createFileRoute("/trabaja-con-nosotros")({
     links: [{ rel: "canonical", href: SITE_URL + "/trabaja-con-nosotros" }],
   }),
   component: TrabajaConNosotros,
+  errorComponent: TrabajaConNosotrosError,
+  notFoundComponent: () => <TrabajaConNosotrosError />,
 });
 
-type Vacante = {
-  id: string;
-  titulo: string;
-  area: string | null;
-  modalidad: string | null;
-  ubicacion: string | null;
-  descripcion: string | null;
-  requisitos: string | null;
-};
+type Vacante = VacantePublica;
 
 const cultura = [
   {
@@ -64,16 +59,30 @@ const cultura = [
 
 function TrabajaConNosotros() {
   const [vacantes, setVacantes] = useState<Vacante[] | null>(null);
+  const [vacantesError, setVacantesError] = useState(false);
   const [detalle, setDetalle] = useState<Vacante | null>(null);
+  const getVacantes = useServerFn(getActiveVacancies);
+
+  const cargarVacantes = useCallback(async () => {
+    setVacantes(null);
+    setVacantesError(false);
+
+    try {
+      const timeout = new Promise<never>((_, reject) => {
+        window.setTimeout(() => reject(new Error("La consulta de vacantes tardó demasiado.")), 12_000);
+      });
+      const data = await Promise.race([getVacantes(), timeout]);
+      setVacantes(Array.isArray(data) ? data : []);
+    } catch (error) {
+      console.error("No se pudieron cargar las vacantes", error);
+      setVacantes([]);
+      setVacantesError(true);
+    }
+  }, [getVacantes]);
 
   useEffect(() => {
-    supabase
-      .from("vacantes")
-      .select("id,titulo,area,modalidad,ubicacion,descripcion,requisitos")
-      .eq("estado", "activa")
-      .order("fecha_publicacion", { ascending: false })
-      .then(({ data }) => setVacantes((data as Vacante[]) ?? []));
-  }, []);
+    void cargarVacantes();
+  }, [cargarVacantes]);
 
   useSiteMotion([vacantes]);
 
@@ -82,7 +91,7 @@ function TrabajaConNosotros() {
       <main id="top">
         <section className="subpage-hero">
           <div className="subpage-hero-photo" aria-hidden="true">
-            <img src={heroAsset.url} alt="" />
+            <img src={heroAsset} alt="" />
             <span className="subpage-hero-photo-overlay" />
           </div>
           <span className="tcn-orb tcn-orb-hero-corner" aria-hidden="true" />
@@ -141,7 +150,15 @@ function TrabajaConNosotros() {
             </h2>
             <div className="vacantes-list">
               {vacantes === null && <p className="vacantes-nota">Cargando vacantes…</p>}
-              {vacantes?.length === 0 && (
+              {vacantesError && (
+                <div className="vacante-card rv" role="alert">
+                  <p>No pudimos cargar las vacantes, intenta de nuevo.</p>
+                  <button className="btn btn-primary btn-sm" type="button" onClick={() => void cargarVacantes()}>
+                    Intentar de nuevo
+                  </button>
+                </div>
+              )}
+              {!vacantesError && vacantes?.length === 0 && (
                 <div className="vacante-card rv">
                   <p>
                     Actualmente no tenemos vacantes abiertas, pero puedes dejarnos tu perfil en el formulario de abajo.
@@ -210,6 +227,32 @@ function TrabajaConNosotros() {
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+function TrabajaConNosotrosError() {
+  const router = useRouter();
+
+  return (
+    <div className="rckt-site tcn-page">
+      <SiteHeader />
+      <main className="band">
+        <div className="container">
+          <div className="form-card" role="alert">
+            <span className="kicker">Trabaja con nosotros</span>
+            <h1>No pudimos mostrar esta página.</h1>
+            <p>Intenta cargarla nuevamente. Si el problema continúa, puedes volver al inicio.</p>
+            <div className="form-actions">
+              <button className="btn btn-primary" type="button" onClick={() => void router.invalidate()}>
+                Intentar de nuevo
+              </button>
+              <a className="btn" href="/">Volver al inicio</a>
+            </div>
+          </div>
+        </div>
+      </main>
+      <SiteFooter />
     </div>
   );
 }
