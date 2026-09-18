@@ -22,6 +22,13 @@
       "when": 1789753628229,
       "tag": "0002_vacantes_activas_authenticated_read",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1789753656916,
+      "tag": "0003_restrict_cvs_storage_read",
+      "breakpoints": true
     }
   ]
 }
