@@ -1,0 +1,176 @@
+[
+  {
+    "id": "1f5c0a10-0001-4a11-9c01-000000000001",
+    "slug": "integrar-ia-equipo-marketing-sin-perder-criterio",
+    "title": "Cómo integrar IA en un equipo de marketing sin perder criterio",
+    "excerpt": "La IA no reemplaza el juicio estratégico: lo acelera. Este es el marco que usamos en RCKT para incorporarla sin diluir la voz de marca ni la calidad del pensamiento.",
+    "content": "La mayoría de los equipos que adoptan inteligencia artificial empiezan por la herramienta y terminan con un problema nuevo: mucho contenido, poca dirección. El orden correcto es el inverso.\n\n## Primero el criterio, después el modelo\n\nAntes de abrir un asistente conviene responder tres preguntas: qué decisión queremos mejorar, con qué información y quién valida el resultado. Si esas respuestas no existen, la IA solo amplifica el ruido que ya había.\n\nEn nuestros proyectos definimos un **documento de criterio** por marca: posicionamiento, promesas que no podemos hacer, vocabulario propio y ejemplos de piezas que sí representan a la compañía. Ese documento es el que alimenta cualquier automatización posterior.\n\n## Dónde aporta valor real\n\n- Investigación y síntesis de entrevistas, reseñas y llamadas de ventas.\n- Variantes de mensajes para probar en campañas, siempre a partir de un ángulo humano.\n- Clasificación de leads y resúmenes operativos que antes consumían horas.\n- Documentación interna: briefs, reportes y actas que nadie quería escribir.\n\n## Dónde no conviene delegar\n\n> El criterio estratégico, la relación con el cliente y la decisión final sobre la marca siguen siendo humanos.\n\nCuando un equipo delega el ángulo creativo completo, el resultado es reconocible: correcto, prolijo y absolutamente intercambiable con el de la competencia.\n\n### Un ciclo de trabajo sencillo\n\n1. La persona define el ángulo y el objetivo.\n2. El modelo produce variantes y material de apoyo.\n3. La persona edita, recorta y decide.\n4. El sistema registra qué funcionó para alimentar la próxima iteración.\n\n## Qué medir\n\nNo midas \"cuánto contenido produjimos\". Mide tiempo liberado, velocidad de aprendizaje por experimento y efecto en el embudo. Si la IA no mueve ninguno de los tres, es una herramienta en busca de un problema.",
+    "coverImage": "",
+    "coverImageAlt": "Equipo de marketing revisando resultados de campañas asistidas por IA",
+    "author": {
+      "name": "Equipo RCKT",
+      "role": "Growth & Marketing"
+    },
+    "category": "Inteligencia Artificial",
+    "tags": [
+      "IA",
+      "Marketing",
+      "Procesos"
+    ],
+    "status": "published",
+    "featured": true,
+    "publishedAt": "2026-09-10T13:00:00Z",
+    "updatedAt": "2026-09-10T13:00:00Z",
+    "seo": {
+      "title": "Cómo integrar IA en marketing sin perder criterio — RCKT Insights",
+      "description": "Marco práctico para incorporar inteligencia artificial en un equipo de marketing conservando criterio estratégico y voz de marca.",
+      "canonical": ""
+    },
+    "readingTime": 2
+  },
+  {
+    "id": "1f5c0a10-0002-4a11-9c01-000000000002",
+    "slug": "sistema-de-growth-antes-que-tacticas",
+    "title": "Un sistema de growth pesa más que diez tácticas sueltas",
+    "excerpt": "Los canales cambian cada temporada; el sistema que los conecta es lo que sostiene el crecimiento. Así estructuramos adquisición, activación y retención.",
+    "content": "Las tácticas caducan. Un formato que hoy rinde en un canal mañana se satura, sube de precio y deja de explicar el resultado. Lo que permanece es el sistema: cómo entra la demanda, cómo se convierte y cómo se sostiene.\n\n## Las tres preguntas del sistema\n\n### Adquisición\n\n¿Por qué alguien que no nos conoce nos presta atención? Si la respuesta depende solo del presupuesto, no hay sistema, hay alquiler de audiencia.\n\n### Activación\n\n¿Qué tiene que pasar en los primeros días para que el usuario perciba valor? Aquí es donde se pierden la mayoría de las inversiones en medios.\n\n### Retención\n\n¿Qué motivo hay para volver? La retención es el único multiplicador que mejora todos los números anteriores al mismo tiempo.\n\n## Ritmo de experimentación\n\n- Un backlog priorizado por impacto esperado y esfuerzo.\n- Ciclos cortos con hipótesis escrita antes de ejecutar.\n- Una sola métrica principal por ciclo.\n- Documentación del aprendizaje, incluso cuando el experimento falla.\n\n> Un equipo que corre veinte experimentos sin registrar aprendizajes no tiene veinte datos: tiene veinte anécdotas.\n\n## Señales de que el sistema funciona\n\nEl costo de adquisición deja de subir con el volumen, el equipo puede explicar por qué un número se movió y las decisiones dejan de depender de la intuición de una sola persona.",
+    "coverImage": "",
+    "coverImageAlt": "Diagrama de un sistema de crecimiento conectando adquisición, activación y retención",
+    "author": {
+      "name": "Equipo RCKT",
+      "role": "Growth & Marketing"
+    },
+    "category": "Growth",
+    "tags": [
+      "Growth",
+      "Experimentación",
+      "Estrategia"
+    ],
+    "status": "published",
+    "featured": false,
+    "publishedAt": "2026-08-28T13:00:00Z",
+    "updatedAt": "2026-08-28T13:00:00Z",
+    "seo": {
+      "title": "Sistema de growth vs. tácticas sueltas — RCKT Insights",
+      "description": "Cómo estructurar adquisición, activación y retención en un sistema de crecimiento que no dependa de la táctica de moda.",
+      "canonical": ""
+    },
+    "readingTime": 2
+  },
+  {
+    "id": "1f5c0a10-0003-4a11-9c01-000000000003",
+    "slug": "performance-mas-alla-del-roas",
+    "title": "Performance más allá del ROAS: las métricas que sí deciden",
+    "excerpt": "El ROAS es un indicador de plataforma, no de negocio. Estas son las métricas que usamos para decidir dónde poner el siguiente peso invertido.",
+    "content": "Cuando el reporte de una campaña empieza y termina en el ROAS, la conversación se vuelve corta: subir o bajar presupuesto. Las decisiones buenas necesitan más contexto.\n\n## El problema del indicador único\n\nLas plataformas optimizan lo que pueden observar. Si el negocio gana con clientes que recompran a los noventa días, ninguna plataforma va a ver ese valor dentro de su ventana de atribución.\n\n## Qué miramos en cada revisión\n\n- **Contribución marginal:** qué pasa con los ingresos cuando el canal sube o baja un 20%.\n- **Costo por cliente nuevo**, separado del costo por venta total.\n- **Margen después de costos variables**, no ingreso bruto.\n- **Valor a 90 y 180 días** por cohorte de adquisición.\n- **Velocidad de aprendizaje:** cuántas hipótesis válidas producimos por mes.\n\n## Pruebas que valen la pena\n\n1. Apagados controlados por geografía para estimar incrementalidad.\n2. Comparación de cohortes por creatividad, no solo por canal.\n3. Cambios de landing con tráfico estable, uno por vez.\n\n> Si no puedes apagar un canal una semana para saber qué aporta, no estás midiendo performance: estás administrando facturas.\n\n## Cómo se reporta\n\nUn buen reporte responde tres cosas en la primera página: qué cambió, por qué creemos que cambió y qué vamos a hacer distinto la semana próxima.",
+    "coverImage": "",
+    "coverImageAlt": "Panel de métricas de performance con cohortes y contribución marginal",
+    "author": {
+      "name": "Equipo RCKT",
+      "role": "Performance"
+    },
+    "category": "Performance",
+    "tags": [
+      "Performance",
+      "Medición",
+      "Paid Media"
+    ],
+    "status": "published",
+    "featured": false,
+    "publishedAt": "2026-08-14T13:00:00Z",
+    "updatedAt": "2026-08-16T13:00:00Z",
+    "seo": {
+      "title": "Métricas de performance más allá del ROAS — RCKT Insights",
+      "description": "Incrementalidad, contribución marginal y valor por cohorte: las métricas que deciden dónde invertir el próximo peso.",
+      "canonical": ""
+    },
+    "readingTime": 2
+  },
+  {
+    "id": "1f5c0a10-0004-4a11-9c01-000000000004",
+    "slug": "estrategia-digital-para-empresas-en-latam",
+    "title": "Estrategia digital en LATAM: menos copiar, más contexto",
+    "excerpt": "Los manuales importados fallan porque ignoran el contexto de compra regional. Cómo construir una estrategia que funcione en mercados heterogéneos.",
+    "content": "La región no es un mercado, son varios. Cambian el poder adquisitivo, los medios de pago, la logística, la confianza digital y hasta el horario en que la gente decide comprar.\n\n## Empezar por la fricción, no por el canal\n\nAntes de discutir presupuesto, mapeamos dónde se cae la intención de compra: formularios largos, métodos de pago ausentes, tiempos de respuesta, costos de envío que aparecen tarde.\n\n### Tres preguntas de contexto\n\n1. ¿Cómo paga realmente este cliente?\n2. ¿Qué necesita ver para confiar en una marca que no conoce?\n3. ¿Quién decide y quién aprueba la compra?\n\n## Priorizar con criterio\n\n- Arreglar conversión antes de escalar inversión.\n- Un mensaje por segmento, no un mensaje para todos.\n- Presencia sostenida en pocos canales antes que presencia débil en muchos.\n\n> Una estrategia no es una lista de actividades: es una decisión explícita sobre qué no vamos a hacer este trimestre.\n\n## Documentar para poder revisar\n\nEscribimos la estrategia en una página: diagnóstico, apuesta, métricas de control y supuestos. Si un supuesto se cae, la estrategia se revisa; no se defiende.",
+    "coverImage": "",
+    "coverImageAlt": "Mapa de recorrido de compra adaptado a mercados de América Latina",
+    "author": {
+      "name": "Equipo RCKT",
+      "role": "Estrategia"
+    },
+    "category": "Estrategia digital",
+    "tags": [
+      "Estrategia",
+      "LATAM",
+      "Conversión"
+    ],
+    "status": "published",
+    "featured": false,
+    "publishedAt": "2026-07-30T13:00:00Z",
+    "updatedAt": "2026-07-30T13:00:00Z",
+    "seo": {
+      "title": "Estrategia digital en LATAM con contexto local — RCKT Insights",
+      "description": "Cómo construir una estrategia digital que respete el contexto de compra de los mercados latinoamericanos.",
+      "canonical": ""
+    },
+    "readingTime": 2
+  },
+  {
+    "id": "1f5c0a10-0005-4a11-9c01-000000000005",
+    "slug": "automatizacion-que-libera-tiempo-real",
+    "title": "Automatización que libera tiempo real (y no solo mueve trabajo de lugar)",
+    "excerpt": "Automatizar un proceso malo lo vuelve un proceso malo más rápido. El orden correcto: simplificar, estandarizar y recién después automatizar.",
+    "content": "Cada equipo tiene una lista de tareas que \"deberían automatizarse\". Casi siempre el problema no es la falta de herramienta, sino que el proceso nunca se escribió.\n\n## Simplificar antes de conectar\n\nEmpezamos eliminando pasos: aprobaciones redundantes, reportes que nadie lee, campos que nadie consulta. En promedio, un tercio del proceso desaparece en esta etapa.\n\n## Estandarizar lo que queda\n\n- Un nombre para cada estado del proceso.\n- Un responsable por paso.\n- Una fuente de verdad, no cinco hojas de cálculo.\n\n## Automatizar donde hay volumen y reglas claras\n\n| Buen candidato | Mal candidato |\n| --- | --- |\n| Alta frecuencia, reglas estables | Casos únicos con excepciones constantes |\n| Datos estructurados | Información dispersa y sin dueño |\n| Error fácil de detectar | Error silencioso y costoso |\n\n> El objetivo no es tener más automatizaciones: es que el equipo recupere horas para pensar.\n\n### Cómo se mide\n\nHoras liberadas por semana, tasa de error antes y después, y tiempo de ciclo de punta a punta. Si esos tres números no mejoran, la automatización solo agregó mantenimiento.",
+    "coverImage": "",
+    "coverImageAlt": "Flujo de trabajo automatizado con etapas simplificadas",
+    "author": {
+      "name": "Equipo RCKT",
+      "role": "Operaciones"
+    },
+    "category": "Automatización",
+    "tags": [
+      "Automatización",
+      "Procesos",
+      "Productividad"
+    ],
+    "status": "published",
+    "featured": false,
+    "publishedAt": "2026-07-16T13:00:00Z",
+    "updatedAt": "2026-07-16T13:00:00Z",
+    "seo": {
+      "title": "Automatización que libera tiempo real — RCKT Insights",
+      "description": "Simplificar, estandarizar y después automatizar: el orden que hace que la automatización devuelva horas al equipo.",
+      "canonical": ""
+    },
+    "readingTime": 2
+  },
+  {
+    "id": "1f5c0a10-0006-4a11-9c01-000000000006",
+    "slug": "cultura-creativa-en-equipos-que-usan-tecnologia",
+    "title": "Cultura creativa en equipos que usan tecnología todos los días",
+    "excerpt": "Cuando la ejecución se acelera, la diferencia la marca el pensamiento. Cómo cuidamos el espacio creativo en un equipo remoto y muy tecnificado.",
+    "content": "La velocidad tiene un costo silencioso: menos tiempo para pensar. En equipos remotos y muy tecnificados, la creatividad no aparece sola, hay que darle lugar en el calendario.\n\n## Rituales simples que funcionan\n\n- **Revisión de ángulos** semanal: media hora para discutir ideas, sin entregables.\n- **Crítica sin dueños:** el trabajo se comenta separado de quien lo hizo.\n- **Bloques sin reuniones** para trabajo profundo, respetados de verdad.\n\n## Diversidad de entradas\n\nUn equipo que consume las mismas referencias produce las mismas ideas. Rotamos fuentes: entrevistas a clientes, datos de soporte, competencia de otras categorías, cultura fuera del marketing.\n\n> La tecnología amplifica lo que el equipo ya piensa. Si el pensamiento es plano, el resultado escala plano.\n\n### Señales de alerta\n\n1. Todas las piezas se parecen entre sí.\n2. Nadie recuerda la última idea descartada por mala.\n3. Las reuniones terminan con tareas, nunca con preguntas.\n\n## Qué sostiene la cultura\n\nReconocimiento explícito del trabajo bien pensado, no solo del trabajo entregado rápido. Es la diferencia entre un equipo que produce y un equipo que aprende.",
+    "coverImage": "",
+    "coverImageAlt": "Equipo remoto colaborando en una sesión de revisión creativa",
+    "author": {
+      "name": "Equipo RCKT",
+      "role": "People & Culture"
+    },
+    "category": "Cultura y tecnología",
+    "tags": [
+      "Cultura",
+      "Creatividad",
+      "Equipos"
+    ],
+    "status": "published",
+    "featured": false,
+    "publishedAt": "2026-06-25T13:00:00Z",
+    "updatedAt": "2026-06-25T13:00:00Z",
+    "seo": {
+      "title": "Cultura creativa en equipos tecnificados — RCKT Insights",
+      "description": "Rituales y señales para sostener el pensamiento creativo en equipos remotos que trabajan con tecnología a diario.",
+      "canonical": ""
+    },
+    "readingTime": 2
+  }
+]
