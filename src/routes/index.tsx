@@ -101,13 +101,22 @@ const pageMarkup = `
 <a href="#metodo">Método</a>
 <a href="#faq">FAQ</a>
 <a href="/trabaja-con-nosotros">Trabaja con nosotros</a>
+<div class="nav-menu-footer">
+<a class="btn hero-nav-cta nav-menu-cta" href="#contacto">Solicitar diagnóstico</a>
+<div class="theme-switch hero-theme-switch">
+<button id="themeLightMobile" class="active" type="button">Claro</button>
+<button id="themeDarkMobile" type="button">Oscuro</button>
+</div>
+</div>
 </div>
 <div class="nav-right">
+<div class="nav-right-desktop">
 <div class="theme-switch hero-theme-switch">
 <button id="themeLight" class="active" type="button">Claro</button>
 <button id="themeDark" type="button">Oscuro</button>
 </div>
-<a class="btn hero-nav-cta btn-sm" href="#contacto">Solicitar diagnóstico</a>
+</div>
+<a class="btn hero-nav-cta" href="#contacto">Solicitar diagnóstico</a>
 <button aria-label="Abrir menú" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
 </div>
 </nav>
@@ -646,10 +655,29 @@ function RcktLanding() {
 
     const toggle = document.getElementById("navToggle");
     const links = document.querySelector<HTMLElement>(".nav-links");
-    const onToggle = () => links?.classList.toggle("mobile-open");
-    const closeMenu = () => links?.classList.remove("mobile-open");
+    const updateMenuLock = () => {
+      const open = links?.classList.contains("mobile-open");
+      document.body.classList.toggle("menu-open", Boolean(open));
+      toggle?.classList.toggle("mobile-open", Boolean(open));
+    };
+    const onToggle = () => {
+      links?.classList.toggle("mobile-open");
+      updateMenuLock();
+    };
+    const closeMenu = () => {
+      links?.classList.remove("mobile-open");
+      updateMenuLock();
+    };
+    const closeMenuOnResize = () => {
+      if (window.innerWidth > 980) closeMenu();
+    };
+    const closeMenuOnEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMenu();
+    };
     toggle?.addEventListener("click", onToggle);
     links?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+    window.addEventListener("resize", closeMenuOnResize);
+    window.addEventListener("keydown", closeMenuOnEsc);
 
     const faqButtons = Array.from(document.querySelectorAll<HTMLButtonElement>(".faq-q"));
     const onFaq = (event: Event) => {
@@ -678,31 +706,36 @@ function RcktLanding() {
 
     const light = document.getElementById("themeLight");
     const dark = document.getElementById("themeDark");
+    const lightMobile = document.getElementById("themeLightMobile");
+    const darkMobile = document.getElementById("themeDarkMobile");
     const setLight = () => {
       document.documentElement.removeAttribute("data-theme");
-      light?.classList.add("active");
-      dark?.classList.remove("active");
+      [light, lightMobile].forEach((b) => b?.classList.add("active"));
+      [dark, darkMobile].forEach((b) => b?.classList.remove("active"));
     };
     const setDark = () => {
       document.documentElement.setAttribute("data-theme", "dark");
-      dark?.classList.add("active");
-      light?.classList.remove("active");
+      [dark, darkMobile].forEach((b) => b?.classList.add("active"));
+      [light, lightMobile].forEach((b) => b?.classList.remove("active"));
     };
-    light?.addEventListener("click", setLight);
-    dark?.addEventListener("click", setDark);
+    [light, lightMobile].forEach((b) => b?.addEventListener("click", setLight));
+    [dark, darkMobile].forEach((b) => b?.addEventListener("click", setDark));
 
     return () => {
       timers.forEach((t) => window.clearTimeout(t));
       counterObserver?.disconnect();
       observer?.disconnect();
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", closeMenuOnResize);
+      window.removeEventListener("keydown", closeMenuOnEsc);
       toggle?.removeEventListener("click", onToggle);
       links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu));
       faqButtons.forEach((button) => button.removeEventListener("click", onFaq));
       form?.removeEventListener("submit", onSubmit);
-      light?.removeEventListener("click", setLight);
-      dark?.removeEventListener("click", setDark);
+      [light, lightMobile].forEach((b) => b?.removeEventListener("click", setLight));
+      [dark, darkMobile].forEach((b) => b?.removeEventListener("click", setDark));
       document.documentElement.removeAttribute("data-theme");
+      document.body.classList.remove("menu-open");
     };
   }, []);
 

@@ -3,6 +3,15 @@ import logoDarkAsset from "@/assets/rckt-logo-dark.png";
 
 /** Navegación y pie compartidos con la home, más las animaciones del sitio. */
 
+function ThemeSwitch({ suffix = "" }: { suffix?: string }) {
+  return (
+    <div className="theme-switch hero-theme-switch">
+      <button id={`themeLight${suffix}`} className="active" type="button">Claro</button>
+      <button id={`themeDark${suffix}`} type="button">Oscuro</button>
+    </div>
+  );
+}
+
 export function SiteHeader() {
   return (
     <header>
@@ -18,13 +27,17 @@ export function SiteHeader() {
             <a href="/#metodo">Método</a>
             <a href="/#faq">FAQ</a>
             <a href="/trabaja-con-nosotros">Trabaja con nosotros</a>
+
+            <div className="nav-menu-footer">
+              <a className="btn hero-nav-cta nav-menu-cta" href="/#contacto">Solicitar diagnóstico</a>
+              <ThemeSwitch suffix="Mobile" />
+            </div>
           </div>
           <div className="nav-right">
-            <div className="theme-switch hero-theme-switch">
-              <button id="themeLight" className="active" type="button">Claro</button>
-              <button id="themeDark" type="button">Oscuro</button>
+            <div className="nav-right-desktop">
+              <ThemeSwitch />
             </div>
-            <a className="btn hero-nav-cta btn-sm" href="/#contacto">Solicitar diagnóstico</a>
+            <a className="btn hero-nav-cta" href="/#contacto">Solicitar diagnóstico</a>
             <button aria-label="Abrir menú" className="nav-toggle" id="navToggle">
               <span></span><span></span><span></span>
             </button>
@@ -126,34 +139,59 @@ export function useSiteMotion(deps: unknown[] = []) {
 
     const toggle = document.getElementById("navToggle");
     const links = document.querySelector<HTMLElement>(".nav-links");
-    const onToggle = () => links?.classList.toggle("mobile-open");
-    const closeMenu = () => links?.classList.remove("mobile-open");
+    const updateMenuLock = () => {
+      const open = links?.classList.contains("mobile-open");
+      document.body.classList.toggle("menu-open", Boolean(open));
+      toggle?.classList.toggle("mobile-open", Boolean(open));
+    };
+    const onToggle = () => {
+      links?.classList.toggle("mobile-open");
+      updateMenuLock();
+    };
+    const closeMenu = () => {
+      links?.classList.remove("mobile-open");
+      updateMenuLock();
+    };
+    const closeOnEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMenu();
+    };
     toggle?.addEventListener("click", onToggle);
     links?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+    window.addEventListener("keydown", closeOnEsc);
+
+    const closeOnResize = () => {
+      if (window.innerWidth > 980) closeMenu();
+    };
+    window.addEventListener("resize", closeOnResize);
 
     const light = document.getElementById("themeLight");
     const dark = document.getElementById("themeDark");
+    const lightMobile = document.getElementById("themeLightMobile");
+    const darkMobile = document.getElementById("themeDarkMobile");
     const setLight = () => {
       document.documentElement.removeAttribute("data-theme");
-      light?.classList.add("active");
-      dark?.classList.remove("active");
+      [light, lightMobile].forEach((b) => b?.classList.add("active"));
+      [dark, darkMobile].forEach((b) => b?.classList.remove("active"));
     };
     const setDark = () => {
       document.documentElement.setAttribute("data-theme", "dark");
-      dark?.classList.add("active");
-      light?.classList.remove("active");
+      [dark, darkMobile].forEach((b) => b?.classList.add("active"));
+      [light, lightMobile].forEach((b) => b?.classList.remove("active"));
     };
-    light?.addEventListener("click", setLight);
-    dark?.addEventListener("click", setDark);
+    [light, lightMobile].forEach((b) => b?.addEventListener("click", setLight));
+    [dark, darkMobile].forEach((b) => b?.addEventListener("click", setDark));
 
     return () => {
       observer?.disconnect();
       window.removeEventListener("scroll", onScroll);
       toggle?.removeEventListener("click", onToggle);
       links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu));
-      light?.removeEventListener("click", setLight);
-      dark?.removeEventListener("click", setDark);
+      window.removeEventListener("keydown", closeOnEsc);
+      window.removeEventListener("resize", closeOnResize);
+      [light, lightMobile].forEach((b) => b?.removeEventListener("click", setLight));
+      [dark, darkMobile].forEach((b) => b?.removeEventListener("click", setDark));
       document.documentElement.removeAttribute("data-theme");
+      document.body.classList.remove("menu-open");
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
