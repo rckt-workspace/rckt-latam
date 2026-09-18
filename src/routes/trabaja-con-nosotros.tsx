@@ -92,7 +92,7 @@ function TrabajaConNosotros() {
             <div className="subpage-hero-inner">
               <span className="kicker">Trabaja con nosotros</span>
               <h1>
-                Construye el futuro del trabajo con{" "}
+                Descubre el futuro del trabajo con{" "}
                 <span className="hero-hand">nosotros</span>.
               </h1>
               <p className="sub">
