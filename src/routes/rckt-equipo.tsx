@@ -132,6 +132,7 @@ function Shell({ children }: { children: React.ReactNode }) {
 }
 
 function Login() {
+  const supabase = useSb();
   const [modo, setModo] = useState<"login" | "registro">("login");
   const [error, setError] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
@@ -243,6 +244,7 @@ const vacanteVacia = {
 };
 
 function Dashboard({ email }: { email: string }) {
+  const supabase = useSb();
   const [tab, setTab] = useState<"vacantes" | "postulaciones">("vacantes");
   const [vacantes, setVacantes] = useState<Vacante[]>([]);
   const [postulaciones, setPostulaciones] = useState<Postulacion[]>([]);
