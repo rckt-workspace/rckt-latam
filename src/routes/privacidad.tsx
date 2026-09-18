@@ -6,9 +6,16 @@ export const Route = createFileRoute("/privacidad")({
   head: () => ({
     meta: [
       { title: "Política de privacidad — RCKT" },
-      { name: "description", content: "Cómo RCKT trata los datos que nos envías a través del formulario de diagnóstico y del correo de contacto." },
+      {
+        name: "description",
+        content:
+          "Cómo RCKT trata los datos que nos envías a través del formulario de diagnóstico y del correo de contacto.",
+      },
       { property: "og:title", content: "Política de privacidad — RCKT" },
-      { property: "og:description", content: "Cómo RCKT trata los datos que nos envías y qué derechos tienes sobre ellos." },
+      {
+        property: "og:description",
+        content: "Cómo RCKT trata los datos que nos envías y qué derechos tienes sobre ellos.",
+      },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "https://rckt-latam.lovable.app/privacidad" },
       { name: "twitter:card", content: "summary" },

@@ -1,14 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo } from "react";
-import heroAsset from "@/assets/rckt-hero.jpg.asset.json";
-import logoDarkAsset from "@/assets/rckt-logo-dark.png.asset.json";
-import logoLightAsset from "@/assets/rckt-logo-light.png.asset.json";
+import heroAsset from "@/assets/rckt-hero.jpg";
+import logoDarkAsset from "@/assets/rckt-logo-dark.png";
+import logoLightAsset from "@/assets/rckt-logo-light.png";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
 const services = [
-  ["AI Growth Audit", "Revisamos tu inversión publicitaria, tus datos, tu sitio y tu contenido con la misma vara, y entregamos un informe con lo que estás dejando sobre la mesa."],
-  ["AI Visibility Snapshot", "Comprobamos con evidencia si tu marca aparece cuando alguien pregunta por tu categoría en ChatGPT, Gemini o Perplexity."],
+  [
+    "AI Growth Audit",
+    "Revisamos tu inversión publicitaria, tus datos, tu sitio y tu contenido con la misma vara, y entregamos un informe con lo que estás dejando sobre la mesa.",
+  ],
+  [
+    "AI Visibility Snapshot",
+    "Comprobamos con evidencia si tu marca aparece cuando alguien pregunta por tu categoría en ChatGPT, Gemini o Perplexity.",
+  ],
 ] as const;
 
 export const Route = createFileRoute("/")({
@@ -16,9 +22,17 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "RCKT — Sistemas de crecimiento con IA" },
-      { name: "description", content: "Diseñamos y operamos sistemas de marketing con IA ligados a resultados medibles. Empieza con un diagnóstico." },
+      {
+        name: "description",
+        content:
+          "Diseñamos y operamos sistemas de marketing con IA ligados a resultados medibles. Empieza con un diagnóstico.",
+      },
       { property: "og:title", content: "RCKT — Sistemas de crecimiento con IA" },
-      { property: "og:description", content: "Resultados, no horas. Sistemas de medios, creativo, visibilidad en IA y ventas por conversación." },
+      {
+        property: "og:description",
+        content:
+          "Resultados, no horas. Sistemas de medios, creativo, visibilidad en IA y ventas por conversación.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:url", content: SITE_URL + "/" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -35,7 +49,8 @@ export const Route = createFileRoute("/")({
               "@id": SITE_URL + "/#organization",
               name: "RCKT",
               url: SITE_URL + "/",
-              description: "Firma de sistemas de crecimiento con IA para el mercado hispanohablante.",
+              description:
+                "Firma de sistemas de crecimiento con IA para el mercado hispanohablante.",
               email: "hola@rckt.lat",
               contactPoint: [
                 {
@@ -511,10 +526,14 @@ const pageMarkup = `
 `;
 
 function RcktLanding() {
-  const markup = useMemo(() => pageMarkup
-    .replaceAll("__HERO__", heroAsset.url)
-    .replaceAll("__LOGO_DARK__", logoDarkAsset.url)
-    .replaceAll("__LOGO_LIGHT__", logoLightAsset.url), []);
+  const markup = useMemo(
+    () =>
+      pageMarkup
+        .replaceAll("__HERO__", heroAsset)
+        .replaceAll("__LOGO_DARK__", logoDarkAsset)
+        .replaceAll("__LOGO_LIGHT__", logoLightAsset),
+    [],
+  );
 
   useEffect(() => {
     const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
@@ -563,11 +582,17 @@ function RcktLanding() {
     };
     let counterObserver: IntersectionObserver | undefined;
     if (!reduceMotion && "IntersectionObserver" in window) {
-      counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) { runCounter(entry.target as HTMLElement); counterObserver?.unobserve(entry.target); }
-        });
-      }, { threshold: 0.6 });
+      counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              runCounter(entry.target as HTMLElement);
+              counterObserver?.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.6 },
+      );
       counters.forEach((el) => counterObserver?.observe(el));
     }
 
@@ -587,22 +612,37 @@ function RcktLanding() {
           i += 1;
           timers.push(window.setTimeout(tick, 45));
         } else {
-          timers.push(window.setTimeout(() => { cursor.remove(); }, 2200));
+          timers.push(
+            window.setTimeout(() => {
+              cursor.remove();
+            }, 2200),
+          );
         }
       };
       timers.push(window.setTimeout(tick, 480));
     }
 
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>(".rv"));
-    let observer: IntersectionObserver | undefined;
-    observer = "IntersectionObserver" in window ? new IntersectionObserver((entries) => {
-      entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("in"); observer?.unobserve(entry.target); } });
-    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }) : undefined;
-    revealElements.forEach((el) => observer ? observer.observe(el) : el.classList.add("in"));
+    const observer: IntersectionObserver | undefined =
+      "IntersectionObserver" in window
+        ? new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("in");
+                  observer?.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+          )
+        : undefined;
+    revealElements.forEach((el) => (observer ? observer.observe(el) : el.classList.add("in")));
 
     const header = document.querySelector<HTMLElement>("header");
     const onScroll = () => header?.classList.toggle("scrolled", window.scrollY > 8);
-    window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
 
     const toggle = document.getElementById("navToggle");
     const links = document.querySelector<HTMLElement>(".nav-links");
@@ -617,22 +657,53 @@ function RcktLanding() {
       const item = button.closest<HTMLElement>(".faq-item");
       if (!item) return;
       const wasOpen = item.classList.contains("open");
-      document.querySelectorAll<HTMLElement>(".faq-item").forEach((row) => { row.classList.remove("open"); row.querySelector<HTMLElement>(".faq-a")?.style.removeProperty("max-height"); });
-      if (!wasOpen) { item.classList.add("open"); const answer = item.querySelector<HTMLElement>(".faq-a"); if (answer) answer.style.maxHeight = `${answer.scrollHeight}px`; }
+      document.querySelectorAll<HTMLElement>(".faq-item").forEach((row) => {
+        row.classList.remove("open");
+        row.querySelector<HTMLElement>(".faq-a")?.style.removeProperty("max-height");
+      });
+      if (!wasOpen) {
+        item.classList.add("open");
+        const answer = item.querySelector<HTMLElement>(".faq-a");
+        if (answer) answer.style.maxHeight = `${answer.scrollHeight}px`;
+      }
     };
     faqButtons.forEach((button) => button.addEventListener("click", onFaq));
 
     const form = document.getElementById("diagForm") as HTMLFormElement | null;
-    const onSubmit = (event: Event) => { event.preventDefault(); form?.classList.add("submitted"); };
+    const onSubmit = (event: Event) => {
+      event.preventDefault();
+      form?.classList.add("submitted");
+    };
     form?.addEventListener("submit", onSubmit);
 
     const light = document.getElementById("themeLight");
     const dark = document.getElementById("themeDark");
-    const setLight = () => { document.documentElement.removeAttribute("data-theme"); light?.classList.add("active"); dark?.classList.remove("active"); };
-    const setDark = () => { document.documentElement.setAttribute("data-theme", "dark"); dark?.classList.add("active"); light?.classList.remove("active"); };
-    light?.addEventListener("click", setLight); dark?.addEventListener("click", setDark);
+    const setLight = () => {
+      document.documentElement.removeAttribute("data-theme");
+      light?.classList.add("active");
+      dark?.classList.remove("active");
+    };
+    const setDark = () => {
+      document.documentElement.setAttribute("data-theme", "dark");
+      dark?.classList.add("active");
+      light?.classList.remove("active");
+    };
+    light?.addEventListener("click", setLight);
+    dark?.addEventListener("click", setDark);
 
-    return () => { timers.forEach((t) => window.clearTimeout(t)); counterObserver?.disconnect(); observer?.disconnect(); window.removeEventListener("scroll", onScroll); toggle?.removeEventListener("click", onToggle); links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu)); faqButtons.forEach((button) => button.removeEventListener("click", onFaq)); form?.removeEventListener("submit", onSubmit); light?.removeEventListener("click", setLight); dark?.removeEventListener("click", setDark); document.documentElement.removeAttribute("data-theme"); };
+    return () => {
+      timers.forEach((t) => window.clearTimeout(t));
+      counterObserver?.disconnect();
+      observer?.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      toggle?.removeEventListener("click", onToggle);
+      links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu));
+      faqButtons.forEach((button) => button.removeEventListener("click", onFaq));
+      form?.removeEventListener("submit", onSubmit);
+      light?.removeEventListener("click", setLight);
+      dark?.removeEventListener("click", setDark);
+      document.documentElement.removeAttribute("data-theme");
+    };
   }, []);
 
   return <div className="rckt-site" dangerouslySetInnerHTML={{ __html: markup }} />;

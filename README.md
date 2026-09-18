@@ -1,65 +1,325 @@
-# RCKT Growth AI
+# RCKT LATAM
 
-Quiero un sitio de una sola página (landing page) para RCKT, una firma de sistemas de crecimiento con IA. Todo en español. Usa React + Tailwind. Aquí está el sistema de diseño y el contenido completo.
+**Sibling project of [RCKT Spain](https://github.com/rckt-workspace/rckt-web-builder)**
 
-═══════════════════════════════════
+RCKT LATAM is a regional adaptation of RCKT's growth AI platform, tailored for Latin American markets. While sharing the same technical foundation as RCKT Spain, RCKT LATAM maintains independent configuration, content, business logic, and regional compliance.
 
-SISTEMA DE DISEÑO
+## About RCKT
 
-═══════════════════════════════════
+RCKT es un sistema de crecimiento con IA para empresas de habla hispana. Diseñamos, operamos y escalamos sistemas de marketing con un modelo de precio ligado a resultados, no a horas.
 
-COLORES BASE (modo claro):
+**Live app:** https://rckt-latam.lovable.app (development)
 
-- Fondo principal: mezcla de 18% #FEC6AD (durazno claro) con 82% #EDECE7 (papel) → un crema con tinte cálido muy sutil, NO gris puro
+---
 
-- Fondo alterno (secciones pares): mezcla de 28% #FEC6AD con 72% #EDECE7 (un poco más cálido que el principal)
+## 🏗️ Architecture Foundation
 
-- Texto principal: #000000
+RCKT LATAM and RCKT Spain share the same technical stack but maintain complete regional separation:
 
-- Texto secundario: #5B5751
+### Shared Technical Stack
 
-- Texto terciario/labels: #8A857D
+- **Frontend**: TanStack Start + React 19 + TypeScript
+- **Build**: Vite 7 + Tailwind CSS 4
+- **Server**: Nitro (SSR)
+- **Backend AI Service**: FastAPI (Python 3.12)
+- **Database**: Supabase (PostgreSQL)
+- **Package Manager**: Bun
+- **Deployment**: Docker + Render
 
-- Naranja de marca (logo, botón CTA principal, siempre constante en todo el sitio): #F4581D
+### Regional Separation
 
-- Naranja hover: #D6470F
+Each region has its own:
 
-- Durazno: #F5AB7A
+- **Configuration**: `src/config/` (market, SEO, contact, features)
+- **Content**: Region-specific copy, branding, images
+- **Business Logic**: Regional features and compliance
+- **Knowledge Base**: AI agent knowledge separated by region
+- **Compliance**: Regional legal and privacy requirements
 
-- Carbón (fondo de tarjetas oscuras): #202020
+---
 
-- Líneas divisorias: negro al 14% de opacidad
+## 🚀 Quick Start
 
-MODO OSCURO (toggle Claro/Oscuro en el footer):
+### Local Development
 
-- Fondo: #202020 (Carbón) en vez del crema
+```bash
+# Install dependencies
+bun install
 
-- Texto: #EDECE7 (papel) en vez de negro
+# Start development server
+bun run dev
 
-- Tarjetas oscuras: también #202020 (se funden
-
-
-sigue el html
-
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://rckt-latam.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/3f0b236a-8d36-42be-9f84-8b51a173f3f6).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+# Open browser
+open http://localhost:5173
 ```
+
+### With AI Service
+
+```bash
+# Terminal 1: Frontend
+bun run dev
+
+# Terminal 2: AI Service (requires Python 3.11+)
+cd services/ai
+pip install -e .
+python -m uvicorn app.main:app --reload
+
+# Access frontend
+open http://localhost:5173
+```
+
+### Environment Setup
+
+```bash
+# Copy environment files
+cp .env.example .env
+cp services/ai/.env.example services/ai/.env
+
+# Edit and configure
+# Required:
+#   - SUPABASE_URL & SUPABASE_PUBLISHABLE_KEY
+#   - ANTHROPIC_API_KEY (for AI service)
+```
+
+---
+
+## 📁 Project Structure
+
+```
+rckt-latam/
+├── src/
+│   ├── config/                    # Regional configuration layer
+│   │   ├── market.ts             # Market/brand settings
+│   │   ├── seo.ts                # SEO & meta configuration
+│   │   ├── contact.ts            # Contact & support channels
+│   │   ├── features.ts           # Feature flags
+│   │   └── index.ts              # Barrel export
+│   ├── components/               # React components
+│   │   ├── rckt/                 # RCKT-specific components
+│   │   └── ui/                   # shadcn/ui components
+│   ├── routes/                   # TanStack Router pages
+│   │   ├── api/                  # API endpoints
+│   │   ├── __root.tsx            # Root layout
+│   │   └── index.tsx             # Landing page
+│   ├── lib/                      # Utilities
+│   ├── integrations/             # External integrations
+│   │   └── supabase/             # Supabase client & middleware
+│   └── styles.css
+├── services/
+│   └── ai/                       # FastAPI AI service
+│       ├── app/
+│       │   ├── api/              # API endpoints
+│       │   ├── agents/           # AI agent definitions
+│       │   ├── llm/              # LLM providers
+│       │   ├── schemas/          # Pydantic schemas
+│       │   └── services/         # Business logic
+│       ├── tests/                # Test suite
+│       ├── pyproject.toml
+│       └── Dockerfile
+├── scripts/
+│   └── start-production.sh       # Production entrypoint
+├── Dockerfile                     # Multi-stage build
+├── .env.example                   # Environment template
+├── DEPLOYMENT.md                  # Deployment guide
+└── README.md (this file)
+```
+
+---
+
+## ⚙️ Configuration
+
+All regional settings are controlled through `src/config/`:
+
+### Market Configuration (`src/config/market.ts`)
+
+```typescript
+marketConfig.brand.domain; // LATAM domain
+marketConfig.brand.email; // Support email
+marketConfig.business.currency; // Currency (USD, etc.)
+marketConfig.api.aiServiceUrl; // AI service URL
+```
+
+### SEO Configuration (`src/config/seo.ts`)
+
+```typescript
+seoConfig.siteUrl; // LATAM website URL
+seoConfig.organization; // Organization details
+seoConfig.geo.regions; // Geographic targeting
+```
+
+### Contact Configuration (`src/config/contact.ts`)
+
+```typescript
+contactConfig.contacts.sales; // Sales email/phone
+contactConfig.businessHours; // LATAM business hours
+contactConfig.channels; // Communication channels
+```
+
+### Feature Flags (`src/config/features.ts`)
+
+```typescript
+featuresConfig.core.advisorChat; // Enable AI chat
+featuresConfig.admin.adminPanel; // Admin interface
+featuresConfig.integrations.supabase; // Backend integration
+```
+
+---
+
+## 🏭 Development vs. Production
+
+### Development Build
+
+```bash
+bun run build:dev
+```
+
+### Production Build
+
+```bash
+bun run build
+```
+
+### Docker Build & Run
+
+```bash
+docker build -t rckt-latam:latest .
+docker run -p 10000:10000 -e PORT=10000 rckt-latam:latest
+```
+
+---
+
+## 🧪 Testing & Validation
+
+```bash
+# Frontend build
+bun run build
+
+# Backend syntax check
+python -m compileall services/ai -q
+
+# Type checking
+tsc --noEmit
+
+# Linting
+bun run lint
+
+# Run tests (if available)
+cd services/ai
+pytest tests/
+```
+
+---
+
+## 📚 Key Differences from Spain
+
+| Aspect         | Spain                  | LATAM                   |
+| -------------- | ---------------------- | ----------------------- |
+| Domain         | rckt.es                | rckt.latam              |
+| Email          | hola@rckt.es           | hola@rckt.latam         |
+| Language       | Spanish                | Spanish                 |
+| Compliance     | GDPR + Spanish regs    | LATAM local regs        |
+| Features       | Full feature set       | Configurable per region |
+| Content        | Spain-specific         | LATAM-specific          |
+| Knowledge Base | Spain market knowledge | LATAM market knowledge  |
+
+---
+
+## 🔄 Staying in Sync with Spain Foundation
+
+Both projects share the same technical foundation but can diverge on features and content:
+
+1. **Architecture Changes**: Both projects should adopt simultaneously (Nitro, FastAPI versions, etc.)
+2. **Bugfixes**: Core framework bugs should be fixed in both
+3. **New Features**: Can be enabled/disabled via `src/config/features.ts`
+4. **Content**: Completely independent per region
+
+---
+
+## 🚢 Deployment
+
+### Render.com (Recommended)
+
+1. Connect GitHub: `rckt-workspace/rckt-latam`
+2. Set environment variables (see `.env.example`)
+3. Docker build will run automatically
+4. Service starts with health check
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
+
+---
+
+## 🔐 Security
+
+- **API Keys**: Never commit `.env` files; use service secrets
+- **Supabase Keys**: Public key OK (scoped by RLS), service key private
+- **AI Provider Keys**: Always server-side only (FastAPI)
+- **CORS**: Configured per environment
+
+---
+
+## 📖 Documentation
+
+- [DEPLOYMENT.md](./DEPLOYMENT.md) - Deployment & configuration guide
+- [services/ai/README.md](./services/ai/README.md) - AI service documentation
+- [src/config/index.ts](./src/config/index.ts) - Configuration structure
+
+---
+
+## 🛠️ Technology Stack
+
+| Layer           | Technology            | Version         |
+| --------------- | --------------------- | --------------- |
+| Frontend        | React                 | 19.2.0          |
+| Router          | TanStack Router       | 1.170+          |
+| Framework       | TanStack Start        | 1.168+          |
+| Styling         | Tailwind CSS          | 4.2.1           |
+| Build Tool      | Vite                  | 7.3.1           |
+| Package Manager | Bun                   | 1.2+            |
+| Server          | Nitro                 | 3.0.260603-beta |
+| Backend API     | FastAPI               | 0.141.1         |
+| Database        | Supabase (PostgreSQL) | Latest          |
+| Python          | Python                | 3.11+           |
+| Container       | Docker                | Latest          |
+
+---
+
+## 🤝 Contributing
+
+### Before You Commit
+
+```bash
+# Ensure no errors
+bun run build
+python -m compileall services/ai -q
+tsc --noEmit
+bun run lint
+```
+
+### Creating a Feature
+
+1. Create feature flag in `src/config/features.ts`
+2. Use in components: `import { featuresConfig } from '@/config'`
+3. Test locally, commit to feature branch
+4. Create PR to `main`
+
+---
+
+## 📝 License
+
+Built with [Lovable](https://lovable.dev).
+
+---
+
+## 📞 Support
+
+For RCKT LATAM specific issues:
+
+- Email: hola@rckt.latam (TODO: Update)
+- Sales: ventas@rckt.latam (TODO: Update)
+
+For technical architecture questions, see [rckt-workspace/rckt-web-builder](https://github.com/rckt-workspace/rckt-web-builder).
+
+---
+
+**Last Updated:** September 16, 2026
+**Status:** Foundation Phase - Technical architecture complete, awaiting content and regional configuration

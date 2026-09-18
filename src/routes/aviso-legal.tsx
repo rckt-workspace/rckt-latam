@@ -6,9 +6,16 @@ export const Route = createFileRoute("/aviso-legal")({
   head: () => ({
     meta: [
       { title: "Aviso legal — RCKT" },
-      { name: "description", content: "Información legal de RCKT: titular del sitio, condiciones de uso, propiedad intelectual y responsabilidad." },
+      {
+        name: "description",
+        content:
+          "Información legal de RCKT: titular del sitio, condiciones de uso, propiedad intelectual y responsabilidad.",
+      },
       { property: "og:title", content: "Aviso legal — RCKT" },
-      { property: "og:description", content: "Información legal de RCKT: titular del sitio y condiciones de uso." },
+      {
+        property: "og:description",
+        content: "Información legal de RCKT: titular del sitio y condiciones de uso.",
+      },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "https://rckt-latam.lovable.app/aviso-legal" },
       { name: "twitter:card", content: "summary" },
