@@ -1352,3 +1352,7 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 .rckt-site .blog-cover-hero{ aspect-ratio:21/9; }
 .rckt-site .blog-toc{ display:block; }
 .rckt-site .blog-toc ul li{ margin:0; }
+[data-theme="dark"] .rckt-site .blog-search input{ background:rgba(255,255,255,.06); color:var(--papel-fija); }
+[data-theme="dark"] .rckt-site .blog-search input::placeholder{ color:rgba(255,255,255,.55); }
+[data-theme="dark"] .rckt-site .blog-quote{ background:rgba(244,88,29,.14); }
+[data-theme="dark"] .rckt-site .blog-body code{ background:rgba(255,255,255,.1); }
