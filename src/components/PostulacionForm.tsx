@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { getBrowserSupabase } from "@/lib/supabase-browser";
 
 const MAX_MB = 10;
 
@@ -69,6 +69,7 @@ export function PostulacionForm({
     const form = e.currentTarget;
     const fd = new FormData(form);
     try {
+      const supabase = await getBrowserSupabase();
       let cvUrl: string | null = null;
       {
         const path = `${crypto.randomUUID()}-${archivoFinal.name.replace(/[^\w.\-]+/g, "_")}`;
