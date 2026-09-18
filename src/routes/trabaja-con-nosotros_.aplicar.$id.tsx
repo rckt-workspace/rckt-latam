@@ -1,8 +1,9 @@
-import { createFileRoute, useNavigate, useParams } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { createFileRoute, useNavigate, useParams, useRouter } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
+import { useCallback, useEffect, useState } from "react";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import { PostulacionForm } from "@/components/PostulacionForm";
+import { getVacancyById, type VacantePublica } from "@/lib/vacantes.functions";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
