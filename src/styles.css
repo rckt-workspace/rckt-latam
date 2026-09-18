@@ -1349,3 +1349,6 @@ header,header.scrolled{background:transparent!important;border:none!important;bo
 .rckt-site .blog-article-header{ max-width:820px; text-align:left; }
 .rckt-site .blog-toc a,
 .rckt-site .blog-toc li{ text-align:left; }
+.rckt-site .blog-cover-hero{ aspect-ratio:21/9; }
+.rckt-site .blog-toc{ display:block; }
+.rckt-site .blog-toc ul li{ margin:0; }
