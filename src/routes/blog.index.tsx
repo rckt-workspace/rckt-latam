@@ -15,7 +15,7 @@ export const blogIntro = {
   kicker: "Blog",
 };
 
-export const Route = createFileRoute("/blog")({
+export const Route = createFileRoute("/blog/")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
