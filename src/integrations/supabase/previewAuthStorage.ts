@@ -17,16 +17,21 @@ export function brokeredPreviewStorage() {
   // preview--<name> host can't smuggle another project's id.
   const UUID = "[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}";
   const projectId = onPreviewZone
-    ? (host.match(
-        new RegExp("^(?:id-preview(?:-[a-z0-9]+)?|project)--(" + UUID + ")(?:-dev)?(?=\\.|$)", "i"),
-      )?.[1] ?? host.match(new RegExp("^(" + UUID + ")(?=[.-])", "i"))?.[1])
+    ? host.match(
+        new RegExp(
+          "^(?:id-preview(?:-[a-z0-9]+)?|project)--(" + UUID + ")(?:-dev)?(?=\\.|$)",
+          "i"
+        )
+      )?.[1] ??
+      host.match(new RegExp("^(" + UUID + ")(?=[.-])", "i"))?.[1]
     : undefined;
   const framed = window.parent && window.parent !== window;
   if (!projectId || !framed) return localStorage;
 
   // Post only to the real editor ancestor, validated as a Lovable origin, so the
   // session token can never reach an untrusted embedder.
-  const dev = host.endsWith(".lovableproject-dev.com") || host.endsWith(".gpt-eng.com");
+  const dev =
+    host.endsWith(".lovableproject-dev.com") || host.endsWith(".gpt-eng.com");
   const EDITOR = dev
     ? /^https:\/\/([a-z0-9-]+\.)*(lovable\.dev|gptengineer\.app)$|^http:\/\/localhost:3000$/
     : /^https:\/\/([a-z0-9-]+\.)*(lovable\.dev|gptengineer\.app)$/;
@@ -97,7 +102,9 @@ export function brokeredPreviewStorage() {
     },
     setItem: (key: string, value: string) => {
       localStorage.setItem(key, value);
-      return request("lovable-preview-auth:set", key, value).then(() => undefined);
+      return request("lovable-preview-auth:set", key, value).then(
+        () => undefined
+      );
     },
     removeItem: (key: string) => {
       localStorage.removeItem(key);

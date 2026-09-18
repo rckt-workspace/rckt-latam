@@ -13,7 +13,9 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AvisoLegalRouteImport } from './routes/aviso-legal'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as PrivacidadRouteImport } from './routes/privacidad'
+import { Route as RcktEquipoRouteImport } from './routes/rckt-equipo'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as TrabajaConNosotrosRouteImport } from './routes/trabaja-con-nosotros'
 import { Route as ApiAdvisorChatRouteImport } from './routes/api/advisor-chat'
 import { Route as ApiLeadsRouteImport } from './routes/api/leads'
 import { Route as ApiSaveChatLeadRouteImport } from './routes/api/save-chat-lead'
@@ -23,6 +25,7 @@ import { Route as ApiAdminDebugRouteImport } from './routes/api/admin/debug'
 import { Route as ApiAdminDebugVerifyRouteImport } from './routes/api/admin/debug-verify'
 import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
 import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
+import { Route as TrabajaConNosotrosAplicarIdRouteImport } from './routes/trabaja-con-nosotros_.aplicar.$id'
 import { Route as ApiAdminAiConfigRouteImport } from './routes/api/admin/ai/config'
 import { Route as ApiAdminAiModelsRouteImport } from './routes/api/admin/ai/models'
 import { Route as ApiAdminAiTestProviderRouteImport } from './routes/api/admin/ai/test-provider'
@@ -48,9 +51,19 @@ const PrivacidadRoute = PrivacidadRouteImport.update({
   path: '/privacidad',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RcktEquipoRoute = RcktEquipoRouteImport.update({
+  id: '/rckt-equipo',
+  path: '/rckt-equipo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrabajaConNosotrosRoute = TrabajaConNosotrosRouteImport.update({
+  id: '/trabaja-con-nosotros',
+  path: '/trabaja-con-nosotros',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAdvisorChatRoute = ApiAdvisorChatRouteImport.update({
@@ -98,6 +111,12 @@ const ApiAdminLogoutRoute = ApiAdminLogoutRouteImport.update({
   path: '/api/admin/logout',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrabajaConNosotrosAplicarIdRoute =
+  TrabajaConNosotrosAplicarIdRouteImport.update({
+    id: '/trabaja-con-nosotros_/aplicar/$id',
+    path: '/trabaja-con-nosotros/aplicar/$id',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiAdminAiConfigRoute = ApiAdminAiConfigRouteImport.update({
   id: '/api/admin/ai/config',
   path: '/api/admin/ai/config',
@@ -124,7 +143,9 @@ export interface FileRoutesByFullPath {
   '/aviso-legal': typeof AvisoLegalRoute
   '/cookies': typeof CookiesRoute
   '/privacidad': typeof PrivacidadRoute
+  '/rckt-equipo': typeof RcktEquipoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/trabaja-con-nosotros': typeof TrabajaConNosotrosRoute
   '/api/advisor-chat': typeof ApiAdvisorChatRoute
   '/api/leads': typeof ApiLeadsRoute
   '/api/save-chat-lead': typeof ApiSaveChatLeadRoute
@@ -134,6 +155,7 @@ export interface FileRoutesByFullPath {
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/trabaja-con-nosotros/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
   '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
   '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
   '/api/admin/ai/test-provider': typeof ApiAdminAiTestProviderRoute
@@ -144,7 +166,9 @@ export interface FileRoutesByTo {
   '/aviso-legal': typeof AvisoLegalRoute
   '/cookies': typeof CookiesRoute
   '/privacidad': typeof PrivacidadRoute
+  '/rckt-equipo': typeof RcktEquipoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/trabaja-con-nosotros': typeof TrabajaConNosotrosRoute
   '/api/advisor-chat': typeof ApiAdvisorChatRoute
   '/api/leads': typeof ApiLeadsRoute
   '/api/save-chat-lead': typeof ApiSaveChatLeadRoute
@@ -154,6 +178,7 @@ export interface FileRoutesByTo {
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/trabaja-con-nosotros/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
   '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
   '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
   '/api/admin/ai/test-provider': typeof ApiAdminAiTestProviderRoute
@@ -165,7 +190,9 @@ export interface FileRoutesById {
   '/aviso-legal': typeof AvisoLegalRoute
   '/cookies': typeof CookiesRoute
   '/privacidad': typeof PrivacidadRoute
+  '/rckt-equipo': typeof RcktEquipoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/trabaja-con-nosotros': typeof TrabajaConNosotrosRoute
   '/api/advisor-chat': typeof ApiAdvisorChatRoute
   '/api/leads': typeof ApiLeadsRoute
   '/api/save-chat-lead': typeof ApiSaveChatLeadRoute
@@ -175,6 +202,7 @@ export interface FileRoutesById {
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/trabaja-con-nosotros_/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
   '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
   '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
   '/api/admin/ai/test-provider': typeof ApiAdminAiTestProviderRoute
@@ -187,7 +215,9 @@ export interface FileRouteTypes {
     | '/aviso-legal'
     | '/cookies'
     | '/privacidad'
+    | '/rckt-equipo'
     | '/sitemap.xml'
+    | '/trabaja-con-nosotros'
     | '/api/advisor-chat'
     | '/api/leads'
     | '/api/save-chat-lead'
@@ -197,6 +227,7 @@ export interface FileRouteTypes {
     | '/api/admin/debug-verify'
     | '/api/admin/login'
     | '/api/admin/logout'
+    | '/trabaja-con-nosotros/aplicar/$id'
     | '/api/admin/ai/config'
     | '/api/admin/ai/models'
     | '/api/admin/ai/test-provider'
@@ -207,7 +238,9 @@ export interface FileRouteTypes {
     | '/aviso-legal'
     | '/cookies'
     | '/privacidad'
+    | '/rckt-equipo'
     | '/sitemap.xml'
+    | '/trabaja-con-nosotros'
     | '/api/advisor-chat'
     | '/api/leads'
     | '/api/save-chat-lead'
@@ -217,6 +250,7 @@ export interface FileRouteTypes {
     | '/api/admin/debug-verify'
     | '/api/admin/login'
     | '/api/admin/logout'
+    | '/trabaja-con-nosotros/aplicar/$id'
     | '/api/admin/ai/config'
     | '/api/admin/ai/models'
     | '/api/admin/ai/test-provider'
@@ -227,7 +261,9 @@ export interface FileRouteTypes {
     | '/aviso-legal'
     | '/cookies'
     | '/privacidad'
+    | '/rckt-equipo'
     | '/sitemap.xml'
+    | '/trabaja-con-nosotros'
     | '/api/advisor-chat'
     | '/api/leads'
     | '/api/save-chat-lead'
@@ -237,6 +273,7 @@ export interface FileRouteTypes {
     | '/api/admin/debug-verify'
     | '/api/admin/login'
     | '/api/admin/logout'
+    | '/trabaja-con-nosotros_/aplicar/$id'
     | '/api/admin/ai/config'
     | '/api/admin/ai/models'
     | '/api/admin/ai/test-provider'
@@ -248,7 +285,9 @@ export interface RootRouteChildren {
   AvisoLegalRoute: typeof AvisoLegalRoute
   CookiesRoute: typeof CookiesRoute
   PrivacidadRoute: typeof PrivacidadRoute
+  RcktEquipoRoute: typeof RcktEquipoRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TrabajaConNosotrosRoute: typeof TrabajaConNosotrosRoute
   ApiAdvisorChatRoute: typeof ApiAdvisorChatRoute
   ApiLeadsRoute: typeof ApiLeadsRoute
   ApiSaveChatLeadRoute: typeof ApiSaveChatLeadRoute
@@ -258,6 +297,7 @@ export interface RootRouteChildren {
   ApiAdminDebugVerifyRoute: typeof ApiAdminDebugVerifyRoute
   ApiAdminLoginRoute: typeof ApiAdminLoginRoute
   ApiAdminLogoutRoute: typeof ApiAdminLogoutRoute
+  TrabajaConNosotrosAplicarIdRoute: typeof TrabajaConNosotrosAplicarIdRoute
   ApiAdminAiConfigRoute: typeof ApiAdminAiConfigRoute
   ApiAdminAiModelsRoute: typeof ApiAdminAiModelsRoute
   ApiAdminAiTestProviderRoute: typeof ApiAdminAiTestProviderRoute
@@ -294,11 +334,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacidadRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rckt-equipo': {
+      id: '/rckt-equipo'
+      path: '/rckt-equipo'
+      fullPath: '/rckt-equipo'
+      preLoaderRoute: typeof RcktEquipoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trabaja-con-nosotros': {
+      id: '/trabaja-con-nosotros'
+      path: '/trabaja-con-nosotros'
+      fullPath: '/trabaja-con-nosotros'
+      preLoaderRoute: typeof TrabajaConNosotrosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/advisor-chat': {
@@ -364,6 +418,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAdminLogoutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/trabaja-con-nosotros_/aplicar/$id': {
+      id: '/trabaja-con-nosotros_/aplicar/$id'
+      path: '/trabaja-con-nosotros/aplicar/$id'
+      fullPath: '/trabaja-con-nosotros/aplicar/$id'
+      preLoaderRoute: typeof TrabajaConNosotrosAplicarIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/admin/ai/config': {
       id: '/api/admin/ai/config'
       path: '/api/admin/ai/config'
@@ -400,7 +461,9 @@ const rootRouteChildren: RootRouteChildren = {
   AvisoLegalRoute: AvisoLegalRoute,
   CookiesRoute: CookiesRoute,
   PrivacidadRoute: PrivacidadRoute,
+  RcktEquipoRoute: RcktEquipoRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TrabajaConNosotrosRoute: TrabajaConNosotrosRoute,
   ApiAdvisorChatRoute: ApiAdvisorChatRoute,
   ApiLeadsRoute: ApiLeadsRoute,
   ApiSaveChatLeadRoute: ApiSaveChatLeadRoute,
@@ -410,6 +473,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAdminDebugVerifyRoute: ApiAdminDebugVerifyRoute,
   ApiAdminLoginRoute: ApiAdminLoginRoute,
   ApiAdminLogoutRoute: ApiAdminLogoutRoute,
+  TrabajaConNosotrosAplicarIdRoute: TrabajaConNosotrosAplicarIdRoute,
   ApiAdminAiConfigRoute: ApiAdminAiConfigRoute,
   ApiAdminAiModelsRoute: ApiAdminAiModelsRoute,
   ApiAdminAiTestProviderRoute: ApiAdminAiTestProviderRoute,
