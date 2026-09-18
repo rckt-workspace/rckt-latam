@@ -22,29 +22,45 @@ export const Route = createFileRoute("/trabaja-con-nosotros_/aplicar/$id")({
     ],
   }),
   component: AplicarVacante,
+  errorComponent: AplicarError,
+  notFoundComponent: () => <AplicarError />,
 });
 
 function AplicarVacante() {
   const { id } = useParams({ from: "/trabaja-con-nosotros_/aplicar/$id" });
   const navigate = useNavigate();
-  const [titulo, setTitulo] = useState<string | null>(null);
-  const [meta, setMeta] = useState<string>("");
+  const [vacante, setVacante] = useState<VacantePublica | null>(null);
+  const [cargando, setCargando] = useState(true);
+  const [errorVacante, setErrorVacante] = useState(false);
   const [exito, setExito] = useState(false);
+  const fetchVacante = useServerFn(getVacancyById);
+
+  const cargar = useCallback(async () => {
+    setCargando(true);
+    setErrorVacante(false);
+    try {
+      const timeout = new Promise<never>((_, reject) => {
+        window.setTimeout(() => reject(new Error("La consulta tardó demasiado.")), 12_000);
+      });
+      const data = await Promise.race([fetchVacante({ data: { id } }), timeout]);
+      setVacante(data ?? null);
+    } catch (error) {
+      console.error("No se pudo cargar la vacante", error);
+      setVacante(null);
+      setErrorVacante(true);
+    } finally {
+      setCargando(false);
+    }
+  }, [fetchVacante, id]);
 
   useEffect(() => {
-    supabase
-      .from("vacantes")
-      .select("titulo,area,modalidad,ubicacion")
-      .eq("id", id)
-      .maybeSingle()
-      .then(({ data }) => {
-        if (!data) return;
-        setTitulo(data.titulo);
-        setMeta([data.area, data.modalidad, data.ubicacion].filter(Boolean).join(" · "));
-      });
-  }, [id]);
+    void cargar();
+  }, [cargar]);
 
-  useSiteMotion([titulo]);
+  const titulo = vacante?.titulo ?? null;
+  const meta = vacante ? [vacante.area, "Remoto"].filter(Boolean).join(" · ") : "";
+
+  useSiteMotion([titulo, cargando]);
 
   function onExito() {
     setExito(true);
