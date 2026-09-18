@@ -1,10 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
-import logoDarkAsset from "@/assets/rckt-logo-dark.png.asset.json";
+import logoDark from "@/assets/rckt-logo-dark.png";
 import { useServerFn } from "@tanstack/react-start";
 import { registrarEquipo } from "@/lib/registro.functions";
-import { useCallback, useEffect, useState } from "react";
-import type { Session } from "@supabase/supabase-js";
-import { supabase } from "@/integrations/supabase/client";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import type { Session, SupabaseClient } from "@supabase/supabase-js";
+import type { Database } from "@/integrations/supabase/types";
+import { getBrowserSupabaseAuth } from "@/lib/supabase-browser";
+
+type Sb = SupabaseClient<Database>;
+const SupabaseCtx = createContext<Sb | null>(null);
+
+function useSb(): Sb {
+  const sb = useContext(SupabaseCtx);
+  if (!sb) throw new Error("Supabase no disponible");
+  return sb;
+}
 
 export const Route = createFileRoute("/rckt-equipo")({
   staticData: { sitemap: false },
@@ -53,26 +63,63 @@ const btnGhost = "panel-btn-ghost";
 function PanelPC() {
   const [session, setSession] = useState<Session | null>(null);
   const [cargando, setCargando] = useState(true);
+  const [sb, setSb] = useState<Sb | null>(null);
+  const [errorConexion, setErrorConexion] = useState(false);
 
   useEffect(() => {
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => setSession(s));
-    supabase.auth.getSession().then(({ data }) => {
-      setSession(data.session);
-      setCargando(false);
-    });
-    return () => sub.subscription.unsubscribe();
+    let activo = true;
+    let unsub: (() => void) | undefined;
+
+    getBrowserSupabaseAuth()
+      .then(async (client) => {
+        if (!activo) return;
+        setSb(client);
+        const { data: sub } = client.auth.onAuthStateChange((_e, s) => setSession(s));
+        unsub = () => sub.subscription.unsubscribe();
+        const { data } = await client.auth.getSession();
+        if (!activo) return;
+        setSession(data.session);
+        setCargando(false);
+      })
+      .catch((error) => {
+        console.error("No pudimos conectar con la base de datos", error);
+        if (!activo) return;
+        setErrorConexion(true);
+        setCargando(false);
+      });
+
+    return () => {
+      activo = false;
+      unsub?.();
+    };
   }, []);
 
   if (cargando) {
     return <Shell><p className="text-[var(--carbon-soft)]">Cargando…</p></Shell>;
   }
 
-  if (!session) return <Shell><Login /></Shell>;
+  if (errorConexion || !sb) {
+    return (
+      <Shell>
+        <div className="panel-card" role="alert">
+          <h1 className="text-[22px] font-bold">No pudimos conectar con la base de datos.</h1>
+          <p className="mt-2 text-[14px] text-[var(--carbon-soft)]">
+            Vuelve a intentarlo en unos segundos.
+          </p>
+          <button className={btn} style={{ marginTop: 16 }} type="button" onClick={() => window.location.reload()}>
+            Intentar de nuevo
+          </button>
+        </div>
+      </Shell>
+    );
+  }
 
   return (
-    <Shell>
-      <Dashboard email={session.user.email ?? ""} />
-    </Shell>
+    <SupabaseCtx.Provider value={sb}>
+      <Shell>
+        {session ? <Dashboard email={session.user.email ?? ""} /> : <Login />}
+      </Shell>
+    </SupabaseCtx.Provider>
   );
 }
 
@@ -85,6 +132,7 @@ function Shell({ children }: { children: React.ReactNode }) {
 }
 
 function Login() {
+  const supabase = useSb();
   const [modo, setModo] = useState<"login" | "registro">("login");
   const [error, setError] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
@@ -146,7 +194,7 @@ function Login() {
 
   return (
     <div className="panel-card panel-login">
-      <span className="logo"><img alt="RCKT" src={logoDarkAsset.url} /></span>
+      <span className="logo"><img alt="RCKT" src={logoDark} /></span>
       <h1 className="text-[24px] font-bold">People & Culture</h1>
       <p className="mt-2 text-[14px] text-[var(--carbon-soft)]">Acceso solo para el equipo.</p>
 
@@ -196,6 +244,7 @@ const vacanteVacia = {
 };
 
 function Dashboard({ email }: { email: string }) {
+  const supabase = useSb();
   const [tab, setTab] = useState<"vacantes" | "postulaciones">("vacantes");
   const [vacantes, setVacantes] = useState<Vacante[]>([]);
   const [postulaciones, setPostulaciones] = useState<Postulacion[]>([]);
