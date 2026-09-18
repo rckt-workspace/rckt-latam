@@ -116,7 +116,7 @@ function BlogArticlePage() {
               </div>
             )}
             {post && (
-              <header className="blog-article-header">
+              <div className="blog-article-header">
                 <Link className="blog-back" to="/blog">
                   ← RCKT Insights
                 </Link>
@@ -132,7 +132,7 @@ function BlogArticlePage() {
                   <span aria-hidden="true"> · </span>
                   <span>{post.readingTime} min de lectura</span>
                 </p>
-              </header>
+              </div>
             )}
           </div>
         </section>
