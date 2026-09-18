@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo } from "react";
-import heroAsset from "@/assets/rckt-hero.jpg.asset.json";
-import logoDarkAsset from "@/assets/rckt-logo-dark.png.asset.json";
-import logoLightAsset from "@/assets/rckt-logo-light.png.asset.json";
+import heroAsset from "@/assets/rckt-hero.jpg";
+import logoDarkAsset from "@/assets/rckt-logo-dark.png";
+import logoLightAsset from "@/assets/rckt-logo-light.png";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
@@ -527,9 +527,9 @@ function RcktLanding() {
   const markup = useMemo(
     () =>
       pageMarkup
-        .replaceAll("__HERO__", heroAsset.url)
-        .replaceAll("__LOGO_DARK__", logoDarkAsset.url)
-        .replaceAll("__LOGO_LIGHT__", logoLightAsset.url),
+        .replaceAll("__HERO__", heroAsset)
+        .replaceAll("__LOGO_DARK__", logoDarkAsset)
+        .replaceAll("__LOGO_LIGHT__", logoLightAsset),
     [],
   );
 

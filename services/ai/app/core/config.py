@@ -69,9 +69,9 @@ class Settings(BaseSettings):
     llm_provider: str = Field(default="openrouter")  # openrouter | anthropic
     llm_fallback_provider: str = Field(default="anthropic")
 
-    # Supabase - Database layer (OPTIONAL, not in critical path)
+    # Lovable Cloud Bridge - Database layer (OPTIONAL, not in critical path)
+    lovable_db_bridge_url: str = Field(default="")
     supabase_url: str = Field(default="")
-    supabase_service_role_key: str = Field(default="")
 
     # Observability
     langfuse_public_key: str = Field(default="")
@@ -128,12 +128,16 @@ class Settings(BaseSettings):
 
     @property
     def has_supabase(self) -> bool:
-        """Check if Supabase is properly configured with real values."""
-        return _has_real_value(self.supabase_url) and _has_real_value(self.supabase_service_role_key)
+        """Check if Lovable Cloud Bridge is properly configured with real values."""
+        return _has_real_value(self.lovable_db_bridge_url) and _has_real_value(self.rckt_internal_secret)
 
     def supabase_configured(self) -> bool:
-        """Alias for has_supabase (compatibility method)."""
+        """Check if persistence layer (Lovable Bridge) is configured."""
         return self.has_supabase
+
+    def bridge_configured(self) -> bool:
+        """Check if Lovable Cloud Bridge is available for database operations."""
+        return _has_real_value(self.lovable_db_bridge_url) and _has_real_value(self.rckt_internal_secret)
 
     def anthropic_configured(self) -> bool:
         """Alias for has_anthropic (compatibility method)."""

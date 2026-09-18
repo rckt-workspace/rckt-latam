@@ -22,9 +22,9 @@ class UsageTracker:
         status: str = "success",
         error_type: Optional[str] = None,
     ) -> None:
-        """Record usage event to Supabase (fire-and-forget, never raises)."""
-        if not settings.supabase_configured():
-            logger.debug("Supabase not configured, skipping usage record")
+        """Record usage event via Lovable Cloud Bridge (fire-and-forget, never raises)."""
+        if not settings.bridge_configured():
+            logger.debug("Lovable bridge not configured, skipping usage record")
             return
 
         try:
@@ -48,12 +48,14 @@ class UsageTracker:
 
             async with httpx.AsyncClient() as client:
                 await client.post(
-                    f"{settings.supabase_url}/rest/v1/ai_usage_events",
-                    json=event_record,
+                    settings.lovable_db_bridge_url,
+                    json={
+                        "action": "record_usage",
+                        "payload": event_record,
+                    },
                     headers={
-                        "apikey": settings.supabase_service_role_key,
-                        "Authorization": f"Bearer {settings.supabase_service_role_key}",
                         "Content-Type": "application/json",
+                        "X-RCKT-Internal-Secret": settings.rckt_internal_secret,
                     },
                     timeout=3.0,
                 )

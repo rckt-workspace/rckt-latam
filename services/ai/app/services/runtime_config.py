@@ -83,34 +83,31 @@ class RuntimeConfigService:
         return config
 
     async def _fetch_from_lovable(self, timeout_sec: float = 3.0) -> RuntimeConfig:
-        """Fetch configuration from Lovable bridge with timeout.
+        """Fetch configuration from Lovable Cloud Bridge via Edge Function.
 
-        Direct Supabase service-role calls are DEPRECATED.
-        Use Lovable Edge Function bridge instead.
-        This stub prepares for future bridge implementation.
+        Uses LOVABLE_DB_BRIDGE_URL + RCKT_INTERNAL_SECRET for authentication.
+        No direct Supabase service-role dependency.
         """
-        if not settings.supabase_url or not settings.supabase_service_role_key:
+        if not settings.lovable_db_bridge_url or not settings.rckt_internal_secret:
             raise ValueError("Lovable bridge not configured")
 
-        # TODO: Replace with actual Lovable Edge Function call
-        # For now, fetch directly (temporary, will be replaced)
         async with httpx.AsyncClient(timeout=timeout_sec) as client:
             try:
-                response = await client.get(
-                    f"{settings.supabase_url}/rest/v1/ai_runtime_config?limit=1",
+                response = await client.post(
+                    settings.lovable_db_bridge_url,
+                    json={"action": "get_config"},
                     headers={
-                        "apikey": settings.supabase_service_role_key,
-                        "Authorization": f"Bearer {settings.supabase_service_role_key}",
-                        "Accept": "application/json",
+                        "Content-Type": "application/json",
+                        "X-RCKT-Internal-Secret": settings.rckt_internal_secret,
                     },
                 )
                 response.raise_for_status()
                 data = response.json()
 
-                if not data or len(data) == 0:
+                if not data or "data" not in data:
                     raise ValueError("No configuration found")
 
-                return RuntimeConfig(**data[0])
+                return RuntimeConfig(**data["data"])
             except httpx.TimeoutException as e:
                 raise asyncio.TimeoutError(f"Lovable bridge timeout: {e}") from e
 
@@ -136,30 +133,30 @@ class RuntimeConfigService:
         update_dict["updated_at"] = "now()"
         update_dict["updated_by"] = updated_by
 
-        if not settings.supabase_configured():
-            logger.error("Cannot update config: Supabase persistence backend not configured")
+        if not settings.bridge_configured():
+            logger.error("Cannot update config: Lovable bridge not configured")
             raise ValueError("Runtime persistence backend unavailable")
 
         try:
             async with httpx.AsyncClient() as client:
-                # Update config
-                response = await client.patch(
-                    f"{settings.supabase_url}/rest/v1/ai_runtime_config?id=eq.{current.dict().get('id', '')}",
-                    json=update_dict,
+                response = await client.post(
+                    settings.lovable_db_bridge_url,
+                    json={
+                        "action": "update_config",
+                        "payload": update_dict,
+                    },
                     headers={
-                        "apikey": settings.supabase_service_role_key,
-                        "Authorization": f"Bearer {settings.supabase_service_role_key}",
                         "Content-Type": "application/json",
-                        "Prefer": "return=representation",
+                        "X-RCKT-Internal-Secret": settings.rckt_internal_secret,
                     },
                     timeout=10.0,
                 )
                 response.raise_for_status()
-                updated_data = response.json()
+                response_data = response.json()
 
-                if updated_data:
+                if response_data and "data" in response_data:
                     global _module_cache, _module_cache_time
-                    updated_config = RuntimeConfig(**updated_data[0])
+                    updated_config = RuntimeConfig(**response_data["data"])
                     _module_cache = updated_config
                     _module_cache_time = time.time()
 
@@ -172,7 +169,7 @@ class RuntimeConfigService:
                 return current
 
         except Exception as e:
-            logger.error(f"Failed to update config in Supabase: {e}")
+            logger.error(f"Failed to update config via Lovable bridge: {e}")
             raise
 
     async def _write_audit_record(
