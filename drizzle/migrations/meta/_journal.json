@@ -15,6 +15,13 @@
       "when": 1789753613366,
       "tag": "0001_restrict_postulaciones_to_staff",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1789753628229,
+      "tag": "0002_vacantes_activas_authenticated_read",
+      "breakpoints": true
     }
   ]
 }
