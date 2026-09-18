@@ -8,6 +8,11 @@ import { createMiddleware } from "@tanstack/react-start";
 export const attachSupabaseAuthSafe = createMiddleware({ type: "function" }).client(
   async ({ next }) => {
     let token: string | undefined;
+    const hasBrowserConfig =
+      Boolean(import.meta.env.VITE_SUPABASE_URL) &&
+      Boolean(import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY);
+
+    if (!hasBrowserConfig) return next({ headers: {} });
 
     try {
       const { supabase } = await import("@/integrations/supabase/client");
