@@ -6,6 +6,7 @@ import { createContext, useCallback, useContext, useEffect, useState } from "rea
 import type { Session, SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 import { getBrowserSupabaseAuth } from "@/lib/supabase-browser";
+import { BlogAdmin } from "@/components/blog/BlogAdmin";
 
 type Sb = SupabaseClient<Database>;
 const SupabaseCtx = createContext<Sb | null>(null);
