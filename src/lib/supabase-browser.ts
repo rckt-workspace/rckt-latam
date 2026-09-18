@@ -8,21 +8,31 @@ import { getPublicSupabaseConfig } from "@/lib/vacantes.functions";
  * configuration is fetched from the server at runtime.
  */
 let cached: Promise<SupabaseClient<Database>> | null = null;
+let cachedAuth: Promise<SupabaseClient<Database>> | null = null;
+
+async function resolveConfig(): Promise<{ url: string; key: string }> {
+  let url = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+  let key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | undefined;
+
+  if (!url || !key) {
+    const config = await getPublicSupabaseConfig();
+    url = config.url;
+    key = config.publishableKey;
+  }
+
+  if (!url || !key) {
+    throw new Error("No pudimos conectar con la base de datos.");
+  }
+
+  return { url, key };
+}
 
 export function getBrowserSupabase(): Promise<SupabaseClient<Database>> {
   if (cached) return cached;
 
   cached = (async () => {
-    let url = import.meta.env.VITE_SUPABASE_URL as string | undefined;
-    let key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | undefined;
-
-    if (!url || !key) {
-      const config = await getPublicSupabaseConfig();
-      url = config.url;
-      key = config.publishableKey;
-    }
-
-    return createClient<Database>(url!, key!, {
+    const { url, key } = await resolveConfig();
+    return createClient<Database>(url, key, {
       auth: { persistSession: false, autoRefreshToken: false },
     });
   })();
@@ -32,4 +42,22 @@ export function getBrowserSupabase(): Promise<SupabaseClient<Database>> {
   });
 
   return cached;
+}
+
+/** Same client, but with a persisted session — used by the internal panel. */
+export function getBrowserSupabaseAuth(): Promise<SupabaseClient<Database>> {
+  if (cachedAuth) return cachedAuth;
+
+  cachedAuth = (async () => {
+    const { url, key } = await resolveConfig();
+    return createClient<Database>(url, key, {
+      auth: { persistSession: true, autoRefreshToken: true },
+    });
+  })();
+
+  cachedAuth.catch(() => {
+    cachedAuth = null;
+  });
+
+  return cachedAuth;
 }
