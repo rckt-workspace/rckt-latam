@@ -1,10 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
-import logoDarkAsset from "@/assets/rckt-logo-dark.png.asset.json";
+import logoDark from "@/assets/rckt-logo-dark.png";
 import { useServerFn } from "@tanstack/react-start";
 import { registrarEquipo } from "@/lib/registro.functions";
-import { useCallback, useEffect, useState } from "react";
-import type { Session } from "@supabase/supabase-js";
-import { supabase } from "@/integrations/supabase/client";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import type { Session, SupabaseClient } from "@supabase/supabase-js";
+import type { Database } from "@/integrations/supabase/types";
+import { getBrowserSupabaseAuth } from "@/lib/supabase-browser";
+
+type Sb = SupabaseClient<Database>;
+const SupabaseCtx = createContext<Sb | null>(null);
+
+function useSb(): Sb {
+  const sb = useContext(SupabaseCtx);
+  if (!sb) throw new Error("Supabase no disponible");
+  return sb;
+}
 
 export const Route = createFileRoute("/rckt-equipo")({
   staticData: { sitemap: false },
