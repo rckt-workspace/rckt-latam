@@ -4,435 +4,475 @@ export type Json =
   | boolean
   | null
   | { [key: string]: Json | undefined }
-  | Json[];
+  | Json[]
 
 export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "14.5";
-  };
+    PostgrestVersion: "14.5"
+  }
   public: {
     Tables: {
-      chat_leads: {
-        Row: {
-          company: string | null;
-          created_at: string;
-          email: string | null;
-          id: string;
-          messages: Json;
-          name: string | null;
-          phone: string | null;
-          session_id: string;
-          updated_at: string;
-          user_agent: string | null;
-        };
-        Insert: {
-          company?: string | null;
-          created_at?: string;
-          email?: string | null;
-          id?: string;
-          messages?: Json;
-          name?: string | null;
-          phone?: string | null;
-          session_id: string;
-          updated_at?: string;
-          user_agent?: string | null;
-        };
-        Update: {
-          company?: string | null;
-          created_at?: string;
-          email?: string | null;
-          id?: string;
-          messages?: Json;
-          name?: string | null;
-          phone?: string | null;
-          session_id?: string;
-          updated_at?: string;
-          user_agent?: string | null;
-        };
-        Relationships: [];
-      };
-      leads: {
-        Row: {
-          company: string;
-          concern: string | null;
-          created_at: string;
-          email: string;
-          id: string;
-          name: string;
-          source: string | null;
-          user_agent: string | null;
-          website: string | null;
-        };
-        Insert: {
-          company: string;
-          concern?: string | null;
-          created_at?: string;
-          email: string;
-          id?: string;
-          name: string;
-          source?: string | null;
-          user_agent?: string | null;
-          website?: string | null;
-        };
-        Update: {
-          company?: string;
-          concern?: string | null;
-          created_at?: string;
-          email?: string;
-          id?: string;
-          name?: string;
-          source?: string | null;
-          user_agent?: string | null;
-          website?: string | null;
-        };
-        Relationships: [];
-      };
-      ai_runtime_config: {
-        Row: {
-          id: string;
-          active_agent_profile: string;
-          routing_mode: string;
-          primary_provider: string;
-          primary_model: string;
-          secondary_provider: string;
-          secondary_model: string;
-          primary_weight: number;
-          secondary_weight: number;
-          fallback_enabled: boolean;
-          max_tokens: number;
-          primary_timeout_ms: number;
-          fallback_timeout_ms: number;
-          daily_budget_usd: number | null;
-          monthly_budget_usd: number | null;
-          budget_policy: string;
-          enabled: boolean;
-          version: number;
-          updated_at: string;
-          updated_by: string;
-        };
-        Insert: {
-          id?: string;
-          active_agent_profile?: string;
-          routing_mode?: string;
-          primary_provider?: string;
-          primary_model?: string;
-          secondary_provider?: string;
-          secondary_model?: string;
-          primary_weight?: number;
-          secondary_weight?: number;
-          fallback_enabled?: boolean;
-          max_tokens?: number;
-          primary_timeout_ms?: number;
-          fallback_timeout_ms?: number;
-          daily_budget_usd?: number | null;
-          monthly_budget_usd?: number | null;
-          budget_policy?: string;
-          enabled?: boolean;
-          version?: number;
-          updated_at?: string;
-          updated_by?: string;
-        };
-        Update: {
-          id?: string;
-          active_agent_profile?: string;
-          routing_mode?: string;
-          primary_provider?: string;
-          primary_model?: string;
-          secondary_provider?: string;
-          secondary_model?: string;
-          primary_weight?: number;
-          secondary_weight?: number;
-          fallback_enabled?: boolean;
-          max_tokens?: number;
-          primary_timeout_ms?: number;
-          fallback_timeout_ms?: number;
-          daily_budget_usd?: number | null;
-          monthly_budget_usd?: number | null;
-          budget_policy?: string;
-          enabled?: boolean;
-          version?: number;
-          updated_at?: string;
-          updated_by?: string;
-        };
-        Relationships: [];
-      };
-      ai_usage_events: {
-        Row: {
-          id: string;
-          request_id: string;
-          session_id: string | null;
-          agent_profile: string;
-          provider: string;
-          model: string;
-          fallback_used: boolean;
-          input_tokens: number;
-          output_tokens: number;
-          cached_tokens: number;
-          cost_usd: number | null;
-          cost_type: string | null;
-          latency_ms: number | null;
-          ttft_ms: number | null;
-          status: string;
-          error_type: string | null;
-          created_at: string;
-        };
-        Insert: {
-          id?: string;
-          request_id?: string;
-          session_id?: string | null;
-          agent_profile: string;
-          provider: string;
-          model: string;
-          fallback_used?: boolean;
-          input_tokens?: number;
-          output_tokens?: number;
-          cached_tokens?: number;
-          cost_usd?: number | null;
-          cost_type?: string | null;
-          latency_ms?: number | null;
-          ttft_ms?: number | null;
-          status: string;
-          error_type?: string | null;
-          created_at?: string;
-        };
-        Update: {
-          id?: string;
-          request_id?: string;
-          session_id?: string | null;
-          agent_profile?: string;
-          provider?: string;
-          model?: string;
-          fallback_used?: boolean;
-          input_tokens?: number;
-          output_tokens?: number;
-          cached_tokens?: number;
-          cost_usd?: number | null;
-          cost_type?: string | null;
-          latency_ms?: number | null;
-          ttft_ms?: number | null;
-          status?: string;
-          error_type?: string | null;
-          created_at?: string;
-        };
-        Relationships: [];
-      };
       ai_config_audit: {
         Row: {
-          id: string;
-          config_version: number;
-          fields_changed: string[];
-          previous_values: Json | null;
-          new_values: Json | null;
-          updated_by: string;
-          created_at: string;
-        };
+          config_version: number
+          created_at: string
+          fields_changed: string[]
+          id: string
+          new_values: Json | null
+          previous_values: Json | null
+          updated_by: string
+        }
         Insert: {
-          id?: string;
-          config_version: number;
-          fields_changed: string[];
-          previous_values?: Json | null;
-          new_values?: Json | null;
-          updated_by: string;
-          created_at?: string;
-        };
+          config_version: number
+          created_at?: string
+          fields_changed: string[]
+          id?: string
+          new_values?: Json | null
+          previous_values?: Json | null
+          updated_by: string
+        }
         Update: {
-          id?: string;
-          config_version?: number;
-          fields_changed?: string[];
-          previous_values?: Json | null;
-          new_values?: Json | null;
-          updated_by?: string;
-          created_at?: string;
-        };
-        Relationships: [];
-      };
+          config_version?: number
+          created_at?: string
+          fields_changed?: string[]
+          id?: string
+          new_values?: Json | null
+          previous_values?: Json | null
+          updated_by?: string
+        }
+        Relationships: []
+      }
+      ai_runtime_config: {
+        Row: {
+          active_agent_profile: string
+          budget_policy: string
+          daily_budget_usd: number | null
+          enabled: boolean
+          fallback_enabled: boolean
+          fallback_timeout_ms: number
+          id: string
+          max_tokens: number
+          monthly_budget_usd: number | null
+          primary_model: string
+          primary_provider: string
+          primary_timeout_ms: number
+          primary_weight: number
+          routing_mode: string
+          secondary_model: string
+          secondary_provider: string
+          secondary_weight: number | null
+          updated_at: string
+          updated_by: string
+          version: number
+        }
+        Insert: {
+          active_agent_profile?: string
+          budget_policy?: string
+          daily_budget_usd?: number | null
+          enabled?: boolean
+          fallback_enabled?: boolean
+          fallback_timeout_ms?: number
+          id?: string
+          max_tokens?: number
+          monthly_budget_usd?: number | null
+          primary_model?: string
+          primary_provider?: string
+          primary_timeout_ms?: number
+          primary_weight?: number
+          routing_mode?: string
+          secondary_model?: string
+          secondary_provider?: string
+          secondary_weight?: number | null
+          updated_at?: string
+          updated_by?: string
+          version?: number
+        }
+        Update: {
+          active_agent_profile?: string
+          budget_policy?: string
+          daily_budget_usd?: number | null
+          enabled?: boolean
+          fallback_enabled?: boolean
+          fallback_timeout_ms?: number
+          id?: string
+          max_tokens?: number
+          monthly_budget_usd?: number | null
+          primary_model?: string
+          primary_provider?: string
+          primary_timeout_ms?: number
+          primary_weight?: number
+          routing_mode?: string
+          secondary_model?: string
+          secondary_provider?: string
+          secondary_weight?: number | null
+          updated_at?: string
+          updated_by?: string
+          version?: number
+        }
+        Relationships: []
+      }
+      ai_usage_events: {
+        Row: {
+          agent_profile: string
+          cached_tokens: number
+          cost_type: string | null
+          cost_usd: number | null
+          created_at: string
+          error_type: string | null
+          fallback_used: boolean
+          id: string
+          input_tokens: number
+          latency_ms: number | null
+          model: string
+          output_tokens: number
+          provider: string
+          request_id: string
+          session_id: string | null
+          status: string
+          ttft_ms: number | null
+        }
+        Insert: {
+          agent_profile: string
+          cached_tokens?: number
+          cost_type?: string | null
+          cost_usd?: number | null
+          created_at?: string
+          error_type?: string | null
+          fallback_used?: boolean
+          id?: string
+          input_tokens?: number
+          latency_ms?: number | null
+          model: string
+          output_tokens?: number
+          provider: string
+          request_id?: string
+          session_id?: string | null
+          status: string
+          ttft_ms?: number | null
+        }
+        Update: {
+          agent_profile?: string
+          cached_tokens?: number
+          cost_type?: string | null
+          cost_usd?: number | null
+          created_at?: string
+          error_type?: string | null
+          fallback_used?: boolean
+          id?: string
+          input_tokens?: number
+          latency_ms?: number | null
+          model?: string
+          output_tokens?: number
+          provider?: string
+          request_id?: string
+          session_id?: string | null
+          status?: string
+          ttft_ms?: number | null
+        }
+        Relationships: []
+      }
+      chat_leads: {
+        Row: {
+          company: string | null
+          created_at: string
+          email: string | null
+          id: string
+          messages: Json
+          name: string | null
+          phone: string | null
+          session_id: string
+          updated_at: string
+          user_agent: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          messages?: Json
+          name?: string | null
+          phone?: string | null
+          session_id: string
+          updated_at?: string
+          user_agent?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          messages?: Json
+          name?: string | null
+          phone?: string | null
+          session_id?: string
+          updated_at?: string
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
+      leads: {
+        Row: {
+          company: string
+          concern: string | null
+          created_at: string
+          email: string
+          id: string
+          name: string
+          source: string | null
+          user_agent: string | null
+          website: string | null
+        }
+        Insert: {
+          company: string
+          concern?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          source?: string | null
+          user_agent?: string | null
+          website?: string | null
+        }
+        Update: {
+          company?: string
+          concern?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          source?: string | null
+          user_agent?: string | null
+          website?: string | null
+        }
+        Relationships: []
+      }
       postulaciones: {
         Row: {
-          cv_url: string | null;
-          email: string;
-          fecha: string;
-          id: string;
-          mensaje: string | null;
-          nombre: string;
-          portafolio_url: string | null;
-          telefono: string | null;
-          tipo: Database["public"]["Enums"]["postulacion_tipo"];
-          vacante_id: string | null;
-        };
+          cv_url: string | null
+          email: string
+          fecha: string
+          id: string
+          mensaje: string | null
+          nombre: string
+          portafolio_url: string | null
+          telefono: string | null
+          tipo: Database["public"]["Enums"]["postulacion_tipo"]
+          vacante_id: string | null
+        }
         Insert: {
-          cv_url?: string | null;
-          email: string;
-          fecha?: string;
-          id?: string;
-          mensaje?: string | null;
-          nombre: string;
-          portafolio_url?: string | null;
-          telefono?: string | null;
-          tipo?: Database["public"]["Enums"]["postulacion_tipo"];
-          vacante_id?: string | null;
-        };
+          cv_url?: string | null
+          email: string
+          fecha?: string
+          id?: string
+          mensaje?: string | null
+          nombre: string
+          portafolio_url?: string | null
+          telefono?: string | null
+          tipo?: Database["public"]["Enums"]["postulacion_tipo"]
+          vacante_id?: string | null
+        }
         Update: {
-          cv_url?: string | null;
-          email?: string;
-          fecha?: string;
-          id?: string;
-          mensaje?: string | null;
-          nombre?: string;
-          portafolio_url?: string | null;
-          telefono?: string | null;
-          tipo?: Database["public"]["Enums"]["postulacion_tipo"];
-          vacante_id?: string | null;
-        };
+          cv_url?: string | null
+          email?: string
+          fecha?: string
+          id?: string
+          mensaje?: string | null
+          nombre?: string
+          portafolio_url?: string | null
+          telefono?: string | null
+          tipo?: Database["public"]["Enums"]["postulacion_tipo"]
+          vacante_id?: string | null
+        }
         Relationships: [
           {
-            foreignKeyName: "postulaciones_vacante_id_fkey";
-            columns: ["vacante_id"];
-            isOneToOne: false;
-            referencedRelation: "vacantes";
-            referencedColumns: ["id"];
+            foreignKeyName: "postulaciones_vacante_id_fkey"
+            columns: ["vacante_id"]
+            isOneToOne: false
+            referencedRelation: "vacantes"
+            referencedColumns: ["id"]
           },
-        ];
-      };
+        ]
+      }
       vacantes: {
         Row: {
-          area: string | null;
-          created_at: string;
-          descripcion: string | null;
-          estado: Database["public"]["Enums"]["vacante_estado"];
-          fecha_publicacion: string;
-          id: string;
-          modalidad: string | null;
-          requisitos: string | null;
-          titulo: string;
-          ubicacion: string | null;
-        };
+          area: string | null
+          created_at: string
+          descripcion: string | null
+          estado: Database["public"]["Enums"]["vacante_estado"]
+          fecha_publicacion: string
+          id: string
+          modalidad: string | null
+          requisitos: string | null
+          titulo: string
+          ubicacion: string | null
+        }
         Insert: {
-          area?: string | null;
-          created_at?: string;
-          descripcion?: string | null;
-          estado?: Database["public"]["Enums"]["vacante_estado"];
-          fecha_publicacion?: string;
-          id?: string;
-          modalidad?: string | null;
-          requisitos?: string | null;
-          titulo: string;
-          ubicacion?: string | null;
-        };
+          area?: string | null
+          created_at?: string
+          descripcion?: string | null
+          estado?: Database["public"]["Enums"]["vacante_estado"]
+          fecha_publicacion?: string
+          id?: string
+          modalidad?: string | null
+          requisitos?: string | null
+          titulo: string
+          ubicacion?: string | null
+        }
         Update: {
-          area?: string | null;
-          created_at?: string;
-          descripcion?: string | null;
-          estado?: Database["public"]["Enums"]["vacante_estado"];
-          fecha_publicacion?: string;
-          id?: string;
-          modalidad?: string | null;
-          requisitos?: string | null;
-          titulo?: string;
-          ubicacion?: string | null;
-        };
-        Relationships: [];
-      };
-    };
+          area?: string | null
+          created_at?: string
+          descripcion?: string | null
+          estado?: Database["public"]["Enums"]["vacante_estado"]
+          fecha_publicacion?: string
+          id?: string
+          modalidad?: string | null
+          requisitos?: string | null
+          titulo?: string
+          ubicacion?: string | null
+        }
+        Relationships: []
+      }
+    }
     Views: {
-      [_ in never]: never;
-    };
+      [_ in never]: never
+    }
     Functions: {
-      [_ in never]: never;
-    };
+      [_ in never]: never
+    }
     Enums: {
-      postulacion_tipo: "candidato" | "servicio";
-      vacante_estado: "activa" | "cerrada";
-    };
+      postulacion_tipo: "candidato" | "servicio"
+      vacante_estado: "activa" | "cerrada"
+    }
     CompositeTypes: {
-      [_ in never]: never;
-    };
-  };
-};
+      [_ in never]: never
+    }
+  }
+}
 
-type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">;
+type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">
 
-type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">];
+type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">]
 
 export type Tables<
   DefaultSchemaTableNameOrOptions extends
     | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
-    schema: keyof DatabaseWithoutInternals;
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
   }
     ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
         DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
-  schema: keyof DatabaseWithoutInternals;
+  schema: keyof DatabaseWithoutInternals
 }
   ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
       DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
-      Row: infer R;
+      Row: infer R
     }
     ? R
     : never
   : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema["Tables"] &
-      DefaultSchema["Views"])
-    ? (DefaultSchema["Tables"] & DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends {
-        Row: infer R;
+        DefaultSchema["Views"])
+    ? (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends {
+        Row: infer R
       }
       ? R
       : never
-    : never;
+    : never
 
 export type TablesInsert<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
-    schema: keyof DatabaseWithoutInternals;
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
-  schema: keyof DatabaseWithoutInternals;
+  schema: keyof DatabaseWithoutInternals
 }
   ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
-      Insert: infer I;
+      Insert: infer I
     }
     ? I
     : never
   : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
     ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
-        Insert: infer I;
+        Insert: infer I
       }
       ? I
       : never
-    : never;
+    : never
 
 export type TablesUpdate<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
-    schema: keyof DatabaseWithoutInternals;
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
-  schema: keyof DatabaseWithoutInternals;
+  schema: keyof DatabaseWithoutInternals
 }
   ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
-      Update: infer U;
+      Update: infer U
     }
     ? U
     : never
   : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
     ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
-        Update: infer U;
+        Update: infer U
       }
       ? U
       : never
-    : never;
+    : never
 
 export type Enums<
-  EnumName extends keyof Database["public"]["Enums"],
-> = Database["public"]["Enums"][EnumName];
+  DefaultSchemaEnumNameOrOptions extends
+    | keyof DefaultSchema["Enums"]
+    | { schema: keyof DatabaseWithoutInternals },
+  EnumName extends (DefaultSchemaEnumNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
+    : never) = never,
+> = DefaultSchemaEnumNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
+    ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
+    : never
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof DefaultSchema["CompositeTypes"]
+    | { schema: keyof DatabaseWithoutInternals },
+  CompositeTypeName extends (PublicCompositeTypeNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never) = never,
+> = PublicCompositeTypeNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
+    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
+    : never
+
+export const Constants = {
+  public: {
+    Enums: {
+      postulacion_tipo: ["candidato", "servicio"],
+      vacante_estado: ["activa", "cerrada"],
+    },
+  },
+} as const
