@@ -1,8 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useSearch } from "@tanstack/react-router";
 import { useState } from "react";
+
+interface SearchParams {
+  next?: string;
+}
 
 export const Route = createFileRoute("/ops/login")({
   staticData: { sitemap: false },
+  validateSearch: (search: Record<string, unknown>): SearchParams => ({
+    next: typeof search.next === "string" ? search.next : undefined,
+  }),
   component: LoginPage,
   head: () => ({
     meta: [
@@ -18,7 +25,14 @@ export const Route = createFileRoute("/ops/login")({
   }),
 });
 
+const ALLOWED_REDIRECTS = ["/ops/ai-control", "/rckt-equipo"];
+
+function isAllowedRedirect(path: string): boolean {
+  return ALLOWED_REDIRECTS.some((allowed) => path === allowed || path.startsWith(allowed + "/"));
+}
+
 function LoginPage() {
+  const { next } = useSearch({ from: "/ops/login" });
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -35,17 +49,15 @@ function LoginPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ password }),
-        credentials: "include", // Ensure cookies are sent/received
+        credentials: "include",
       });
 
       if (response.ok) {
-        // Login successful, session cookie was set by server
-        // Redirect to admin dashboard
-        window.location.href = "/ops/ai-control";
+        const redirectTo = next && isAllowedRedirect(next) ? next : "/ops/ai-control";
+        window.location.href = redirectTo;
         return;
       }
 
-      // Handle error responses
       if (response.status === 429) {
         setError("Demasiados intentos. Intenta en 15 minutos.");
       } else if (response.status === 401) {
@@ -69,12 +81,8 @@ function LoginPage() {
           <div className="text-sm uppercase tracking-widest text-accent font-semibold mb-2">
             RCKT
           </div>
-          <h1 className="text-3xl font-bold text-foreground mb-2">
-            AI CONTROL CENTER
-          </h1>
-          <p className="text-sm text-muted-foreground">
-            Acceso administrativo
-          </p>
+          <h1 className="text-3xl font-bold text-foreground mb-2">AI CONTROL CENTER</h1>
+          <p className="text-sm text-muted-foreground">Acceso administrativo</p>
         </div>
 
         {/* Login Card */}
@@ -82,7 +90,10 @@ function LoginPage() {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Password Input */}
             <div className="space-y-2">
-              <label htmlFor="password" className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
+              <label
+                htmlFor="password"
+                className="text-xs uppercase tracking-widest text-muted-foreground font-semibold"
+              >
                 Contraseña administrativa
               </label>
               <input
@@ -100,9 +111,7 @@ function LoginPage() {
             {/* Error Message */}
             {error && (
               <div className="p-3 bg-destructive/10 border border-destructive/30 rounded-lg">
-                <p className="text-sm text-destructive font-medium">
-                  {error}
-                </p>
+                <p className="text-sm text-destructive font-medium">{error}</p>
               </div>
             )}
 

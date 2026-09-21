@@ -196,23 +196,59 @@ export class SupabaseBlogRepository implements BlogRepository {
   }
 
   /**
-   * Save post (admin operation - server-side only)
-   * TODO: Implement in /ops/blog endpoint
+   * Save post (admin operation - server-side)
    */
-  async savePost(_input: BlogPostInput): Promise<BlogPost> {
-    throw new Error(
-      "savePost requires server-side implementation via /ops/blog endpoint. Not available in browser."
-    );
+  async savePost(input: BlogPostInput): Promise<BlogPost> {
+    try {
+      const method = input.id ? "PUT" : "POST";
+      const response = await fetch("/api/admin/people/blog", {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(input),
+      });
+
+      if (response.status === 401) {
+        window.location.href = "/ops/login?next=/rckt-equipo";
+        throw new Error("Session expired");
+      }
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || "Failed to save post");
+      }
+
+      const saved = await response.json();
+      return this.mapRowToPost(saved[0] || saved);
+    } catch (e) {
+      console.error("Error saving blog post:", e);
+      throw e;
+    }
   }
 
   /**
-   * Delete post (admin operation - server-side only)
-   * TODO: Implement in /ops/blog endpoint
+   * Delete post (admin operation - server-side)
    */
-  async deletePost(_id: string): Promise<void> {
-    throw new Error(
-      "deletePost requires server-side implementation via /ops/blog endpoint. Not available in browser."
-    );
+  async deletePost(id: string): Promise<void> {
+    try {
+      const response = await fetch("/api/admin/people/blog", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+
+      if (response.status === 401) {
+        window.location.href = "/ops/login?next=/rckt-equipo";
+        throw new Error("Session expired");
+      }
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || "Failed to delete post");
+      }
+    } catch (e) {
+      console.error("Error deleting blog post:", e);
+      throw e;
+    }
   }
 
   /**

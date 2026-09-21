@@ -156,10 +156,16 @@ function BlogIndexError() {
             <h1>No pudimos mostrar los artículos.</h1>
             <p>Intenta cargar la página nuevamente.</p>
             <div className="form-actions">
-              <button className="btn btn-primary" type="button" onClick={() => void router.invalidate()}>
+              <button
+                className="btn btn-primary"
+                type="button"
+                onClick={() => void router.invalidate()}
+              >
                 Intentar de nuevo
               </button>
-              <a className="btn" href="/">Volver al inicio</a>
+              <a className="btn" href="/">
+                Volver al inicio
+              </a>
             </div>
           </div>
         </div>

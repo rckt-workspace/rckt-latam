@@ -169,7 +169,10 @@ function BlogArticlePage() {
                 <span className="kicker ital-label">Seguir leyendo</span>
                 <span className="divider"></span>
               </div>
-              <h2 className="rv" style={{ fontSize: "clamp(24px,3vw,32px)", margin: "0 0 36px", fontWeight: 800 }}>
+              <h2
+                className="rv"
+                style={{ fontSize: "clamp(24px,3vw,32px)", margin: "0 0 36px", fontWeight: 800 }}
+              >
                 Artículos relacionados
               </h2>
               <div className="blog-grid">
@@ -199,10 +202,16 @@ function BlogArticleError() {
             <h1>No pudimos mostrar este artículo.</h1>
             <p>Intenta cargarlo nuevamente o vuelve al listado.</p>
             <div className="form-actions">
-              <button className="btn btn-primary" type="button" onClick={() => void router.invalidate()}>
+              <button
+                className="btn btn-primary"
+                type="button"
+                onClick={() => void router.invalidate()}
+              >
                 Intentar de nuevo
               </button>
-              <a className="btn" href="/blog">Ver todos los artículos</a>
+              <a className="btn" href="/blog">
+                Ver todos los artículos
+              </a>
             </div>
           </div>
         </div>

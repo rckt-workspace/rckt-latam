@@ -6,8 +6,12 @@ import logoDarkAsset from "@/assets/rckt-logo-dark.png";
 function ThemeSwitch({ suffix = "" }: { suffix?: string }) {
   return (
     <div className="theme-switch hero-theme-switch">
-      <button id={`themeLight${suffix}`} className="active" type="button">Claro</button>
-      <button id={`themeDark${suffix}`} type="button">Oscuro</button>
+      <button id={`themeLight${suffix}`} className="active" type="button">
+        Claro
+      </button>
+      <button id={`themeDark${suffix}`} type="button">
+        Oscuro
+      </button>
     </div>
   );
 }
@@ -37,9 +41,13 @@ export function SiteHeader() {
             <div className="nav-right-desktop">
               <ThemeSwitch />
             </div>
-            <a className="btn hero-nav-cta" href="/#contacto">Solicitar diagnóstico</a>
+            <a className="btn hero-nav-cta" href="/#contacto">
+              Solicitar diagnóstico
+            </a>
             <button aria-label="Abrir menú" className="nav-toggle" id="navToggle">
-              <span></span><span></span><span></span>
+              <span></span>
+              <span></span>
+              <span></span>
             </button>
           </div>
         </nav>
@@ -62,25 +70,59 @@ export function SiteFooter() {
           <div className="footer-col">
             <h5>Navegar</h5>
             <ul>
-              <li><a href="/#sistema">Sistema</a></li>
-              <li><a href="/#servicios">Servicios</a></li>
-              <li><a href="/#metodo">Método</a></li>
-              <li><a href="/#faq">FAQ</a></li>
-              <li><a href="/#contacto">Contacto</a></li>
-              <li><a href="/blog">Blog</a></li>
-              <li><a href="/trabaja-con-nosotros">Trabaja con nosotros</a></li>
+              <li>
+                <a href="/#sistema">Sistema</a>
+              </li>
+              <li>
+                <a href="/#servicios">Servicios</a>
+              </li>
+              <li>
+                <a href="/#metodo">Método</a>
+              </li>
+              <li>
+                <a href="/#faq">FAQ</a>
+              </li>
+              <li>
+                <a href="/#contacto">Contacto</a>
+              </li>
+              <li>
+                <a href="/blog">Blog</a>
+              </li>
+              <li>
+                <a href="/trabaja-con-nosotros">Trabaja con nosotros</a>
+              </li>
             </ul>
           </div>
           <div className="footer-col">
             <h5>Legal</h5>
             <ul>
-              <li><a href="/aviso-legal.pdf" download>Aviso legal</a></li>
-              <li><a href="/privacidad.pdf" download>Privacidad</a></li>
-              <li><a href="/cookies.pdf" download>Cookies</a></li>
-              <li><a href="/politica-tratamiento-datos.pdf" download>Política de Tratamiento de Datos</a></li>
+              <li>
+                <a href="/aviso-legal.pdf" download>
+                  Aviso legal
+                </a>
+              </li>
+              <li>
+                <a href="/privacidad.pdf" download>
+                  Privacidad
+                </a>
+              </li>
+              <li>
+                <a href="/cookies.pdf" download>
+                  Cookies
+                </a>
+              </li>
+              <li>
+                <a href="/politica-tratamiento-datos.pdf" download>
+                  Política de Tratamiento de Datos
+                </a>
+              </li>
             </ul>
             <h5 style={{ marginTop: 26 }}>Correo</h5>
-            <ul><li><a href="mailto:hola@rckt.lat">hola@rckt.lat</a></li></ul>
+            <ul>
+              <li>
+                <a href="mailto:hola@rckt.lat">hola@rckt.lat</a>
+              </li>
+            </ul>
           </div>
         </div>
         <div className="footer-bottom">

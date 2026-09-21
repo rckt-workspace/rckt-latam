@@ -12,11 +12,7 @@
       "role": "Growth & Marketing"
     },
     "category": "Inteligencia Artificial",
-    "tags": [
-      "IA",
-      "Marketing",
-      "Procesos"
-    ],
+    "tags": ["IA", "Marketing", "Procesos"],
     "status": "published",
     "featured": true,
     "publishedAt": "2026-09-10T13:00:00Z",
@@ -41,11 +37,7 @@
       "role": "Growth & Marketing"
     },
     "category": "Growth",
-    "tags": [
-      "Growth",
-      "Experimentación",
-      "Estrategia"
-    ],
+    "tags": ["Growth", "Experimentación", "Estrategia"],
     "status": "published",
     "featured": false,
     "publishedAt": "2026-08-28T13:00:00Z",
@@ -70,11 +62,7 @@
       "role": "Performance"
     },
     "category": "Performance",
-    "tags": [
-      "Performance",
-      "Medición",
-      "Paid Media"
-    ],
+    "tags": ["Performance", "Medición", "Paid Media"],
     "status": "published",
     "featured": false,
     "publishedAt": "2026-08-14T13:00:00Z",
@@ -99,11 +87,7 @@
       "role": "Estrategia"
     },
     "category": "Estrategia digital",
-    "tags": [
-      "Estrategia",
-      "LATAM",
-      "Conversión"
-    ],
+    "tags": ["Estrategia", "LATAM", "Conversión"],
     "status": "published",
     "featured": false,
     "publishedAt": "2026-07-30T13:00:00Z",
@@ -128,11 +112,7 @@
       "role": "Operaciones"
     },
     "category": "Automatización",
-    "tags": [
-      "Automatización",
-      "Procesos",
-      "Productividad"
-    ],
+    "tags": ["Automatización", "Procesos", "Productividad"],
     "status": "published",
     "featured": false,
     "publishedAt": "2026-07-16T13:00:00Z",
@@ -157,11 +137,7 @@
       "role": "People & Culture"
     },
     "category": "Cultura y tecnología",
-    "tags": [
-      "Cultura",
-      "Creatividad",
-      "Equipos"
-    ],
+    "tags": ["Cultura", "Creatividad", "Equipos"],
     "status": "published",
     "featured": false,
     "publishedAt": "2026-06-25T13:00:00Z",

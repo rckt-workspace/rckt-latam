@@ -21,7 +21,8 @@ export const Route = createFileRoute("/trabaja-con-nosotros")({
       { property: "og:title", content: "Trabaja con nosotros — RCKT" },
       {
         property: "og:description",
-        content: "Buscamos personas curiosas, autónomas y colaborativas. Conoce nuestras vacantes abiertas.",
+        content:
+          "Buscamos personas curiosas, autónomas y colaborativas. Conoce nuestras vacantes abiertas.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: SITE_URL + "/trabaja-con-nosotros" },
@@ -69,7 +70,10 @@ function TrabajaConNosotros() {
 
     try {
       const timeout = new Promise<never>((_, reject) => {
-        window.setTimeout(() => reject(new Error("La consulta de vacantes tardó demasiado.")), 12_000);
+        window.setTimeout(
+          () => reject(new Error("La consulta de vacantes tardó demasiado.")),
+          12_000,
+        );
       });
       const data = await Promise.race([getVacantes(), timeout]);
       setVacantes(Array.isArray(data) ? data : []);
@@ -101,13 +105,12 @@ function TrabajaConNosotros() {
             <div className="subpage-hero-inner">
               <span className="kicker">Trabaja con nosotros</span>
               <h1>
-                Descubre el futuro del trabajo con{" "}
-                <span className="hero-hand">nosotros</span>.
+                Descubre el futuro del trabajo con <span className="hero-hand">nosotros</span>.
               </h1>
               <p className="sub">
-                En RCKT buscamos personas curiosas, autónomas, colaborativas y abiertas a aprender constantemente. Si
-                quieres hacer parte de una cultura flexible, humana, diversa y preparada para el futuro, queremos
-                conocerte.
+                En RCKT buscamos personas curiosas, autónomas, colaborativas y abiertas a aprender
+                constantemente. Si quieres hacer parte de una cultura flexible, humana, diversa y
+                preparada para el futuro, queremos conocerte.
               </p>
             </div>
           </div>
@@ -122,7 +125,10 @@ function TrabajaConNosotros() {
               <span className="kicker ital-label">Cultura</span>
               <span className="divider"></span>
             </div>
-            <h2 className="rv" style={{ fontSize: "clamp(26px,3.4vw,36px)", margin: "0 0 48px", fontWeight: 800 }}>
+            <h2
+              className="rv"
+              style={{ fontSize: "clamp(26px,3.4vw,36px)", margin: "0 0 48px", fontWeight: 800 }}
+            >
               Desde People and Culture, así nos diferenciamos.
             </h2>
             <div className="three-grid">
@@ -145,7 +151,10 @@ function TrabajaConNosotros() {
               <span className="kicker ital-label">Oportunidades</span>
               <span className="divider"></span>
             </div>
-            <h2 className="rv" style={{ fontSize: "clamp(26px,3.4vw,36px)", margin: "0 0 48px", fontWeight: 800 }}>
+            <h2
+              className="rv"
+              style={{ fontSize: "clamp(26px,3.4vw,36px)", margin: "0 0 48px", fontWeight: 800 }}
+            >
               Vacantes abiertas
             </h2>
             <div className="vacantes-list">
@@ -153,7 +162,11 @@ function TrabajaConNosotros() {
               {vacantesError && (
                 <div className="vacante-card rv" role="alert">
                   <p>No pudimos cargar las vacantes, intenta de nuevo.</p>
-                  <button className="btn btn-primary btn-sm" type="button" onClick={() => void cargarVacantes()}>
+                  <button
+                    className="btn btn-primary btn-sm"
+                    type="button"
+                    onClick={() => void cargarVacantes()}
+                  >
                     Intentar de nuevo
                   </button>
                 </div>
@@ -161,7 +174,8 @@ function TrabajaConNosotros() {
               {!vacantesError && vacantes?.length === 0 && (
                 <div className="vacante-card rv">
                   <p>
-                    Actualmente no tenemos vacantes abiertas, pero puedes dejarnos tu perfil en el formulario de abajo.
+                    Actualmente no tenemos vacantes abiertas, pero puedes dejarnos tu perfil en el
+                    formulario de abajo.
                   </p>
                 </div>
               )}
@@ -171,7 +185,11 @@ function TrabajaConNosotros() {
                     <h3>{v.titulo}</h3>
                     <p className="vacante-meta">{[v.area, "Remoto"].filter(Boolean).join(" · ")}</p>
                   </div>
-                  <button className="btn btn-primary btn-sm" type="button" onClick={() => setDetalle(v)}>
+                  <button
+                    className="btn btn-primary btn-sm"
+                    type="button"
+                    onClick={() => setDetalle(v)}
+                  >
                     Ver vacante →
                   </button>
                 </article>
@@ -188,11 +206,15 @@ function TrabajaConNosotros() {
               <span className="kicker ital-label">Aliados</span>
               <span className="divider"></span>
             </div>
-            <h2 className="rv" style={{ fontSize: "clamp(26px,3.4vw,36px)", margin: "0 0 18px", fontWeight: 800 }}>
+            <h2
+              className="rv"
+              style={{ fontSize: "clamp(26px,3.4vw,36px)", margin: "0 0 18px", fontWeight: 800 }}
+            >
               ¿Tienes un servicio o eres freelance?
             </h2>
             <p style={{ maxWidth: 680, marginBottom: 36 }}>
-              Cuéntanos qué haces. Sumamos aliados y especialistas a nuestros proyectos de forma continua.
+              Cuéntanos qué haces. Sumamos aliados y especialistas a nuestros proyectos de forma
+              continua.
             </p>
             <div className="form-card rv">
               <PostulacionForm tipo="servicio" />
@@ -203,9 +225,19 @@ function TrabajaConNosotros() {
       <SiteFooter />
 
       {detalle && (
-        <div className="vacante-modal-overlay" role="dialog" aria-modal="true" onClick={() => setDetalle(null)}>
+        <div
+          className="vacante-modal-overlay"
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setDetalle(null)}
+        >
           <div className="vacante-modal" onClick={(e) => e.stopPropagation()}>
-            <button className="vacante-modal-close" type="button" aria-label="Cerrar" onClick={() => setDetalle(null)}>
+            <button
+              className="vacante-modal-close"
+              type="button"
+              aria-label="Cerrar"
+              onClick={() => setDetalle(null)}
+            >
               ×
             </button>
             <h3>{detalle.titulo}</h3>
@@ -244,10 +276,16 @@ function TrabajaConNosotrosError() {
             <h1>No pudimos mostrar esta página.</h1>
             <p>Intenta cargarla nuevamente. Si el problema continúa, puedes volver al inicio.</p>
             <div className="form-actions">
-              <button className="btn btn-primary" type="button" onClick={() => void router.invalidate()}>
+              <button
+                className="btn btn-primary"
+                type="button"
+                onClick={() => void router.invalidate()}
+              >
                 Intentar de nuevo
               </button>
-              <a className="btn" href="/">Volver al inicio</a>
+              <a className="btn" href="/">
+                Volver al inicio
+              </a>
             </div>
           </div>
         </div>

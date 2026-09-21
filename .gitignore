@@ -45,3 +45,7 @@ __pycache__/
 __pycache__/
 **/__pycache__/
 *.py[cod]
+
+services/ai/.venv/
+services/ai/*.egg-info/
+supabase/.temp/

@@ -12,9 +12,16 @@ export const Route = createFileRoute("/trabaja-con-nosotros_/aplicar/$id")({
   head: () => ({
     meta: [
       { title: "Aplicar a una vacante — RCKT" },
-      { name: "description", content: "Envía tu postulación a una vacante abierta en RCKT: datos, hoja de vida y portafolio." },
+      {
+        name: "description",
+        content:
+          "Envía tu postulación a una vacante abierta en RCKT: datos, hoja de vida y portafolio.",
+      },
       { property: "og:title", content: "Aplicar a una vacante — RCKT" },
-      { property: "og:description", content: "Completa el formulario y envía tu postulación al equipo de RCKT." },
+      {
+        property: "og:description",
+        content: "Completa el formulario y envía tu postulación al equipo de RCKT.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:url", content: SITE_URL + "/trabaja-con-nosotros" },
       { name: "twitter:card", content: "summary" },
@@ -88,13 +95,19 @@ function AplicarVacante() {
               {errorVacante && (
                 <div role="alert" style={{ marginBottom: 18 }}>
                   <p>No pudimos cargar los datos de la vacante, intenta de nuevo.</p>
-                  <button className="btn btn-primary btn-sm" type="button" onClick={() => void cargar()}>
+                  <button
+                    className="btn btn-primary btn-sm"
+                    type="button"
+                    onClick={() => void cargar()}
+                  >
                     Intentar de nuevo
                   </button>
                 </div>
               )}
               {exito ? (
-                <p className="form-exito">¡Gracias! Recibimos tu postulación. Te llevamos de vuelta…</p>
+                <p className="form-exito">
+                  ¡Gracias! Recibimos tu postulación. Te llevamos de vuelta…
+                </p>
               ) : (
                 <PostulacionForm onExito={onExito} tipo="candidato" vacanteId={id} />
               )}
@@ -120,10 +133,16 @@ function AplicarError() {
             <h1>No pudimos mostrar esta página.</h1>
             <p>Intenta cargarla nuevamente. Si el problema continúa, vuelve a las vacantes.</p>
             <div className="form-actions">
-              <button className="btn btn-primary" type="button" onClick={() => void router.invalidate()}>
+              <button
+                className="btn btn-primary"
+                type="button"
+                onClick={() => void router.invalidate()}
+              >
                 Intentar de nuevo
               </button>
-              <a className="btn" href="/trabaja-con-nosotros">Ver vacantes</a>
+              <a className="btn" href="/trabaja-con-nosotros">
+                Ver vacantes
+              </a>
             </div>
           </div>
         </div>

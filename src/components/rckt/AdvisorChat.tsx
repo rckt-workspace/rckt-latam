@@ -56,7 +56,9 @@ const AdvisorChat = () => {
       setMessages((prev) => {
         const last = prev[prev.length - 1];
         if (last?.role === "assistant") {
-          return prev.map((m, i) => (i === prev.length - 1 ? { ...m, content: assistantSoFar } : m));
+          return prev.map((m, i) =>
+            i === prev.length - 1 ? { ...m, content: assistantSoFar } : m,
+          );
         }
         return [...prev, { role: "assistant", content: assistantSoFar }];
       });
@@ -71,9 +73,13 @@ const AdvisorChat = () => {
 
       if (!resp.ok || !resp.body) {
         if (resp.status === 429) {
-          toast("Asesor ocupado", { description: "Demasiadas consultas. Intenta en unos segundos." });
+          toast("Asesor ocupado", {
+            description: "Demasiadas consultas. Intenta en unos segundos.",
+          });
         } else if (resp.status === 402) {
-          toast("Crédito agotado", { description: "Escribe directamente al equipo de RCKT LATAM." });
+          toast("Crédito agotado", {
+            description: "Escribe directamente al equipo de RCKT LATAM.",
+          });
         } else {
           toast("Error", { description: "El asesor no respondió. Intenta nuevamente." });
         }
@@ -159,17 +165,24 @@ const AdvisorChat = () => {
             Asesor RCKT LATAM · en línea
           </span>
         </div>
-        <span className="text-[10px] uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-500">AI-first</span>
+        <span className="text-[10px] uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-500">
+          AI-first
+        </span>
       </header>
 
-      <div ref={scrollRef} className="flex-1 min-h-0 overflow-y-auto bg-white px-5 py-5 space-y-5 dark:bg-zinc-950">
+      <div
+        ref={scrollRef}
+        className="flex-1 min-h-0 overflow-y-auto bg-white px-5 py-5 space-y-5 dark:bg-zinc-950"
+      >
         {/* RCKT Advisor intro - always visible */}
         <div className="space-y-1.5">
           <span className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-500">
             RCKT LATAM
           </span>
           <p className="text-sm text-zinc-900 leading-relaxed dark:text-zinc-100">
-            ¡Hola! Soy el asesor estratégico de RCKT LATAM. Cuéntame brevemente el reto de crecimiento de tu compañía y te devolveré hipótesis accionables conectadas a tu industria y a tu stack.
+            ¡Hola! Soy el asesor estratégico de RCKT LATAM. Cuéntame brevemente el reto de
+            crecimiento de tu compañía y te devolveré hipótesis accionables conectadas a tu
+            industria y a tu stack.
           </p>
         </div>
 
@@ -211,7 +224,9 @@ const AdvisorChat = () => {
 
         {isLoading && messages[messages.length - 1]?.role === "user" && (
           <div className="space-y-1.5">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-500">RCKT LATAM</span>
+            <span className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-500">
+              RCKT LATAM
+            </span>
             <div className="flex gap-1 pl-4 border-l-2 border-zinc-300 dark:border-zinc-700">
               <span className="w-1.5 h-1.5 rounded-full bg-zinc-500 dark:bg-zinc-500 animate-pulse" />
               <span className="w-1.5 h-1.5 rounded-full bg-zinc-500 dark:bg-zinc-500 animate-pulse [animation-delay:120ms]" />

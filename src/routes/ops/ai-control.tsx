@@ -194,7 +194,9 @@ function AIControlPage() {
       <div className="glass-strong border-b border-border/50">
         <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
           <div>
-            <div className="text-xs uppercase tracking-widest text-accent font-semibold mb-1">RCKT</div>
+            <div className="text-xs uppercase tracking-widest text-accent font-semibold mb-1">
+              RCKT
+            </div>
             <h1 className="text-3xl font-bold">AI Control Center</h1>
             <p className="text-sm text-muted-foreground mt-1">Runtime orchestration</p>
           </div>
@@ -224,7 +226,9 @@ function AIControlPage() {
 
         {/* Status Bar */}
         <div className="mb-8 glass-strong rounded-2xl p-6 border border-border/30">
-          <h2 className="text-sm uppercase tracking-widest text-accent font-semibold mb-4">Runtime Status</h2>
+          <h2 className="text-sm uppercase tracking-widest text-accent font-semibold mb-4">
+            Runtime Status
+          </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div>
               <p className="text-xs text-muted-foreground mb-1">Primary</p>
@@ -232,15 +236,21 @@ function AIControlPage() {
             </div>
             <div>
               <p className="text-xs text-muted-foreground mb-1">Primary Model</p>
-              <p className="font-mono text-sm text-accent truncate">{getPrimaryModelForProvider(config.primary_provider, config)}</p>
+              <p className="font-mono text-sm text-accent truncate">
+                {getPrimaryModelForProvider(config.primary_provider, config)}
+              </p>
             </div>
             <div>
               <p className="text-xs text-muted-foreground mb-1">Secondary</p>
-              <p className="font-semibold text-foreground capitalize">{config.secondary_provider}</p>
+              <p className="font-semibold text-foreground capitalize">
+                {config.secondary_provider}
+              </p>
             </div>
             <div>
               <p className="text-xs text-muted-foreground mb-1">Fallback Model</p>
-              <p className="font-mono text-sm text-accent truncate">{getFallbackModelForProvider(config.secondary_provider, config)}</p>
+              <p className="font-mono text-sm text-accent truncate">
+                {getFallbackModelForProvider(config.secondary_provider, config)}
+              </p>
             </div>
             <div>
               <p className="text-xs text-muted-foreground mb-1">Routing Mode</p>
@@ -248,15 +258,21 @@ function AIControlPage() {
             </div>
             <div>
               <p className="text-xs text-muted-foreground mb-1">Fallback</p>
-              <p className="font-semibold text-foreground">{config.chat_use_fallback ? "Enabled" : "Disabled"}</p>
+              <p className="font-semibold text-foreground">
+                {config.chat_use_fallback ? "Enabled" : "Disabled"}
+              </p>
             </div>
             <div>
               <p className="text-xs text-muted-foreground mb-1">Config Source</p>
-              <p className="font-semibold text-foreground capitalize text-xs">{config.config_source || "environment"}</p>
+              <p className="font-semibold text-foreground capitalize text-xs">
+                {config.config_source || "environment"}
+              </p>
             </div>
             <div>
               <p className="text-xs text-muted-foreground mb-1">Persistence</p>
-              <p className="font-semibold text-foreground text-xs">{config.persistence_available ? "Available" : "Unavailable"}</p>
+              <p className="font-semibold text-foreground text-xs">
+                {config.persistence_available ? "Available" : "Unavailable"}
+              </p>
             </div>
           </div>
         </div>
@@ -294,7 +310,9 @@ function AIControlPage() {
                     min="0"
                     max="100"
                     value={formData.primary_weight || 100}
-                    onChange={(e) => setFormData({ ...formData, primary_weight: parseInt(e.target.value) })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, primary_weight: parseInt(e.target.value) })
+                    }
                     className="w-full"
                   />
                 </div>
@@ -305,7 +323,9 @@ function AIControlPage() {
                 <input
                   type="checkbox"
                   checked={formData.chat_use_fallback || false}
-                  onChange={(e) => setFormData({ ...formData, chat_use_fallback: e.target.checked })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, chat_use_fallback: e.target.checked })
+                  }
                   className="w-4 h-4 rounded border-border bg-background/50 cursor-pointer"
                 />
                 <span className="text-sm font-medium text-foreground">Fallback Enabled</span>
@@ -320,13 +340,17 @@ function AIControlPage() {
             <div className="space-y-5">
               {/* Primary Provider Section */}
               <div>
-                <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">Primary Provider</p>
+                <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">
+                  Primary Provider
+                </p>
                 <div className="space-y-3">
                   <div>
                     <label className="block text-xs text-muted-foreground mb-1.5">Provider</label>
                     <select
                       value={formData.primary_provider || "openrouter"}
-                      onChange={(e) => setFormData({ ...formData, primary_provider: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, primary_provider: e.target.value })
+                      }
                       className="w-full px-4 py-2.5 bg-background/50 border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
                     >
                       <option value="openrouter">OpenRouter</option>
@@ -334,9 +358,14 @@ function AIControlPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs text-muted-foreground mb-1.5">Active Model (Read-only)</label>
+                    <label className="block text-xs text-muted-foreground mb-1.5">
+                      Active Model (Read-only)
+                    </label>
                     <div className="w-full px-4 py-2.5 bg-background/30 border border-border rounded-lg text-foreground text-sm font-mono">
-                      {getPrimaryModelForProvider(formData.primary_provider || "openrouter", formData as RuntimeConfig)}
+                      {getPrimaryModelForProvider(
+                        formData.primary_provider || "openrouter",
+                        formData as RuntimeConfig,
+                      )}
                     </div>
                   </div>
                 </div>
@@ -344,13 +373,17 @@ function AIControlPage() {
 
               {/* Fallback Provider Section */}
               <div className="pt-4 border-t border-border/30">
-                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-3">Fallback Provider</p>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-3">
+                  Fallback Provider
+                </p>
                 <div className="space-y-3">
                   <div>
                     <label className="block text-xs text-muted-foreground mb-1.5">Provider</label>
                     <select
                       value={formData.secondary_provider || "anthropic"}
-                      onChange={(e) => setFormData({ ...formData, secondary_provider: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, secondary_provider: e.target.value })
+                      }
                       className="w-full px-4 py-2.5 bg-background/50 border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
                     >
                       <option value="anthropic">Anthropic</option>
@@ -358,9 +391,14 @@ function AIControlPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs text-muted-foreground mb-1.5">Active Model (Read-only)</label>
+                    <label className="block text-xs text-muted-foreground mb-1.5">
+                      Active Model (Read-only)
+                    </label>
                     <div className="w-full px-4 py-2.5 bg-background/30 border border-border rounded-lg text-foreground text-sm font-mono">
-                      {getFallbackModelForProvider(formData.secondary_provider || "anthropic", formData as RuntimeConfig)}
+                      {getFallbackModelForProvider(
+                        formData.secondary_provider || "anthropic",
+                        formData as RuntimeConfig,
+                      )}
                     </div>
                   </div>
                 </div>
@@ -384,7 +422,9 @@ function AIControlPage() {
                   max="2"
                   step="0.1"
                   value={formData.temperature || 0.2}
-                  onChange={(e) => setFormData({ ...formData, temperature: parseFloat(e.target.value) })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, temperature: parseFloat(e.target.value) })
+                  }
                   className="w-full"
                 />
               </div>
@@ -413,7 +453,9 @@ function AIControlPage() {
                 <input
                   type="number"
                   value={formData.max_tokens || 900}
-                  onChange={(e) => setFormData({ ...formData, max_tokens: parseInt(e.target.value) })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, max_tokens: parseInt(e.target.value) })
+                  }
                   className="w-full px-4 py-2.5 bg-background/50 border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
                 />
               </div>
@@ -424,7 +466,9 @@ function AIControlPage() {
                   <input
                     type="checkbox"
                     checked={formData.chat_use_fallback || false}
-                    onChange={(e) => setFormData({ ...formData, chat_use_fallback: e.target.checked })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, chat_use_fallback: e.target.checked })
+                    }
                     className="w-4 h-4 rounded border-border bg-background/50 cursor-pointer"
                   />
                   <span className="text-sm font-medium text-foreground">Use Fallback</span>
@@ -433,7 +477,9 @@ function AIControlPage() {
                   <input
                     type="checkbox"
                     checked={formData.chat_use_enhancement || false}
-                    onChange={(e) => setFormData({ ...formData, chat_use_enhancement: e.target.checked })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, chat_use_enhancement: e.target.checked })
+                    }
                     className="w-4 h-4 rounded border-border bg-background/50 cursor-pointer"
                   />
                   <span className="text-sm font-medium text-foreground">Use Enhancement</span>
@@ -460,20 +506,36 @@ function AIControlPage() {
 
             <div className="space-y-5 text-sm">
               <div>
-                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-1">Primary</p>
-                <p className="font-mono text-accent">{formData.openrouter_primary_model || "openrouter/free"}</p>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-1">
+                  Primary
+                </p>
+                <p className="font-mono text-accent">
+                  {formData.openrouter_primary_model || "openrouter/free"}
+                </p>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-1">Fallback</p>
-                <p className="font-mono text-accent">{formData.openrouter_fallback_model || "meta-llama/llama-3.1-8b-instruct:free"}</p>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-1">
+                  Fallback
+                </p>
+                <p className="font-mono text-accent">
+                  {formData.openrouter_fallback_model || "meta-llama/llama-3.1-8b-instruct:free"}
+                </p>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-1">Enhancement</p>
-                <p className="font-mono text-accent">{formData.openrouter_enhancement_model || "openrouter/free"}</p>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-1">
+                  Enhancement
+                </p>
+                <p className="font-mono text-accent">
+                  {formData.openrouter_enhancement_model || "openrouter/free"}
+                </p>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-1">Judge</p>
-                <p className="font-mono text-accent">{formData.openrouter_judge_model || "openrouter/free"}</p>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-1">
+                  Judge
+                </p>
+                <p className="font-mono text-accent">
+                  {formData.openrouter_judge_model || "openrouter/free"}
+                </p>
               </div>
             </div>
           </div>
@@ -484,20 +546,36 @@ function AIControlPage() {
 
             <div className="space-y-5 text-sm">
               <div>
-                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-1">Primary</p>
-                <p className="font-mono text-accent">{formData.anthropic_primary_model || "claude-haiku-4-5-20251001"}</p>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-1">
+                  Primary
+                </p>
+                <p className="font-mono text-accent">
+                  {formData.anthropic_primary_model || "claude-haiku-4-5-20251001"}
+                </p>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-1">Fallback</p>
-                <p className="font-mono text-accent">{formData.anthropic_fallback_model || "claude-sonnet-4-6"}</p>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-1">
+                  Fallback
+                </p>
+                <p className="font-mono text-accent">
+                  {formData.anthropic_fallback_model || "claude-sonnet-4-6"}
+                </p>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-1">Enhancement</p>
-                <p className="font-mono text-accent">{formData.anthropic_enhancement_model || "claude-haiku-4-5-20251001"}</p>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-1">
+                  Enhancement
+                </p>
+                <p className="font-mono text-accent">
+                  {formData.anthropic_enhancement_model || "claude-haiku-4-5-20251001"}
+                </p>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-1">Judge</p>
-                <p className="font-mono text-accent">{formData.anthropic_judge_model || "claude-haiku-4-5-20251001"}</p>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-1">
+                  Judge
+                </p>
+                <p className="font-mono text-accent">
+                  {formData.anthropic_judge_model || "claude-haiku-4-5-20251001"}
+                </p>
               </div>
             </div>
           </div>
@@ -517,7 +595,12 @@ function AIControlPage() {
                 type="number"
                 step="0.01"
                 value={formData.daily_budget_usd || ""}
-                onChange={(e) => setFormData({ ...formData, daily_budget_usd: e.target.value ? parseFloat(e.target.value) : undefined })}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    daily_budget_usd: e.target.value ? parseFloat(e.target.value) : undefined,
+                  })
+                }
                 className="w-full px-4 py-2.5 bg-background/50 border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
                 placeholder="Optional"
               />

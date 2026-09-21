@@ -18,7 +18,10 @@ type Draft = Omit<BlogPost, "readingTime" | "updatedAt">;
 function nuevoBorrador(categoria: string): Draft {
   const now = new Date().toISOString();
   return {
-    id: typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `post-${Date.now()}`,
+    id:
+      typeof crypto !== "undefined" && crypto.randomUUID
+        ? crypto.randomUUID()
+        : `post-${Date.now()}`,
     slug: "",
     title: "",
     excerpt: "",
@@ -44,7 +47,10 @@ export function BlogAdmin() {
   const [locales, setLocales] = useState(false);
 
   const cargar = useCallback(async () => {
-    const [p, c] = await Promise.all([blogRepository.getAllPosts(), blogRepository.getCategories()]);
+    const [p, c] = await Promise.all([
+      blogRepository.getAllPosts(),
+      blogRepository.getCategories(),
+    ]);
     setPosts(p);
     setCategories(c);
     setLocales(hasLocalBlogChanges());
@@ -85,7 +91,9 @@ export function BlogAdmin() {
 
   async function duplicar(post: BlogPost) {
     const id =
-      typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `post-${Date.now()}`;
+      typeof crypto !== "undefined" && crypto.randomUUID
+        ? crypto.randomUUID()
+        : `post-${Date.now()}`;
     let slug = `${post.slug}-copia`;
     let n = 2;
     while (posts.some((p) => p.slug === slug)) slug = `${post.slug}-copia-${n++}`;
@@ -118,7 +126,11 @@ export function BlogAdmin() {
   }
 
   async function restaurar() {
-    if (!window.confirm("Esto descartará los cambios locales del blog y volverá al contenido original. ¿Continuar?"))
+    if (
+      !window.confirm(
+        "Esto descartará los cambios locales del blog y volverá al contenido original. ¿Continuar?",
+      )
+    )
       return;
     await blogRepository.resetToSeed();
     setDraft(null);
@@ -137,7 +149,11 @@ export function BlogAdmin() {
   return (
     <section className="mt-7">
       <div className="flex flex-wrap items-center gap-2">
-        <button className={btn} type="button" onClick={() => setDraft(nuevoBorrador(categoriaPorDefecto))}>
+        <button
+          className={btn}
+          type="button"
+          onClick={() => setDraft(nuevoBorrador(categoriaPorDefecto))}
+        >
           + Nuevo artículo
         </button>
         <button className={btnGhost} type="button" onClick={() => void exportar()}>
@@ -149,7 +165,8 @@ export function BlogAdmin() {
       </div>
 
       <p className="mt-3 text-[13px] text-[var(--carbon-soft)]">
-        {conteo.publicados} publicados · {conteo.borradores} borradores · {conteo.archivados} archivados.{" "}
+        {conteo.publicados} publicados · {conteo.borradores} borradores · {conteo.archivados}{" "}
+        archivados.{" "}
         {locales
           ? "Estás viendo cambios guardados en este navegador. Exporta el JSON para conservarlos."
           : "Estás viendo el contenido original del proyecto."}
@@ -195,7 +212,9 @@ export function BlogAdmin() {
                   placeholder="Slug (se genera del título)"
                   value={draft.slug}
                   onChange={(e) => setDraft({ ...draft, slug: e.target.value })}
-                  onBlur={(e) => setDraft({ ...draft, slug: slugify(e.target.value || draft.title) })}
+                  onBlur={(e) =>
+                    setDraft({ ...draft, slug: slugify(e.target.value || draft.title) })
+                  }
                 />
                 <select
                   value={draft.category}
@@ -231,20 +250,27 @@ export function BlogAdmin() {
                 <input
                   placeholder="Autor"
                   value={draft.author.name}
-                  onChange={(e) => setDraft({ ...draft, author: { ...draft.author, name: e.target.value } })}
+                  onChange={(e) =>
+                    setDraft({ ...draft, author: { ...draft.author, name: e.target.value } })
+                  }
                 />
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
                 <input
                   placeholder="Rol del autor"
                   value={draft.author.role}
-                  onChange={(e) => setDraft({ ...draft, author: { ...draft.author, role: e.target.value } })}
+                  onChange={(e) =>
+                    setDraft({ ...draft, author: { ...draft.author, role: e.target.value } })
+                  }
                 />
                 <input
                   type="date"
                   value={draft.publishedAt.slice(0, 10)}
                   onChange={(e) =>
-                    setDraft({ ...draft, publishedAt: new Date(`${e.target.value}T12:00:00Z`).toISOString() })
+                    setDraft({
+                      ...draft,
+                      publishedAt: new Date(`${e.target.value}T12:00:00Z`).toISOString(),
+                    })
                   }
                 />
               </div>
@@ -273,12 +299,16 @@ export function BlogAdmin() {
                 <input
                   placeholder="SEO title"
                   value={draft.seo.title}
-                  onChange={(e) => setDraft({ ...draft, seo: { ...draft.seo, title: e.target.value } })}
+                  onChange={(e) =>
+                    setDraft({ ...draft, seo: { ...draft.seo, title: e.target.value } })
+                  }
                 />
                 <input
                   placeholder="SEO description"
                   value={draft.seo.description}
-                  onChange={(e) => setDraft({ ...draft, seo: { ...draft.seo, description: e.target.value } })}
+                  onChange={(e) =>
+                    setDraft({ ...draft, seo: { ...draft.seo, description: e.target.value } })
+                  }
                 />
               </div>
               <label className="flex items-center gap-2 text-[14px]">
@@ -307,7 +337,14 @@ export function BlogAdmin() {
             <button className={btn} type="button" onClick={() => void guardar("published")}>
               Publicar
             </button>
-            <button className={btnGhost} type="button" onClick={() => { setDraft(null); setError(null); }}>
+            <button
+              className={btnGhost}
+              type="button"
+              onClick={() => {
+                setDraft(null);
+                setError(null);
+              }}
+            >
               Cancelar
             </button>
           </div>
@@ -344,11 +381,17 @@ export function BlogAdmin() {
                 <button
                   className={btnGhost}
                   type="button"
-                  onClick={() => void cambiarEstado(post, post.status === "published" ? "draft" : "published")}
+                  onClick={() =>
+                    void cambiarEstado(post, post.status === "published" ? "draft" : "published")
+                  }
                 >
                   {post.status === "published" ? "Pasar a borrador" : "Publicar"}
                 </button>
-                <button className={btnGhost} type="button" onClick={() => void cambiarEstado(post, "archived")}>
+                <button
+                  className={btnGhost}
+                  type="button"
+                  onClick={() => void cambiarEstado(post, "archived")}
+                >
                   Archivar
                 </button>
                 <button className={btnGhost} type="button" onClick={() => void eliminar(post)}>

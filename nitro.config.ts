@@ -1,5 +1,5 @@
 export default defineNitroConfig({
-  preset: 'node-server',
+  preset: "node-server",
   prerender: {
     crawlLinks: true,
   },

@@ -66,11 +66,7 @@ function timingSafeEqual(a: string, b: string): boolean {
 
 async function getConfig(supabase: any): Promise<Response> {
   try {
-    const { data, error } = await supabase
-      .from("ai_runtime_config")
-      .select("*")
-      .limit(1)
-      .single();
+    const { data, error } = await supabase.from("ai_runtime_config").select("*").limit(1).single();
 
     if (error) {
       console.error("get_config error:", error);
@@ -119,13 +115,16 @@ async function updateConfig(supabase: any, payload: Record<string, any>): Promis
     }
 
     // Write audit record
-    await supabase.from("ai_config_audit").insert({
-      config_version: data.version,
-      fields_changed: Object.keys(updates),
-      previous_values: {},
-      new_values: data,
-      updated_by: "bridge",
-    }).catch((e: any) => console.error("Audit write error:", e));
+    await supabase
+      .from("ai_config_audit")
+      .insert({
+        config_version: data.version,
+        fields_changed: Object.keys(updates),
+        previous_values: {},
+        new_values: data,
+        updated_by: "bridge",
+      })
+      .catch((e: any) => console.error("Audit write error:", e));
 
     return new Response(JSON.stringify({ ok: true, data }), {
       status: 200,
@@ -295,10 +294,10 @@ Deno.serve(async (req: Request) => {
 
     if (!supabaseUrl || !supabaseServiceKey) {
       console.error("Missing Supabase configuration");
-      return new Response(
-        JSON.stringify({ error: "Server configuration error" }),
-        { status: 500, headers: { "Content-Type": "application/json" } }
-      );
+      return new Response(JSON.stringify({ error: "Server configuration error" }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      });
     }
 
     const supabase = createClient(supabaseUrl, supabaseServiceKey);

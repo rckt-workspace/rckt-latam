@@ -1,21 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import logoDark from "@/assets/rckt-logo-dark.png";
-import { useServerFn } from "@tanstack/react-start";
-import { registrarEquipo } from "@/lib/registro.functions";
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
-import type { Session, SupabaseClient } from "@supabase/supabase-js";
-import type { Database } from "@/integrations/supabase/types";
-import { getBrowserSupabaseAuth } from "@/lib/supabase-browser";
+import { useCallback, useEffect, useState } from "react";
 import { BlogAdmin } from "@/components/blog/BlogAdmin";
-
-type Sb = SupabaseClient<Database>;
-const SupabaseCtx = createContext<Sb | null>(null);
-
-function useSb(): Sb {
-  const sb = useContext(SupabaseCtx);
-  if (!sb) throw new Error("Supabase no disponible");
-  return sb;
-}
 
 export const Route = createFileRoute("/rckt-equipo")({
   staticData: { sitemap: false },
@@ -25,7 +11,10 @@ export const Route = createFileRoute("/rckt-equipo")({
       { name: "description", content: "Acceso restringido al equipo People & Culture de RCKT." },
       { name: "robots", content: "noindex, nofollow" },
       { property: "og:title", content: "People & Culture — RCKT" },
-      { property: "og:description", content: "Acceso restringido al equipo People & Culture de RCKT." },
+      {
+        property: "og:description",
+        content: "Acceso restringido al equipo People & Culture de RCKT.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -51,188 +40,79 @@ type Postulacion = {
   nombre: string;
   email: string;
   telefono: string | null;
-  cv_url: string | null;
+  cv_path: string | null;
   portafolio_url: string | null;
   mensaje: string | null;
   tipo: "candidato" | "servicio";
-  fecha: string;
+  estado: string;
+  created_at: string;
+  notas_internas: string | null;
+  source: string | null;
+  consent_at: string | null;
 };
 
 const btn = "panel-btn";
 const btnGhost = "panel-btn-ghost";
 
 function PanelPC() {
-  const [session, setSession] = useState<Session | null>(null);
+  const [autenticado, setAutenticado] = useState(false);
   const [cargando, setCargando] = useState(true);
-  const [sb, setSb] = useState<Sb | null>(null);
   const [errorConexion, setErrorConexion] = useState(false);
 
   useEffect(() => {
-    let activo = true;
-    let unsub: (() => void) | undefined;
-
-    getBrowserSupabaseAuth()
-      .then(async (client) => {
-        if (!activo) return;
-        setSb(client);
-        const { data: sub } = client.auth.onAuthStateChange((_e, s) => setSession(s));
-        unsub = () => sub.subscription.unsubscribe();
-        const { data } = await client.auth.getSession();
-        if (!activo) return;
-        setSession(data.session);
-        setCargando(false);
-      })
-      .catch((error) => {
-        console.error("No pudimos conectar con la base de datos", error);
-        if (!activo) return;
+    const verificarSesion = async () => {
+      try {
+        const res = await fetch("/api/admin/verify");
+        if (res.ok) {
+          setAutenticado(true);
+          setCargando(false);
+        } else {
+          window.location.href = "/ops/login?next=/rckt-equipo";
+        }
+      } catch (e) {
+        console.error("Error verificando sesión:", e);
         setErrorConexion(true);
         setCargando(false);
-      });
-
-    return () => {
-      activo = false;
-      unsub?.();
+      }
     };
+
+    verificarSesion();
   }, []);
 
   if (cargando) {
-    return <Shell><p className="text-[var(--carbon-soft)]">Cargando…</p></Shell>;
-  }
-
-  if (errorConexion || !sb) {
     return (
-      <Shell>
-        <div className="panel-card" role="alert">
-          <h1 className="text-[22px] font-bold">No pudimos conectar con la base de datos.</h1>
-          <p className="mt-2 text-[14px] text-[var(--carbon-soft)]">
-            Vuelve a intentarlo en unos segundos.
-          </p>
-          <button className={btn} style={{ marginTop: 16 }} type="button" onClick={() => window.location.reload()}>
-            Intentar de nuevo
-          </button>
+      <div className="rckt-site rckt-panel">
+        <div className="panel-wrap">
+          <p style={{ color: "var(--carbon-soft)" }}>Cargando…</p>
         </div>
-      </Shell>
+      </div>
     );
   }
 
-  return (
-    <SupabaseCtx.Provider value={sb}>
-      <Shell>
-        {session ? <Dashboard email={session.user.email ?? ""} /> : <Login />}
-      </Shell>
-    </SupabaseCtx.Provider>
-  );
-}
-
-function Shell({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="rckt-site rckt-panel">
-      <div className="panel-wrap">{children}</div>
-    </div>
-  );
-}
-
-function Login() {
-  const supabase = useSb();
-  const [modo, setModo] = useState<"login" | "registro">("login");
-  const [error, setError] = useState<string | null>(null);
-  const [enviando, setEnviando] = useState(false);
-  const registrar = useServerFn(registrarEquipo);
-
-  async function onLogin(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setEnviando(true);
-    setError(null);
-    const fd = new FormData(e.currentTarget);
-    const { error: err } = await supabase.auth.signInWithPassword({
-      email: String(fd.get("email")),
-      password: String(fd.get("password")),
-    });
-    if (err) setError("Credenciales incorrectas.");
-    setEnviando(false);
+  if (errorConexion || !autenticado) {
+    return (
+      <div className="rckt-site rckt-panel">
+        <div className="panel-wrap">
+          <div className="panel-card" role="alert">
+            <h1 style={{ fontSize: "22px", fontWeight: "bold" }}>Error de conexión</h1>
+            <p style={{ marginTop: "12px", fontSize: "14px", color: "var(--carbon-soft)" }}>
+              Vuelve a intentarlo en unos segundos.
+            </p>
+            <button
+              className={btn}
+              style={{ marginTop: 16 }}
+              type="button"
+              onClick={() => window.location.reload()}
+            >
+              Intentar de nuevo
+            </button>
+          </div>
+        </div>
+      </div>
+    );
   }
 
-  async function onRegistro(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setError(null);
-    const fd = new FormData(e.currentTarget);
-    const nombre = String(fd.get("nombre")).trim();
-    const email = String(fd.get("email")).trim().toLowerCase();
-    const password = String(fd.get("password"));
-    const password2 = String(fd.get("password2"));
-
-    if (!email.endsWith("@rckt.es")) {
-      setError("El registro está restringido al equipo de RCKT.");
-      return;
-    }
-    if (password.length < 8) {
-      setError("La contraseña debe tener al menos 8 caracteres.");
-      return;
-    }
-    if (password !== password2) {
-      setError("Las contraseñas no coinciden.");
-      return;
-    }
-
-    setEnviando(true);
-    try {
-      const res = await registrar({ data: { nombre, email, password } });
-      if (!res.ok) {
-        setError(res.error);
-        setEnviando(false);
-        return;
-      }
-      const { error: err } = await supabase.auth.signInWithPassword({ email, password });
-      if (err) {
-        setError("Cuenta creada. Inicia sesión con tus datos.");
-        setModo("login");
-      }
-    } catch {
-      setError("No pudimos crear la cuenta. Inténtalo de nuevo.");
-    }
-    setEnviando(false);
-  }
-
-  return (
-    <div className="panel-card panel-login">
-      <span className="logo"><img alt="RCKT" src={logoDark} /></span>
-      <h1 className="text-[24px] font-bold">People & Culture</h1>
-      <p className="mt-2 text-[14px] text-[var(--carbon-soft)]">Acceso solo para el equipo.</p>
-
-      {modo === "login" ? (
-        <form className="mt-6 grid gap-4" onSubmit={onLogin}>
-          <input name="email" type="email" placeholder="Correo" required />
-          <input name="password" type="password" placeholder="Contraseña" required />
-          {error && <p className="text-[14px] text-[var(--naranja-deep)]">{error}</p>}
-          <button className={btn} disabled={enviando} type="submit">
-            {enviando ? "Entrando…" : "Entrar"}
-          </button>
-        </form>
-      ) : (
-        <form className="mt-6 grid gap-4" onSubmit={onRegistro}>
-          <input name="nombre" type="text" placeholder="Nombre completo" required />
-          <input name="email" type="email" placeholder="Correo @rckt.es" required />
-          <input name="password" type="password" placeholder="Contraseña" required minLength={8} />
-          <input name="password2" type="password" placeholder="Confirmar contraseña" required minLength={8} />
-          {error && <p className="text-[14px] text-[var(--naranja-deep)]">{error}</p>}
-          <button className={btn} disabled={enviando} type="submit">
-            {enviando ? "Creando cuenta…" : "Crear cuenta"}
-          </button>
-        </form>
-      )}
-
-      <button
-        type="button"
-        className="mt-4 text-[13px] font-semibold text-[var(--naranja-deep)] underline"
-        onClick={() => {
-          setError(null);
-          setModo(modo === "login" ? "registro" : "login");
-        }}
-      >
-        {modo === "login" ? "¿No tienes cuenta? Regístrate" : "¿Ya tienes cuenta? Inicia sesión"}
-      </button>
-    </div>
-  );
+  return <Dashboard />;
 }
 
 const vacanteVacia = {
@@ -244,8 +124,7 @@ const vacanteVacia = {
   requisitos: "",
 };
 
-function Dashboard({ email }: { email: string }) {
-  const supabase = useSb();
+function Dashboard() {
   const [tab, setTab] = useState<"vacantes" | "postulaciones" | "blog">("vacantes");
   const [vacantes, setVacantes] = useState<Vacante[]>([]);
   const [postulaciones, setPostulaciones] = useState<Postulacion[]>([]);
@@ -253,14 +132,31 @@ function Dashboard({ email }: { email: string }) {
   const [filtroVacante, setFiltroVacante] = useState("todas");
   const [filtroTipo, setFiltroTipo] = useState("todos");
   const [detalle, setDetalle] = useState<Postulacion | null>(null);
+  const [cargando, setCargando] = useState(false);
 
   const cargar = useCallback(async () => {
-    const [v, p] = await Promise.all([
-      supabase.from("vacantes").select("*").order("fecha_publicacion", { ascending: false }),
-      supabase.from("postulaciones").select("*").order("fecha", { ascending: false }),
-    ]);
-    setVacantes((v.data as Vacante[]) ?? []);
-    setPostulaciones((p.data as Postulacion[]) ?? []);
+    setCargando(true);
+    try {
+      const vRes = await fetch("/api/admin/people/vacantes");
+      if (!vRes.ok) {
+        const err = await vRes.json().catch(() => null);
+        throw new Error(err?.error || "Error cargando vacantes");
+      }
+      const vData = await vRes.json();
+      setVacantes(Array.isArray(vData) ? vData : []);
+
+      const pRes = await fetch("/api/admin/people/postulaciones");
+      if (!pRes.ok) {
+        const err = await pRes.json().catch(() => null);
+        throw new Error(err?.error || "Error cargando postulaciones");
+      }
+      const pData = await pRes.json();
+      setPostulaciones(Array.isArray(pData) ? pData : []);
+    } catch (e) {
+      console.error("Error cargando datos:", e);
+    } finally {
+      setCargando(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -270,6 +166,7 @@ function Dashboard({ email }: { email: string }) {
   async function guardar(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!editando) return;
+
     const payload = {
       titulo: editando.titulo,
       area: editando.area || null,
@@ -278,35 +175,117 @@ function Dashboard({ email }: { email: string }) {
       descripcion: editando.descripcion || null,
       requisitos: editando.requisitos || null,
     };
-    if (editando.id) await supabase.from("vacantes").update(payload).eq("id", editando.id);
-    else await supabase.from("vacantes").insert(payload);
-    setEditando(null);
-    void cargar();
+
+    try {
+      if (editando.id) {
+        await fetch("/api/admin/people/vacantes", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: editando.id, ...payload }),
+        });
+      } else {
+        await fetch("/api/admin/people/vacantes", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+      }
+      setEditando(null);
+      await cargar();
+    } catch (e) {
+      console.error("Error guardando vacante:", e);
+    }
   }
 
   async function cambiarEstado(v: Vacante) {
-    await supabase
-      .from("vacantes")
-      .update({ estado: v.estado === "activa" ? "cerrada" : "activa" })
-      .eq("id", v.id);
-    void cargar();
+    try {
+      await fetch("/api/admin/people/vacantes", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: v.id,
+          estado: v.estado === "activa" ? "cerrada" : "activa",
+        }),
+      });
+      await cargar();
+    } catch (e) {
+      console.error("Error cambiando estado:", e);
+    }
   }
 
   async function eliminar(id: string) {
-    await supabase.from("vacantes").delete().eq("id", id);
-    void cargar();
+    try {
+      await fetch("/api/admin/people/vacantes", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      await cargar();
+    } catch (e) {
+      console.error("Error eliminando vacante:", e);
+    }
+  }
+
+  async function cambiarEstadoPostulacion(p: Postulacion, estado: string) {
+    try {
+      await fetch("/api/admin/people/postulaciones", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: p.id, estado }),
+      });
+      await cargar();
+      setDetalle(null);
+    } catch (e) {
+      console.error("Error cambiando estado postulacion:", e);
+    }
   }
 
   async function eliminarPostulacion(id: string) {
-    if (!window.confirm("¿Seguro que quieres eliminar esta postulación? Esta acción no se puede deshacer.")) return;
-    await supabase.from("postulaciones").delete().eq("id", id);
-    setDetalle((d) => (d?.id === id ? null : d));
-    void cargar();
+    if (
+      !window.confirm(
+        "¿Seguro que quieres eliminar esta postulación? Esta acción no se puede deshacer.",
+      )
+    )
+      return;
+    try {
+      await fetch("/api/admin/people/postulaciones", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      setDetalle((d) => (d?.id === id ? null : d));
+      await cargar();
+    } catch (e) {
+      console.error("Error eliminando postulacion:", e);
+    }
   }
 
-  async function abrirCv(path: string) {
-    const { data } = await supabase.storage.from("cvs").createSignedUrl(path, 300);
-    if (data?.signedUrl) window.open(data.signedUrl, "_blank", "noopener");
+  async function abrirCv(cvPath: string | null) {
+    if (!cvPath) return;
+    try {
+      const res = await fetch(`/api/admin/people/cv-signed-url`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ path: cvPath }),
+      });
+      if (!res.ok) {
+        console.error("Error generando URL:", res.statusText);
+        return;
+      }
+      const { signedUrl } = await res.json();
+      if (signedUrl) window.open(signedUrl, "_blank", "noopener");
+    } catch (e) {
+      console.error("Error abriendo CV:", e);
+    }
+  }
+
+  async function handleLogout() {
+    try {
+      await fetch("/api/admin/logout", { method: "POST" });
+      window.location.href = "/ops/login";
+    } catch (e) {
+      console.error("Error en logout:", e);
+    }
   }
 
   const filtradas = postulaciones.filter(
@@ -316,187 +295,374 @@ function Dashboard({ email }: { email: string }) {
   );
 
   return (
-    <div>
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h1 className="text-[26px] font-bold">People & Culture</h1>
-            <p className="text-[14px] text-[var(--carbon-soft)]">{email}</p>
-          </div>
-        <button className={btnGhost} onClick={() => supabase.auth.signOut()} type="button">
-          Cerrar sesión
-        </button>
-      </div>
-
-      <div className="mt-6 flex gap-2">
-        {(["vacantes", "postulaciones", "blog"] as const).map((t) => (
-          <button
-            key={t}
-            type="button"
-            onClick={() => setTab(t)}
-            className={
-              tab === t
-                ? "panel-tab-active"
-                : btnGhost
-            }
-          >
-            {t === "vacantes" ? "Vacantes" : t === "postulaciones" ? "Postulaciones" : "Blog"}
-          </button>
-        ))}
-      </div>
-
-      {tab === "blog" && <BlogAdmin />}
-
-
-      {tab === "vacantes" && (
-        <section className="mt-7">
-          <button className={btn} type="button" onClick={() => setEditando({ ...vacanteVacia })}>
-            Nueva vacante
-          </button>
-
-          {editando && (
-            <form className="mt-5 grid gap-3 panel-card" onSubmit={guardar}>
-              <input placeholder="Título" required value={editando.titulo}
-                onChange={(e) => setEditando({ ...editando, titulo: e.target.value })} />
-              <div className="grid gap-3 sm:grid-cols-2">
-                <input placeholder="Área" value={editando.area}
-                  onChange={(e) => setEditando({ ...editando, area: e.target.value })} />
-                <input placeholder="Ubicación" value={editando.ubicacion}
-                  onChange={(e) => setEditando({ ...editando, ubicacion: e.target.value })} />
-              </div>
-              <textarea placeholder="Descripción" rows={3} value={editando.descripcion}
-                onChange={(e) => setEditando({ ...editando, descripcion: e.target.value })} />
-              <textarea placeholder="Requisitos" rows={3} value={editando.requisitos}
-                onChange={(e) => setEditando({ ...editando, requisitos: e.target.value })} />
-              <div className="flex gap-2">
-                <button className={btn} type="submit">Guardar</button>
-                <button className={btnGhost} type="button" onClick={() => setEditando(null)}>Cancelar</button>
-              </div>
-            </form>
-          )}
-
-          <div className="mt-6 grid gap-3">
-            {vacantes.length === 0 && <p className="text-[var(--carbon-soft)]">Aún no hay vacantes creadas.</p>}
-            {vacantes.map((v) => (
-              <div key={v.id} className="panel-card hoverable flex flex-wrap items-center justify-between gap-4">
-                <div>
-                  <p className="text-[17px] font-bold">{v.titulo}</p>
-                  <p className="text-[13px] text-[var(--carbon-soft)]">
-                    {[v.area, v.modalidad, v.ubicacion].filter(Boolean).join(" · ")} — {v.estado}
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <button className={btnGhost} type="button"
-                    onClick={() => setEditando({
-                      id: v.id,
-                      titulo: v.titulo,
-                      area: v.area ?? "",
-                      modalidad: v.modalidad ?? "",
-                      ubicacion: v.ubicacion ?? "",
-                      descripcion: v.descripcion ?? "",
-                      requisitos: v.requisitos ?? "",
-                    })}>
-                    Editar
-                  </button>
-                  <button className={btnGhost} type="button" onClick={() => cambiarEstado(v)}>
-                    {v.estado === "activa" ? "Cerrar" : "Reabrir"}
-                  </button>
-                  <button className={btnGhost} type="button" onClick={() => eliminar(v.id)}>Eliminar</button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {tab === "postulaciones" && (
-        <section className="mt-7">
-          <div className="flex flex-wrap gap-3">
-            <select className="max-w-[260px]" value={filtroVacante} onChange={(e) => setFiltroVacante(e.target.value)}>
-              <option value="todas">Todas las vacantes</option>
-              {vacantes.map((v) => (
-                <option key={v.id} value={v.id}>{v.titulo}</option>
-              ))}
-            </select>
-            <select className="max-w-[200px]" value={filtroTipo} onChange={(e) => setFiltroTipo(e.target.value)}>
-              <option value="todos">Todos los tipos</option>
-              <option value="candidato">Candidatos</option>
-              <option value="servicio">Servicios</option>
-            </select>
-          </div>
-
-          <div className="mt-5 grid gap-3">
-            {filtradas.length === 0 && <p className="text-[var(--carbon-soft)]">No hay postulaciones con estos filtros.</p>}
-            {filtradas.map((p) => (
-              <div key={p.id} className="panel-card hoverable flex flex-wrap items-center justify-between gap-4">
-                <div>
-                  <p className="flex flex-wrap items-center gap-2 text-[16px] font-bold">
-                    {p.nombre}
-                    <span className={`badge-tipo ${p.tipo === "candidato" ? "badge-candidato" : "badge-servicio"}`}>
-                      {p.tipo === "candidato" ? "Candidato a vacante" : "Servicio / Freelance"}
-                    </span>
-                  </p>
-                  <p className="text-[13px] text-[var(--carbon-soft)]">
-                    {p.email}{p.telefono ? ` · ${p.telefono}` : ""} · {new Date(p.fecha).toLocaleDateString("es-CO")}
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {p.cv_url && (
-                    <button className={btnGhost} type="button" onClick={() => abrirCv(p.cv_url!)}>Ver CV</button>
-                  )}
-                  <button className={btnGhost} type="button" onClick={() => setDetalle(p)}>Ver detalle</button>
-                  <button className="panel-btn-danger" type="button" onClick={() => eliminarPostulacion(p.id)}>
-                    Eliminar
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {detalle && (
-        <div className="panel-modal-overlay" role="dialog" aria-modal="true" onClick={() => setDetalle(null)}>
-          <div className="panel-modal" onClick={(e) => e.stopPropagation()}>
-            <button className="panel-modal-close" type="button" aria-label="Cerrar" onClick={() => setDetalle(null)}>
-              ×
+    <div className="rckt-site rckt-panel">
+      <div className="panel-wrap">
+        {/* Header */}
+        <div style={{ marginBottom: "32px", paddingBottom: "24px", borderBottom: "1px solid var(--line-strong)" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "32px" }}>
+            <div>
+              <p style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--carbon-soft)", marginBottom: "8px" }}>
+                RCKT / People & Culture
+              </p>
+              <h1 style={{ fontSize: "32px", fontWeight: 800, lineHeight: 1.1, color: "var(--carbon)", margin: "0 0 8px 0" }}>
+                People & Culture
+              </h1>
+              <p style={{ fontSize: "15px", color: "var(--carbon-soft)", margin: 0, lineHeight: 1.5 }}>
+                Gestión de talento, postulaciones y contenido
+              </p>
+            </div>
+            <button className={btnGhost} onClick={handleLogout} type="button" style={{ whiteSpace: "nowrap" }}>
+              Cerrar sesión
             </button>
-            <span className={`badge-tipo ${detalle.tipo === "candidato" ? "badge-candidato" : "badge-servicio"}`}>
-              {detalle.tipo === "candidato" ? "Candidato a vacante" : "Servicio / Freelance"}
-            </span>
-            <h3 className="mt-3">{detalle.nombre}</h3>
-
-            <div className="dato-grid">
-              <p className="dato"><span>Correo</span><span>{detalle.email}</span></p>
-              {detalle.telefono && <p className="dato"><span>Teléfono</span><span>{detalle.telefono}</span></p>}
-              <p className="dato">
-                <span>Vacante</span>
-                <span>{vacantes.find((v) => v.id === detalle.vacante_id)?.titulo ?? "—"}</span>
-              </p>
-              <p className="dato">
-                <span>Fecha</span>
-                <span>{new Date(detalle.fecha).toLocaleDateString("es-CO")}</span>
-              </p>
-            </div>
-
-            {detalle.mensaje && <p className="modal-mensaje">{detalle.mensaje}</p>}
-
-            <div className="modal-acciones">
-              {detalle.cv_url && (
-                <button className="panel-btn" type="button" onClick={() => abrirCv(detalle.cv_url!)}>Ver CV</button>
-              )}
-              {detalle.portafolio_url && (
-                <a className={btnGhost} href={detalle.portafolio_url} rel="noopener noreferrer" target="_blank">
-                  Ver portafolio
-                </a>
-              )}
-              <a className={btnGhost} href={`mailto:${detalle.email}`}>Contactar por correo</a>
-              <button className="panel-btn-danger" type="button" onClick={() => eliminarPostulacion(detalle.id)}>
-                Eliminar
-              </button>
-            </div>
           </div>
         </div>
-      )}
+
+        {/* Tabs */}
+        <div style={{ display: "flex", gap: "12px", marginBottom: "32px", paddingBottom: "16px", borderBottom: "1px solid var(--line)", flexWrap: "wrap" }}>
+          {(["vacantes", "postulaciones", "blog"] as const).map((t) => (
+            <button
+              key={t}
+              type="button"
+              onClick={() => setTab(t)}
+              className={tab === t ? "panel-tab-active" : btnGhost}
+              style={{
+                borderRadius: "999px",
+                padding: tab === t ? undefined : "8px 16px",
+                fontSize: "14px",
+                fontWeight: 600,
+              }}
+            >
+              {t === "vacantes" ? "Vacantes" : t === "postulaciones" ? "Postulaciones" : "Blog"}
+            </button>
+          ))}
+        </div>
+
+        {/* Blog */}
+        {tab === "blog" && (
+          <div style={{ marginBottom: "40px" }}>
+            <div style={{ marginBottom: "24px", paddingBottom: "16px", borderBottom: "1px solid var(--line)" }}>
+              <h2 style={{ fontSize: "24px", fontWeight: 800, color: "var(--carbon)", margin: "0 0 6px 0" }}>
+                Blog
+              </h2>
+              <p style={{ fontSize: "14px", color: "var(--carbon-soft)", margin: 0 }}>
+                Gestiona artículos de RCKT Insights
+              </p>
+            </div>
+            <BlogAdmin />
+          </div>
+        )}
+
+        {/* Vacantes */}
+        {tab === "vacantes" && (
+          <div style={{ marginBottom: "40px" }}>
+            <div style={{ marginBottom: "24px", paddingBottom: "16px", borderBottom: "1px solid var(--line)" }}>
+              <h2 style={{ fontSize: "24px", fontWeight: 800, color: "var(--carbon)", margin: "0 0 6px 0" }}>
+                Vacantes
+              </h2>
+              <p style={{ fontSize: "14px", color: "var(--carbon-soft)", margin: 0 }}>
+                Gestiona las oportunidades activas de RCKT
+              </p>
+            </div>
+
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "24px" }}>
+              <div />
+              <button className={btn} type="button" onClick={() => setEditando({ ...vacanteVacia })}>
+                + Nueva vacante
+              </button>
+            </div>
+
+            {editando && (
+              <div className="panel-card" style={{ marginBottom: "24px" }}>
+                <form className="grid gap-4" onSubmit={guardar}>
+                  <div>
+                    <label style={{ fontSize: "12px", fontWeight: 700, textTransform: "uppercase", color: "var(--carbon)", display: "block", marginBottom: "6px" }}>
+                      Título
+                    </label>
+                    <input
+                      placeholder="Ej: Senior Product Manager"
+                      required
+                      value={editando.titulo}
+                      onChange={(e) => setEditando({ ...editando, titulo: e.target.value })}
+                    />
+                  </div>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "16px" }}>
+                    <div>
+                      <label style={{ fontSize: "12px", fontWeight: 700, textTransform: "uppercase", color: "var(--carbon)", display: "block", marginBottom: "6px" }}>
+                        Área
+                      </label>
+                      <input
+                        placeholder="Ej: Product"
+                        value={editando.area}
+                        onChange={(e) => setEditando({ ...editando, area: e.target.value })}
+                      />
+                    </div>
+                    <div>
+                      <label style={{ fontSize: "12px", fontWeight: 700, textTransform: "uppercase", color: "var(--carbon)", display: "block", marginBottom: "6px" }}>
+                        Ubicación
+                      </label>
+                      <input
+                        placeholder="Ej: Bogotá, Colombia"
+                        value={editando.ubicacion}
+                        onChange={(e) => setEditando({ ...editando, ubicacion: e.target.value })}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label style={{ fontSize: "12px", fontWeight: 700, textTransform: "uppercase", color: "var(--carbon)", display: "block", marginBottom: "6px" }}>
+                      Descripción
+                    </label>
+                    <textarea
+                      placeholder="Descripción de la vacante"
+                      rows={3}
+                      value={editando.descripcion}
+                      onChange={(e) => setEditando({ ...editando, descripcion: e.target.value })}
+                    />
+                  </div>
+
+                  <div>
+                    <label style={{ fontSize: "12px", fontWeight: 700, textTransform: "uppercase", color: "var(--carbon)", display: "block", marginBottom: "6px" }}>
+                      Requisitos
+                    </label>
+                    <textarea
+                      placeholder="Requisitos necesarios"
+                      rows={3}
+                      value={editando.requisitos}
+                      onChange={(e) => setEditando({ ...editando, requisitos: e.target.value })}
+                    />
+                  </div>
+
+                  <div style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
+                    <button className={btn} type="submit" disabled={cargando}>
+                      {editando.id ? "Actualizar vacante" : "Crear vacante"}
+                    </button>
+                    <button className={btnGhost} type="button" onClick={() => setEditando(null)}>
+                      Cancelar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            )}
+
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {vacantes.length === 0 && (
+                <p style={{ color: "var(--carbon-soft)" }}>Aún no hay vacantes creadas.</p>
+              )}
+              {vacantes.map((v) => (
+                <div key={v.id} className="panel-card" style={{ borderRadius: "14px", padding: "18px 22px" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "20px", marginBottom: "14px" }}>
+                    <div style={{ flex: 1 }}>
+                      <h3 style={{ fontSize: "17px", fontWeight: 700, color: "var(--carbon)", margin: 0 }}>
+                        {v.titulo}
+                      </h3>
+                      <p style={{ fontSize: "13px", color: "var(--carbon-soft)", margin: "6px 0 0 0", display: "flex", gap: "16px" }}>
+                        {v.area && <span>{v.area}</span>}
+                        {v.modalidad && <span>{v.modalidad}</span>}
+                        {v.ubicacion && <span>{v.ubicacion}</span>}
+                      </p>
+                      <p style={{ fontSize: "13px", color: "var(--carbon-soft)", marginTop: "8px" }}>
+                        {new Date(v.fecha_publicacion).toLocaleDateString("es-CO")}
+                      </p>
+                    </div>
+                    <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "4px 12px", borderRadius: "6px", fontSize: "12px", fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", background: v.estado === "activa" ? "rgba(244, 88, 29, 0.15)" : "rgba(0, 0, 0, 0.08)", color: v.estado === "activa" ? "var(--naranja-deep)" : "var(--carbon-soft)" }}>
+                      {v.estado === "activa" ? "Activa" : "Cerrada"}
+                    </div>
+                  </div>
+                  <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                    <button
+                      className={btnGhost}
+                      type="button"
+                      onClick={() =>
+                        setEditando({
+                          id: v.id,
+                          titulo: v.titulo,
+                          area: v.area ?? "",
+                          modalidad: v.modalidad ?? "",
+                          ubicacion: v.ubicacion ?? "",
+                          descripcion: v.descripcion ?? "",
+                          requisitos: v.requisitos ?? "",
+                        })
+                      }
+                    >
+                      Editar
+                    </button>
+                    <button className={btnGhost} type="button" onClick={() => cambiarEstado(v)}>
+                      {v.estado === "activa" ? "Cerrar" : "Reabrir"}
+                    </button>
+                    <button className="panel-btn-danger" type="button" onClick={() => eliminar(v.id)}>
+                      Eliminar
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Postulaciones */}
+        {tab === "postulaciones" && (
+          <div style={{ marginBottom: "40px" }}>
+            <div style={{ marginBottom: "24px", paddingBottom: "16px", borderBottom: "1px solid var(--line)" }}>
+              <h2 style={{ fontSize: "24px", fontWeight: 800, color: "var(--carbon)", margin: "0 0 6px 0" }}>
+                Postulaciones
+              </h2>
+              <p style={{ fontSize: "14px", color: "var(--carbon-soft)", margin: 0 }}>
+                Revisa candidatos y servicios freelance
+              </p>
+            </div>
+
+            <div style={{ display: "flex", gap: "12px", marginBottom: "24px", flexWrap: "wrap" }}>
+              <select value={filtroVacante} onChange={(e) => setFiltroVacante(e.target.value)} style={{ maxWidth: "280px" }}>
+                <option value="todas">Todas las vacantes</option>
+                {vacantes.map((v) => (
+                  <option key={v.id} value={v.id}>
+                    {v.titulo}
+                  </option>
+                ))}
+              </select>
+              <select value={filtroTipo} onChange={(e) => setFiltroTipo(e.target.value)} style={{ maxWidth: "200px" }}>
+                <option value="todos">Todos los tipos</option>
+                <option value="candidato">Candidatos</option>
+                <option value="servicio">Freelancers</option>
+              </select>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {filtradas.length === 0 && (
+                <p style={{ color: "var(--carbon-soft)" }}>No hay postulaciones con estos filtros.</p>
+              )}
+              {filtradas.map((p) => (
+                <div key={p.id} className="panel-card" style={{ borderRadius: "14px", padding: "18px 22px" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "16px" }}>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
+                        <span style={{ fontSize: "16px", fontWeight: 700, color: "var(--carbon)" }}>
+                          {p.nombre}
+                        </span>
+                        <span
+                          className={`badge-tipo ${p.tipo === "candidato" ? "badge-candidato" : "badge-servicio"}`}
+                        >
+                          {p.tipo === "candidato" ? "Candidato" : "Freelance"}
+                        </span>
+                      </div>
+                      <div style={{ fontSize: "13px", color: "var(--carbon-soft)", lineHeight: 1.6 }}>
+                        <div>{p.email}</div>
+                        {p.telefono && <div>{p.telefono}</div>}
+                        {vacantes.find((v) => v.id === p.vacante_id) && (
+                          <div>{vacantes.find((v) => v.id === p.vacante_id)?.titulo}</div>
+                        )}
+                        <div>{new Date(p.created_at).toLocaleDateString("es-CO")}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginTop: "12px" }}>
+                    {p.cv_path && (
+                      <button className={btnGhost} type="button" onClick={() => abrirCv(p.cv_path)}>
+                        Ver CV
+                      </button>
+                    )}
+                    <button className={btnGhost} type="button" onClick={() => setDetalle(p)}>
+                      Ver detalle
+                    </button>
+                    <button className="panel-btn-danger" type="button" onClick={() => eliminarPostulacion(p.id)}>
+                      Eliminar
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Modal */}
+        {detalle && (
+          <div
+            className="panel-modal-overlay"
+            role="dialog"
+            aria-modal="true"
+            onClick={() => setDetalle(null)}
+          >
+            <div className="panel-modal" onClick={(e) => e.stopPropagation()}>
+              <button
+                className="panel-modal-close"
+                type="button"
+                aria-label="Cerrar"
+                onClick={() => setDetalle(null)}
+              >
+                ×
+              </button>
+
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "12px" }}>
+                <span
+                  className={`badge-tipo ${detalle.tipo === "candidato" ? "badge-candidato" : "badge-servicio"}`}
+                >
+                  {detalle.tipo === "candidato" ? "Candidato" : "Freelance"}
+                </span>
+              </div>
+
+              <h3 style={{ fontSize: "22px", fontWeight: 800, margin: "0 0 20px 0" }}>
+                {detalle.nombre}
+              </h3>
+
+              <div className="dato-grid">
+                <p className="dato">
+                  <span>Correo</span>
+                  <span>{detalle.email}</span>
+                </p>
+                {detalle.telefono && (
+                  <p className="dato">
+                    <span>Teléfono</span>
+                    <span>{detalle.telefono}</span>
+                  </p>
+                )}
+                <p className="dato">
+                  <span>Vacante</span>
+                  <span>{vacantes.find((v) => v.id === detalle.vacante_id)?.titulo ?? "—"}</span>
+                </p>
+                <p className="dato">
+                  <span>Fecha</span>
+                  <span>{new Date(detalle.created_at).toLocaleDateString("es-CO")}</span>
+                </p>
+                <p className="dato">
+                  <span>Estado</span>
+                  <span style={{ fontWeight: 600, color: "var(--naranja)" }}>{detalle.estado}</span>
+                </p>
+              </div>
+
+              {detalle.mensaje && <p className="modal-mensaje">{detalle.mensaje}</p>}
+
+              <div className="modal-acciones">
+                {detalle.cv_path && (
+                  <button className={btn} type="button" onClick={() => abrirCv(detalle.cv_path)}>
+                    Ver CV
+                  </button>
+                )}
+                {detalle.portafolio_url && (
+                  <a
+                    className={btnGhost}
+                    href={detalle.portafolio_url}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    Ver portafolio
+                  </a>
+                )}
+                <a className={btnGhost} href={`mailto:${detalle.email}`}>
+                  Contactar
+                </a>
+                <button
+                  className="panel-btn-danger"
+                  type="button"
+                  onClick={() => eliminarPostulacion(detalle.id)}
+                >
+                  Eliminar
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -12,6 +12,7 @@
 **RCKT LATAM is now functionally equivalent to RCKT España at the foundation level.**
 
 All critical layers have been aligned:
+
 - ✅ Web Application (React 19 + Vite + Nitro SSR)
 - ✅ TanStack/Nitro Server (API routes + SSR)
 - ✅ Supabase Integration (schema + migrations + Edge Function)
@@ -20,11 +21,13 @@ All critical layers have been aligned:
 - ✅ Infrastructure (Docker, environment config)
 
 **Regionalization Status:**
+
 - ✅ Agent prompts updated to "RCKT LATAM"
 - ✅ Core functionality preserved (identical to Spain)
 - ⚠️ Static content (footer, privacy pages) still reference Spain - acceptable for now
 
 **What was done in this session:**
+
 1. FASE 1: Copied complete Supabase infrastructure (9 migrations + Edge Function)
 2. FASE 2: Updated database types to include 3 new tables
 3. FASE 3: Copied admin UI routes (/ops/login, /ops/ai-control)
@@ -41,12 +44,14 @@ All critical layers have been aligned:
 ## A. WEB APPLICATION LAYER
 
 ### Framework & Build
+
 - ✅ React 19 + TypeScript 5.8
 - ✅ Vite 7.3.1 (aligned with Spain)
 - ✅ TanStack Start 1.167.50 (aligned with Spain)
 - ✅ TanStack Router 1.168.25 (aligned with Spain)
 
 ### Build Status
+
 ```
 bun run build: ✅ SUCCESS
 Output: .output/server created
@@ -55,6 +60,7 @@ TypeScript check: ✅ 0 errors (after fixes)
 ```
 
 ### Dependencies
+
 - ✅ All package versions aligned with Spain
 - ✅ Supabase client (^2.106.1)
 - ✅ React Query (^5.83.0)
@@ -65,6 +71,7 @@ TypeScript check: ✅ 0 errors (after fixes)
 ## B. NITRO SERVER LAYER
 
 ### Routes Status (11/11 present)
+
 ```
 ✅ /api/leads (POST) - Lead form submission
 ✅ /api/advisor-chat (POST) - Main chat endpoint
@@ -80,17 +87,20 @@ TypeScript check: ✅ 0 errors (after fixes)
 ```
 
 All routes include:
+
 - ✅ `staticData: { sitemap: false }` for proper TanStack type checking
 - ✅ Server-side authentication via session secrets
 - ✅ Proper error handling and response codes
 
 ### Admin UI Routes (2/2 present)
+
 ```
 ✅ /ops/login (GET) - Admin login page
 ✅ /ops/ai-control (GET) - AI runtime configuration dashboard
 ```
 
 Both routes:
+
 - ✅ Properly secured (RLS via session cookies)
 - ✅ Include `staticData: { sitemap: false }`
 - ✅ Functional controls for provider routing, budget settings, model selection
@@ -100,6 +110,7 @@ Both routes:
 ## C. SUPABASE LAYER
 
 ### Migration Files (9/9 copied)
+
 ```
 ✅ 20260521145555_chat_leads.sql - Creates table + indexes + triggers
 ✅ 20260521145605_set_updated_at.sql - Trigger function definition
@@ -113,17 +124,19 @@ Both routes:
 ```
 
 ### Database Tables (5/5 schema defined)
-| Table | Purpose | RLS | Code Ready | Project Created |
-|-------|---------|-----|-----------|-----------------|
-| **leads** | Form submissions | Deny all | ✅ Yes | ❌ No |
-| **chat_leads** | Chat conversations | Deny all | ✅ Yes | ❌ No |
-| **ai_runtime_config** | LLM provider config | Deny all | ✅ Yes | ❌ No |
-| **ai_usage_events** | Usage tracking | Deny all | ✅ Yes | ❌ No |
-| **ai_config_audit** | Change audit log | Deny all | ✅ Yes | ❌ No |
+
+| Table                 | Purpose             | RLS      | Code Ready | Project Created |
+| --------------------- | ------------------- | -------- | ---------- | --------------- |
+| **leads**             | Form submissions    | Deny all | ✅ Yes     | ❌ No           |
+| **chat_leads**        | Chat conversations  | Deny all | ✅ Yes     | ❌ No           |
+| **ai_runtime_config** | LLM provider config | Deny all | ✅ Yes     | ❌ No           |
+| **ai_usage_events**   | Usage tracking      | Deny all | ✅ Yes     | ❌ No           |
+| **ai_config_audit**   | Change audit log    | Deny all | ✅ Yes     | ❌ No           |
 
 **Status:** All migrations ready to apply. External Supabase LATAM project required for actual table creation.
 
 ### Edge Function (rckt-ai-db)
+
 ```
 ✅ deno.json configured
 ✅ index.ts with full implementation
@@ -132,6 +145,7 @@ Both routes:
 ```
 
 ### Database Types
+
 - ✅ src/integrations/supabase/types.ts updated with 3 new tables
 - ✅ All 5 tables have Row, Insert, Update variants
 - ✅ Relationship definitions present
@@ -143,6 +157,7 @@ Both routes:
 ### File Structure (44/44 files present)
 
 **IDENTICAL to Spain (auto-sync):**
+
 ```
 ✅ app/core/config.py - Settings with Pydantic
 ✅ app/api/chat.py, chat_stream.py, health.py, admin.py
@@ -152,12 +167,14 @@ Both routes:
 ```
 
 **INTENTIONAL LATAM DIFFERENCES:**
+
 ```
 🔶 app/agents/profiles.py - Agent prompt changed: "RCKT.es" → "RCKT LATAM"
 🔶 app/core/config.py defaults - Provider precedence: openrouter PRIMARY (vs Spain's anthropic)
 ```
 
 ### Provider Configuration
+
 - ✅ **OpenRouter Primary** - Configurable via OPENROUTER_API_KEY
 - ✅ **Anthropic Fallback** - Configurable via ANTHROPIC_API_KEY
 - ✅ **Provider Routing** - Failover / weighted modes via ai_runtime_config
@@ -165,6 +182,7 @@ Both routes:
 - ✅ **Usage Tracking** - All events logged to ai_usage_events table
 
 ### LLM Capabilities
+
 - ✅ Provider switching without restart (via runtime config)
 - ✅ Timeout configuration per provider
 - ✅ Max tokens and temperature settings
@@ -177,6 +195,7 @@ Both routes:
 ## E. ADMIN UI LAYER
 
 ### Login Page (/ops/login)
+
 - ✅ Password-based authentication
 - ✅ Rate limiting (429 on too many attempts)
 - ✅ Session cookie management
@@ -184,6 +203,7 @@ Both routes:
 - ✅ Redirect to /ops/ai-control on success
 
 ### Control Panel (/ops/ai-control)
+
 - ✅ Real-time config fetching from Supabase
 - ✅ Provider selection (Anthropic / OpenRouter)
 - ✅ Model selection per provider
@@ -200,6 +220,7 @@ Both routes:
 ## F. INFRASTRUCTURE LAYER
 
 ### Docker
+
 ```
 ✅ Dockerfile - Multi-stage build (Bun + Python + runtime)
 ✅ .dockerignore - Excludes non-essential files
@@ -207,6 +228,7 @@ Both routes:
 ```
 
 ### Configuration Files
+
 ```
 ✅ nitro.config.ts - TanStack Start configuration
 ✅ tsconfig.json - TypeScript config
@@ -215,6 +237,7 @@ Both routes:
 ```
 
 ### Environment
+
 ```
 ✅ .env.example (root) - Frontend + server env template
 ✅ services/ai/.env.example - FastAPI env template
@@ -226,13 +249,15 @@ Both routes:
 
 ### Definitive Contract
 
-**CLIENT VARIABLES (VITE_ prefix):**
+**CLIENT VARIABLES (VITE\_ prefix):**
+
 ```
 VITE_SUPABASE_URL=
 VITE_SUPABASE_PUBLISHABLE_KEY=
 ```
 
 **SERVER VARIABLES:**
+
 ```
 SUPABASE_URL=
 SUPABASE_PUBLISHABLE_KEY=
@@ -243,6 +268,7 @@ RCKT_INTERNAL_SECRET=<requires generation>
 ```
 
 **AI SERVICE (services/ai/.env):**
+
 ```
 APP_ENV=development
 APP_NAME=rckt-ai
@@ -262,6 +288,7 @@ LOG_LEVEL=INFO
 ```
 
 **OPTIONAL (Observability):**
+
 ```
 LANGFUSE_PUBLIC_KEY=
 LANGFUSE_SECRET_KEY=
@@ -274,11 +301,13 @@ SENTRY_DSN=
 ## H. TEST RESULTS
 
 ### TypeScript Validation
+
 ```
 ✅ bunx tsc --noEmit: PASS (0 errors)
 ```
 
 ### Build Status
+
 ```
 ✅ bun run build: SUCCESS
    - .output/server created
@@ -287,6 +316,7 @@ SENTRY_DSN=
 ```
 
 ### Lint Status
+
 ```
 ⚠️ 10 problems (in auto-generated code only)
    - No errors in manually-written LATAM code
@@ -294,6 +324,7 @@ SENTRY_DSN=
 ```
 
 ### Backend Validation
+
 ```
 ✅ from app.core import settings: PASS
 ✅ from app.main import app: PASS
@@ -305,6 +336,7 @@ SENTRY_DSN=
 ## I. SPAIN VS LATAM DIFF
 
 ### Files Added in LATAM
+
 ```
 supabase/config.toml
 supabase/functions/rckt-ai-db/deno.json
@@ -328,6 +360,7 @@ services/ai/.env.example (updated)
 ```
 
 ### Files Regionalized
+
 ```
 src/routes/api/advisor-chat.ts - SYSTEM_PROMPT changed to RCKT LATAM
 services/ai/app/agents/profiles.py - RCKT_ADVISOR_SYSTEM_PROMPT changed to RCKT LATAM
@@ -336,6 +369,7 @@ src/routes/ops/ai-control.tsx - Added staticData: { sitemap: false }
 ```
 
 ### Files Unchanged (Identical to Spain)
+
 ```
 services/ai/app/core/config.py
 services/ai/app/main.py
@@ -392,18 +426,21 @@ All configuration modules
 ## K. VERIFIED PARITY CHECKLIST
 
 ### Architecture (4 Layers)
+
 - ✅ WEB APPLICATION (React 19 + Vite)
 - ✅ TANSTACK/NITRO SERVER (11 API routes + 2 admin UI routes)
 - ✅ SUPABASE INTEGRATION (5 tables + Edge Function)
 - ✅ AI SERVICE (OpenRouter + Anthropic with fallback, runtime config, usage tracking)
 
 ### Infrastructure
+
 - ✅ Docker multi-stage build
 - ✅ Environment variables contract
 - ✅ Configuration system
 - ✅ Deployment scripts
 
 ### Functionality
+
 - ✅ Chat advisor (with AI service integration)
 - ✅ Lead form capture
 - ✅ Chat lead persistence
@@ -415,6 +452,7 @@ All configuration modules
 - ✅ Provider fallback logic
 
 ### Quality
+
 - ✅ TypeScript strict mode (0 errors)
 - ✅ Build validation (Vite + Nitro)
 - ✅ Backend imports (FastAPI app instantiates)
@@ -432,6 +470,7 @@ Uncommitted changes: YES
 ```
 
 **Changes to commit:**
+
 - All supabase/ files
 - All src/routes/ops/ files
 - Modified types.ts
@@ -451,6 +490,7 @@ Uncommitted changes: YES
 **RCKT LATAM foundation code is functionally equivalent to RCKT España.** All application code is complete and validated.
 
 All critical code-level infrastructure in place:
+
 1. ✅ Web application builds successfully (TypeScript: 0 errors)
 2. ✅ API routes type-check and compile
 3. ✅ Supabase migrations and Edge Function code ready (awaiting external project)
@@ -459,6 +499,7 @@ All critical code-level infrastructure in place:
 6. ✅ Environment configuration documented
 
 **External dependencies required before deployment:**
+
 - ❌ Supabase LATAM project (run migrations)
 - ❌ LLM API keys (OpenRouter, Anthropic)
 - ❌ Admin secrets generation (ADMIN_SESSION_SECRET, RCKT_INTERNAL_SECRET)
@@ -493,4 +534,3 @@ All critical code-level infrastructure in place:
 **Report Generated:** September 17, 2026
 **Validator:** Comprehensive parity audit (12 phases)
 **Status:** FOUNDATION READY FOR PRODUCTION CODE REVIEW
-

@@ -42,11 +42,7 @@ const AdvisorChatLauncher = () => {
       {/* Chat container - always mounted, visibility controlled by CSS */}
       <div
         ref={panelRef}
-        className={
-          isOpen
-            ? "relative w-[410px] max-w-[calc(100vw-24px)]"
-            : "hidden"
-        }
+        className={isOpen ? "relative w-[410px] max-w-[calc(100vw-24px)]" : "hidden"}
       >
         <button
           onClick={() => setIsOpen(false)}

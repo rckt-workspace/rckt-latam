@@ -27,12 +27,17 @@ import { Route as ApiAdminDebugRouteImport } from './routes/api/admin/debug'
 import { Route as ApiAdminDebugVerifyRouteImport } from './routes/api/admin/debug-verify'
 import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
 import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
+import { Route as ApiAdminVerifyRouteImport } from './routes/api/admin/verify'
 import { Route as ApiAplicacionesEnviarRouteImport } from './routes/api/aplicaciones/enviar'
 import { Route as TrabajaConNosotrosAplicarIdRouteImport } from './routes/trabaja-con-nosotros_.aplicar.$id'
 import { Route as ApiAdminAiConfigRouteImport } from './routes/api/admin/ai/config'
 import { Route as ApiAdminAiModelsRouteImport } from './routes/api/admin/ai/models'
 import { Route as ApiAdminAiTestProviderRouteImport } from './routes/api/admin/ai/test-provider'
 import { Route as ApiAdminAiUsageRouteImport } from './routes/api/admin/ai/usage'
+import { Route as ApiAdminPeopleBlogRouteImport } from './routes/api/admin/people/blog'
+import { Route as ApiAdminPeopleCvSignedUrlRouteImport } from './routes/api/admin/people/cv-signed-url'
+import { Route as ApiAdminPeoplePostulacionesRouteImport } from './routes/api/admin/people/postulaciones'
+import { Route as ApiAdminPeopleVacantesRouteImport } from './routes/api/admin/people/vacantes'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -124,6 +129,11 @@ const ApiAdminLogoutRoute = ApiAdminLogoutRouteImport.update({
   path: '/api/admin/logout',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdminVerifyRoute = ApiAdminVerifyRouteImport.update({
+  id: '/api/admin/verify',
+  path: '/api/admin/verify',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAplicacionesEnviarRoute = ApiAplicacionesEnviarRouteImport.update({
   id: '/api/aplicaciones/enviar',
   path: '/api/aplicaciones/enviar',
@@ -155,6 +165,28 @@ const ApiAdminAiUsageRoute = ApiAdminAiUsageRouteImport.update({
   path: '/api/admin/ai/usage',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdminPeopleBlogRoute = ApiAdminPeopleBlogRouteImport.update({
+  id: '/api/admin/people/blog',
+  path: '/api/admin/people/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminPeopleCvSignedUrlRoute =
+  ApiAdminPeopleCvSignedUrlRouteImport.update({
+    id: '/api/admin/people/cv-signed-url',
+    path: '/api/admin/people/cv-signed-url',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiAdminPeoplePostulacionesRoute =
+  ApiAdminPeoplePostulacionesRouteImport.update({
+    id: '/api/admin/people/postulaciones',
+    path: '/api/admin/people/postulaciones',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiAdminPeopleVacantesRoute = ApiAdminPeopleVacantesRouteImport.update({
+  id: '/api/admin/people/vacantes',
+  path: '/api/admin/people/vacantes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -175,12 +207,17 @@ export interface FileRoutesByFullPath {
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/verify': typeof ApiAdminVerifyRoute
   '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
   '/trabaja-con-nosotros/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
   '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
   '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
   '/api/admin/ai/test-provider': typeof ApiAdminAiTestProviderRoute
   '/api/admin/ai/usage': typeof ApiAdminAiUsageRoute
+  '/api/admin/people/blog': typeof ApiAdminPeopleBlogRoute
+  '/api/admin/people/cv-signed-url': typeof ApiAdminPeopleCvSignedUrlRoute
+  '/api/admin/people/postulaciones': typeof ApiAdminPeoplePostulacionesRoute
+  '/api/admin/people/vacantes': typeof ApiAdminPeopleVacantesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -201,12 +238,17 @@ export interface FileRoutesByTo {
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/verify': typeof ApiAdminVerifyRoute
   '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
   '/trabaja-con-nosotros/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
   '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
   '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
   '/api/admin/ai/test-provider': typeof ApiAdminAiTestProviderRoute
   '/api/admin/ai/usage': typeof ApiAdminAiUsageRoute
+  '/api/admin/people/blog': typeof ApiAdminPeopleBlogRoute
+  '/api/admin/people/cv-signed-url': typeof ApiAdminPeopleCvSignedUrlRoute
+  '/api/admin/people/postulaciones': typeof ApiAdminPeoplePostulacionesRoute
+  '/api/admin/people/vacantes': typeof ApiAdminPeopleVacantesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -228,12 +270,17 @@ export interface FileRoutesById {
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/verify': typeof ApiAdminVerifyRoute
   '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
   '/trabaja-con-nosotros_/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
   '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
   '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
   '/api/admin/ai/test-provider': typeof ApiAdminAiTestProviderRoute
   '/api/admin/ai/usage': typeof ApiAdminAiUsageRoute
+  '/api/admin/people/blog': typeof ApiAdminPeopleBlogRoute
+  '/api/admin/people/cv-signed-url': typeof ApiAdminPeopleCvSignedUrlRoute
+  '/api/admin/people/postulaciones': typeof ApiAdminPeoplePostulacionesRoute
+  '/api/admin/people/vacantes': typeof ApiAdminPeopleVacantesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -256,12 +303,17 @@ export interface FileRouteTypes {
     | '/api/admin/debug-verify'
     | '/api/admin/login'
     | '/api/admin/logout'
+    | '/api/admin/verify'
     | '/api/aplicaciones/enviar'
     | '/trabaja-con-nosotros/aplicar/$id'
     | '/api/admin/ai/config'
     | '/api/admin/ai/models'
     | '/api/admin/ai/test-provider'
     | '/api/admin/ai/usage'
+    | '/api/admin/people/blog'
+    | '/api/admin/people/cv-signed-url'
+    | '/api/admin/people/postulaciones'
+    | '/api/admin/people/vacantes'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -282,12 +334,17 @@ export interface FileRouteTypes {
     | '/api/admin/debug-verify'
     | '/api/admin/login'
     | '/api/admin/logout'
+    | '/api/admin/verify'
     | '/api/aplicaciones/enviar'
     | '/trabaja-con-nosotros/aplicar/$id'
     | '/api/admin/ai/config'
     | '/api/admin/ai/models'
     | '/api/admin/ai/test-provider'
     | '/api/admin/ai/usage'
+    | '/api/admin/people/blog'
+    | '/api/admin/people/cv-signed-url'
+    | '/api/admin/people/postulaciones'
+    | '/api/admin/people/vacantes'
   id:
     | '__root__'
     | '/'
@@ -308,12 +365,17 @@ export interface FileRouteTypes {
     | '/api/admin/debug-verify'
     | '/api/admin/login'
     | '/api/admin/logout'
+    | '/api/admin/verify'
     | '/api/aplicaciones/enviar'
     | '/trabaja-con-nosotros_/aplicar/$id'
     | '/api/admin/ai/config'
     | '/api/admin/ai/models'
     | '/api/admin/ai/test-provider'
     | '/api/admin/ai/usage'
+    | '/api/admin/people/blog'
+    | '/api/admin/people/cv-signed-url'
+    | '/api/admin/people/postulaciones'
+    | '/api/admin/people/vacantes'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -335,12 +397,17 @@ export interface RootRouteChildren {
   ApiAdminDebugVerifyRoute: typeof ApiAdminDebugVerifyRoute
   ApiAdminLoginRoute: typeof ApiAdminLoginRoute
   ApiAdminLogoutRoute: typeof ApiAdminLogoutRoute
+  ApiAdminVerifyRoute: typeof ApiAdminVerifyRoute
   ApiAplicacionesEnviarRoute: typeof ApiAplicacionesEnviarRoute
   TrabajaConNosotrosAplicarIdRoute: typeof TrabajaConNosotrosAplicarIdRoute
   ApiAdminAiConfigRoute: typeof ApiAdminAiConfigRoute
   ApiAdminAiModelsRoute: typeof ApiAdminAiModelsRoute
   ApiAdminAiTestProviderRoute: typeof ApiAdminAiTestProviderRoute
   ApiAdminAiUsageRoute: typeof ApiAdminAiUsageRoute
+  ApiAdminPeopleBlogRoute: typeof ApiAdminPeopleBlogRoute
+  ApiAdminPeopleCvSignedUrlRoute: typeof ApiAdminPeopleCvSignedUrlRoute
+  ApiAdminPeoplePostulacionesRoute: typeof ApiAdminPeoplePostulacionesRoute
+  ApiAdminPeopleVacantesRoute: typeof ApiAdminPeopleVacantesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -471,6 +538,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAdminLogoutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/admin/verify': {
+      id: '/api/admin/verify'
+      path: '/api/admin/verify'
+      fullPath: '/api/admin/verify'
+      preLoaderRoute: typeof ApiAdminVerifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/aplicaciones/enviar': {
       id: '/api/aplicaciones/enviar'
       path: '/api/aplicaciones/enviar'
@@ -513,6 +587,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAdminAiUsageRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/admin/people/blog': {
+      id: '/api/admin/people/blog'
+      path: '/api/admin/people/blog'
+      fullPath: '/api/admin/people/blog'
+      preLoaderRoute: typeof ApiAdminPeopleBlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/people/cv-signed-url': {
+      id: '/api/admin/people/cv-signed-url'
+      path: '/api/admin/people/cv-signed-url'
+      fullPath: '/api/admin/people/cv-signed-url'
+      preLoaderRoute: typeof ApiAdminPeopleCvSignedUrlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/people/postulaciones': {
+      id: '/api/admin/people/postulaciones'
+      path: '/api/admin/people/postulaciones'
+      fullPath: '/api/admin/people/postulaciones'
+      preLoaderRoute: typeof ApiAdminPeoplePostulacionesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/people/vacantes': {
+      id: '/api/admin/people/vacantes'
+      path: '/api/admin/people/vacantes'
+      fullPath: '/api/admin/people/vacantes'
+      preLoaderRoute: typeof ApiAdminPeopleVacantesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -535,12 +637,17 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAdminDebugVerifyRoute: ApiAdminDebugVerifyRoute,
   ApiAdminLoginRoute: ApiAdminLoginRoute,
   ApiAdminLogoutRoute: ApiAdminLogoutRoute,
+  ApiAdminVerifyRoute: ApiAdminVerifyRoute,
   ApiAplicacionesEnviarRoute: ApiAplicacionesEnviarRoute,
   TrabajaConNosotrosAplicarIdRoute: TrabajaConNosotrosAplicarIdRoute,
   ApiAdminAiConfigRoute: ApiAdminAiConfigRoute,
   ApiAdminAiModelsRoute: ApiAdminAiModelsRoute,
   ApiAdminAiTestProviderRoute: ApiAdminAiTestProviderRoute,
   ApiAdminAiUsageRoute: ApiAdminAiUsageRoute,
+  ApiAdminPeopleBlogRoute: ApiAdminPeopleBlogRoute,
+  ApiAdminPeopleCvSignedUrlRoute: ApiAdminPeopleCvSignedUrlRoute,
+  ApiAdminPeoplePostulacionesRoute: ApiAdminPeoplePostulacionesRoute,
+  ApiAdminPeopleVacantesRoute: ApiAdminPeopleVacantesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
