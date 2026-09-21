@@ -108,15 +108,18 @@ export const getActiveVacancies = createServerFn({ method: "GET" }).handler(asyn
   }
 
   return (data ?? []).flatMap((row): VacantePublica[] => {
-    if (typeof row.id !== "string" || typeof row.titulo !== "string" || !row.titulo.trim()) return [];
-    return [{
-      id: row.id,
-      titulo: row.titulo,
-      area: nullableText(row.area),
-      modalidad: nullableText(row.modalidad),
-      ubicacion: nullableText(row.ubicacion),
-      descripcion: nullableText(row.descripcion),
-      requisitos: nullableText(row.requisitos),
-    }];
+    if (typeof row.id !== "string" || typeof row.titulo !== "string" || !row.titulo.trim())
+      return [];
+    return [
+      {
+        id: row.id,
+        titulo: row.titulo,
+        area: nullableText(row.area),
+        modalidad: nullableText(row.modalidad),
+        ubicacion: nullableText(row.ubicacion),
+        descripcion: nullableText(row.descripcion),
+        requisitos: nullableText(row.requisitos),
+      },
+    ];
   });
 });

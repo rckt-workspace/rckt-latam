@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { getBrowserSupabase } from "@/lib/supabase-browser";
 
 const MAX_MB = 10;
 
@@ -24,9 +23,12 @@ export function PostulacionForm({
 
   function tomarArchivo(file: File | null | undefined) {
     setCvError(null);
-    console.log("[CV] archivo recibido:", file
-      ? { nombre: file.name, tipo: file.type, tamanoMB: (file.size / 1024 / 1024).toFixed(2) }
-      : file);
+    console.log(
+      "[CV] archivo recibido:",
+      file
+        ? { nombre: file.name, tipo: file.type, tamanoMB: (file.size / 1024 / 1024).toFixed(2) }
+        : file,
+    );
     if (!file) {
       setCvError("No recibimos ningún archivo. Intenta seleccionarlo de nuevo.");
       return;
@@ -57,50 +59,51 @@ export function PostulacionForm({
     e.preventDefault();
     setError(null);
     const archivoFinal = archivo ?? inputRef.current?.files?.[0] ?? null;
-    console.log("[CV] envío; archivo en estado:", archivo?.name ?? null, "| en input:", inputRef.current?.files?.[0]?.name ?? null);
+
     if (!archivoFinal) {
       setCvError("Adjunta tu hoja de vida en PDF antes de enviar.");
       dropRef.current?.scrollIntoView({ block: "center", behavior: "smooth" });
       dropRef.current?.focus();
       return;
     }
+
+    // Validación básica en cliente (UX)
+    if (archivoFinal.type !== "application/pdf") {
+      setCvError("El archivo debe ser un PDF válido.");
+      return;
+    }
+
+    if (archivoFinal.size > MAX_MB * 1024 * 1024) {
+      setCvError(
+        `El archivo pesa ${(archivoFinal.size / 1024 / 1024).toFixed(1)} MB. El máximo es ${MAX_MB} MB.`,
+      );
+      return;
+    }
+
     setEnviando(true);
-    setPaso("Subiendo tu hoja de vida…");
+    setPaso("Enviando tu postulación…");
     const form = e.currentTarget;
     const fd = new FormData(form);
+
+    // Agregar archivo y consentimiento a FormData
+    fd.set("cv", archivoFinal);
+    fd.set("consent", "true");
+    fd.set("tipo", tipo);
+    if (vacanteId) fd.set("vacante_id", vacanteId);
+
     try {
-      const supabase = await getBrowserSupabase();
-      let cvUrl: string | null = null;
-      {
-        const path = `${crypto.randomUUID()}-${archivoFinal.name.replace(/[^\w.\-]+/g, "_")}`;
-        console.log("[CV] subiendo a bucket 'cvs' →", path, archivoFinal.type, archivoFinal.size);
-        const { data: upData, error: upErr } = await supabase.storage
-          .from("cvs")
-          .upload(path, archivoFinal, { contentType: "application/pdf", upsert: false });
-        if (upErr) {
-          const detalle = JSON.stringify(upErr);
-          console.error("[CV] error al subir al Storage:", upErr, detalle);
-          const status = (upErr as unknown as { statusCode?: string | number }).statusCode;
-          throw new Error(
-            `No pudimos subir el PDF (${status ?? "sin código"}): ${upErr.message}. ` +
-              "Si el problema sigue, envíanos tu CV a hola@rckt.lat.",
-          );
-        }
-        console.log("[CV] subida OK:", upData);
-        cvUrl = path;
-      }
-      setPaso("Enviando tu postulación…");
-      const { error: insErr } = await supabase.from("postulaciones").insert({
-        vacante_id: vacanteId ?? null,
-        tipo,
-        nombre: String(fd.get("nombre") ?? ""),
-        email: String(fd.get("email") ?? ""),
-        telefono: String(fd.get("telefono") ?? "") || null,
-        portafolio_url: String(fd.get("portafolio") ?? "") || null,
-        mensaje: String(fd.get("mensaje") ?? "") || null,
-        cv_url: cvUrl,
+      // Enviar al endpoint server-side
+      const response = await fetch("/api/aplicaciones/enviar", {
+        method: "POST",
+        body: fd,
       });
-      if (insErr) throw new Error(insErr.message || "No pudimos guardar tu postulación.");
+
+      const result = (await response.json()) as { ok?: boolean; error?: string };
+
+      if (!response.ok) {
+        throw new Error(result.error || "No pudimos procesar tu solicitud");
+      }
+
       setListo(true);
       form.reset();
       setArchivo(null);
@@ -114,7 +117,7 @@ export function PostulacionForm({
           ? "Parece que no tienes conexión. Revisa tu internet e inténtalo de nuevo."
           : msg,
       );
-      console.error(err);
+      console.error("[PostulacionForm]", err);
     } finally {
       setEnviando(false);
       setPaso("");
@@ -124,7 +127,8 @@ export function PostulacionForm({
   if (listo) {
     return (
       <p className="form-exito">
-        ¡Gracias! Recibimos tu postulación. Si tu perfil encaja, te escribiremos al correo que nos dejaste.
+        ¡Gracias! Recibimos tu postulación. Si tu perfil encaja, te escribiremos al correo que nos
+        dejaste.
       </p>
     );
   }
@@ -171,7 +175,9 @@ export function PostulacionForm({
           />
           {archivo ? (
             <div className="cv-file">
-              <span className="cv-check" aria-hidden="true">✓</span>
+              <span className="cv-check" aria-hidden="true">
+                ✓
+              </span>
               <span className="cv-name">{archivo.name}</span>
               <span className="cv-size">{(archivo.size / 1024 / 1024).toFixed(1)} MB</span>
               <button
@@ -226,7 +232,14 @@ export function PostulacionForm({
               }}
             >
               <span className="cv-icon" aria-hidden="true">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+                <svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                >
                   <path d="M14 3v5h5" />
                   <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
                   <path d="M9 13h6M9 17h4" />
@@ -263,7 +276,10 @@ export function PostulacionForm({
         <input name="acepta" type="checkbox" required />
         <span>
           Acepto el tratamiento de mis datos personales según la{" "}
-          <a href="/politica-tratamiento-datos.pdf" download>Política de Tratamiento de Datos</a>.
+          <a href="/politica-tratamiento-datos.pdf" download>
+            Política de Tratamiento de Datos
+          </a>
+          .
         </span>
       </label>
 

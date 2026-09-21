@@ -27,6 +27,7 @@ import { Route as ApiAdminDebugRouteImport } from './routes/api/admin/debug'
 import { Route as ApiAdminDebugVerifyRouteImport } from './routes/api/admin/debug-verify'
 import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
 import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
+import { Route as ApiAplicacionesEnviarRouteImport } from './routes/api/aplicaciones/enviar'
 import { Route as TrabajaConNosotrosAplicarIdRouteImport } from './routes/trabaja-con-nosotros_.aplicar.$id'
 import { Route as ApiAdminAiConfigRouteImport } from './routes/api/admin/ai/config'
 import { Route as ApiAdminAiModelsRouteImport } from './routes/api/admin/ai/models'
@@ -123,6 +124,11 @@ const ApiAdminLogoutRoute = ApiAdminLogoutRouteImport.update({
   path: '/api/admin/logout',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAplicacionesEnviarRoute = ApiAplicacionesEnviarRouteImport.update({
+  id: '/api/aplicaciones/enviar',
+  path: '/api/aplicaciones/enviar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TrabajaConNosotrosAplicarIdRoute =
   TrabajaConNosotrosAplicarIdRouteImport.update({
     id: '/trabaja-con-nosotros_/aplicar/$id',
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
   '/trabaja-con-nosotros/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
   '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
   '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
@@ -194,6 +201,7 @@ export interface FileRoutesByTo {
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
   '/trabaja-con-nosotros/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
   '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
   '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
@@ -220,6 +228,7 @@ export interface FileRoutesById {
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
   '/trabaja-con-nosotros_/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
   '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
   '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
@@ -247,6 +256,7 @@ export interface FileRouteTypes {
     | '/api/admin/debug-verify'
     | '/api/admin/login'
     | '/api/admin/logout'
+    | '/api/aplicaciones/enviar'
     | '/trabaja-con-nosotros/aplicar/$id'
     | '/api/admin/ai/config'
     | '/api/admin/ai/models'
@@ -272,6 +282,7 @@ export interface FileRouteTypes {
     | '/api/admin/debug-verify'
     | '/api/admin/login'
     | '/api/admin/logout'
+    | '/api/aplicaciones/enviar'
     | '/trabaja-con-nosotros/aplicar/$id'
     | '/api/admin/ai/config'
     | '/api/admin/ai/models'
@@ -297,6 +308,7 @@ export interface FileRouteTypes {
     | '/api/admin/debug-verify'
     | '/api/admin/login'
     | '/api/admin/logout'
+    | '/api/aplicaciones/enviar'
     | '/trabaja-con-nosotros_/aplicar/$id'
     | '/api/admin/ai/config'
     | '/api/admin/ai/models'
@@ -323,6 +335,7 @@ export interface RootRouteChildren {
   ApiAdminDebugVerifyRoute: typeof ApiAdminDebugVerifyRoute
   ApiAdminLoginRoute: typeof ApiAdminLoginRoute
   ApiAdminLogoutRoute: typeof ApiAdminLogoutRoute
+  ApiAplicacionesEnviarRoute: typeof ApiAplicacionesEnviarRoute
   TrabajaConNosotrosAplicarIdRoute: typeof TrabajaConNosotrosAplicarIdRoute
   ApiAdminAiConfigRoute: typeof ApiAdminAiConfigRoute
   ApiAdminAiModelsRoute: typeof ApiAdminAiModelsRoute
@@ -458,6 +471,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAdminLogoutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/aplicaciones/enviar': {
+      id: '/api/aplicaciones/enviar'
+      path: '/api/aplicaciones/enviar'
+      fullPath: '/api/aplicaciones/enviar'
+      preLoaderRoute: typeof ApiAplicacionesEnviarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/trabaja-con-nosotros_/aplicar/$id': {
       id: '/trabaja-con-nosotros_/aplicar/$id'
       path: '/trabaja-con-nosotros/aplicar/$id'
@@ -515,6 +535,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAdminDebugVerifyRoute: ApiAdminDebugVerifyRoute,
   ApiAdminLoginRoute: ApiAdminLoginRoute,
   ApiAdminLogoutRoute: ApiAdminLogoutRoute,
+  ApiAplicacionesEnviarRoute: ApiAplicacionesEnviarRoute,
   TrabajaConNosotrosAplicarIdRoute: TrabajaConNosotrosAplicarIdRoute,
   ApiAdminAiConfigRoute: ApiAdminAiConfigRoute,
   ApiAdminAiModelsRoute: ApiAdminAiModelsRoute,
