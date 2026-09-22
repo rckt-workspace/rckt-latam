@@ -341,6 +341,10 @@ Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
 <p>Resultados que hablan por sí solos.</p>
 </div>
 </div>
+<div class="juicio">
+<span class="tag">En la práctica</span>
+Vender mejor es decirle que no al prospecto que no encaja, aunque duela el mes. Pensar mejor es medir antes de tocar nada. Trabajar más inteligente es un proceso a la vez, con supervisión, no un chatbot suelto. Movernos primero es que el Diagnostic dure semanas, no trimestres. Y la prueba por encima de la promesa es que ningún resultado se menciona sin ficha de caso.
+</div>
 </div>
 </section>
 <!-- QUE ES RCKT -->
