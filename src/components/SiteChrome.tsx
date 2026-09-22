@@ -27,7 +27,7 @@ export function SiteHeader() {
             </a>
             <div className="nav-links">
               <a href="/soluciones">Soluciones</a>
-              <a href="/#sistema">Sistemas</a>
+              <a href="/sistemas">Sistemas</a>
               <a href="/nosotros">Nosotros</a>
               <a href="/blog">Blog</a>
 
@@ -75,6 +75,9 @@ export function SiteFooter() {
             <ul>
               <li>
                 <a href="/soluciones">Soluciones</a>
+              </li>
+              <li>
+                <a href="/sistemas">Sistemas</a>
               </li>
               <li>
                 <a href="/nosotros">Nosotros</a>

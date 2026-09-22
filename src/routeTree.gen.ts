@@ -25,7 +25,12 @@ import { Route as NosotrosIndexRouteImport } from './routes/nosotros.index'
 import { Route as NosotrosComoTrabajamosRouteImport } from './routes/nosotros.como-trabajamos'
 import { Route as OpsAiControlRouteImport } from './routes/ops/ai-control'
 import { Route as OpsLoginRouteImport } from './routes/ops/login'
+import { Route as SistemasIndexRouteImport } from './routes/sistemas.index'
+import { Route as SistemasDemandSystemRouteImport } from './routes/sistemas.demand-system'
+import { Route as SistemasOperationsSystemRouteImport } from './routes/sistemas.operations-system'
 import { Route as SistemasRevenueDiagnosticRouteImport } from './routes/sistemas.revenue-diagnostic'
+import { Route as SistemasRevenueEngineRouteImport } from './routes/sistemas.revenue-engine'
+import { Route as SistemasSalesFlowRouteImport } from './routes/sistemas.sales-flow'
 import { Route as SolucionesIndexRouteImport } from './routes/soluciones.index'
 import { Route as SolucionesCaptacionYCierreRouteImport } from './routes/soluciones.captacion-y-cierre'
 import { Route as SolucionesEcommerceRentableRouteImport } from './routes/soluciones.ecommerce-rentable'
@@ -126,12 +131,38 @@ const OpsLoginRoute = OpsLoginRouteImport.update({
   path: '/ops/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SistemasIndexRoute = SistemasIndexRouteImport.update({
+  id: '/sistemas/',
+  path: '/sistemas/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SistemasDemandSystemRoute = SistemasDemandSystemRouteImport.update({
+  id: '/sistemas/demand-system',
+  path: '/sistemas/demand-system',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SistemasOperationsSystemRoute =
+  SistemasOperationsSystemRouteImport.update({
+    id: '/sistemas/operations-system',
+    path: '/sistemas/operations-system',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const SistemasRevenueDiagnosticRoute =
   SistemasRevenueDiagnosticRouteImport.update({
     id: '/sistemas/revenue-diagnostic',
     path: '/sistemas/revenue-diagnostic',
     getParentRoute: () => rootRouteImport,
   } as any)
+const SistemasRevenueEngineRoute = SistemasRevenueEngineRouteImport.update({
+  id: '/sistemas/revenue-engine',
+  path: '/sistemas/revenue-engine',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SistemasSalesFlowRoute = SistemasSalesFlowRouteImport.update({
+  id: '/sistemas/sales-flow',
+  path: '/sistemas/sales-flow',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolucionesIndexRoute = SolucionesIndexRouteImport.update({
   id: '/soluciones/',
   path: '/soluciones/',
@@ -248,12 +279,17 @@ export interface FileRoutesByFullPath {
   '/nosotros/como-trabajamos': typeof NosotrosComoTrabajamosRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
+  '/sistemas/demand-system': typeof SistemasDemandSystemRoute
+  '/sistemas/operations-system': typeof SistemasOperationsSystemRoute
   '/sistemas/revenue-diagnostic': typeof SistemasRevenueDiagnosticRoute
+  '/sistemas/revenue-engine': typeof SistemasRevenueEngineRoute
+  '/sistemas/sales-flow': typeof SistemasSalesFlowRoute
   '/soluciones/captacion-y-cierre': typeof SolucionesCaptacionYCierreRoute
   '/soluciones/ecommerce-rentable': typeof SolucionesEcommerceRentableRoute
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog/': typeof BlogIndexRoute
   '/nosotros/': typeof NosotrosIndexRoute
+  '/sistemas/': typeof SistemasIndexRoute
   '/soluciones/': typeof SolucionesIndexRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
@@ -286,12 +322,17 @@ export interface FileRoutesByTo {
   '/nosotros/como-trabajamos': typeof NosotrosComoTrabajamosRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
+  '/sistemas/demand-system': typeof SistemasDemandSystemRoute
+  '/sistemas/operations-system': typeof SistemasOperationsSystemRoute
   '/sistemas/revenue-diagnostic': typeof SistemasRevenueDiagnosticRoute
+  '/sistemas/revenue-engine': typeof SistemasRevenueEngineRoute
+  '/sistemas/sales-flow': typeof SistemasSalesFlowRoute
   '/soluciones/captacion-y-cierre': typeof SolucionesCaptacionYCierreRoute
   '/soluciones/ecommerce-rentable': typeof SolucionesEcommerceRentableRoute
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog': typeof BlogIndexRoute
   '/nosotros': typeof NosotrosIndexRoute
+  '/sistemas': typeof SistemasIndexRoute
   '/soluciones': typeof SolucionesIndexRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
@@ -325,12 +366,17 @@ export interface FileRoutesById {
   '/nosotros/como-trabajamos': typeof NosotrosComoTrabajamosRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
+  '/sistemas/demand-system': typeof SistemasDemandSystemRoute
+  '/sistemas/operations-system': typeof SistemasOperationsSystemRoute
   '/sistemas/revenue-diagnostic': typeof SistemasRevenueDiagnosticRoute
+  '/sistemas/revenue-engine': typeof SistemasRevenueEngineRoute
+  '/sistemas/sales-flow': typeof SistemasSalesFlowRoute
   '/soluciones/captacion-y-cierre': typeof SolucionesCaptacionYCierreRoute
   '/soluciones/ecommerce-rentable': typeof SolucionesEcommerceRentableRoute
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog/': typeof BlogIndexRoute
   '/nosotros/': typeof NosotrosIndexRoute
+  '/sistemas/': typeof SistemasIndexRoute
   '/soluciones/': typeof SolucionesIndexRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
@@ -365,12 +411,17 @@ export interface FileRouteTypes {
     | '/nosotros/como-trabajamos'
     | '/ops/ai-control'
     | '/ops/login'
+    | '/sistemas/demand-system'
+    | '/sistemas/operations-system'
     | '/sistemas/revenue-diagnostic'
+    | '/sistemas/revenue-engine'
+    | '/sistemas/sales-flow'
     | '/soluciones/captacion-y-cierre'
     | '/soluciones/ecommerce-rentable'
     | '/soluciones/operacion'
     | '/blog/'
     | '/nosotros/'
+    | '/sistemas/'
     | '/soluciones/'
     | '/api/admin/debug'
     | '/api/admin/debug-verify'
@@ -403,12 +454,17 @@ export interface FileRouteTypes {
     | '/nosotros/como-trabajamos'
     | '/ops/ai-control'
     | '/ops/login'
+    | '/sistemas/demand-system'
+    | '/sistemas/operations-system'
     | '/sistemas/revenue-diagnostic'
+    | '/sistemas/revenue-engine'
+    | '/sistemas/sales-flow'
     | '/soluciones/captacion-y-cierre'
     | '/soluciones/ecommerce-rentable'
     | '/soluciones/operacion'
     | '/blog'
     | '/nosotros'
+    | '/sistemas'
     | '/soluciones'
     | '/api/admin/debug'
     | '/api/admin/debug-verify'
@@ -441,12 +497,17 @@ export interface FileRouteTypes {
     | '/nosotros/como-trabajamos'
     | '/ops/ai-control'
     | '/ops/login'
+    | '/sistemas/demand-system'
+    | '/sistemas/operations-system'
     | '/sistemas/revenue-diagnostic'
+    | '/sistemas/revenue-engine'
+    | '/sistemas/sales-flow'
     | '/soluciones/captacion-y-cierre'
     | '/soluciones/ecommerce-rentable'
     | '/soluciones/operacion'
     | '/blog/'
     | '/nosotros/'
+    | '/sistemas/'
     | '/soluciones/'
     | '/api/admin/debug'
     | '/api/admin/debug-verify'
@@ -480,12 +541,17 @@ export interface RootRouteChildren {
   NosotrosComoTrabajamosRoute: typeof NosotrosComoTrabajamosRoute
   OpsAiControlRoute: typeof OpsAiControlRoute
   OpsLoginRoute: typeof OpsLoginRoute
+  SistemasDemandSystemRoute: typeof SistemasDemandSystemRoute
+  SistemasOperationsSystemRoute: typeof SistemasOperationsSystemRoute
   SistemasRevenueDiagnosticRoute: typeof SistemasRevenueDiagnosticRoute
+  SistemasRevenueEngineRoute: typeof SistemasRevenueEngineRoute
+  SistemasSalesFlowRoute: typeof SistemasSalesFlowRoute
   SolucionesCaptacionYCierreRoute: typeof SolucionesCaptacionYCierreRoute
   SolucionesEcommerceRentableRoute: typeof SolucionesEcommerceRentableRoute
   SolucionesOperacionRoute: typeof SolucionesOperacionRoute
   BlogIndexRoute: typeof BlogIndexRoute
   NosotrosIndexRoute: typeof NosotrosIndexRoute
+  SistemasIndexRoute: typeof SistemasIndexRoute
   SolucionesIndexRoute: typeof SolucionesIndexRoute
   ApiAdminDebugRoute: typeof ApiAdminDebugRoute
   ApiAdminDebugVerifyRoute: typeof ApiAdminDebugVerifyRoute
@@ -618,11 +684,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OpsLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sistemas/': {
+      id: '/sistemas/'
+      path: '/sistemas'
+      fullPath: '/sistemas/'
+      preLoaderRoute: typeof SistemasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sistemas/demand-system': {
+      id: '/sistemas/demand-system'
+      path: '/sistemas/demand-system'
+      fullPath: '/sistemas/demand-system'
+      preLoaderRoute: typeof SistemasDemandSystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sistemas/operations-system': {
+      id: '/sistemas/operations-system'
+      path: '/sistemas/operations-system'
+      fullPath: '/sistemas/operations-system'
+      preLoaderRoute: typeof SistemasOperationsSystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sistemas/revenue-diagnostic': {
       id: '/sistemas/revenue-diagnostic'
       path: '/sistemas/revenue-diagnostic'
       fullPath: '/sistemas/revenue-diagnostic'
       preLoaderRoute: typeof SistemasRevenueDiagnosticRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sistemas/revenue-engine': {
+      id: '/sistemas/revenue-engine'
+      path: '/sistemas/revenue-engine'
+      fullPath: '/sistemas/revenue-engine'
+      preLoaderRoute: typeof SistemasRevenueEngineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sistemas/sales-flow': {
+      id: '/sistemas/sales-flow'
+      path: '/sistemas/sales-flow'
+      fullPath: '/sistemas/sales-flow'
+      preLoaderRoute: typeof SistemasSalesFlowRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/soluciones/': {
@@ -776,12 +877,17 @@ const rootRouteChildren: RootRouteChildren = {
   NosotrosComoTrabajamosRoute: NosotrosComoTrabajamosRoute,
   OpsAiControlRoute: OpsAiControlRoute,
   OpsLoginRoute: OpsLoginRoute,
+  SistemasDemandSystemRoute: SistemasDemandSystemRoute,
+  SistemasOperationsSystemRoute: SistemasOperationsSystemRoute,
   SistemasRevenueDiagnosticRoute: SistemasRevenueDiagnosticRoute,
+  SistemasRevenueEngineRoute: SistemasRevenueEngineRoute,
+  SistemasSalesFlowRoute: SistemasSalesFlowRoute,
   SolucionesCaptacionYCierreRoute: SolucionesCaptacionYCierreRoute,
   SolucionesEcommerceRentableRoute: SolucionesEcommerceRentableRoute,
   SolucionesOperacionRoute: SolucionesOperacionRoute,
   BlogIndexRoute: BlogIndexRoute,
   NosotrosIndexRoute: NosotrosIndexRoute,
+  SistemasIndexRoute: SistemasIndexRoute,
   SolucionesIndexRoute: SolucionesIndexRoute,
   ApiAdminDebugRoute: ApiAdminDebugRoute,
   ApiAdminDebugVerifyRoute: ApiAdminDebugVerifyRoute,
