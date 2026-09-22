@@ -73,7 +73,8 @@ function EcommercePage() {
           </div>
         </section>
 
-        <section className="band" id="te-pasa-esto">
+        <section className="band" data-mode="motion" id="te-pasa-esto">
+          <span className="tcn-orb tcn-orb-cultura-left" aria-hidden="true" />
           <div className="container">
             <div className="section-head">
               <span className="num">01.</span>
@@ -92,13 +93,14 @@ function EcommercePage() {
         </section>
 
         <section className="band band-alt" id="lo-que-hacemos">
+          <span className="tcn-orb tcn-orb-cultura-right" aria-hidden="true" />
           <div className="container">
             <div className="section-head">
               <span className="num">02.</span>
               <span className="kicker ital-label">Lo que hacemos</span>
               <span className="divider"></span>
             </div>
-            <div className="juicio">
+            <div className="juicio rv">
               <span className="tag">Demand System</span>
               Demand System, con Sales Flow si WhatsApp pesa en la conversión.
             </div>
@@ -140,6 +142,7 @@ function EcommercePage() {
         </section>
 
         <section className="cta-final">
+          <span className="tcn-orb tcn-orb-cta" aria-hidden="true" />
           <div className="container">
             <span className="kicker">Siguiente paso</span>
             <h2 className="rv">Medimos antes de tocar nada.</h2>
