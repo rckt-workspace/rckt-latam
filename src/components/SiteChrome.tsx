@@ -26,7 +26,7 @@ export function SiteHeader() {
               <img alt="RCKT" src={logoDarkAsset} />
             </a>
             <div className="nav-links">
-              <a href="/#servicios">Soluciones</a>
+              <a href="/soluciones">Soluciones</a>
               <a href="/#sistema">Sistemas</a>
               <a href="/nosotros">Nosotros</a>
               <a href="/blog">Blog</a>
@@ -73,6 +73,9 @@ export function SiteFooter() {
           <div className="footer-col">
             <h5>Navegar</h5>
             <ul>
+              <li>
+                <a href="/soluciones">Soluciones</a>
+              </li>
               <li>
                 <a href="/nosotros">Nosotros</a>
               </li>
