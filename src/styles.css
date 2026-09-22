@@ -4105,3 +4105,133 @@ header.scrolled {
   gap: 12px;
   margin-bottom: 10px;
 }
+
+/* ---------- nav flotante en dos cápsulas (desktop) ---------- */
+@media (min-width: 1025px) {
+  header nav {
+    justify-content: center;
+    align-items: center;
+    gap: clamp(24px, 8vw, 160px);
+    min-height: 0;
+    padding: 20px 0;
+    transition:
+      gap 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+      padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  header .nav-capsule {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 10px 26px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(27, 23, 16, 0.08);
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.07);
+    transition:
+      padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+      border-radius 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  header.scrolled nav {
+    gap: 0;
+    padding: 12px 0;
+  }
+  header.scrolled .nav-capsule {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+  header.scrolled .nav-capsule-left {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+    padding-right: 18px;
+  }
+  header.scrolled .nav-capsule-right {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-left: 18px;
+  }
+  header .logo img {
+    height: 30px;
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  header.scrolled .logo img {
+    height: 25px;
+  }
+  header .nav-links {
+    gap: 26px;
+  }
+  header .nav-links a,
+  [data-theme="dark"] header .nav-links a,
+  .rckt-site.tcn-page .subpage-hero header .nav-links a {
+    color: var(--carbon);
+  }
+  header .nav-right .hero-nav-cta,
+  header .nav-capsule-right .hero-nav-cta {
+    display: inline-flex;
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-size: 13.5px;
+  }
+  header .nav-capsule .theme-switch,
+  .hero header .theme-switch,
+  .rckt-site.tcn-page .subpage-hero header .theme-switch {
+    background: rgba(27, 23, 16, 0.05);
+    border-color: rgba(27, 23, 16, 0.1);
+  }
+  header .nav-capsule .theme-switch button,
+  .hero header .theme-switch button,
+  [data-theme="dark"] .hero header .theme-switch button,
+  [data-theme="dark"] header .theme-switch button,
+  .rckt-site.tcn-page .subpage-hero header .theme-switch button {
+    color: var(--carbon);
+  }
+  header .nav-capsule .theme-switch button:hover,
+  .hero header .theme-switch button:hover,
+  [data-theme="dark"] .hero header .theme-switch button:hover {
+    background: rgba(27, 23, 16, 0.07);
+    color: var(--carbon);
+  }
+  header .nav-capsule .theme-switch button.active,
+  .hero header .theme-switch button.active,
+  [data-theme="dark"] .hero header .theme-switch button.active,
+  .rckt-site.tcn-page .subpage-hero header .theme-switch button.active {
+    background: var(--carbon);
+    color: #fff;
+    box-shadow: none;
+  }
+  header .nav-menu-footer {
+    display: none !important;
+  }
+}
+@media (max-width: 1024px) {
+  header nav {
+    justify-content: space-between;
+  }
+  header .nav-capsule-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .nav-right .hero-nav-cta {
+    display: inline-flex;
+    padding: 10px 14px;
+    font-size: 12px;
+    border-radius: 100px;
+  }
+  .nav-toggle {
+    display: flex;
+    position: relative;
+    z-index: 210;
+  }
+  .nav-right-desktop {
+    display: none;
+  }
+  .nav-links:not(.mobile-open) {
+    display: none;
+  }
+}
+.nav-menu-cta {
+  display: none;
+}
