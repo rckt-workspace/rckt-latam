@@ -4111,7 +4111,7 @@ header.scrolled {
   header nav {
     justify-content: center;
     align-items: center;
-    gap: clamp(24px, 8vw, 160px);
+    gap: clamp(40px, 8vw, 160px);
     min-height: 0;
     padding: 20px 0;
     transition:
@@ -4152,6 +4152,7 @@ header.scrolled {
   header.scrolled .nav-capsule-right {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    border-left: 0;
     padding-left: 18px;
   }
   header .logo img {
@@ -4222,10 +4223,7 @@ header.scrolled {
     gap: 16px;
   }
   .nav-right .hero-nav-cta {
-    display: inline-flex;
-    padding: 10px 14px;
-    font-size: 12px;
-    border-radius: 100px;
+    display: none;
   }
   .nav-toggle {
     display: flex;
@@ -4242,8 +4240,13 @@ header.scrolled {
 .nav-menu-cta {
   display: none;
 }
-
-/* El CTA vive en la barra superior; no se duplica dentro del drawer. */
-.nav-links.mobile-open .nav-menu-cta {
-  display: none;
+/* En mobile el CTA vive dentro del drawer (barra superior = logo + hamburguesa). */
+@media (max-width: 1024px) {
+  .nav-links.mobile-open .nav-menu-cta {
+    display: inline-flex;
+    margin-top: 4px;
+    padding: 12px 22px;
+    font-size: 14px;
+    border-radius: 100px;
+  }
 }
