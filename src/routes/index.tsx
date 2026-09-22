@@ -266,11 +266,8 @@ Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
 <div class="footer-col">
 <h5>Navegar</h5>
 <ul>
-<li><a href="#sistema">Sistema</a></li>
-<li><a href="#servicios">Servicios</a></li>
-<li><a href="#metodo">Método</a></li>
-<li><a href="#faq">FAQ</a></li>
-<li><a href="#contacto">Contacto</a></li>
+<li><a href="/sistemas/revenue-diagnostic#faq">FAQ</a></li>
+<li><a href="/sistemas/revenue-diagnostic">Contacto</a></li>
 <li><a href="/blog">Blog</a></li>
 <li><a href="/trabaja-con-nosotros">Trabaja con nosotros</a></li>
 </ul>
