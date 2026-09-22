@@ -29,6 +29,13 @@
       "when": 1789753656916,
       "tag": "0003_restrict_cvs_storage_read",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1790044300497,
+      "tag": "0004_create_leads_diagnostic",
+      "breakpoints": true
     }
   ]
 }

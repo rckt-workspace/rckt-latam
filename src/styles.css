@@ -4072,3 +4072,36 @@ header.scrolled {
 [data-theme="dark"] .rckt-site .blog-body code {
   background: rgba(255, 255, 255, 0.1);
 }
+
+/* ---------- Revenue Diagnostic (/sistemas/revenue-diagnostic) ---------- */
+.rckt-site .rd-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 28px;
+  margin-bottom: 26px;
+}
+@media (max-width: 720px) {
+  .rckt-site .rd-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.rckt-site .rd-form select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line-strong);
+  padding: 10px 2px;
+  font-size: 16px;
+  color: var(--carbon);
+  font-family: inherit;
+  border-radius: 0;
+}
+.rckt-site .rd-form select:focus {
+  outline: none;
+  border-color: var(--mode-text);
+}
+.rckt-site .rd-actions {
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 10px;
+}

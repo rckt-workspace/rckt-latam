@@ -248,6 +248,69 @@ export type Database = {
         }
         Relationships: []
       }
+      leads_diagnostic: {
+        Row: {
+          cargo: string | null
+          ciudad: string | null
+          created_at: string
+          crm_actual: string | null
+          email: string | null
+          empleados: string | null
+          empresa: string
+          fecha_inicio: string | null
+          id: string
+          inversion_pauta: string | null
+          nombre: string | null
+          pais: string | null
+          problema_principal: string | null
+          sector: string | null
+          sitio_web: string | null
+          telefono: string | null
+          volumen_leads: string | null
+          whatsapp_ventas: string | null
+        }
+        Insert: {
+          cargo?: string | null
+          ciudad?: string | null
+          created_at?: string
+          crm_actual?: string | null
+          email?: string | null
+          empleados?: string | null
+          empresa: string
+          fecha_inicio?: string | null
+          id?: string
+          inversion_pauta?: string | null
+          nombre?: string | null
+          pais?: string | null
+          problema_principal?: string | null
+          sector?: string | null
+          sitio_web?: string | null
+          telefono?: string | null
+          volumen_leads?: string | null
+          whatsapp_ventas?: string | null
+        }
+        Update: {
+          cargo?: string | null
+          ciudad?: string | null
+          created_at?: string
+          crm_actual?: string | null
+          email?: string | null
+          empleados?: string | null
+          empresa?: string
+          fecha_inicio?: string | null
+          id?: string
+          inversion_pauta?: string | null
+          nombre?: string | null
+          pais?: string | null
+          problema_principal?: string | null
+          sector?: string | null
+          sitio_web?: string | null
+          telefono?: string | null
+          volumen_leads?: string | null
+          whatsapp_ventas?: string | null
+        }
+        Relationships: []
+      }
       postulaciones: {
         Row: {
           cv_url: string | null

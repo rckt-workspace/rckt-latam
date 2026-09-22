@@ -23,6 +23,7 @@ import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as OpsAiControlRouteImport } from './routes/ops/ai-control'
 import { Route as OpsLoginRouteImport } from './routes/ops/login'
+import { Route as SistemasRevenueDiagnosticRouteImport } from './routes/sistemas.revenue-diagnostic'
 import { Route as ApiAdminDebugRouteImport } from './routes/api/admin/debug'
 import { Route as ApiAdminDebugVerifyRouteImport } from './routes/api/admin/debug-verify'
 import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
@@ -109,6 +110,12 @@ const OpsLoginRoute = OpsLoginRouteImport.update({
   path: '/ops/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SistemasRevenueDiagnosticRoute =
+  SistemasRevenueDiagnosticRouteImport.update({
+    id: '/sistemas/revenue-diagnostic',
+    path: '/sistemas/revenue-diagnostic',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiAdminDebugRoute = ApiAdminDebugRouteImport.update({
   id: '/api/admin/debug',
   path: '/api/admin/debug',
@@ -202,6 +209,7 @@ export interface FileRoutesByFullPath {
   '/blog/$slug': typeof BlogSlugRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
+  '/sistemas/revenue-diagnostic': typeof SistemasRevenueDiagnosticRoute
   '/blog/': typeof BlogIndexRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
@@ -233,6 +241,7 @@ export interface FileRoutesByTo {
   '/blog/$slug': typeof BlogSlugRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
+  '/sistemas/revenue-diagnostic': typeof SistemasRevenueDiagnosticRoute
   '/blog': typeof BlogIndexRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
@@ -265,6 +274,7 @@ export interface FileRoutesById {
   '/blog/$slug': typeof BlogSlugRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
+  '/sistemas/revenue-diagnostic': typeof SistemasRevenueDiagnosticRoute
   '/blog/': typeof BlogIndexRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
@@ -298,6 +308,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/ops/ai-control'
     | '/ops/login'
+    | '/sistemas/revenue-diagnostic'
     | '/blog/'
     | '/api/admin/debug'
     | '/api/admin/debug-verify'
@@ -329,6 +340,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/ops/ai-control'
     | '/ops/login'
+    | '/sistemas/revenue-diagnostic'
     | '/blog'
     | '/api/admin/debug'
     | '/api/admin/debug-verify'
@@ -360,6 +372,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/ops/ai-control'
     | '/ops/login'
+    | '/sistemas/revenue-diagnostic'
     | '/blog/'
     | '/api/admin/debug'
     | '/api/admin/debug-verify'
@@ -392,6 +405,7 @@ export interface RootRouteChildren {
   BlogSlugRoute: typeof BlogSlugRoute
   OpsAiControlRoute: typeof OpsAiControlRoute
   OpsLoginRoute: typeof OpsLoginRoute
+  SistemasRevenueDiagnosticRoute: typeof SistemasRevenueDiagnosticRoute
   BlogIndexRoute: typeof BlogIndexRoute
   ApiAdminDebugRoute: typeof ApiAdminDebugRoute
   ApiAdminDebugVerifyRoute: typeof ApiAdminDebugVerifyRoute
@@ -508,6 +522,13 @@ declare module '@tanstack/react-router' {
       path: '/ops/login'
       fullPath: '/ops/login'
       preLoaderRoute: typeof OpsLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sistemas/revenue-diagnostic': {
+      id: '/sistemas/revenue-diagnostic'
+      path: '/sistemas/revenue-diagnostic'
+      fullPath: '/sistemas/revenue-diagnostic'
+      preLoaderRoute: typeof SistemasRevenueDiagnosticRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/admin/debug': {
@@ -632,6 +653,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogSlugRoute: BlogSlugRoute,
   OpsAiControlRoute: OpsAiControlRoute,
   OpsLoginRoute: OpsLoginRoute,
+  SistemasRevenueDiagnosticRoute: SistemasRevenueDiagnosticRoute,
   BlogIndexRoute: BlogIndexRoute,
   ApiAdminDebugRoute: ApiAdminDebugRoute,
   ApiAdminDebugVerifyRoute: ApiAdminDebugVerifyRoute,
