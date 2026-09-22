@@ -21,28 +21,30 @@ export function SiteHeader() {
     <header>
       <div className="container">
         <nav>
-          <a className="logo" href="/">
-            <img alt="RCKT" src={logoDarkAsset} />
-          </a>
-          <div className="nav-links">
-            <a href="/#sistema">Sistema</a>
-            <a href="/#servicios">Servicios</a>
-            <a href="/#quienes">Nosotros</a>
-            <a href="/#metodo">Método</a>
-            <a href="/#faq">FAQ</a>
-            <a href="/blog">Blog</a>
-            <a href="/trabaja-con-nosotros">Trabaja con nosotros</a>
+          <div className="nav-capsule nav-capsule-left">
+            <a className="logo" href="/">
+              <img alt="RCKT" src={logoDarkAsset} />
+            </a>
+            <div className="nav-links">
+              <a href="/#servicios">Soluciones</a>
+              <a href="/#sistema">Sistemas</a>
+              <a href="/#quienes">Nosotros</a>
+              <a href="/blog">Blog</a>
 
-            <div className="nav-menu-footer">
-              <ThemeSwitch suffix="Mobile" />
+              <div className="nav-menu-footer">
+                <ThemeSwitch suffix="Mobile" />
+                <a className="btn hero-nav-cta nav-menu-cta" href="/sistemas/revenue-diagnostic">
+                  Pedir diagnóstico
+                </a>
+              </div>
             </div>
           </div>
-          <div className="nav-right">
+          <div className="nav-capsule nav-capsule-right nav-right">
             <div className="nav-right-desktop">
               <ThemeSwitch />
             </div>
             <a className="btn hero-nav-cta" href="/sistemas/revenue-diagnostic">
-              Solicitar diagnóstico
+              Pedir diagnóstico
             </a>
             <button aria-label="Abrir menú" className="nav-toggle" id="navToggle">
               <span></span>
@@ -55,6 +57,7 @@ export function SiteHeader() {
     </header>
   );
 }
+
 
 export function SiteFooter() {
   return (
