@@ -1,4 +1,11 @@
-import { supabase } from "@/integrations/supabase/client";
+import { supabase as typedSupabase } from "@/integrations/supabase/client";
+import type { SupabaseClient } from "@supabase/supabase-js";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type LooseSupabaseClient = SupabaseClient<any, "public", any>;
+
+// Las tablas del blog aún no están en los tipos generados: acceso sin tipar.
+const supabase = typedSupabase as unknown as LooseSupabaseClient;
 import type {
   BlogRepository,
   BlogPost,

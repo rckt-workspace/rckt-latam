@@ -1,5 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
+import type { SupabaseClient } from "@supabase/supabase-js";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type LooseSupabaseClient = SupabaseClient<any, "public", any>;
 
 const ApplicationSchema = z.object({
   nombre: z.string().trim().min(1).max(120),
@@ -132,9 +136,11 @@ export const Route = createFileRoute("/api/aplicaciones/enviar")({
           }
 
           // Importar cliente privilegiado únicamente en servidor.
-          const { supabaseAdmin } = await import(
+          const { supabaseAdmin: typedSupabaseAdmin } = await import(
             "@/integrations/supabase/client.server"
-          );
+          )
+          // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
+          const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
 
           // 7. Validar vacante si viene vacante_id
           if (parseResult.data.vacante_id) {
