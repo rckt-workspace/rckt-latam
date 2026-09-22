@@ -272,7 +272,7 @@ img {
 
 /* ---------- nav ---------- */
 header {
-  position: absolute;
+  position: fixed;
   inset: 0 0 auto;
   z-index: 110;
   background: transparent;
