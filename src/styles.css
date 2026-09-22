@@ -4107,7 +4107,7 @@ header.scrolled {
 }
 
 /* ---------- nav flotante en dos cápsulas (desktop) ---------- */
-@media (min-width: 1025px) {
+@media (min-width: 1153px) {
   header nav {
     justify-content: center;
     align-items: center;
@@ -4213,7 +4213,7 @@ header.scrolled {
     display: none !important;
   }
 }
-@media (max-width: 1024px) {
+@media (max-width: 1152px) {
   header nav {
     justify-content: space-between;
   }
@@ -4241,7 +4241,7 @@ header.scrolled {
   display: none;
 }
 /* En mobile el CTA vive dentro del drawer (barra superior = logo + hamburguesa). */
-@media (max-width: 1024px) {
+@media (max-width: 1152px) {
   .nav-links.mobile-open .nav-menu-cta {
     display: inline-flex;
     margin-top: 4px;

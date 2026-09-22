@@ -213,7 +213,7 @@ export function useSiteMotion(deps: unknown[] = []) {
     window.addEventListener("keydown", closeOnEsc);
 
     const closeOnResize = () => {
-      if (window.innerWidth > 1024) closeMenu();
+      if (window.innerWidth > 1152) closeMenu();
     };
     window.addEventListener("resize", closeOnResize);
 

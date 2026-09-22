@@ -433,7 +433,7 @@ function RcktLanding() {
       updateMenuLock();
     };
     const closeMenuOnResize = () => {
-      if (window.innerWidth > 1024) closeMenu();
+      if (window.innerWidth > 1152) closeMenu();
     };
     const closeMenuOnEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeMenu();
