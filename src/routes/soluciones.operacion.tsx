@@ -1,6 +1,9 @@
+import type { CSSProperties } from "react";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import heroAsset from "@/assets/rckt-hero.jpg";
+
+const delay = (i: number) => ({ "--i": i }) as CSSProperties;
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
@@ -71,9 +74,9 @@ function OperacionPage() {
               <span className="kicker ital-label">Te pasa esto</span>
               <span className="divider"></span>
             </div>
-            <div className="lineas-grid">
+            <div className="lineas-grid rv-group">
               {tePasa.map((texto, i) => (
-                <div className="linea-card rv" key={texto}>
+                <div className="linea-card rv" key={texto} style={delay(i)}>
                   <span className="num">{String(i + 1).padStart(2, "0")}</span>
                   <p>{texto}</p>
                 </div>
@@ -103,9 +106,11 @@ function OperacionPage() {
               <span className="kicker ital-label">Para quién no es</span>
               <span className="divider"></span>
             </div>
-            <p style={{ maxWidth: 680 }}>
-              Procesos críticos sin responsable del lado del cliente, o sin datos accesibles.
-            </p>
+            <div className="sol-note rv">
+              <p>
+                Procesos críticos sin responsable del lado del cliente, o sin datos accesibles.
+              </p>
+            </div>
           </div>
         </section>
 

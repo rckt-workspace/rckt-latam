@@ -1,6 +1,9 @@
+import type { CSSProperties } from "react";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import heroAsset from "@/assets/rckt-hero.jpg";
+
+const delay = (i: number) => ({ "--i": i }) as CSSProperties;
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
@@ -82,9 +85,9 @@ function CaptacionPage() {
               <span className="kicker ital-label">Te pasa esto</span>
               <span className="divider"></span>
             </div>
-            <div className="lineas-grid">
+            <div className="lineas-grid rv-group">
               {tePasa.map((texto, i) => (
-                <div className="linea-card rv" key={texto}>
+                <div className="linea-card rv" key={texto} style={delay(i)}>
                   <span className="num">{String(i + 1).padStart(2, "0")}</span>
                   <p>{texto}</p>
                 </div>
@@ -110,9 +113,9 @@ function CaptacionPage() {
               Un embudo, seis fugas: inversión → lead → contacto → calificación → cita → propuesta →
               venta.
             </p>
-            <div className="metodo-grid">
+            <div className="metodo-grid rv-group">
               {fugas.map((paso, i) => (
-                <div className="metodo-step rv" key={paso}>
+                <div className="metodo-step rv" key={paso} style={delay(i)}>
                   <span className="num">{String(i + 1).padStart(2, "0")}.</span>
                   <h4>{paso}</h4>
                   <p>[cifras del mercado colombiano — pendiente de datos reales]</p>
@@ -144,9 +147,9 @@ function CaptacionPage() {
               <span className="kicker ital-label">Qué cambia en 90 días</span>
               <span className="divider"></span>
             </div>
-            <div className="metodo-grid">
-              {noventa.map(([n, titulo, texto]) => (
-                <div className="metodo-step rv" key={titulo}>
+            <div className="metodo-grid rv-group">
+              {noventa.map(([n, titulo, texto], i) => (
+                <div className="metodo-step rv" key={titulo} style={delay(i)}>
                   <span className="num">{n}</span>
                   <h4>{titulo}</h4>
                   <p>{texto}</p>
@@ -180,10 +183,12 @@ function CaptacionPage() {
               <span className="kicker ital-label">Para quién no es</span>
               <span className="divider"></span>
             </div>
-            <p style={{ maxWidth: 680 }}>
-              Negocios que aún no venden, sin presupuesto de pauta, o que solo quieren optimizar por
+            <div className="sol-note rv">
+              <p>
+                Negocios que aún no venden, sin presupuesto de pauta, o que solo quieren optimizar por
               costo por lead.
-            </p>
+              </p>
+            </div>
           </div>
         </section>
 

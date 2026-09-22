@@ -1,6 +1,9 @@
+import type { CSSProperties } from "react";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import heroAsset from "@/assets/rckt-hero.jpg";
+
+const delay = (i: number) => ({ "--i": i }) as CSSProperties;
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
@@ -83,7 +86,7 @@ function SolucionesPage() {
                 <div
                   className="sol-card rv"
                   key={titulo}
-                  style={{ "--i": i } as React.CSSProperties}
+                  style={delay(i)}
                 >
                   <span className="sol-num">{n.replace(".", "")}</span>
                   <h3>{titulo}</h3>
