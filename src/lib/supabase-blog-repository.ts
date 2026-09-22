@@ -28,8 +28,15 @@ import { estimateReadingTime, normalizeQuery, postSearchText } from "@/lib/blog.
 export class SupabaseBlogRepository implements BlogRepository {
   /**
    * Map Supabase blog_posts row to BlogPost type
+   * Handles both public (no relations) and admin (with category relations) queries
    */
   private mapRowToPost(row: any): BlogPost {
+    // Extract category name from relation or fallback to ID
+    let categoryValue = row.category_id || "";
+    if (row.blog_categories?.name) {
+      categoryValue = row.blog_categories.name;
+    }
+
     return {
       id: row.id,
       slug: row.slug,
@@ -42,13 +49,13 @@ export class SupabaseBlogRepository implements BlogRepository {
         name: row.author_name || "RCKT",
         role: "Team",
       },
-      category: row.category_id || "", // Store category_id for filtering
+      category: categoryValue,
       tags: Array.isArray(row.tags) ? row.tags : [],
       status: row.status as BlogStatus,
       featured: row.featured || false,
       publishedAt: row.published_at || new Date().toISOString(),
       updatedAt: row.updated_at || new Date().toISOString(),
-      readingTime: Math.ceil(row.content.split(/\s+/).length / 200),
+      readingTime: Math.ceil((row.content || "").split(/\s+/).length / 200),
       seo: {
         title: row.seo_title || row.title,
         description: row.seo_description || row.excerpt || "",
@@ -204,14 +211,36 @@ export class SupabaseBlogRepository implements BlogRepository {
 
   /**
    * Save post (admin operation - server-side)
+   * Transforms BlogPostInput to server-side DTO
    */
   async savePost(input: BlogPostInput): Promise<BlogPost> {
     try {
-      const method = input.id ? "PUT" : "POST";
+      // Determine if this is a new post (no persisted ID) or existing
+      const isNew = !input.id;
+      const method = isNew ? "POST" : "PUT";
+
+      // Transform BlogPostInput to server-side DTO
+      const dto = {
+        ...(input.id && { id: input.id }),
+        slug: input.slug,
+        title: input.title,
+        excerpt: input.excerpt,
+        content: input.content,
+        coverImage: input.coverImage || undefined,
+        category: input.category,
+        authorName: input.author?.name,
+        tags: input.tags,
+        status: input.status,
+        featured: input.featured,
+        publishedAt: input.publishedAt,
+        seoTitle: input.seo?.title,
+        seoDescription: input.seo?.description,
+      };
+
       const response = await fetch("/api/admin/people/blog", {
         method,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(input),
+        body: JSON.stringify(dto),
       });
 
       if (response.status === 401) {
@@ -221,11 +250,11 @@ export class SupabaseBlogRepository implements BlogRepository {
 
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.error || "Failed to save post");
+        throw new Error(error.error || "No se pudo guardar el artículo");
       }
 
       const saved = await response.json();
-      return this.mapRowToPost(saved[0] || saved);
+      return this.mapRowToPost(saved);
     } catch (e) {
       console.error("Error saving blog post:", e);
       throw e;
@@ -250,7 +279,7 @@ export class SupabaseBlogRepository implements BlogRepository {
 
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.error || "Failed to delete post");
+        throw new Error(error.error || "No se pudo eliminar el artículo");
       }
     } catch (e) {
       console.error("Error deleting blog post:", e);

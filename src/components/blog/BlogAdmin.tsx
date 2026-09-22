@@ -18,10 +18,7 @@ type Draft = Omit<BlogPost, "readingTime" | "updatedAt">;
 function nuevoBorrador(categoria: string): Draft {
   const now = new Date().toISOString();
   return {
-    id:
-      typeof crypto !== "undefined" && crypto.randomUUID
-        ? crypto.randomUUID()
-        : `post-${Date.now()}`,
+    id: undefined, // No assign ID until saved - backend will generate it
     slug: "",
     title: "",
     excerpt: "",
@@ -73,15 +70,23 @@ export function BlogAdmin() {
       return setError("Ya existe un artículo con ese slug.");
 
     setError(null);
-    await blogRepository.savePost({
-      ...draft,
-      slug,
-      status: estado,
-      readingTime: estimateReadingTime(draft.content),
-    });
-    setDraft(null);
-    setVista("editar");
-    await cargar();
+    try {
+      await blogRepository.savePost({
+        ...draft,
+        slug,
+        status: estado,
+        readingTime: estimateReadingTime(draft.content),
+      });
+      setDraft(null);
+      setVista("editar");
+      await cargar();
+    } catch (e) {
+      setError(
+        e instanceof Error
+          ? e.message
+          : "No se pudo guardar el artículo."
+      );
+    }
   }
 
   async function cambiarEstado(post: BlogPost, estado: BlogStatus) {
