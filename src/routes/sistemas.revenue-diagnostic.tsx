@@ -76,43 +76,6 @@ function RevenueDiagnostic() {
 
   useSiteMotion([listo]);
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setError(null);
-    setEnviando(true);
-    const form = new FormData(e.currentTarget);
-    const get = (k: string) => String(form.get(k) ?? "").trim();
-
-    try {
-      await enviar({
-        data: {
-          empresa: get("empresa"),
-          sitio_web: get("sitio_web"),
-          pais: get("pais"),
-          ciudad: get("ciudad"),
-          cargo: get("cargo"),
-          empleados: get("empleados"),
-          sector: get("sector"),
-          problema_principal: get("problema_principal"),
-          inversion_pauta: get("inversion_pauta"),
-          volumen_leads: get("volumen_leads"),
-          crm_actual: get("crm_actual"),
-          whatsapp_ventas: get("whatsapp_ventas"),
-          fecha_inicio: get("fecha_inicio"),
-          nombre: get("nombre"),
-          email: get("email"),
-          telefono: get("telefono"),
-        },
-      });
-      setListo(true);
-    } catch (err) {
-      console.error("No se pudo enviar la solicitud de diagnóstico", err);
-      setError("No pudimos enviar tu solicitud. Intenta de nuevo en unos segundos.");
-    } finally {
-      setEnviando(false);
-    }
-  }
-
   return (
     <div className="rckt-site tcn-page">
       <main id="top">
