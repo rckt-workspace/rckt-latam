@@ -1,9 +1,8 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
+import DiagnosticForm from "@/components/rckt/DiagnosticForm";
 import heroAsset from "@/assets/rckt-hero.jpg";
-import { saveDiagnosticLead } from "@/lib/leads-diagnostic.functions";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
