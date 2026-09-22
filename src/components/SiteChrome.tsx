@@ -93,7 +93,7 @@ export function SiteFooter() {
                 <a href="/sistemas/revenue-diagnostic#faq">FAQ</a>
               </li>
               <li>
-                <a href="/sistemas/revenue-diagnostic">Contacto</a>
+                <a href="/contacto">Contacto</a>
               </li>
               <li>
                 <a href="/blog">Blog</a>
