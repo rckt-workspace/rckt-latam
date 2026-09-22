@@ -77,6 +77,9 @@ export function SiteFooter() {
                 <a href="/soluciones">Soluciones</a>
               </li>
               <li>
+                <a href="/sistemas">Sistemas</a>
+              </li>
+              <li>
                 <a href="/nosotros">Nosotros</a>
               </li>
               <li>
