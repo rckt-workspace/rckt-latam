@@ -4121,6 +4121,7 @@ header.scrolled {
   header .nav-capsule {
     display: flex;
     align-items: center;
+    min-height: 56px;
     gap: 28px;
     padding: 10px 26px;
     border-radius: 100px;
@@ -4140,6 +4141,7 @@ header.scrolled {
   header.scrolled .nav-capsule {
     padding-top: 7px;
     padding-bottom: 7px;
+    min-height: 50px;
   }
   header.scrolled .nav-capsule-left {
     border-top-right-radius: 0;
@@ -4233,5 +4235,10 @@ header.scrolled {
   }
 }
 .nav-menu-cta {
+  display: none;
+}
+
+/* El CTA vive en la barra superior; no se duplica dentro del drawer. */
+.nav-links.mobile-open .nav-menu-cta {
   display: none;
 }
