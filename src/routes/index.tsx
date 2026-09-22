@@ -130,14 +130,119 @@ const pageMarkup = `
 <div class="hero-inner">
 <span class="kicker hero-kicker">Technology with a human pulse.</span>
 <h1><span class="hero-line">Un sistema más <span class="type-target hero-hand">humano</span></span><span class="hero-line">para lo que ya está aquí.</span></h1>
-<p class="sub">Diseñamos y operamos sistemas de crecimiento impulsados por IA que trabajan 24/7 para atraer oportunidades, acelerar ventas y hacer crecer tu negocio. Tecnología, estrategia y ejecución enfocadas en resultados.</p>
+<p class="sub">Un solo sistema entre tu pauta y tu cuenta de resultados. Del clic al cierre.</p>
 <div class="hero-actions">
+<a class="btn hero-primary-cta" href="${WHATSAPP_URL}" target="_blank" rel="noopener">Revisar mi proceso comercial →</a>
 <a class="btn hero-primary-cta" href="#contacto">Solicitar diagnóstico →</a>
-<a class="btn hero-outline-cta" href="#sistema">Descubre tu sistema de crecimiento →</a>
 </div>
 </div>
 </div>
 <p class="hero-caption">Less noise.<br/>More growth.</p>
+</section>
+<!-- TE PASA ESTO -->
+<section class="band" id="te-pasa-esto">
+<div class="container">
+<div class="section-head">
+<span class="num">01.</span>
+<span class="kicker ital-label">Te pasa esto</span>
+<span class="divider"></span>
+</div>
+<div class="lineas-grid">
+<div class="linea-card rv">
+<span class="num">01</span>
+<p>Pagas por el prospecto y tu asesora le responde desde su propio celular, sin que quede nada en el CRM.</p>
+</div>
+<div class="linea-card rv">
+<span class="num">02</span>
+<p>Meta reporta conversiones que tu equipo comercial no reconoce como ventas.</p>
+</div>
+<div class="linea-card rv">
+<span class="num">03</span>
+<p>El prospecto agenda una cita y no llega —inasistencia— y nadie hace seguimiento.</p>
+</div>
+<div class="linea-card rv">
+<span class="num">04</span>
+<p>Nadie sabe, con certeza, qué campaña trajo al cliente que sí compró.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- DONDE SE PIERDE EL DINERO -->
+<section class="band band-alt" data-mode="motion" id="fugas">
+<div class="container">
+<div class="section-head">
+<span class="num">02.</span>
+<span class="kicker ital-label">El embudo real</span>
+<span class="divider"></span>
+</div>
+<h2 class="rv" style="font-size:clamp(26px,3.4vw,36px); margin:0 0 20px; font-weight:800;">Dónde se pierde el dinero</h2>
+<p style="max-width:680px; margin:0 0 40px;">Un embudo, seis fugas: inversión → lead → contacto → calificación → cita → propuesta → venta.</p>
+<div class="metodo-grid">
+<div class="metodo-step rv"><span class="num">01.</span><h4>Inversión → lead</h4><p>[cifras del mercado colombiano — pendiente de datos reales]</p></div>
+<div class="metodo-step rv"><span class="num">02.</span><h4>Lead → contacto</h4><p>[cifras del mercado colombiano — pendiente de datos reales]</p></div>
+<div class="metodo-step rv"><span class="num">03.</span><h4>Contacto → calificación</h4><p>[cifras del mercado colombiano — pendiente de datos reales]</p></div>
+<div class="metodo-step rv"><span class="num">04.</span><h4>Calificación → cita</h4><p>[cifras del mercado colombiano — pendiente de datos reales]</p></div>
+<div class="metodo-step rv"><span class="num">05.</span><h4>Cita → propuesta</h4><p>[cifras del mercado colombiano — pendiente de datos reales]</p></div>
+<div class="metodo-step rv"><span class="num">06.</span><h4>Propuesta → venta</h4><p>[cifras del mercado colombiano — pendiente de datos reales]</p></div>
+</div>
+</div>
+</section>
+<!-- LOS TRES SISTEMAS -->
+<section class="band" id="tres-sistemas">
+<div class="container">
+<div class="section-head">
+<span class="num">03.</span>
+<span class="kicker ital-label">Los tres sistemas</span>
+<span class="divider"></span>
+</div>
+<div class="three-grid">
+<div class="three-card rv">
+<span class="num">01.</span>
+<h3>Demand System</h3>
+<p>Genera oportunidades cualificadas, medidas hasta la venta, no hasta el formulario.</p>
+</div>
+<div class="three-card rv">
+<span class="num">02.</span>
+<h3>Sales Flow</h3>
+<p>Núcleo de Conversion System: Ads → WhatsApp → calificación → CRM → seguimiento → venta.</p>
+</div>
+<div class="three-card rv">
+<span class="num">03.</span>
+<h3>Operations System</h3>
+<p>Procesos que se ejecutan solos, con aprobación humana en lo que importa.</p>
+</div>
+</div>
+<div class="juicio">
+<span class="tag">Revenue Engine</span>
+Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
+</div>
+</div>
+</section>
+<!-- COMO EMPIEZA TODA CUENTA -->
+<section class="manifiesto" data-mode="editorial" id="revenue-diagnostic">
+<div class="container">
+<div class="manifiesto-card rv">
+<span class="kicker" style="display:block; margin-bottom:22px;">Cómo empieza toda cuenta</span>
+<p>Revenue Diagnostic: 2–3 semanas, línea base firmada, sin atajos. Se descuenta del sistema si sigues con nosotros.</p>
+</div>
+</div>
+</section>
+<!-- PRUEBA -->
+<section class="band band-alt" data-mode="human" id="prueba">
+<div class="container">
+<div class="section-head">
+<span class="num">04.</span>
+<span class="kicker ital-label">Prueba</span>
+<span class="divider"></span>
+</div>
+<div class="three-grid">
+<div class="three-card rv">
+<span class="num">01.</span>
+<h3>Casos</h3>
+<p>[Bloque de casos con ficha completa: situación inicial, inversión, intervención, resultado, método de medición — pendiente de casos reales]</p>
+</div>
+</div>
+</div>
 </section>
 <!-- EL MERCADO CAMBIÓ DE LADO -->
 <section class="band" id="sistema">
