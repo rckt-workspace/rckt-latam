@@ -1,6 +1,9 @@
+import type { CSSProperties } from "react";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import heroAsset from "@/assets/rckt-hero.jpg";
+
+const delay = (i: number) => ({ "--i": i }) as CSSProperties;
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
@@ -70,16 +73,17 @@ function EcommercePage() {
           </div>
         </section>
 
-        <section className="band" id="te-pasa-esto">
+        <section className="band" data-mode="motion" id="te-pasa-esto">
+          <span className="tcn-orb tcn-orb-cultura-left" aria-hidden="true" />
           <div className="container">
             <div className="section-head">
               <span className="num">01.</span>
               <span className="kicker ital-label">Te pasa esto</span>
               <span className="divider"></span>
             </div>
-            <div className="lineas-grid">
+            <div className="lineas-grid rv-group">
               {tePasa.map((texto, i) => (
-                <div className="linea-card rv" key={texto}>
+                <div className="linea-card rv" key={texto} style={delay(i)}>
                   <span className="num">{String(i + 1).padStart(2, "0")}</span>
                   <p>{texto}</p>
                 </div>
@@ -89,13 +93,14 @@ function EcommercePage() {
         </section>
 
         <section className="band band-alt" id="lo-que-hacemos">
+          <span className="tcn-orb tcn-orb-cultura-right" aria-hidden="true" />
           <div className="container">
             <div className="section-head">
               <span className="num">02.</span>
               <span className="kicker ital-label">Lo que hacemos</span>
               <span className="divider"></span>
             </div>
-            <div className="juicio">
+            <div className="juicio rv">
               <span className="tag">Demand System</span>
               Demand System, con Sales Flow si WhatsApp pesa en la conversión.
             </div>
@@ -109,9 +114,9 @@ function EcommercePage() {
               <span className="kicker ital-label">Qué cambia en 90 días</span>
               <span className="divider"></span>
             </div>
-            <div className="metodo-grid">
-              {noventa.map(([n, titulo, texto]) => (
-                <div className="metodo-step rv" key={titulo}>
+            <div className="metodo-grid rv-group">
+              {noventa.map(([n, titulo, texto], i) => (
+                <div className="metodo-step rv" key={titulo} style={delay(i)}>
                   <span className="num">{n}</span>
                   <h4>{titulo}</h4>
                   <p>{texto}</p>
@@ -128,13 +133,16 @@ function EcommercePage() {
               <span className="kicker ital-label">Para quién no es</span>
               <span className="divider"></span>
             </div>
-            <p style={{ maxWidth: 680 }}>
-              Tiendas sin margen para sostener pauta, catálogos sin unit economics claras.
-            </p>
+            <div className="sol-note rv">
+              <p>
+                Tiendas sin margen para sostener pauta, catálogos sin unit economics claras.
+              </p>
+            </div>
           </div>
         </section>
 
         <section className="cta-final">
+          <span className="tcn-orb tcn-orb-cta" aria-hidden="true" />
           <div className="container">
             <span className="kicker">Siguiente paso</span>
             <h2 className="rv">Medimos antes de tocar nada.</h2>
