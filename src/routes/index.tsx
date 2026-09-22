@@ -100,6 +100,7 @@ const pageMarkup = `
 <div class="nav-capsule nav-capsule-left">
 <a class="logo" href="#top"><img alt="RCKT" src="__LOGO_DARK__"/></a>
 <div class="nav-links">
+<button aria-label="Cerrar menú" class="nav-close" id="navClose" type="button">✕</button>
 <a href="/soluciones">Soluciones</a>
 <a href="/sistemas">Sistemas</a>
 <a href="/sectores">Sectores</a>
@@ -127,6 +128,7 @@ const pageMarkup = `
 </nav>
 
 </div>
+<div class="nav-overlay" id="navOverlay"></div>
 </header>
 <div class="container hero-content">
 <div class="hero-inner">
@@ -438,7 +440,11 @@ function RcktLanding() {
     const closeMenuOnEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeMenu();
     };
+    const closeBtn = document.getElementById("navClose");
+    const overlay = document.getElementById("navOverlay");
     toggle?.addEventListener("click", onToggle);
+    closeBtn?.addEventListener("click", closeMenu);
+    overlay?.addEventListener("click", closeMenu);
     links?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
     window.addEventListener("resize", closeMenuOnResize);
     window.addEventListener("keydown", closeMenuOnEsc);
@@ -493,6 +499,8 @@ function RcktLanding() {
       window.removeEventListener("resize", closeMenuOnResize);
       window.removeEventListener("keydown", closeMenuOnEsc);
       toggle?.removeEventListener("click", onToggle);
+      closeBtn?.removeEventListener("click", closeMenu);
+      overlay?.removeEventListener("click", closeMenu);
       links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu));
       faqButtons.forEach((button) => button.removeEventListener("click", onFaq));
       form?.removeEventListener("submit", onSubmit);

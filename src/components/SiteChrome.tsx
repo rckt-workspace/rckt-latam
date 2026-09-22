@@ -26,6 +26,9 @@ export function SiteHeader() {
               <img alt="RCKT" src={logoDarkAsset} />
             </a>
             <div className="nav-links">
+              <button aria-label="Cerrar menú" className="nav-close" id="navClose" type="button">
+                ✕
+              </button>
               <a href="/soluciones">Soluciones</a>
               <a href="/sistemas">Sistemas</a>
               <a href="/sectores">Sectores</a>
@@ -55,6 +58,7 @@ export function SiteHeader() {
           </div>
         </nav>
       </div>
+      <div className="nav-overlay" id="navOverlay" />
     </header>
   );
 }
@@ -208,7 +212,11 @@ export function useSiteMotion(deps: unknown[] = []) {
     const closeOnEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeMenu();
     };
+    const closeBtn = document.getElementById("navClose");
+    const overlay = document.getElementById("navOverlay");
     toggle?.addEventListener("click", onToggle);
+    closeBtn?.addEventListener("click", closeMenu);
+    overlay?.addEventListener("click", closeMenu);
     links?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
     window.addEventListener("keydown", closeOnEsc);
 
@@ -238,6 +246,8 @@ export function useSiteMotion(deps: unknown[] = []) {
       observer?.disconnect();
       window.removeEventListener("scroll", onScroll);
       toggle?.removeEventListener("click", onToggle);
+      closeBtn?.removeEventListener("click", closeMenu);
+      overlay?.removeEventListener("click", closeMenu);
       links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu));
       window.removeEventListener("keydown", closeOnEsc);
       window.removeEventListener("resize", closeOnResize);
