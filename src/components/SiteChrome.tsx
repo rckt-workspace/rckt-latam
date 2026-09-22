@@ -74,19 +74,10 @@ export function SiteFooter() {
             <h5>Navegar</h5>
             <ul>
               <li>
-                <a href="/#sistema">Sistema</a>
+                <a href="/sistemas/revenue-diagnostic#faq">FAQ</a>
               </li>
               <li>
-                <a href="/#servicios">Servicios</a>
-              </li>
-              <li>
-                <a href="/#metodo">Método</a>
-              </li>
-              <li>
-                <a href="/#faq">FAQ</a>
-              </li>
-              <li>
-                <a href="/#contacto">Contacto</a>
+                <a href="/sistemas/revenue-diagnostic">Contacto</a>
               </li>
               <li>
                 <a href="/blog">Blog</a>
