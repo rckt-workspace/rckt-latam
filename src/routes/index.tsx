@@ -101,7 +101,7 @@ const pageMarkup = `
 <a class="logo" href="#top"><img alt="RCKT" src="__LOGO_DARK__"/></a>
 <div class="nav-links">
 <a href="/soluciones">Soluciones</a>
-<a href="#sistema">Sistemas</a>
+<a href="/sistemas">Sistemas</a>
 <a href="/nosotros">Nosotros</a>
 <a href="/blog">Blog</a>
 <div class="nav-menu-footer">
