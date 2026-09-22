@@ -102,6 +102,7 @@ const pageMarkup = `
 <div class="nav-links">
 <a href="/soluciones">Soluciones</a>
 <a href="/sistemas">Sistemas</a>
+<a href="/sectores">Sectores</a>
 <a href="/nosotros">Nosotros</a>
 <a href="/blog">Blog</a>
 <div class="nav-menu-footer">

@@ -81,6 +81,9 @@ export function SiteFooter() {
                 <a href="/sistemas">Sistemas</a>
               </li>
               <li>
+                <a href="/sectores">Sectores</a>
+              </li>
+              <li>
                 <a href="/nosotros">Nosotros</a>
               </li>
               <li>
