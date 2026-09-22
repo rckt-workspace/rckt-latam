@@ -97,33 +97,34 @@ const pageMarkup = `
 <header>
 <div class="container">
 <nav>
+<div class="nav-capsule nav-capsule-left">
 <a class="logo" href="#top"><img alt="RCKT" src="__LOGO_DARK__"/></a>
 <div class="nav-links">
-<a href="#sistema">Sistema</a>
-<a href="#servicios">Servicios</a>
+<a href="#servicios">Soluciones</a>
+<a href="#sistema">Sistemas</a>
 <a href="#quienes">Nosotros</a>
-<a href="#metodo">Método</a>
-<a href="#faq">FAQ</a>
 <a href="/blog">Blog</a>
-<a href="/trabaja-con-nosotros">Trabaja con nosotros</a>
 <div class="nav-menu-footer">
 <div class="theme-switch hero-theme-switch">
 <button id="themeLightMobile" class="active" type="button">Claro</button>
 <button id="themeDarkMobile" type="button">Oscuro</button>
 </div>
+<a class="btn hero-nav-cta nav-menu-cta" href="/sistemas/revenue-diagnostic">Pedir diagnóstico</a>
 </div>
 </div>
-<div class="nav-right">
+</div>
+<div class="nav-capsule nav-capsule-right nav-right">
 <div class="nav-right-desktop">
 <div class="theme-switch hero-theme-switch">
 <button id="themeLight" class="active" type="button">Claro</button>
 <button id="themeDark" type="button">Oscuro</button>
 </div>
 </div>
-<a class="btn hero-nav-cta" href="/sistemas/revenue-diagnostic">Solicitar diagnóstico</a>
+<a class="btn hero-nav-cta" href="/sistemas/revenue-diagnostic">Pedir diagnóstico</a>
 <button aria-label="Abrir menú" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
 </div>
 </nav>
+
 </div>
 </header>
 <div class="container hero-content">
@@ -783,7 +784,7 @@ function RcktLanding() {
       updateMenuLock();
     };
     const closeMenuOnResize = () => {
-      if (window.innerWidth > 980) closeMenu();
+      if (window.innerWidth > 1024) closeMenu();
     };
     const closeMenuOnEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeMenu();
