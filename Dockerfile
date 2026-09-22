@@ -15,6 +15,14 @@ RUN bun install --frozen-lockfile
 # Copy source code
 COPY . .
 
+# Declare build-time variables for Vite (public keys only)
+ARG VITE_SUPABASE_URL
+ARG VITE_SUPABASE_PUBLISHABLE_KEY
+
+# Set environment variables for build
+ENV VITE_SUPABASE_URL=$VITE_SUPABASE_URL
+ENV VITE_SUPABASE_PUBLISHABLE_KEY=$VITE_SUPABASE_PUBLISHABLE_KEY
+
 # Build TanStack/Nitro
 RUN bun run build
 
