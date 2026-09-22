@@ -4121,9 +4121,10 @@ header.scrolled {
   header .nav-capsule {
     display: flex;
     align-items: center;
-    min-height: 56px;
+    justify-content: center;
+    height: 56px;
     gap: 28px;
-    padding: 10px 26px;
+    padding: 0 26px;
     border-radius: 100px;
     background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(8px);
@@ -4139,9 +4140,7 @@ header.scrolled {
     padding: 12px 0;
   }
   header.scrolled .nav-capsule {
-    padding-top: 7px;
-    padding-bottom: 7px;
-    min-height: 50px;
+    height: 50px;
   }
   header.scrolled .nav-capsule-left {
     border-top-right-radius: 0;
@@ -4172,9 +4171,14 @@ header.scrolled {
   header .nav-right .hero-nav-cta,
   header .nav-capsule-right .hero-nav-cta {
     display: inline-flex;
+    align-items: center;
     border-radius: 100px;
-    padding: 10px 20px;
+    padding: 8px 20px;
     font-size: 13.5px;
+    line-height: 1.2;
+  }
+  header .nav-capsule .theme-switch {
+    flex-shrink: 0;
   }
   header .nav-capsule .theme-switch,
   .hero header .theme-switch,
