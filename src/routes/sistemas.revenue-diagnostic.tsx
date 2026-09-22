@@ -71,32 +71,9 @@ const faqs = [
   ["¿Qué pasa después?", "Recomendamos sistema o bundle según la fuga mayor."],
 ] as const;
 
-const problemas = ["Captación y cierre", "Ecommerce rentable", "Operación"] as const;
-
-const bandasInversion = [
-  "Menos de $5.000.000 COP / mes (≈ USD 1.200)",
-  "$5.000.000 – $15.000.000 COP / mes (≈ USD 1.200 – 3.700)",
-  "$15.000.000 – $40.000.000 COP / mes (≈ USD 3.700 – 10.000)",
-  "$40.000.000 – $100.000.000 COP / mes (≈ USD 10.000 – 25.000)",
-  "Más de $100.000.000 COP / mes (≈ USD 25.000+)",
-] as const;
-
-const bandasLeads = [
-  "Menos de 50 al mes",
-  "50 – 200 al mes",
-  "200 – 500 al mes",
-  "500 – 2.000 al mes",
-  "Más de 2.000 al mes",
-] as const;
-
-const bandasEmpleados = ["1 – 10", "11 – 50", "51 – 200", "201 – 1.000", "Más de 1.000"] as const;
-
 function RevenueDiagnostic() {
   const [abierta, setAbierta] = useState<number | null>(null);
-  const [enviando, setEnviando] = useState(false);
   const [listo, setListo] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const enviar = useServerFn(saveDiagnosticLead);
 
   useSiteMotion([listo]);
 
