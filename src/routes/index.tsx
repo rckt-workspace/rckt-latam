@@ -499,6 +499,8 @@ function RcktLanding() {
       window.removeEventListener("resize", closeMenuOnResize);
       window.removeEventListener("keydown", closeMenuOnEsc);
       toggle?.removeEventListener("click", onToggle);
+      closeBtn?.removeEventListener("click", closeMenu);
+      overlay?.removeEventListener("click", closeMenu);
       links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu));
       faqButtons.forEach((button) => button.removeEventListener("click", onFaq));
       form?.removeEventListener("submit", onSubmit);
