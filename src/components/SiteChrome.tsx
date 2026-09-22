@@ -26,6 +26,9 @@ export function SiteHeader() {
               <img alt="RCKT" src={logoDarkAsset} />
             </a>
             <div className="nav-links">
+              <button aria-label="Cerrar menú" className="nav-close" id="navClose" type="button">
+                ✕
+              </button>
               <a href="/soluciones">Soluciones</a>
               <a href="/sistemas">Sistemas</a>
               <a href="/sectores">Sectores</a>
@@ -55,6 +58,7 @@ export function SiteHeader() {
           </div>
         </nav>
       </div>
+      <div className="nav-overlay" id="navOverlay" />
     </header>
   );
 }
