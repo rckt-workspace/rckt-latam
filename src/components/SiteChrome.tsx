@@ -212,7 +212,11 @@ export function useSiteMotion(deps: unknown[] = []) {
     const closeOnEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeMenu();
     };
+    const closeBtn = document.getElementById("navClose");
+    const overlay = document.getElementById("navOverlay");
     toggle?.addEventListener("click", onToggle);
+    closeBtn?.addEventListener("click", closeMenu);
+    overlay?.addEventListener("click", closeMenu);
     links?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
     window.addEventListener("keydown", closeOnEsc);
 
@@ -242,6 +246,8 @@ export function useSiteMotion(deps: unknown[] = []) {
       observer?.disconnect();
       window.removeEventListener("scroll", onScroll);
       toggle?.removeEventListener("click", onToggle);
+      closeBtn?.removeEventListener("click", closeMenu);
+      overlay?.removeEventListener("click", closeMenu);
       links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu));
       window.removeEventListener("keydown", closeOnEsc);
       window.removeEventListener("resize", closeOnResize);
