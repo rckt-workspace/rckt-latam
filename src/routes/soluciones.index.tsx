@@ -69,25 +69,31 @@ function SolucionesPage() {
           </div>
         </section>
 
-        <section className="band" id="puertas">
+        <section className="band" data-mode="motion" id="puertas">
+          <span className="tcn-orb tcn-orb-cultura-left" aria-hidden="true" />
+          <span className="tcn-orb tcn-orb-vacantes" aria-hidden="true" />
           <div className="container">
             <div className="section-head">
               <span className="num">01.</span>
               <span className="kicker ital-label">Tres puertas de entrada</span>
               <span className="divider"></span>
             </div>
-            <div className="three-grid">
-              {soluciones.map(([n, titulo, senal, href]) => (
-                <div className="three-card rv" key={titulo}>
-                  <span className="num">{n}</span>
+            <div className="sol-cards rv-group">
+              {soluciones.map(([n, titulo, senal, href], i) => (
+                <div
+                  className="sol-card rv"
+                  key={titulo}
+                  style={{ "--i": i } as React.CSSProperties}
+                >
+                  <span className="sol-num">{n.replace(".", "")}</span>
                   <h3>{titulo}</h3>
                   <p>{senal}</p>
-                  <p style={{ marginTop: 18 }}>
+                  <div className="sol-links">
                     <a href={href}>Ver solución →</a>
-                  </p>
-                  <p style={{ marginTop: 6 }}>
-                    <a href="/sistemas/revenue-diagnostic">Revisar mi proceso comercial →</a>
-                  </p>
+                    <a className="secondary" href="/sistemas/revenue-diagnostic">
+                      Revisar mi proceso comercial →
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>
@@ -95,6 +101,7 @@ function SolucionesPage() {
         </section>
 
         <section className="cta-final">
+          <span className="tcn-orb tcn-orb-cta" aria-hidden="true" />
           <div className="container">
             <span className="kicker">Siguiente paso</span>
             <h2 className="rv">Toda cuenta empieza por el diagnóstico.</h2>
