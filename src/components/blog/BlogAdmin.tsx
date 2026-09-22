@@ -13,7 +13,7 @@ const estadoLabel: Record<BlogStatus, string> = {
   archived: "Archivado",
 };
 
-type Draft = Omit<BlogPost, "readingTime" | "updatedAt">;
+type Draft = Omit<BlogPost, "readingTime" | "updatedAt" | "id"> & { id?: string };
 
 function nuevoBorrador(categoria: string): Draft {
   const now = new Date().toISOString();
