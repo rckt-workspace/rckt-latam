@@ -44,8 +44,8 @@ export interface BlogCategory {
 }
 
 /** Datos que entrega el formulario del panel interno. */
-export type BlogPostInput = Omit<BlogPost, "readingTime" | "updatedAt"> &
-  Partial<Pick<BlogPost, "readingTime" | "updatedAt">>;
+export type BlogPostInput = Omit<BlogPost, "readingTime" | "updatedAt" | "id"> &
+  Partial<Pick<BlogPost, "readingTime" | "updatedAt" | "id">>;
 
 /**
  * Contrato de datos del Blog. Hoy lo implementa `JsonBlogRepository`

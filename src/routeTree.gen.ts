@@ -25,6 +25,13 @@ import { Route as NosotrosIndexRouteImport } from './routes/nosotros.index'
 import { Route as NosotrosComoTrabajamosRouteImport } from './routes/nosotros.como-trabajamos'
 import { Route as OpsAiControlRouteImport } from './routes/ops/ai-control'
 import { Route as OpsLoginRouteImport } from './routes/ops/login'
+import { Route as SectoresIndexRouteImport } from './routes/sectores.index'
+import { Route as SectoresConstruccionInmobiliarioRouteImport } from './routes/sectores.construccion-inmobiliario'
+import { Route as SectoresEcommerceRouteImport } from './routes/sectores.ecommerce'
+import { Route as SectoresEducacionRouteImport } from './routes/sectores.educacion'
+import { Route as SectoresIndustriaDistribucionRouteImport } from './routes/sectores.industria-distribucion'
+import { Route as SectoresSaludEsteticaOdontologiaRouteImport } from './routes/sectores.salud-estetica-odontologia'
+import { Route as SectoresServiciosB2bRouteImport } from './routes/sectores.servicios-b2b'
 import { Route as SistemasIndexRouteImport } from './routes/sistemas.index'
 import { Route as SistemasDemandSystemRouteImport } from './routes/sistemas.demand-system'
 import { Route as SistemasOperationsSystemRouteImport } from './routes/sistemas.operations-system'
@@ -129,6 +136,44 @@ const OpsAiControlRoute = OpsAiControlRouteImport.update({
 const OpsLoginRoute = OpsLoginRouteImport.update({
   id: '/ops/login',
   path: '/ops/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SectoresIndexRoute = SectoresIndexRouteImport.update({
+  id: '/sectores/',
+  path: '/sectores/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SectoresConstruccionInmobiliarioRoute =
+  SectoresConstruccionInmobiliarioRouteImport.update({
+    id: '/sectores/construccion-inmobiliario',
+    path: '/sectores/construccion-inmobiliario',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SectoresEcommerceRoute = SectoresEcommerceRouteImport.update({
+  id: '/sectores/ecommerce',
+  path: '/sectores/ecommerce',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SectoresEducacionRoute = SectoresEducacionRouteImport.update({
+  id: '/sectores/educacion',
+  path: '/sectores/educacion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SectoresIndustriaDistribucionRoute =
+  SectoresIndustriaDistribucionRouteImport.update({
+    id: '/sectores/industria-distribucion',
+    path: '/sectores/industria-distribucion',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SectoresSaludEsteticaOdontologiaRoute =
+  SectoresSaludEsteticaOdontologiaRouteImport.update({
+    id: '/sectores/salud-estetica-odontologia',
+    path: '/sectores/salud-estetica-odontologia',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SectoresServiciosB2bRoute = SectoresServiciosB2bRouteImport.update({
+  id: '/sectores/servicios-b2b',
+  path: '/sectores/servicios-b2b',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SistemasIndexRoute = SistemasIndexRouteImport.update({
@@ -279,6 +324,12 @@ export interface FileRoutesByFullPath {
   '/nosotros/como-trabajamos': typeof NosotrosComoTrabajamosRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
+  '/sectores/construccion-inmobiliario': typeof SectoresConstruccionInmobiliarioRoute
+  '/sectores/ecommerce': typeof SectoresEcommerceRoute
+  '/sectores/educacion': typeof SectoresEducacionRoute
+  '/sectores/industria-distribucion': typeof SectoresIndustriaDistribucionRoute
+  '/sectores/salud-estetica-odontologia': typeof SectoresSaludEsteticaOdontologiaRoute
+  '/sectores/servicios-b2b': typeof SectoresServiciosB2bRoute
   '/sistemas/demand-system': typeof SistemasDemandSystemRoute
   '/sistemas/operations-system': typeof SistemasOperationsSystemRoute
   '/sistemas/revenue-diagnostic': typeof SistemasRevenueDiagnosticRoute
@@ -289,6 +340,7 @@ export interface FileRoutesByFullPath {
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog/': typeof BlogIndexRoute
   '/nosotros/': typeof NosotrosIndexRoute
+  '/sectores/': typeof SectoresIndexRoute
   '/sistemas/': typeof SistemasIndexRoute
   '/soluciones/': typeof SolucionesIndexRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
@@ -322,6 +374,12 @@ export interface FileRoutesByTo {
   '/nosotros/como-trabajamos': typeof NosotrosComoTrabajamosRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
+  '/sectores/construccion-inmobiliario': typeof SectoresConstruccionInmobiliarioRoute
+  '/sectores/ecommerce': typeof SectoresEcommerceRoute
+  '/sectores/educacion': typeof SectoresEducacionRoute
+  '/sectores/industria-distribucion': typeof SectoresIndustriaDistribucionRoute
+  '/sectores/salud-estetica-odontologia': typeof SectoresSaludEsteticaOdontologiaRoute
+  '/sectores/servicios-b2b': typeof SectoresServiciosB2bRoute
   '/sistemas/demand-system': typeof SistemasDemandSystemRoute
   '/sistemas/operations-system': typeof SistemasOperationsSystemRoute
   '/sistemas/revenue-diagnostic': typeof SistemasRevenueDiagnosticRoute
@@ -332,6 +390,7 @@ export interface FileRoutesByTo {
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog': typeof BlogIndexRoute
   '/nosotros': typeof NosotrosIndexRoute
+  '/sectores': typeof SectoresIndexRoute
   '/sistemas': typeof SistemasIndexRoute
   '/soluciones': typeof SolucionesIndexRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
@@ -366,6 +425,12 @@ export interface FileRoutesById {
   '/nosotros/como-trabajamos': typeof NosotrosComoTrabajamosRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
+  '/sectores/construccion-inmobiliario': typeof SectoresConstruccionInmobiliarioRoute
+  '/sectores/ecommerce': typeof SectoresEcommerceRoute
+  '/sectores/educacion': typeof SectoresEducacionRoute
+  '/sectores/industria-distribucion': typeof SectoresIndustriaDistribucionRoute
+  '/sectores/salud-estetica-odontologia': typeof SectoresSaludEsteticaOdontologiaRoute
+  '/sectores/servicios-b2b': typeof SectoresServiciosB2bRoute
   '/sistemas/demand-system': typeof SistemasDemandSystemRoute
   '/sistemas/operations-system': typeof SistemasOperationsSystemRoute
   '/sistemas/revenue-diagnostic': typeof SistemasRevenueDiagnosticRoute
@@ -376,6 +441,7 @@ export interface FileRoutesById {
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog/': typeof BlogIndexRoute
   '/nosotros/': typeof NosotrosIndexRoute
+  '/sectores/': typeof SectoresIndexRoute
   '/sistemas/': typeof SistemasIndexRoute
   '/soluciones/': typeof SolucionesIndexRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
@@ -411,6 +477,12 @@ export interface FileRouteTypes {
     | '/nosotros/como-trabajamos'
     | '/ops/ai-control'
     | '/ops/login'
+    | '/sectores/construccion-inmobiliario'
+    | '/sectores/ecommerce'
+    | '/sectores/educacion'
+    | '/sectores/industria-distribucion'
+    | '/sectores/salud-estetica-odontologia'
+    | '/sectores/servicios-b2b'
     | '/sistemas/demand-system'
     | '/sistemas/operations-system'
     | '/sistemas/revenue-diagnostic'
@@ -421,6 +493,7 @@ export interface FileRouteTypes {
     | '/soluciones/operacion'
     | '/blog/'
     | '/nosotros/'
+    | '/sectores/'
     | '/sistemas/'
     | '/soluciones/'
     | '/api/admin/debug'
@@ -454,6 +527,12 @@ export interface FileRouteTypes {
     | '/nosotros/como-trabajamos'
     | '/ops/ai-control'
     | '/ops/login'
+    | '/sectores/construccion-inmobiliario'
+    | '/sectores/ecommerce'
+    | '/sectores/educacion'
+    | '/sectores/industria-distribucion'
+    | '/sectores/salud-estetica-odontologia'
+    | '/sectores/servicios-b2b'
     | '/sistemas/demand-system'
     | '/sistemas/operations-system'
     | '/sistemas/revenue-diagnostic'
@@ -464,6 +543,7 @@ export interface FileRouteTypes {
     | '/soluciones/operacion'
     | '/blog'
     | '/nosotros'
+    | '/sectores'
     | '/sistemas'
     | '/soluciones'
     | '/api/admin/debug'
@@ -497,6 +577,12 @@ export interface FileRouteTypes {
     | '/nosotros/como-trabajamos'
     | '/ops/ai-control'
     | '/ops/login'
+    | '/sectores/construccion-inmobiliario'
+    | '/sectores/ecommerce'
+    | '/sectores/educacion'
+    | '/sectores/industria-distribucion'
+    | '/sectores/salud-estetica-odontologia'
+    | '/sectores/servicios-b2b'
     | '/sistemas/demand-system'
     | '/sistemas/operations-system'
     | '/sistemas/revenue-diagnostic'
@@ -507,6 +593,7 @@ export interface FileRouteTypes {
     | '/soluciones/operacion'
     | '/blog/'
     | '/nosotros/'
+    | '/sectores/'
     | '/sistemas/'
     | '/soluciones/'
     | '/api/admin/debug'
@@ -541,6 +628,12 @@ export interface RootRouteChildren {
   NosotrosComoTrabajamosRoute: typeof NosotrosComoTrabajamosRoute
   OpsAiControlRoute: typeof OpsAiControlRoute
   OpsLoginRoute: typeof OpsLoginRoute
+  SectoresConstruccionInmobiliarioRoute: typeof SectoresConstruccionInmobiliarioRoute
+  SectoresEcommerceRoute: typeof SectoresEcommerceRoute
+  SectoresEducacionRoute: typeof SectoresEducacionRoute
+  SectoresIndustriaDistribucionRoute: typeof SectoresIndustriaDistribucionRoute
+  SectoresSaludEsteticaOdontologiaRoute: typeof SectoresSaludEsteticaOdontologiaRoute
+  SectoresServiciosB2bRoute: typeof SectoresServiciosB2bRoute
   SistemasDemandSystemRoute: typeof SistemasDemandSystemRoute
   SistemasOperationsSystemRoute: typeof SistemasOperationsSystemRoute
   SistemasRevenueDiagnosticRoute: typeof SistemasRevenueDiagnosticRoute
@@ -551,6 +644,7 @@ export interface RootRouteChildren {
   SolucionesOperacionRoute: typeof SolucionesOperacionRoute
   BlogIndexRoute: typeof BlogIndexRoute
   NosotrosIndexRoute: typeof NosotrosIndexRoute
+  SectoresIndexRoute: typeof SectoresIndexRoute
   SistemasIndexRoute: typeof SistemasIndexRoute
   SolucionesIndexRoute: typeof SolucionesIndexRoute
   ApiAdminDebugRoute: typeof ApiAdminDebugRoute
@@ -682,6 +776,55 @@ declare module '@tanstack/react-router' {
       path: '/ops/login'
       fullPath: '/ops/login'
       preLoaderRoute: typeof OpsLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sectores/': {
+      id: '/sectores/'
+      path: '/sectores'
+      fullPath: '/sectores/'
+      preLoaderRoute: typeof SectoresIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sectores/construccion-inmobiliario': {
+      id: '/sectores/construccion-inmobiliario'
+      path: '/sectores/construccion-inmobiliario'
+      fullPath: '/sectores/construccion-inmobiliario'
+      preLoaderRoute: typeof SectoresConstruccionInmobiliarioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sectores/ecommerce': {
+      id: '/sectores/ecommerce'
+      path: '/sectores/ecommerce'
+      fullPath: '/sectores/ecommerce'
+      preLoaderRoute: typeof SectoresEcommerceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sectores/educacion': {
+      id: '/sectores/educacion'
+      path: '/sectores/educacion'
+      fullPath: '/sectores/educacion'
+      preLoaderRoute: typeof SectoresEducacionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sectores/industria-distribucion': {
+      id: '/sectores/industria-distribucion'
+      path: '/sectores/industria-distribucion'
+      fullPath: '/sectores/industria-distribucion'
+      preLoaderRoute: typeof SectoresIndustriaDistribucionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sectores/salud-estetica-odontologia': {
+      id: '/sectores/salud-estetica-odontologia'
+      path: '/sectores/salud-estetica-odontologia'
+      fullPath: '/sectores/salud-estetica-odontologia'
+      preLoaderRoute: typeof SectoresSaludEsteticaOdontologiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sectores/servicios-b2b': {
+      id: '/sectores/servicios-b2b'
+      path: '/sectores/servicios-b2b'
+      fullPath: '/sectores/servicios-b2b'
+      preLoaderRoute: typeof SectoresServiciosB2bRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sistemas/': {
@@ -877,6 +1020,12 @@ const rootRouteChildren: RootRouteChildren = {
   NosotrosComoTrabajamosRoute: NosotrosComoTrabajamosRoute,
   OpsAiControlRoute: OpsAiControlRoute,
   OpsLoginRoute: OpsLoginRoute,
+  SectoresConstruccionInmobiliarioRoute: SectoresConstruccionInmobiliarioRoute,
+  SectoresEcommerceRoute: SectoresEcommerceRoute,
+  SectoresEducacionRoute: SectoresEducacionRoute,
+  SectoresIndustriaDistribucionRoute: SectoresIndustriaDistribucionRoute,
+  SectoresSaludEsteticaOdontologiaRoute: SectoresSaludEsteticaOdontologiaRoute,
+  SectoresServiciosB2bRoute: SectoresServiciosB2bRoute,
   SistemasDemandSystemRoute: SistemasDemandSystemRoute,
   SistemasOperationsSystemRoute: SistemasOperationsSystemRoute,
   SistemasRevenueDiagnosticRoute: SistemasRevenueDiagnosticRoute,
@@ -887,6 +1036,7 @@ const rootRouteChildren: RootRouteChildren = {
   SolucionesOperacionRoute: SolucionesOperacionRoute,
   BlogIndexRoute: BlogIndexRoute,
   NosotrosIndexRoute: NosotrosIndexRoute,
+  SectoresIndexRoute: SectoresIndexRoute,
   SistemasIndexRoute: SistemasIndexRoute,
   SolucionesIndexRoute: SolucionesIndexRoute,
   ApiAdminDebugRoute: ApiAdminDebugRoute,

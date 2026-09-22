@@ -102,6 +102,7 @@ const pageMarkup = `
 <div class="nav-links">
 <a href="/soluciones">Soluciones</a>
 <a href="/sistemas">Sistemas</a>
+<a href="/sectores">Sectores</a>
 <a href="/nosotros">Nosotros</a>
 <a href="/blog">Blog</a>
 <div class="nav-menu-footer">
@@ -268,6 +269,7 @@ Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
 <ul>
 <li><a href="/soluciones">Soluciones</a></li>
 <li><a href="/sistemas">Sistemas</a></li>
+<li><a href="/sectores">Sectores</a></li>
 <li><a href="/nosotros">Nosotros</a></li>
 <li><a href="/nosotros/como-trabajamos">Método</a></li>
 <li><a href="/sistemas/revenue-diagnostic#faq">FAQ</a></li>
