@@ -4458,3 +4458,13 @@ header.scrolled {
     pointer-events: auto;
   }
 }
+
+/* fix apilado: el drawer y su X quedan por encima de la cápsula derecha */
+@media (max-width: 1152px) {
+  .nav-links.mobile-open {
+    z-index: 230;
+  }
+  body.menu-open .nav-right {
+    pointer-events: none;
+  }
+}
