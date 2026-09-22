@@ -28,7 +28,7 @@ export function SiteHeader() {
             <div className="nav-links">
               <a href="/#servicios">Soluciones</a>
               <a href="/#sistema">Sistemas</a>
-              <a href="/#quienes">Nosotros</a>
+              <a href="/nosotros">Nosotros</a>
               <a href="/blog">Blog</a>
 
               <div className="nav-menu-footer">
@@ -73,6 +73,12 @@ export function SiteFooter() {
           <div className="footer-col">
             <h5>Navegar</h5>
             <ul>
+              <li>
+                <a href="/nosotros">Nosotros</a>
+              </li>
+              <li>
+                <a href="/nosotros/como-trabajamos">Método</a>
+              </li>
               <li>
                 <a href="/sistemas/revenue-diagnostic#faq">FAQ</a>
               </li>

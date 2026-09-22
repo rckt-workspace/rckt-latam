@@ -21,6 +21,8 @@ import { Route as ApiLeadsRouteImport } from './routes/api/leads'
 import { Route as ApiSaveChatLeadRouteImport } from './routes/api/save-chat-lead'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as NosotrosIndexRouteImport } from './routes/nosotros.index'
+import { Route as NosotrosComoTrabajamosRouteImport } from './routes/nosotros.como-trabajamos'
 import { Route as OpsAiControlRouteImport } from './routes/ops/ai-control'
 import { Route as OpsLoginRouteImport } from './routes/ops/login'
 import { Route as SistemasRevenueDiagnosticRouteImport } from './routes/sistemas.revenue-diagnostic'
@@ -98,6 +100,16 @@ const BlogIndexRoute = BlogIndexRouteImport.update({
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/blog/$slug',
   path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NosotrosIndexRoute = NosotrosIndexRouteImport.update({
+  id: '/nosotros/',
+  path: '/nosotros/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NosotrosComoTrabajamosRoute = NosotrosComoTrabajamosRouteImport.update({
+  id: '/nosotros/como-trabajamos',
+  path: '/nosotros/como-trabajamos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OpsAiControlRoute = OpsAiControlRouteImport.update({
@@ -207,10 +219,12 @@ export interface FileRoutesByFullPath {
   '/api/leads': typeof ApiLeadsRoute
   '/api/save-chat-lead': typeof ApiSaveChatLeadRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/nosotros/como-trabajamos': typeof NosotrosComoTrabajamosRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
   '/sistemas/revenue-diagnostic': typeof SistemasRevenueDiagnosticRoute
   '/blog/': typeof BlogIndexRoute
+  '/nosotros/': typeof NosotrosIndexRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
@@ -239,10 +253,12 @@ export interface FileRoutesByTo {
   '/api/leads': typeof ApiLeadsRoute
   '/api/save-chat-lead': typeof ApiSaveChatLeadRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/nosotros/como-trabajamos': typeof NosotrosComoTrabajamosRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
   '/sistemas/revenue-diagnostic': typeof SistemasRevenueDiagnosticRoute
   '/blog': typeof BlogIndexRoute
+  '/nosotros': typeof NosotrosIndexRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
@@ -272,10 +288,12 @@ export interface FileRoutesById {
   '/api/leads': typeof ApiLeadsRoute
   '/api/save-chat-lead': typeof ApiSaveChatLeadRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/nosotros/como-trabajamos': typeof NosotrosComoTrabajamosRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
   '/sistemas/revenue-diagnostic': typeof SistemasRevenueDiagnosticRoute
   '/blog/': typeof BlogIndexRoute
+  '/nosotros/': typeof NosotrosIndexRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
@@ -306,10 +324,12 @@ export interface FileRouteTypes {
     | '/api/leads'
     | '/api/save-chat-lead'
     | '/blog/$slug'
+    | '/nosotros/como-trabajamos'
     | '/ops/ai-control'
     | '/ops/login'
     | '/sistemas/revenue-diagnostic'
     | '/blog/'
+    | '/nosotros/'
     | '/api/admin/debug'
     | '/api/admin/debug-verify'
     | '/api/admin/login'
@@ -338,10 +358,12 @@ export interface FileRouteTypes {
     | '/api/leads'
     | '/api/save-chat-lead'
     | '/blog/$slug'
+    | '/nosotros/como-trabajamos'
     | '/ops/ai-control'
     | '/ops/login'
     | '/sistemas/revenue-diagnostic'
     | '/blog'
+    | '/nosotros'
     | '/api/admin/debug'
     | '/api/admin/debug-verify'
     | '/api/admin/login'
@@ -370,10 +392,12 @@ export interface FileRouteTypes {
     | '/api/leads'
     | '/api/save-chat-lead'
     | '/blog/$slug'
+    | '/nosotros/como-trabajamos'
     | '/ops/ai-control'
     | '/ops/login'
     | '/sistemas/revenue-diagnostic'
     | '/blog/'
+    | '/nosotros/'
     | '/api/admin/debug'
     | '/api/admin/debug-verify'
     | '/api/admin/login'
@@ -403,10 +427,12 @@ export interface RootRouteChildren {
   ApiLeadsRoute: typeof ApiLeadsRoute
   ApiSaveChatLeadRoute: typeof ApiSaveChatLeadRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  NosotrosComoTrabajamosRoute: typeof NosotrosComoTrabajamosRoute
   OpsAiControlRoute: typeof OpsAiControlRoute
   OpsLoginRoute: typeof OpsLoginRoute
   SistemasRevenueDiagnosticRoute: typeof SistemasRevenueDiagnosticRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  NosotrosIndexRoute: typeof NosotrosIndexRoute
   ApiAdminDebugRoute: typeof ApiAdminDebugRoute
   ApiAdminDebugVerifyRoute: typeof ApiAdminDebugVerifyRoute
   ApiAdminLoginRoute: typeof ApiAdminLoginRoute
@@ -508,6 +534,20 @@ declare module '@tanstack/react-router' {
       path: '/blog/$slug'
       fullPath: '/blog/$slug'
       preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nosotros/': {
+      id: '/nosotros/'
+      path: '/nosotros'
+      fullPath: '/nosotros/'
+      preLoaderRoute: typeof NosotrosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nosotros/como-trabajamos': {
+      id: '/nosotros/como-trabajamos'
+      path: '/nosotros/como-trabajamos'
+      fullPath: '/nosotros/como-trabajamos'
+      preLoaderRoute: typeof NosotrosComoTrabajamosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ops/ai-control': {
@@ -651,10 +691,12 @@ const rootRouteChildren: RootRouteChildren = {
   ApiLeadsRoute: ApiLeadsRoute,
   ApiSaveChatLeadRoute: ApiSaveChatLeadRoute,
   BlogSlugRoute: BlogSlugRoute,
+  NosotrosComoTrabajamosRoute: NosotrosComoTrabajamosRoute,
   OpsAiControlRoute: OpsAiControlRoute,
   OpsLoginRoute: OpsLoginRoute,
   SistemasRevenueDiagnosticRoute: SistemasRevenueDiagnosticRoute,
   BlogIndexRoute: BlogIndexRoute,
+  NosotrosIndexRoute: NosotrosIndexRoute,
   ApiAdminDebugRoute: ApiAdminDebugRoute,
   ApiAdminDebugVerifyRoute: ApiAdminDebugVerifyRoute,
   ApiAdminLoginRoute: ApiAdminLoginRoute,
