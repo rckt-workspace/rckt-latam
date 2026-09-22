@@ -6,6 +6,10 @@ import logoLightAsset from "@/assets/rckt-logo-light.png";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
+// TODO: reemplazar por el número real de WhatsApp Business (formato internacional, sin signos).
+const WHATSAPP_NUMBER = "573000000000";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola,%20quiero%20revisar%20mi%20proceso%20comercial`;
+
 const services = [
   [
     "AI Growth Audit",
