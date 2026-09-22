@@ -263,10 +263,13 @@ img {
 .logo {
   display: inline-flex;
   align-items: center;
+  flex-shrink: 0;
 }
 .logo img {
   height: 30px;
   width: auto;
+  max-width: none;
+  flex-shrink: 0;
   display: block;
 }
 
