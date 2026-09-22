@@ -120,7 +120,7 @@ const pageMarkup = `
 <button id="themeDark" type="button">Oscuro</button>
 </div>
 </div>
-<a class="btn hero-nav-cta" href="#contacto">Solicitar diagnóstico</a>
+<a class="btn hero-nav-cta" href="/sistemas/revenue-diagnostic">Solicitar diagnóstico</a>
 <button aria-label="Abrir menú" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
 </div>
 </nav>
@@ -133,7 +133,7 @@ const pageMarkup = `
 <p class="sub">Un solo sistema entre tu pauta y tu cuenta de resultados. Del clic al cierre.</p>
 <div class="hero-actions">
 <a class="btn hero-primary-cta" href="${WHATSAPP_URL}" target="_blank" rel="noopener">Revisar mi proceso comercial →</a>
-<a class="btn hero-primary-cta" href="#contacto">Solicitar diagnóstico →</a>
+<a class="btn hero-primary-cta" href="/sistemas/revenue-diagnostic">Solicitar diagnóstico →</a>
 </div>
 </div>
 </div>

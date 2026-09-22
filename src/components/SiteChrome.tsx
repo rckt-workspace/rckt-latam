@@ -41,7 +41,7 @@ export function SiteHeader() {
             <div className="nav-right-desktop">
               <ThemeSwitch />
             </div>
-            <a className="btn hero-nav-cta" href="/#contacto">
+            <a className="btn hero-nav-cta" href="/sistemas/revenue-diagnostic">
               Solicitar diagnóstico
             </a>
             <button aria-label="Abrir menú" className="nav-toggle" id="navToggle">
