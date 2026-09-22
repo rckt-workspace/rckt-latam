@@ -280,9 +280,9 @@ function RevenueDiagnostic() {
               <span className="kicker ital-label">Preguntas</span>
               <span className="divider"></span>
             </div>
-            <div className="faq-list">
+            <div className="faq-list rv">
               {faqs.map(([q, a], i) => (
-                <div className={`faq-item rv${abierta === i ? " open" : ""}`} key={q}>
+                <div className={`faq-item${abierta === i ? " open" : ""}`} key={q}>
                   <button
                     className="faq-q"
                     type="button"
