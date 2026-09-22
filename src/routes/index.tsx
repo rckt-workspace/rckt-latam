@@ -139,7 +139,7 @@ const pageMarkup = `
 <section class="band" id="sistema">
 <div class="container">
 <div class="section-head">
-<span class="num">01.</span>
+<span class="num">05.</span>
 <span class="kicker ital-label">El estado del mercado</span>
 <span class="divider"></span>
 </div>
@@ -169,7 +169,7 @@ const pageMarkup = `
 <section class="band">
 <div class="container">
 <div class="section-head">
-<span class="num">02.</span>
+<span class="num">06.</span>
 <span class="kicker ital-label">Un sistema operativo de crecimiento</span>
 <span class="divider"></span>
 </div>
@@ -201,7 +201,7 @@ const pageMarkup = `
 <section class="band" id="pilares">
 <div class="container">
 <div class="section-head">
-<span class="num">03.</span>
+<span class="num">07.</span>
 <span class="kicker ital-label">Los 5 pilares</span>
 <span class="divider"></span>
 </div>
@@ -238,7 +238,7 @@ const pageMarkup = `
 <section class="band band-alt" data-mode="editorial" id="quienes">
 <div class="container">
 <div class="section-head">
-<span class="num">04.</span>
+<span class="num">08.</span>
 <span class="kicker ital-label">Qué es RCKT</span>
 <span class="divider"></span>
 </div>
@@ -258,7 +258,7 @@ const pageMarkup = `
 <section class="band" data-mode="motion" id="servicios">
 <div class="container">
 <div class="section-head">
-<span class="num">05.</span>
+<span class="num">09.</span>
 <span class="kicker ital-label">Servicios · empieza por aquí</span>
 <span class="divider"></span>
 </div>
@@ -307,7 +307,7 @@ const pageMarkup = `
 <section class="band band-alt" data-mode="motion">
 <div class="container">
 <div class="section-head">
-<span class="num">06.</span>
+<span class="num">10.</span>
 <span class="kicker ital-label">Cómo se organiza todo</span>
 <span class="divider"></span>
 </div>
@@ -350,7 +350,7 @@ const pageMarkup = `
 <section class="band" data-mode="human" id="metodo">
 <div class="container">
 <div class="section-head">
-<span class="num">07.</span>
+<span class="num">11.</span>
 <span class="kicker ital-label">Método</span>
 <span class="divider"></span>
 </div>
@@ -407,7 +407,7 @@ const pageMarkup = `
 <section class="band band-alt" data-mode="human" id="faq">
 <div class="container">
 <div class="section-head">
-<span class="num">08.</span>
+<span class="num">12.</span>
 <span class="kicker ital-label">Preguntas frecuentes</span>
 <span class="divider"></span>
 </div>
