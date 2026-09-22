@@ -1,5 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { verifyAdminSessionFromRequest } from "@/lib/admin-auth";
+import type { SupabaseClient } from "@supabase/supabase-js";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type LooseSupabaseClient = SupabaseClient<any, "public", any>;
 
 export const Route = createFileRoute("/api/admin/people/blog")({
   staticData: { sitemap: false },
@@ -11,7 +15,9 @@ export const Route = createFileRoute("/api/admin/people/blog")({
           return Response.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+        const { supabaseAdmin: typedSupabaseAdmin } = await import("@/integrations/supabase/client.server")
+        // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
+        const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
         const url = new URL(request.url);
         const type = url.searchParams.get("type");
 
@@ -46,7 +52,9 @@ export const Route = createFileRoute("/api/admin/people/blog")({
           return Response.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+        const { supabaseAdmin: typedSupabaseAdmin } = await import("@/integrations/supabase/client.server")
+        // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
+        const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
 
         try {
           const body = await request.json();
@@ -104,7 +112,9 @@ export const Route = createFileRoute("/api/admin/people/blog")({
           return Response.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+        const { supabaseAdmin: typedSupabaseAdmin } = await import("@/integrations/supabase/client.server")
+        // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
+        const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
 
         try {
           const body = await request.json();
@@ -139,7 +149,9 @@ export const Route = createFileRoute("/api/admin/people/blog")({
           return Response.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+        const { supabaseAdmin: typedSupabaseAdmin } = await import("@/integrations/supabase/client.server")
+        // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
+        const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
 
         try {
           const body = await request.json();
