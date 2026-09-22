@@ -2077,16 +2077,16 @@ footer {
   .principios .principio:nth-child(3) {
     transition-delay: 0.18s;
   }
-  .faq-list .faq-item:nth-child(2) {
+  .faq-list .faq-item.rv:nth-child(2) {
     transition-delay: 0.07s;
   }
-  .faq-list .faq-item:nth-child(3) {
+  .faq-list .faq-item.rv:nth-child(3) {
     transition-delay: 0.14s;
   }
-  .faq-list .faq-item:nth-child(4) {
+  .faq-list .faq-item.rv:nth-child(4) {
     transition-delay: 0.21s;
   }
-  .faq-list .faq-item:nth-child(5) {
+  .faq-list .faq-item.rv:nth-child(5) {
     transition-delay: 0.28s;
   }
 
