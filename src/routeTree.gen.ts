@@ -28,7 +28,9 @@ import { Route as OpsLoginRouteImport } from './routes/ops/login'
 import { Route as SectoresIndexRouteImport } from './routes/sectores.index'
 import { Route as SectoresConstruccionInmobiliarioRouteImport } from './routes/sectores.construccion-inmobiliario'
 import { Route as SectoresEcommerceRouteImport } from './routes/sectores.ecommerce'
+import { Route as SectoresEducacionRouteImport } from './routes/sectores.educacion'
 import { Route as SectoresIndustriaDistribucionRouteImport } from './routes/sectores.industria-distribucion'
+import { Route as SectoresSaludEsteticaOdontologiaRouteImport } from './routes/sectores.salud-estetica-odontologia'
 import { Route as SectoresServiciosB2bRouteImport } from './routes/sectores.servicios-b2b'
 import { Route as SistemasIndexRouteImport } from './routes/sistemas.index'
 import { Route as SistemasDemandSystemRouteImport } from './routes/sistemas.demand-system'
@@ -152,10 +154,21 @@ const SectoresEcommerceRoute = SectoresEcommerceRouteImport.update({
   path: '/sectores/ecommerce',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SectoresEducacionRoute = SectoresEducacionRouteImport.update({
+  id: '/sectores/educacion',
+  path: '/sectores/educacion',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SectoresIndustriaDistribucionRoute =
   SectoresIndustriaDistribucionRouteImport.update({
     id: '/sectores/industria-distribucion',
     path: '/sectores/industria-distribucion',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SectoresSaludEsteticaOdontologiaRoute =
+  SectoresSaludEsteticaOdontologiaRouteImport.update({
+    id: '/sectores/salud-estetica-odontologia',
+    path: '/sectores/salud-estetica-odontologia',
     getParentRoute: () => rootRouteImport,
   } as any)
 const SectoresServiciosB2bRoute = SectoresServiciosB2bRouteImport.update({
@@ -313,7 +326,9 @@ export interface FileRoutesByFullPath {
   '/ops/login': typeof OpsLoginRoute
   '/sectores/construccion-inmobiliario': typeof SectoresConstruccionInmobiliarioRoute
   '/sectores/ecommerce': typeof SectoresEcommerceRoute
+  '/sectores/educacion': typeof SectoresEducacionRoute
   '/sectores/industria-distribucion': typeof SectoresIndustriaDistribucionRoute
+  '/sectores/salud-estetica-odontologia': typeof SectoresSaludEsteticaOdontologiaRoute
   '/sectores/servicios-b2b': typeof SectoresServiciosB2bRoute
   '/sistemas/demand-system': typeof SistemasDemandSystemRoute
   '/sistemas/operations-system': typeof SistemasOperationsSystemRoute
@@ -361,7 +376,9 @@ export interface FileRoutesByTo {
   '/ops/login': typeof OpsLoginRoute
   '/sectores/construccion-inmobiliario': typeof SectoresConstruccionInmobiliarioRoute
   '/sectores/ecommerce': typeof SectoresEcommerceRoute
+  '/sectores/educacion': typeof SectoresEducacionRoute
   '/sectores/industria-distribucion': typeof SectoresIndustriaDistribucionRoute
+  '/sectores/salud-estetica-odontologia': typeof SectoresSaludEsteticaOdontologiaRoute
   '/sectores/servicios-b2b': typeof SectoresServiciosB2bRoute
   '/sistemas/demand-system': typeof SistemasDemandSystemRoute
   '/sistemas/operations-system': typeof SistemasOperationsSystemRoute
@@ -410,7 +427,9 @@ export interface FileRoutesById {
   '/ops/login': typeof OpsLoginRoute
   '/sectores/construccion-inmobiliario': typeof SectoresConstruccionInmobiliarioRoute
   '/sectores/ecommerce': typeof SectoresEcommerceRoute
+  '/sectores/educacion': typeof SectoresEducacionRoute
   '/sectores/industria-distribucion': typeof SectoresIndustriaDistribucionRoute
+  '/sectores/salud-estetica-odontologia': typeof SectoresSaludEsteticaOdontologiaRoute
   '/sectores/servicios-b2b': typeof SectoresServiciosB2bRoute
   '/sistemas/demand-system': typeof SistemasDemandSystemRoute
   '/sistemas/operations-system': typeof SistemasOperationsSystemRoute
@@ -460,7 +479,9 @@ export interface FileRouteTypes {
     | '/ops/login'
     | '/sectores/construccion-inmobiliario'
     | '/sectores/ecommerce'
+    | '/sectores/educacion'
     | '/sectores/industria-distribucion'
+    | '/sectores/salud-estetica-odontologia'
     | '/sectores/servicios-b2b'
     | '/sistemas/demand-system'
     | '/sistemas/operations-system'
@@ -508,7 +529,9 @@ export interface FileRouteTypes {
     | '/ops/login'
     | '/sectores/construccion-inmobiliario'
     | '/sectores/ecommerce'
+    | '/sectores/educacion'
     | '/sectores/industria-distribucion'
+    | '/sectores/salud-estetica-odontologia'
     | '/sectores/servicios-b2b'
     | '/sistemas/demand-system'
     | '/sistemas/operations-system'
@@ -556,7 +579,9 @@ export interface FileRouteTypes {
     | '/ops/login'
     | '/sectores/construccion-inmobiliario'
     | '/sectores/ecommerce'
+    | '/sectores/educacion'
     | '/sectores/industria-distribucion'
+    | '/sectores/salud-estetica-odontologia'
     | '/sectores/servicios-b2b'
     | '/sistemas/demand-system'
     | '/sistemas/operations-system'
@@ -605,7 +630,9 @@ export interface RootRouteChildren {
   OpsLoginRoute: typeof OpsLoginRoute
   SectoresConstruccionInmobiliarioRoute: typeof SectoresConstruccionInmobiliarioRoute
   SectoresEcommerceRoute: typeof SectoresEcommerceRoute
+  SectoresEducacionRoute: typeof SectoresEducacionRoute
   SectoresIndustriaDistribucionRoute: typeof SectoresIndustriaDistribucionRoute
+  SectoresSaludEsteticaOdontologiaRoute: typeof SectoresSaludEsteticaOdontologiaRoute
   SectoresServiciosB2bRoute: typeof SectoresServiciosB2bRoute
   SistemasDemandSystemRoute: typeof SistemasDemandSystemRoute
   SistemasOperationsSystemRoute: typeof SistemasOperationsSystemRoute
@@ -772,11 +799,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SectoresEcommerceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sectores/educacion': {
+      id: '/sectores/educacion'
+      path: '/sectores/educacion'
+      fullPath: '/sectores/educacion'
+      preLoaderRoute: typeof SectoresEducacionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sectores/industria-distribucion': {
       id: '/sectores/industria-distribucion'
       path: '/sectores/industria-distribucion'
       fullPath: '/sectores/industria-distribucion'
       preLoaderRoute: typeof SectoresIndustriaDistribucionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sectores/salud-estetica-odontologia': {
+      id: '/sectores/salud-estetica-odontologia'
+      path: '/sectores/salud-estetica-odontologia'
+      fullPath: '/sectores/salud-estetica-odontologia'
+      preLoaderRoute: typeof SectoresSaludEsteticaOdontologiaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sectores/servicios-b2b': {
@@ -981,7 +1022,9 @@ const rootRouteChildren: RootRouteChildren = {
   OpsLoginRoute: OpsLoginRoute,
   SectoresConstruccionInmobiliarioRoute: SectoresConstruccionInmobiliarioRoute,
   SectoresEcommerceRoute: SectoresEcommerceRoute,
+  SectoresEducacionRoute: SectoresEducacionRoute,
   SectoresIndustriaDistribucionRoute: SectoresIndustriaDistribucionRoute,
+  SectoresSaludEsteticaOdontologiaRoute: SectoresSaludEsteticaOdontologiaRoute,
   SectoresServiciosB2bRoute: SectoresServiciosB2bRoute,
   SistemasDemandSystemRoute: SistemasDemandSystemRoute,
   SistemasOperationsSystemRoute: SistemasOperationsSystemRoute,
