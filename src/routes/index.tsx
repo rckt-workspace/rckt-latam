@@ -603,7 +603,7 @@ Vender mejor es decirle que no al prospecto que no encaja, aunque duela el mes. 
 <div class="container">
 <span class="kicker">Siguiente paso</span>
 <h2 class="rv">El siguiente paso empieza con claridad.</h2>
-<a class="btn btn-primary" href="#contacto">Solicitar diagnóstico →</a>
+<a class="btn btn-primary" href="${WHATSAPP_URL}" target="_blank" rel="noopener">Revisar mi proceso comercial →</a>
 </div>
 </section>
 </main>
