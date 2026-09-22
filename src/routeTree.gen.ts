@@ -26,6 +26,10 @@ import { Route as NosotrosComoTrabajamosRouteImport } from './routes/nosotros.co
 import { Route as OpsAiControlRouteImport } from './routes/ops/ai-control'
 import { Route as OpsLoginRouteImport } from './routes/ops/login'
 import { Route as SistemasRevenueDiagnosticRouteImport } from './routes/sistemas.revenue-diagnostic'
+import { Route as SolucionesIndexRouteImport } from './routes/soluciones.index'
+import { Route as SolucionesCaptacionYCierreRouteImport } from './routes/soluciones.captacion-y-cierre'
+import { Route as SolucionesEcommerceRentableRouteImport } from './routes/soluciones.ecommerce-rentable'
+import { Route as SolucionesOperacionRouteImport } from './routes/soluciones.operacion'
 import { Route as ApiAdminDebugRouteImport } from './routes/api/admin/debug'
 import { Route as ApiAdminDebugVerifyRouteImport } from './routes/api/admin/debug-verify'
 import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
@@ -128,6 +132,28 @@ const SistemasRevenueDiagnosticRoute =
     path: '/sistemas/revenue-diagnostic',
     getParentRoute: () => rootRouteImport,
   } as any)
+const SolucionesIndexRoute = SolucionesIndexRouteImport.update({
+  id: '/soluciones/',
+  path: '/soluciones/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolucionesCaptacionYCierreRoute =
+  SolucionesCaptacionYCierreRouteImport.update({
+    id: '/soluciones/captacion-y-cierre',
+    path: '/soluciones/captacion-y-cierre',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SolucionesEcommerceRentableRoute =
+  SolucionesEcommerceRentableRouteImport.update({
+    id: '/soluciones/ecommerce-rentable',
+    path: '/soluciones/ecommerce-rentable',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SolucionesOperacionRoute = SolucionesOperacionRouteImport.update({
+  id: '/soluciones/operacion',
+  path: '/soluciones/operacion',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAdminDebugRoute = ApiAdminDebugRouteImport.update({
   id: '/api/admin/debug',
   path: '/api/admin/debug',
@@ -223,8 +249,12 @@ export interface FileRoutesByFullPath {
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
   '/sistemas/revenue-diagnostic': typeof SistemasRevenueDiagnosticRoute
+  '/soluciones/captacion-y-cierre': typeof SolucionesCaptacionYCierreRoute
+  '/soluciones/ecommerce-rentable': typeof SolucionesEcommerceRentableRoute
+  '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog/': typeof BlogIndexRoute
   '/nosotros/': typeof NosotrosIndexRoute
+  '/soluciones/': typeof SolucionesIndexRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
@@ -257,8 +287,12 @@ export interface FileRoutesByTo {
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
   '/sistemas/revenue-diagnostic': typeof SistemasRevenueDiagnosticRoute
+  '/soluciones/captacion-y-cierre': typeof SolucionesCaptacionYCierreRoute
+  '/soluciones/ecommerce-rentable': typeof SolucionesEcommerceRentableRoute
+  '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog': typeof BlogIndexRoute
   '/nosotros': typeof NosotrosIndexRoute
+  '/soluciones': typeof SolucionesIndexRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
@@ -292,8 +326,12 @@ export interface FileRoutesById {
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
   '/sistemas/revenue-diagnostic': typeof SistemasRevenueDiagnosticRoute
+  '/soluciones/captacion-y-cierre': typeof SolucionesCaptacionYCierreRoute
+  '/soluciones/ecommerce-rentable': typeof SolucionesEcommerceRentableRoute
+  '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog/': typeof BlogIndexRoute
   '/nosotros/': typeof NosotrosIndexRoute
+  '/soluciones/': typeof SolucionesIndexRoute
   '/api/admin/debug': typeof ApiAdminDebugRoute
   '/api/admin/debug-verify': typeof ApiAdminDebugVerifyRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
@@ -328,8 +366,12 @@ export interface FileRouteTypes {
     | '/ops/ai-control'
     | '/ops/login'
     | '/sistemas/revenue-diagnostic'
+    | '/soluciones/captacion-y-cierre'
+    | '/soluciones/ecommerce-rentable'
+    | '/soluciones/operacion'
     | '/blog/'
     | '/nosotros/'
+    | '/soluciones/'
     | '/api/admin/debug'
     | '/api/admin/debug-verify'
     | '/api/admin/login'
@@ -362,8 +404,12 @@ export interface FileRouteTypes {
     | '/ops/ai-control'
     | '/ops/login'
     | '/sistemas/revenue-diagnostic'
+    | '/soluciones/captacion-y-cierre'
+    | '/soluciones/ecommerce-rentable'
+    | '/soluciones/operacion'
     | '/blog'
     | '/nosotros'
+    | '/soluciones'
     | '/api/admin/debug'
     | '/api/admin/debug-verify'
     | '/api/admin/login'
@@ -396,8 +442,12 @@ export interface FileRouteTypes {
     | '/ops/ai-control'
     | '/ops/login'
     | '/sistemas/revenue-diagnostic'
+    | '/soluciones/captacion-y-cierre'
+    | '/soluciones/ecommerce-rentable'
+    | '/soluciones/operacion'
     | '/blog/'
     | '/nosotros/'
+    | '/soluciones/'
     | '/api/admin/debug'
     | '/api/admin/debug-verify'
     | '/api/admin/login'
@@ -431,8 +481,12 @@ export interface RootRouteChildren {
   OpsAiControlRoute: typeof OpsAiControlRoute
   OpsLoginRoute: typeof OpsLoginRoute
   SistemasRevenueDiagnosticRoute: typeof SistemasRevenueDiagnosticRoute
+  SolucionesCaptacionYCierreRoute: typeof SolucionesCaptacionYCierreRoute
+  SolucionesEcommerceRentableRoute: typeof SolucionesEcommerceRentableRoute
+  SolucionesOperacionRoute: typeof SolucionesOperacionRoute
   BlogIndexRoute: typeof BlogIndexRoute
   NosotrosIndexRoute: typeof NosotrosIndexRoute
+  SolucionesIndexRoute: typeof SolucionesIndexRoute
   ApiAdminDebugRoute: typeof ApiAdminDebugRoute
   ApiAdminDebugVerifyRoute: typeof ApiAdminDebugVerifyRoute
   ApiAdminLoginRoute: typeof ApiAdminLoginRoute
@@ -571,6 +625,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SistemasRevenueDiagnosticRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/soluciones/': {
+      id: '/soluciones/'
+      path: '/soluciones'
+      fullPath: '/soluciones/'
+      preLoaderRoute: typeof SolucionesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/soluciones/captacion-y-cierre': {
+      id: '/soluciones/captacion-y-cierre'
+      path: '/soluciones/captacion-y-cierre'
+      fullPath: '/soluciones/captacion-y-cierre'
+      preLoaderRoute: typeof SolucionesCaptacionYCierreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/soluciones/ecommerce-rentable': {
+      id: '/soluciones/ecommerce-rentable'
+      path: '/soluciones/ecommerce-rentable'
+      fullPath: '/soluciones/ecommerce-rentable'
+      preLoaderRoute: typeof SolucionesEcommerceRentableRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/soluciones/operacion': {
+      id: '/soluciones/operacion'
+      path: '/soluciones/operacion'
+      fullPath: '/soluciones/operacion'
+      preLoaderRoute: typeof SolucionesOperacionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/admin/debug': {
       id: '/api/admin/debug'
       path: '/api/admin/debug'
@@ -695,8 +777,12 @@ const rootRouteChildren: RootRouteChildren = {
   OpsAiControlRoute: OpsAiControlRoute,
   OpsLoginRoute: OpsLoginRoute,
   SistemasRevenueDiagnosticRoute: SistemasRevenueDiagnosticRoute,
+  SolucionesCaptacionYCierreRoute: SolucionesCaptacionYCierreRoute,
+  SolucionesEcommerceRentableRoute: SolucionesEcommerceRentableRoute,
+  SolucionesOperacionRoute: SolucionesOperacionRoute,
   BlogIndexRoute: BlogIndexRoute,
   NosotrosIndexRoute: NosotrosIndexRoute,
+  SolucionesIndexRoute: SolucionesIndexRoute,
   ApiAdminDebugRoute: ApiAdminDebugRoute,
   ApiAdminDebugVerifyRoute: ApiAdminDebugVerifyRoute,
   ApiAdminLoginRoute: ApiAdminLoginRoute,

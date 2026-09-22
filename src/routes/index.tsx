@@ -100,7 +100,7 @@ const pageMarkup = `
 <div class="nav-capsule nav-capsule-left">
 <a class="logo" href="#top"><img alt="RCKT" src="__LOGO_DARK__"/></a>
 <div class="nav-links">
-<a href="#servicios">Soluciones</a>
+<a href="/soluciones">Soluciones</a>
 <a href="#sistema">Sistemas</a>
 <a href="/nosotros">Nosotros</a>
 <a href="/blog">Blog</a>
@@ -266,6 +266,7 @@ Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
 <div class="footer-col">
 <h5>Navegar</h5>
 <ul>
+<li><a href="/soluciones">Soluciones</a></li>
 <li><a href="/nosotros">Nosotros</a></li>
 <li><a href="/nosotros/como-trabajamos">Método</a></li>
 <li><a href="/sistemas/revenue-diagnostic#faq">FAQ</a></li>
