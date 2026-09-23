@@ -234,7 +234,7 @@ const pageMarkup = `
 <div class="system-copy">
 <span class="num">01.</span>
 <h3>Demand System</h3>
-<p>Genera oportunidades cualificadas, medidas hasta la venta, no hasta el formulario.</p>
+<p>Manejamos tu pauta, pero no la optimizamos por leads baratos: la optimizamos por las oportunidades que tu equipo comercial acepta y por las que terminan en venta. Cada semana ves el embudo completo, no solo los clics.</p>
 <a class="btn system-link" href="/sistemas/">Ver sistema <span aria-hidden="true">→</span></a>
 </div>
 </article>
@@ -243,7 +243,7 @@ const pageMarkup = `
 <div class="system-copy">
 <span class="num">02.</span>
 <h3>Sales Flow</h3>
-<p>Núcleo de Conversion System: Ads → WhatsApp → calificación → CRM → seguimiento → venta.</p>
+<p>Hoy pagas por un prospecto, te escribe por WhatsApp, y ahí empieza a perderse: respuesta tarde, sin seguimiento, fuera del CRM, sin saber de qué campaña vino. Sales Flow conecta tu pauta, WhatsApp y CRM para que cada prospecto tenga respuesta, seguimiento y dueño, y para que sepas cuáles compran.</p>
 <a class="btn system-link" href="/sistemas/">Ver sistema <span aria-hidden="true">→</span></a>
 </div>
 </article>
@@ -252,7 +252,7 @@ const pageMarkup = `
 <div class="system-copy">
 <span class="num">03.</span>
 <h3>Operations System</h3>
-<p>Procesos que se ejecutan solos, con aprobación humana en lo que importa.</p>
+<p>No te vendemos IA. Elegimos un proceso que tu equipo repite cien veces por semana, medimos cuánto te cuesta hoy, y en ocho semanas lo dejamos funcionando solo, con una persona aprobando lo que importa.</p>
 <a class="btn system-link" href="/sistemas/">Ver sistema <span aria-hidden="true">→</span></a>
 </div>
 </article>
