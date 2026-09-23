@@ -4959,7 +4959,10 @@ header.scrolled {
   padding: 0;
   border: 2px solid color-mix(in srgb, var(--naranja) 62%, var(--line));
   border-radius: 8px;
-  background: color-mix(in srgb, var(--naranja) 6%, var(--card));
+  background:
+    radial-gradient(circle at 86% 14%, color-mix(in srgb, var(--naranja) 13%, transparent) 0 1px, transparent 1.5px),
+    linear-gradient(135deg, color-mix(in srgb, var(--naranja) 8%, var(--card)), var(--card) 54%, color-mix(in srgb, var(--durazno) 12%, var(--card)));
+  background-size: 18px 18px, 100% 100%;
   box-shadow:
     inset 6px 0 0 var(--naranja),
     0 18px 42px color-mix(in srgb, var(--carbon) 11%, transparent);
@@ -5030,46 +5033,53 @@ header.scrolled {
   border-top: 1px solid var(--line);
 }
 .case-fields > div {
+  position: relative;
   min-width: 0;
-  padding: 17px 18px 17px 0;
+  padding: 18px 18px 19px 0;
   border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--card) 46%, transparent);
 }
 .case-fields > div:nth-child(even) {
   padding-left: 18px;
   border-left: 1px solid var(--line);
 }
 .case-fields dt {
-  margin-bottom: 7px;
-  color: var(--carbon);
-  font-size: 11px;
-  font-weight: 800;
+  margin-bottom: 9px;
+  color: var(--naranja-deep);
+  font-family: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
   line-height: 1.2;
   text-transform: uppercase;
 }
 .case-fields dd {
   margin: 0;
-  color: var(--carbon-soft);
+  color: var(--carbon);
   font-family: "Newsreader", serif;
-  font-size: 18px;
+  font-size: 20px;
   font-style: italic;
+  font-weight: 500;
   line-height: 1.25;
 }
 
 /* ===== Inicio: CTA final ===== */
 .rckt-site .cta-final {
   display: flex;
-  min-height: clamp(560px, 72vh, 760px);
+  min-height: clamp(420px, 48vh, 520px);
   align-items: center;
   overflow: hidden;
-  padding: clamp(96px, 13vw, 170px) 0;
+  padding: clamp(74px, 9vw, 108px) 0;
   background: var(--carbon);
-  text-align: left;
+  text-align: center;
 }
 .cta-final .container {
   position: relative;
   z-index: 2;
   width: 100%;
   max-width: var(--max);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .cta-final-photo,
 .cta-final-overlay {
@@ -5085,18 +5095,35 @@ header.scrolled {
 }
 .cta-final-overlay {
   z-index: 1;
-  background: linear-gradient(90deg, color-mix(in srgb, var(--carbon) 94%, transparent) 0%, color-mix(in srgb, var(--carbon) 80%, transparent) 46%, color-mix(in srgb, var(--carbon) 34%, transparent) 100%);
+  background: color-mix(in srgb, var(--carbon) 72%, transparent);
 }
 .rckt-site .cta-final .kicker,
-.rckt-site .cta-final h2 {
+.rckt-site .cta-final h2,
+.rckt-site .cta-final-copy {
   color: var(--papel-fija);
 }
 .rckt-site .cta-final h2 {
-  max-width: 720px;
-  margin-bottom: 36px;
-  font-size: clamp(42px, 6vw, 74px);
-  line-height: 1.02;
-  text-align: left;
+  max-width: 900px;
+  margin: 0 0 18px;
+  font-size: clamp(38px, 5vw, 62px);
+  line-height: 1.14;
+  text-align: center;
+  text-wrap: balance;
+}
+.rckt-site .cta-final .cta-hand {
+  display: inline-block;
+  color: var(--naranja);
+  font-family: "Homemade Apple", cursive;
+  font-size: 0.83em;
+  font-weight: 400;
+  line-height: 1;
+}
+.rckt-site .cta-final-copy {
+  max-width: 760px;
+  margin: 0 0 28px;
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.55;
+  text-align: center;
   text-wrap: balance;
 }
 .rckt-site .cta-final .btn-primary {
@@ -5161,17 +5188,24 @@ header.scrolled {
     margin-bottom: 22px;
   }
   .rckt-site .cta-final {
-    min-height: 620px;
-    padding: 104px 0 84px;
+    min-height: 470px;
+    padding: 74px 0 66px;
   }
   .cta-final-photo {
     object-position: 70% center;
   }
   .cta-final-overlay {
-    background: linear-gradient(180deg, color-mix(in srgb, var(--carbon) 78%, transparent) 0%, color-mix(in srgb, var(--carbon) 88%, transparent) 70%, color-mix(in srgb, var(--carbon) 94%, transparent) 100%);
+    background: color-mix(in srgb, var(--carbon) 76%, transparent);
   }
   .rckt-site .cta-final h2 {
     max-width: 350px;
-    font-size: 44px;
+    margin-bottom: 20px;
+    font-size: 38px;
+    line-height: 1.2;
+  }
+  .rckt-site .cta-final-copy {
+    max-width: 345px;
+    margin-bottom: 26px;
+    font-size: 15px;
   }
 }
