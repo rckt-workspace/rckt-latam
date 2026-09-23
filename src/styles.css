@@ -4654,6 +4654,27 @@ header.scrolled {
 .systems-section {
   position: relative;
   padding-block: 108px;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: color-mix(in srgb, var(--naranja) 10%, var(--papel));
+  background-image:
+    radial-gradient(circle, color-mix(in srgb, var(--naranja) 23%, transparent) 1px, transparent 1.5px),
+    linear-gradient(115deg, color-mix(in srgb, var(--naranja) 8%, transparent), transparent 42%, color-mix(in srgb, var(--durazno) 15%, transparent));
+  background-size: 22px 22px, 100% 100%;
+  background-position: 0 0, 0 0;
+}
+.systems-section::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    105deg,
+    transparent 0 74px,
+    color-mix(in srgb, var(--naranja) 8%, transparent) 74px 75px
+  );
+  opacity: 0.48;
 }
 .systems-layout {
   display: grid;
@@ -4696,48 +4717,50 @@ header.scrolled {
 #tres-sistemas .systems-stack {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 24px;
   margin: 0;
 }
 #tres-sistemas .system-card {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(210px, 0.88fr) minmax(260px, 1.12fr);
-  min-height: 370px;
+  grid-template-columns: minmax(180px, 0.72fr) minmax(300px, 1.28fr);
+  min-height: 300px;
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 2px solid color-mix(in srgb, var(--naranja) 55%, var(--line));
   border-radius: 8px;
-  background: color-mix(in srgb, var(--card) 92%, transparent);
-  box-shadow: 0 14px 36px color-mix(in srgb, var(--carbon) 8%, transparent);
+  background: color-mix(in srgb, var(--naranja) 7%, var(--card));
+  box-shadow:
+    inset 5px 0 0 var(--naranja),
+    0 14px 34px color-mix(in srgb, var(--naranja) 13%, transparent);
 }
 .system-visual {
   position: relative;
   min-height: 100%;
   overflow: hidden;
-  border-right: 1px solid color-mix(in srgb, var(--naranja) 25%, var(--line));
+  border-right: 1px solid color-mix(in srgb, var(--naranja) 54%, var(--line));
   background:
-    linear-gradient(color-mix(in srgb, var(--naranja) 9%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--naranja) 9%, transparent) 1px, transparent 1px),
-    color-mix(in srgb, var(--mancha-suave) 48%, var(--card));
-  background-size: 28px 28px;
+    linear-gradient(color-mix(in srgb, var(--naranja) 22%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--naranja) 22%, transparent) 1px, transparent 1px),
+    linear-gradient(145deg, color-mix(in srgb, var(--naranja) 28%, var(--card)), color-mix(in srgb, var(--durazno) 54%, var(--card)));
+  background-size: 24px 24px, 24px 24px, 100% 100%;
 }
 .system-visual::after {
   content: "";
   position: absolute;
   inset: 14%;
-  border: 1px solid color-mix(in srgb, var(--naranja) 36%, transparent);
+  border: 2px solid color-mix(in srgb, var(--naranja) 62%, transparent);
   border-radius: 50%;
 }
 .system-visual span {
   position: absolute;
   z-index: 1;
   display: block;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border: 3px solid var(--card);
   border-radius: 50%;
   background: var(--naranja);
-  box-shadow: 0 5px 16px color-mix(in srgb, var(--naranja) 34%, transparent);
+  box-shadow: 0 5px 18px color-mix(in srgb, var(--naranja) 52%, transparent);
 }
 .system-visual span::after {
   content: "";
@@ -4748,7 +4771,7 @@ header.scrolled {
   height: 2px;
   transform: rotate(var(--line-angle, 0deg));
   transform-origin: left center;
-  background: color-mix(in srgb, var(--naranja) 58%, transparent);
+  background: color-mix(in srgb, var(--naranja) 78%, transparent);
 }
 .system-visual span:nth-child(1) { top: 23%; left: 20%; --line-angle: 29deg; }
 .system-visual span:nth-child(2) { top: 39%; left: 58%; --line-angle: 115deg; }
@@ -4778,25 +4801,25 @@ header.scrolled {
   min-width: 0;
   flex-direction: column;
   align-items: flex-start;
-  padding: clamp(32px, 4vw, 52px);
+  padding: clamp(26px, 3vw, 38px);
 }
 #tres-sistemas .system-copy .num {
   display: block;
   width: auto;
   height: auto;
-  margin: 0 0 auto;
+  margin: 0 0 22px;
   padding: 0;
   border: 0;
   border-radius: 0;
   background: transparent;
   color: var(--naranja);
   font-family: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
-  font-size: clamp(42px, 4.5vw, 64px);
+  font-size: clamp(38px, 4vw, 54px);
   font-weight: 600;
   line-height: 0.9;
 }
 #tres-sistemas .system-copy h3 {
-  margin: 46px 0 16px;
+  margin: 0 0 13px;
   color: var(--carbon);
   font-size: clamp(27px, 3.2vw, 42px);
   font-weight: 700;
@@ -4806,7 +4829,7 @@ header.scrolled {
 }
 #tres-sistemas .system-copy p {
   max-width: 480px;
-  margin: 0 0 28px;
+  margin: 0 0 22px;
   color: var(--carbon-soft);
   font-size: 16px;
   line-height: 1.55;
@@ -4869,8 +4892,10 @@ header.scrolled {
   #tres-sistemas .system-card:nth-child(3) { transition-delay: 0.24s; }
   #tres-sistemas .system-card:hover {
     translate: 0 -7px;
-    border-color: color-mix(in srgb, var(--naranja) 42%, var(--line));
-    box-shadow: 0 24px 52px color-mix(in srgb, var(--carbon) 13%, transparent);
+    border-color: var(--naranja);
+    box-shadow:
+      inset 5px 0 0 var(--naranja),
+      0 24px 52px color-mix(in srgb, var(--naranja) 22%, transparent);
   }
   #tres-sistemas .system-card:hover .system-visual {
     background-position: 7px 7px;
@@ -4894,7 +4919,7 @@ header.scrolled {
     max-width: 620px;
   }
   #tres-sistemas .system-card {
-    grid-template-columns: minmax(180px, 0.78fr) minmax(0, 1.22fr);
+    grid-template-columns: minmax(170px, 0.68fr) minmax(0, 1.32fr);
   }
 }
 @media (max-width: 620px) {
@@ -4903,16 +4928,16 @@ header.scrolled {
     min-height: 0;
   }
   .system-visual {
-    min-height: 210px;
+    min-height: 146px;
     border-right: 0;
-    border-bottom: 1px solid color-mix(in srgb, var(--naranja) 25%, var(--line));
+    border-bottom: 1px solid color-mix(in srgb, var(--naranja) 54%, var(--line));
   }
   .system-copy {
-    min-height: 320px;
-    padding: 28px 24px 26px;
+    min-height: 0;
+    padding: 24px 22px 23px;
   }
   #tres-sistemas .system-copy h3 {
-    margin-top: 38px;
+    margin-top: 0;
   }
   #tres-sistemas .systems-closing {
     margin-top: 38px;
