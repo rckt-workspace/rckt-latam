@@ -260,7 +260,6 @@ Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
 </div>
 <div class="three-grid proof-grid">
 <article class="three-card proof-card rv">
-<div class="proof-visual"><img src="__HERO__" alt="Profesional de RCKT en una ficha de caso de crecimiento"/></div>
 <div class="proof-copy">
 <div class="proof-title-row"><div><span class="num">01.</span><h3>Ficha de caso</h3></div><div class="proof-filters" aria-label="Filtros del caso"><span>Sector · [pendiente]</span><span>Sistema · [pendiente]</span><span>Ciudad · [pendiente]</span></div></div>
 <dl class="case-fields">
