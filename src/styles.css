@@ -4649,6 +4649,212 @@ header.scrolled {
     min-height: 0;
   }
 }
+
+/* ===== Inicio: El embudo real ===== */
+.funnel-section {
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: 104px;
+}
+.funnel-container {
+  position: relative;
+  z-index: 2;
+}
+#fugas .funnel-flow {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 0;
+}
+#fugas .funnel-step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-width: 0;
+  min-height: 292px;
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 30px 22px 26px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--carbon) 7%, transparent);
+  backdrop-filter: blur(9px);
+}
+#fugas .funnel-step:not(:last-child) {
+  margin-right: 24px;
+}
+#fugas .funnel-step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: -25px;
+  z-index: 3;
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  transform: translateY(-50%);
+  color: var(--naranja);
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1;
+}
+#fugas .funnel-step .num {
+  display: block;
+  width: auto;
+  min-width: 0;
+  height: auto;
+  margin: 0 0 34px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--naranja);
+  font-family: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(42px, 4vw, 58px);
+  font-weight: 600;
+  line-height: 0.9;
+}
+#fugas .funnel-step h4 {
+  min-height: 52px;
+  margin: 0 0 16px;
+  color: var(--carbon);
+  font-size: 16px;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+#fugas .funnel-step p {
+  margin: 0 0 24px;
+  color: var(--carbon-faint);
+  font-family: "Newsreader", serif;
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.45;
+}
+.funnel-loss {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 5px;
+  margin-top: auto;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--naranja) 14%, transparent);
+}
+.funnel-loss::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--funnel-level, 100%);
+  border-radius: inherit;
+  background: var(--naranja);
+}
+#fugas .funnel-step:nth-child(1) { --funnel-level: 100%; }
+#fugas .funnel-step:nth-child(2) { --funnel-level: 88%; }
+#fugas .funnel-step:nth-child(3) { --funnel-level: 75%; }
+#fugas .funnel-step:nth-child(4) { --funnel-level: 61%; }
+#fugas .funnel-step:nth-child(5) { --funnel-level: 47%; }
+#fugas .funnel-step:nth-child(6) { --funnel-level: 33%; }
+.funnel-glow {
+  position: absolute;
+  z-index: 0;
+  display: block;
+  border-radius: 999px;
+  background: var(--mancha-suave);
+  filter: blur(58px);
+  pointer-events: none;
+}
+.funnel-glow-one {
+  top: 8%;
+  left: -90px;
+  width: 250px;
+  height: 250px;
+  opacity: 0.6;
+}
+.funnel-glow-two {
+  right: -80px;
+  bottom: 4%;
+  width: 280px;
+  height: 280px;
+  opacity: 0.7;
+}
+.funnel-glow-three {
+  top: 35%;
+  left: 48%;
+  width: 150px;
+  height: 150px;
+  opacity: 0.34;
+}
+@media (prefers-reduced-motion: no-preference) {
+  #fugas .funnel-step {
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 0.8, 0.3, 1),
+      translate 0.7s cubic-bezier(0.16, 0.8, 0.3, 1),
+      scale 0.7s cubic-bezier(0.16, 0.8, 0.3, 1),
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+  #fugas .funnel-step:nth-child(2) { transition-delay: 0.1s; }
+  #fugas .funnel-step:nth-child(3) { transition-delay: 0.2s; }
+  #fugas .funnel-step:nth-child(4) { transition-delay: 0.3s; }
+  #fugas .funnel-step:nth-child(5) { transition-delay: 0.4s; }
+  #fugas .funnel-step:nth-child(6) { transition-delay: 0.5s; }
+  #fugas .funnel-step:hover {
+    translate: 0 -6px;
+    border-color: color-mix(in srgb, var(--naranja) 42%, var(--line));
+    box-shadow: 0 20px 42px color-mix(in srgb, var(--carbon) 12%, transparent);
+  }
+}
+@media (max-width: 980px) {
+  .funnel-section {
+    padding-block: 82px;
+  }
+  #fugas .funnel-flow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #fugas .funnel-step {
+    width: calc(100% - var(--funnel-indent, 0px));
+    min-height: 0;
+    margin-left: var(--funnel-indent, 0px);
+    padding: 26px 26px 24px;
+  }
+  #fugas .funnel-step:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 34px;
+  }
+  #fugas .funnel-step:not(:last-child)::after {
+    content: "↓";
+    top: auto;
+    right: 50%;
+    bottom: -31px;
+    transform: translateX(50%);
+  }
+  #fugas .funnel-step:nth-child(1) { --funnel-indent: 0px; }
+  #fugas .funnel-step:nth-child(2) { --funnel-indent: 8px; }
+  #fugas .funnel-step:nth-child(3) { --funnel-indent: 16px; }
+  #fugas .funnel-step:nth-child(4) { --funnel-indent: 24px; }
+  #fugas .funnel-step:nth-child(5) { --funnel-indent: 32px; }
+  #fugas .funnel-step:nth-child(6) { --funnel-indent: 40px; }
+  #fugas .funnel-step .num {
+    margin-bottom: 20px;
+  }
+  #fugas .funnel-step h4 {
+    min-height: 0;
+  }
+}
+@media (max-width: 560px) {
+  #fugas .funnel-step {
+    padding: 24px 22px 22px;
+  }
+  #fugas .funnel-step:nth-child(1) { --funnel-indent: 0px; }
+  #fugas .funnel-step:nth-child(2) { --funnel-indent: 5px; }
+  #fugas .funnel-step:nth-child(3) { --funnel-indent: 10px; }
+  #fugas .funnel-step:nth-child(4) { --funnel-indent: 15px; }
+  #fugas .funnel-step:nth-child(5) { --funnel-indent: 20px; }
+  #fugas .funnel-step:nth-child(6) { --funnel-indent: 25px; }
+}
 @media (max-width: 560px) {
   .problems-section {
     padding-block: 72px;
