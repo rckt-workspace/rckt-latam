@@ -193,36 +193,13 @@ const pageMarkup = `
 </div>
 </div>
 </section>
-<!-- DONDE SE PIERDE EL DINERO -->
-<section class="band band-alt funnel-section" data-mode="motion" id="fugas">
-<span class="funnel-glow funnel-glow-one" aria-hidden="true"></span>
-<span class="funnel-glow funnel-glow-two" aria-hidden="true"></span>
-<span class="funnel-glow funnel-glow-three" aria-hidden="true"></span>
-<div class="container funnel-container">
-<div class="section-head">
-<span class="num">02.</span>
-<span class="kicker ital-label">El embudo real</span>
-<span class="divider"></span>
-</div>
-<h2 class="rv" style="font-size:clamp(26px,3.4vw,36px); margin:0 0 20px; font-weight:800;">Dónde se pierde el dinero</h2>
-<p style="max-width:680px; margin:0 0 40px;">Un embudo, seis fugas: inversión → lead → contacto → calificación → cita → propuesta → venta.</p>
-<div class="metodo-grid funnel-flow">
-<div class="metodo-step funnel-step rv"><span class="num">01.</span><h4>Inversión → lead</h4><p>[cifras del mercado colombiano — pendiente de datos reales]</p><span class="funnel-loss" aria-hidden="true"></span></div>
-<div class="metodo-step funnel-step rv"><span class="num">02.</span><h4>Lead → contacto</h4><p>[cifras del mercado colombiano — pendiente de datos reales]</p><span class="funnel-loss" aria-hidden="true"></span></div>
-<div class="metodo-step funnel-step rv"><span class="num">03.</span><h4>Contacto → calificación</h4><p>[cifras del mercado colombiano — pendiente de datos reales]</p><span class="funnel-loss" aria-hidden="true"></span></div>
-<div class="metodo-step funnel-step rv"><span class="num">04.</span><h4>Calificación → cita</h4><p>[cifras del mercado colombiano — pendiente de datos reales]</p><span class="funnel-loss" aria-hidden="true"></span></div>
-<div class="metodo-step funnel-step rv"><span class="num">05.</span><h4>Cita → propuesta</h4><p>[cifras del mercado colombiano — pendiente de datos reales]</p><span class="funnel-loss" aria-hidden="true"></span></div>
-<div class="metodo-step funnel-step rv"><span class="num">06.</span><h4>Propuesta → venta</h4><p>[cifras del mercado colombiano — pendiente de datos reales]</p><span class="funnel-loss" aria-hidden="true"></span></div>
-</div>
-</div>
-</section>
 <!-- LOS TRES SISTEMAS -->
 <section class="band systems-section" id="tres-sistemas">
 <div class="container systems-container">
 <div class="systems-layout">
 <div class="systems-intro">
 <div class="section-head systems-heading">
-<span class="num">03.</span>
+<span class="num">02.</span>
 <span class="kicker ital-label">Los tres sistemas</span>
 <span class="divider"></span>
 </div>
@@ -277,7 +254,7 @@ Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
 <section class="band band-alt" data-mode="human" id="prueba">
 <div class="container">
 <div class="section-head">
-<span class="num">04.</span>
+<span class="num">03.</span>
 <span class="kicker ital-label">Prueba</span>
 <span class="divider"></span>
 </div>
