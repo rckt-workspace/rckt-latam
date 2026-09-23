@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import logoDarkAsset from "@/assets/rckt-logo-dark.png";
 
 /** Navegación y pie compartidos con la home, más las animaciones del sitio. */
@@ -12,6 +12,68 @@ function ThemeSwitch({ suffix = "" }: { suffix?: string }) {
       <button id={`themeDark${suffix}`} type="button">
         Oscuro
       </button>
+    </div>
+  );
+}
+
+function NosotrosDropdown() {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const isMobileRef = useRef(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      isMobileRef.current = window.innerWidth < 980;
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    if (isOpen && isMobileRef.current) {
+      document.addEventListener("click", handleClickOutside);
+      return () => document.removeEventListener("click", handleClickOutside);
+    }
+  }, [isOpen]);
+
+  const handleClick = () => {
+    if (isMobileRef.current) {
+      setIsOpen(!isOpen);
+    }
+  };
+
+  return (
+    <div className="nav-dropdown" ref={dropdownRef}>
+      <button
+        className="nav-dropdown-trigger"
+        onClick={handleClick}
+        aria-expanded={isOpen}
+        aria-label="Menú de Nosotros"
+      >
+        Nosotros
+        <svg className="nav-dropdown-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M3.5 5.5L7 9l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        </svg>
+      </button>
+      <div className="nav-dropdown-menu-wrap" data-open={isMobileRef.current ? isOpen : undefined}>
+        <div className="nav-dropdown-menu">
+          <a href="/nosotros" className="nav-dropdown-item">
+            Quiénes somos
+          </a>
+          <a href="/nosotros/como-trabajamos" className="nav-dropdown-item">
+            Cómo trabajamos
+          </a>
+          <a href="/trabaja-con-nosotros" className="nav-dropdown-item">
+            Trabaja con nosotros
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
@@ -32,7 +94,7 @@ export function SiteHeader() {
               <a href="/soluciones">Soluciones</a>
               <a href="/sistemas">Sistemas</a>
               <a href="/sectores">Sectores</a>
-              <a href="/nosotros">Nosotros</a>
+              <NosotrosDropdown />
               <a href="/blog">Blog</a>
 
               <div className="nav-menu-footer">
@@ -218,10 +280,36 @@ export function useSiteMotion(deps: unknown[] = []) {
     closeBtn?.addEventListener("click", closeMenu);
     overlay?.addEventListener("click", closeMenu);
     links?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+
+    // Dropdown menu toggle (mobile only - desktop uses CSS hover)
+    const dropdownTrigger = links?.querySelector<HTMLButtonElement>(".nav-dropdown-trigger");
+    const dropdownMenuWrap = links?.querySelector<HTMLElement>(".nav-dropdown-menu-wrap");
+    if (dropdownTrigger && dropdownMenuWrap) {
+      dropdownTrigger.addEventListener("click", (e) => {
+        const isMobile = window.innerWidth < 980;
+        if (!isMobile) return;
+        e.preventDefault();
+        const isOpen = dropdownMenuWrap.getAttribute("data-open") === "true";
+        dropdownMenuWrap.setAttribute("data-open", String(!isOpen));
+        dropdownTrigger.setAttribute("aria-expanded", String(!isOpen));
+      });
+      // Close dropdown when clicking a submenu item
+      dropdownMenuWrap.querySelectorAll<HTMLAnchorElement>("a").forEach((item) => {
+        item.addEventListener("click", () => {
+          dropdownMenuWrap.setAttribute("data-open", "false");
+          dropdownTrigger.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+
     window.addEventListener("keydown", closeOnEsc);
 
     const closeOnResize = () => {
       if (window.innerWidth > 1152) closeMenu();
+      if (dropdownMenuWrap && window.innerWidth < 980) {
+        dropdownMenuWrap.setAttribute("data-open", "false");
+        dropdownTrigger?.setAttribute("aria-expanded", "false");
+      }
     };
     window.addEventListener("resize", closeOnResize);
 
@@ -249,7 +337,19 @@ export function useSiteMotion(deps: unknown[] = []) {
       closeBtn?.removeEventListener("click", closeMenu);
       overlay?.removeEventListener("click", closeMenu);
       links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu));
+      if (dropdownTrigger && dropdownMenuWrap) {
+        dropdownTrigger.removeEventListener("click", () => {});
+        dropdownMenuWrap.querySelectorAll<HTMLAnchorElement>("a").forEach((item) => {
+          item.removeEventListener("click", () => {});
+        });
+      }
       window.removeEventListener("keydown", closeOnEsc);
+      if (dropdownTrigger && dropdownMenuWrap) {
+        dropdownTrigger.removeEventListener("click", () => {});
+        dropdownMenuWrap.querySelectorAll<HTMLAnchorElement>("a").forEach((item) => {
+          item.removeEventListener("click", () => {});
+        });
+      }
       window.removeEventListener("resize", closeOnResize);
       [light, lightMobile].forEach((b) => b?.removeEventListener("click", setLight));
       [dark, darkMobile].forEach((b) => b?.removeEventListener("click", setDark));

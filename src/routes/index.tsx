@@ -104,7 +104,19 @@ const pageMarkup = `
 <a href="/soluciones">Soluciones</a>
 <a href="/sistemas">Sistemas</a>
 <a href="/sectores">Sectores</a>
-<a href="/nosotros">Nosotros</a>
+<div class="nav-dropdown">
+<button class="nav-dropdown-trigger" aria-expanded="false" aria-label="Menú de Nosotros">
+Nosotros
+<svg class="nav-dropdown-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 5.5L7 9l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+</button>
+<div class="nav-dropdown-menu-wrap">
+<div class="nav-dropdown-menu">
+<a href="/nosotros" class="nav-dropdown-item">Quiénes somos</a>
+<a href="/nosotros/como-trabajamos" class="nav-dropdown-item">Cómo trabajamos</a>
+<a href="/trabaja-con-nosotros" class="nav-dropdown-item">Trabaja con nosotros</a>
+</div>
+</div>
+</div>
 <a href="/blog">Blog</a>
 <div class="nav-menu-footer">
 <div class="theme-switch hero-theme-switch">
@@ -478,6 +490,28 @@ function RcktLanding() {
     closeBtn?.addEventListener("click", closeMenu);
     overlay?.addEventListener("click", closeMenu);
     links?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+
+    // Dropdown menu toggle (mobile only - desktop uses CSS hover)
+    const dropdownTrigger = links?.querySelector<HTMLButtonElement>(".nav-dropdown-trigger");
+    const dropdownMenuWrap = links?.querySelector<HTMLElement>(".nav-dropdown-menu-wrap");
+    if (dropdownTrigger && dropdownMenuWrap) {
+      dropdownTrigger.addEventListener("click", (e) => {
+        const isMobile = window.innerWidth < 980;
+        if (!isMobile) return;
+        e.preventDefault();
+        const isOpen = dropdownMenuWrap.getAttribute("data-open") === "true";
+        dropdownMenuWrap.setAttribute("data-open", String(!isOpen));
+        dropdownTrigger.setAttribute("aria-expanded", String(!isOpen));
+      });
+      // Close dropdown when clicking a submenu item
+      dropdownMenuWrap.querySelectorAll<HTMLAnchorElement>("a").forEach((item) => {
+        item.addEventListener("click", () => {
+          dropdownMenuWrap.setAttribute("data-open", "false");
+          dropdownTrigger.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+
     window.addEventListener("resize", closeMenuOnResize);
     window.addEventListener("keydown", closeMenuOnEsc);
 
@@ -534,6 +568,12 @@ function RcktLanding() {
       closeBtn?.removeEventListener("click", closeMenu);
       overlay?.removeEventListener("click", closeMenu);
       links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu));
+      if (dropdownTrigger && dropdownMenuWrap) {
+        dropdownTrigger.removeEventListener("click", () => {});
+        dropdownMenuWrap.querySelectorAll<HTMLAnchorElement>("a").forEach((item) => {
+          item.removeEventListener("click", () => {});
+        });
+      }
       faqButtons.forEach((button) => button.removeEventListener("click", onFaq));
       form?.removeEventListener("submit", onSubmit);
       [light, lightMobile].forEach((b) => b?.removeEventListener("click", setLight));

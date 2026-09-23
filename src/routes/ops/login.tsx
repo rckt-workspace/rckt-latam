@@ -136,7 +136,7 @@ function LoginPage() {
         {/* Branding */}
         <div className="text-center mt-8">
           <p className="text-xs text-muted-foreground tracking-wide">
-            RCKT.es — Growth Operating System
+            RCKT LATAM — Growth Operating System
           </p>
         </div>
       </div>
