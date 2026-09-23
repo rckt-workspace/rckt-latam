@@ -217,31 +217,48 @@ const pageMarkup = `
 </div>
 </section>
 <!-- LOS TRES SISTEMAS -->
-<section class="band" id="tres-sistemas">
-<div class="container">
-<div class="section-head">
+<section class="band systems-section" id="tres-sistemas">
+<div class="container systems-container">
+<div class="systems-layout">
+<div class="systems-intro">
+<div class="section-head systems-heading">
 <span class="num">03.</span>
 <span class="kicker ital-label">Los tres sistemas</span>
 <span class="divider"></span>
 </div>
-<div class="three-grid">
-<div class="three-card rv">
+<p>Tres sistemas. Si algo no cabe en uno de los tres, no lo vendemos.</p>
+</div>
+<div class="three-grid systems-stack">
+<article class="three-card system-card rv">
+<div class="system-visual system-visual-demand" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<div class="system-copy">
 <span class="num">01.</span>
 <h3>Demand System</h3>
 <p>Genera oportunidades cualificadas, medidas hasta la venta, no hasta el formulario.</p>
+<a class="btn system-link" href="/sistemas/">Ver sistema <span aria-hidden="true">→</span></a>
 </div>
-<div class="three-card rv">
+</article>
+<article class="three-card system-card rv">
+<div class="system-visual system-visual-sales" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<div class="system-copy">
 <span class="num">02.</span>
 <h3>Sales Flow</h3>
 <p>Núcleo de Conversion System: Ads → WhatsApp → calificación → CRM → seguimiento → venta.</p>
+<a class="btn system-link" href="/sistemas/">Ver sistema <span aria-hidden="true">→</span></a>
 </div>
-<div class="three-card rv">
+</article>
+<article class="three-card system-card rv">
+<div class="system-visual system-visual-operations" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<div class="system-copy">
 <span class="num">03.</span>
 <h3>Operations System</h3>
 <p>Procesos que se ejecutan solos, con aprobación humana en lo que importa.</p>
+<a class="btn system-link" href="/sistemas/">Ver sistema <span aria-hidden="true">→</span></a>
+</div>
+</article>
 </div>
 </div>
-<div class="juicio">
+<div class="juicio systems-closing rv">
 <span class="tag">Revenue Engine</span>
 Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
 </div>
