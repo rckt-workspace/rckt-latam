@@ -4817,6 +4817,7 @@ header.scrolled {
   #fugas .funnel-step {
     width: calc(100% - var(--funnel-indent, 0px));
     min-height: 0;
+    flex: 0 0 auto;
     margin-left: var(--funnel-indent, 0px);
     padding: 26px 26px 24px;
   }
