@@ -4468,3 +4468,204 @@ header.scrolled {
     pointer-events: none;
   }
 }
+
+/* ===== Inicio: Tres problemas ===== */
+.problems-section {
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: 96px;
+}
+.problems-container {
+  position: relative;
+  z-index: 2;
+}
+.problems-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+.problem-card {
+  position: relative;
+  display: flex;
+  min-height: 580px;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 34px 32px 30px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+  box-shadow: 0 12px 34px color-mix(in srgb, var(--carbon) 8%, transparent);
+  backdrop-filter: blur(10px);
+}
+.problem-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: var(--naranja);
+}
+.problem-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.problem-number {
+  font-family: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
+  color: var(--naranja);
+  font-size: 54px;
+  font-weight: 600;
+  line-height: 1;
+}
+.problem-category {
+  color: var(--carbon-faint);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.problem-card h2 {
+  margin: 0 0 30px;
+  font-family: "Newsreader", serif;
+  color: var(--carbon);
+  font-size: clamp(27px, 2.2vw, 36px);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+.problem-signals {
+  display: grid;
+  gap: 13px;
+  margin-bottom: 32px;
+}
+.problem-signals li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--carbon-soft);
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+.problem-signals li::before {
+  content: "✓";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--naranja);
+  font-size: 12px;
+  font-weight: 800;
+}
+.problem-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--carbon);
+  font-size: 13px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.problem-link span {
+  color: var(--naranja);
+  font-size: 19px;
+  transition: transform 0.25s ease;
+}
+.problem-link:hover span,
+.problem-link:focus-visible span {
+  transform: translateX(5px);
+}
+.problem-link:focus-visible {
+  outline: 2px solid var(--naranja);
+  outline-offset: 5px;
+}
+.problem-glow {
+  position: absolute;
+  z-index: 0;
+  display: block;
+  border-radius: 999px;
+  background: var(--mancha-suave);
+  filter: blur(55px);
+  pointer-events: none;
+}
+.problem-glow-one {
+  top: 7%;
+  right: -70px;
+  width: 260px;
+  height: 260px;
+}
+.problem-glow-two {
+  bottom: 2%;
+  left: -80px;
+  width: 230px;
+  height: 230px;
+  opacity: 0.72;
+}
+.problem-glow-three {
+  right: 37%;
+  bottom: 12%;
+  width: 150px;
+  height: 150px;
+  opacity: 0.42;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .problem-card {
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 0.8, 0.3, 1),
+      translate 0.7s cubic-bezier(0.16, 0.8, 0.3, 1),
+      scale 0.7s cubic-bezier(0.16, 0.8, 0.3, 1),
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+  .problem-card.rv {
+    scale: 0.97;
+  }
+  .problem-card.rv.in {
+    scale: 1;
+  }
+  .problems-grid .problem-card:nth-child(2) {
+    transition-delay: 0.12s;
+  }
+  .problems-grid .problem-card:nth-child(3) {
+    transition-delay: 0.24s;
+  }
+  .problem-card:hover {
+    translate: 0 -8px;
+    border-color: color-mix(in srgb, var(--naranja) 45%, var(--line));
+    box-shadow: 0 22px 48px color-mix(in srgb, var(--carbon) 13%, transparent);
+  }
+}
+@media (max-width: 980px) {
+  .problems-grid {
+    grid-template-columns: 1fr;
+  }
+  .problem-card {
+    min-height: 0;
+  }
+}
+@media (max-width: 560px) {
+  .problems-section {
+    padding-block: 72px;
+  }
+  .problem-card {
+    padding: 28px 24px 26px;
+  }
+  .problem-card-top {
+    margin-bottom: 26px;
+  }
+  .problem-number {
+    font-size: 46px;
+  }
+  .problem-card h2 {
+    font-size: 29px;
+  }
+  .problem-glow-three {
+    display: none;
+  }
+}

@@ -143,31 +143,53 @@ const pageMarkup = `
 </div>
 <p class="hero-caption">Less noise.<br/>More growth.</p>
 </section>
-<!-- TE PASA ESTO -->
-<section class="band" id="te-pasa-esto">
-<div class="container">
+<!-- TRES PROBLEMAS -->
+<section class="band problems-section" id="tres-problemas">
+<span class="problem-glow problem-glow-one" aria-hidden="true"></span>
+<span class="problem-glow problem-glow-two" aria-hidden="true"></span>
+<span class="problem-glow problem-glow-three" aria-hidden="true"></span>
+<div class="container problems-container">
 <div class="section-head">
 <span class="num">01.</span>
-<span class="kicker ital-label">Te pasa esto</span>
+<span class="kicker ital-label">Tres problemas</span>
 <span class="divider"></span>
 </div>
-<div class="lineas-grid">
-<div class="linea-card rv">
-<span class="num">01</span>
-<p>Pagas por el prospecto y tu asesora le responde desde su propio celular, sin que quede nada en el CRM.</p>
-</div>
-<div class="linea-card rv">
-<span class="num">02</span>
-<p>Meta reporta conversiones que tu equipo comercial no reconoce como ventas.</p>
-</div>
-<div class="linea-card rv">
-<span class="num">03</span>
-<p>El prospecto agenda una cita y no llega —inasistencia— y nadie hace seguimiento.</p>
-</div>
-<div class="linea-card rv">
-<span class="num">04</span>
-<p>Nadie sabe, con certeza, qué campaña trajo al cliente que sí compró.</p>
-</div>
+<div class="problems-grid">
+<article class="problem-card rv">
+<div class="problem-card-top"><span class="problem-number">01</span><span class="problem-category">Captación y cierre</span></div>
+<h2>“Pago por leads y no sé cuáles compran”</h2>
+<ul class="problem-signals">
+<li>Meta reporta X conversiones y ventas reporta otra cosa</li>
+<li>La asesora atiende WhatsApp desde su propio celular, sin CRM</li>
+<li>Tardan más de una hora en responder</li>
+<li>Muchos prospectos no llegan a la cita (inasistencia)</li>
+<li>La agencia de pauta actual optimiza por costo por lead</li>
+</ul>
+<a class="problem-link" href="/soluciones/captacion-y-cierre" aria-label="Ver solución de Captación y cierre">Ver solución <span aria-hidden="true">→</span></a>
+</article>
+<article class="problem-card rv">
+<div class="problem-card-top"><span class="problem-number">02</span><span class="problem-category">Ecommerce rentable</span></div>
+<h2>“Invierto en pauta y no crece con margen”</h2>
+<ul class="problem-signals">
+<li>ROAS alto en la plataforma y margen bajo en el banco</li>
+<li>Creatividad agotada</li>
+<li>Catálogo sin lectura comercial</li>
+<li>WhatsApp en el proceso de venta sin medir</li>
+</ul>
+<a class="problem-link" href="/soluciones/ecommerce-rentable" aria-label="Ver solución de Ecommerce rentable">Ver solución <span aria-hidden="true">→</span></a>
+</article>
+<article class="problem-card rv">
+<div class="problem-card-top"><span class="problem-number">03</span><span class="problem-category">Operación</span></div>
+<h2>“Mi equipo hace lo mismo cien veces por semana”</h2>
+<ul class="problem-signals">
+<li>Cotizaciones hechas a mano</li>
+<li>Documentos que se copian entre sistemas</li>
+<li>Correo + Excel + CRM sin conectar</li>
+<li>Reporting manual</li>
+<li>Errores y retrabajo</li>
+</ul>
+<a class="problem-link" href="/soluciones/operacion" aria-label="Ver solución de Operación">Ver solución <span aria-hidden="true">→</span></a>
+</article>
 </div>
 </div>
 </section>
