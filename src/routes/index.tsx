@@ -284,7 +284,8 @@ Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
 <span class="cta-final-overlay" aria-hidden="true"></span>
 <div class="container">
 <span class="kicker">Siguiente paso</span>
-<h2 class="rv">El siguiente paso empieza con claridad.</h2>
+<h2 class="rv">El siguiente paso empieza con <span class="cta-hand">claridad.</span></h2>
+<p class="cta-final-copy">Formulario o WhatsApp — los dos llegan al mismo lugar: alguien de nuestro equipo revisando tu proceso, no un bot respondiéndote.</p>
 <a class="btn btn-primary" href="/sistemas/revenue-diagnostic">Revisar mi proceso comercial →</a>
 </div>
 </section>
