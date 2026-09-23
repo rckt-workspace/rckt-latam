@@ -207,7 +207,7 @@ const pageMarkup = `
 </div>
 <div class="three-grid systems-stack">
 <article class="three-card system-card rv">
-<div class="system-visual system-visual-demand" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<div class="system-visual system-visual-demand"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/></div>
 <div class="system-copy">
 <span class="num">01.</span>
 <h3>Demand System</h3>
@@ -216,7 +216,7 @@ const pageMarkup = `
 </div>
 </article>
 <article class="three-card system-card rv">
-<div class="system-visual system-visual-sales" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<div class="system-visual system-visual-sales"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/></div>
 <div class="system-copy">
 <span class="num">02.</span>
 <h3>Sales Flow</h3>
@@ -225,7 +225,7 @@ const pageMarkup = `
 </div>
 </article>
 <article class="three-card system-card rv">
-<div class="system-visual system-visual-operations" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<div class="system-visual system-visual-operations"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/></div>
 <div class="system-copy">
 <span class="num">03.</span>
 <h3>Operations System</h3>
@@ -259,26 +259,33 @@ Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
 <span class="divider"></span>
 </div>
 <div class="three-grid proof-grid">
-<div class="three-card proof-card rv">
-<div class="proof-visual" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<article class="three-card proof-card rv">
+<div class="proof-visual"><img src="__HERO__" alt="Profesional de RCKT en una ficha de caso de crecimiento"/></div>
 <div class="proof-copy">
-<span class="num">01.</span>
-<h3>Casos</h3>
-<p>[Bloque de casos con ficha completa: situación inicial, inversión, intervención, resultado, método de medición — pendiente de casos reales]</p>
+<div class="proof-title-row"><div><span class="num">01.</span><h3>Ficha de caso</h3></div><div class="proof-filters" aria-label="Filtros del caso"><span>Sector · [pendiente]</span><span>Sistema · [pendiente]</span><span>Ciudad · [pendiente]</span></div></div>
+<dl class="case-fields">
+<div><dt>Situación inicial</dt><dd>[pendiente]</dd></div>
+<div><dt>Período</dt><dd>[pendiente]</dd></div>
+<div><dt>Alcance</dt><dd>[pendiente]</dd></div>
+<div><dt>Inversión</dt><dd>[pendiente]</dd></div>
+<div><dt>Intervención</dt><dd>[pendiente]</dd></div>
+<div><dt>Resultado</dt><dd>[pendiente]</dd></div>
+<div><dt>Método de medición</dt><dd>[pendiente]</dd></div>
+<div><dt>Limitaciones</dt><dd>[pendiente]</dd></div>
+</dl>
 </div>
-</div>
+</article>
 </div>
 </div>
 </section>
 <!-- CTA FINAL -->
 <section class="cta-final">
+<img class="cta-final-photo" src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/>
+<span class="cta-final-overlay" aria-hidden="true"></span>
 <div class="container">
 <span class="kicker">Siguiente paso</span>
 <h2 class="rv">El siguiente paso empieza con claridad.</h2>
 <a class="btn btn-primary" href="/sistemas/revenue-diagnostic">Revisar mi proceso comercial →</a>
-<div class="cta-final-visual rv" aria-hidden="true">
-<span></span><span></span><span></span><span></span><span></span>
-</div>
 </div>
 </section>
 </main>
