@@ -258,11 +258,14 @@ Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
 <span class="kicker ital-label">Prueba</span>
 <span class="divider"></span>
 </div>
-<div class="three-grid">
-<div class="three-card rv">
+<div class="three-grid proof-grid">
+<div class="three-card proof-card rv">
+<div class="proof-visual" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<div class="proof-copy">
 <span class="num">01.</span>
 <h3>Casos</h3>
 <p>[Bloque de casos con ficha completa: situación inicial, inversión, intervención, resultado, método de medición — pendiente de casos reales]</p>
+</div>
 </div>
 </div>
 </div>
@@ -273,6 +276,9 @@ Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
 <span class="kicker">Siguiente paso</span>
 <h2 class="rv">El siguiente paso empieza con claridad.</h2>
 <a class="btn btn-primary" href="/sistemas/revenue-diagnostic">Revisar mi proceso comercial →</a>
+<div class="cta-final-visual rv" aria-hidden="true">
+<span></span><span></span><span></span><span></span><span></span>
+</div>
 </div>
 </section>
 </main>
