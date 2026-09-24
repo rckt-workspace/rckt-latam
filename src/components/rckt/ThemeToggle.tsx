@@ -23,7 +23,15 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
   const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
-    setTheme(currentTheme());
+    let initialTheme = currentTheme();
+    try {
+      const storedTheme = localStorage.getItem("rckt-theme");
+      if (storedTheme === "light" || storedTheme === "dark") initialTheme = storedTheme;
+    } catch {
+      // Keep the rendered theme.
+    }
+    document.documentElement.setAttribute("data-theme", initialTheme);
+    setTheme(initialTheme);
     const onThemeChange = () => setTheme(currentTheme());
     window.addEventListener(THEME_EVENT, onThemeChange);
     window.addEventListener("storage", onThemeChange);
