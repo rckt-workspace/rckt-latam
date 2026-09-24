@@ -301,14 +301,16 @@ Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
 </div>
 </section>
 </main>
-<footer>
+<footer class="section-deep">
 <div class="container">
 <div class="footer-top">
-<div>
+<div class="footer-brand">
 <a class="logo" href="#top">
 <img alt="RCKT" src="__LOGO_DARK__"/>
 </a>
 <p>Menos ruido, más crecimiento.</p>
+<h5>Correo</h5>
+<a class="footer-contact" href="mailto:hola@rckt.lat">hola@rckt.lat</a>
 </div>
 <div class="footer-col">
 <h5>Navegar</h5>
@@ -332,9 +334,14 @@ Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
               <li><a href="/cookies.pdf" download>Cookies</a></li>
               <li><a href="/politica-tratamiento-datos.pdf" download>Política de Tratamiento de Datos</a></li>
             </ul>
-            <h5 style="margin-top:26px;">Correo</h5>
-            <ul><li><a href="mailto:hola@rckt.lat">hola@rckt.lat</a></li></ul>
           </div>
+<div class="footer-col footer-appearance">
+<h5>Apariencia</h5>
+<div class="theme-switch">
+<button id="themeLightFooter" class="active" type="button">Claro</button>
+<button id="themeDarkFooter" type="button">Oscuro</button>
+</div>
+</div>
 </div>
 <div class="footer-bottom">
 <span>sistema activo</span>
@@ -544,18 +551,20 @@ function RcktLanding() {
     const dark = document.getElementById("themeDark");
     const lightMobile = document.getElementById("themeLightMobile");
     const darkMobile = document.getElementById("themeDarkMobile");
+    const lightFooter = document.getElementById("themeLightFooter");
+    const darkFooter = document.getElementById("themeDarkFooter");
     const setLight = () => {
       document.documentElement.removeAttribute("data-theme");
-      [light, lightMobile].forEach((b) => b?.classList.add("active"));
-      [dark, darkMobile].forEach((b) => b?.classList.remove("active"));
+      [light, lightMobile, lightFooter].forEach((b) => b?.classList.add("active"));
+      [dark, darkMobile, darkFooter].forEach((b) => b?.classList.remove("active"));
     };
     const setDark = () => {
       document.documentElement.setAttribute("data-theme", "dark");
-      [dark, darkMobile].forEach((b) => b?.classList.add("active"));
-      [light, lightMobile].forEach((b) => b?.classList.remove("active"));
+      [dark, darkMobile, darkFooter].forEach((b) => b?.classList.add("active"));
+      [light, lightMobile, lightFooter].forEach((b) => b?.classList.remove("active"));
     };
-    [light, lightMobile].forEach((b) => b?.addEventListener("click", setLight));
-    [dark, darkMobile].forEach((b) => b?.addEventListener("click", setDark));
+    [light, lightMobile, lightFooter].forEach((b) => b?.addEventListener("click", setLight));
+    [dark, darkMobile, darkFooter].forEach((b) => b?.addEventListener("click", setDark));
 
     return () => {
       timers.forEach((t) => window.clearTimeout(t));
@@ -576,8 +585,8 @@ function RcktLanding() {
       }
       faqButtons.forEach((button) => button.removeEventListener("click", onFaq));
       form?.removeEventListener("submit", onSubmit);
-      [light, lightMobile].forEach((b) => b?.removeEventListener("click", setLight));
-      [dark, darkMobile].forEach((b) => b?.removeEventListener("click", setDark));
+      [light, lightMobile, lightFooter].forEach((b) => b?.removeEventListener("click", setLight));
+      [dark, darkMobile, darkFooter].forEach((b) => b?.removeEventListener("click", setDark));
       document.documentElement.removeAttribute("data-theme");
       document.body.classList.remove("menu-open");
     };

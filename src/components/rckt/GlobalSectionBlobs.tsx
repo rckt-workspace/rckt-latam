@@ -1,87 +1,162 @@
 import { useEffect } from "react";
 import { useRouterState } from "@tanstack/react-router";
 
-const SECTION_SELECTOR = ".rckt-site main > section";
+const SECTION_SELECTOR = "main section";
 const BLOB_CLASS = "section-blob";
+const LIGHT_SURFACES = new Set(["rgb(245, 242, 237)", "rgb(247, 235, 225)"]);
+const DARK_SURFACE = "rgb(33, 33, 33)";
 
-type BlobSpec = { strength: "strong" | "soft"; x: number; y: number; interior?: boolean };
+type BlobSpec = {
+  type: "strong" | "soft";
+  x: number;
+  y: number;
+  interior?: boolean;
+};
 
 const layouts: Record<1 | 2 | 3, BlobSpec[][]> = {
   1: [
-    [{ strength: "strong", x: 14, y: 52 }],
-    [{ strength: "soft", x: 86, y: 48 }],
+    [{ type: "strong", x: 14, y: 52 }],
+    [{ type: "soft", x: 86, y: 48 }],
   ],
   2: [
     [
-      { strength: "soft", x: 14, y: 28 },
-      { strength: "strong", x: 58, y: 68, interior: true },
+      { type: "soft", x: 14, y: 28 },
+      { type: "strong", x: 58, y: 68, interior: true },
     ],
     [
-      { strength: "strong", x: 86, y: 30 },
-      { strength: "soft", x: 42, y: 64, interior: true },
+      { type: "strong", x: 86, y: 30 },
+      { type: "soft", x: 42, y: 64, interior: true },
     ],
   ],
   3: [
     [
-      { strength: "strong", x: 14, y: 22 },
-      { strength: "soft", x: 56, y: 52, interior: true },
-      { strength: "strong", x: 86, y: 78 },
+      { type: "strong", x: 14, y: 22 },
+      { type: "soft", x: 56, y: 52, interior: true },
+      { type: "strong", x: 86, y: 78 },
     ],
     [
-      { strength: "soft", x: 86, y: 20 },
-      { strength: "strong", x: 44, y: 50, interior: true },
-      { strength: "soft", x: 14, y: 80 },
+      { type: "soft", x: 86, y: 20 },
+      { type: "strong", x: 44, y: 50, interior: true },
+      { type: "soft", x: 14, y: 80 },
     ],
   ],
 };
 
-function removeBlobs(section: HTMLElement) {
+const removeBlobs = (section: HTMLElement) => {
   section.querySelectorAll<HTMLElement>(`:scope > .${BLOB_CLASS}`).forEach((blob) => blob.remove());
-}
+};
 
-function isExcluded(section: HTMLElement) {
-  return (
-    section.matches(".hero, .subpage-hero, .cta-final, .band--orange") ||
-    section.querySelector(":scope > .hero-photo, :scope > .subpage-hero-photo, :scope > .cta-final-photo") !== null
-  );
-}
+const hasLightSurface = (section: HTMLElement) => {
+  const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+  let element: HTMLElement | null = section;
+
+  while (element) {
+    const color = window.getComputedStyle(element).backgroundColor;
+    if (color !== "rgba(0, 0, 0, 0)" && color !== "transparent") {
+      return LIGHT_SURFACES.has(color) || (isDark && color === DARK_SURFACE);
+    }
+    element = element.parentElement;
+  }
+
+  return false;
+};
+
+const hasOnlyOrangeContent = (section: HTMLElement) => {
+  const orangeBands = Array.from(section.querySelectorAll<HTMLElement>(".band--orange"));
+
+  if (orangeBands.length > 0) {
+    const copy = section.cloneNode(true) as HTMLElement;
+    copy.querySelectorAll(`.${BLOB_CLASS}, .band--orange`).forEach((element) => element.remove());
+    const remainingText = copy.textContent?.replace(/\s+/g, " ").trim() ?? "";
+    const remainingContent = copy.querySelector("img, picture, video, form, article, ul, ol, table");
+    if (remainingText.length === 0 && remainingContent === null) return true;
+  }
+
+  const contentChildren = Array.from(section.children).filter(
+    (child) => !child.classList.contains(BLOB_CLASS) && child.getAttribute("aria-hidden") !== "true",
+  ) as HTMLElement[];
+
+  if (contentChildren.length !== 1) return false;
+  const onlyChild = contentChildren[0];
+  if (!onlyChild) return false;
+  const sectionRect = section.getBoundingClientRect();
+  const childRect = onlyChild.getBoundingClientRect();
+  const background = `${onlyChild.style.background} ${window.getComputedStyle(onlyChild).backgroundImage}`;
+  const isOrange = background.includes("252, 92, 31") || background.includes("#fc5c1f");
+  const coversSection = childRect.width >= sectionRect.width * 0.9 && childRect.height >= sectionRect.height * 0.9;
+  return isOrange && coversSection;
+};
+
+const isExcluded = (section: HTMLElement) =>
+  section.matches(".system-page-hero, #top, .general-cta, .band--orange, .hero, .subpage-hero, .cta-final") ||
+  section.querySelector(":scope > .hero-photo, :scope > .subpage-hero-photo, :scope > .cta-final-photo") !== null ||
+  hasOnlyOrangeContent(section) ||
+  !hasLightSurface(section);
+
+const isTextBehindPoint = (section: HTMLElement, x: number, y: number) => {
+  const sectionRect = section.getBoundingClientRect();
+  const pointX = sectionRect.left + (sectionRect.width * x) / 100;
+  const pointY = sectionRect.top + (sectionRect.height * y) / 100;
+  const textBlocks = section.querySelectorAll<HTMLElement>("h1, h2, h3, p");
+
+  return Array.from(textBlocks).some((block) => {
+    if (block.tagName === "P" && (block.textContent?.trim().length ?? 0) < 100) return false;
+    const rect = block.getBoundingClientRect();
+    return pointX >= rect.left && pointX <= rect.right && pointY >= rect.top && pointY <= rect.bottom;
+  });
+};
 
 export default function GlobalSectionBlobs() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
 
   useEffect(() => {
     let frame = 0;
-    let observer: ResizeObserver | null = null;
+    let timer = 0;
     let sections: HTMLElement[] = [];
 
     const classify = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
-        const mobile = window.innerWidth < 768;
-        const mediumThreshold = mobile ? 360 : 450;
-        const longThreshold = mobile ? 880 : 1100;
+        const isMobile = window.innerWidth < 768;
+        const mediumThreshold = isMobile ? 360 : 450;
+        const longThreshold = isMobile ? 880 : 1100;
         let patternIndex = 0;
 
         sections.forEach((section) => {
-          removeBlobs(section);
           const excluded = isExcluded(section);
           section.classList.toggle("blob-section", !excluded);
           section.toggleAttribute("data-no-blobs", excluded);
-          if (excluded) return;
+          removeBlobs(section);
+
+          if (excluded) {
+            section.removeAttribute("data-blob-count");
+            section.removeAttribute("data-blob-pattern");
+            return;
+          }
 
           const height = section.getBoundingClientRect().height;
           const count: 1 | 2 | 3 = height < mediumThreshold ? 1 : height <= longThreshold ? 2 : 3;
-          const specs = layouts[count][patternIndex % 2];
+          const pattern = patternIndex % 2;
+          const specs = layouts[count][pattern];
           section.dataset.blobCount = String(count);
-          specs.forEach((spec) => {
-            const size = spec.strength === "strong" ? 430 : 620;
-            const edgeX = spec.x < 50 ? size * 0.25 : section.clientWidth - size * 0.25;
+          section.dataset.blobPattern = String(pattern);
+          specs.forEach((spec, blobIndex) => {
+            const isEdge = !spec.interior;
+            const blobSize = spec.type === "strong" ? 430 : 620;
+            const edgeOffset = blobSize * 0.25;
+            const edgeX = spec.x < 50 ? edgeOffset : section.clientWidth - edgeOffset;
             const blob = document.createElement("span");
-            blob.className = `${BLOB_CLASS} ${BLOB_CLASS}--${spec.strength}`;
+            blob.className = `${BLOB_CLASS} ${BLOB_CLASS}--${spec.type} pointer-events-none`;
             blob.setAttribute("aria-hidden", "true");
-            blob.dataset.position = spec.interior ? "interior" : "edge";
-            blob.style.setProperty("--blob-x", spec.interior ? `${spec.x}%` : `${edgeX}px`);
+            blob.dataset.blobPosition = spec.interior ? "interior" : "edge";
+            blob.dataset.blobIndex = String(blobIndex);
+            blob.style.setProperty("--blob-x", isEdge ? `${edgeX}px` : `${spec.x}%`);
             blob.style.setProperty("--blob-y", `${spec.y}%`);
+
+            if (spec.interior && spec.type === "strong" && isTextBehindPoint(section, spec.x, spec.y)) {
+              blob.classList.add(`${BLOB_CLASS}--muted`);
+            }
+
             section.append(blob);
           });
           patternIndex += 1;
@@ -89,14 +164,20 @@ export default function GlobalSectionBlobs() {
       });
     };
 
-    const timer = window.setTimeout(() => {
+    const connect = () => {
       sections = Array.from(document.querySelectorAll<HTMLElement>(SECTION_SELECTOR));
-      observer = new ResizeObserver(classify);
-      sections.forEach((section) => observer?.observe(section));
+      const observer = new ResizeObserver(classify);
+      sections.forEach((section) => observer.observe(section));
       classify();
-    }, 100);
+      return observer;
+    };
 
+    let observer: ResizeObserver | null = null;
+    timer = window.setTimeout(() => {
+      observer = connect();
+    }, 100);
     window.addEventListener("resize", classify, { passive: true });
+
     return () => {
       window.clearTimeout(timer);
       cancelAnimationFrame(frame);
@@ -105,8 +186,9 @@ export default function GlobalSectionBlobs() {
       sections.forEach((section) => {
         removeBlobs(section);
         section.classList.remove("blob-section");
-        section.removeAttribute("data-no-blobs");
         section.removeAttribute("data-blob-count");
+        section.removeAttribute("data-blob-pattern");
+        section.removeAttribute("data-no-blobs");
       });
     };
   }, [pathname]);

@@ -1,3 +1,6 @@
 - [x] Aplicar la base visual global aprobada de rckt.es a RCKT LATAM sin cambiar contenido ni lógica.
 - [x] Validar Inicio, Sistemas, Sectores y Nosotros en 1280 px y 390 px, claro y oscuro.
 - [x] Auditar paleta, fuentes, texturas, manchas, tarjetas, heroes, CTA, nav y footer.
+- [x] Replicar exactamente el sistema de manchas adaptativas de rckt.es.
+- [x] Igualar el footer claro de cuatro columnas de rckt.es sin cambiar contenido ni enlaces.
+- [x] Validar ambos ajustes en 1280 px y 390 px, claro y oscuro.
