@@ -128,14 +128,16 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer>
+    <footer className="section-deep">
       <div className="container">
         <div className="footer-top">
-          <div>
+          <div className="footer-brand">
             <a className="logo" href="/">
               <img alt="RCKT" src={logoDarkAsset} />
             </a>
             <p>Menos ruido, más crecimiento.</p>
+            <h5>Correo</h5>
+            <a className="footer-contact" href="mailto:hola@rckt.lat">hola@rckt.lat</a>
           </div>
           <div className="footer-col">
             <h5>Navegar</h5>
@@ -193,12 +195,10 @@ export function SiteFooter() {
                 </a>
               </li>
             </ul>
-            <h5 style={{ marginTop: 26 }}>Correo</h5>
-            <ul>
-              <li>
-                <a href="mailto:hola@rckt.lat">hola@rckt.lat</a>
-              </li>
-            </ul>
+          </div>
+          <div className="footer-col footer-appearance">
+            <h5>Apariencia</h5>
+            <ThemeSwitch suffix="Footer" />
           </div>
         </div>
         <div className="footer-bottom">
