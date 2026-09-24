@@ -1,1 +1,3 @@
-- [x] Replicar únicamente el fondo de las imágenes de referencia en toda la página, sin modificar otros elementos.
+- [ ] Aplicar la base visual global aprobada de rckt.es a RCKT LATAM sin cambiar contenido ni lógica.
+- [ ] Validar Inicio, Sistemas, Sectores y Nosotros en 1280 px y 390 px, claro y oscuro.
+- [ ] Auditar paleta, fuentes, texturas, manchas, tarjetas, heroes, CTA, nav y footer.
