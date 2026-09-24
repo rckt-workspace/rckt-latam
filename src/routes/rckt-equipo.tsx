@@ -465,7 +465,7 @@ function Dashboard() {
                         {new Date(v.fecha_publicacion).toLocaleDateString("es-CO")}
                       </p>
                     </div>
-                    <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "4px 12px", borderRadius: "6px", fontSize: "12px", fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", background: v.estado === "activa" ? "rgba(244, 88, 29, 0.15)" : "rgba(0, 0, 0, 0.08)", color: v.estado === "activa" ? "var(--naranja-deep)" : "var(--carbon-soft)" }}>
+                    <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "4px 12px", borderRadius: "6px", fontSize: "12px", fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", background: v.estado === "activa" ? "rgba(252, 92, 31, 0.15)" : "rgba(33, 33, 33, 0.08)", color: v.estado === "activa" ? "var(--naranja-deep)" : "var(--carbon-soft)" }}>
                       {v.estado === "activa" ? "Activa" : "Cerrada"}
                     </div>
                   </div>
