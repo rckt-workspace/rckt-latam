@@ -227,7 +227,7 @@ const SYSTEMS: SystemCardData[] = [
     badge: "S1",
     kicker: "Captación y cierre",
     title: "Demand System",
-    shortName: "Demand System",
+    shortName: "Demand",
     desc: "Manejamos tu pauta, pero no la optimizamos por leads baratos: la optimizamos por las oportunidades que tu equipo comercial acepta y por las que terminan en venta. Cada semana ves el embudo completo, no solo los clics.",
     href: "/sistemas/demand-system",
     art: "demand",
@@ -245,7 +245,7 @@ const SYSTEMS: SystemCardData[] = [
     badge: "S3",
     kicker: "Operación",
     title: "Operations System",
-    shortName: "Operations System",
+    shortName: "Operations",
     desc: "No te vendemos IA. Elegimos un proceso que tu equipo repite cien veces por semana, medimos cuánto te cuesta hoy, y en ocho semanas lo dejamos funcionando solo, con una persona aprobando lo que importa.",
     href: "/sistemas/operations-system",
     art: "operations",
@@ -253,15 +253,39 @@ const SYSTEMS: SystemCardData[] = [
 ];
 
 const METHOD_FIELDS: MethodField[] = [
-  "Situación inicial",
-  "Período",
-  "Alcance",
-  "Inversión",
-  "Intervención",
-  "Resultado",
-  "Método de medición",
-  "Limitaciones",
-].map((k) => ({ k, v: "[pendiente]" }));
+  {
+    k: "Situación inicial",
+    v: "Meta o Google reportan un número de conversiones, mientras que Ventas registra otro; las asesoras atienden WhatsApp fuera del CRM y tardan más de una hora en responder.",
+  },
+  {
+    k: "Período",
+    v: "Revenue Diagnostic de 2 a 3 semanas; sistema operativo con fuente de verdad el día 30; revisión de línea base frente a resultado el día 90.",
+  },
+  {
+    k: "Alcance",
+    v: "Revenue Engine: Demand System y Sales Flow bajo un solo responsable, medido del clic al cierre.",
+  },
+  {
+    k: "Inversión",
+    v: "La pauta la pagas tú, en tus propias cuentas. Lo que pagas por el Diagnostic se descuenta del sistema si sigues con nosotros.",
+  },
+  {
+    k: "Intervención",
+    v: "Mapa de fugas con tus números reales, tracking completo, y campañas, WhatsApp y CRM conectados, para que cada prospecto tenga respuesta, seguimiento y dueño.",
+  },
+  {
+    k: "Resultado",
+    v: "Se mide frente a la línea base firmada: costo por cliente adquirido y cuánto vale ese cliente frente a lo que costó traerlo.",
+  },
+  {
+    k: "Método de medición",
+    v: "Una sola fuente de verdad: pauta → prospecto → MQL → SQL → cita → oportunidad → venta → margen, con definiciones que firmas tú.",
+  },
+  {
+    k: "Limitaciones",
+    v: "No garantizamos ventas, porque no controlamos tu cierre, tu inventario ni tus precios. Garantizamos que en 30 días verás tu embudo completo con datos reales.",
+  },
+];
 
 function ProblemsSection() {
   return (
