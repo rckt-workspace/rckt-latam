@@ -5477,6 +5477,9 @@ body,
 .rckt-site .footer-appearance .theme-toggle {
   margin-top: 2px;
 }
+.rckt-site .footer-appearance::after {
+  content: none;
+}
 
 /* ===== Inicio homologado con rckt.es ===== */
 .rckt-site .problems-section {
