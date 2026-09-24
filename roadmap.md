@@ -10,4 +10,7 @@
 - [x] Validar Inicio en 1280 px y 390 px, claro y oscuro.
 - [x] Reconstruir Inicio con SectionHeader, SystemCards y MethodCard de la referencia España, usando el copy LATAM aprobado.
 - [x] Validar la reconstrucción sección por sección en escritorio y celular, claro y oscuro.
+- [ ] Sustituir las fotos temporales de los tres sistemas por las imágenes aprobadas del chat.
+- [ ] Igualar las medidas y estilos de SystemCards con la referencia España.
+- [ ] Completar los ocho campos reales de la ficha del método y validar escritorio/celular.
 

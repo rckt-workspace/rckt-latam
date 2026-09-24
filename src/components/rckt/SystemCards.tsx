@@ -54,7 +54,7 @@ export function SystemCards({ systems }: { systems: SystemCardData[] }) {
             <img src={SYSTEM_IMAGES[system.art]} alt="" aria-hidden="true" loading="lazy" className="sys-card__art" />
             <span className="sys-card__badge">{system.badge}</span>
             <span className="sys-card__arrow" aria-hidden="true">
-              <svg viewBox="0 0 16 16" fill="none"><path d="M3 13 13 3M6 3h7v7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              <svg viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </span>
             <span className="sys-card__name">{system.shortName}</span>
           </div>
