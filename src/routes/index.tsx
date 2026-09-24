@@ -3,6 +3,9 @@ import { useEffect, useMemo } from "react";
 import heroAsset from "@/assets/rckt-hero.jpg";
 import logoDarkAsset from "@/assets/rckt-logo-dark.png";
 import logoLightAsset from "@/assets/rckt-logo-light.png";
+import MethodCard, { type MethodField } from "@/components/rckt/MethodCard";
+import { SectionHeader } from "@/components/rckt/SectionHeader";
+import { SystemCards, type SystemCardData } from "@/components/rckt/SystemCards";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
@@ -149,132 +152,7 @@ Nosotros
 </div>
 <p class="hero-caption">Less noise.<br/>More growth.</p>
 </section>
-<!-- TRES PROBLEMAS -->
-<section class="band problems-section" id="tres-problemas">
-<div class="container problems-container">
-<div class="section-head">
-<span class="num">01.</span>
-<span class="kicker ital-label">Tres problemas</span>
-<span class="divider"></span>
-</div>
-<div class="problems-grid">
-<article class="problem-card rv">
-<span class="problem-number">01</span><span class="problem-category">Captación y cierre</span>
-<h2>«Pago por leads y no sé cuáles compran»</h2>
-<p class="problem-signals">Meta reporta X conversiones y ventas reporta otra cosa · La asesora atiende WhatsApp desde su propio celular, sin CRM · Tardan más de una hora en responder · Muchos prospectos no llegan a la cita (inasistencia) · La agencia de pauta actual optimiza por costo por lead</p>
-<a class="problem-link" href="/soluciones/captacion-y-cierre" aria-label="Ver solución de Captación y cierre">Ver solución <span aria-hidden="true">→</span></a>
-</article>
-<article class="problem-card rv">
-<span class="problem-number">02</span><span class="problem-category">Ecommerce rentable</span>
-<h2>«Invierto en pauta y no crece con margen»</h2>
-<p class="problem-signals">ROAS alto en la plataforma y margen bajo en el banco · Creatividad agotada · Catálogo sin lectura comercial · WhatsApp en el proceso de venta sin medir</p>
-<a class="problem-link" href="/soluciones/ecommerce-rentable" aria-label="Ver solución de Ecommerce rentable">Ver solución <span aria-hidden="true">→</span></a>
-</article>
-<article class="problem-card rv">
-<span class="problem-number">03</span><span class="problem-category">Operación</span>
-<h2>«Mi equipo hace lo mismo cien veces por semana»</h2>
-<p class="problem-signals">Cotizaciones hechas a mano · Documentos que se copian entre sistemas · Correo + Excel + CRM sin conectar · Reporting manual · Errores y retrabajo</p>
-<a class="problem-link" href="/soluciones/operacion" aria-label="Ver solución de Operación">Ver solución <span aria-hidden="true">→</span></a>
-</article>
-</div>
-</div>
-</section>
-<!-- LOS TRES SISTEMAS -->
-<section class="band systems-section" id="tres-sistemas">
-<div class="container systems-container">
-<div class="systems-layout">
-<div class="systems-intro">
-<div class="section-head systems-heading">
-<span class="num">02.</span>
-<span class="kicker ital-label">Los tres sistemas</span>
-<span class="divider"></span>
-</div>
-<p>Tres sistemas. Si algo no cabe en uno de los tres, no lo vendemos.</p>
-</div>
-<div class="three-grid systems-stack">
-<article class="three-card system-card rv">
-<div class="system-visual system-visual-demand"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/><span class="system-badge">S1</span><span class="system-arrow" aria-hidden="true">↗</span><span class="system-short-name">Demand System</span></div>
-<div class="system-copy">
-<span class="system-kicker">01.</span>
-<h3>Demand System</h3>
-<p>Manejamos tu pauta, pero no la optimizamos por leads baratos: la optimizamos por las oportunidades que tu equipo comercial acepta y por las que terminan en venta. Cada semana ves el embudo completo, no solo los clics.</p>
-<a class="btn system-link" href="/sistemas/">Ver sistema <span aria-hidden="true">→</span></a>
-</div>
-</article>
-<article class="three-card system-card rv">
-<div class="system-visual system-visual-sales"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/><span class="system-badge">S2</span><span class="system-arrow" aria-hidden="true">↗</span><span class="system-short-name">Sales Flow</span></div>
-<div class="system-copy">
-<span class="system-kicker">02.</span>
-<h3>Sales Flow</h3>
-<p>Hoy pagas por un prospecto, te escribe por WhatsApp, y ahí empieza a perderse: respuesta tarde, sin seguimiento, fuera del CRM, sin saber de qué campaña vino. Sales Flow conecta tu pauta, WhatsApp y CRM para que cada prospecto tenga respuesta, seguimiento y dueño, y para que sepas cuáles compran.</p>
-<a class="btn system-link" href="/sistemas/">Ver sistema <span aria-hidden="true">→</span></a>
-</div>
-</article>
-<article class="three-card system-card rv">
-<div class="system-visual system-visual-operations"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/><span class="system-badge">S3</span><span class="system-arrow" aria-hidden="true">↗</span><span class="system-short-name">Operations System</span></div>
-<div class="system-copy">
-<span class="system-kicker">03.</span>
-<h3>Operations System</h3>
-<p>No te vendemos IA. Elegimos un proceso que tu equipo repite cien veces por semana, medimos cuánto te cuesta hoy, y en ocho semanas lo dejamos funcionando solo, con una persona aprobando lo que importa.</p>
-<a class="btn system-link" href="/sistemas/">Ver sistema <span aria-hidden="true">→</span></a>
-</div>
-</article>
-</div>
-</div>
-<div class="juicio systems-closing rv">
-<span class="tag">Revenue Engine</span>
-Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
-</div>
-</div>
-</section>
-<!-- COMO EMPIEZA TODA CUENTA -->
-<section class="manifiesto" data-mode="editorial" id="revenue-diagnostic">
-<div class="container">
-<div class="manifiesto-card rv">
-<span class="kicker" style="display:block; margin-bottom:22px;">Cómo empieza toda cuenta</span>
-<p>Revenue Diagnostic: 2–3 semanas, línea base firmada, sin atajos. Se descuenta del sistema si sigues con nosotros.</p>
-</div>
-</div>
-</section>
-<!-- PRUEBA -->
-<section class="band band-alt" data-mode="human" id="prueba">
-<div class="container">
-<div class="section-head">
-<span class="num">03.</span>
-<span class="kicker ital-label">Prueba</span>
-<span class="divider"></span>
-</div>
-<div class="three-grid proof-grid">
-<article class="three-card proof-card rv">
-<div class="proof-copy">
-<blockquote class="proof-quote">Ficha de caso</blockquote>
-<div class="proof-filters" aria-label="Filtros del caso"><span>Sector · [pendiente]</span><span>Sistema · [pendiente]</span><span>Ciudad · [pendiente]</span></div>
-<dl class="case-fields">
-<div><dt>Situación inicial</dt><dd>[pendiente]</dd></div>
-<div><dt>Período</dt><dd>[pendiente]</dd></div>
-<div><dt>Alcance</dt><dd>[pendiente]</dd></div>
-<div><dt>Inversión</dt><dd>[pendiente]</dd></div>
-<div><dt>Intervención</dt><dd>[pendiente]</dd></div>
-<div><dt>Resultado</dt><dd>[pendiente]</dd></div>
-<div><dt>Método de medición</dt><dd>[pendiente]</dd></div>
-<div><dt>Limitaciones</dt><dd>[pendiente]</dd></div>
-</dl>
-</div>
-</article>
-</div>
-</div>
-</section>
-<!-- CTA FINAL -->
-<section class="cta-final">
-<img class="cta-final-photo" src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/>
-<span class="cta-final-overlay" aria-hidden="true"></span>
-<div class="container">
-<span class="kicker">Siguiente paso</span>
-<h2 class="rv">El siguiente paso empieza con <span class="cta-hand">claridad.</span></h2>
-<p class="cta-final-copy">Formulario o WhatsApp — los dos llegan al mismo lugar: alguien de nuestro equipo revisando tu proceso, no un bot respondiéndote.</p>
-<a class="btn btn-primary" href="/sistemas/revenue-diagnostic">Revisar mi proceso comercial →</a>
-</div>
-</section>
+<!-- HOME CONTENT MOUNTED WITH REACT -->
 </main>
 <footer class="section-deep">
 <div class="container">
@@ -323,13 +201,165 @@ Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
 </footer>
 `;
 
+const PROBLEMS = [
+  {
+    num: "01",
+    title: "Pago por leads y no sé cuáles compran",
+    signals: "Meta reporta X conversiones y ventas reporta otra cosa · La asesora atiende WhatsApp desde su propio celular, sin CRM · Tardan más de una hora en responder · Muchos prospectos no llegan a la cita (inasistencia) · La agencia de pauta actual optimiza por costo por lead",
+    href: "/soluciones/captacion-y-cierre",
+  },
+  {
+    num: "02",
+    title: "Invierto en pauta y no crece con margen",
+    signals: "ROAS alto en la plataforma y margen bajo en el banco · Creatividad agotada · Catálogo sin lectura comercial · WhatsApp en el proceso de venta sin medir",
+    href: "/soluciones/ecommerce-rentable",
+  },
+  {
+    num: "03",
+    title: "Mi equipo hace lo mismo cien veces por semana",
+    signals: "Cotizaciones hechas a mano · Documentos que se copian entre sistemas · Correo + Excel + CRM sin conectar · Reporting manual · Errores y retrabajo",
+    href: "/soluciones/operacion",
+  },
+] as const;
+
+const SYSTEMS: SystemCardData[] = [
+  {
+    badge: "S1",
+    kicker: "Captación y cierre",
+    title: "Demand System",
+    shortName: "Demand System",
+    desc: "Manejamos tu pauta, pero no la optimizamos por leads baratos: la optimizamos por las oportunidades que tu equipo comercial acepta y por las que terminan en venta. Cada semana ves el embudo completo, no solo los clics.",
+    href: "/sistemas/demand-system",
+    art: "demand",
+  },
+  {
+    badge: "S2",
+    kicker: "Conversación y seguimiento",
+    title: "Sales Flow",
+    shortName: "Sales Flow",
+    desc: "Hoy pagas por un prospecto, te escribe por WhatsApp, y ahí empieza a perderse: respuesta tarde, sin seguimiento, fuera del CRM, sin saber de qué campaña vino. Sales Flow conecta tu pauta, WhatsApp y CRM para que cada prospecto tenga respuesta, seguimiento y dueño, y para que sepas cuáles compran.",
+    href: "/sistemas/sales-flow",
+    art: "sales",
+  },
+  {
+    badge: "S3",
+    kicker: "Operación",
+    title: "Operations System",
+    shortName: "Operations System",
+    desc: "No te vendemos IA. Elegimos un proceso que tu equipo repite cien veces por semana, medimos cuánto te cuesta hoy, y en ocho semanas lo dejamos funcionando solo, con una persona aprobando lo que importa.",
+    href: "/sistemas/operations-system",
+    art: "operations",
+  },
+];
+
+const METHOD_FIELDS: MethodField[] = [
+  "Situación inicial",
+  "Período",
+  "Alcance",
+  "Inversión",
+  "Intervención",
+  "Resultado",
+  "Método de medición",
+  "Limitaciones",
+].map((k) => ({ k, v: "[pendiente]" }));
+
+function ProblemsSection() {
+  return (
+    <section className="home-editorial-section" id="tres-problemas">
+      <div className="container">
+        <SectionHeader
+          num="01."
+          label="Tres problemas"
+          title={<>Entra por lo que te duele, no por el nombre de un <em className="font-serif-accent">sistema</em>.</>}
+          phrase="Tres señales que confirman por dónde se te está yendo el dinero entre la pauta, WhatsApp y el cierre."
+        />
+        <div className="home-problems-grid">
+          {PROBLEMS.map((problem) => (
+            <article key={problem.num} className="home-problem">
+              <span className="home-problem__line" aria-hidden="true" />
+              <span className="num-orange">{problem.num}</span>
+              <h3>«{problem.title}»</h3>
+              <p>{problem.signals}</p>
+              <div className="home-problem__actions">
+                <a href={problem.href}>Ver solución →</a>
+                <a className="home-pill-button" href="/sistemas/revenue-diagnostic">Revisar mi proceso comercial</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SystemsSection() {
+  return (
+    <section className="home-editorial-section home-systems-section" id="tres-sistemas">
+      <div className="container">
+        <SectionHeader num="02." label="Los tres sistemas" title="Tres sistemas." phrase="Conseguir, cerrar y sostener." />
+        <div className="home-section-content"><SystemCards systems={SYSTEMS} /></div>
+        <div className="home-revenue-band">
+          <span className="home-revenue-band__glow" aria-hidden="true" />
+          <h3>Luego, el <span>sistema completo.</span></h3>
+          <p>Los dos primeros, combinados, son Revenue Engine — nuestro producto principal</p>
+          <a href="/sistemas/revenue-engine">Ver Revenue Engine →</a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProofSection() {
+  return (
+    <section className="home-editorial-section home-proof-section" id="prueba">
+      <div className="container">
+        <SectionHeader
+          num="03."
+          label="Prueba"
+          title={<>Una cifra sin ficha es solo un <em className="font-serif-accent">titular</em>.</>}
+          phrase="Antes de mostrarte un caso, medimos con tu propia línea base — no con un promedio del mercado."
+        />
+        <blockquote className="home-proof-quote">Una cifra con contexto vale más que un porcentaje sin denominador.</blockquote>
+        <MethodCard fields={METHOD_FIELDS} />
+      </div>
+    </section>
+  );
+}
+
+function FinalCta() {
+  return (
+    <section className="cta-final general-cta">
+      <span className="cta-final__topline" aria-hidden="true" />
+      <img className="cta-final-photo" src={heroAsset} alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA" />
+      <span className="cta-final-overlay" aria-hidden="true" />
+      <span className="cta-final__glow" aria-hidden="true" />
+      <div className="container">
+        <span className="kicker">Siguiente paso</span>
+        <h2>El siguiente paso empieza con <em className="font-serif-accent">claridad.</em></h2>
+        <p className="cta-final-copy">Formulario o WhatsApp — los dos llegan al mismo lugar: alguien de nuestro equipo revisando tu proceso, no un bot respondiéndote.</p>
+        <a className="btn btn-primary" href="/sistemas/revenue-diagnostic">Revisar mi proceso comercial →</a>
+        <div className="cta-final__foot"><span>IA supervisada y documentada</span></div>
+      </div>
+    </section>
+  );
+}
+
 function RcktLanding() {
-  const markup = useMemo(
+  const { heroMarkup, footerMarkup } = useMemo(
     () =>
-      pageMarkup
+      (() => {
+        const markup = pageMarkup
         .replaceAll("__HERO__", heroAsset)
         .replaceAll("__LOGO_DARK__", logoDarkAsset)
-        .replaceAll("__LOGO_LIGHT__", logoLightAsset),
+        .replaceAll("__LOGO_LIGHT__", logoLightAsset);
+        const heroStart = markup.indexOf('<section class="hero">');
+        const heroEnd = markup.indexOf("<!-- HOME CONTENT MOUNTED WITH REACT -->");
+        const footerStart = markup.indexOf('<footer class="section-deep">');
+        return {
+          heroMarkup: markup.slice(heroStart, heroEnd),
+          footerMarkup: markup.slice(footerStart),
+        };
+      })(),
     [],
   );
 
@@ -570,5 +600,16 @@ function RcktLanding() {
     };
   }, []);
 
-  return <div className="rckt-site" dangerouslySetInnerHTML={{ __html: markup }} />;
+  return (
+    <div className="rckt-site">
+      <main id="top">
+        <div className="home-legacy-hero" dangerouslySetInnerHTML={{ __html: heroMarkup }} />
+        <ProblemsSection />
+        <SystemsSection />
+        <ProofSection />
+        <FinalCta />
+      </main>
+      <div dangerouslySetInnerHTML={{ __html: footerMarkup }} />
+    </div>
+  );
 }
