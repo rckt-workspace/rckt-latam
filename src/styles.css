@@ -5719,19 +5719,6 @@ body,
 .rckt-site .cta-final .cta-final-overlay {
   background: rgba(33, 33, 33, 0.68);
 }
-.rckt-site .cta-final .container::after {
-  content: "IA supervisada y documentada";
-  margin-top: 32px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(245, 242, 237, 0.22);
-  color: rgba(245, 242, 237, 0.68);
-  font-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
 /* Nav y footer: mismo cristal cálido y tipografía. */
 @media (min-width: 1153px) {
   header .nav-capsule {

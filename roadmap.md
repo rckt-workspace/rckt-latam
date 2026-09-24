@@ -8,6 +8,6 @@
 - [x] Simplificar Tres problemas, Los tres sistemas y Prueba de Inicio según rckt.es, preservando todo el copy LATAM.
 - [x] Confirmar CTA final y recalcular visualmente las manchas tras el cambio de alturas.
 - [x] Validar Inicio en 1280 px y 390 px, claro y oscuro.
-- [ ] Reconstruir Inicio con SectionHeader, SystemCards y MethodCard de la referencia España, usando el copy LATAM aprobado.
-- [ ] Validar la reconstrucción sección por sección en escritorio y celular, claro y oscuro.
+- [x] Reconstruir Inicio con SectionHeader, SystemCards y MethodCard de la referencia España, usando el copy LATAM aprobado.
+- [x] Validar la reconstrucción sección por sección en escritorio y celular, claro y oscuro.
 
