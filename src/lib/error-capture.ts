@@ -86,10 +86,49 @@ console.error = (...args: unknown[]) => {
 };
 
 if (typeof globalThis.addEventListener === "function") {
-  globalThis.addEventListener("error", (event) => record((event as ErrorEvent).error ?? event));
-  globalThis.addEventListener("unhandledrejection", (event) =>
-    record((event as PromiseRejectionEvent).reason),
-  );
+  globalThis.addEventListener("error", (event) => {
+    const error = (event as ErrorEvent).error ?? event;
+    if (isRequestAbort(error)) {
+      event.preventDefault?.();
+      return;
+    }
+    record(error);
+  });
+  globalThis.addEventListener("unhandledrejection", (event) => {
+    const reason = (event as PromiseRejectionEvent).reason;
+    if (isRequestAbort(reason)) {
+      event.preventDefault?.();
+      return;
+    }
+    record(reason);
+  });
+}
+
+// In the Node dev server, a client closing its socket mid-request surfaces
+// Node's `abortIncoming` as an unhandled rejection / uncaught exception that
+// bypasses console.error. Swallow only those transport aborts; everything
+// else keeps Node's default behavior.
+type NodeProcess = {
+  on?: (event: string, listener: (error: unknown) => void) => void;
+  listenerCount?: (event: string) => number;
+  exit?: (code: number) => void;
+};
+const nodeProcess = (globalThis as { process?: NodeProcess }).process;
+const ABORT_GUARD = Symbol.for("rckt.abortGuard");
+if (
+  nodeProcess?.on &&
+  !(globalThis as Record<symbol, unknown>)[ABORT_GUARD]
+) {
+  (globalThis as Record<symbol, unknown>)[ABORT_GUARD] = true;
+  nodeProcess.on("unhandledRejection", (reason) => {
+    if (isRequestAbort(reason)) return;
+    originalConsoleError(describeError(reason));
+  });
+  nodeProcess.on("uncaughtException", (error) => {
+    if (isRequestAbort(error)) return;
+    originalConsoleError(describeError(error));
+    nodeProcess.exit?.(1);
+  });
 }
 
 export function consumeLastCapturedError(): unknown {
