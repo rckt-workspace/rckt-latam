@@ -49,11 +49,34 @@ function isErrorLike(value: unknown): value is Error {
   return value instanceof Error;
 }
 
+function isRequestAbort(error: unknown): boolean {
+  let current: unknown = error;
+
+  for (let depth = 0; depth < CAUSE_DEPTH_LIMIT && current != null; depth += 1) {
+    if (!(current instanceof Error)) return false;
+    if (
+      current.name === "AbortError" ||
+      current.message === "aborted" ||
+      current.message === "The operation was aborted"
+    ) {
+      return true;
+    }
+    current = current.cause;
+  }
+
+  return false;
+}
+
 // Wrap console.error so errors logged by any layer — including h3's internal
 // unhandled-error logging, which this file cannot hook directly — are both
 // recorded for consumeLastCapturedError and expanded before serialization.
 const originalConsoleError = console.error.bind(console);
 console.error = (...args: unknown[]) => {
+  // A browser refresh, navigation, or closed HMR socket can end an incoming
+  // request before its body is read. That is expected transport state, not an
+  // application crash, and must not be promoted into preview error telemetry.
+  if (args.some(isRequestAbort)) return;
+
   const expanded = args.map((arg) => {
     if (!isErrorLike(arg)) return arg;
     record(arg);
