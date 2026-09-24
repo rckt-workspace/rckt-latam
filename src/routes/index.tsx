@@ -119,20 +119,14 @@ Nosotros
 </div>
 <a href="/blog">Blog</a>
 <div class="nav-menu-footer">
-<div class="theme-switch hero-theme-switch">
-<button id="themeLightMobile" class="active" type="button">Claro</button>
-<button id="themeDarkMobile" type="button">Oscuro</button>
-</div>
+<button class="theme-toggle" type="button" aria-label="Activar versión oscura" title="Versión oscura"><span class="theme-toggle__thumb"><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></span></button>
 <a class="btn hero-nav-cta nav-menu-cta" href="/sistemas/revenue-diagnostic">Pedir diagnóstico</a>
 </div>
 </div>
 </div>
 <div class="nav-capsule nav-capsule-right nav-right">
 <div class="nav-right-desktop">
-<div class="theme-switch hero-theme-switch">
-<button id="themeLight" class="active" type="button">Claro</button>
-<button id="themeDark" type="button">Oscuro</button>
-</div>
+<button class="theme-toggle" type="button" aria-label="Activar versión oscura" title="Versión oscura"><span class="theme-toggle__thumb"><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></span></button>
 </div>
 <a class="btn hero-nav-cta" href="/sistemas/revenue-diagnostic">Pedir diagnóstico</a>
 <button aria-label="Abrir menú" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
@@ -157,9 +151,6 @@ Nosotros
 </section>
 <!-- TRES PROBLEMAS -->
 <section class="band problems-section" id="tres-problemas">
-<span class="problem-glow problem-glow-one" aria-hidden="true"></span>
-<span class="problem-glow problem-glow-two" aria-hidden="true"></span>
-<span class="problem-glow problem-glow-three" aria-hidden="true"></span>
 <div class="container problems-container">
 <div class="section-head">
 <span class="num">01.</span>
@@ -168,38 +159,21 @@ Nosotros
 </div>
 <div class="problems-grid">
 <article class="problem-card rv">
-<div class="problem-card-top"><span class="problem-number">01</span><span class="problem-category">Captación y cierre</span></div>
-<h2>“Pago por leads y no sé cuáles compran”</h2>
-<ul class="problem-signals">
-<li>Meta reporta X conversiones y ventas reporta otra cosa</li>
-<li>La asesora atiende WhatsApp desde su propio celular, sin CRM</li>
-<li>Tardan más de una hora en responder</li>
-<li>Muchos prospectos no llegan a la cita (inasistencia)</li>
-<li>La agencia de pauta actual optimiza por costo por lead</li>
-</ul>
+<span class="problem-number">01</span><span class="problem-category">Captación y cierre</span>
+<h2>«Pago por leads y no sé cuáles compran»</h2>
+<p class="problem-signals">Meta reporta X conversiones y ventas reporta otra cosa · La asesora atiende WhatsApp desde su propio celular, sin CRM · Tardan más de una hora en responder · Muchos prospectos no llegan a la cita (inasistencia) · La agencia de pauta actual optimiza por costo por lead</p>
 <a class="problem-link" href="/soluciones/captacion-y-cierre" aria-label="Ver solución de Captación y cierre">Ver solución <span aria-hidden="true">→</span></a>
 </article>
 <article class="problem-card rv">
-<div class="problem-card-top"><span class="problem-number">02</span><span class="problem-category">Ecommerce rentable</span></div>
-<h2>“Invierto en pauta y no crece con margen”</h2>
-<ul class="problem-signals">
-<li>ROAS alto en la plataforma y margen bajo en el banco</li>
-<li>Creatividad agotada</li>
-<li>Catálogo sin lectura comercial</li>
-<li>WhatsApp en el proceso de venta sin medir</li>
-</ul>
+<span class="problem-number">02</span><span class="problem-category">Ecommerce rentable</span>
+<h2>«Invierto en pauta y no crece con margen»</h2>
+<p class="problem-signals">ROAS alto en la plataforma y margen bajo en el banco · Creatividad agotada · Catálogo sin lectura comercial · WhatsApp en el proceso de venta sin medir</p>
 <a class="problem-link" href="/soluciones/ecommerce-rentable" aria-label="Ver solución de Ecommerce rentable">Ver solución <span aria-hidden="true">→</span></a>
 </article>
 <article class="problem-card rv">
-<div class="problem-card-top"><span class="problem-number">03</span><span class="problem-category">Operación</span></div>
-<h2>“Mi equipo hace lo mismo cien veces por semana”</h2>
-<ul class="problem-signals">
-<li>Cotizaciones hechas a mano</li>
-<li>Documentos que se copian entre sistemas</li>
-<li>Correo + Excel + CRM sin conectar</li>
-<li>Reporting manual</li>
-<li>Errores y retrabajo</li>
-</ul>
+<span class="problem-number">03</span><span class="problem-category">Operación</span>
+<h2>«Mi equipo hace lo mismo cien veces por semana»</h2>
+<p class="problem-signals">Cotizaciones hechas a mano · Documentos que se copian entre sistemas · Correo + Excel + CRM sin conectar · Reporting manual · Errores y retrabajo</p>
 <a class="problem-link" href="/soluciones/operacion" aria-label="Ver solución de Operación">Ver solución <span aria-hidden="true">→</span></a>
 </article>
 </div>
@@ -219,27 +193,27 @@ Nosotros
 </div>
 <div class="three-grid systems-stack">
 <article class="three-card system-card rv">
-<div class="system-visual system-visual-demand"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/></div>
+<div class="system-visual system-visual-demand"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/><span class="system-badge">S1</span><span class="system-arrow" aria-hidden="true">↗</span><span class="system-short-name">Demand System</span></div>
 <div class="system-copy">
-<span class="num">01.</span>
+<span class="system-kicker">01.</span>
 <h3>Demand System</h3>
 <p>Manejamos tu pauta, pero no la optimizamos por leads baratos: la optimizamos por las oportunidades que tu equipo comercial acepta y por las que terminan en venta. Cada semana ves el embudo completo, no solo los clics.</p>
 <a class="btn system-link" href="/sistemas/">Ver sistema <span aria-hidden="true">→</span></a>
 </div>
 </article>
 <article class="three-card system-card rv">
-<div class="system-visual system-visual-sales"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/></div>
+<div class="system-visual system-visual-sales"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/><span class="system-badge">S2</span><span class="system-arrow" aria-hidden="true">↗</span><span class="system-short-name">Sales Flow</span></div>
 <div class="system-copy">
-<span class="num">02.</span>
+<span class="system-kicker">02.</span>
 <h3>Sales Flow</h3>
 <p>Hoy pagas por un prospecto, te escribe por WhatsApp, y ahí empieza a perderse: respuesta tarde, sin seguimiento, fuera del CRM, sin saber de qué campaña vino. Sales Flow conecta tu pauta, WhatsApp y CRM para que cada prospecto tenga respuesta, seguimiento y dueño, y para que sepas cuáles compran.</p>
 <a class="btn system-link" href="/sistemas/">Ver sistema <span aria-hidden="true">→</span></a>
 </div>
 </article>
 <article class="three-card system-card rv">
-<div class="system-visual system-visual-operations"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/></div>
+<div class="system-visual system-visual-operations"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/><span class="system-badge">S3</span><span class="system-arrow" aria-hidden="true">↗</span><span class="system-short-name">Operations System</span></div>
 <div class="system-copy">
-<span class="num">03.</span>
+<span class="system-kicker">03.</span>
 <h3>Operations System</h3>
 <p>No te vendemos IA. Elegimos un proceso que tu equipo repite cien veces por semana, medimos cuánto te cuesta hoy, y en ocho semanas lo dejamos funcionando solo, con una persona aprobando lo que importa.</p>
 <a class="btn system-link" href="/sistemas/">Ver sistema <span aria-hidden="true">→</span></a>
@@ -273,7 +247,8 @@ Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
 <div class="three-grid proof-grid">
 <article class="three-card proof-card rv">
 <div class="proof-copy">
-<div class="proof-title-row"><div><span class="num">01.</span><h3>Ficha de caso</h3></div><div class="proof-filters" aria-label="Filtros del caso"><span>Sector · [pendiente]</span><span>Sistema · [pendiente]</span><span>Ciudad · [pendiente]</span></div></div>
+<blockquote class="proof-quote">Ficha de caso</blockquote>
+<div class="proof-filters" aria-label="Filtros del caso"><span>Sector · [pendiente]</span><span>Sistema · [pendiente]</span><span>Ciudad · [pendiente]</span></div>
 <dl class="case-fields">
 <div><dt>Situación inicial</dt><dd>[pendiente]</dd></div>
 <div><dt>Período</dt><dd>[pendiente]</dd></div>
@@ -337,10 +312,7 @@ Los dos primeros, combinados, son Revenue Engine: nuestro producto principal.
           </div>
 <div class="footer-col footer-appearance">
 <h5>Apariencia</h5>
-<div class="theme-switch">
-<button id="themeLightFooter" class="active" type="button">Claro</button>
-<button id="themeDarkFooter" type="button">Oscuro</button>
-</div>
+<button class="theme-toggle" type="button" aria-label="Activar versión oscura" title="Versión oscura"><span class="theme-toggle__thumb"><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></span></button>
 </div>
 </div>
 <div class="footer-bottom">
@@ -547,24 +519,32 @@ function RcktLanding() {
     };
     form?.addEventListener("submit", onSubmit);
 
-    const light = document.getElementById("themeLight");
-    const dark = document.getElementById("themeDark");
-    const lightMobile = document.getElementById("themeLightMobile");
-    const darkMobile = document.getElementById("themeDarkMobile");
-    const lightFooter = document.getElementById("themeLightFooter");
-    const darkFooter = document.getElementById("themeDarkFooter");
-    const setLight = () => {
-      document.documentElement.removeAttribute("data-theme");
-      [light, lightMobile, lightFooter].forEach((b) => b?.classList.add("active"));
-      [dark, darkMobile, darkFooter].forEach((b) => b?.classList.remove("active"));
+    const themeToggles = Array.from(document.querySelectorAll<HTMLButtonElement>(".theme-toggle"));
+    const applyTheme = (theme: "light" | "dark") => {
+      document.documentElement.setAttribute("data-theme", theme);
+      try {
+        localStorage.setItem("rckt-theme", theme);
+      } catch {
+        // Storage can be unavailable in private browsing contexts.
+      }
+      themeToggles.forEach((button) => {
+        const isDark = theme === "dark";
+        button.classList.toggle("is-dark", isDark);
+        button.classList.toggle("is-light", !isDark);
+        button.setAttribute("aria-label", isDark ? "Activar versión clara" : "Activar versión oscura");
+        button.setAttribute("title", isDark ? "Versión clara" : "Versión oscura");
+      });
+      window.dispatchEvent(new CustomEvent("rckt:theme", { detail: theme }));
     };
-    const setDark = () => {
-      document.documentElement.setAttribute("data-theme", "dark");
-      [dark, darkMobile, darkFooter].forEach((b) => b?.classList.add("active"));
-      [light, lightMobile, lightFooter].forEach((b) => b?.classList.remove("active"));
-    };
-    [light, lightMobile, lightFooter].forEach((b) => b?.addEventListener("click", setLight));
-    [dark, darkMobile, darkFooter].forEach((b) => b?.addEventListener("click", setDark));
+    let storedTheme: "light" | "dark" = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+    try {
+      if (localStorage.getItem("rckt-theme") === "dark") storedTheme = "dark";
+    } catch {
+      // Keep the rendered theme.
+    }
+    applyTheme(storedTheme);
+    const toggleTheme = () => applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
+    themeToggles.forEach((button) => button.addEventListener("click", toggleTheme));
 
     return () => {
       timers.forEach((t) => window.clearTimeout(t));
@@ -585,9 +565,7 @@ function RcktLanding() {
       }
       faqButtons.forEach((button) => button.removeEventListener("click", onFaq));
       form?.removeEventListener("submit", onSubmit);
-      [light, lightMobile, lightFooter].forEach((b) => b?.removeEventListener("click", setLight));
-      [dark, darkMobile, darkFooter].forEach((b) => b?.removeEventListener("click", setDark));
-      document.documentElement.removeAttribute("data-theme");
+      themeToggles.forEach((button) => button.removeEventListener("click", toggleTheme));
       document.body.classList.remove("menu-open");
     };
   }, []);
