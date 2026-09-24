@@ -317,18 +317,20 @@ export function useSiteMotion(deps: unknown[] = []) {
     const dark = document.getElementById("themeDark");
     const lightMobile = document.getElementById("themeLightMobile");
     const darkMobile = document.getElementById("themeDarkMobile");
+    const lightFooter = document.getElementById("themeLightFooter");
+    const darkFooter = document.getElementById("themeDarkFooter");
     const setLight = () => {
       document.documentElement.removeAttribute("data-theme");
-      [light, lightMobile].forEach((b) => b?.classList.add("active"));
-      [dark, darkMobile].forEach((b) => b?.classList.remove("active"));
+      [light, lightMobile, lightFooter].forEach((b) => b?.classList.add("active"));
+      [dark, darkMobile, darkFooter].forEach((b) => b?.classList.remove("active"));
     };
     const setDark = () => {
       document.documentElement.setAttribute("data-theme", "dark");
-      [dark, darkMobile].forEach((b) => b?.classList.add("active"));
-      [light, lightMobile].forEach((b) => b?.classList.remove("active"));
+      [dark, darkMobile, darkFooter].forEach((b) => b?.classList.add("active"));
+      [light, lightMobile, lightFooter].forEach((b) => b?.classList.remove("active"));
     };
-    [light, lightMobile].forEach((b) => b?.addEventListener("click", setLight));
-    [dark, darkMobile].forEach((b) => b?.addEventListener("click", setDark));
+    [light, lightMobile, lightFooter].forEach((b) => b?.addEventListener("click", setLight));
+    [dark, darkMobile, darkFooter].forEach((b) => b?.addEventListener("click", setDark));
 
     return () => {
       observer?.disconnect();
@@ -351,8 +353,8 @@ export function useSiteMotion(deps: unknown[] = []) {
         });
       }
       window.removeEventListener("resize", closeOnResize);
-      [light, lightMobile].forEach((b) => b?.removeEventListener("click", setLight));
-      [dark, darkMobile].forEach((b) => b?.removeEventListener("click", setDark));
+      [light, lightMobile, lightFooter].forEach((b) => b?.removeEventListener("click", setLight));
+      [dark, darkMobile, darkFooter].forEach((b) => b?.removeEventListener("click", setDark));
       document.documentElement.removeAttribute("data-theme");
       document.body.classList.remove("menu-open");
     };
