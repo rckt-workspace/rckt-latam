@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo } from "react";
 import heroAsset from "@/assets/rckt-hero.jpg";
+import ctaAsset from "@/assets/rckt-cta.jpg";
 import logoDarkAsset from "@/assets/rckt-logo-dark.png";
 import logoLightAsset from "@/assets/rckt-logo-light.png";
 import MethodCard, { type MethodField } from "@/components/rckt/MethodCard";
@@ -354,7 +355,7 @@ function FinalCta() {
   return (
     <section className="cta-final general-cta">
       <span className="cta-final__topline" aria-hidden="true" />
-      <img className="cta-final-photo" src={heroAsset} alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA" />
+      <img className="cta-final-photo" src={ctaAsset} alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA" />
       <span className="cta-final-overlay" aria-hidden="true" />
       <span className="cta-final__glow" aria-hidden="true" />
       <div className="container">
