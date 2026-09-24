@@ -9,4 +9,3 @@
 - [x] Confirmar CTA final y recalcular visualmente las manchas tras el cambio de alturas.
 - [x] Validar Inicio en 1280 px y 390 px, claro y oscuro.
 
-- [ ] Revisar y adaptar el texto compartido sobre el Pasaporte cuando se defina su ubicación o uso.
