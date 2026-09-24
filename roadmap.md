@@ -4,7 +4,9 @@
 - [x] Replicar exactamente el sistema de manchas adaptativas de rckt.es.
 - [x] Igualar el footer claro de cuatro columnas de rckt.es sin cambiar contenido ni enlaces.
 - [x] Validar ambos ajustes en 1280 px y 390 px, claro y oscuro.
-- [ ] Reemplazar todos los toggles Claro/Oscuro por el switch visual y persistente de rckt.es.
-- [ ] Simplificar Tres problemas, Los tres sistemas y Prueba de Inicio según rckt.es, preservando todo el copy LATAM.
-- [ ] Confirmar CTA final y recalcular visualmente las manchas tras el cambio de alturas.
-- [ ] Validar Inicio en 1280 px y 390 px, claro y oscuro.
+- [x] Reemplazar todos los toggles Claro/Oscuro por el switch visual y persistente de rckt.es.
+- [x] Simplificar Tres problemas, Los tres sistemas y Prueba de Inicio según rckt.es, preservando todo el copy LATAM.
+- [x] Confirmar CTA final y recalcular visualmente las manchas tras el cambio de alturas.
+- [x] Validar Inicio en 1280 px y 390 px, claro y oscuro.
+
+- [ ] Revisar y adaptar el texto compartido sobre el Pasaporte cuando se defina su ubicación o uso.

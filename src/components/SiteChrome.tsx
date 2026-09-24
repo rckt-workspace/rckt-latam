@@ -1,20 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import logoDarkAsset from "@/assets/rckt-logo-dark.png";
+import ThemeToggle from "@/components/rckt/ThemeToggle";
 
 /** Navegación y pie compartidos con la home, más las animaciones del sitio. */
-
-function ThemeSwitch({ suffix = "" }: { suffix?: string }) {
-  return (
-    <div className="theme-switch hero-theme-switch">
-      <button id={`themeLight${suffix}`} className="active" type="button">
-        Claro
-      </button>
-      <button id={`themeDark${suffix}`} type="button">
-        Oscuro
-      </button>
-    </div>
-  );
-}
 
 function NosotrosDropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -98,7 +86,7 @@ export function SiteHeader() {
               <a href="/blog">Blog</a>
 
               <div className="nav-menu-footer">
-                <ThemeSwitch suffix="Mobile" />
+                <ThemeToggle />
                 <a className="btn hero-nav-cta nav-menu-cta" href="/sistemas/revenue-diagnostic">
                   Pedir diagnóstico
                 </a>
@@ -107,7 +95,7 @@ export function SiteHeader() {
           </div>
           <div className="nav-capsule nav-capsule-right nav-right">
             <div className="nav-right-desktop">
-              <ThemeSwitch />
+              <ThemeToggle />
             </div>
             <a className="btn hero-nav-cta" href="/sistemas/revenue-diagnostic">
               Pedir diagnóstico
@@ -198,7 +186,7 @@ export function SiteFooter() {
           </div>
           <div className="footer-col footer-appearance">
             <h5>Apariencia</h5>
-            <ThemeSwitch suffix="Footer" />
+            <ThemeToggle />
           </div>
         </div>
         <div className="footer-bottom">
@@ -313,25 +301,6 @@ export function useSiteMotion(deps: unknown[] = []) {
     };
     window.addEventListener("resize", closeOnResize);
 
-    const light = document.getElementById("themeLight");
-    const dark = document.getElementById("themeDark");
-    const lightMobile = document.getElementById("themeLightMobile");
-    const darkMobile = document.getElementById("themeDarkMobile");
-    const lightFooter = document.getElementById("themeLightFooter");
-    const darkFooter = document.getElementById("themeDarkFooter");
-    const setLight = () => {
-      document.documentElement.removeAttribute("data-theme");
-      [light, lightMobile, lightFooter].forEach((b) => b?.classList.add("active"));
-      [dark, darkMobile, darkFooter].forEach((b) => b?.classList.remove("active"));
-    };
-    const setDark = () => {
-      document.documentElement.setAttribute("data-theme", "dark");
-      [dark, darkMobile, darkFooter].forEach((b) => b?.classList.add("active"));
-      [light, lightMobile, lightFooter].forEach((b) => b?.classList.remove("active"));
-    };
-    [light, lightMobile, lightFooter].forEach((b) => b?.addEventListener("click", setLight));
-    [dark, darkMobile, darkFooter].forEach((b) => b?.addEventListener("click", setDark));
-
     return () => {
       observer?.disconnect();
       window.removeEventListener("scroll", onScroll);
@@ -353,9 +322,6 @@ export function useSiteMotion(deps: unknown[] = []) {
         });
       }
       window.removeEventListener("resize", closeOnResize);
-      [light, lightMobile, lightFooter].forEach((b) => b?.removeEventListener("click", setLight));
-      [dark, darkMobile, darkFooter].forEach((b) => b?.removeEventListener("click", setDark));
-      document.documentElement.removeAttribute("data-theme");
       document.body.classList.remove("menu-open");
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
