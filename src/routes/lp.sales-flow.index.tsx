@@ -120,7 +120,10 @@ function SalesFlowCampaign() {
     </section>
     <FaqSection items={faq} />
     <section className="campaign-section" id="formulario" onClickCapture={event => { if ((event.target as HTMLElement).closest('a[href="#whatsapp"]')) track("whatsapp_click", { section: "formulario" }); }}>
-      <div className="campaign-shell campaign-content campaign-form-layout"><div><SectionHeader num="07." label="Revenue Diagnostic" title="Revisemos tu proceso comercial." /><p className="campaign-statement">Meta te muestra cuántas personas escribieron. Nadie te muestra cuántas compraron.</p></div>
+      <div className="campaign-shell campaign-content">
+        <SectionHeader num="07." label="Revenue Diagnostic" title="Revisemos tu proceso comercial." />
+        <p className="campaign-statement">Meta te muestra cuántas personas escribieron. Nadie te muestra cuántas compraron.</p>
+        <div className="campaign-form-wrap">
         <DiagnosticForm whatsappUrl="#whatsapp" submitLabel="Revisar mi proceso comercial →" onSuccess={values => {
           const { score, nivel } = scoreLead(values);
           track("lead_valido", { score, nivel });

@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
+import { Check } from "lucide-react";
 import CampaignShell from "@/components/rckt/CampaignShell";
 import { gtmHeadScripts, saveCampaignParams, track } from "@/components/rckt/tracking";
 import type { LeadLevel } from "@/components/rckt/leadScoring";
@@ -24,13 +25,21 @@ function ThankYou() {
   const { nivel } = Route.useSearch();
   useEffect(() => { saveCampaignParams(window.location.search); track("thank_you_view", { nivel }); }, [nivel]);
   const content = nivel === "sql"
-    ? { title: "Tu solicitud cumple el perfil.", text: "Agenda tu reunión en las próximas 48 horas." }
+    ? { label: "Solicitud prioritaria", title: "Tu solicitud cumple el perfil.", text: "Agenda tu reunión en las próximas 48 horas." }
     : nivel === "recurso"
-      ? { title: "Gracias por escribirnos.", text: "Mientras tanto, esto te puede servir." }
-      : { title: "Recibimos tu solicitud.", text: "Te contactamos en menos de 24 horas." };
-  return <CampaignShell thanks><main><section className="campaign-thanks"><div className="campaign-shell campaign-thanks__inner">
-    <p className="label-orange">RCKT LATAM · Solicitud recibida</p><h1>{content.title}</h1><p>{content.text}</p>
-    {nivel === "sql" ? <div className="campaign-calendar">[PENDIENTE: enlace de agenda]</div> : null}
-    {nivel === "recurso" ? <Link to="/recursos" className="btn-orange campaign-resource-link">Ver recursos →</Link> : null}
+      ? { label: "Solicitud recibida", title: "Gracias por escribirnos.", text: "Mientras tanto, esto te puede servir." }
+      : { label: "Solicitud recibida", title: "Recibimos tu solicitud.", text: "Te contactamos en menos de 24 horas.", note: "Te escribiremos desde el mismo WhatsApp o correo que dejaste." };
+  return <CampaignShell thanks><main><section className="campaign-thanks"><div className="campaign-shell">
+    <div className="campaign-thanks__card">
+      <span className="campaign-thanks__icon" aria-hidden="true"><Check strokeWidth={2.5} /></span>
+      <p className="label-orange">{content.label}</p>
+      <h1>{content.title}</h1>
+      <p className="campaign-thanks__text">{content.text}</p>
+      <span className="campaign-thanks__rule" aria-hidden="true" />
+      {nivel === "sql" ? <div className="campaign-calendar">[PENDIENTE: enlace de agenda]</div> : null}
+      {content.note ? <p className="campaign-thanks__note">{content.note}</p> : null}
+      {nivel === "recurso" ? <Link to="/recursos" className="btn-orange campaign-resource-link">Ver recursos →</Link> : null}
+      <a className="campaign-thanks__back" href="/lp/sales-flow">Volver al inicio</a>
+    </div>
   </div></section></main></CampaignShell>;
 }
