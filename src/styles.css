@@ -6896,3 +6896,5 @@ body,
 .combo-card .rule-list { margin-top:24px; padding:0; border:0; background:transparent; box-shadow:none; }
 .combo-card--primary .rule-row__num, .combo-card--primary .rule-row__text { color:var(--papel-fija); }
 .combo-card--primary .rule-row { border-color:color-mix(in srgb,var(--papel-fija) 30%,transparent); }
+.rckt-site .combo-card .rule-list, [data-theme="dark"] .rckt-site .combo-card .rule-list { padding:0; border:0; background:transparent; box-shadow:none; }
+.rckt-site .combo-card--primary .rule-row__num, .rckt-site .combo-card--primary .rule-row__text { color:var(--papel-fija); }
