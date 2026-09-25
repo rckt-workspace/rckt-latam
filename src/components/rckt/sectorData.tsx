@@ -160,7 +160,7 @@ export const SECTORS: Record<string, SectorPageData> = {
         Revenue Systems para <span className="text-orange">colegios, universidades e <span className="hero-hand">institutos.</span></span>
       </>
     ),
-    context: "Colegios, universidades, institutos y educación continua con picos de demanda en temporada de matrículas. Calificamos ese volumen y lo seguimos hasta la matrícula.",
+    context: "Universidades, institutos y educación continua que reciben cientos de solicitudes en temporada de matrículas y no saben cuáles terminan matriculadas. Calificamos ese volumen y lo seguimos hasta la matrícula.",
     ctaLabel: CTA,
     sectorImage: educacion,
     sectorImageAlt: "Asesor conversando con un estudiante en una biblioteca",
@@ -178,18 +178,18 @@ export const SECTORS: Record<string, SectorPageData> = {
     ],
     doloresDetalle: [
       {
-        titulo: "Volumen sin calificación",
-        descripcion: "Volumen alto de leads sin calificación real.",
+        titulo: "En temporada, el volumen tapa a los interesados",
+        descripcion: "Cientos de solicitudes y ninguna forma de saber cuáles están listas para matricularse.",
         resuelve: "Respuesta y calificación",
       },
       {
-        titulo: "Picos de temporada",
-        descripcion: "Picos de temporada que saturan al equipo de admisiones.",
+        titulo: "El seguimiento se corta después del primer mensaje",
+        descripcion: "En los picos, a quien no contesta no se le vuelve a escribir.",
         resuelve: "Secuencias por temporada",
       },
       {
-        titulo: "Seguimiento perdido",
-        descripcion: "Seguimiento que se pierde entre el primer contacto y la matrícula.",
+        titulo: "La matrícula no vuelve a la pauta",
+        descripcion: "Se mide la solicitud, no la matrícula, y las plataformas siguen buscando a quien pregunta.",
         resuelve: "CRM de admisiones",
       },
       {
@@ -276,11 +276,11 @@ export const SECTORS: Record<string, SectorPageData> = {
         Revenue Systems para <span className="text-orange">constructoras e <span className="hero-hand">inmobiliarias.</span></span>
       </>
     ),
-    context: "Constructoras e inmobiliarias con varios asesores, ciclos largos y cotizaciones hechas a mano. Ordenamos la captación y automatizamos lo repetitivo, medido por visita realizada.",
+    context: "Cuando varios asesores atienden los mismos prospectos y cada cotización se arma a mano, el ciclo se alarga y nadie sabe qué campaña trajo la visita. Ordenamos la captación, automatizamos lo repetitivo y medimos por visita realizada.",
     ctaLabel: CTA,
     sectorImage: construccion,
     sectorImageAlt: "Dos personas revisando un proyecto en obra",
-    funnelStages: ["Anuncios", "Landing", "Asesor", "Visita", "Cotización", "Cierre"],
+    funnelStages: ["Pauta", "landing", "asesor", "visita", "cotización", "cierre"],
     funnelLeaks: [
       { afterStage: 2, label: "Leads de baja calidad" },
       { afterStage: 3, label: "Varios asesores, el mismo contacto" },
@@ -289,22 +289,22 @@ export const SECTORS: Record<string, SectorPageData> = {
     ],
     doloresDetalle: [
       {
-        titulo: "Leads de baja calidad",
+        titulo: "Prospectos sin intención real",
         descripcion: "Muchos contactos sin cotización ni intención real de compra.",
         resuelve: "Lead scoring",
       },
       {
-        titulo: "Varios asesores compitiendo por el mismo contacto",
+        titulo: "Dos asesores llamando al mismo prospecto",
         descripcion: "El mismo prospecto recibe llamadas de dos asesores y ninguno es su dueño.",
         resuelve: "Asignación multi-asesor",
       },
       {
-        titulo: "Ciclos largos",
+        titulo: "Meses entre la visita y la firma sin seguimiento",
         descripcion: "Ciclos de venta largos sin seguimiento estructurado.",
         resuelve: "CRM para ciclos largos",
       },
       {
-        titulo: "Cotizaciones hechas a mano",
+        titulo: "Cotizaciones que tardan días",
         descripcion: "Cada cotización tarda días y depende de una sola persona.",
         resuelve: "Cotizaciones automáticas con aprobación humana",
       },
@@ -356,7 +356,7 @@ export const SECTORS: Record<string, SectorPageData> = {
         Revenue Systems para <span className="text-orange">servicios profesionales <span className="hero-hand">B2B.</span></span>
       </>
     ),
-    context: "Firmas de servicios profesionales que dependen de referidos y de un pipeline corto. Captamos demanda en Google y LinkedIn y medimos por oportunidad aceptada por ventas, no por lead.",
+    context: "Si tu firma vive de referidos, el mes que no llegan se nota en la facturación. Construimos demanda propia en Google y LinkedIn y la medimos por reuniones que terminan en propuesta, no por leads.",
     ctaLabel: CTA,
     sectorImage: b2b,
     sectorImageAlt: "Reunión de consultoría revisando indicadores",
@@ -368,17 +368,17 @@ export const SECTORS: Record<string, SectorPageData> = {
     ],
     doloresDetalle: [
       {
-        titulo: "Pipeline corto",
+        titulo: "Pocas oportunidades nuevas cada mes",
         descripcion: "Pocas oportunidades nuevas cada mes y un equipo comercial que espera a que lleguen.",
         resuelve: "Demand en Google y LinkedIn",
       },
       {
-        titulo: "Depende de referidos",
+        titulo: "Facturación atada a los referidos",
         descripcion: "Cuando los referidos bajan, la facturación baja con ellos.",
         resuelve: "Captación propia medida hasta la venta",
       },
       {
-        titulo: "CRM mal usado",
+        titulo: "Un CRM que el equipo no actualiza",
         descripcion: "El CRM existe, pero nadie lo actualiza ni sabe en qué etapa está cada oportunidad.",
         resuelve: "CRM & RevOps con scoring",
       },
@@ -417,11 +417,11 @@ export const SECTORS: Record<string, SectorPageData> = {
         Revenue Systems para <span className="text-orange">ecommerce con <span className="hero-hand">volumen.</span></span>
       </>
     ),
-    context: "Tiendas con volumen donde el costo de adquisición sube más rápido que el ticket promedio. Medimos por margen de contribución tras adquisición.",
+    context: "Tiendas que ya venden con volumen, pero cada cliente nuevo cuesta más que el anterior y parte de los pedidos se cierra por WhatsApp sin atribuirse. Medimos por lo que queda después de pagar la adquisición.",
     ctaLabel: CTA,
     sectorImage: ecommerce,
     sectorImageAlt: "Equipo preparando pedidos de una tienda online",
-    funnelStages: ["Anuncios", "Tienda", "Compra", "Recompra"],
+    funnelStages: ["Pauta", "Tienda (a veces WhatsApp)", "Compra", "Recompra"],
     funnelLeaks: [
       { afterStage: 1, label: "CAC alto" },
       { afterStage: 2, label: "Conversión baja" },
@@ -429,21 +429,21 @@ export const SECTORS: Record<string, SectorPageData> = {
     ],
     doloresDetalle: [
       {
-        titulo: "CAC alto",
+        titulo: "Cada cliente cuesta más",
         descripcion: "Cada cliente nuevo cuesta más que el del mes anterior.",
         resuelve: "Medios optimizados por margen",
       },
       {
-        titulo: "Conversión baja",
+        titulo: "Tráfico que no compra",
         descripcion: "El tráfico llega a la tienda, pero no compra.",
         resuelve: "CRO de la tienda",
       },
       {
-        titulo: "Creatividad agotada",
+        titulo: "Anuncios cansados",
         descripcion: "Los mismos anuncios desde hace meses y un rendimiento que va a la baja.",
         resuelve: "Creative Performance",
       },
-      { titulo: "WhatsApp sin medir dentro del embudo", descripcion: "Parte de la venta pasa por WhatsApp y nadie la atribuye.", resuelve: "WhatsApp integrado y medido" },
+      { titulo: "Pedidos por WhatsApp sin dueño", descripcion: "Parte de la venta pasa por WhatsApp y nadie la atribuye.", resuelve: "WhatsApp integrado y medido" },
     ],
     sistemaTitle: (
       <>
@@ -479,7 +479,7 @@ export const SECTORS: Record<string, SectorPageData> = {
         Revenue Systems para <span className="text-orange">industria y <span className="hero-hand">distribución.</span></span>
       </>
     ),
-    context: "Empresas con cotizaciones, documentos y datos que se mueven a mano entre CRM y ERP. Automatizamos un proceso a la vez, con aprobación humana.",
+    context: "Distribuidores e industrias donde cada pedido empieza con una cotización armada a mano y los datos viajan entre CRM, ERP y hojas de cálculo. Automatizamos un proceso a la vez y medimos el costo por ejecución correcta.",
     ctaLabel: CTA,
     ctaFinalLabel: "Revisar mi proceso comercial →",
     sectorImage: industria,
@@ -492,17 +492,17 @@ export const SECTORS: Record<string, SectorPageData> = {
     ],
     doloresDetalle: [
       {
-        titulo: "Cotizaciones manuales",
+        titulo: "Cotizaciones que tardan horas",
         descripcion: "Cada cotización se prepara a mano y tarda horas.",
         resuelve: "Cotizaciones desde WhatsApp o correo",
       },
       {
-        titulo: "Documentos manuales",
+        titulo: "Documentos que se copian con errores",
         descripcion: "Datos que se copian de un sistema a otro, con errores y retrabajo.",
         resuelve: "Documentos generados y verificados",
       },
       {
-        titulo: "CRM y ERP desconectados",
+        titulo: "Comercial y operación con datos distintos",
         descripcion: "Comercial y operación trabajan con datos distintos.",
         resuelve: "Sincronización CRM ↔ ERP",
       },
