@@ -1,11 +1,13 @@
-import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { Briefcase, Clock, Sparkles, Users } from "lucide-react";
-import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
+import SiteFooter from "@/components/rckt/SiteFooter";
+import SiteNav from "@/components/rckt/SiteNav";
 import { PostulacionForm } from "@/components/PostulacionForm";
 import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
+import { useInView } from "@/hooks/use-in-view";
 import { getActiveVacancies, type VacantePublica } from "@/lib/vacantes.functions";
 
 const SITE_URL = "https://rckt.lat";
@@ -33,8 +35,6 @@ export const Route = createFileRoute("/trabaja-con-nosotros")({
     links: [{ rel: "canonical", href: SITE_URL + "/trabaja-con-nosotros" }],
   }),
   component: TrabajaConNosotros,
-  errorComponent: TrabajaConNosotrosError,
-  notFoundComponent: () => <TrabajaConNosotrosError />,
 });
 
 type Vacante = VacantePublica;
@@ -62,6 +62,42 @@ const cultura = [
       "Creemos que la tecnología debe potenciar a las personas, no reemplazar aquello que nos hace humanos. Promovemos el uso responsable y estratégico de la Inteligencia Artificial para automatizar tareas, optimizar procesos y liberar tiempo para pensamiento crítico, creatividad, empatía y toma de decisiones.",
   },
 ];
+
+function SectionLabel({ children }: { children: ReactNode }) {
+  return (
+    <div className="mb-4 flex items-center gap-3">
+      <span className="inline-block h-4 w-[2px] bg-orange" />
+      <span className="label-orange">{children}</span>
+    </div>
+  );
+}
+
+function Rise({ children, i = 0, className = "" }: { children: ReactNode; i?: number; className?: string }) {
+  const { ref, inView } = useInView<HTMLDivElement>(0.15);
+  return (
+    <div ref={ref} className={`nos-rise ${inView ? "is-in" : ""} ${className}`} style={{ transitionDelay: `${i * 100}ms` }}>
+      {children}
+    </div>
+  );
+}
+
+function CulturaCard({ c, i }: { c: (typeof cultura)[number]; i: number }) {
+  const Icon = c.Icon;
+  return (
+    <Rise i={i} className="h-full">
+      <article className="tw-card flex h-full flex-col p-7">
+        <div className="flex items-center justify-between">
+          <span className="tw-icon-circle">
+            <Icon className="h-[22px] w-[22px] text-orange" strokeWidth={1.5} aria-hidden="true" />
+          </span>
+          <span className="font-serif-accent text-[34px] leading-none text-orange italic">{c.n.replace(".", "")}</span>
+        </div>
+        <h3 className="font-display mt-5 text-[20px] font-semibold tracking-tight">{c.titulo}</h3>
+        <p className="mt-3 text-[15px] leading-[1.65] text-muted-foreground">{c.texto}</p>
+      </article>
+    </Rise>
+  );
+}
 
 function TrabajaConNosotros() {
   const [vacantes, setVacantes] = useState<Vacante[] | null>(null);
@@ -93,74 +129,104 @@ function TrabajaConNosotros() {
     void cargarVacantes();
   }, [cargarVacantes]);
 
-  useSiteMotion([vacantes]);
+  useEffect(() => {
+    if (window.location.hash) {
+      const el = document.querySelector(window.location.hash);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
 
   return (
-    <div className="rckt-site tcn-page">
-      <SiteHeader />
-      <main id="top">
+    <div className="nos-page bg-background text-foreground antialiased">
+      <SiteNav />
+      <main>
         <SystemPageHero label="Trabaja con nosotros" title={<>Descubre <span className="text-orange">el futuro del <span className="hero-hand">trabajo</span></span> con nosotros.</>} descriptor="En RCKT buscamos personas curiosas, autónomas, colaborativas y abiertas a aprender constantemente. Si quieres hacer parte de una cultura flexible, humana, diversa y preparada para el futuro, queremos conocerte." ctaLabel="Ver vacantes →" ctaHref="#vacantes" />
 
+        {/* 01 · Cultura */}
         <section className="nos-sec nos-glow--tl">
           <div className="mx-auto max-w-6xl px-6">
-            <div className="mb-4 flex items-center gap-3"><span className="inline-block h-4 w-[2px] bg-orange" /><span className="label-orange">01. Cultura</span></div>
-            <h2 className="font-display text-[28px] leading-tight font-semibold md:text-[40px]">Así nos <em className="font-serif-accent">diferenciamos</em>.</h2>
+            <SectionLabel>01. Cultura</SectionLabel>
+            <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+              Así nos <em className="font-serif-accent">diferenciamos</em>.
+            </h2>
             <div className="mt-12 grid items-stretch gap-6 md:grid-cols-3">
-              {cultura.map((c) => { const Icon = c.Icon; return <article className="tw-card flex h-full flex-col p-7" key={c.titulo}><div className="flex items-center justify-between"><span className="tw-icon-circle"><Icon className="h-[22px] w-[22px] text-orange" strokeWidth={1.5} /></span><span className="font-serif-accent text-[34px] leading-none text-orange italic">{c.n.replace('.', '')}</span></div><h3 className="font-display mt-5 text-[20px] font-semibold">{c.titulo}</h3><p className="mt-3 text-[15px] leading-[1.65] text-muted-foreground">{c.texto}</p></article>; })}
-            </div>
-          </div>
-        </section>
-
-        <section className="nos-sec nos-sec--warm scroll-mt-24" id="vacantes">
-          <div className="mx-auto max-w-6xl px-6">
-            <div className="mb-4 flex items-center gap-3"><span className="inline-block h-4 w-[2px] bg-orange" /><span className="label-orange">02. Oportunidades</span></div>
-            <h2 className="font-display text-[28px] leading-tight font-semibold md:text-[40px]">Vacantes abiertas.</h2>
-            <div className="vacantes-list">
-              {vacantes === null && <p className="vacantes-nota">Cargando vacantes…</p>}
-              {vacantesError && (
-                <div className="vacante-card rv" role="alert">
-                  <p>No pudimos cargar las vacantes, intenta de nuevo.</p>
-                  <button
-                    className="btn btn-primary btn-sm"
-                    type="button"
-                    onClick={() => void cargarVacantes()}
-                  >
-                    Intentar de nuevo
-                  </button>
-                </div>
-              )}
-              {!vacantesError && vacantes?.length === 0 && (
-                <div className="tw-empty mx-auto max-w-xl p-10 text-center md:p-12">
-                  <span className="tw-icon-circle mx-auto"><Briefcase className="h-[22px] w-[22px] text-orange" /></span>
-                  <p>
-                    Actualmente no tenemos vacantes abiertas, pero puedes dejarnos tu perfil en el
-                    formulario de abajo.
-                  </p>
-                </div>
-              )}
-              {vacantes?.map((v) => (
-                <article className="vacante-card rv" key={v.id}>
-                  <div className="vacante-info">
-                    <h3>{v.titulo}</h3>
-                    <p className="vacante-meta">{[v.area, "Remoto"].filter(Boolean).join(" · ")}</p>
-                  </div>
-                  <button
-                    className="btn btn-primary btn-sm"
-                    type="button"
-                    onClick={() => setDetalle(v)}
-                  >
-                    Ver vacante →
-                  </button>
-                </article>
+              {cultura.map((c, i) => (
+                <CulturaCard key={c.n} c={c} i={i} />
               ))}
             </div>
           </div>
         </section>
 
-        <section className="nos-sec scroll-mt-24" id="freelance">
+        {/* 02 · Vacantes */}
+        <section id="vacantes" className="nos-sec nos-sec--warm scroll-mt-24">
+          <div className="mx-auto max-w-6xl px-6">
+            <SectionLabel>02. Oportunidades</SectionLabel>
+            <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+              Vacantes abiertas.
+            </h2>
+            <div className="mt-12">
+              {vacantes === null && <p className="text-[15px] text-muted-foreground">Cargando vacantes…</p>}
+              {vacantesError && (
+                <Rise className="mx-auto max-w-xl">
+                  <div className="tw-empty p-10 text-center md:p-12" role="alert">
+                    <p className="text-[15px] leading-[1.65] text-muted-foreground">No pudimos cargar las vacantes, intenta de nuevo.</p>
+                    <button type="button" onClick={() => void cargarVacantes()} className="tw-text-link mt-6 inline-flex items-center gap-1 text-[14.5px] font-semibold text-orange">
+                      Intentar de nuevo
+                    </button>
+                  </div>
+                </Rise>
+              )}
+              {!vacantesError && vacantes?.length === 0 && (
+                <Rise className="mx-auto max-w-xl">
+                  <div className="tw-empty p-10 text-center md:p-12">
+                    <span className="tw-icon-circle mx-auto">
+                      <Briefcase className="h-[22px] w-[22px] text-orange" strokeWidth={1.5} aria-hidden="true" />
+                    </span>
+                    <p className="mt-6 text-[15px] leading-[1.65] text-muted-foreground">
+                      Actualmente no tenemos vacantes abiertas, pero puedes dejarnos tu perfil en el formulario de abajo.
+                    </p>
+                  </div>
+                </Rise>
+              )}
+              {vacantes && vacantes.length > 0 && (
+                <ul className="divide-y" style={{ borderColor: "rgba(252, 92, 31,0.18)" }}>
+                  {vacantes.map((v) => (
+                    <li key={v.id} className="tw-vac-row flex flex-col gap-3 py-6 md:flex-row md:items-center md:justify-between md:gap-8">
+                      <div>
+                        <h3 className="font-display text-[18px] font-semibold tracking-tight">{v.titulo}</h3>
+                        <div className="mt-2 flex flex-wrap items-center gap-2">
+                          <span className="res-chip">Remoto</span>
+                          {v.area ? <span className="res-chip">{v.area}</span> : null}
+                        </div>
+                      </div>
+                      <button type="button" onClick={() => setDetalle(v)} className="tw-text-link inline-flex shrink-0 items-center gap-1 text-[14.5px] font-semibold text-orange">
+                        Ver vacante →
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* 03 · Aliados */}
+        <section id="freelance" className="nos-sec scroll-mt-24">
           <div className="mx-auto grid max-w-6xl items-start gap-12 px-6 lg:grid-cols-2">
-            <div className="lg:sticky lg:top-[120px]"><div className="mb-4 flex items-center gap-3"><span className="inline-block h-4 w-[2px] bg-orange" /><span className="label-orange">03. Aliados</span></div><h2 className="font-display text-[28px] leading-tight font-semibold md:text-[38px]">¿Tienes un servicio o eres <em className="font-serif-accent">freelance</em>?</h2><p className="mt-4 max-w-md text-[16px] leading-[1.65] text-muted-foreground">Cuéntanos qué haces. Sumamos aliados y especialistas a nuestros proyectos de forma continua.</p></div>
-            <div className="tw-form-card relative p-8 md:p-9"><PostulacionForm tipo="servicio" /></div>
+            <div className="lg:sticky lg:top-[120px]">
+              <SectionLabel>03. Aliados</SectionLabel>
+              <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[38px]">
+                ¿Tienes un servicio o eres <em className="font-serif-accent">freelance</em>?
+              </h2>
+              <p className="mt-4 max-w-md text-[16px] leading-[1.65] text-muted-foreground">
+                Cuéntanos qué haces. Sumamos aliados y especialistas a nuestros proyectos de forma continua.
+              </p>
+            </div>
+            <Rise>
+              <div className="tw-form-card relative p-8 md:p-9">
+                <PostulacionForm tipo="servicio" />
+              </div>
+            </Rise>
           </div>
         </section>
         <GeneralCta />
@@ -202,38 +268,6 @@ function TrabajaConNosotros() {
           </div>
         </div>
       )}
-    </div>
-  );
-}
-
-function TrabajaConNosotrosError() {
-  const router = useRouter();
-
-  return (
-    <div className="rckt-site tcn-page">
-      <SiteHeader />
-      <main className="band">
-        <div className="container">
-          <div className="form-card" role="alert">
-            <span className="kicker">Trabaja con nosotros</span>
-            <h1>No pudimos mostrar esta página.</h1>
-            <p>Intenta cargarla nuevamente. Si el problema continúa, puedes volver al inicio.</p>
-            <div className="form-actions">
-              <button
-                className="btn btn-primary"
-                type="button"
-                onClick={() => void router.invalidate()}
-              >
-                Intentar de nuevo
-              </button>
-              <a className="btn" href="/">
-                Volver al inicio
-              </a>
-            </div>
-          </div>
-        </div>
-      </main>
-      <SiteFooter />
     </div>
   );
 }
