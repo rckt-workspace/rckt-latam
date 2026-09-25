@@ -8,9 +8,10 @@ import { currentTheme, THEME_EVENT } from "@/lib/theme";
 
 export function LegalPage({ title, children }: { title: string; children: ReactNode }) {
   useSiteMotion([]);
-  const [theme, setTheme] = useState(currentTheme());
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   useEffect(() => {
+    setTheme(currentTheme());
     const onThemeChange = () => setTheme(currentTheme());
     window.addEventListener(THEME_EVENT, onThemeChange);
     return () => window.removeEventListener(THEME_EVENT, onThemeChange);
