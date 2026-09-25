@@ -25,6 +25,7 @@ const BASE_COMUN = [
   { label: "IA supervisada", Icon: Bot },
   { label: "Responsable de cuenta", Icon: UserRound },
 ];
+const SITE_URL = "https://rckt.lat";
 
 function Arquitectura() {
   const { ref, inView } = useInView<HTMLDivElement>({ fallbackMs: 1200 });
@@ -251,21 +252,22 @@ export const Route = createFileRoute("/sistemas/")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Sistemas · RCKT" },
+      { title: "Sistemas — Tres sistemas, una sola cadena de ingresos | RCKT" },
       {
         name: "description",
         content:
           "Demand System, Sales Flow y Operations System: tres sistemas que siguen la cadena de ingresos de cualquier negocio, del clic al cierre.",
       },
-      { property: "og:title", content: "Sistemas · RCKT" },
+      { property: "og:title", content: "Sistemas — Tres sistemas, una sola cadena de ingresos | RCKT" },
       {
         property: "og:description",
         content: "Demand System, Sales Flow y Operations System: tres sistemas que siguen la cadena de ingresos de cualquier negocio, del clic al cierre.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL + "/sistemas" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://rckt-latam.lovable.app/sistemas" }],
+    links: [{ rel: "canonical", href: SITE_URL + "/sistemas" }],
   }),
   component: SistemasIndex,
 });

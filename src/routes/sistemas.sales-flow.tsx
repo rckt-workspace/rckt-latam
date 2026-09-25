@@ -7,6 +7,7 @@ import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/Sy
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
 const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
+const SITE_URL = "https://rckt.lat";
 
 const SALES_FLOW_FAQS = [
   { question: "¿Tengo que cambiar de CRM?", answer: "No necesariamente. Tu CRM es la fuente de verdad: lo configuramos y lo conectamos, no lo sustituimos por una herramienta nuestra. Si no tienes uno, te recomendamos uno y migramos si hace falta." },
@@ -34,9 +35,10 @@ export const Route = createFileRoute("/sistemas/sales-flow")({
         content: "Integración Ads ↔ WhatsApp ↔ CRM, SLAs de respuesta y atribución offline.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL + "/sistemas/sales-flow" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://rckt-latam.lovable.app/sistemas/sales-flow" }],
+    links: [{ rel: "canonical", href: SITE_URL + "/sistemas/sales-flow" }],
     scripts: [faqJsonLd(SALES_FLOW_FAQS)],
   }),
   component: SalesFlowPage,

@@ -19,6 +19,7 @@ import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/Sy
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
 const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
+const SITE_URL = "https://rckt.lat";
 
 const REVENUE_ENGINE_FAQS = [
   { question: "Quiero todo desde el principio.", answer: "Growth OS es para cuentas que ya llevan tiempo con nosotros. Empezar por todo a la vez es la forma más rápida de no medir nada. Empezamos por Revenue Engine y crecemos con evidencia." },
@@ -44,9 +45,10 @@ export const Route = createFileRoute("/sistemas/revenue-engine")({
         content: "Campañas, conversación y CRM como un solo sistema medido del clic al cierre.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL + "/sistemas/revenue-engine" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://rckt-latam.lovable.app/sistemas/revenue-engine" }],
+    links: [{ rel: "canonical", href: SITE_URL + "/sistemas/revenue-engine" }],
     scripts: [faqJsonLd(REVENUE_ENGINE_FAQS)],
   }),
   component: RevenueEnginePage,

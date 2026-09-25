@@ -17,6 +17,7 @@ import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/Sy
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
 const DIAGNOSTIC_FORM = "/sistemas/revenue-diagnostic#formulario";
+const SITE_URL = "https://rckt.lat";
 
 const DEMAND_SYSTEM_FAQS = [
   { question: "Solo quiero que me manejen la pauta.", answer: "Podemos, si ya tienes CRM y proceso comercial funcionando. Si no, vas a pagar leads que se pierden después. Empecemos por el Diagnostic y te decimos con datos qué necesitas." },
@@ -44,9 +45,10 @@ export const Route = createFileRoute("/sistemas/demand-system")({
         content: "Optimizamos por SQL y venta, no por costo por lead. Reporte semanal por etapa del embudo.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL + "/sistemas/demand-system" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://rckt-latam.lovable.app/sistemas/demand-system" }],
+    links: [{ rel: "canonical", href: SITE_URL + "/sistemas/demand-system" }],
     scripts: [faqJsonLd(DEMAND_SYSTEM_FAQS)],
   }),
   component: DemandSystemPage,

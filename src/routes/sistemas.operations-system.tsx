@@ -7,6 +7,7 @@ import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/Sy
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
 const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
+const SITE_URL = "https://rckt.lat";
 
 const OPERATIONS_SYSTEM_FAQS = [
   { question: "Quiero un chatbot con IA.", answer: "No vendemos chatbots. Si tienes un proceso que tu equipo repite muchas veces, lo medimos y lo automatizamos con supervisión. Si es curiosidad por la IA, hay herramientas gratis para probar." },
@@ -34,9 +35,10 @@ export const Route = createFileRoute("/sistemas/operations-system")({
         content: "Sprint de 6–8 semanas con línea base, piloto medido y criterios de aceptación firmados.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL + "/sistemas/operations-system" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://rckt-latam.lovable.app/sistemas/operations-system" }],
+    links: [{ rel: "canonical", href: SITE_URL + "/sistemas/operations-system" }],
     scripts: [faqJsonLd(OPERATIONS_SYSTEM_FAQS)],
   }),
   component: OperationsSystemPage,

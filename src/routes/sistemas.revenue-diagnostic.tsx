@@ -22,6 +22,7 @@ import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
 
 
 const WHATSAPP_URL = "#whatsapp";
+const SITE_URL = "https://rckt.lat";
 
 const REVENUE_DIAGNOSTIC_FAQS = [
   { question: "¿Es gratis?", answer: "No. Es un diagnóstico pagado y, si sigues con nosotros, lo que pagas se descuenta del sistema." },
@@ -51,9 +52,10 @@ export const Route = createFileRoute("/sistemas/revenue-diagnostic")({
           "Te decimos cuánto pierdes entre la campaña y el cierre, en qué punto exacto, y qué haríamos en 90 días.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL + "/sistemas/revenue-diagnostic" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://rckt-latam.lovable.app/sistemas/revenue-diagnostic" }],
+    links: [{ rel: "canonical", href: SITE_URL + "/sistemas/revenue-diagnostic" }],
     scripts: [faqJsonLd(REVENUE_DIAGNOSTIC_FAQS)],
   }),
   component: RevenueDiagnostic,
