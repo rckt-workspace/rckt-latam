@@ -133,7 +133,7 @@ function SolucionesPage() {
               Cuéntanos qué te pasa; el sistema viene <span className="hero-hand">después</span>.
             </>
           }
-          context="No necesitas saber qué es Sales Flow ni Revenue Engine. Elige la frase que se parece a lo que te pasa: cada puerta empieza con un Revenue Diagnostic y, si encajas en dos, entras por la que te hace perder más plata."
+          context="No necesitas saber qué es Sales Flow ni Revenue Engine. Elige la frase que se parece a lo que te pasa: cada puerta empieza con un Revenue Diagnostic y, si encajas en dos, entras por la que te hace perder más dinero."
           ctaLabel="Revisar mi proceso comercial →"
           ctaHref={DIAGNOSTIC_HREF}
         />

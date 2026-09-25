@@ -195,7 +195,7 @@ function ComoTrabajamosPage() {
       <main>
         <SystemPageHero
           label="Cómo trabajamos"
-          title={<>La misma cabeza, tres formas de <span className="hero-hand">trabajar</span>.</>}
+          title={<>Tres formas de trabajar, una misma <span className="hero-hand">base</span>.</>}
           context="Puedes dejar que operemos el sistema y respondamos por el resultado (Operar), pedirnos una implementación cerrada de 6 a 8 semanas (Sprint) o sumar nuestro método a tu equipo interno (Partner). En los tres casos se cumplen las mismas seis condiciones."
           ctaLabel="Revisar mi proceso comercial →"
           ctaHref={DIAGNOSTIC_HREF}

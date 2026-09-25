@@ -37,8 +37,11 @@ export const Route = createFileRoute("/contacto")({
 
 const datos = [
   ["Correo", "hola@rckt.lat", "mailto:hola@rckt.lat"],
-  ["Ubicación", "Bogotá, Colombia", ""],
-  ["Horario", "Lun a Vie, 9:00 a. m. – 6:00 p. m. (hora de Bogotá)", ""],
+  ["Razón social", "RCKT S.A.S.", ""],
+  ["NIT", "902.075.396-5", ""],
+  ["Dirección", "Carrera 11B # 99-25, Bogotá D.C., Colombia", ""],
+  ["Privacidad", "privacy@rckt.lat", "mailto:privacy@rckt.lat"],
+  ["Horario", "[pendiente]", ""],
 ] as const;
 
 function useReveal<T extends HTMLElement>() {

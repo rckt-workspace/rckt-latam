@@ -1025,7 +1025,7 @@ input:focus {
 }
 
 /* ---------- footer ---------- */
-footer {
+.site-footer {
   border-top: 1px solid var(--line);
   padding: 64px 0 80px;
   line-height: 24px;
@@ -3534,12 +3534,51 @@ header.scrolled {
   gap: 22px 28px;
   margin-bottom: 26px;
 }
+
+/* Formulario de calificación: presentación equivalente al formulario de España. */
+.rd-form.ct-card { transition: border-color .3s ease; }
+.rd-form.ct-card:hover { transform: none; border-color: rgba(252, 92, 31, .18); }
+.rd-form .rd-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 0;
+}
+.rd-form .ct-label { display: block; color: var(--foreground); font-size: 13px; font-weight: 600; }
+.rd-form .ct-input,
+.rd-form .ct-select {
+  width: 100%;
+  border: 1px solid rgba(33, 33, 33, .12);
+  border-radius: 12px;
+  background-color: rgba(245, 242, 237, .9);
+  padding: 11px 14px;
+  color: var(--foreground);
+  font-size: 14px;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.rd-form .ct-input:focus,
+.rd-form .ct-select:focus { border-color: var(--naranja); box-shadow: 0 0 0 3px rgba(252, 92, 31, .15); }
+.rd-form .ct-select {
+  appearance: none;
+  padding-right: 38px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--naranja) 50%), linear-gradient(135deg, var(--naranja) 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(50% + 1px), calc(100% - 14px) calc(50% + 1px);
+  background-repeat: no-repeat;
+  background-size: 6px 6px;
+}
+.rd-form .ct-radio:has(input:checked) { border-color: var(--naranja); background: rgba(252, 92, 31, .08); }
+.rd-form .ct-radio:focus-within { outline: 2px solid var(--naranja); outline-offset: 2px; }
+.rd-form .ct-progress { height: 4px; overflow: hidden; border-radius: 999px; background: rgba(33, 33, 33, .1); }
+.rd-form .ct-progress__bar { height: 100%; border-radius: inherit; background: var(--naranja); transition: width .4s ease; }
+.rd-form .rd-actions { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (max-width: 720px) { .rd-form .rd-grid { grid-template-columns: 1fr; } }
 @media (max-width: 720px) {
   .rckt-site .rd-grid {
     grid-template-columns: 1fr;
   }
 }
-.rckt-site .rd-form select {
+.rckt-site .rd-form select:not(.ct-select) {
   width: 100%;
   background: transparent;
   border: none;
@@ -3550,7 +3589,7 @@ header.scrolled {
   font-family: inherit;
   border-radius: 0;
 }
-.rckt-site .rd-form select:focus {
+.rckt-site .rd-form select:not(.ct-select):focus {
   outline: none;
   border-color: var(--mode-text);
 }
@@ -5073,6 +5112,45 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
   background: #f5f2ed;
   color: #212121;
   border-top-color: rgba(33, 33, 33, 0.12);
+}
+
+/* El footer conserva la misma paleta y peso en páginas interiores y en Inicio. */
+.site-footer.section-deep,
+[data-theme="dark"] .site-footer.section-deep {
+  --paper: #212121;
+  background: #f5f2ed;
+  color: #212121;
+  font-weight: 400;
+}
+.site-footer.section-deep .text-paper\/50 { color: rgba(33, 33, 33, .5); font-weight: 400; }
+.site-footer.section-deep .text-paper\/55 { color: rgba(33, 33, 33, .55); font-weight: 400; }
+.site-footer.section-deep .text-paper\/40 { color: rgba(33, 33, 33, .4); font-weight: 400; }
+.site-footer.section-deep .text-paper\/35 { color: rgba(33, 33, 33, .35); font-weight: 400; }
+.site-footer.section-deep .hover\:text-paper:hover { color: #212121; }
+.site-footer .site-footer-logo--dark { display: block; }
+.site-footer .site-footer-logo--light,
+[data-theme="dark"] .site-footer .site-footer-logo--light { display: none; }
+[data-theme="dark"] .site-footer .site-footer-logo--dark { display: block; }
+
+/* Ajustes puntuales solicitados. */
+.hero-whatsapp-btn {
+  border: 1px solid rgba(33, 33, 33, .18);
+  background: rgba(245, 242, 237, .92);
+  color: #212121;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.hero-whatsapp-btn:hover { opacity: .88; transform: translateY(-1px); }
+.hero-tagline {
+  color: rgba(245, 242, 237, .85);
+  font-size: 10px;
+  font-weight: 600;
+  text-shadow: 0 1px 14px rgba(33, 33, 33, .35);
+}
+.diagnostic-needs-title { margin-top: 32px; }
+.res-toolbar { display: flex; flex-direction: column; align-items: flex-start; }
+@media (min-width: 768px) {
+  .hero-tagline { font-size: 12px; }
+  .diagnostic-needs-title { margin-top: 48px; }
 }
 .rckt-site footer .footer-top {
   border-bottom-color: rgba(33, 33, 33, 0.12);
