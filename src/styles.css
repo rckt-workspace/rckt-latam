@@ -6887,3 +6887,9 @@ body,
 .sector-section { position: relative; overflow: hidden; }
 .rckt-site > main { overflow-x: clip; }
 .sector-section { padding: clamp(64px, 9vw, 112px) 0; }
+
+/* Paso 6 — Nosotros: reutiliza patrones existentes */
+.cap-card__top { display:flex; align-items:center; justify-content:space-between; }
+.cap-card__icon { display:inline-flex; color:var(--naranja); }
+.nosotros-quote { max-width:960px; margin:0 auto; }
+.nosotros-link-card { max-width:none; min-height:0; }
