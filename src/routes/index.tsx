@@ -237,7 +237,6 @@ function SystemsSection() {
         <SectionHeader num="02." label="Los tres sistemas" title="Tres sistemas." phrase="Conseguir, cerrar y sostener." />
         <div className="home-section-content"><SystemCards systems={SYSTEMS} /></div>
         <div className="home-revenue-band">
-          <span className="home-revenue-band__glow" aria-hidden="true" />
           <h3>Luego, el <span>sistema completo.</span></h3>
           <p>Los dos primeros, combinados, son Revenue Engine — nuestro producto principal</p>
           <a href="/sistemas/revenue-engine">Ver Revenue Engine →</a>
@@ -270,7 +269,6 @@ function FinalCta() {
       <span className="cta-final__topline" aria-hidden="true" />
       <img className="cta-final-photo cta-photo-img" src={ctaAsset} alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA" />
       <span className="cta-final-overlay cta-photo-fade" aria-hidden="true" />
-      <span className="cta-final__glow" aria-hidden="true" />
       <div className="container">
         <span className="kicker">Siguiente paso</span>
         <h2>El siguiente paso empieza con <em className="font-serif-accent">claridad.</em></h2>

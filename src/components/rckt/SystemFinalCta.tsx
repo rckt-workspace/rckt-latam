@@ -23,7 +23,6 @@ export default function SystemFinalCta({
         alt="Profesionales de RCKT trabajando en sistemas de crecimiento"
       />
       <span className="cta-final-overlay cta-photo-fade" aria-hidden="true" />
-      <span className="cta-final__glow" aria-hidden="true" />
       <div className="container">
         <span className="kicker">¿Empezamos?</span>
         <h2>{title}</h2>
