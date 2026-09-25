@@ -41,7 +41,7 @@
 - [x] Bloque 4 — Igualar por CSS las medidas del hero de Inicio, sin convertirlo a JSX.
 - [x] Bloque 5 — Reconstruir las cinco páginas de Sistemas con sus composiciones españolas.
 - [x] Bloque 6 — Completar Ecommerce rentable y Operación a siete secciones.
-- [ ] Bloque 7 — Portar la puesta en escena de Cómo trabajamos.
+- [x] Bloque 7 — Portar la puesta en escena de Cómo trabajamos.
 - [ ] Bloque 8 — Igualar “Lo que somos / no somos” en Nosotros.
 - [ ] Bloque 9 — Igualar legales y footer conservando contenido LATAM.
 - [ ] Bloque 10 — Normalizar espaciados, tarjetas, CTA y manchas; validar todas las rutas.
