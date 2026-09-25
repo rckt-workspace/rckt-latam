@@ -17,10 +17,10 @@ export const Route = createFileRoute("/legal/privacidad")({
         content: "Cómo RCKT trata los datos que nos envías y qué derechos tienes sobre ellos.",
       },
       { property: "og:type", content: "article" },
-      { property: "og:url", content: "https://rckt-latam.lovable.app/privacidad" },
+      { property: "og:url", content: "https://rckt-latam.lovable.app/legal/privacidad" },
       { name: "twitter:card", content: "summary" },
     ],
-    links: [{ rel: "canonical", href: "https://rckt-latam.lovable.app/privacidad" }],
+    links: [{ rel: "canonical", href: "https://rckt-latam.lovable.app/legal/privacidad" }],
   }),
   component: Privacidad,
 });

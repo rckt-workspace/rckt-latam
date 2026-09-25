@@ -29,6 +29,7 @@ import { Route as NosotrosIndexRouteImport } from './routes/nosotros.index'
 import { Route as NosotrosComoTrabajamosRouteImport } from './routes/nosotros.como-trabajamos'
 import { Route as OpsAiControlRouteImport } from './routes/ops/ai-control'
 import { Route as OpsLoginRouteImport } from './routes/ops/login'
+import { Route as RecursosIndexRouteImport } from './routes/recursos.index'
 import { Route as SectoresIndexRouteImport } from './routes/sectores.index'
 import { Route as SectoresConstruccionInmobiliarioRouteImport } from './routes/sectores.construccion-inmobiliario'
 import { Route as SectoresEcommerceRouteImport } from './routes/sectores.ecommerce'
@@ -160,6 +161,11 @@ const OpsAiControlRoute = OpsAiControlRouteImport.update({
 const OpsLoginRoute = OpsLoginRouteImport.update({
   id: '/ops/login',
   path: '/ops/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecursosIndexRoute = RecursosIndexRouteImport.update({
+  id: '/recursos/',
+  path: '/recursos/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SectoresIndexRoute = SectoresIndexRouteImport.update({
@@ -368,6 +374,7 @@ export interface FileRoutesByFullPath {
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog/': typeof BlogIndexRoute
   '/nosotros/': typeof NosotrosIndexRoute
+  '/recursos/': typeof RecursosIndexRoute
   '/sectores/': typeof SectoresIndexRoute
   '/sistemas/': typeof SistemasIndexRoute
   '/soluciones/': typeof SolucionesIndexRoute
@@ -422,6 +429,7 @@ export interface FileRoutesByTo {
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog': typeof BlogIndexRoute
   '/nosotros': typeof NosotrosIndexRoute
+  '/recursos': typeof RecursosIndexRoute
   '/sectores': typeof SectoresIndexRoute
   '/sistemas': typeof SistemasIndexRoute
   '/soluciones': typeof SolucionesIndexRoute
@@ -477,6 +485,7 @@ export interface FileRoutesById {
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog/': typeof BlogIndexRoute
   '/nosotros/': typeof NosotrosIndexRoute
+  '/recursos/': typeof RecursosIndexRoute
   '/sectores/': typeof SectoresIndexRoute
   '/sistemas/': typeof SistemasIndexRoute
   '/soluciones/': typeof SolucionesIndexRoute
@@ -533,6 +542,7 @@ export interface FileRouteTypes {
     | '/soluciones/operacion'
     | '/blog/'
     | '/nosotros/'
+    | '/recursos/'
     | '/sectores/'
     | '/sistemas/'
     | '/soluciones/'
@@ -587,6 +597,7 @@ export interface FileRouteTypes {
     | '/soluciones/operacion'
     | '/blog'
     | '/nosotros'
+    | '/recursos'
     | '/sectores'
     | '/sistemas'
     | '/soluciones'
@@ -641,6 +652,7 @@ export interface FileRouteTypes {
     | '/soluciones/operacion'
     | '/blog/'
     | '/nosotros/'
+    | '/recursos/'
     | '/sectores/'
     | '/sistemas/'
     | '/soluciones/'
@@ -696,6 +708,7 @@ export interface RootRouteChildren {
   SolucionesOperacionRoute: typeof SolucionesOperacionRoute
   BlogIndexRoute: typeof BlogIndexRoute
   NosotrosIndexRoute: typeof NosotrosIndexRoute
+  RecursosIndexRoute: typeof RecursosIndexRoute
   SectoresIndexRoute: typeof SectoresIndexRoute
   SistemasIndexRoute: typeof SistemasIndexRoute
   SolucionesIndexRoute: typeof SolucionesIndexRoute
@@ -856,6 +869,13 @@ declare module '@tanstack/react-router' {
       path: '/ops/login'
       fullPath: '/ops/login'
       preLoaderRoute: typeof OpsLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recursos/': {
+      id: '/recursos/'
+      path: '/recursos'
+      fullPath: '/recursos/'
+      preLoaderRoute: typeof RecursosIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sectores/': {
@@ -1120,6 +1140,7 @@ const rootRouteChildren: RootRouteChildren = {
   SolucionesOperacionRoute: SolucionesOperacionRoute,
   BlogIndexRoute: BlogIndexRoute,
   NosotrosIndexRoute: NosotrosIndexRoute,
+  RecursosIndexRoute: RecursosIndexRoute,
   SectoresIndexRoute: SectoresIndexRoute,
   SistemasIndexRoute: SistemasIndexRoute,
   SolucionesIndexRoute: SolucionesIndexRoute,
