@@ -18,11 +18,11 @@ export default function SystemFinalCta({
     <section className="cta-final general-cta">
       <span className="cta-final__topline" aria-hidden="true" />
       <img
-        className="cta-final-photo"
+        className="cta-final-photo cta-photo-img"
         src={ctaAsset}
         alt="Profesionales de RCKT trabajando en sistemas de crecimiento"
       />
-      <span className="cta-final-overlay" aria-hidden="true" />
+      <span className="cta-final-overlay cta-photo-fade" aria-hidden="true" />
       <span className="cta-final__glow" aria-hidden="true" />
       <div className="container">
         <span className="kicker">¿Empezamos?</span>

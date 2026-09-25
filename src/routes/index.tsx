@@ -97,7 +97,7 @@ const pageMarkup = `
 <main id="top">
 <!-- HERO -->
 <section class="hero">
-<div class="hero-photo"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/><span class="hero-photo-overlay"></span></div>
+<div class="hero-photo"><img class="hero-photo-img" src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/><span class="hero-photo-fade"></span></div>
 <div class="container hero-content">
 <div class="hero-inner">
 <span class="kicker hero-kicker">Technology with a human pulse.</span>
@@ -268,8 +268,8 @@ function FinalCta() {
   return (
     <section className="cta-final general-cta">
       <span className="cta-final__topline" aria-hidden="true" />
-      <img className="cta-final-photo" src={ctaAsset} alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA" />
-      <span className="cta-final-overlay" aria-hidden="true" />
+      <img className="cta-final-photo cta-photo-img" src={ctaAsset} alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA" />
+      <span className="cta-final-overlay cta-photo-fade" aria-hidden="true" />
       <span className="cta-final__glow" aria-hidden="true" />
       <div className="container">
         <span className="kicker">Siguiente paso</span>
