@@ -135,6 +135,8 @@ export const SECTORS: Record<string, SectorPageData> = {
     ],
     sectorFacts: [
       { label: "Sistema recomendado", value: "Revenue Engine + Operations System" },
+      { label: "Componente que más pesa", value: "Scoring, routing multi-asesor y cotizaciones automáticas" },
+      { label: "Indicador principal", value: "Costo por visita realizada; ciclo de cierre" },
       { label: "Flujo actual", value: "Anuncios → Landing → Asesor → Visita → Cotización → Cierre" },
     ],
     acceptanceSteps: PASOS_RE,
@@ -163,6 +165,8 @@ export const SECTORS: Record<string, SectorPageData> = {
     ],
     sectorFacts: [
       { label: "Sistema recomendado", value: "Revenue Engine" },
+      { label: "Componente que más pesa", value: "Demand (Google, LinkedIn) + CRM y scoring" },
+      { label: "Indicador principal", value: "Costo por SQL; conversión de reunión a propuesta" },
       { label: "Flujo actual", value: "Google/LinkedIn → Lead → Reunión → Propuesta → Cierre" },
     ],
     acceptanceSteps: PASOS_RE,
@@ -191,6 +195,8 @@ export const SECTORS: Record<string, SectorPageData> = {
     ],
     sectorFacts: [
       { label: "Sistema recomendado", value: "Demand System (+ Sales Flow si WhatsApp pesa)" },
+      { label: "Componente que más pesa", value: "Creative Performance, CRO y atención con IA" },
+      { label: "Indicador principal", value: "Margen de contribución tras adquisición" },
       { label: "Flujo actual", value: "Anuncios → Tienda → Compra → Recompra" },
     ],
     acceptanceSteps: PASOS_RE,
@@ -219,6 +225,8 @@ export const SECTORS: Record<string, SectorPageData> = {
     ],
     sectorFacts: [
       { label: "Sistema recomendado", value: "Operations System" },
+      { label: "Componente que más pesa", value: "Cotizaciones, documentos y CRM ↔ ERP" },
+      { label: "Indicador principal", value: "Costo por ejecución correcta; tiempo de ciclo" },
       { label: "Flujo actual", value: "Cotización → Pedido → Documento → Entrega → Soporte" },
     ],
     acceptanceSteps: [
