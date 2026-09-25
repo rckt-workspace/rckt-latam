@@ -5,12 +5,14 @@ export function LegalPage({ title, children }: { title: string; children: ReactN
   useSiteMotion([]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground rckt-site">
       <SiteHeader />
       <main>
         <div className="mx-auto max-w-3xl px-6 pb-20 pt-32 md:pb-28 md:pt-40">
-          <h1 className="text-[36px] leading-[1.05] font-semibold md:text-[52px]">{title}</h1>
-          <div className="mt-10 space-y-6 text-[15.5px] leading-relaxed text-muted-foreground">
+          <h1 className="text-[36px] leading-[1.05] font-semibold md:text-[52px]">
+            {title}
+          </h1>
+          <div className="mt-10 space-y-6 text-[15.5px] leading-relaxed text-muted-foreground [&_h2]:text-foreground [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:mt-8 [&_a]:text-primary [&_a]:underline">
             {children}
           </div>
           <div className="mt-16 font-mono text-[12px] text-muted-foreground">
