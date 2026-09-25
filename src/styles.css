@@ -5743,7 +5743,7 @@ body,
   z-index: 1;
   width: 900px;
   height: 650px;
-  background: radial-gradient(ellipse 700px 500px at 100% 0%, rgba(252, 92, 31, 0.35) 0%, rgba(252, 92, 31, 0.18) 40%, rgba(252, 92, 31, 0) 75%);
+  background: var(--system-corner-glow);
   pointer-events: none;
 }
 .cta-final__foot {
@@ -5998,15 +5998,16 @@ body,
 }
 
 /* Sistemas — componentes homologados con la referencia de España. */
+.rckt-site { --system-corner-glow: radial-gradient(ellipse 700px 500px at 100% 0%,rgba(252,92,31,.35) 0%,rgba(252,92,31,.18) 40%,rgba(252,92,31,0) 75%); }
 .system-page-hero { position:relative; isolation:isolate; overflow:clip; padding:140px 0 80px; background:var(--carbon-fija); color:var(--papel-fija); }
 .system-page-hero__photo { position: absolute; inset: 0; z-index: 0; }
 .system-page-hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center center; }
-.system-page-hero__fade { position:absolute; inset:0; background:linear-gradient(90deg,rgba(33,33,33,.98) 0%,rgba(33,33,33,.9) 38%,rgba(33,33,33,.55) 68%,rgba(33,33,33,.28) 100%); }
-.system-page-hero::after { content:""; position:absolute; top:-80px; right:-120px; z-index:1; width:900px; height:650px; pointer-events:none; background:radial-gradient(ellipse 700px 500px at 100% 0%,rgba(252,92,31,.35) 0%,rgba(252,92,31,.18) 40%,rgba(252,92,31,0) 75%); }
+.system-page-hero__fade { position:absolute; inset:0; background:linear-gradient(90deg,rgba(33,33,33,.98) 0%,rgba(33,33,33,.82) 48%,rgba(33,33,33,0) 100%); }
+.system-page-hero::after { content:""; position:absolute; top:-80px; right:-120px; z-index:1; width:900px; height:650px; pointer-events:none; background:var(--system-corner-glow); }
 .system-page-hero__inner { position:relative; z-index:2; display:flex; flex-direction:column; align-items:flex-start; }
 .system-page-hero__kicker { display: flex; align-items: center; gap: 12px; color: var(--naranja); font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .system-page-hero__kicker > span { width: 2px; height: 16px; background: var(--naranja); }
-.system-page-hero h1 { max-width:18ch; margin:18px 0 0; color:var(--papel-fija); font-family:"Inter Tight","Switzer",sans-serif; font-size:clamp(32px,3.6vw,52px); font-weight:600; line-height:1.1; letter-spacing:-.045em; }
+.system-page-hero h1 { max-width:18ch; margin:18px 0 0; color:var(--papel-fija); font-family:"Inter Tight","Switzer",sans-serif; font-size:clamp(32px,3.6vw,52px); font-weight:600; line-height:1.1; letter-spacing:0; }
 .system-page-hero h1 em { font-family: "Newsreader", serif; font-style: italic; font-weight: 400; color: var(--naranja); }
 .system-page-hero__descriptor { margin:14px 0 0; max-width:640px; color:rgba(245,242,237,.7); font-size:16px; }
 .system-page-hero__promise { max-width:690px; margin:20px 0 0; color:rgba(245,242,237,.78); font-size:16px; line-height:1.62; }
@@ -6130,7 +6131,6 @@ body,
 @media (max-width:700px) {
   .system-page-hero { min-height:0; padding:110px 0 80px; }
   .system-page-hero__photo img { object-position: 58% center; }
-  .system-page-hero__fade { background:linear-gradient(180deg,rgba(33,33,33,.9),rgba(33,33,33,.72)); }
   .system-page-hero__inner { min-height:0; }
   .system-page-hero h1 { font-size:32px; }
   .system-page-hero__promise { font-size: 16px; }

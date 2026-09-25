@@ -28,7 +28,7 @@ export default function SystemPageHero({
   ctaHref = "/sistemas/revenue-diagnostic",
 }: Props) {
   return (
-    <section className="system-page-hero section-light">
+    <section className="system-page-hero section-deep">
       <div className="hero-photo system-page-hero__photo" aria-hidden="true">
         <img src={heroAsset} alt="" className="hero-photo-img" />
         <span className="hero-photo-fade system-page-hero__fade" />
