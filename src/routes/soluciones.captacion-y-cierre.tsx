@@ -1,33 +1,40 @@
-import type { CSSProperties } from "react";
+import { BarChart3, CalendarX, MessageCircle, Search, Workflow } from "lucide-react";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
-import heroAsset from "@/assets/rckt-hero.jpg";
-
-const delay = (i: number) => ({ "--i": i }) as CSSProperties;
+import FaqSection, { faqJsonLd, type FaqItem } from "@/components/rckt/FaqSection";
+import FunnelBars from "@/components/rckt/FunnelBars";
+import MethodCard, { type MethodField } from "@/components/rckt/MethodCard";
+import MilestoneCards from "@/components/rckt/MilestoneCards";
+import SignalCards from "@/components/rckt/SignalCards";
+import SolutionSystemPanel from "@/components/rckt/SolutionSystemPanel";
+import SystemFinalCta from "@/components/rckt/SystemFinalCta";
+import SystemPageHero from "@/components/rckt/SystemPageHero";
+import SystemSection from "@/components/rckt/SystemSection";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
-const tePasa = [
-  "Prospectos atendidos por WhatsApp desde el celular de la asesora, sin registro en el CRM.",
-  "Inasistencia alta, sin recordatorio de cita.",
-  "Tu agencia de pauta optimiza por costo por lead.",
-  "Nadie sabe qué campaña trajo al cliente real.",
-] as const;
-
-const fugas = [
-  "Inversión → lead",
-  "Lead → contacto",
-  "Contacto → calificación",
-  "Calificación → cita",
-  "Cita → propuesta",
-  "Propuesta → venta",
-] as const;
-
-const noventa = [
-  ["01.", "Día 30", "Sistema operativo con fuente de verdad."],
-  ["02.", "Día 60", "Prospectos entrando al CRM con seguimiento dentro del SLA."],
-  ["03.", "Día 90", "Revisión de línea base frente a resultado."],
-] as const;
+const signals = [
+  { titulo: "WhatsApp fuera del CRM", frase: "Prospectos atendidos por WhatsApp desde el celular de la asesora, sin registro en el CRM.", Icono: MessageCircle },
+  { titulo: "Inasistencia alta", frase: "Inasistencia alta, sin recordatorio de cita.", Icono: CalendarX },
+  { titulo: "Métrica equivocada", frase: "Tu agencia de pauta optimiza por costo por lead.", Icono: BarChart3 },
+  { titulo: "Sin atribución", frase: "Nadie sabe qué campaña trajo al cliente real.", Icono: Search },
+];
+const milestones = [
+  { dia: "30", texto: "Sistema operativo con fuente de verdad." },
+  { dia: "60", texto: "Prospectos entrando al CRM con seguimiento dentro del SLA." },
+  { dia: "90", texto: "Revisión de línea base frente a resultado." },
+];
+const methodFields: MethodField[] = [
+  { k: "Situación inicial", v: "Meta o Google reportan un número de conversiones, mientras que Ventas registra otro; las asesoras atienden WhatsApp fuera del CRM y tardan más de una hora en responder." },
+  { k: "Período", v: "Revenue Diagnostic de 2 a 3 semanas; sistema operativo con fuente de verdad el día 30; revisión de línea base frente a resultado el día 90." },
+  { k: "Alcance", v: "Revenue Engine: Demand System y Sales Flow bajo un solo responsable, medido del clic al cierre." },
+  { k: "Inversión", v: "La pauta la pagas tú, en tus propias cuentas. Lo que pagas por el Diagnostic se descuenta del sistema si sigues con nosotros." },
+  { k: "Intervención", v: "Mapa de fugas con tus números reales, tracking completo, y campañas, WhatsApp y CRM conectados, para que cada prospecto tenga respuesta, seguimiento y dueño." },
+  { k: "Resultado", v: "Se mide frente a la línea base firmada: costo por cliente adquirido y cuánto vale ese cliente frente a lo que costó traerlo." },
+  { k: "Método de medición", v: "Una sola fuente de verdad: pauta → prospecto → MQL → SQL → cita → oportunidad → venta → margen, con definiciones que firmas tú." },
+  { k: "Limitaciones", v: "No garantizamos ventas, porque no controlamos tu cierre, tu inventario ni tus precios. Garantizamos que en 30 días verás tu embudo completo con datos reales." },
+];
+const FAQS: FaqItem[] = [];
 
 export const Route = createFileRoute("/soluciones/captacion-y-cierre")({
   staticData: { sitemap: true },
@@ -49,6 +56,7 @@ export const Route = createFileRoute("/soluciones/captacion-y-cierre")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: SITE_URL + "/soluciones/captacion-y-cierre" }],
+    scripts: FAQS.length > 0 ? [faqJsonLd(FAQS)] : [],
   }),
   component: CaptacionPage,
   errorComponent: CaptacionError,
@@ -61,149 +69,15 @@ function CaptacionPage() {
   return (
     <div className="rckt-site tcn-page">
       <main id="top">
-        <section className="subpage-hero">
-          <div className="subpage-hero-photo" aria-hidden="true">
-            <img src={heroAsset} alt="" />
-            <span className="subpage-hero-photo-overlay" />
-          </div>
-          <span className="tcn-orb tcn-orb-hero-corner" aria-hidden="true" />
-          <span className="tcn-orb tcn-orb-hero" aria-hidden="true" />
-          <SiteHeader />
-          <div className="container">
-            <div className="subpage-hero-inner">
-              <span className="kicker">Soluciones</span>
-              <h1>Pagas por prospectos y no sabes cuáles compran</h1>
-              <p className="sub">Meta dice una cosa; tu cuenta bancaria, otra.</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="band" data-mode="motion" id="te-pasa-esto">
-          <span className="tcn-orb tcn-orb-cultura-left" aria-hidden="true" />
-          <div className="container">
-            <div className="section-head">
-              <span className="num">01.</span>
-              <span className="kicker ital-label">Te pasa esto</span>
-              <span className="divider"></span>
-            </div>
-            <div className="lineas-grid rv-group">
-              {tePasa.map((texto, i) => (
-                <div className="linea-card rv" key={texto} style={delay(i)}>
-                  <span className="num">{String(i + 1).padStart(2, "0")}</span>
-                  <p>{texto}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="band band-alt" data-mode="motion" id="fugas">
-          <div className="container">
-            <div className="section-head">
-              <span className="num">02.</span>
-              <span className="kicker ital-label">El embudo real</span>
-              <span className="divider"></span>
-            </div>
-            <h2
-              className="rv"
-              style={{ fontSize: "clamp(26px,3.4vw,36px)", margin: "0 0 20px", fontWeight: 800 }}
-            >
-              Dónde se pierde
-            </h2>
-            <p style={{ maxWidth: 680, margin: "0 0 40px" }}>
-              Un embudo, seis fugas: inversión → lead → contacto → calificación → cita → propuesta →
-              venta.
-            </p>
-            <div className="metodo-grid rv-group">
-              {fugas.map((paso, i) => (
-                <div className="metodo-step rv" key={paso} style={delay(i)}>
-                  <span className="num">{String(i + 1).padStart(2, "0")}.</span>
-                  <h4>{paso}</h4>
-                  <p>[cifras del mercado colombiano — pendiente de datos reales]</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="band" id="lo-que-hacemos">
-          <span className="tcn-orb tcn-orb-cultura-right" aria-hidden="true" />
-          <div className="container">
-            <div className="section-head">
-              <span className="num">03.</span>
-              <span className="kicker ital-label">Lo que hacemos</span>
-              <span className="divider"></span>
-            </div>
-            <div className="juicio rv">
-              <span className="tag">Revenue Engine</span>
-              Revenue Engine (Demand + Sales Flow): un responsable, una fuente de verdad, medición
-              del clic al cierre.
-            </div>
-          </div>
-        </section>
-
-        <section className="band band-alt" id="noventa-dias">
-          <div className="container">
-            <div className="section-head">
-              <span className="num">04.</span>
-              <span className="kicker ital-label">Qué cambia en 90 días</span>
-              <span className="divider"></span>
-            </div>
-            <div className="metodo-grid rv-group">
-              {noventa.map(([n, titulo, texto], i) => (
-                <div className="metodo-step rv" key={titulo} style={delay(i)}>
-                  <span className="num">{n}</span>
-                  <h4>{titulo}</h4>
-                  <p>{texto}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="band" data-mode="human" id="caso">
-          <div className="container">
-            <div className="section-head">
-              <span className="num">05.</span>
-              <span className="kicker ital-label">Un caso</span>
-              <span className="divider"></span>
-            </div>
-            <div className="three-grid">
-              <div className="three-card rv">
-                <span className="num">01.</span>
-                <h3>Caso</h3>
-                <p>[ficha completa, mercado colombiano — pendiente de casos reales]</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="band band-alt" id="para-quien-no-es">
-          <div className="container">
-            <div className="section-head">
-              <span className="num">06.</span>
-              <span className="kicker ital-label">Para quién no es</span>
-              <span className="divider"></span>
-            </div>
-            <div className="sol-note rv">
-              <p>
-                Negocios que aún no venden, sin presupuesto de pauta, o que solo quieren optimizar por
-              costo por lead.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="cta-final">
-          <span className="tcn-orb tcn-orb-cta" aria-hidden="true" />
-          <div className="container">
-            <span className="kicker">Siguiente paso</span>
-            <h2 className="rv">Medimos antes de tocar nada.</h2>
-            <a className="btn btn-primary" href="/sistemas/revenue-diagnostic">
-              Revisar mi proceso comercial →
-            </a>
-          </div>
-        </section>
+        <SystemPageHero label="Captación y cierre" title={<>Pagas por prospectos y no sabes cuáles <em>compran</em></>} descriptor="Meta dice una cosa; tu cuenta bancaria, otra." promise="Revenue Engine: un responsable, una fuente de verdad, medición del clic al cierre." ctaLabel="Revisar mi proceso comercial →" />
+        <SystemSection id="te-pasa-esto" num="01." label="Señales" title={<>La venta se pierde antes de llegar al <em className="font-serif-accent">cierre</em>.</>} phrase="WhatsApp, tiempos de respuesta, citas y atribución dejan señales concretas."><SignalCards items={signals} /></SystemSection>
+        <SystemSection id="fugas" num="02." label="El embudo real" title={<>Seis pasos. Seis lugares donde se pierde una <em className="font-serif-accent">venta</em>.</>} phrase="Seguimos el recorrido completo desde la inversión hasta el cierre."><FunnelBars stages={["Inversión", "Lead", "Contacto", "Calificación", "Cita", "Propuesta", "Venta"]} leaks={[{ stage: "Contacto", label: "Respuesta tarde" }, { stage: "Calificación", label: "WhatsApp fuera del CRM" }, { stage: "Cita", label: "Inasistencia" }, { stage: "Venta", label: "Sin atribución" }]} /></SystemSection>
+        <SystemSection id="lo-que-hacemos" num="03." label="Lo que hacemos" title={<>Un solo sistema del clic al <em className="font-serif-accent">cierre</em>.</>} phrase="Revenue Engine une Demand y Sales Flow bajo un responsable y una fuente de verdad."><SolutionSystemPanel features={[{ name: "Revenue Engine", detail: "Revenue Engine (Demand + Sales Flow): un responsable, una fuente de verdad, medición del clic al cierre.", Icon: Workflow }]} system="Revenue Engine" summary="Demand System + Sales Flow bajo un solo responsable." href="/sistemas/revenue-engine" /></SystemSection>
+        <SystemSection id="noventa-dias" num="04." label="Qué cambia en 90 días" title={<>Tres cortes para medir el <em className="font-serif-accent">cambio</em>.</>} phrase="Día 30, día 60 y día 90 contra la misma línea base."><MilestoneCards items={milestones} /></SystemSection>
+        <SystemSection id="caso" num="05." label="Prueba" title={<>El método antes que el <em className="font-serif-accent">titular</em>.</>} phrase="La ficha describe cómo medimos esta puerta sin presentar un caso de cliente."><MethodCard fields={methodFields} /></SystemSection>
+        <SystemSection id="para-quien-no-es" num="06." label="Para quién no es" title={<>La base también tiene que estar <em className="font-serif-accent">lista</em>.</>}><div className="solution-honesty"><p>Negocios que aún no venden, sin presupuesto de pauta, o que solo quieren optimizar por costo por lead.</p></div></SystemSection>
+        <FaqSection items={FAQS} />
+        <SystemFinalCta label="Revisar mi proceso comercial →" />
       </main>
       <SiteFooter />
     </div>
