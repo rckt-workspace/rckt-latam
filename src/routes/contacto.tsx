@@ -1,5 +1,5 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { FileText, MessageCircle } from "lucide-react";
+import { FileText, MessageCircle, Phone } from "lucide-react";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import DiagnosticForm from "@/components/rckt/DiagnosticForm";
 import GeneralCta from "@/components/rckt/GeneralCta";
@@ -9,7 +9,7 @@ const SITE_URL = "https://rckt-latam.lovable.app";
 
 // TODO: reemplazar por el número real de WhatsApp Business (formato internacional, sin signos).
 const WHATSAPP_NUMBER = "573000000000";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola,%20quiero%20revisar%20mi%20proceso%20comercial`;
+const WHATSAPP_URL = "#whatsapp";
 
 export const Route = createFileRoute("/contacto")({
   staticData: { sitemap: true },
@@ -68,7 +68,7 @@ function Contacto() {
               <div className="form-card">
                 <DiagnosticForm
                   whatsappUrl={WHATSAPP_URL}
-                  submitLabel="Enviar mensaje →"
+                  submitLabel="Revisar mi proceso comercial →"
                   legal={
                     <span className="form-note">
                       Al enviar este formulario, aceptas nuestra{" "}
@@ -89,31 +89,9 @@ function Contacto() {
                 </h2>
 
                 <div className="contacto-channel-list">
-                  <div className="contacto-channel">
-                    <span className="contacto-channel__icon" aria-hidden="true">
-                      <FileText />
-                    </span>
-                    <div>
-                      <div className="contacto-channel__heading">
-                        <h3>Formulario</h3>
-                        <span className="contacto-channel__badge">RECOMENDADO</span>
-                      </div>
-                      <p>La vía principal. Es la más rápida para preparar el diagnóstico.</p>
-                    </div>
-                  </div>
-
-                  <div className="contacto-channel contacto-channel--divided">
-                    <span className="contacto-channel__icon" aria-hidden="true">
-                      <MessageCircle />
-                    </span>
-                    <div>
-                      <h3>WhatsApp</h3>
-                      <p>Si lo prefieres, escríbenos.</p>
-                      <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                        Escribir por WhatsApp →
-                      </a>
-                    </div>
-                  </div>
+                  <div className="contacto-channel" id="whatsapp"><span className="contacto-channel__icon" aria-hidden="true"><MessageCircle /></span><div><h3>WhatsApp</h3><p>Escríbenos y responde las mismas preguntas del formulario.</p><a href={WHATSAPP_URL}>Escribir por WhatsApp →</a></div></div>
+                  <div className="contacto-channel contacto-channel--divided"><span className="contacto-channel__icon" aria-hidden="true"><FileText /></span><div><div className="contacto-channel__heading"><h3>Formulario de calificación</h3><span className="contacto-channel__badge">MISMO NIVEL</span></div><p>Llega al mismo CRM con su origen y prepara la conversación.</p><a href="#formulario">Ir al formulario →</a></div></div>
+                  <div className="contacto-channel contacto-channel--divided"><span className="contacto-channel__icon" aria-hidden="true"><Phone /></span><div><h3>Llamada</h3><p>[pendiente]</p></div></div>
                 </div>
 
                 <dl className="contacto-data-card">
