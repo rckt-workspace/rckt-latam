@@ -14,7 +14,6 @@ export type SystemCardData = {
   title: string;
   shortName: string;
   desc: string;
-  meta?: string;
   href: string;
   art: "radar" | "flow" | "cycle";
 };
@@ -131,7 +130,6 @@ export function SystemCards({ systems }: { systems: SystemCardData[] }) {
             <span className="sys-card__kicker">{s.kicker}</span>
             <h3 className="font-display mt-2 text-lg leading-snug font-semibold">{s.title}</h3>
             <p className="mt-3 text-[13.5px] leading-relaxed text-muted-foreground">{s.desc}</p>
-            {s.meta ? <p className="mt-3 text-[12px] leading-relaxed text-muted-foreground">{s.meta}</p> : null}
             <span className="sys-card__more">
               Ver sistema
               <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="h-3.5 w-3.5">
