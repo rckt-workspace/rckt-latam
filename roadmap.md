@@ -23,3 +23,4 @@
 - [x] Reconstruir /soluciones y sus tres páginas con los componentes y tratamiento visual de España, preservando el copy LATAM.
 - [x] Validar las cuatro páginas de Soluciones en escritorio y celular, claro y oscuro.
 - [x] Corregir el velo de los heroes compartidos y verificar Sistemas, Soluciones, Sectores e Inicio en escritorio/celular y claro/oscuro.
+- [x] Reconstruir Arquitectura y Los dos combos del índice de Sistemas con el patrón real de España.

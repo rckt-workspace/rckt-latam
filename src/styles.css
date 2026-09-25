@@ -6393,14 +6393,82 @@ body,
     padding: 15px 0;
   }
 }
-.system-architecture { display:grid; gap:20px; }
-.arch-row { display:grid; grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr) 36px minmax(0,1.2fr); align-items:center; gap:14px; padding:22px; border:1px solid var(--line); border-radius:8px; background:color-mix(in srgb,var(--papel-fija) 70%,transparent); }
-.arch-node,.arch-result { display:flex; min-height:86px; align-items:center; justify-content:center; padding:18px; border:1px solid var(--line); border-radius:6px; color:var(--carbon); font-weight:600; text-align:center; }
-.arch-result { flex-direction:column; border-color:var(--naranja); background:var(--naranja); color:var(--papel-fija); font-size:20px; }
-.arch-result small { display:block; margin-top:5px; font-size:11px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; }
-.arch-sign { color:var(--naranja); font-size:28px; font-weight:600; text-align:center; }
-[data-theme="dark"] .arch-row { background:rgba(245,242,237,.05); }
-@media(max-width:760px){.arch-row{grid-template-columns:1fr;}.arch-sign{line-height:1}.arch-node,.arch-result{min-height:70px}}
+/* ---------- diagrama de arquitectura y combos (/sistemas) ---------- */
+.arch { max-width:960px; margin-inline:auto; text-align:center; }
+.arch-layer { opacity:1; transform:none; transition:opacity 500ms ease-out,transform 500ms ease-out; }
+.arch[data-ready="true"][data-in="false"] .arch-layer { opacity:0; transform:translateY(16px); }
+.arch[data-in="true"] .arch-layer { opacity:1; transform:none; }
+.arch-line { display:block; width:1.5px; height:var(--arch-line-h,28px); margin-inline:auto; background:var(--naranja); transition:height 400ms ease-out; }
+.arch[data-ready="true"][data-in="false"] .arch-line { height:0; }
+.arch[data-in="true"] .arch-line { height:var(--arch-line-h,28px); }
+.arch-line--long { --arch-line-h:32px; transition-delay:80ms; }
+.arch-problem { transition-delay:0ms; }
+.arch-problem span { display:inline-flex; align-items:center; padding:6px 16px; border:1px solid var(--naranja); border-radius:999px; color:var(--naranja); font-size:12px; font-weight:600; }
+.arch-diagnostic { position:relative; overflow:hidden; padding:20px 24px; border-radius:16px; background:var(--naranja); color:var(--papel-fija); transition-delay:120ms; }
+.arch-diagnostic p { margin:0; font-size:19px; font-weight:600; text-align:center; }
+.arch-diagnostic small { display:block; margin-top:4px; color:color-mix(in srgb,var(--papel-fija) 85%,transparent); font-size:12.5px; }
+.arch-line--branch { --arch-line-h:18px; }
+.arch-branches { display:grid; grid-template-columns:repeat(3,1fr); }
+.arch-branches div { position:relative; height:20px; }
+.arch-branches div::before { content:""; position:absolute; top:0; height:1px; background:var(--naranja); }
+.arch-branches div:first-child::before { left:50%; right:0; }
+.arch-branches div:nth-child(2)::before { inset-inline:0; }
+.arch-branches div:last-child::before { left:0; right:50%; }
+.arch-branches span { position:absolute; top:0; left:50%; width:1px; height:20px; background:var(--naranja); }
+.arch-line--mobile { display:none; --arch-line-h:14px; }
+.arch-systems { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; transition-delay:240ms; }
+.arch-box { display:flex; flex-direction:column; align-items:center; gap:8px; padding:24px 20px; border:1px solid color-mix(in srgb,var(--naranja) 25%,transparent); border-radius:16px; background:color-mix(in srgb,var(--papel-fija) 85%,transparent); transition:border-color 180ms ease; }
+.arch-box:hover { border-color:var(--naranja); }
+.arch-box svg { width:20px; height:20px; color:var(--naranja); }
+.arch-box span { font-size:14.5px; font-weight:600; }
+.arch-groups { margin-top:24px; transition-delay:360ms; }
+.arch-first-group { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+.arch-first-group .arch-bracket { grid-column:span 2; }
+.arch-bracket { height:14px; border:1.5px solid var(--naranja); border-bottom:0; border-radius:10px 10px 0 0; }
+.arch-bracket--dashed { margin-top:24px; border-style:dashed; }
+.arch-group-label { display:inline-flex; margin-top:12px; padding:6px 16px; border-radius:999px; font-size:12px; font-weight:600; }
+.arch-group-label--solid { margin-right:34%; background:var(--naranja); color:var(--papel-fija); }
+.arch-group-label--outline { border:1.5px dashed var(--naranja); color:var(--naranja); }
+.arch-foundation { margin-top:40px; transition-delay:480ms; }
+.arch-foundation>p { margin:0; color:var(--carbon-soft); font-size:11px; letter-spacing:.18em; text-transform:uppercase; }
+.arch-base { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:12px; border-radius:16px; background:var(--durazno); }
+.arch-base>div { display:flex; align-items:center; justify-content:center; gap:8px; padding:20px; }
+.arch-base>div+div { border-left:1px solid color-mix(in srgb,var(--naranja) 25%,transparent); }
+.arch-base svg { width:16px; height:16px; flex:none; color:var(--naranja); }
+.arch-base span { color:var(--carbon); font-size:13.5px; font-weight:600; }
+[data-theme="dark"] .arch-box { background:color-mix(in srgb,var(--papel-fija) 6%,transparent); }
+[data-theme="dark"] .arch-base { background:color-mix(in srgb,var(--naranja) 12%,transparent); }
+
+.system-combos { position:relative; overflow:hidden; padding:72px 0 88px; background:var(--papel); }
+.system-combos__kicker { display:flex; align-items:center; gap:12px; margin-bottom:32px; color:var(--naranja); font-size:11.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; }
+.system-combos__kicker span { width:2px; height:16px; background:var(--naranja); }
+.system-combos__grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; align-items:stretch; }
+.combo-card { display:flex; min-height:430px; flex-direction:column; overflow:hidden; padding:44px; border-radius:28px; }
+.combo-card--primary { background:linear-gradient(135deg,var(--naranja) 0%,var(--naranja-deep) 100%); color:var(--papel-fija); }
+.combo-card-light { border:1px solid var(--line); background:var(--durazno); color:var(--carbon); }
+.combo-card__badge { display:inline-flex; width:max-content; padding:4px 12px; border-radius:999px; background:color-mix(in srgb,var(--papel-fija) 20%,transparent); color:var(--papel-fija); font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+.combo-card__badge--outline { border:1px solid var(--naranja); background:transparent; color:var(--naranja); }
+.combo-card h3 { margin:20px 0 0; font-size:40px; font-weight:600; line-height:1.2; }
+.combo-card__systems { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:20px; }
+.combo-card__systems span { padding:6px 16px; border:1px solid color-mix(in srgb,var(--papel-fija) 50%,transparent); border-radius:999px; font-size:13px; font-weight:600; }
+.combo-card__systems b { font-size:16px; }
+.combo-card p { max-width:448px; margin:20px 0 0; color:inherit; font-size:15px; line-height:1.65; text-align:left; }
+.combo-card--primary p { color:color-mix(in srgb,var(--papel-fija) 90%,transparent); }
+.combo-card__button,.combo-card__link { display:inline-flex; width:max-content; align-items:center; margin-top:auto; padding-top:32px; font-size:14px; font-weight:600; }
+.combo-card__button { padding:14px 28px; margin-top:auto; border-radius:999px; background:var(--papel-fija); color:var(--naranja); }
+.combo-card__link { color:var(--naranja); }
+[data-theme="dark"] .combo-card-light { background:color-mix(in srgb,var(--papel-fija) 4%,transparent); }
+@media(max-width:760px){
+  .arch-branches,.arch-first-group>.arch-bracket,.arch-bracket--dashed { display:none; }
+  .arch-line--mobile { display:block; }
+  .arch-systems,.arch-base,.system-combos__grid { grid-template-columns:1fr; }
+  .arch-group-label--solid { margin-right:0; }
+  .arch-base>div+div { border-top:1px solid color-mix(in srgb,var(--naranja) 25%,transparent); border-left:0; }
+  .system-combos { padding:64px 0 72px; }
+  .combo-card { min-height:390px; padding:32px 24px; border-radius:24px; }
+  .combo-card h3 { font-size:34px; }
+}
+@media(prefers-reduced-motion:reduce){.arch-layer,.arch-line{opacity:1!important;transform:none!important;transition:none!important}.arch-line{height:var(--arch-line-h,28px)!important}}
 
 /* ---------- navegación compartida: patrón compacto de España ---------- */
 .nav-toggle svg {
