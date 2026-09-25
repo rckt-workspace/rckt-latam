@@ -29,6 +29,16 @@ export type DiagnosticFormProps = {
   legal?: React.ReactNode;
   /** Se llama cuando el envío fue exitoso. */
   onSent?: () => void;
+  /** Recibe los valores solo después de guardar correctamente. */
+  onSuccess?: (values: DiagnosticFormValues) => void;
+};
+
+export type DiagnosticFormValues = {
+  empresa: string; sitio_web: string; pais: string; ciudad: string; cargo: string;
+  empleados: string; sector: string; problema_principal: string;
+  inversion_pauta: string; volumen_leads: string; crm_actual: string;
+  whatsapp_ventas: string; fecha_inicio: string; nombre: string;
+  email: string; telefono: string;
 };
 
 /** Formulario de calificación compartido: guarda en leads_diagnostic. */
@@ -37,6 +47,7 @@ export default function DiagnosticForm({
   submitLabel = "Solicitar Revenue Diagnostic →",
   legal,
   onSent,
+  onSuccess,
 }: DiagnosticFormProps) {
   const [enviando, setEnviando] = useState(false);
   const [listo, setListo] = useState(false);
@@ -57,30 +68,22 @@ export default function DiagnosticForm({
     setEnviando(true);
     const form = new FormData(e.currentTarget);
     const get = (k: string) => String(form.get(k) ?? "").trim();
+    const values: DiagnosticFormValues = {
+      empresa: get("empresa"), sitio_web: get("sitio_web"), pais: get("pais"), ciudad: get("ciudad"),
+      cargo: get("cargo"), empleados: get("empleados"), sector: get("sector"),
+      problema_principal: get("problema_principal"), inversion_pauta: get("inversion_pauta"),
+      volumen_leads: get("volumen_leads"), crm_actual: get("crm_actual"),
+      whatsapp_ventas: get("whatsapp_ventas"), fecha_inicio: get("fecha_inicio"),
+      nombre: get("nombre"), email: get("email"), telefono: get("telefono"),
+    };
 
     try {
       await enviar({
-        data: {
-          empresa: get("empresa"),
-          sitio_web: get("sitio_web"),
-          pais: get("pais"),
-          ciudad: get("ciudad"),
-          cargo: get("cargo"),
-          empleados: get("empleados"),
-          sector: get("sector"),
-          problema_principal: get("problema_principal"),
-          inversion_pauta: get("inversion_pauta"),
-          volumen_leads: get("volumen_leads"),
-          crm_actual: get("crm_actual"),
-          whatsapp_ventas: get("whatsapp_ventas"),
-          fecha_inicio: get("fecha_inicio"),
-          nombre: get("nombre"),
-          email: get("email"),
-          telefono: get("telefono"),
-        },
+        data: values,
       });
       setListo(true);
       onSent?.();
+      onSuccess?.(values);
     } catch (err) {
       console.error("No se pudo enviar la solicitud de diagnóstico", err);
       setError("No pudimos enviar tu solicitud. Intenta de nuevo en unos segundos.");

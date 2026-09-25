@@ -10,3 +10,5 @@
 > the editor, so keep the branch in a working state.
 
 <!-- LOVABLE:END -->
+
+Campaign routes under /lp/ stay outside shared site navigation and the sitemap; campaign-only scoring and analytics live in client-side rckt components so the existing lead submission remains unchanged.
