@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import logoDarkAsset from "@/assets/rckt-logo-dark.png";
 import logoLightAsset from "@/assets/rckt-logo-light.png";
-import ThemeToggle, { currentTheme, THEME_EVENT } from "@/components/rckt/ThemeToggle";
+import ThemeToggle from "@/components/rckt/ThemeToggle";
+import { currentTheme, THEME_EVENT } from "@/lib/theme";
 
 /** Navegación y pie compartidos con la home, más las animaciones del sitio. */
 

@@ -153,7 +153,7 @@ function NosotrosPage() {
         <section className="page-section">
           <div className="page-shell">
             <LocalSectionHeader num="04." label="Principios" title={<>La base común de <span className="text-orange">toda cuenta.</span></>} />
-            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{principios.map(([n, Icon, title, text]) => <article key={n} className="content-card p-7"><div className="flex items-center gap-3"><Icon className="h-6 w-6 text-orange" /><span className="font-hero text-[28px] font-semibold text-orange">{n}</span></div><h3 className="font-display mt-4 text-[19px] font-semibold">{title}</h3><p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{text}</p></article>)}</div>
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{principios.map(([n, Icon, title, text]) => <article key={n} className="content-card p-7"><div className="flex items-center gap-3"><Icon className="h-6 w-6 text-orange" /><span className="font-display text-[28px] font-semibold text-orange">{n}</span></div><h3 className="font-display mt-4 text-[19px] font-semibold">{title}</h3><p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{text}</p></article>)}</div>
           </div>
         </section>
 
