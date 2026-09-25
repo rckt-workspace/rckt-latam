@@ -118,6 +118,7 @@ export default function GlobalSectionBlobs() {
 
   useEffect(() => {
     let frame = 0;
+    let timer = 0;
     let sections: HTMLElement[] = [];
 
     const classify = () => {
@@ -184,7 +185,9 @@ export default function GlobalSectionBlobs() {
 
     let observer: ResizeObserver | null = null;
     const connectWhenHydrated = () => {
-      observer = connect();
+      timer = window.setTimeout(() => {
+        observer = connect();
+      }, 750);
     };
     window.addEventListener("load", connectWhenHydrated, { once: true });
     if (document.readyState === "complete") {
@@ -194,6 +197,7 @@ export default function GlobalSectionBlobs() {
 
     return () => {
       cancelAnimationFrame(frame);
+      window.clearTimeout(timer);
       window.removeEventListener("load", connectWhenHydrated);
       observer?.disconnect();
       window.removeEventListener("resize", classify);
