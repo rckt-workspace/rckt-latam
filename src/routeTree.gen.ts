@@ -26,6 +26,11 @@ import { Route as CasosIndexRouteImport } from './routes/casos.index'
 import { Route as LegalAvisoLegalRouteImport } from './routes/legal.aviso-legal'
 import { Route as LegalCookiesRouteImport } from './routes/legal.cookies'
 import { Route as LegalPrivacidadRouteImport } from './routes/legal.privacidad'
+import { Route as MercadosIndexRouteImport } from './routes/mercados.index'
+import { Route as MercadosBarranquillaRouteImport } from './routes/mercados.barranquilla'
+import { Route as MercadosBogotaRouteImport } from './routes/mercados.bogota'
+import { Route as MercadosColombiaRouteImport } from './routes/mercados.colombia'
+import { Route as MercadosMedellinRouteImport } from './routes/mercados.medellin'
 import { Route as NosotrosIndexRouteImport } from './routes/nosotros.index'
 import { Route as NosotrosComoTrabajamosRouteImport } from './routes/nosotros.como-trabajamos'
 import { Route as OpsAiControlRouteImport } from './routes/ops/ai-control'
@@ -147,6 +152,31 @@ const LegalCookiesRoute = LegalCookiesRouteImport.update({
 const LegalPrivacidadRoute = LegalPrivacidadRouteImport.update({
   id: '/legal/privacidad',
   path: '/legal/privacidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MercadosIndexRoute = MercadosIndexRouteImport.update({
+  id: '/mercados/',
+  path: '/mercados/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MercadosBarranquillaRoute = MercadosBarranquillaRouteImport.update({
+  id: '/mercados/barranquilla',
+  path: '/mercados/barranquilla',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MercadosBogotaRoute = MercadosBogotaRouteImport.update({
+  id: '/mercados/bogota',
+  path: '/mercados/bogota',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MercadosColombiaRoute = MercadosColombiaRouteImport.update({
+  id: '/mercados/colombia',
+  path: '/mercados/colombia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MercadosMedellinRoute = MercadosMedellinRouteImport.update({
+  id: '/mercados/medellin',
+  path: '/mercados/medellin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NosotrosIndexRoute = NosotrosIndexRouteImport.update({
@@ -361,6 +391,10 @@ export interface FileRoutesByFullPath {
   '/legal/aviso-legal': typeof LegalAvisoLegalRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacidad': typeof LegalPrivacidadRoute
+  '/mercados/barranquilla': typeof MercadosBarranquillaRoute
+  '/mercados/bogota': typeof MercadosBogotaRoute
+  '/mercados/colombia': typeof MercadosColombiaRoute
+  '/mercados/medellin': typeof MercadosMedellinRoute
   '/nosotros/como-trabajamos': typeof NosotrosComoTrabajamosRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
@@ -380,6 +414,7 @@ export interface FileRoutesByFullPath {
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog/': typeof BlogIndexRoute
   '/casos/': typeof CasosIndexRoute
+  '/mercados/': typeof MercadosIndexRoute
   '/nosotros/': typeof NosotrosIndexRoute
   '/recursos/': typeof RecursosIndexRoute
   '/sectores/': typeof SectoresIndexRoute
@@ -417,6 +452,10 @@ export interface FileRoutesByTo {
   '/legal/aviso-legal': typeof LegalAvisoLegalRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacidad': typeof LegalPrivacidadRoute
+  '/mercados/barranquilla': typeof MercadosBarranquillaRoute
+  '/mercados/bogota': typeof MercadosBogotaRoute
+  '/mercados/colombia': typeof MercadosColombiaRoute
+  '/mercados/medellin': typeof MercadosMedellinRoute
   '/nosotros/como-trabajamos': typeof NosotrosComoTrabajamosRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
@@ -436,6 +475,7 @@ export interface FileRoutesByTo {
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog': typeof BlogIndexRoute
   '/casos': typeof CasosIndexRoute
+  '/mercados': typeof MercadosIndexRoute
   '/nosotros': typeof NosotrosIndexRoute
   '/recursos': typeof RecursosIndexRoute
   '/sectores': typeof SectoresIndexRoute
@@ -474,6 +514,10 @@ export interface FileRoutesById {
   '/legal/aviso-legal': typeof LegalAvisoLegalRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacidad': typeof LegalPrivacidadRoute
+  '/mercados/barranquilla': typeof MercadosBarranquillaRoute
+  '/mercados/bogota': typeof MercadosBogotaRoute
+  '/mercados/colombia': typeof MercadosColombiaRoute
+  '/mercados/medellin': typeof MercadosMedellinRoute
   '/nosotros/como-trabajamos': typeof NosotrosComoTrabajamosRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
@@ -493,6 +537,7 @@ export interface FileRoutesById {
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog/': typeof BlogIndexRoute
   '/casos/': typeof CasosIndexRoute
+  '/mercados/': typeof MercadosIndexRoute
   '/nosotros/': typeof NosotrosIndexRoute
   '/recursos/': typeof RecursosIndexRoute
   '/sectores/': typeof SectoresIndexRoute
@@ -532,6 +577,10 @@ export interface FileRouteTypes {
     | '/legal/aviso-legal'
     | '/legal/cookies'
     | '/legal/privacidad'
+    | '/mercados/barranquilla'
+    | '/mercados/bogota'
+    | '/mercados/colombia'
+    | '/mercados/medellin'
     | '/nosotros/como-trabajamos'
     | '/ops/ai-control'
     | '/ops/login'
@@ -551,6 +600,7 @@ export interface FileRouteTypes {
     | '/soluciones/operacion'
     | '/blog/'
     | '/casos/'
+    | '/mercados/'
     | '/nosotros/'
     | '/recursos/'
     | '/sectores/'
@@ -588,6 +638,10 @@ export interface FileRouteTypes {
     | '/legal/aviso-legal'
     | '/legal/cookies'
     | '/legal/privacidad'
+    | '/mercados/barranquilla'
+    | '/mercados/bogota'
+    | '/mercados/colombia'
+    | '/mercados/medellin'
     | '/nosotros/como-trabajamos'
     | '/ops/ai-control'
     | '/ops/login'
@@ -607,6 +661,7 @@ export interface FileRouteTypes {
     | '/soluciones/operacion'
     | '/blog'
     | '/casos'
+    | '/mercados'
     | '/nosotros'
     | '/recursos'
     | '/sectores'
@@ -644,6 +699,10 @@ export interface FileRouteTypes {
     | '/legal/aviso-legal'
     | '/legal/cookies'
     | '/legal/privacidad'
+    | '/mercados/barranquilla'
+    | '/mercados/bogota'
+    | '/mercados/colombia'
+    | '/mercados/medellin'
     | '/nosotros/como-trabajamos'
     | '/ops/ai-control'
     | '/ops/login'
@@ -663,6 +722,7 @@ export interface FileRouteTypes {
     | '/soluciones/operacion'
     | '/blog/'
     | '/casos/'
+    | '/mercados/'
     | '/nosotros/'
     | '/recursos/'
     | '/sectores/'
@@ -701,6 +761,10 @@ export interface RootRouteChildren {
   LegalAvisoLegalRoute: typeof LegalAvisoLegalRoute
   LegalCookiesRoute: typeof LegalCookiesRoute
   LegalPrivacidadRoute: typeof LegalPrivacidadRoute
+  MercadosBarranquillaRoute: typeof MercadosBarranquillaRoute
+  MercadosBogotaRoute: typeof MercadosBogotaRoute
+  MercadosColombiaRoute: typeof MercadosColombiaRoute
+  MercadosMedellinRoute: typeof MercadosMedellinRoute
   NosotrosComoTrabajamosRoute: typeof NosotrosComoTrabajamosRoute
   OpsAiControlRoute: typeof OpsAiControlRoute
   OpsLoginRoute: typeof OpsLoginRoute
@@ -720,6 +784,7 @@ export interface RootRouteChildren {
   SolucionesOperacionRoute: typeof SolucionesOperacionRoute
   BlogIndexRoute: typeof BlogIndexRoute
   CasosIndexRoute: typeof CasosIndexRoute
+  MercadosIndexRoute: typeof MercadosIndexRoute
   NosotrosIndexRoute: typeof NosotrosIndexRoute
   RecursosIndexRoute: typeof RecursosIndexRoute
   SectoresIndexRoute: typeof SectoresIndexRoute
@@ -861,6 +926,41 @@ declare module '@tanstack/react-router' {
       path: '/legal/privacidad'
       fullPath: '/legal/privacidad'
       preLoaderRoute: typeof LegalPrivacidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mercados/': {
+      id: '/mercados/'
+      path: '/mercados'
+      fullPath: '/mercados/'
+      preLoaderRoute: typeof MercadosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mercados/barranquilla': {
+      id: '/mercados/barranquilla'
+      path: '/mercados/barranquilla'
+      fullPath: '/mercados/barranquilla'
+      preLoaderRoute: typeof MercadosBarranquillaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mercados/bogota': {
+      id: '/mercados/bogota'
+      path: '/mercados/bogota'
+      fullPath: '/mercados/bogota'
+      preLoaderRoute: typeof MercadosBogotaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mercados/colombia': {
+      id: '/mercados/colombia'
+      path: '/mercados/colombia'
+      fullPath: '/mercados/colombia'
+      preLoaderRoute: typeof MercadosColombiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mercados/medellin': {
+      id: '/mercados/medellin'
+      path: '/mercados/medellin'
+      fullPath: '/mercados/medellin'
+      preLoaderRoute: typeof MercadosMedellinRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/nosotros/': {
@@ -1141,6 +1241,10 @@ const rootRouteChildren: RootRouteChildren = {
   LegalAvisoLegalRoute: LegalAvisoLegalRoute,
   LegalCookiesRoute: LegalCookiesRoute,
   LegalPrivacidadRoute: LegalPrivacidadRoute,
+  MercadosBarranquillaRoute: MercadosBarranquillaRoute,
+  MercadosBogotaRoute: MercadosBogotaRoute,
+  MercadosColombiaRoute: MercadosColombiaRoute,
+  MercadosMedellinRoute: MercadosMedellinRoute,
   NosotrosComoTrabajamosRoute: NosotrosComoTrabajamosRoute,
   OpsAiControlRoute: OpsAiControlRoute,
   OpsLoginRoute: OpsLoginRoute,
@@ -1160,6 +1264,7 @@ const rootRouteChildren: RootRouteChildren = {
   SolucionesOperacionRoute: SolucionesOperacionRoute,
   BlogIndexRoute: BlogIndexRoute,
   CasosIndexRoute: CasosIndexRoute,
+  MercadosIndexRoute: MercadosIndexRoute,
   NosotrosIndexRoute: NosotrosIndexRoute,
   RecursosIndexRoute: RecursosIndexRoute,
   SectoresIndexRoute: SectoresIndexRoute,
