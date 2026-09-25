@@ -114,22 +114,22 @@ export default function DiagnosticForm({
 
       <p className="label-orange mt-9">Tú</p>
       <div className="rd-grid mt-4">
-        <div className="field"><label className="ct-label" htmlFor="nombre">Nombre</label><input className="ct-input mt-2" id="nombre" name="nombre" type="text" /></div>
-        <div className="field"><label className="ct-label" htmlFor="email">Email de trabajo</label><input className="ct-input mt-2" id="email" name="email" type="email" /></div>
-        <div className="field"><label className="ct-label" htmlFor="telefono">Celular</label><input className="ct-input mt-2" id="telefono" name="telefono" type="tel" /></div>
-        <div className="field"><label className="ct-label" htmlFor="cargo">Cargo</label><input className="ct-input mt-2" id="cargo" name="cargo" type="text" /></div>
+        <div className="field"><label className="ct-label" htmlFor="nombre">Nombre y apellidos</label><input className="ct-input mt-2" id="nombre" name="nombre" type="text" placeholder="Nombre y apellidos" /></div>
+        <div className="field"><label className="ct-label" htmlFor="email">Email de trabajo</label><input className="ct-input mt-2" id="email" name="email" type="email" placeholder="nombre@empresa.com" /></div>
+        <div className="field"><label className="ct-label" htmlFor="telefono">Celular</label><input className="ct-input mt-2" id="telefono" name="telefono" type="tel" placeholder="+57 300 000 0000" /></div>
+        <div className="field"><label className="ct-label" htmlFor="cargo">Cargo</label><input className="ct-input mt-2" id="cargo" name="cargo" type="text" placeholder="Gerente general" /></div>
       </div>
 
       <p className="label-orange mt-10">Tu empresa</p>
       <div className="rd-grid mt-4">
-        <div className="field"><label className="ct-label" htmlFor="empresa">Empresa</label><input className="ct-input mt-2" id="empresa" name="empresa" required type="text" /></div>
-        <div className="field"><label className="ct-label" htmlFor="sitio_web">Sitio web</label><input className="ct-input mt-2" id="sitio_web" name="sitio_web" type="text" /></div>
-        <div className="field"><label className="ct-label" htmlFor="pais">País</label><input className="ct-input mt-2" id="pais" name="pais" type="text" /></div>
-        <div className="field"><label className="ct-label" htmlFor="ciudad">Ciudad</label><input className="ct-input mt-2" id="ciudad" name="ciudad" type="text" /></div>
+        <div className="field"><label className="ct-label" htmlFor="empresa">Empresa</label><input className="ct-input mt-2" id="empresa" name="empresa" required type="text" placeholder="Nombre de la empresa" /></div>
+        <div className="field"><label className="ct-label" htmlFor="sitio_web">Web</label><input className="ct-input mt-2" id="sitio_web" name="sitio_web" type="text" placeholder="empresa.com" /></div>
+        <div className="field"><label className="ct-label" htmlFor="pais">País</label><input className="ct-input mt-2" id="pais" name="pais" type="text" placeholder="Colombia" /></div>
+        <div className="field"><label className="ct-label" htmlFor="ciudad">Ciudad</label><input className="ct-input mt-2" id="ciudad" name="ciudad" type="text" placeholder="Bogotá" /></div>
         <div className="field">
           <label className="ct-label" htmlFor="empleados">Número de empleados</label>
           <select className="ct-select mt-2" id="empleados" name="empleados" defaultValue="">
-            <option value="">Selecciona</option>
+            <option value="">Selecciona una opción</option>
             {bandasEmpleados.map((b) => (
               <option key={b} value={b}>
                 {b}
@@ -137,7 +137,7 @@ export default function DiagnosticForm({
             ))}
           </select>
         </div>
-        <div className="field"><label className="ct-label" htmlFor="sector">Sector</label><input className="ct-input mt-2" id="sector" name="sector" type="text" /></div>
+        <div className="field"><label className="ct-label" htmlFor="sector">Sector</label><input className="ct-input mt-2" id="sector" name="sector" type="text" placeholder="Salud, educación, ecommerce…" /></div>
       </div>
 
       <p className="label-orange mt-10">Tu situación</p>
@@ -151,7 +151,7 @@ export default function DiagnosticForm({
         <div className="field">
           <label className="ct-label" htmlFor="inversion_pauta">Inversión mensual en pauta</label>
           <select className="ct-select mt-2" id="inversion_pauta" name="inversion_pauta" defaultValue="">
-            <option value="">Selecciona</option>
+            <option value="">Selecciona una opción</option>
             {bandasInversion.map((b) => (
               <option key={b} value={b}>
                 {b}
@@ -162,7 +162,7 @@ export default function DiagnosticForm({
         <div className="field">
           <label className="ct-label" htmlFor="volumen_leads">Volumen de leads al mes</label>
           <select className="ct-select mt-2" id="volumen_leads" name="volumen_leads" defaultValue="">
-            <option value="">Selecciona</option>
+            <option value="">Selecciona una opción</option>
             {bandasLeads.map((b) => (
               <option key={b} value={b}>
                 {b}
@@ -172,12 +172,12 @@ export default function DiagnosticForm({
         </div>
         <div className="field">
           <label className="ct-label" htmlFor="crm_actual">CRM actual</label>
-          <input className="ct-input mt-2" id="crm_actual" name="crm_actual" type="text" />
+          <input className="ct-input mt-2" id="crm_actual" name="crm_actual" type="text" placeholder="HubSpot, Salesforce, Zoho…" />
         </div>
         <div className="field">
           <label className="ct-label" htmlFor="whatsapp_ventas">Uso de WhatsApp en ventas</label>
           <select className="ct-select mt-2" id="whatsapp_ventas" name="whatsapp_ventas" defaultValue="">
-            <option value="">Selecciona</option>
+            <option value="">Selecciona una opción</option>
             <option value="No lo usamos">No lo usamos</option>
             <option value="Celulares personales del equipo">Celulares personales del equipo</option>
             <option value="WhatsApp Business (una línea)">WhatsApp Business (una línea)</option>
