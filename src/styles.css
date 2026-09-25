@@ -1260,8 +1260,8 @@ footer {
   color: rgba(33, 33, 33, 0.55);
   transition: color 0.2s ease;
 }
-  font-size: 11.5px;
 .footer-col h5 {
+font-size: 11.5px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--carbon-faint);
