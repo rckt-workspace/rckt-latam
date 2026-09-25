@@ -13,4 +13,8 @@
 - [x] Sustituir las fotos temporales de los tres sistemas por las imágenes aprobadas del chat.
 - [x] Igualar las medidas y estilos de SystemCards con la referencia España.
 - [x] Completar los ocho campos reales de la ficha del método y validar escritorio/celular.
-
+- [ ] Portar los componentes visuales reales de Sistemas desde la referencia de España.
+- [ ] Reconstruir Revenue Diagnostic preservando formulario, envío y copy LATAM.
+- [ ] Reconstruir Demand System, Sales Flow, Operations System y Revenue Engine.
+- [ ] Reconstruir el índice /sistemas con arquitectura y cinco accesos.
+- [ ] Validar las seis páginas en escritorio y celular, claro y oscuro.
