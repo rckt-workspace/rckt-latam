@@ -22,10 +22,14 @@ import { Route as ApiLeadsRouteImport } from './routes/api/leads'
 import { Route as ApiSaveChatLeadRouteImport } from './routes/api/save-chat-lead'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as LegalAvisoLegalRouteImport } from './routes/legal.aviso-legal'
+import { Route as LegalCookiesRouteImport } from './routes/legal.cookies'
+import { Route as LegalPrivacidadRouteImport } from './routes/legal.privacidad'
 import { Route as NosotrosIndexRouteImport } from './routes/nosotros.index'
 import { Route as NosotrosComoTrabajamosRouteImport } from './routes/nosotros.como-trabajamos'
 import { Route as OpsAiControlRouteImport } from './routes/ops/ai-control'
 import { Route as OpsLoginRouteImport } from './routes/ops/login'
+import { Route as RecursosIndexRouteImport } from './routes/recursos.index'
 import { Route as SectoresIndexRouteImport } from './routes/sectores.index'
 import { Route as SectoresConstruccionInmobiliarioRouteImport } from './routes/sectores.construccion-inmobiliario'
 import { Route as SectoresEcommerceRouteImport } from './routes/sectores.ecommerce'
@@ -124,6 +128,21 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegalAvisoLegalRoute = LegalAvisoLegalRouteImport.update({
+  id: '/legal/aviso-legal',
+  path: '/legal/aviso-legal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalCookiesRoute = LegalCookiesRouteImport.update({
+  id: '/legal/cookies',
+  path: '/legal/cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalPrivacidadRoute = LegalPrivacidadRouteImport.update({
+  id: '/legal/privacidad',
+  path: '/legal/privacidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NosotrosIndexRoute = NosotrosIndexRouteImport.update({
   id: '/nosotros/',
   path: '/nosotros/',
@@ -142,6 +161,11 @@ const OpsAiControlRoute = OpsAiControlRouteImport.update({
 const OpsLoginRoute = OpsLoginRouteImport.update({
   id: '/ops/login',
   path: '/ops/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecursosIndexRoute = RecursosIndexRouteImport.update({
+  id: '/recursos/',
+  path: '/recursos/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SectoresIndexRoute = SectoresIndexRouteImport.update({
@@ -328,6 +352,9 @@ export interface FileRoutesByFullPath {
   '/api/leads': typeof ApiLeadsRoute
   '/api/save-chat-lead': typeof ApiSaveChatLeadRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/legal/aviso-legal': typeof LegalAvisoLegalRoute
+  '/legal/cookies': typeof LegalCookiesRoute
+  '/legal/privacidad': typeof LegalPrivacidadRoute
   '/nosotros/como-trabajamos': typeof NosotrosComoTrabajamosRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
@@ -347,6 +374,7 @@ export interface FileRoutesByFullPath {
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog/': typeof BlogIndexRoute
   '/nosotros/': typeof NosotrosIndexRoute
+  '/recursos/': typeof RecursosIndexRoute
   '/sectores/': typeof SectoresIndexRoute
   '/sistemas/': typeof SistemasIndexRoute
   '/soluciones/': typeof SolucionesIndexRoute
@@ -379,6 +407,9 @@ export interface FileRoutesByTo {
   '/api/leads': typeof ApiLeadsRoute
   '/api/save-chat-lead': typeof ApiSaveChatLeadRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/legal/aviso-legal': typeof LegalAvisoLegalRoute
+  '/legal/cookies': typeof LegalCookiesRoute
+  '/legal/privacidad': typeof LegalPrivacidadRoute
   '/nosotros/como-trabajamos': typeof NosotrosComoTrabajamosRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
@@ -398,6 +429,7 @@ export interface FileRoutesByTo {
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog': typeof BlogIndexRoute
   '/nosotros': typeof NosotrosIndexRoute
+  '/recursos': typeof RecursosIndexRoute
   '/sectores': typeof SectoresIndexRoute
   '/sistemas': typeof SistemasIndexRoute
   '/soluciones': typeof SolucionesIndexRoute
@@ -431,6 +463,9 @@ export interface FileRoutesById {
   '/api/leads': typeof ApiLeadsRoute
   '/api/save-chat-lead': typeof ApiSaveChatLeadRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/legal/aviso-legal': typeof LegalAvisoLegalRoute
+  '/legal/cookies': typeof LegalCookiesRoute
+  '/legal/privacidad': typeof LegalPrivacidadRoute
   '/nosotros/como-trabajamos': typeof NosotrosComoTrabajamosRoute
   '/ops/ai-control': typeof OpsAiControlRoute
   '/ops/login': typeof OpsLoginRoute
@@ -450,6 +485,7 @@ export interface FileRoutesById {
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog/': typeof BlogIndexRoute
   '/nosotros/': typeof NosotrosIndexRoute
+  '/recursos/': typeof RecursosIndexRoute
   '/sectores/': typeof SectoresIndexRoute
   '/sistemas/': typeof SistemasIndexRoute
   '/soluciones/': typeof SolucionesIndexRoute
@@ -484,6 +520,9 @@ export interface FileRouteTypes {
     | '/api/leads'
     | '/api/save-chat-lead'
     | '/blog/$slug'
+    | '/legal/aviso-legal'
+    | '/legal/cookies'
+    | '/legal/privacidad'
     | '/nosotros/como-trabajamos'
     | '/ops/ai-control'
     | '/ops/login'
@@ -503,6 +542,7 @@ export interface FileRouteTypes {
     | '/soluciones/operacion'
     | '/blog/'
     | '/nosotros/'
+    | '/recursos/'
     | '/sectores/'
     | '/sistemas/'
     | '/soluciones/'
@@ -535,6 +575,9 @@ export interface FileRouteTypes {
     | '/api/leads'
     | '/api/save-chat-lead'
     | '/blog/$slug'
+    | '/legal/aviso-legal'
+    | '/legal/cookies'
+    | '/legal/privacidad'
     | '/nosotros/como-trabajamos'
     | '/ops/ai-control'
     | '/ops/login'
@@ -554,6 +597,7 @@ export interface FileRouteTypes {
     | '/soluciones/operacion'
     | '/blog'
     | '/nosotros'
+    | '/recursos'
     | '/sectores'
     | '/sistemas'
     | '/soluciones'
@@ -586,6 +630,9 @@ export interface FileRouteTypes {
     | '/api/leads'
     | '/api/save-chat-lead'
     | '/blog/$slug'
+    | '/legal/aviso-legal'
+    | '/legal/cookies'
+    | '/legal/privacidad'
     | '/nosotros/como-trabajamos'
     | '/ops/ai-control'
     | '/ops/login'
@@ -605,6 +652,7 @@ export interface FileRouteTypes {
     | '/soluciones/operacion'
     | '/blog/'
     | '/nosotros/'
+    | '/recursos/'
     | '/sectores/'
     | '/sistemas/'
     | '/soluciones/'
@@ -638,6 +686,9 @@ export interface RootRouteChildren {
   ApiLeadsRoute: typeof ApiLeadsRoute
   ApiSaveChatLeadRoute: typeof ApiSaveChatLeadRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  LegalAvisoLegalRoute: typeof LegalAvisoLegalRoute
+  LegalCookiesRoute: typeof LegalCookiesRoute
+  LegalPrivacidadRoute: typeof LegalPrivacidadRoute
   NosotrosComoTrabajamosRoute: typeof NosotrosComoTrabajamosRoute
   OpsAiControlRoute: typeof OpsAiControlRoute
   OpsLoginRoute: typeof OpsLoginRoute
@@ -657,6 +708,7 @@ export interface RootRouteChildren {
   SolucionesOperacionRoute: typeof SolucionesOperacionRoute
   BlogIndexRoute: typeof BlogIndexRoute
   NosotrosIndexRoute: typeof NosotrosIndexRoute
+  RecursosIndexRoute: typeof RecursosIndexRoute
   SectoresIndexRoute: typeof SectoresIndexRoute
   SistemasIndexRoute: typeof SistemasIndexRoute
   SolucionesIndexRoute: typeof SolucionesIndexRoute
@@ -770,6 +822,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legal/aviso-legal': {
+      id: '/legal/aviso-legal'
+      path: '/legal/aviso-legal'
+      fullPath: '/legal/aviso-legal'
+      preLoaderRoute: typeof LegalAvisoLegalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/cookies': {
+      id: '/legal/cookies'
+      path: '/legal/cookies'
+      fullPath: '/legal/cookies'
+      preLoaderRoute: typeof LegalCookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/privacidad': {
+      id: '/legal/privacidad'
+      path: '/legal/privacidad'
+      fullPath: '/legal/privacidad'
+      preLoaderRoute: typeof LegalPrivacidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/nosotros/': {
       id: '/nosotros/'
       path: '/nosotros'
@@ -796,6 +869,13 @@ declare module '@tanstack/react-router' {
       path: '/ops/login'
       fullPath: '/ops/login'
       preLoaderRoute: typeof OpsLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recursos/': {
+      id: '/recursos/'
+      path: '/recursos'
+      fullPath: '/recursos/'
+      preLoaderRoute: typeof RecursosIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sectores/': {
@@ -1038,6 +1118,9 @@ const rootRouteChildren: RootRouteChildren = {
   ApiLeadsRoute: ApiLeadsRoute,
   ApiSaveChatLeadRoute: ApiSaveChatLeadRoute,
   BlogSlugRoute: BlogSlugRoute,
+  LegalAvisoLegalRoute: LegalAvisoLegalRoute,
+  LegalCookiesRoute: LegalCookiesRoute,
+  LegalPrivacidadRoute: LegalPrivacidadRoute,
   NosotrosComoTrabajamosRoute: NosotrosComoTrabajamosRoute,
   OpsAiControlRoute: OpsAiControlRoute,
   OpsLoginRoute: OpsLoginRoute,
@@ -1057,6 +1140,7 @@ const rootRouteChildren: RootRouteChildren = {
   SolucionesOperacionRoute: SolucionesOperacionRoute,
   BlogIndexRoute: BlogIndexRoute,
   NosotrosIndexRoute: NosotrosIndexRoute,
+  RecursosIndexRoute: RecursosIndexRoute,
   SectoresIndexRoute: SectoresIndexRoute,
   SistemasIndexRoute: SistemasIndexRoute,
   SolucionesIndexRoute: SolucionesIndexRoute,

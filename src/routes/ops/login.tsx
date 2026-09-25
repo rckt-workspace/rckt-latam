@@ -1,5 +1,5 @@
 import { createFileRoute, useSearch } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface SearchParams {
   next?: string;
@@ -13,6 +13,7 @@ export const Route = createFileRoute("/ops/login")({
   component: LoginPage,
   head: () => ({
     meta: [
+      { title: "Acceso del equipo — RCKT LATAM" },
       {
         name: "robots",
         content: "noindex, nofollow",
@@ -21,6 +22,10 @@ export const Route = createFileRoute("/ops/login")({
         name: "description",
         content: "RCKT AI Control Center - Acceso administrativo",
       },
+      { property: "og:title", content: "Acceso del equipo — RCKT LATAM" },
+      { property: "og:description", content: "Acceso restringido al equipo de RCKT LATAM." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
 });
@@ -36,6 +41,15 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    try {
+      const theme = localStorage.getItem("rckt-theme");
+      if (theme === "light" || theme === "dark") document.documentElement.setAttribute("data-theme", theme);
+    } catch {
+      // Keep the rendered theme when browser storage is unavailable.
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,11 +88,11 @@ function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-4 py-8">
+    <div className="rckt-site rckt-panel panel-login-page min-h-screen flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="text-sm uppercase tracking-widest text-accent font-semibold mb-2">
+          <div className="panel-login-kicker text-sm uppercase font-semibold mb-2">
             RCKT
           </div>
           <h1 className="text-3xl font-bold text-foreground mb-2">AI CONTROL CENTER</h1>
@@ -86,13 +100,13 @@ function LoginPage() {
         </div>
 
         {/* Login Card */}
-        <div className="glass-strong rounded-3xl p-8 md:p-10 backdrop-blur">
+        <div className="panel-card panel-login p-8 md:p-10">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Password Input */}
             <div className="space-y-2">
               <label
                 htmlFor="password"
-                className="text-xs uppercase tracking-widest text-muted-foreground font-semibold"
+                className="panel-form-label text-xs uppercase text-muted-foreground font-semibold"
               >
                 Contraseña administrativa
               </label>
@@ -103,7 +117,7 @@ function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 disabled={loading}
                 autoFocus
-                className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                className="w-full px-4 py-3 text-foreground placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                 placeholder="Ingresa la clave de acceso"
               />
             </div>
@@ -119,7 +133,7 @@ function LoginPage() {
             <button
               type="submit"
               disabled={loading || !password.trim()}
-              className="w-full py-3 px-4 bg-accent text-accent-foreground rounded-lg font-semibold text-sm uppercase tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+              className="panel-btn w-full py-3 px-4 font-semibold text-sm uppercase disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? "Autenticando..." : "Entrar"}
             </button>

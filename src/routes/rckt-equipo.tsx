@@ -60,6 +60,13 @@ function PanelPC() {
   const [errorConexion, setErrorConexion] = useState(false);
 
   useEffect(() => {
+    try {
+      const theme = localStorage.getItem("rckt-theme");
+      if (theme === "light" || theme === "dark") document.documentElement.setAttribute("data-theme", theme);
+    } catch {
+      // Keep the rendered theme when browser storage is unavailable.
+    }
+
     const verificarSesion = async () => {
       try {
         const res = await fetch("/api/admin/verify");
