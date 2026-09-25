@@ -1,12 +1,11 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { Calculator, Check, Clock, FileSignature, FileText, Map, MessagesSquare, Route as RouteIcon, Search, Target, Users } from "lucide-react";
 import { useState } from "react";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import DiagnosticForm from "@/components/rckt/DiagnosticForm";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
-import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/SystemBlocks";
 import SystemFinalCta from "@/components/rckt/SystemFinalCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
-import SystemSection from "@/components/rckt/SystemSection";
 import { REVENUE_DIAGNOSTIC_FAQS } from "@/content/systemFaqs";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
@@ -28,6 +27,13 @@ const PASOS = [
   { label: "Setup con aceptación", texto: "Implementamos solo lo aprobado, con criterio de éxito escrito." },
   { label: "Operación", texto: "Ciclos de 90 días, medidos hasta la venta." },
 ];
+const STATS = [
+  { label: "Duración", value: "2–3 semanas", detail: "de diagnóstico", Icon: Clock },
+  { label: "Entregable", detail: "Mapa de fugas, línea base firmada y roadmap de 90 días", Icon: FileText },
+  { label: "Para quién", detail: "Toda cuenta nueva, sin excepción", Icon: Users },
+  { label: "Qué mide el éxito", detail: "Que decidas con datos", Icon: Target },
+];
+const INCLUDE_ICONS = [Map, Search, MessagesSquare, Calculator, FileSignature, RouteIcon];
 
 export const Route = createFileRoute("/sistemas/revenue-diagnostic")({
   staticData: { sitemap: true },
@@ -62,25 +68,13 @@ function RevenueDiagnostic() {
           promise="En tres semanas te decimos cuánto pierdes entre la campaña y el cierre, en qué punto exacto, y qué haríamos en 90 días. Si sigues con nosotros, lo que pagas por el diagnóstico se descuenta del sistema."
           ctaHref="#solicitar"
         />
-        <SystemSection num="01." label="El problema" title={<>Sin línea base, cualquier decisión es una <em className="font-serif-accent">apuesta</em>.</>} phrase="Antes de recomendar un sistema, medimos la cadena completa entre la campaña y el cierre.">
-          <p className="system-section__lead">En tres semanas te decimos cuánto pierdes entre la campaña y el cierre, en qué punto exacto, y qué haríamos en 90 días.</p>
-        </SystemSection>
-        <SystemSection id="incluye" num="02." label="Qué incluye" title={<>Primero encontramos la <em className="font-serif-accent">fuga</em>.</>} phrase="Mapa, auditorías y economía unitaria con una línea base acordada contigo.">
-          <CapabilityCards items={INCLUYE} />
-        </SystemSection>
-        <SystemSection num="03." label="Qué no incluye" title={<>Diagnosticar no es <em className="font-serif-accent">implementar</em>.</>} phrase="El alcance termina en una decisión informada y un roadmap priorizado.">
-          <RuleList items={["Implementación", "Cambios en campañas", "Desarrollo", "Configuración de CRM", "Creatividades"]} />
-        </SystemSection>
-        <SystemSection num="04." label="Requisitos" title={<>Para medir, necesitamos ver el sistema <em className="font-serif-accent">completo</em>.</>} phrase="Trabajamos con acceso de lectura y evidencia del último trimestre.">
-          <RuleList items={NECESITAMOS} />
-        </SystemSection>
-        <SystemSection num="05." label="Cómo empieza" title={<>Medimos antes de mover una <em className="font-serif-accent">pieza</em>.</>} phrase="Del diagnóstico a ciclos de operación medidos hasta la venta.">
-          <AcceptanceSteps items={PASOS} plazo="Revenue Diagnostic de 2–3 semanas" />
-        </SystemSection>
+        <section className="system-composition system-stats"><div className="container system-stat-grid">{STATS.map(({ label, value, detail, Icon }) => <article className="system-stat-card" key={label}><span className="system-icon"><Icon aria-hidden="true" /></span><p className="label-orange">{label}</p>{value ? <strong>{value}</strong> : null}<p>{detail}</p></article>)}</div></section>
+        <section className="system-composition system-warm" id="incluye"><div className="container"><div className="system-composition__heading"><span className="label-orange">Qué incluye</span><h2>Primero encontramos la <em className="font-serif-accent">fuga</em>.</h2><p>Mapa, auditorías y economía unitaria con una línea base acordada contigo.</p></div><div className="system-feature-grid">{INCLUYE.map((item, index) => { const Icon = INCLUDE_ICONS[index]; return <article className="system-feature-card" key={item.titulo}>{Icon ? <span className="system-icon"><Icon aria-hidden="true" /></span> : null}<h3>{item.titulo}</h3><p>{item.detalle}</p></article>; })}</div><aside className="system-orange-band"><span className="label-on-orange">Qué no incluye</span><h3>Diagnosticar no es implementar.</h3><p>El alcance termina en una decisión informada y un roadmap priorizado.</p><small>Implementación · Cambios en campañas · Desarrollo · Configuración de CRM · Creatividades</small></aside></div></section>
+        <section className="system-composition"><div className="container"><div className="system-composition__heading"><span className="label-orange">Requisitos</span><h2>Para medir, necesitamos ver el sistema <em className="font-serif-accent">completo</em>.</h2><p>Trabajamos con acceso de lectura y evidencia del último trimestre.</p></div><ul className="system-check-grid">{NECESITAMOS.map((item) => <li key={item}><span className="system-check"><Check aria-hidden="true" /></span>{item}</li>)}</ul></div></section>
+        <section className="system-orange-statement"><div className="container"><span className="label-on-orange">El problema</span><p>Sin línea base, cualquier decisión es una apuesta. Antes de recomendar un sistema, medimos la cadena completa entre la campaña y el cierre.</p></div></section>
+        <section className="system-composition system-warm"><div className="container"><div className="system-composition__heading"><span className="label-orange">Cómo empieza</span><h2>Medimos antes de mover una <em className="font-serif-accent">pieza</em>.</h2><p>Del diagnóstico a ciclos de operación medidos hasta la venta.</p></div><div className="system-step-grid">{PASOS.map((item, index) => <article key={item.label}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.label}</h3><p>{item.texto}</p></article>)}</div></div></section>
+        <section className="system-composition" id="solicitar"><div className="container system-form-container"><div className="system-composition__heading"><span className="label-orange">Formulario</span><h2>Cuéntanos cómo está hoy tu <em className="font-serif-accent">operación</em>.</h2><p>Con esto preparamos la primera conversación con contexto real.</p></div><div className="form-card"><DiagnosticForm whatsappUrl={WHATSAPP_URL} onSent={() => setListo(true)} /></div></div></section>
         <FaqSection items={REVENUE_DIAGNOSTIC_FAQS} />
-        <SystemSection id="solicitar" num="06." label="Formulario" title={<>Cuéntanos cómo está hoy tu <em className="font-serif-accent">operación</em>.</>} phrase="Con esto preparamos la primera conversación con contexto real.">
-          <div className="form-card"><DiagnosticForm whatsappUrl={WHATSAPP_URL} onSent={() => setListo(true)} /></div>
-        </SystemSection>
         <SystemFinalCta href="#solicitar" />
       </main>
       <SiteFooter />

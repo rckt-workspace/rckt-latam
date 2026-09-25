@@ -1,10 +1,9 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { BarChart3, Calendar, CalendarCheck, Layout, Megaphone, Search, Target, Users, Wand2 } from "lucide-react";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import FaqSection, { faqJsonLd, type FaqItem } from "@/components/rckt/FaqSection";
-import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/SystemBlocks";
 import SystemFinalCta from "@/components/rckt/SystemFinalCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
-import SystemSection from "@/components/rckt/SystemSection";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 const INCLUYE = [
@@ -19,6 +18,13 @@ const TIERS = [
   { titulo: "Scale", detalle: "Según canales e inversión en pauta." },
 ];
 const ACEPTACION = ["Tracking validado de extremo a extremo", "Estructura de campañas activa", "Primer reporte por etapa entregado"];
+const STATS = [
+  { label: "Para quién", detail: "Oferta probada, proceso comercial y CRM funcionando", Icon: Users },
+  { label: "Cadencia", detail: "Cada semana debes poder ver el embudo completo, no solo los clics", Icon: Calendar },
+  { label: "Compromiso mínimo", value: "3 meses", detail: "Core, Growth o Scale", Icon: CalendarCheck },
+  { label: "Qué mide el éxito", detail: "La unidad es SQL o venta", Icon: Target },
+];
+const INCLUDE_ICONS = [Megaphone, Wand2, Search, BarChart3, Layout];
 const FAQS: FaqItem[] = [
   { question: "¿RCKT maneja pauta en Meta y Google aunque no tenga CRM todavía?", answer: "Demand System solo se vende suelto si ya tienes proceso comercial y CRM funcionando. Si no los tienes, lo que necesitas es Revenue Engine, y te lo decimos con datos en el Diagnostic." },
   { question: "¿Por qué mi agencia me da prospectos más baratos pero igual no aumentan las ventas?", answer: "Porque el prospecto barato suele ser el que no compra. Nosotros nunca optimizamos por costo por prospecto: la unidad es SQL o venta, aunque cueste más por unidad." },
@@ -49,13 +55,12 @@ function DemandPage() {
   useSiteMotion([]);
   return <div className="rckt-site tcn-page"><main id="top">
     <SystemPageHero label="Demand System" title={<>Generación de demanda medida hasta la <em>venta</em>.</>} promise="Manejamos tu pauta, pero no la optimizamos por leads baratos: la optimizamos por las oportunidades que tu equipo comercial acepta y por las que terminan en venta." />
-    <SystemSection num="01." label="El problema" title={<>Los leads baratos pueden salir muy <em className="font-serif-accent">caros</em>.</>} phrase="Cada semana debes poder ver el embudo completo, no solo los clics."><p className="system-section__lead">Manejamos tu pauta, pero no la optimizamos por leads baratos: la optimizamos por las oportunidades que tu equipo comercial acepta y por las que terminan en venta.</p></SystemSection>
-    <SystemSection id="que-incluye" num="02." label="Qué incluye" title={<>Demanda medida hasta la <em className="font-serif-accent">venta</em>.</>} phrase="Medios, creatividad, visibilidad y medición por etapa."><CapabilityCards items={INCLUYE} /></SystemSection>
-    <SystemSection id="tiers" num="03." label="Niveles" title="La intensidad cambia; la regla no." phrase="Core, Growth y Scale se definen según canales e inversión en pauta."><CapabilityCards items={TIERS} /></SystemSection>
-    <SystemSection id="no-incluye" num="04." label="Qué no incluye" title={<>La pauta no arregla lo que pasa <em className="font-serif-accent">después</em>.</>} phrase="Estos elementos pertenecen a otros sistemas o los paga directamente tu empresa."><RuleList items={["El gasto en pauta", "Desarrollo web", "CRM y RevOps", "Agentes conversacionales"]} /></SystemSection>
-    <SystemSection id="condicion" num="05." label="Reglas" title={<>Nunca optimizamos por costo por <em className="font-serif-accent">lead</em>.</>} phrase="La unidad es SQL o venta."><div className="system-highlight"><p>Nunca optimizamos por costo por lead; la unidad es SQL o venta.</p></div></SystemSection>
-    <SystemSection id="para-quien" num="06." label="Para quién" title={<>Oferta probada, proceso comercial y CRM <em className="font-serif-accent">funcionando</em>.</>} phrase="Si esa base no existe, la recomendación es Revenue Engine."><RuleList items={["Cuentas con oferta probada", "Proceso comercial funcionando", "CRM funcionando", "Si no los tienes, la recomendación es Revenue Engine"]} /></SystemSection>
-    <SystemSection num="07." label="Cómo empieza" title={<>Primero conectamos la medición de extremo a <em className="font-serif-accent">extremo</em>.</>} phrase="El sistema se acepta cuando ya puede leerse por etapa."><AcceptanceSteps plazo="Sistema aceptado en máximo 21 días" items={ACEPTACION.map((texto) => ({ texto }))} /></SystemSection>
+    <section className="system-orange-statement"><div className="container"><span className="label-on-orange">El problema</span><p>Los leads baratos pueden salir muy caros. Cada semana debes poder ver el embudo completo, no solo los clics.</p></div></section>
+    <section className="system-composition system-stats"><div className="container system-stat-grid">{STATS.map(({label,value,detail,Icon})=><article className="system-stat-card" key={label}><span className="system-icon"><Icon aria-hidden="true"/></span><p className="label-orange">{label}</p>{value?<strong>{value}</strong>:null}<p>{detail}</p></article>)}</div></section>
+    <section className="system-composition system-warm" id="que-incluye"><div className="container"><div className="system-composition__heading"><span className="label-orange">Qué incluye</span><h2>Demanda medida hasta la <em className="font-serif-accent">venta</em>.</h2><p>Medios, creatividad, visibilidad y medición por etapa.</p></div><div className="system-feature-grid system-feature-grid--four">{INCLUYE.map((item,index)=>{const Icon=INCLUDE_ICONS[index];return <article className="system-feature-card" key={item.titulo}>{Icon?<span className="system-icon"><Icon aria-hidden="true"/></span>:null}<h3>{item.titulo}</h3><p>{item.detalle}</p></article>})}</div></div></section>
+    <section className="system-composition" id="tiers"><div className="container"><div className="system-composition__heading"><span className="label-orange">Niveles</span><h2>La intensidad cambia; la regla no.</h2><p>Core, Growth y Scale se definen según canales e inversión en pauta.</p></div><div className="system-tier-grid">{TIERS.map((item,index)=><article className={index===1?"system-tier system-tier--featured":"system-tier"} key={item.titulo}><span>{String(index+1).padStart(2,"0")}</span><h3>{item.titulo}</h3><p>{item.detalle}</p></article>)}</div><aside className="system-orange-band" id="no-incluye"><span className="label-on-orange">Qué no incluye</span><h3>La pauta no arregla lo que pasa después.</h3><p>Estos elementos pertenecen a otros sistemas o los paga directamente tu empresa.</p><small>El gasto en pauta · Desarrollo web · CRM y RevOps · Agentes conversacionales</small></aside></div></section>
+    <section className="system-composition system-warm" id="condicion"><div className="container"><div className="system-composition__heading"><span className="label-orange">Reglas</span><h2>Nunca optimizamos por costo por <em className="font-serif-accent">lead</em>.</h2><p>La unidad es SQL o venta.</p></div><ol className="system-rule-lines"><li>Nunca optimizamos por costo por lead; la unidad es SQL o venta.</li><li>Cuentas con oferta probada</li><li>Proceso comercial funcionando</li><li>CRM funcionando</li><li>Si no los tienes, la recomendación es Revenue Engine</li></ol><p className="system-audience-note" id="para-quien"><strong>Para quién:</strong> Oferta probada, proceso comercial y CRM funcionando. Si esa base no existe, la recomendación es Revenue Engine.</p></div></section>
+    <section className="system-composition"><div className="container"><div className="system-composition__heading"><span className="label-orange">Cómo empieza</span><h2>Primero conectamos la medición de extremo a <em className="font-serif-accent">extremo</em>.</h2><p>El sistema se acepta cuando ya puede leerse por etapa.</p></div><span className="system-deadline">Sistema aceptado en máximo 21 días</span><div className="system-step-grid">{ACEPTACION.map((texto,index)=><article key={texto}><span>{String(index+1).padStart(2,"0")}</span><p>{texto}</p></article>)}</div></div></section>
     <FaqSection items={FAQS} /><SystemFinalCta />
   </main><SiteFooter /></div>;
 }
