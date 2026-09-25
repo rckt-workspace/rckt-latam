@@ -111,8 +111,9 @@ export default function GlobalSectionBlobs() {
     const connect = () => {
       observer?.disconnect();
       sections = Array.from(document.querySelectorAll<HTMLElement>(SECTION_SELECTOR));
-      observer = new ResizeObserver(classify);
-      sections.forEach((section) => observer.observe(section));
+      const nextObserver = new ResizeObserver(classify);
+      observer = nextObserver;
+      sections.forEach((section) => nextObserver.observe(section));
       classify();
     };
 
