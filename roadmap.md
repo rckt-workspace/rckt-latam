@@ -57,4 +57,4 @@
 
 - [x] Parte 2 de 3: cambiar solo textos de Soluciones y Sectores existentes; ejecutar únicamente build.
 
-- [ ] Parte 3 de 3: sustituir solo textos existentes de Nosotros, Cómo trabajamos, Casos, Recursos, Contacto y Mercados; comprobar build.
+- [x] Parte 3 de 3: sustituir solo textos existentes de Nosotros, Cómo trabajamos, Casos, Recursos, Contacto y Mercados; comprobar build.
