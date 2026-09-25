@@ -95,7 +95,7 @@ const TRIGGERS: Array<{ de: string; a: string; que: string }> = [
   {
     de: "Demand",
     a: "Revenue Engine",
-    que: "Fuga documentada después del prospecto: respuesta en más de una hora, menos del 60% de prospectos contactados, asesores fuera del CRM",
+    que: "Fuga documentada después del prospecto: respuesta en más de una hora, menos del 60% de prospectos contactados, asesoras atendiendo WhatsApp fuera del CRM",
   },
   {
     de: "Revenue Engine",
@@ -195,8 +195,8 @@ function ComoTrabajamosPage() {
       <main>
         <SystemPageHero
           label="Cómo trabajamos"
-          title={<>Tres modalidades, <span className="text-orange">una misma <span className="hero-hand">base.</span></span></>}
-          context="Hay tres formas de contratar el mismo conocimiento: Operar, cuando RCKT opera el sistema y responde por el resultado; Sprint, una implementación acotada de 6 a 8 semanas con alcance y aceptación cerrados antes de empezar; y Partner, cuando tu equipo interno quiere nuestro método y criterio, no nuestra ejecución. Las tres se apoyan en las mismas seis condiciones, que se cumplen en toda cuenta."
+          title={<>La misma cabeza, tres formas de <span className="hero-hand">trabajar</span>.</>}
+          context="Puedes dejar que operemos el sistema y respondamos por el resultado (Operar), pedirnos una implementación cerrada de 6 a 8 semanas (Sprint) o sumar nuestro método a tu equipo interno (Partner). En los tres casos se cumplen las mismas seis condiciones."
           ctaLabel="Revisar mi proceso comercial →"
           ctaHref={DIAGNOSTIC_HREF}
         />
@@ -204,7 +204,7 @@ function ComoTrabajamosPage() {
         {/* 2. Modalidades */}
         <section className="nos-sec nos-glow--tr">
           <div className="relative mx-auto max-w-6xl px-6">
-            <SectionHeader num="01." label="Tres modalidades" title="Tres formas de contratar el mismo conocimiento." />
+             <SectionHeader num="01." label="Tres modalidades" title="Operar, Sprint o Partner." />
             <div className="mt-10 grid items-stretch gap-6 md:grid-cols-3">
               {MODALIDADES.map((m, i) => (
                 <ModalidadCard key={m.nombre} m={m} i={i} />
@@ -214,9 +214,8 @@ function ComoTrabajamosPage() {
               data-center
               className="font-display mx-auto mt-12 max-w-[760px] text-center text-[24px] leading-snug font-semibold"
             >
-              Partner no es un servicio distinto: es{" "}
-              <span className="font-display text-orange not-italic">la misma cabeza</span> trabajando con el
-              equipo del cliente en lugar de por él.
+               Partner no es un servicio distinto: es{" "}
+               <span className="font-display text-orange not-italic">la misma cabeza</span> trabajando con tu equipo en lugar de por él.
             </p>
           </div>
         </section>
@@ -225,7 +224,7 @@ function ComoTrabajamosPage() {
         <section className="ct-base">
           <div className="relative z-10 mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[38%_1fr]">
             <div className="lg:sticky lg:top-[120px] lg:self-start">
-              <SectionHeader num="02." label="Base común" title={<>Las seis condiciones de <span className="text-orange">toda cuenta</span>.</>} />
+               <SectionHeader num="02." label="Base común" title="Lo que se cumple en toda cuenta." />
               <div className="mt-8 flex flex-wrap gap-3 sm:flex-col sm:items-start">
                 {SELLOS.map((s) => (
                   <span key={s} className="ct-chip font-display">
@@ -294,9 +293,9 @@ function ComoTrabajamosPage() {
 
             {/* Triggers */}
             <div className="mt-24">
-              <SectionHeader num="04." label="Triggers de expansión" title="Cuándo ampliar el sistema." />
+               <SectionHeader num="04." label="Triggers de expansión" title="Cuándo sumar el siguiente sistema." />
               <p data-align="left" className="max-w-[720px] text-[16px] leading-relaxed text-muted-foreground">
-                Se documentan en la revisión mensual. Nunca es venta cruzada automática.
+                 Se propone solo cuando pasa algo real, con datos de la revisión mensual.
               </p>
               <div className="mt-10">
                 {TRIGGERS.map((t) => (

@@ -56,3 +56,5 @@
 - [x] Parte 1 de 3: sustituir solo textos aprobados de Home y Sistemas donde existen bloques de texto; ejecutar únicamente build.
 
 - [x] Parte 2 de 3: cambiar solo textos de Soluciones y Sectores existentes; ejecutar únicamente build.
+
+- [x] Parte 3 de 3: sustituir solo textos existentes de Nosotros, Cómo trabajamos, Casos, Recursos, Contacto y Mercados; comprobar build.
