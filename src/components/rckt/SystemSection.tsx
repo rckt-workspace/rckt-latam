@@ -15,14 +15,14 @@ export default function SystemSection({
   label: string;
   title: ReactNode;
   phrase?: ReactNode;
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
 }) {
   return (
     <section className={`system-section ${className}`.trim()} id={id}>
       <div className="container">
         <SectionHeader num={num} label={label} title={title} phrase={phrase} />
-        <div className="system-section__content">{children}</div>
+        {children ? <div className="system-section__content">{children}</div> : null}
       </div>
     </section>
   );
