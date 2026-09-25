@@ -1,14 +1,14 @@
-import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import { FileText, MessageCircle, Phone } from "lucide-react";
-import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
+import SiteFooter from "@/components/rckt/SiteFooter";
+import SiteNav from "@/components/rckt/SiteNav";
 import DiagnosticForm from "@/components/rckt/DiagnosticForm";
 import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 
 const SITE_URL = "https://rckt.lat";
 
-// TODO: reemplazar por el número real de WhatsApp Business (formato internacional, sin signos).
-const WHATSAPP_NUMBER = "573000000000";
 const WHATSAPP_URL = "#whatsapp";
 
 export const Route = createFileRoute("/contacto")({
@@ -33,8 +33,6 @@ export const Route = createFileRoute("/contacto")({
     links: [{ rel: "canonical", href: SITE_URL + "/contacto" }],
   }),
   component: Contacto,
-  errorComponent: ContactoError,
-  notFoundComponent: () => <ContactoError />,
 });
 
 const datos = [
@@ -43,17 +41,42 @@ const datos = [
   ["Horario", "Lun a Vie, 9:00 a. m. – 6:00 p. m. (hora de Bogotá)", ""],
 ] as const;
 
-function Contacto() {
-  useSiteMotion([]);
+function useReveal<T extends HTMLElement>() {
+  const ref = useRef<T | null>(null);
+  useEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add("is-in");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+    root.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el, i) => {
+      el.style.setProperty("--d", `${(i % 5) * 90}ms`);
+      io.observe(el);
+    });
+    return () => io.disconnect();
+  }, []);
+  return ref;
+}
 
+function Contacto() {
+  const rootRef = useReveal<HTMLDivElement>();
   return (
-    <div className="rckt-site contacto-page">
-      <main id="top">
+    <div className="min-h-screen bg-background text-foreground">
+      <SiteNav />
+      <main>
         <SystemPageHero
           label="Contacto"
           title={
             <>
-              Cuéntanos cómo está hoy tu <em>operación.</em>
+              Cuéntanos cómo está hoy tu <span className="hero-hand">operación.</span>
             </>
           }
           descriptor="Formulario o WhatsApp — lo que prefieras, llega al mismo lugar."
@@ -62,84 +85,86 @@ function Contacto() {
           ctaHref="#formulario"
         />
 
-        <section className="contacto-main" id="formulario">
-          <div className="container contacto-layout">
-            <div className="contacto-form">
-              <div className="form-card">
-                <DiagnosticForm
-                  whatsappUrl={WHATSAPP_URL}
-                  submitLabel="Revisar mi proceso comercial →"
-                  legal={
-                    <span className="form-note">
-                      Al enviar este formulario, aceptas nuestra{" "}
-                      <a href="/politica-tratamiento-datos.pdf" download>
-                        Política de Tratamiento de Datos
-                      </a>
-                      .
-                    </span>
-                  }
-                />
+        <section id="formulario" className="relative isolate" style={{ background: "var(--kraft)", overflow: "clip" }}>
+          <div ref={rootRef} className="relative z-10 mx-auto max-w-6xl px-5 py-20 md:px-6 md:py-28">
+            <div className="grid gap-12 lg:grid-cols-[38%_1fr] lg:gap-14">
+              {/* Formulario (primero en móvil) */}
+              <div className="order-1 lg:order-2">
+                <div data-reveal className="ct-rev">
+                  <div className="ct-card ct-card--form p-6 md:p-10">
+                    <DiagnosticForm
+                      whatsappUrl={WHATSAPP_URL}
+                      submitLabel="Revisar mi proceso comercial →"
+                      legal={
+                        <span className="form-note">
+                          Al enviar este formulario, aceptas nuestra{" "}
+                          <a href="/politica-tratamiento-datos.pdf" download>
+                            Política de Tratamiento de Datos
+                          </a>
+                          .
+                        </span>
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Canales */}
+              <div className="order-2 lg:order-1">
+                <div className="lg:sticky" style={{ top: "120px" }}>
+                  <div data-reveal className="ct-rev">
+                    <h2 className="font-display text-[26px] leading-[1.15] font-semibold tracking-tight md:text-[30px]">
+                      Otras formas de hablar <em className="font-serif-accent">con nosotros.</em>
+                    </h2>
+
+                    <div className="mt-8 space-y-0">
+                      <div className="flex gap-4 pb-7" id="whatsapp">
+                        <span className="ct-icon" aria-hidden="true"><MessageCircle className="h-5 w-5" /></span>
+                        <div>
+                          <h3 className="font-display text-[17px] font-semibold">WhatsApp</h3>
+                          <p className="mt-1.5 text-[14.5px] leading-[1.55] text-muted-foreground">Escríbenos y responde las mismas preguntas del formulario.</p>
+                          <a href={WHATSAPP_URL} className="mt-3 inline-block text-[14px] font-semibold text-orange hover:underline">Escribir por WhatsApp →</a>
+                        </div>
+                      </div>
+
+                      <div className="ct-divider flex gap-4 py-7">
+                        <span className="ct-icon" aria-hidden="true"><FileText className="h-5 w-5" /></span>
+                        <div>
+                          <div className="flex flex-wrap items-center gap-2">
+                            <h3 className="font-display text-[17px] font-semibold">Formulario de calificación</h3>
+                            <span className="ct-badge">MISMO NIVEL</span>
+                          </div>
+                          <p className="mt-1.5 text-[14.5px] leading-[1.55] text-muted-foreground">Llega al mismo CRM con su origen y prepara la conversación.</p>
+                          <a href="#formulario" className="mt-3 inline-block text-[14px] font-semibold text-orange hover:underline">Ir al formulario →</a>
+                        </div>
+                      </div>
+
+                      <div className="ct-divider flex gap-4 py-7">
+                        <span className="ct-icon" aria-hidden="true"><Phone className="h-5 w-5" /></span>
+                        <div>
+                          <h3 className="font-display text-[17px] font-semibold">Llamada</h3>
+                          <p className="mt-1.5 text-[14.5px] leading-[1.55] text-muted-foreground">[pendiente]</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="ct-mini mt-6 p-5">
+                      <p className="label-orange !text-[10px]">Datos</p>
+                      {datos.map(([titulo, valor, href]) =>
+                        href ? (
+                          <a key={titulo} href={href} className="mt-3 block text-[14.5px] font-semibold text-foreground hover:text-orange">{valor}</a>
+                        ) : (
+                          <p key={titulo} className="mt-2 text-[14px] text-muted-foreground">{valor}</p>
+                        ),
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <aside className="contacto-channels">
-              <div className="contacto-channels__sticky">
-                <h2>
-                  Otras formas de hablar <em>con nosotros.</em>
-                </h2>
-
-                <div className="contacto-channel-list">
-                  <div className="contacto-channel" id="whatsapp"><span className="contacto-channel__icon" aria-hidden="true"><MessageCircle /></span><div><h3>WhatsApp</h3><p>Escríbenos y responde las mismas preguntas del formulario.</p><a href={WHATSAPP_URL}>Escribir por WhatsApp →</a></div></div>
-                  <div className="contacto-channel contacto-channel--divided"><span className="contacto-channel__icon" aria-hidden="true"><FileText /></span><div><div className="contacto-channel__heading"><h3>Formulario de calificación</h3><span className="contacto-channel__badge">MISMO NIVEL</span></div><p>Llega al mismo CRM con su origen y prepara la conversación.</p><a href="#formulario">Ir al formulario →</a></div></div>
-                  <div className="contacto-channel contacto-channel--divided"><span className="contacto-channel__icon" aria-hidden="true"><Phone /></span><div><h3>Llamada</h3><p>[pendiente]</p></div></div>
-                </div>
-
-                <dl className="contacto-data-card">
-                  <div className="contacto-data-card__label">Datos</div>
-                  {datos.map(([titulo, valor, href]) => (
-                    <div key={titulo}>
-                      <dt>{titulo}</dt>
-                      <dd>{href ? <a href={href}>{valor}</a> : valor}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            </aside>
           </div>
         </section>
         <GeneralCta />
-      </main>
-      <SiteFooter />
-    </div>
-  );
-}
-
-function ContactoError() {
-  const router = useRouter();
-
-  return (
-    <div className="rckt-site tcn-page">
-      <SiteHeader />
-      <main className="band">
-        <div className="container">
-          <div className="form-card" role="alert">
-            <span className="kicker">Contacto</span>
-            <h1>No pudimos mostrar esta página.</h1>
-            <p>Intenta cargarla nuevamente. Si el problema continúa, puedes volver al inicio.</p>
-            <div className="form-actions">
-              <button
-                className="btn btn-primary"
-                type="button"
-                onClick={() => void router.invalidate()}
-              >
-                Intentar de nuevo
-              </button>
-              <a className="btn" href="/">
-                Volver al inicio
-              </a>
-            </div>
-          </div>
-        </div>
       </main>
       <SiteFooter />
     </div>
