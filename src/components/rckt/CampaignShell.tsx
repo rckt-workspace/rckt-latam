@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import logoDark from "@/assets/rckt-logo-dark.png";
 import logoLight from "@/assets/rckt-logo-light.png";
 
-export default function CampaignShell({ children }: { children: ReactNode }) {
+export default function CampaignShell({ children, thanks = false }: { children: ReactNode; thanks?: boolean }) {
   return (
     <div className="rckt-site campaign-page">
       <header className="campaign-header" aria-label="RCKT LATAM">
@@ -11,7 +11,7 @@ export default function CampaignShell({ children }: { children: ReactNode }) {
             <img className="campaign-logo--light" src={logoDark} alt="RCKT" />
             <img className="campaign-logo--dark" src={logoLight} alt="" />
           </span>
-          <a className="btn-orange campaign-header__cta" href="#formulario">Revisar mi proceso comercial</a>
+          <a className="btn-orange campaign-header__cta" href={thanks ? "/lp/sales-flow#formulario" : "#formulario"}>Revisar mi proceso comercial</a>
         </div>
       </header>
       {children}
