@@ -7466,6 +7466,14 @@ header {
 .engine-milestones article { display: grid; grid-template-columns: 90px 1fr; align-items: center; padding: 28px; border: 1px solid var(--line); border-radius: 8px; }
 .engine-milestones strong { color: var(--naranja); font-family: "Inter Tight", sans-serif; font-size: 54px; }
 .engine-milestones p { margin: 0; line-height: 1.55; }
+[data-theme="dark"] .system-stat-card,
+[data-theme="dark"] .system-feature-card,
+[data-theme="dark"] .system-tier,
+[data-theme="dark"] .sales-flow-card,
+[data-theme="dark"] .engine-card,
+[data-theme="dark"] .engine-milestones article,
+[data-theme="dark"] .sales-flow-track span { background: color-mix(in srgb, var(--carbon) 88%, var(--papel-fija)); border-color: color-mix(in srgb, var(--naranja) 32%, transparent); }
+[data-theme="dark"] .system-tier--featured { background: color-mix(in srgb, var(--naranja) 18%, var(--carbon)); border-color: var(--naranja); }
 @media (max-width: 900px) { .system-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .system-feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 900px) { .system-feature-grid--four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 900px) { .engine-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
