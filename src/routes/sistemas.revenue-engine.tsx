@@ -22,7 +22,7 @@ const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
 const SITE_URL = "https://rckt.lat";
 
 const REVENUE_ENGINE_FAQS = [
-  { question: "Quiero todo desde el principio.", answer: "Growth OS es para cuentas que ya llevan tiempo con nosotros. Empezar por todo a la vez es la forma más rápida de no medir nada. Empezamos por Revenue Engine y crecemos con evidencia." },
+  { question: "¿Podemos contratar todo de una vez?", answer: "Growth OS es para cuentas que ya llevan un tiempo con nosotros. Arrancar con todo a la vez es la manera más rápida de no medir nada: empezamos por Revenue Engine y crecemos con datos." },
   { question: "Son más caros que otros.", answer: "Comparado con una agencia de pauta, sí. Comparado con pagar pauta, web, CRM, chatbot y consultor por separado sin que nadie responda por el resultado, no. Y el Diagnostic te dice si el sistema se paga solo antes de comprometerte." },
   { question: "¿Cuál es el compromiso mínimo?", answer: "6 meses. El sistema necesita un ciclo completo para demostrar." },
   { question: "¿Qué voy a ver y cuándo?", answer: "El día 30, el sistema operativo con su fuente de verdad. El día 90, la revisión de la línea base frente al resultado." },

@@ -93,12 +93,12 @@ const CAPACIDADES = [
   {
     Icono: Wand2,
     titulo: "Creative Performance",
-    detalle: "Producción y testing con IA: hooks, ángulos, formatos, iteración semanal",
+    detalle: "Piezas producidas y probadas con IA cada semana: ganchos, ángulos y formatos",
   },
   {
     Icono: Search,
     titulo: "Search & AI Visibility",
-    detalle: "SEO técnico y de contenido, presencia en respuestas de IA con snapshot trimestral",
+    detalle: "SEO técnico y de contenido, y presencia en las respuestas de IA con medición trimestral",
   },
   {
     Icono: BarChart3,
@@ -108,7 +108,7 @@ const CAPACIDADES = [
   {
     Icono: Layout,
     titulo: "Landing de campaña",
-    detalle: "Recomendaciones y ajustes menores (una landing nueva es de Sales Flow)",
+    detalle: "Ajustes y recomendaciones sobre la landing actual (una landing nueva entra en Sales Flow)",
   },
 ];
 
@@ -140,9 +140,9 @@ const CONDICIONES = [
 ];
 
 const ACEPTACION = [
-  "Tracking validado de extremo a extremo",
-  "Estructura de campañas activa",
-  "Primer reporte por etapa entregado",
+  "Tracking probado de punta a punta",
+  "Campañas estructuradas y activas",
+  "Primer reporte por etapa en tus manos",
 ];
 
 function SectionLabel({ children }: { children: React.ReactNode }) {

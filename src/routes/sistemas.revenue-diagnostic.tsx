@@ -240,7 +240,7 @@ function RevenueDiagnostic() {
                 className="font-display mt-5 max-w-3xl text-[22px] leading-[1.3] font-semibold tracking-tight md:text-[30px]"
                 style={{ color: "#f5f2ed" }}
               >
-                Implementación, cambios en campañas, desarrollo, configuración de CRM, creatividades.
+                Durante el diagnóstico no implementamos: ni cambios en campañas, ni desarrollo, ni configuración de CRM, ni creatividades.
               </p>
             </div>
           </div>

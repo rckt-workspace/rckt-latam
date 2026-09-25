@@ -11,10 +11,10 @@ const SITE_URL = "https://rckt.lat";
 
 const OPERATIONS_SYSTEM_FAQS = [
   { question: "Quiero un chatbot con IA.", answer: "No vendemos chatbots. Si tienes un proceso que tu equipo repite muchas veces, lo medimos y lo automatizamos con supervisión. Si es curiosidad por la IA, hay herramientas gratis para probar." },
-  { question: "¿Cuánto dura?", answer: "Un Operations Sprint de 6 a 8 semanas, con los criterios de aceptación firmados en la semana 2, y después soporte mensual." },
-  { question: "¿Qué pasa si el proceso no mejora?", answer: "Medimos cuánto te cuesta el proceso hoy y lo comparamos en el piloto. Si no baja el costo por ejecución, no seguimos." },
-  { question: "¿Dependen de un proveedor de IA concreto?", answer: "No. Podemos cambiar el proveedor de IA sin rehacer el sistema: nuestro activo es el diseño del proceso, no la herramienta." },
-  { question: "¿Qué necesitan de mí?", answer: "Un dueño del proceso nombrado, acceso a los sistemas y datos, casos históricos para las pruebas y disponibilidad para validar durante el piloto." },
+  { question: "¿Cuánto tiempo toma?", answer: "Entre 6 y 8 semanas por proceso. En la semana 2 firmamos contigo qué significa que funcione; después queda soporte mensual." },
+  { question: "¿Qué pasa si el piloto no mejora el proceso?", answer: "Comparamos el piloto con la línea base. Si el costo por ejecución no baja, no seguimos." },
+  { question: "¿Quedamos amarrados a una herramienta de IA?", answer: "No. Si hace falta cambiar de proveedor, el sistema no se rehace: lo que construimos es el diseño del proceso." },
+  { question: "¿Qué necesitan de mí?", answer: "Alguien de tu equipo a cargo del proceso, acceso a los sistemas y datos, ejemplos reales para las pruebas y tiempo para validar durante el piloto." },
   { question: "¿Y si la IA no nos da retorno?", answer: "Por eso se mide el costo por ejecución correcta frente a la línea base desde el piloto. Si no baja, no seguimos." },
 ];
 
@@ -110,15 +110,15 @@ const CATALOGO = [
 ];
 
 const REGLAS = [
-  "Un proceso por sprint: el segundo reutiliza la infraestructura del primero",
-  "Podemos cambiar el proveedor de IA sin rehacer el sistema: nuestro activo es el diseño del proceso",
-  "Sin línea base no hay sprint",
+  "Un proceso por sprint; el siguiente aprovecha lo que ya construimos",
+  "Si hay que cambiar el proveedor de IA, no se rehace el sistema",
+  "Sin línea base no empezamos el sprint",
 ];
 
 const ACEPTACION = [
   "Ejecuciones correctas sin intervención por encima del umbral acordado (típicamente 85–90% en piloto)",
   "Costo por ejecución correcta documentado frente a la línea base",
-  "Toda excepción con ruta humana definida",
+  "Cada excepción con su ruta hacia una persona",
 ];
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -258,7 +258,7 @@ function OperationsSystemPage() {
               className="mt-12 max-w-2xl text-[17px] leading-relaxed md:text-[19px]"
               style={{ fontFamily: '"Newsreader", Georgia, serif', fontStyle: "italic" }}
             >
-              Los criterios de aceptación se firman en la semana 2, antes de construir nada.
+              Lo que significa que funcione se firma en la semana 2, antes de construir.
             </p>
           </div>
         </section>
@@ -328,8 +328,7 @@ function OperationsSystemPage() {
                 className="font-display mt-5 max-w-3xl text-[22px] leading-[1.3] font-semibold tracking-tight md:text-[30px]"
                 style={{ color: "#f5f2ed" }}
               >
-                Transformación empresarial completa · ERP o software a medida · procesos críticos sin
-                responsable del lado del cliente · procesos sin datos accesibles.
+                No es una transformación completa de la empresa ni un ERP o software a medida. Tampoco tomamos procesos críticos sin un responsable de tu lado ni procesos sin datos disponibles.
               </p>
             </div>
           </div>
