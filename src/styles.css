@@ -7602,6 +7602,9 @@ header {
 header.pointer-events-none { inset-inline: 0; width: auto; padding-inline: 1rem; }
 header.pointer-events-none.top-4 { top: 1rem; }
 header.pointer-events-none.top-3 { top: .75rem; }
+header.pointer-events-none img.hidden { display: none; }
+.dark header.pointer-events-none img.dark\:hidden { display: none; }
+.dark header.pointer-events-none img.dark\:block { display: block; }
 .btn-signal { background: var(--naranja); color: var(--papel-fija); border: 1px solid var(--naranja); }
 .btn-signal:hover { opacity: .9; transform: translateY(-1px); }
 @media (min-width: 768px) {
