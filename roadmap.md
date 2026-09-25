@@ -61,4 +61,4 @@
 - [x] Ajustar hero, formulario, footer, datos legales, Recursos, Nosotros y textos públicos LATAM solicitados.
 - [x] Publicar los tres textos legales literales y la política colombiana en PDF; actualizar footer y ficha de Contacto.
 - [x] Crear landing Sales Flow y gracias con scoring, atribución y formulario existente; validar escritorio/móvil.
-- [ ] Igualar el formulario de calificación con España y reforzar las tarjetas visuales de Sales Flow; validar las cuatro vistas solicitadas.
+- [x] Igualar el formulario de calificación con España y reforzar las tarjetas visuales de Sales Flow; validar las cuatro vistas solicitadas.
