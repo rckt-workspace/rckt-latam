@@ -20,3 +20,5 @@
 - [x] Validar las seis páginas en escritorio y celular, claro y oscuro.
 - [ ] Paso 9: redactar y publicar las FAQ propias de LATAM para Demand System, Sales Flow, Operations System y Revenue Engine.
 - [x] Reconstruir el nav móvil y desktop con el patrón real de España, y validarlo en Inicio/Sistemas, claro/oscuro y 375/414 px.
+- [ ] Reconstruir /soluciones y sus tres páginas con los componentes y tratamiento visual de España, preservando el copy LATAM.
+- [ ] Validar las cuatro páginas de Soluciones en escritorio y celular, claro y oscuro.
