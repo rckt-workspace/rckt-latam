@@ -107,19 +107,7 @@ const pageMarkup = `
 <a href="/soluciones">Soluciones</a>
 <a href="/sistemas">Sistemas</a>
 <a href="/sectores">Sectores</a>
-<div class="nav-dropdown">
-<button class="nav-dropdown-trigger" aria-expanded="false" aria-label="Menú de Nosotros">
-Nosotros
-<svg class="nav-dropdown-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 5.5L7 9l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-</button>
-<div class="nav-dropdown-menu-wrap">
-<div class="nav-dropdown-menu">
-<a href="/nosotros" class="nav-dropdown-item">Quiénes somos</a>
-<a href="/nosotros/como-trabajamos" class="nav-dropdown-item">Cómo trabajamos</a>
-<a href="/trabaja-con-nosotros" class="nav-dropdown-item">Trabaja con nosotros</a>
-</div>
-</div>
-</div>
+<a href="/nosotros">Nosotros</a>
 <a href="/blog">Blog</a>
 <div class="nav-menu-footer">
 <button class="theme-toggle" type="button" aria-label="Activar versión oscura" title="Versión oscura"><span class="theme-toggle__thumb"><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></span></button>
@@ -449,8 +437,9 @@ function RcktLanding() {
 
     // --- Máquina de escribir solo en la palabra "humano" ---
     const typeTarget = document.querySelector<HTMLElement>(".hero-inner h1 .type-target");
-    if (typeTarget && !reduceMotion) {
+    if (typeTarget && !reduceMotion && typeTarget.dataset.typed !== "true") {
       const finalText = typeTarget.textContent ?? "";
+      typeTarget.dataset.typed = "true";
       typeTarget.textContent = "";
       const cursor = document.createElement("span");
       cursor.className = "type-cursor";
@@ -491,7 +480,7 @@ function RcktLanding() {
     revealElements.forEach((el) => (observer ? observer.observe(el) : el.classList.add("in")));
 
     const header = document.querySelector<HTMLElement>("header");
-    const onScroll = () => header?.classList.toggle("scrolled", window.scrollY > 8);
+    const onScroll = () => header?.classList.toggle("scrolled", window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
@@ -527,29 +516,6 @@ function RcktLanding() {
       if (active) link.setAttribute("aria-current", "page");
       else link.removeAttribute("aria-current");
     });
-    const dropdownTrigger = links?.querySelector<HTMLButtonElement>(".nav-dropdown-trigger");
-    dropdownTrigger?.classList.toggle("is-active", currentPath === "/nosotros" || currentPath.startsWith("/nosotros/"));
-
-    // Dropdown menu toggle (mobile only - desktop uses CSS hover)
-    const dropdownMenuWrap = links?.querySelector<HTMLElement>(".nav-dropdown-menu-wrap");
-    if (dropdownTrigger && dropdownMenuWrap) {
-      dropdownTrigger.addEventListener("click", (e) => {
-        const isMobile = window.innerWidth <= 1152;
-        if (!isMobile) return;
-        e.preventDefault();
-        const isOpen = dropdownMenuWrap.getAttribute("data-open") === "true";
-        dropdownMenuWrap.setAttribute("data-open", String(!isOpen));
-        dropdownTrigger.setAttribute("aria-expanded", String(!isOpen));
-      });
-      // Close dropdown when clicking a submenu item
-      dropdownMenuWrap.querySelectorAll<HTMLAnchorElement>("a").forEach((item) => {
-        item.addEventListener("click", () => {
-          dropdownMenuWrap.setAttribute("data-open", "false");
-          dropdownTrigger.setAttribute("aria-expanded", "false");
-        });
-      });
-    }
-
     window.addEventListener("resize", closeMenuOnResize);
     window.addEventListener("keydown", closeMenuOnEsc);
 
@@ -580,6 +546,7 @@ function RcktLanding() {
 
     const themeToggles = Array.from(document.querySelectorAll<HTMLButtonElement>(".theme-toggle"));
     const applyTheme = (theme: "light" | "dark") => {
+      document.documentElement.classList.toggle("dark", theme === "dark");
       document.documentElement.setAttribute("data-theme", theme);
       try {
         localStorage.setItem("rckt-theme", theme);
@@ -614,12 +581,6 @@ function RcktLanding() {
       window.removeEventListener("keydown", closeMenuOnEsc);
       toggle?.removeEventListener("click", onToggle);
       links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu));
-      if (dropdownTrigger && dropdownMenuWrap) {
-        dropdownTrigger.removeEventListener("click", () => {});
-        dropdownMenuWrap.querySelectorAll<HTMLAnchorElement>("a").forEach((item) => {
-          item.removeEventListener("click", () => {});
-        });
-      }
       faqButtons.forEach((button) => button.removeEventListener("click", onFaq));
       form?.removeEventListener("submit", onSubmit);
       themeToggles.forEach((button) => button.removeEventListener("click", toggleTheme));
