@@ -69,7 +69,7 @@ function NosotrosPage() {
         />
         <section className="page-section"><div className="page-shell">
           <SectionHeader num="01." label="Manifiesto" title="Manifiesto." />
-          <article className="manifest-card"><span className="manifest-card__quote" aria-hidden="true">“</span><div className="manifest-card__glow" aria-hidden="true" /><p>Hacemos crecer lo que importa, aplicamos inteligencia con precisión, medimos lo que hacemos y construimos relaciones que perduran, porque el verdadero crecimiento no se persigue: <span>se diseña, se demuestra y se sostiene.</span></p><footer><i aria-hidden="true" /><span>RCKT · Manifiesto</span></footer></article>
+          <article className="manifest-card"><div className="manifest-card__glow" aria-hidden="true" /><p>Hacemos crecer lo que importa, aplicamos inteligencia con precisión, medimos lo que hacemos y construimos relaciones que perduran, porque el verdadero crecimiento no se persigue: <span>se diseña, se demuestra y se sostiene.</span></p><footer><i aria-hidden="true" /><span>RCKT · Manifiesto</span></footer></article>
         </div></section>
         <section className="page-section"><div className="page-shell"><SectionHeader num="02." label="En una frase" title="En una frase." phrase="No vendemos pauta, ni webs, ni chatbots. Diseñamos y operamos el sistema que hay entre la inversión en mercadeo de un cliente y su venta, y respondemos por lo que pasa en el medio." /></div></section>
         <section className="page-section"><div className="page-shell grid items-stretch gap-6 md:grid-cols-2">
