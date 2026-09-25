@@ -357,9 +357,9 @@ export const SECTORS: Record<string, SectorPageData> = {
     sectorImageAlt: "Reunión de consultoría revisando indicadores",
     funnelStages: ["Google/LinkedIn", "Lead", "Reunión", "Propuesta", "Cierre"],
     funnelLeaks: [
-      { afterStage: 1, label: "Depende de referidos" },
-      { afterStage: 2, label: "Pipeline corto" },
-      { afterStage: 3, label: "CRM mal usado" },
+      { afterStage: 1, label: "Todo llega por referidos" },
+      { afterStage: 2, label: "Pocas oportunidades al mes" },
+      { afterStage: 3, label: "Un CRM que nadie actualiza" },
     ],
     doloresDetalle: [
       {
