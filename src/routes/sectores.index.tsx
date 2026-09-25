@@ -43,7 +43,7 @@ export const Route = createFileRoute("/sectores/")({
   component: SectoresPage,
 });
 
-const IMAGE_POSITION: Partial<Record<string, string>> = { salud: "30% center", educacion: "55% 30%", b2b: "30% center" };
+const IMAGE_POSITION: Partial<Record<string, string>> = { salud: "30% center", educacion: "72% 35%", b2b: "30% center" };
 
 function Cards() {
   return (
