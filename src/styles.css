@@ -4804,7 +4804,7 @@ main section[data-content-tone="alternate"] { background: var(--papel-alt); }
 }
 /* El menú anidado en una portada debe superar las capas aisladas de todas las secciones. */
 main .system-page-hero,
-main #top { isolation: auto; z-index: 41; overflow: visible; }
+main #top { isolation: auto; z-index: 40; overflow: visible; }
 main section:not(.system-page-hero):not(#top) { z-index: min(40, var(--section-layer, 0)); }
 header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 
