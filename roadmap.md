@@ -36,7 +36,7 @@
 - [x] Paso 8.3 — Mover legales a /legal/*, conservar redirecciones permanentes y actualizar el footer.
 - [x] Paso 8.4 — Realinear visualmente /rckt-equipo sin modificar lógica ni datos.
 - [x] Bloque 1 — Corregir Homemade Apple, máquina de escribir y base global.
-- [ ] Bloque 2 — Igualar navegación y footer; eliminar dropdown de Nosotros.
+- [x] Bloque 2 — Igualar navegación y footer; eliminar dropdown de Nosotros.
 - [ ] Bloque 3 — Portar SystemPageHero y CTA final de España.
 - [ ] Bloque 4 — Reconstruir Inicio en JSX con medidas y animaciones de España.
 - [ ] Bloque 5 — Reconstruir las cinco páginas de Sistemas con sus composiciones españolas.
