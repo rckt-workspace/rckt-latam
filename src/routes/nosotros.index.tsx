@@ -1,7 +1,7 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { Check, Database, Layers, Lock, PackageOpen, ShieldCheck, UserRoundCheck, X } from "lucide-react";
+import type { ReactNode } from "react";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
-import SectionHeader from "@/components/rckt/SectionHeader";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SystemFinalCta from "@/components/rckt/SystemFinalCta";
 
@@ -66,6 +66,32 @@ export const Route = createFileRoute("/nosotros/")({
   notFoundComponent: () => <NosotrosError />,
 });
 
+function LocalSectionHeader({
+  num,
+  label,
+  title,
+  phrase,
+}: {
+  num: string;
+  label: string;
+  title: ReactNode;
+  phrase?: ReactNode;
+}) {
+  return (
+    <div className="text-left">
+      <div className="mb-10 flex flex-wrap items-center gap-x-4 gap-y-2">
+        <span className="num-orange">{num}</span>
+        <div className="rule" />
+        <span className="label-orange">{label}</span>
+      </div>
+      <div className={`grid gap-6 md:items-start md:gap-12 ${phrase ? "md:grid-cols-2" : ""}`}>
+        <h2 className="font-display text-3xl leading-tight font-semibold md:text-5xl">{title}</h2>
+        {phrase ? <p className="text-sm leading-relaxed text-muted-foreground md:text-base md:pt-2">{phrase}</p> : null}
+      </div>
+    </div>
+  );
+}
+
 function NosotrosPage() {
   return (
     <div className="rckt-site tcn-page min-h-screen bg-background text-foreground antialiased">
@@ -73,7 +99,7 @@ function NosotrosPage() {
       <main>
         <SystemPageHero
           label="Nosotros"
-          title={<>Qué es <em>RCKT</em>.</>}
+          title={<>Qué es <span className="text-orange">RCKT.</span></>}
           descriptor="RCKT diseña y opera sistemas que convierten demanda en ventas: campañas, conversaciones, CRM e IA supervisada, medidos hasta el ingreso."
           promise="Del clic al cierre."
           ctaLabel="Revisar mi proceso comercial →"
@@ -82,7 +108,7 @@ function NosotrosPage() {
 
         <section className="page-section">
           <div className="page-shell">
-            <SectionHeader num="01." label="Manifiesto" title="Manifiesto." />
+            <LocalSectionHeader num="01." label="Manifiesto" title="Manifiesto." />
             <article className="manifest-card">
               <span className="manifest-card__quote" aria-hidden="true">“</span>
               <div className="manifest-card__glow" aria-hidden="true" />
@@ -94,7 +120,7 @@ function NosotrosPage() {
 
         <section className="page-section">
           <div className="page-shell">
-            <SectionHeader 
+            <LocalSectionHeader 
               num="02." 
               label="En una frase" 
               title={<>Qué hacemos, en una <em className="font-serif-accent">frase</em>.</>} 
@@ -118,7 +144,7 @@ function NosotrosPage() {
 
         <section className="page-section">
           <div className="page-shell">
-            <SectionHeader num="03." label="Los 5 pilares" title="Los 5 pilares." />
+            <LocalSectionHeader num="03." label="Los 5 pilares" title="Los 5 pilares." />
             <div className="pillar-grid mt-10">{pilares.map(([n, title, text]) => <article key={n} className="pillar-item"><span className="pillar-item__number">{n}.</span><h3>{title}</h3><p>{text}</p></article>)}</div>
             <div className="pillar-practice"><span className="section-pill">En la práctica</span><p>Vender mejor es decirle que no al prospecto que no encaja, aunque duela el mes. Pensar mejor es medir antes de tocar nada. Trabajar más inteligente es un proceso a la vez, con supervisión, no un chatbot suelto. Movernos primero es que el Diagnostic dure semanas, no trimestres. Y la prueba por encima de la promesa es que ningún resultado se menciona sin ficha de caso.</p></div>
           </div>
@@ -126,20 +152,20 @@ function NosotrosPage() {
 
         <section className="page-section">
           <div className="page-shell">
-            <SectionHeader num="04." label="Principios" title={<>La base común de <span className="text-orange">toda cuenta.</span></>} />
+            <LocalSectionHeader num="04." label="Principios" title={<>La base común de <span className="text-orange">toda cuenta.</span></>} />
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{principios.map(([n, Icon, title, text]) => <article key={n} className="content-card p-7"><div className="flex items-center gap-3"><Icon className="h-6 w-6 text-orange" /><span className="font-hero text-[28px] font-semibold text-orange">{n}</span></div><h3 className="font-display mt-4 text-[19px] font-semibold">{title}</h3><p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{text}</p></article>)}</div>
           </div>
         </section>
 
         <section className="page-section">
           <div className="page-shell">
-            <SectionHeader num="05." label="A quién servimos" title="A quién servimos." />
+            <LocalSectionHeader num="05." label="A quién servimos" title="A quién servimos." />
             <p className="mt-8 max-w-[900px] text-[18px] leading-[1.7] text-muted-foreground">Trabajamos con empresas consolidadas que ya venden, ya invierten en pauta o ventas y pierden dinero entre la campaña y el cierre. El tamaño no es un filtro absoluto: una empresa de 12 personas con ticket alto y buen margen puede ser mejor cliente que una de 80 con márgenes bajos.</p>
           </div>
         </section>
 
         <section className="page-section">
-          <div className="page-shell grid items-stretch gap-6 md:grid-cols-1">
+          <div className="page-shell">
             <LinkCard 
               title="Cómo trabajamos" 
               text="Tres modalidades, una base común en toda cuenta y la escalera hasta Growth OS." 
