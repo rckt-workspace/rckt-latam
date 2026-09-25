@@ -35,3 +35,13 @@
 - [x] Paso 8.2 — Rediseñar /blog con el sistema visual compartido, preservando su contenido real, búsqueda, categorías y destacado.
 - [x] Paso 8.3 — Mover legales a /legal/*, conservar redirecciones permanentes y actualizar el footer.
 - [x] Paso 8.4 — Realinear visualmente /rckt-equipo sin modificar lógica ni datos.
+- [ ] Bloque 1 — Corregir Homemade Apple, máquina de escribir y base global.
+- [ ] Bloque 2 — Igualar navegación y footer; eliminar dropdown de Nosotros.
+- [ ] Bloque 3 — Portar SystemPageHero y CTA final de España.
+- [ ] Bloque 4 — Reconstruir Inicio en JSX con medidas y animaciones de España.
+- [ ] Bloque 5 — Reconstruir las cinco páginas de Sistemas con sus composiciones españolas.
+- [ ] Bloque 6 — Completar Ecommerce rentable y Operación a siete secciones.
+- [ ] Bloque 7 — Portar la puesta en escena de Cómo trabajamos.
+- [ ] Bloque 8 — Igualar “Lo que somos / no somos” en Nosotros.
+- [ ] Bloque 9 — Igualar legales y footer conservando contenido LATAM.
+- [ ] Bloque 10 — Normalizar espaciados, tarjetas, CTA y manchas; validar todas las rutas.
