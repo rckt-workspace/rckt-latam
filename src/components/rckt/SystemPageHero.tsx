@@ -7,7 +7,7 @@ type Props = {
   title: ReactNode;
   descriptor?: string;
   promise?: string;
-  ctaLabel?: string;
+  ctaLabel?: string | null;
   ctaHref?: string;
 };
 
@@ -31,7 +31,7 @@ export default function SystemPageHero({
         <h1>{title}</h1>
         {descriptor ? <p className="system-page-hero__descriptor">{descriptor}</p> : null}
         {promise ? <p className="system-page-hero__promise">{promise}</p> : null}
-        <a className="btn btn-primary" href={ctaHref}>{ctaLabel}</a>
+        {ctaLabel ? <a className="btn btn-primary" href={ctaHref}>{ctaLabel}</a> : null}
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import type { BlogCategory } from "@/types/blog";
+import { Search } from "lucide-react";
 
 export function BlogSearch({
   value,
@@ -19,6 +20,7 @@ export function BlogSearch({
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />
+      <Search className="blog-search__icon" aria-hidden="true" />
     </div>
   );
 }

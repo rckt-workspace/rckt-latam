@@ -3,9 +3,10 @@ import { useEffect, useMemo, useState } from "react";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import { BlogCard, BlogFeatured } from "@/components/blog/BlogCard";
 import { BlogCategories, BlogSearch } from "@/components/blog/BlogFilters";
+import SystemFinalCta from "@/components/rckt/SystemFinalCta";
+import SystemPageHero from "@/components/rckt/SystemPageHero";
 import { blogRepository } from "@/lib/blog.repository";
 import type { BlogCategory, BlogPost } from "@/types/blog";
-import heroAsset from "@/assets/rckt-hero.jpg";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
@@ -93,25 +94,14 @@ function BlogIndex() {
   return (
     <div className="rckt-site tcn-page blog-page">
       <main id="top">
-        <section className="subpage-hero">
-          <div className="subpage-hero-photo" aria-hidden="true">
-            <img src={heroAsset} alt="" />
-            <span className="subpage-hero-photo-overlay" />
-          </div>
-          <span className="tcn-orb tcn-orb-hero-corner" aria-hidden="true" />
-          <span className="tcn-orb tcn-orb-hero" aria-hidden="true" />
-          <SiteHeader />
-          <div className="container">
-            <div className="subpage-hero-inner">
-              <span className="kicker">{blogIntro.kicker}</span>
-              <h1>{blogIntro.title}</h1>
-              <p className="sub">{blogIntro.subtitle}</p>
-            </div>
-          </div>
-        </section>
+        <SystemPageHero
+          label={blogIntro.kicker}
+          title={blogIntro.title}
+          descriptor={blogIntro.subtitle}
+          ctaLabel={null}
+        />
 
-        <section className="band">
-          <span className="tcn-orb tcn-orb-cultura-left" aria-hidden="true" />
+        <section className="band blog-catalog">
           <div className="container">
             <div className="blog-toolbar">
               <BlogSearch value={query} onChange={setQuery} />
@@ -137,6 +127,7 @@ function BlogIndex() {
             )}
           </div>
         </section>
+        <SystemFinalCta />
       </main>
       <SiteFooter />
     </div>

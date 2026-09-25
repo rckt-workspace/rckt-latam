@@ -3762,15 +3762,33 @@ header.scrolled {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
+}
+.rckt-site .blog-catalog {
+  position: relative;
+  overflow: hidden;
+  background: var(--durazno);
+}
+.rckt-site .blog-search {
+  position: relative;
+  width: min(100%, 440px);
+}
+.rckt-site .blog-search__icon {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  width: 16px;
+  height: 16px;
+  color: color-mix(in srgb, var(--carbon) 55%, transparent);
+  pointer-events: none;
+  transform: translateY(-50%);
 }
 .rckt-site .blog-search input {
   width: 100%;
-  max-width: 420px;
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(33, 33, 33, 0.14);
-  background: var(--marfil, #f5f2ed);
+  padding: 12px 16px 12px 44px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--papel-fija) 58%, transparent);
   color: var(--carbon);
   font: inherit;
   font-size: 15px;
@@ -3787,7 +3805,7 @@ header.scrolled {
 .rckt-site .blog-chip-btn {
   padding: 8px 14px;
   border-radius: 999px;
-  border: 1px solid rgba(33, 33, 33, 0.16);
+  border: 1px solid color-mix(in srgb, var(--naranja) 58%, transparent);
   background: transparent;
   color: var(--carbon-soft);
   font-size: 13px;
@@ -3797,13 +3815,14 @@ header.scrolled {
 .rckt-site .blog-chip-btn.is-active {
   background: var(--naranja);
   border-color: var(--naranja);
-  color: #f5f2ed;
+  color: var(--papel-fija);
 }
 .rckt-site .blog-chip {
   display: inline-block;
   padding: 5px 11px;
   border-radius: 999px;
-  background: rgba(252, 92, 31, 0.12);
+  border: 1px solid color-mix(in srgb, var(--naranja) 42%, transparent);
+  background: color-mix(in srgb, var(--naranja) 10%, transparent);
   color: var(--naranja-deep);
   font-size: 11px;
   font-weight: 700;
@@ -3827,13 +3846,19 @@ header.scrolled {
 }
 .rckt-site .blog-card,
 .rckt-site .blog-featured {
-  border: 1px solid rgba(33, 33, 33, 0.1);
-  border-radius: 18px;
-  background: var(--marfil, #f5f2ed);
+  border: 1px solid color-mix(in srgb, var(--carbon) 22%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--papel-fija) 68%, transparent);
+  box-shadow: 0 18px 48px color-mix(in srgb, var(--carbon) 7%, transparent);
   overflow: hidden;
 }
+.rckt-site .blog-card {
+  height: 100%;
+}
 .rckt-site .blog-card-link {
-  display: block;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
   padding: 0 0 22px;
   color: inherit;
   text-decoration: none;
@@ -3847,7 +3872,7 @@ header.scrolled {
 }
 .rckt-site .blog-card h3 {
   font-size: 19px;
-  font-weight: 800;
+  font-weight: 650;
   line-height: 1.3;
   margin: 12px 0 8px;
 }
@@ -3866,11 +3891,21 @@ header.scrolled {
   color: var(--naranja-deep);
   font-size: 13.5px;
   font-weight: 700;
+  margin-top: auto;
+  padding-top: 8px;
 }
 .rckt-site .blog-cover {
   aspect-ratio: 16/9;
   overflow: hidden;
-  background: #212121;
+  background: var(--carbon);
+  position: relative;
+}
+.rckt-site .blog-cover::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(to top, color-mix(in srgb, var(--carbon) 36%, transparent), transparent 60%);
+  pointer-events: none;
 }
 .rckt-site .blog-cover img {
   width: 100%;
@@ -3885,16 +3920,16 @@ header.scrolled {
   justify-content: flex-end;
   gap: 6px;
   padding: 20px;
-  background: linear-gradient(135deg, #212121 0%, #212121 55%, var(--naranja-deep, #fc5c1f) 140%);
+  background: linear-gradient(135deg, var(--carbon) 0%, var(--carbon) 55%, var(--naranja-deep) 140%);
 }
 .rckt-site .blog-cover-mark {
-  color: #f5f2ed;
+  color: var(--papel-fija);
   font-size: 26px;
   font-weight: 800;
   letter-spacing: 0.14em;
 }
 .rckt-site .blog-cover-cat {
-  color: rgba(245, 242, 237, 0.72);
+  color: color-mix(in srgb, var(--papel-fija) 72%, transparent);
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -3918,11 +3953,14 @@ header.scrolled {
   text-decoration: none;
 }
 .rckt-site .blog-featured-body {
-  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(24px, 4vw, 42px);
 }
 .rckt-site .blog-featured-body h2 {
   font-size: clamp(22px, 2.6vw, 30px);
-  font-weight: 800;
+  font-weight: 650;
   line-height: 1.25;
   margin: 10px 0 10px;
 }
@@ -4079,7 +4117,8 @@ header.scrolled {
 }
 [data-theme="dark"] .rckt-site .blog-card,
 [data-theme="dark"] .rckt-site .blog-featured {
-  border-color: rgba(245, 242, 237, 0.12);
+  border-color: color-mix(in srgb, var(--papel-fija) 18%, transparent);
+  background: color-mix(in srgb, var(--papel-fija) 6%, transparent);
 }
 [data-theme="dark"] .rckt-site .blog-chip-btn {
   border-color: rgba(245, 242, 237, 0.18);
@@ -4109,12 +4148,14 @@ header.scrolled {
   margin: 0;
 }
 [data-theme="dark"] .rckt-site .blog-search input {
-  background: rgba(245, 242, 237, 0.06);
+  background: color-mix(in srgb, var(--papel-fija) 6%, transparent);
   color: var(--papel-fija);
 }
 [data-theme="dark"] .rckt-site .blog-search input::placeholder {
-  color: rgba(245, 242, 237, 0.55);
+  color: color-mix(in srgb, var(--papel-fija) 55%, transparent);
 }
+[data-theme="dark"] .rckt-site .blog-catalog { background: var(--papel); }
+[data-theme="dark"] .rckt-site .blog-search__icon { color: color-mix(in srgb, var(--papel-fija) 55%, transparent); }
 [data-theme="dark"] .rckt-site .blog-quote {
   background: rgba(252, 92, 31, 0.14);
 }
