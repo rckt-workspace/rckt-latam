@@ -161,19 +161,13 @@ export function SiteFooter() {
             <h5>Legal</h5>
             <ul>
               <li>
-                <a href="/aviso-legal.pdf" download>
-                  Aviso legal
-                </a>
+                <a href="/legal/aviso-legal">Aviso legal</a>
               </li>
               <li>
-                <a href="/privacidad.pdf" download>
-                  Privacidad
-                </a>
+                <a href="/legal/privacidad">Privacidad</a>
               </li>
               <li>
-                <a href="/cookies.pdf" download>
-                  Cookies
-                </a>
+                <a href="/legal/cookies">Cookies</a>
               </li>
               <li>
                 <a href="/politica-tratamiento-datos.pdf" download>

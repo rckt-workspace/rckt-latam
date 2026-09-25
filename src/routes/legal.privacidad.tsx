@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage } from "@/components/LegalPage";
 
-export const Route = createFileRoute("/privacidad")({
+export const Route = createFileRoute("/legal/privacidad")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [

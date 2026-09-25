@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage } from "@/components/LegalPage";
 
-export const Route = createFileRoute("/cookies")({
+export const Route = createFileRoute("/legal/cookies")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [

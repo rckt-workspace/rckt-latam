@@ -181,9 +181,9 @@ Nosotros
           <div class="footer-col">
             <h5>Legal</h5>
             <ul>
-              <li><a href="/aviso-legal.pdf" download>Aviso legal</a></li>
-              <li><a href="/privacidad.pdf" download>Privacidad</a></li>
-              <li><a href="/cookies.pdf" download>Cookies</a></li>
+              <li><a href="/legal/aviso-legal">Aviso legal</a></li>
+              <li><a href="/legal/privacidad">Privacidad</a></li>
+              <li><a href="/legal/cookies">Cookies</a></li>
               <li><a href="/politica-tratamiento-datos.pdf" download>Política de Tratamiento de Datos</a></li>
             </ul>
           </div>
