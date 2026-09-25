@@ -5797,6 +5797,7 @@ body,
 .system-page-hero__descriptor { margin: 14px 0 0; color: rgba(33,33,33,.7); font-size: 16px; }
 .system-page-hero__promise { max-width: 690px; margin: 28px 0 0; padding-top: 20px; border-top: 1px solid rgba(33,33,33,.2); color: rgba(33,33,33,.78); font-size: 18px; line-height: 1.62; }
 .system-page-hero .btn { margin-top: 30px; }
+[data-theme="dark"] .system-page-hero h1 { color: var(--hero-ink); }
 .system-section { padding: 88px 0; }
 .system-section__content { margin-top: 44px; }
 .system-section__lead { max-width: 900px; margin: 0; font-family: "Newsreader", serif; font-size: clamp(25px, 3.6vw, 42px); font-style: italic; line-height: 1.28; }
