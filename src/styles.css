@@ -5958,6 +5958,21 @@ body,
   background: none;
 }
 
+/* El panel conserva manchas discretas propias, sin el fondo continuo histórico. */
+.rckt-site.rckt-panel::after {
+  display: block;
+  content: "";
+  background: radial-gradient(circle 380px at 95% 8%, color-mix(in srgb, var(--naranja) 24%, transparent), transparent 72%), radial-gradient(circle 320px at 5% 94%, color-mix(in srgb, var(--naranja) 18%, transparent), transparent 74%);
+}
+.panel-login-page .panel-login {
+  margin-top: 0;
+  border-radius: 8px;
+}
+.panel-login-page .panel-login-kicker {
+  color: var(--naranja);
+  letter-spacing: .16em;
+}
+
 /* Alternancia estable de superficies de contenido. */
 .rckt-site main > section:not(.hero):not(.subpage-hero):not(.cta-final):not(.band--orange) {
   background-color: var(--papel);
