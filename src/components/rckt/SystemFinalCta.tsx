@@ -1,10 +1,11 @@
 import ctaAsset from "@/assets/rckt-cta.jpg";
+import type { ReactNode } from "react";
 
 export default function SystemFinalCta({
   title = <>Antes de tocar nada, <em className="font-serif-accent">medimos.</em></>,
   href = "/sistemas/revenue-diagnostic",
   label = "Solicitar Revenue Diagnostic →",
-}: { title?: React.ReactNode; href?: string; label?: string }) {
+}: { title?: ReactNode; href?: string; label?: string }) {
   return (
     <section className="cta-final general-cta">
       <span className="cta-final__topline" aria-hidden="true" />

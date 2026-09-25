@@ -1,7 +1,7 @@
 import { createFileRoute,useRouter } from "@tanstack/react-router";
 import {SiteFooter,SiteHeader,useSiteMotion} from "@/components/SiteChrome";
 import {CapabilityCards} from "@/components/rckt/SystemBlocks";
-import SystemCards,{type SystemCardData} from "@/components/rckt/SystemCards";
+import {SystemCards,type SystemCardData} from "@/components/rckt/SystemCards";
 import SystemFinalCta from "@/components/rckt/SystemFinalCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SystemSection from "@/components/rckt/SystemSection";
