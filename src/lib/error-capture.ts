@@ -49,7 +49,7 @@ function isErrorLike(value: unknown): value is Error {
   return value instanceof Error;
 }
 
-function isRequestAbort(error: unknown): boolean {
+export function isRequestAbort(error: unknown): boolean {
   let current: unknown = error;
 
   for (let depth = 0; depth < CAUSE_DEPTH_LIMIT && current != null; depth += 1) {

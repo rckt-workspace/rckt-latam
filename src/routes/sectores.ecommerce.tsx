@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SectorError, SectorShortPage } from "@/components/rckt/SectorShortPage";
+import SectorPage from "@/components/rckt/SectorPage";
+import { SectorError } from "@/components/rckt/SectorShortPage";
+import { SECTORS } from "@/components/rckt/sectorData";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
@@ -20,18 +22,7 @@ export const Route = createFileRoute("/sectores/ecommerce")({
     ],
     links: [{ rel: "canonical", href: SITE_URL + "/sectores/ecommerce" }],
   }),
-  component: () => (
-    <SectorShortPage
-      titulo="Revenue Systems para ecommerce"
-      subtitulo="De la pauta al margen, no solo al ROAS."
-      flujo={["Anuncios", "Tienda", "Compra", "Recompra"]}
-      duele={[
-        "CAC en aumento campaña tras campaña.",
-        "WhatsApp usado en la venta, pero sin medir.",
-        "Poca recompra y sin sistema para provocarla.",
-      ]}
-    />
-  ),
+  component: () => <SectorPage {...SECTORS.ecommerce} />,
   errorComponent: () => <SectorError kicker="Ecommerce" />,
   notFoundComponent: () => <SectorError kicker="Ecommerce" />,
 });

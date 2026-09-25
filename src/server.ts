@@ -1,6 +1,6 @@
 import "./lib/error-capture";
 
-import { consumeLastCapturedError } from "./lib/error-capture";
+import { consumeLastCapturedError, isRequestAbort } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
 
 type ServerEntry = {
@@ -62,7 +62,9 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
     return response;
   }
 
-  console.error(consumeLastCapturedError() ?? new Error(`h3 swallowed SSR error: ${body}`));
+  const captured = consumeLastCapturedError();
+  if (isRequestAbort(captured)) return new Response(null, { status: 204 });
+  console.error(captured ?? new Error(`h3 swallowed SSR error: ${body}`));
   return brandedErrorResponse();
 }
 
@@ -71,8 +73,13 @@ export default {
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
+      if (request.signal?.aborted) return new Response(null, { status: 204 });
       return await normalizeCatastrophicSsrResponse(response);
     } catch (error) {
+      // A client that disconnects mid-request (refresh, HMR, navigation) is not a crash.
+      if (isRequestAbort(error) || request.signal?.aborted) {
+        return new Response(null, { status: 204 });
+      }
       console.error(error);
       return brandedErrorResponse();
     }

@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SectorError, SectorShortPage } from "@/components/rckt/SectorShortPage";
+import SectorPage from "@/components/rckt/SectorPage";
+import { SectorError } from "@/components/rckt/SectorShortPage";
+import { SECTORS } from "@/components/rckt/sectorData";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
@@ -21,18 +23,7 @@ export const Route = createFileRoute("/sectores/servicios-b2b")({
     ],
     links: [{ rel: "canonical", href: SITE_URL + "/sectores/servicios-b2b" }],
   }),
-  component: () => (
-    <SectorShortPage
-      titulo="Revenue Systems para servicios B2B"
-      subtitulo="De la búsqueda al contrato firmado."
-      flujo={["Google/LinkedIn", "Lead", "Reunión", "Propuesta", "Cierre"]}
-      duele={[
-        "Pipeline corto e impredecible.",
-        "Dependencia excesiva de referidos.",
-        "Dificultad para medir qué genera reuniones calificadas.",
-      ]}
-    />
-  ),
+  component: () => <SectorPage {...SECTORS.b2b} />,
   errorComponent: () => <SectorError kicker="Servicios B2B" />,
   notFoundComponent: () => <SectorError kicker="Servicios B2B" />,
 });

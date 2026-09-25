@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SectorError, SectorShortPage } from "@/components/rckt/SectorShortPage";
+import SectorPage from "@/components/rckt/SectorPage";
+import { SectorError } from "@/components/rckt/SectorShortPage";
+import { SECTORS } from "@/components/rckt/sectorData";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
@@ -21,19 +23,7 @@ export const Route = createFileRoute("/sectores/industria-distribucion")({
     ],
     links: [{ rel: "canonical", href: SITE_URL + "/sectores/industria-distribucion" }],
   }),
-  component: () => (
-    <SectorShortPage
-      titulo="Revenue Systems para industria y distribución"
-      subtitulo="De la cotización al pedido entregado."
-      flujo={["Cotización", "Pedido", "Documento", "Entrega", "Soporte"]}
-      duele={[
-        "Cotizaciones manuales que tardan horas.",
-        "CRM y ERP desconectados entre sí.",
-        "Reporting manual que nadie confirma.",
-      ]}
-      ctaLabel="Revisar mi proceso →"
-    />
-  ),
+  component: () => <SectorPage {...SECTORS.industria} />,
   errorComponent: () => <SectorError kicker="Industria y distribución" />,
   notFoundComponent: () => <SectorError kicker="Industria y distribución" />,
 });
