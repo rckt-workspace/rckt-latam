@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteFooter, useSiteMotion } from "@/components/SiteChrome";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SystemSection from "@/components/rckt/SystemSection";
-import SystemFinalCta from "@/components/rckt/SystemFinalCta";
+import GeneralCta from "@/components/rckt/GeneralCta";
 import { SectorError } from "@/components/rckt/SectorShortPage";
 import { SECTORS } from "@/components/rckt/sectorData";
 
@@ -76,7 +76,7 @@ function SectoresPage() {
             })}
           </div>
         </SystemSection>
-        <SystemFinalCta title={<>Toda cuenta empieza por el <em className="font-serif-accent">diagnóstico</em>.</>} label="Revisar mi proceso comercial →" />
+        <GeneralCta />} label="Revisar mi proceso comercial →" />
       </main>
       <SiteFooter />
     </div>

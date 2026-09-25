@@ -4,7 +4,7 @@ import { useState } from "react";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import DiagnosticForm from "@/components/rckt/DiagnosticForm";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
-import SystemFinalCta from "@/components/rckt/SystemFinalCta";
+import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import { REVENUE_DIAGNOSTIC_FAQS } from "@/content/systemFaqs";
 
@@ -65,7 +65,7 @@ function RevenueDiagnostic() {
           label="Revenue Diagnostic"
           title={<>Antes de tocar nada, <em>medimos</em>.</>} quoteLabel="La realidad de la mayoría" quote="El 85% de los leads se pierden entre la campaña y la venta sin que nadie sepa exactamente por qué."
           descriptor="Diagnóstico de ingresos — la única puerta de entrada."
-          promise="En tres semanas te decimos cuánto pierdes entre la campaña y el cierre, en qué punto exacto, y qué haríamos en 90 días. Si sigues con nosotros, lo que pagas por el diagnóstico se descuenta del sistema."
+          context="En tres semanas te decimos cuánto pierdes entre la campaña y el cierre, en qué punto exacto, y qué haríamos en 90 días. Si sigues con nosotros, lo que pagas por el diagnóstico se descuenta del sistema."
           ctaHref="#solicitar"
         />
         <section className="system-composition system-stats"><div className="container system-stat-grid">{STATS.map(({ label, value, detail, Icon }) => <article className="system-stat-card" key={label}><span className="system-icon"><Icon aria-hidden="true" /></span><p className="label-orange">{label}</p>{value ? <strong>{value}</strong> : null}<p>{detail}</p></article>)}</div></section>
@@ -75,7 +75,7 @@ function RevenueDiagnostic() {
         <section className="system-composition system-warm"><div className="container"><div className="system-composition__heading"><span className="label-orange">Cómo empieza</span><h2>Medimos antes de mover una <em className="font-serif-accent">pieza</em>.</h2><p>Del diagnóstico a ciclos de operación medidos hasta la venta.</p></div><div className="system-step-grid">{PASOS.map((item, index) => <article key={item.label}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.label}</h3><p>{item.texto}</p></article>)}</div></div></section>
         <section className="system-composition" id="solicitar"><div className="container system-form-container"><div className="system-composition__heading"><span className="label-orange">Formulario</span><h2>Cuéntanos cómo está hoy tu <em className="font-serif-accent">operación</em>.</h2><p>Con esto preparamos la primera conversación con contexto real.</p></div><div className="form-card"><DiagnosticForm whatsappUrl={WHATSAPP_URL} onSent={() => setListo(true)} /></div></div></section>
         <FaqSection items={REVENUE_DIAGNOSTIC_FAQS} />
-        <SystemFinalCta href="#solicitar" />
+        <GeneralCta />
       </main>
       <SiteFooter />
     </div>

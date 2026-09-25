@@ -6,7 +6,7 @@ import MethodCard, { type MethodField } from "@/components/rckt/MethodCard";
 import MilestoneCards from "@/components/rckt/MilestoneCards";
 import SignalCards from "@/components/rckt/SignalCards";
 import SolutionSystemPanel from "@/components/rckt/SolutionSystemPanel";
-import SystemFinalCta from "@/components/rckt/SystemFinalCta";
+import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SystemSection from "@/components/rckt/SystemSection";
 
@@ -76,14 +76,14 @@ function EcommercePage() {
   return (
     <div className="rckt-site tcn-page">
       <main id="top">
-        <SystemPageHero label="Ecommerce rentable" title={<>Inviertes en pauta y no crece con <em>margen</em></>} descriptor="El ROAS sube en la plataforma; el margen no sube en el banco." promise="Demand System con Sales Flow cuando WhatsApp pesa en la conversión." ctaLabel="Revisar mi proceso comercial →" />
+        <SystemPageHero label="Ecommerce rentable" title={<>Inviertes en pauta y no crece con <em>margen</em></>} descriptor="El ROAS sube en la plataforma; el margen no sube en el banco." context="Demand System con Sales Flow cuando WhatsApp pesa en la conversión." ctaLabel="Revisar mi proceso comercial →" />
         <SystemSection id="te-pasa-esto" num="01." label="Señales" title={<>El ROAS no cuenta toda la <em className="font-serif-accent">historia</em>.</>} phrase="Creatividad, catálogo, WhatsApp y costo de adquisición muestran dónde se pierde margen."><SignalCards items={signals} /></SystemSection>
         <SystemSection id="lo-que-hacemos" num="02." label="Lo que hacemos" title={<>Demanda que se lee en el <em className="font-serif-accent">margen</em>.</>} phrase="Demand System, con Sales Flow cuando WhatsApp pesa en la conversión."><SolutionSystemPanel features={features} system="Demand System" summary="Demand System, con Sales Flow si WhatsApp pesa en la conversión." href="/sistemas/demand-system" /></SystemSection>
         <SystemSection id="noventa-dias" num="03." label="Qué cambia en 90 días" title={<>Tres cambios que sí llegan al <em className="font-serif-accent">negocio</em>.</>} phrase="Creatividad, margen y conversación dentro del mismo sistema."><MilestoneCards items={milestones} kicker="Cambio" /></SystemSection>
         <SystemSection id="caso" num="04." label="Prueba" title={<>El método antes que el <em className="font-serif-accent">titular</em>.</>}><MethodCard fields={methodFields} /></SystemSection>
         <SystemSection id="para-quien-no-es" num="05." label="Para quién no es" title={<>La base también tiene que estar <em className="font-serif-accent">lista</em>.</>}><div className="solution-honesty"><p>Tiendas sin margen para sostener pauta, catálogos sin unit economics claras.</p></div></SystemSection>
         <FaqSection items={FAQS} />
-        <SystemFinalCta label="Revisar mi proceso comercial →" />
+        <GeneralCta />
       </main>
       <SiteFooter />
     </div>

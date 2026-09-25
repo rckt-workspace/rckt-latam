@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import { BlogCard, BlogFeatured } from "@/components/blog/BlogCard";
 import { BlogCategories, BlogSearch } from "@/components/blog/BlogFilters";
-import SystemFinalCta from "@/components/rckt/SystemFinalCta";
+import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import { blogRepository } from "@/lib/blog.repository";
 import type { BlogCategory, BlogPost } from "@/types/blog";
@@ -127,7 +127,7 @@ function BlogIndex() {
             )}
           </div>
         </section>
-        <SystemFinalCta />
+        <GeneralCta />
       </main>
       <SiteFooter />
     </div>

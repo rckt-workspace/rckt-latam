@@ -6,7 +6,7 @@ import MethodCard, { type MethodField } from "@/components/rckt/MethodCard";
 import MilestoneCards from "@/components/rckt/MilestoneCards";
 import SignalCards from "@/components/rckt/SignalCards";
 import SolutionSystemPanel from "@/components/rckt/SolutionSystemPanel";
-import SystemFinalCta from "@/components/rckt/SystemFinalCta";
+import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SystemSection from "@/components/rckt/SystemSection";
 
@@ -77,14 +77,14 @@ function OperacionPage() {
   return (
     <div className="rckt-site tcn-page">
       <main id="top">
-        <SystemPageHero label="Operación" title={<>Tu equipo hace lo mismo cien veces por <em>semana</em></>} descriptor="Cotizaciones a mano, documentos que se copian entre sistemas, Excel donde debería haber un proceso." promise="Operations System: un proceso a la vez, Sprint de 6-8 semanas, aprobación humana en lo que importa." ctaLabel="Revisar mi proceso →" />
+        <SystemPageHero label="Operación" title={<>Tu equipo hace lo mismo cien veces por <em>semana</em></>} descriptor="Cotizaciones a mano, documentos que se copian entre sistemas, Excel donde debería haber un proceso." context="Operations System: un proceso a la vez, Sprint de 6-8 semanas, aprobación humana en lo que importa." ctaLabel="Revisar mi proceso →" />
         <SystemSection id="te-pasa-esto" num="01." label="Señales" title={<>Lo repetitivo ya está costando <em className="font-serif-accent">demasiado</em>.</>} phrase="Tiempo, datos duplicados, reportes manuales y errores revelan el proceso a intervenir."><SignalCards items={signals} /></SystemSection>
         <SystemSection id="lo-que-hacemos" num="02." label="Lo que hacemos" title={<>Un proceso a la vez, con supervisión <em className="font-serif-accent">humana</em>.</>} phrase="Un Sprint de 6–8 semanas y aprobación humana en lo que importa."><SolutionSystemPanel features={features} system="Operations System" summary="Un proceso a la vez, Sprint de 6-8 semanas, aprobación humana en lo que importa." href="/sistemas/operations-system" /></SystemSection>
         <SystemSection id="noventa-dias" num="03." label="Qué cambia en 90 días" title={<>Del mapa a un proceso <em className="font-serif-accent">operativo</em>.</>} phrase="El Sprint mide la operación antes de construir, durante el piloto y contra la línea base."><MilestoneCards items={milestones} /></SystemSection>
         <SystemSection id="caso" num="04." label="Prueba" title={<>El método antes que el <em className="font-serif-accent">titular</em>.</>}><MethodCard fields={methodFields} /></SystemSection>
         <SystemSection id="para-quien-no-es" num="05." label="Para quién no es" title={<>La base también tiene que estar <em className="font-serif-accent">lista</em>.</>}><div className="solution-honesty"><p>Procesos críticos sin responsable del lado del cliente, o sin datos accesibles.</p></div></SystemSection>
         <FaqSection items={FAQS} />
-        <SystemFinalCta label="Revisar mi proceso →" />
+        <GeneralCta />
       </main>
       <SiteFooter />
     </div>
