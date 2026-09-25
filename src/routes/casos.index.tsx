@@ -211,7 +211,7 @@ function CasosPage() {
         />
 
         {/* 2 · Manifiesto */}
-        <section className="relative isolate" className="relative isolate casos-manifest">
+        <section className="relative isolate casos-manifest">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ overflow: "clip" }}>
             <div className="cs-orb cs-orb--1" style={{ top: "-120px", left: "8%", width: "420px", height: "420px" }} />
             <div className="cs-orb cs-orb--2" style={{ bottom: "-140px", right: "6%", width: "460px", height: "460px" }} />
@@ -303,7 +303,7 @@ function CasosPage() {
         </section>
 
         {/* 4 · Filtros y fichas */}
-        <section className="relative" className="relative isolate casos-manifest">
+        <section className="relative casos-list">
           <div ref={fichasRef} className="mx-auto max-w-6xl px-5 py-24 md:px-6 md:py-32">
             <div className="mb-4 flex items-center gap-3">
               <span className="inline-block h-4 w-[2px] bg-orange" />
