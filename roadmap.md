@@ -30,3 +30,5 @@
 - [x] Validar las siete páginas de Sectores en escritorio/celular y claro/oscuro.
 - [x] Paso 6 — Nosotros, Cómo trabajamos, Trabaja con nosotros
 - [x] Corregir contraste y apilado del nav: enlaces/toggle oscuros sobre la cápsula clara en modo oscuro, y z-index del hero para que el menú fijo no quede enterrado tras el scroll (claro y oscuro).
+- [ ] Paso 8.1 — Reconstruir /contacto con SystemPageHero y layout de formulario + canales.
+- [ ] Auditar /casos, /recursos, páginas legales y /rckt-equipo antes de definir el resto del Paso 8.
