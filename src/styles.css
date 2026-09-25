@@ -7131,6 +7131,9 @@ body,
 .combo-card--primary .rule-row { border-color:color-mix(in srgb,var(--papel-fija) 30%,transparent); }
 .rckt-site .combo-card .rule-list, [data-theme="dark"] .rckt-site .combo-card .rule-list { padding:0; border:0; background:transparent; box-shadow:none; }
 .rckt-site .combo-card--primary .rule-row__num, .rckt-site .combo-card--primary .rule-row__text { color:var(--papel-fija); }
+@media (max-width: 639px) {
+  .manifest-card > p { font-size: 19px; line-height: 1.55; }
+}
 
 /* --- Rediseño Cómo Trabajamos (estilo España) --- */
 .nos-sec {
