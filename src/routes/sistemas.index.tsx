@@ -1,36 +1,288 @@
-import { createFileRoute,Link,useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Bot, Database, Megaphone, MessageCircle, UserRound, Workflow } from "lucide-react";
-import {SiteFooter,SiteHeader,useSiteMotion} from "@/components/SiteChrome";
-import {SystemCards,type SystemCardData} from "@/components/rckt/SystemCards";
+
+import SiteFooter from "@/components/rckt/SiteFooter";
 import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
-import SystemSection from "@/components/rckt/SystemSection";
-import {useInView} from "@/hooks/use-in-view";
-const SITE_URL="https://rckt-latam.lovable.app";
-const SYSTEMS:SystemCardData[]=[{badge:"S1",kicker:"Sistema 01",title:"Generación de demanda medida hasta la venta",shortName:"Demand System",desc:"Performance Media · Creative Performance · Search & AI Visibility · medición del clic al cierre.",href:"/sistemas/demand-system",art:"demand"},{badge:"S2",kicker:"Sistema 02",title:"De lead a venta sin fugas",shortName:"Sales Flow",desc:"Pauta, WhatsApp y CRM conectados, con respuesta, seguimiento y dueño para cada prospecto.",href:"/sistemas/sales-flow",art:"sales"},{badge:"S3",kicker:"Sistema 03",title:"Procesos que se ejecutan solos, con supervisión",shortName:"Operations System",desc:"Automatización de procesos repetitivos, medidos contra una línea base y con aprobación humana.",href:"/sistemas/operations-system",art:"operations"}];
-const DIAGRAM_BOXES=[{title:"Demand System",href:"/sistemas/demand-system" as const,Icon:Megaphone},{title:"Sales Flow",href:"/sistemas/sales-flow" as const,Icon:MessageCircle},{title:"Operations System",href:"/sistemas/operations-system" as const,Icon:Workflow}];
-const BASE_COMUN=[{label:"Fuente de verdad",Icon:Database},{label:"IA supervisada",Icon:Bot},{label:"Responsable de cuenta",Icon:UserRound}];
+import { SystemCards, SISTEMAS_CARDS } from "@/components/rckt/SystemCards";
+import { useInView } from "@/hooks/use-in-view";
 
-function Arquitectura(){const {ref,inView}=useInView<HTMLDivElement>({fallbackMs:1200});return <SystemSection id="ecuacion" num="01." label="Arquitectura" title={<>Cinco puertas, una sola cadena de <em className="font-serif-accent">ingresos</em>.</>} phrase="Los sistemas se combinan cuando la operación está lista."><div ref={ref} data-in={inView?"true":"false"} data-ready="true" className="arch">
-  <div className="arch-layer arch-problem"><span>Tu problema</span></div>
-  <span className="arch-line arch-line--long" aria-hidden="true"/>
-  <div className="arch-layer arch-diagnostic"><p>Revenue Diagnostic</p><small>Toda cuenta empieza aquí</small></div>
-  <div className="arch-layer" aria-hidden="true"><span className="arch-line arch-line--branch"/><div className="arch-branches">{[0,1,2].map(i=><div key={i}><span/></div>)}</div><span className="arch-line arch-line--mobile"/></div>
-  <div className="arch-layer arch-systems">{DIAGRAM_BOXES.map(({title,href,Icon})=><Link key={title} to={href} className="arch-box"><Icon aria-hidden="true" strokeWidth={1.5}/><span>{title}</span></Link>)}</div>
-  <div className="arch-layer arch-groups"><div className="arch-first-group"><div className="arch-bracket" aria-hidden="true"/></div><div className="arch-group-label arch-group-label--solid">Revenue Engine · Demand + Sales Flow</div><div className="arch-bracket arch-bracket--dashed" aria-hidden="true"/><div className="arch-group-label arch-group-label--outline">Growth OS · los tres sistemas</div></div>
-  <div className="arch-layer arch-foundation"><p>La base común</p><div className="arch-base">{BASE_COMUN.map(({label,Icon})=><div key={label}><Icon aria-hidden="true" strokeWidth={1.5}/><span>{label}</span></div>)}</div></div>
-</div></SystemSection>}
+const DIAGRAM_BOXES = [
+  { title: "Demand System", href: "/sistemas/demand-system" as const, Icon: Megaphone },
+  { title: "Sales Flow", href: "/sistemas/sales-flow" as const, Icon: MessageCircle },
+  { title: "Operations System", href: "/sistemas/operations-system" as const, Icon: Workflow },
+];
 
-function Combos(){return <section className="system-combos"><div className="container"><div className="system-combos__kicker"><span/>Los dos combos</div><div className="system-combos__grid">
-  <article className="combo-card combo-card--primary"><span className="combo-card__badge">Producto principal</span><h3>Revenue Engine</h3><div className="combo-card__systems"><span>Demand System</span><b aria-hidden="true">+</b><span>Sales Flow</span></div><p>Demand + Sales Flow, combinados, son nuestro producto principal.</p><Link to="/sistemas/revenue-engine" className="combo-card__button">Ver Revenue Engine →</Link></article>
-  <article className="combo-card combo-card-light"><span className="combo-card__badge combo-card__badge--outline">Etapa posterior</span><h3>Growth OS</h3><p>El bundle superior, solo para cuentas maduras. No se ofrece de entrada — se llega a él.</p><a href="/sistemas/revenue-engine#escalera" className="combo-card__link">Ver cómo crece una cuenta →</a></article>
-</div></div></section>}
-export const Route=createFileRoute("/sistemas/")({staticData:{sitemap:true},head:()=>({meta:[{title:"Sistemas — RCKT"},{name:"description",content:"Tres sistemas, no más: Demand System, Sales Flow y Operations System. Combinados son Revenue Engine y Growth OS."},{property:"og:title",content:"Sistemas — RCKT"},{property:"og:description",content:"Si algo no cabe en uno de los tres, no lo vendemos."},{property:"og:type",content:"website"},{property:"og:url",content:SITE_URL+"/sistemas"},{name:"twitter:card",content:"summary_large_image"}],links:[{rel:"canonical",href:SITE_URL+"/sistemas"}]}),component:SistemasPage,errorComponent:SistemasError,notFoundComponent:()=> <SistemasError/>});
-function SistemasPage(){useSiteMotion([]);return <div className="rckt-site tcn-page"><main id="top">
-<SystemPageHero label="Sistemas" title={<>Del clic al cierre, en tres <em>sistemas</em>.</>} context="Si algo no cabe en uno de los tres, no lo vendemos."/>
-<Arquitectura/>
-<SystemSection id="sistemas" num="02." label="Los tres sistemas" title="Elige por la fuga, no por el nombre." phrase="Demand, Sales Flow y Operations cubren la cadena completa."><SystemCards systems={SYSTEMS}/></SystemSection>
-<Combos/>
-<GeneralCta />
-</main><SiteFooter/></div>}
-function SistemasError(){const router=useRouter();return <div className="rckt-site tcn-page"><SiteHeader/><main className="band"><div className="container"><div className="form-card" role="alert"><span className="kicker">Sistemas</span><h1>No pudimos mostrar esta página.</h1><p>Intenta cargarla nuevamente. Si el problema continúa, puedes volver al inicio.</p><div className="form-actions"><button className="btn btn-primary" type="button" onClick={()=>void router.invalidate()}>Intentar de nuevo</button><a className="btn" href="/">Volver al inicio</a></div></div></div></main><SiteFooter/></div>}
+const BASE_COMUN = [
+  { label: "Fuente de verdad", Icon: Database },
+  { label: "IA supervisada", Icon: Bot },
+  { label: "Responsable de cuenta", Icon: UserRound },
+];
+
+function Arquitectura() {
+  const { ref, inView, ready } = useInView<HTMLDivElement>({ fallbackMs: 1200 });
+
+  return (
+    <section className="relative isolate overflow-hidden py-16 md:py-24" style={{ background: "var(--kraft)" }}>
+      <div className="relative z-10 mx-auto max-w-6xl px-6">
+        <div ref={ref} className="mb-10 flex items-center gap-3">
+          <span className="inline-block h-4 w-[2px] bg-orange" />
+          <span className="label-orange">Arquitectura</span>
+        </div>
+
+        <div
+          data-in={inView ? "true" : "false"}
+          data-ready={ready ? "true" : "false"}
+          className="arch mx-auto max-w-[960px] text-center"
+        >
+          {/* Capa 1 */}
+          <div className="arch-layer" style={{ transitionDelay: "0ms" }}>
+            <span
+              className="font-display inline-flex items-center rounded-full px-4 py-1.5 text-[12px] font-semibold"
+              style={{ border: "1px solid var(--orange)", color: "var(--orange)" }}
+            >
+              Tu problema
+            </span>
+          </div>
+          <span className="arch-line" style={{ ["--arch-line-h" as string]: "32px", transitionDelay: "80ms" }} aria-hidden="true" />
+
+          {/* Capa 2 */}
+          <div className="arch-layer relative overflow-hidden rounded-2xl px-6 py-5" style={{ background: "var(--orange)", transitionDelay: "120ms" }}>
+            <div className="relative z-10">
+              <p className="font-display text-[19px] font-semibold" style={{ color: "#f5f2ed" }}>
+                Revenue Diagnostic
+              </p>
+              <p className="mt-1 text-[12.5px]" style={{ color: "rgba(245,242,237,0.85)" }}>
+                Toda cuenta empieza aquí
+              </p>
+            </div>
+          </div>
+          <div className="arch-layer" style={{ transitionDelay: "200ms" }} aria-hidden="true">
+            <span className="arch-line" style={{ ["--arch-line-h" as string]: "18px" }} />
+            <div className="hidden md:grid grid-cols-3">
+              {[0, 1, 2].map((i) => (
+                <div key={i} className="relative h-5">
+                  <span
+                    className="absolute top-0 h-px"
+                    style={{
+                      background: "var(--orange)",
+                      left: i === 0 ? "50%" : 0,
+                      right: i === 2 ? "50%" : 0,
+                    }}
+                  />
+                  <span className="absolute left-1/2 top-0 h-5 w-px" style={{ background: "var(--orange)" }} />
+                </div>
+              ))}
+            </div>
+            <span className="arch-line md:hidden" style={{ ["--arch-line-h" as string]: "14px" }} />
+          </div>
+
+
+          {/* Capa 3 */}
+          <div className="arch-layer grid gap-4 md:grid-cols-3" style={{ transitionDelay: "240ms" }}>
+            {DIAGRAM_BOXES.map(({ title, href, Icon }) => (
+              <Link key={title} to={href} className="arch-box flex flex-col items-center gap-2 rounded-2xl px-5 py-6 transition-colors hover:border-orange">
+                <Icon className="h-5 w-5" style={{ color: "var(--orange)" }} strokeWidth={1.5} />
+                <span className="font-display text-[14.5px] font-semibold">{title}</span>
+              </Link>
+            ))}
+          </div>
+
+          {/* Capa 4 — agrupaciones */}
+          <div className="arch-layer mt-6" style={{ transitionDelay: "360ms" }}>
+            <div className="hidden md:block">
+              <div className="grid grid-cols-3 gap-4">
+                <div className="col-span-2 arch-bracket" aria-hidden="true" />
+              </div>
+            </div>
+            <div className="mt-3 flex justify-center md:justify-start">
+              <span
+                className="font-display inline-flex rounded-full px-4 py-1.5 text-[12px] font-semibold md:ml-[16%]"
+                style={{ background: "var(--orange)", color: "#f5f2ed" }}
+              >
+                Revenue Engine · Demand + Sales Flow
+              </span>
+            </div>
+            <div className="mt-6 hidden md:block arch-bracket arch-bracket--dashed" aria-hidden="true" />
+            <div className="mt-3 flex justify-center">
+              <span
+                className="font-display inline-flex rounded-full px-4 py-1.5 text-[12px] font-semibold"
+                style={{ border: "1.5px dashed var(--orange)", color: "var(--orange)" }}
+              >
+                Growth OS · los tres sistemas
+              </span>
+            </div>
+          </div>
+
+          {/* Capa 5 — la base */}
+          <div className="arch-layer mt-10" style={{ transitionDelay: "480ms" }}>
+            <p className="font-mono text-[11px] tracking-[0.18em] uppercase" style={{ color: "var(--ink-soft)" }}>
+              La base común
+            </p>
+            <div className="arch-base mt-3 grid grid-cols-1 rounded-2xl md:grid-cols-3">
+              {BASE_COMUN.map(({ label, Icon }, i) => (
+                <div
+                  key={label}
+                  className={`flex items-center justify-center gap-2 px-5 py-5 ${
+                    i === 0
+                      ? ""
+                      : "border-t border-[rgba(252, 92, 31,0.25)] md:border-t-0 md:border-l md:border-[rgba(252, 92, 31,0.25)]"
+                  }`}
+                >
+
+                  <Icon className="h-4 w-4 shrink-0" style={{ color: "var(--orange)" }} strokeWidth={1.5} />
+                  <span className="font-display text-[13.5px] font-semibold" style={{ color: "var(--ink)" }}>
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Cards() {
+  return (
+    <section className="relative isolate overflow-hidden py-14 md:py-20" style={{ background: "var(--kraft-2)" }}>
+      <div className="relative z-10 mx-auto max-w-6xl px-6">
+        <SystemCards systems={SISTEMAS_CARDS} />
+      </div>
+    </section>
+  );
+}
+
+function Combos() {
+  return (
+    <section className="relative isolate overflow-hidden py-14 md:py-20" style={{ background: "var(--kraft)" }}>
+      <div className="relative z-10 mx-auto max-w-6xl px-6">
+        <div className="mb-8 flex items-center gap-3">
+          <span className="inline-block h-4 w-[2px] bg-orange" />
+          <span className="label-orange">Los dos combos</span>
+        </div>
+
+        <div className="grid items-stretch gap-5 md:grid-cols-2">
+          <div
+            className="relative flex h-full flex-col overflow-hidden rounded-[28px] p-[44px]"
+            style={{ background: "linear-gradient(135deg, #fc5c1f 0%, #fc5c1f 100%)" }}
+          >
+            <div className="relative z-10 flex h-full flex-col">
+              <span
+                className="font-mono inline-flex w-fit rounded-full px-3 py-1 text-[11px] tracking-[0.16em] uppercase"
+                style={{ background: "rgba(245,242,237,0.2)", color: "#f5f2ed" }}
+              >
+                Producto principal
+              </span>
+              <h3 className="font-display mt-5 text-[40px] leading-tight font-semibold" style={{ color: "#f5f2ed" }}>
+                Revenue Engine
+              </h3>
+              <div className="mt-5 flex flex-wrap items-center gap-3">
+                <span
+                  className="font-display rounded-full px-4 py-1.5 text-[13px] font-semibold"
+                  style={{ border: "1px solid rgba(245,242,237,0.5)", color: "#f5f2ed" }}
+                >
+                  Demand System
+                </span>
+                <span className="font-display text-[16px] font-semibold" style={{ color: "#f5f2ed" }} aria-hidden="true">
+                  +
+                </span>
+                <span
+                  className="font-display rounded-full px-4 py-1.5 text-[13px] font-semibold"
+                  style={{ border: "1px solid rgba(245,242,237,0.5)", color: "#f5f2ed" }}
+                >
+                  Sales Flow
+                </span>
+              </div>
+              <p className="mt-5 max-w-md text-[15px] leading-relaxed text-left" data-align="left" style={{ color: "rgba(245,242,237,0.9)" }}>
+                Demand + Sales Flow, combinados, son nuestro producto principal.
+              </p>
+              <Link
+                to="/sistemas/revenue-engine"
+                className="font-display mt-auto inline-flex w-fit items-center gap-2 rounded-full bg-[#f5f2ed] px-7 py-3.5 pt-3.5 text-[14px] font-semibold"
+                style={{ color: "#fc5c1f", marginTop: "32px" }}
+              >
+                Ver Revenue Engine →
+              </Link>
+            </div>
+          </div>
+
+          <div
+            className="combo-card-light relative flex h-full flex-col overflow-hidden rounded-[28px] p-[44px]"
+          >
+            <div className="relative z-10 flex h-full flex-col">
+              <span
+                className="font-mono inline-flex w-fit rounded-full px-3 py-1 text-[11px] tracking-[0.16em] uppercase"
+                style={{ border: "1px solid var(--orange)", color: "var(--orange)" }}
+              >
+                Etapa posterior
+              </span>
+              <h3 className="font-display mt-5 text-[40px] leading-tight font-semibold" style={{ color: "var(--ink)" }}>
+                Growth OS
+              </h3>
+              <p className="mt-5 max-w-md text-[15px] leading-relaxed text-left" data-align="left" style={{ color: "var(--ink-soft)" }}>
+                El bundle superior, solo para cuentas maduras. No se ofrece de entrada — se llega a él.
+              </p>
+              <a
+                href="/sistemas/revenue-engine#escalera"
+                className="font-display inline-flex w-fit items-center gap-2 text-[14px] font-semibold"
+                style={{ color: "var(--orange)", marginTop: "32px" }}
+              >
+                Ver cómo crece una cuenta →
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+export const Route = createFileRoute("/sistemas/")({
+  head: () => ({
+    meta: [
+      { title: "Sistemas · RCKT.es" },
+      {
+        name: "description",
+        content:
+          "Demand System, Sales Flow y Operations System: tres sistemas que siguen la cadena de ingresos de cualquier negocio, del clic al cierre.",
+      },
+      { property: "og:title", content: "Sistemas · RCKT.es" },
+      {
+        property: "og:description",
+        content: "Demand System, Sales Flow y Operations System: tres sistemas que siguen la cadena de ingresos de cualquier negocio, del clic al cierre.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "https://www.rckt.es/sistemas" }],
+  }),
+  component: SistemasIndex,
+});
+
+function SistemasIndex() {
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <main>
+        <SystemPageHero
+          label="Sistemas"
+          title={
+            <>
+              Tres sistemas, una sola cadena de <span className="hero-hand">ingresos</span>.
+            </>
+          }
+          descriptor="Empiezas por un problema y siempre por un diagnóstico. Después eliges uno de los tres sistemas, o su combinación, según dónde se pierde tu dinero. Los tres siguen la cadena de ingresos de cualquier negocio: conseguir clientes, cerrarlos y atenderlos sin fricción."
+          ctaLabel="Solicitar diagnóstico de captación →"
+          ctaHref="/sistemas/revenue-diagnostic#formulario"
+        />
+        <Arquitectura />
+        <Cards />
+        <Combos />
+        <GeneralCta />
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}

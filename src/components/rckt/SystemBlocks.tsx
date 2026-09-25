@@ -20,6 +20,7 @@ export function CapabilityCards({
   items: Capability[];
   compact?: boolean;
 }) {
+  const { ref, inView, ready } = useInView<HTMLDivElement>({ fallbackMs: 1500 });
   return (
     <div ref={ref} className={`cap-grid mt-10 ${compact ? "cap-grid--compact" : ""}`} data-in={inView} data-ready={ready}>
       {items.map((item, index) => (
