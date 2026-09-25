@@ -1237,7 +1237,8 @@ input:focus {
 /* ---------- footer ---------- */
 footer {
   border-top: 1px solid var(--line);
-  padding: 64px 0 32px;
+  padding: 64px 0 80px;
+  line-height: 24px;
 }
 .footer-top {
   display: grid;
@@ -4147,7 +4148,7 @@ header.scrolled {
 }
 
 /* ---------- nav flotante en dos cápsulas (desktop) ---------- */
-@media (min-width: 1153px) {
+@media (min-width: 1101px) {
   header nav {
     justify-content: center;
     align-items: center;
@@ -4279,7 +4280,7 @@ header.scrolled {
     display: none !important;
   }
 }
-@media (max-width: 1152px) {
+@media (max-width: 1100px) {
   header nav {
     justify-content: space-between;
   }
@@ -4307,7 +4308,7 @@ header.scrolled {
   display: none;
 }
 /* En mobile el CTA vive dentro del drawer (barra superior = logo + hamburguesa). */
-@media (max-width: 1152px) {
+@media (max-width: 1100px) {
   .nav-links.mobile-open .nav-menu-cta {
     display: inline-flex;
     margin-top: 4px;
@@ -4422,7 +4423,7 @@ header.scrolled {
 .nav-overlay {
   display: none;
 }
-@media (max-width: 1152px) {
+@media (max-width: 1100px) {
   header {
     inset: 12px 12px auto;
   }
@@ -4545,7 +4546,7 @@ header.scrolled {
 }
 
 /* fix apilado: el drawer y su X quedan por encima de la cápsula derecha */
-@media (max-width: 1152px) {
+@media (max-width: 1100px) {
   .nav-links.mobile-open {
     z-index: 230;
   }
@@ -6144,7 +6145,7 @@ body,
   .acc-step__dot { top: 0; left: -52px; }
 }
 /* Nav y footer: mismo cristal cálido y tipografía. */
-@media (min-width: 1153px) {
+@media (min-width: 1101px) {
   header .nav-capsule {
     background: rgba(245, 242, 237, 0.94);
     border-color: rgba(33, 33, 33, 0.22);
@@ -6160,7 +6161,7 @@ body,
     color: #f5f2ed;
   }
 }
-@media (max-width: 1152px) {
+@media (max-width: 1100px) {
   header nav,
   [data-theme="dark"] header nav {
     background: transparent;
@@ -6705,7 +6706,7 @@ body,
 .nav-toggle.mobile-open .nav-toggle-line--middle { opacity: 0; }
 .nav-toggle.mobile-open .nav-toggle-line--bottom { transform: translateY(-5px) rotate(-45deg); }
 
-@media (max-width: 1152px) {
+@media (max-width: 1100px) {
   header {
     position: relative;
     inset: auto;
@@ -7270,7 +7271,7 @@ a:hover .nos-arrow {
 }
 
 /* Navigation visibility & focus leakage prevention */
-@media (max-width: 1152px) {
+@media (max-width: 1100px) {
   .nav-links:not(.mobile-open) {
     visibility: hidden;
     pointer-events: none;
@@ -7320,7 +7321,7 @@ header {
   color: #f5f2ed;
 }
 
-@media (max-width: 1152px) {
+@media (max-width: 1100px) {
   .hero header:not(.scrolled) .nav-links.mobile-open > a {
     color: var(--hero-ink);
   }

@@ -175,7 +175,7 @@ export function useSiteMotion(deps: unknown[] = []) {
       if (links) {
         links.classList.toggle("mobile-open", isOpen);
         // Accessibility: prevent focus on hidden links
-        if (window.innerWidth <= 1152) {
+        if (window.innerWidth <= 1100) {
            links.style.visibility = isOpen ? "visible" : "hidden";
         } else {
            links.style.visibility = "visible";
@@ -212,7 +212,7 @@ export function useSiteMotion(deps: unknown[] = []) {
     window.addEventListener("keydown", closeOnEsc);
 
     const closeOnResize = () => {
-      if (window.innerWidth > 1152) {
+      if (window.innerWidth > 1100) {
         closeMenu();
         if (links) links.style.visibility = "visible";
       } else {
