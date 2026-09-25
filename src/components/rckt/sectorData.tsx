@@ -47,7 +47,7 @@ export const SECTORS: Record<string, SectorPageData> = {
     label: "Salud, estética y odontología",
     title: (
       <>
-        Revenue Systems para salud, estética y <span className="hero-hand">odontología</span>
+        Revenue Systems para <span className="text-orange">clínicas y centros de <span className="hero-hand">estética.</span></span>
       </>
     ),
     context: "Clínicas y centros donde la venta pasa por WhatsApp, una asesora y una cita. El dinero se pierde entre la respuesta, la agenda y la inasistencia, y lo medimos por paciente que compra.",
@@ -158,7 +158,7 @@ export const SECTORS: Record<string, SectorPageData> = {
     label: "Educación privada",
     title: (
       <>
-        Revenue Systems para educación <span className="hero-hand">privada</span>
+        Revenue Systems para <span className="text-orange">colegios, universidades e <span className="hero-hand">institutos.</span></span>
       </>
     ),
     context: "Colegios, universidades, institutos y educación continua con picos de demanda en temporada de matrículas. Calificamos ese volumen y lo seguimos hasta la matrícula.",
@@ -270,7 +270,7 @@ export const SECTORS: Record<string, SectorPageData> = {
     label: "Construcción e inmobiliario",
     title: (
       <>
-        Revenue Systems para construcción e <span className="hero-hand">inmobiliario</span>
+        Revenue Systems para <span className="text-orange">constructoras e <span className="hero-hand">inmobiliarias.</span></span>
       </>
     ),
     context: "Constructoras e inmobiliarias con varios asesores, ciclos largos y cotizaciones hechas a mano. Ordenamos la captación y automatizamos lo repetitivo, medido por visita realizada.",
@@ -342,7 +342,7 @@ export const SECTORS: Record<string, SectorPageData> = {
     label: "Servicios B2B",
     title: (
       <>
-        Revenue Systems para servicios <span className="hero-hand">B2B</span>
+        Revenue Systems para <span className="text-orange">servicios profesionales <span className="hero-hand">B2B.</span></span>
       </>
     ),
     context: "Firmas de servicios profesionales que dependen de referidos y de un pipeline corto. Captamos demanda en Google y LinkedIn y medimos por oportunidad aceptada por ventas, no por lead.",
@@ -401,7 +401,7 @@ export const SECTORS: Record<string, SectorPageData> = {
     label: "Ecommerce",
     title: (
       <>
-        Revenue Systems para <span className="hero-hand">ecommerce</span>
+        Revenue Systems para <span className="text-orange">ecommerce con <span className="hero-hand">volumen.</span></span>
       </>
     ),
     context: "Tiendas con volumen donde el costo de adquisición sube más rápido que el ticket promedio. Medimos por margen de contribución tras adquisición.",
@@ -460,7 +460,7 @@ export const SECTORS: Record<string, SectorPageData> = {
     label: "Industria y distribución",
     title: (
       <>
-        Revenue Systems para industria y <span className="hero-hand">distribución</span>
+        Revenue Systems para <span className="text-orange">industria y <span className="hero-hand">distribución.</span></span>
       </>
     ),
     context: "Empresas con cotizaciones, documentos y datos que se mueven a mano entre CRM y ERP. Automatizamos un proceso a la vez, con aprobación humana.",
