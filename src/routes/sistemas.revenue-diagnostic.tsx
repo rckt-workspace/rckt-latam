@@ -307,7 +307,7 @@ function RevenueDiagnostic() {
             <SectionLabel>Formulario</SectionLabel>
             <div className="md:flex md:items-end md:justify-between md:gap-10">
               <h2 className="font-display text-[30px] leading-tight font-semibold tracking-tight md:text-[46px]">
-                Solicitar diagnóstico de captación
+                Revisar mi proceso comercial
               </h2>
             </div>
             <div className="mt-10">
