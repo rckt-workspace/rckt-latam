@@ -6887,3 +6887,14 @@ body,
 .sector-section { position: relative; overflow: hidden; }
 .rckt-site > main { overflow-x: clip; }
 .sector-section { padding: clamp(64px, 9vw, 112px) 0; }
+
+/* Paso 6 — Nosotros: reutiliza patrones existentes */
+.cap-card__top { display:flex; align-items:center; justify-content:space-between; }
+.cap-card__icon { display:inline-flex; color:var(--naranja); }
+.nosotros-quote { max-width:960px; margin:0 auto; }
+.nosotros-link-card { max-width:none; min-height:0; }
+.combo-card .rule-list { margin-top:24px; padding:0; border:0; background:transparent; box-shadow:none; }
+.combo-card--primary .rule-row__num, .combo-card--primary .rule-row__text { color:var(--papel-fija); }
+.combo-card--primary .rule-row { border-color:color-mix(in srgb,var(--papel-fija) 30%,transparent); }
+.rckt-site .combo-card .rule-list, [data-theme="dark"] .rckt-site .combo-card .rule-list { padding:0; border:0; background:transparent; box-shadow:none; }
+.rckt-site .combo-card--primary .rule-row__num, .rckt-site .combo-card--primary .rule-row__text { color:var(--papel-fija); }

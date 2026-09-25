@@ -28,3 +28,4 @@
 - [x] Reconstruir /sectores y sus seis páginas con SectorPage, SectorJourney y SectorPains, usando las imágenes aprobadas.
 - [x] Confirmar vacíos de contenido en Educación antes de redactar cualquier ficha o FAQ.
 - [x] Validar las siete páginas de Sectores en escritorio/celular y claro/oscuro.
+- [x] Paso 6 — Nosotros, Cómo trabajamos, Trabaja con nosotros
