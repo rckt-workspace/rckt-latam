@@ -59,3 +59,4 @@
 
 - [x] Parte 3 de 3: sustituir solo textos existentes de Nosotros, Cómo trabajamos, Casos, Recursos, Contacto y Mercados; comprobar build.
 - [x] Ajustar hero, formulario, footer, datos legales, Recursos, Nosotros y textos públicos LATAM solicitados.
+- [x] Publicar los tres textos legales literales y la política colombiana en PDF; actualizar footer y ficha de Contacto.

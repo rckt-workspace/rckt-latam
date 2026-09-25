@@ -37,6 +37,7 @@ export const Route = createFileRoute("/contacto")({
 
 const datos = [
   ["Correo", "hola@rckt.lat", "mailto:hola@rckt.lat"],
+  ["Titular del sitio", "RCKT, Inc.", ""],
   ["Razón social", "RCKT S.A.S.", ""],
   ["NIT", "902.075.396-5", ""],
   ["Dirección", "Carrera 11B # 99-25, Bogotá D.C., Colombia", ""],
@@ -101,7 +102,7 @@ function Contacto() {
                       legal={
                         <span className="form-note">
                           Al enviar este formulario, aceptas nuestra{" "}
-                          <a href="/politica-tratamiento-datos.pdf" download>
+                          <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" download>
                             Política de Tratamiento de Datos
                           </a>
                           .

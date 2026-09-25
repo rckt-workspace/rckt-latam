@@ -18,12 +18,13 @@ const FOOTER_NAV = [
 const FOOTER_LEGAL = [
   { href: "/legal/aviso-legal", label: "Aviso legal" },
   { href: "/legal/privacidad", label: "Aviso de privacidad" },
+  { href: "/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf", label: "Política de Tratamiento de Datos", external: true },
   { href: "/legal/cookies", label: "Cookies" },
+  // PENDIENTE: abrir panel de consentimiento, lo conecta backend.
+  { href: "#preferencias-cookies", label: "Preferencias de cookies" },
 ];
 
-const email = "privacy@rckt.lat";
 const phone = "[pendiente]";
-const address = "Carrera 11B # 99-25, Bogotá D.C., Colombia";
 const hours = "[pendiente]";
 
 export default function SiteFooter() {
@@ -37,11 +38,12 @@ export default function SiteFooter() {
               <img src={logoLight} alt="" className="site-footer-logo site-footer-logo--light h-8 w-auto" />
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-paper/50">IA supervisada y documentada</p>
-            <p className="font-display mt-4 text-sm text-paper/55">RCKT S.A.S. · NIT 902.075.396-5</p>
+            <p className="font-display mt-4 text-sm text-paper/55">RCKT, Inc. — 584 Castro Street #3209, San Francisco, CA 94114, EE. UU.</p>
+            <p className="font-display mt-2 text-sm text-paper/55">En Colombia: RCKT S.A.S. · NIT 902.075.396-5 · Carrera 11B # 99-25, Bogotá D.C.</p>
             <p className="label-orange mt-8 !text-[10px]">Correo</p>
-            <a href={`mailto:${email}`} className="font-display mt-3 inline-block text-sm text-paper/55 transition-colors hover:text-paper">{email}</a>
+            <a href="mailto:hola@rckt.lat" className="font-display mt-3 block text-sm text-paper/55 transition-colors hover:text-paper">hola@rckt.lat (general)</a>
+            <a href="mailto:privacy@rckt.lat" className="font-display mt-2 block text-sm text-paper/55 transition-colors hover:text-paper">privacy@rckt.lat (datos personales)</a>
             <p className="font-display mt-2 text-sm text-paper/55">{phone}</p>
-            <p className="font-display mt-2 max-w-xs text-sm text-paper/55">{address}</p>
             <p className="font-display mt-2 max-w-xs text-sm text-paper/55">{hours}</p>
           </div>
           <nav aria-label="Footer">
@@ -56,7 +58,7 @@ export default function SiteFooter() {
             <p className="label-orange !text-[10px]">Legal</p>
             <ul className="mt-4 space-y-2.5 text-sm">
               {FOOTER_LEGAL.map((link) => (
-                <li key={link.href}><a href={link.href} className="font-display text-paper/55 transition-colors hover:text-paper">{link.label}</a></li>
+                  <li key={link.href}><a href={link.href} target={"external" in link ? "_blank" : undefined} rel={"external" in link ? "noopener noreferrer" : undefined} className="font-display text-paper/55 transition-colors hover:text-paper">{link.label}</a></li>
               ))}
             </ul>
           </nav>
