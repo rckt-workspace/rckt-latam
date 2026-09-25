@@ -2,6 +2,8 @@
 @source "../src";
 @import "tw-animate-css";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --color-background: var(--papel);
   --color-foreground: var(--carbon);
