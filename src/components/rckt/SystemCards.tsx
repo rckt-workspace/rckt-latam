@@ -117,7 +117,7 @@ export function SystemCards({ systems }: { systems: SystemCardData[] }) {
           style={{ "--d": `${i * 100}ms` } as CSSProperties}
         >
           <div className="sys-card__head">
-            <img src={SISTEMA_FOTOS[s.art]} alt="" aria-hidden="true" loading="lazy" className="sys-card__art" />
+            <img src={SISTEMA_FOTOS[s.art]} alt="" aria-hidden="true" loading="lazy" className={`sys-card__art ${s.art === "flow" ? "sys-card__art--flow" : ""}`} />
             <span className="sys-card__badge absolute top-4 left-4 rounded-full bg-[rgba(245,242,237,0.85)] px-3 py-1 font-mono text-[11px] tracking-wider text-ink">
               {s.badge}
             </span>

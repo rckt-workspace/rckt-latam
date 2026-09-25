@@ -236,7 +236,7 @@ function RevenueDiagnostic() {
             <h2 className="diagnostic-needs-title font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
               Qué necesitamos de ti
             </h2>
-            <ul className="mt-10 grid gap-5 md:grid-cols-2">
+            <ul className="diagnostic-needs-list grid gap-5 md:grid-cols-2">
               {NECESITAMOS.map((t) => (
                 <li key={t} className="flex items-start gap-4">
                   <span

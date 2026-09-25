@@ -1,13 +1,13 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { BarChart3, LayoutDashboard, Megaphone, MessageCircle, Waypoints } from "lucide-react";
 import { useEffect } from "react";
 import heroPhoto from "@/assets/rckt-hero.jpg";
-import ctaPhoto from "@/assets/rckt-cta.jpg";
 import CampaignShell from "@/components/rckt/CampaignShell";
 import DiagnosticForm from "@/components/rckt/DiagnosticForm";
 import FaqSection, { type FaqItem } from "@/components/rckt/FaqSection";
 import MethodCard, { type MethodField } from "@/components/rckt/MethodCard";
 import SectionHeader from "@/components/rckt/SectionHeader";
-import { AcceptanceSteps } from "@/components/rckt/SystemBlocks";
+import { CapabilityCards } from "@/components/rckt/SystemBlocks";
 import MilestoneCards from "@/components/rckt/MilestoneCards";
 import { scoreLead } from "@/components/rckt/leadScoring";
 import { gtmHeadScripts, saveCampaignParams, track } from "@/components/rckt/tracking";
@@ -41,6 +41,14 @@ const milestones = [
   { dia: "30", texto: "Sistema operativo con fuente de verdad" },
   { dia: "60", texto: "Primera lectura de dónde se pierden las conversaciones" },
   { dia: "90", texto: "Línea base frente a resultado" },
+];
+const processCards = steps.map(({ label, texto }) => ({ titulo: label.replace(/^\d+ · /, ""), detalle: texto }));
+const integrations = [
+  { name: "CRM", Icon: Waypoints },
+  { name: "WhatsApp Business API", Icon: MessageCircle },
+  { name: "Meta", Icon: Megaphone },
+  { name: "Google", Icon: BarChart3 },
+  { name: "Dashboard", Icon: LayoutDashboard },
 ];
 const methodFields: MethodField[] = [
   { k: "Situación inicial", v: "Meta reporta muchas conversaciones y pocas ventas; los leads se atienden desde el celular de la asesora, sin registro en el CRM, y la primera respuesta depende de quién esté libre." },
@@ -84,14 +92,14 @@ function SalesFlowCampaign() {
       <div className="campaign-shell campaign-content">
         <SectionHeader num="01." label="El problema económico" title="Lo que pasa entre un lead y un cliente." />
         <div className="campaign-funnel" aria-label="Ejemplo: 47 leads, 11 contactados, 5 reuniones, 1 cliente">
-          <p className="label-orange">Ejemplo</p>
+          <p className="campaign-example-pill">Ejemplo</p>
           <div className="campaign-funnel__row">{[["47", "leads"], ["11", "contactados"], ["5", "reuniones"], ["1", "cliente"]].map(([value, label], i) => <div className="campaign-funnel__step" key={label}>{i > 0 && <span className="campaign-funnel__arrow" aria-hidden="true">→</span>}<strong>{value}</strong><span>{label}</span></div>)}</div>
         </div>
         <p className="campaign-statement">Esa parte del recorrido casi nunca está medida, y es donde se decide si la pauta te sirve o no.</p>
       </div>
     </section>
     <section className="campaign-section">
-      <div className="campaign-shell campaign-content"><SectionHeader num="02." label="Cómo funciona" title="Del anuncio a la venta, sin perder el hilo." /><AcceptanceSteps items={steps} /></div>
+      <div className="campaign-shell campaign-content"><SectionHeader num="02." label="Cómo funciona" title="Del anuncio a la venta, sin perder el hilo." /><div className="campaign-process"><CapabilityCards items={processCards} compact /></div></div>
     </section>
     <section className="campaign-section">
       <div className="campaign-shell campaign-content"><SectionHeader num="03." label="Qué cambia en 90 días" title="Una lectura más clara, cada mes." /><div className="mt-10"><MilestoneCards items={milestones} /></div></div>
@@ -101,13 +109,13 @@ function SalesFlowCampaign() {
     </section>
     <section className="campaign-section">
       <div className="campaign-shell campaign-content"><SectionHeader num="05." label="Integraciones y medición" title="Una sola lectura del recorrido." />
-        <div className="campaign-chips">{["CRM", "WhatsApp Business API", "Meta", "Google", "Dashboard"].map(item => <span className="campaign-chip" key={item}>{item}</span>)}</div>
+        <div className="campaign-chips">{integrations.map(({ name, Icon }) => <div className="campaign-chip" key={name}><Icon aria-hidden="true" /><span>{name}</span></div>)}</div>
         <p className="campaign-statement">Cada semana ves tu embudo por etapa y los tiempos de respuesta de tu equipo.</p>
       </div>
     </section>
     <section className="campaign-section">
       <div className="campaign-shell campaign-content"><SectionHeader num="06." label="Para quién" title="Un proceso que ya tiene qué medir." />
-        <div className="campaign-fit"><div><h3>Es para ti si</h3><ul>{["Ya vendes y ya inviertes en pauta", "Te escriben por WhatsApp", "Tienes asesoras o un equipo comercial", "Quieres saber qué campaña trae ventas"].map(item => <li key={item}>{item}</li>)}</ul></div><div><h3>No es para ti si</h3><ul>{["Buscas una web de bajo costo", "Todavía no vendes", "Quieres un chatbot por curiosidad", "Quieres pagar solo por resultados"].map(item => <li key={item}>{item}</li>)}</ul></div></div>
+        <div className="campaign-fit"><div className="band--orange"><h3>Es para ti si</h3><ul>{["Ya vendes y ya inviertes en pauta", "Te escriben por WhatsApp", "Tienes asesoras o un equipo comercial", "Quieres saber qué campaña trae ventas"].map(item => <li key={item}>{item}</li>)}</ul></div><div><h3>No es para ti si</h3><ul>{["Buscas una web de bajo costo", "Todavía no vendes", "Quieres un chatbot por curiosidad", "Quieres pagar solo por resultados"].map(item => <li key={item}>{item}</li>)}</ul></div></div>
       </div>
     </section>
     <FaqSection items={faq} />
@@ -120,6 +128,6 @@ function SalesFlowCampaign() {
         }} legal={<span className="form-note">Al enviar este formulario, aceptas nuestra <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer">Política de Tratamiento de Datos</a>.</span>} />
       </div>
     </section>
-    <section className="campaign-close general-cta"><div className="campaign-close__photo" aria-hidden="true"><img src={ctaPhoto} alt="" /></div><div className="campaign-shell campaign-close__inner"><p className="label-orange">¿Empezamos?</p><h2>¿Revisamos tu proceso comercial?</h2><CampaignActions section="cierre" /></div></section>
+    <section className="campaign-close"><div className="campaign-shell"><div className="campaign-close__card band--orange"><p className="label-on-orange">¿Empezamos?</p><h2>¿Revisamos tu proceso comercial?</h2><CampaignActions section="cierre" /></div></div></section>
   </main></CampaignShell>;
 }
