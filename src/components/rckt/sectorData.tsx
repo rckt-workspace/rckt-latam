@@ -279,15 +279,21 @@ export const SECTORS: Record<string, SectorPageData> = {
     sectorImageAlt: "Dos personas revisando un proyecto en obra",
     funnelStages: ["Anuncios", "Landing", "Asesor", "Visita", "Cotización", "Cierre"],
     funnelLeaks: [
-      { afterStage: 2, label: "Leads sin filtro" },
+      { afterStage: 2, label: "Leads de baja calidad" },
+      { afterStage: 3, label: "Varios asesores, el mismo contacto" },
       { afterStage: 5, label: "Cotizaciones manuales" },
       { afterStage: 6, label: "Ciclos largos" },
     ],
     doloresDetalle: [
       {
-        titulo: "Leads sin filtro",
-        descripcion: "Leads de baja calidad que entran sin filtro.",
-        resuelve: "Calificación de prospectos",
+        titulo: "Leads de baja calidad",
+        descripcion: "Muchos contactos sin presupuesto ni intención real de compra.",
+        resuelve: "Lead scoring",
+      },
+      {
+        titulo: "Varios asesores compitiendo por el mismo contacto",
+        descripcion: "El mismo prospecto recibe llamadas de dos asesores y ninguno es su dueño.",
+        resuelve: "Asignación multi-asesor",
       },
       {
         titulo: "Ciclos largos",
@@ -295,9 +301,9 @@ export const SECTORS: Record<string, SectorPageData> = {
         resuelve: "CRM para ciclos largos",
       },
       {
-        titulo: "Cotizaciones manuales",
-        descripcion: "Cotizaciones manuales que retrasan la decisión.",
-        resuelve: "Cotizaciones con aprobación humana",
+        titulo: "Cotizaciones hechas a mano",
+        descripcion: "Cada cotización tarda días y depende de una sola persona.",
+        resuelve: "Cotizaciones automáticas con aprobación humana",
       },
     ],
     sistemaTitle: (
@@ -306,20 +312,22 @@ export const SECTORS: Record<string, SectorPageData> = {
       </>
     ),
     sistemaTexto:
-      "Calificación, seguimiento estructurado y cotizaciones automatizadas con aprobación humana.",
+      "Scoring y asignación multi-asesor, y cotizaciones automatizadas.",
     sistemaFilas: [
       {
-        nombre: "Calificación de prospectos",
+        nombre: "Lead scoring",
         detalle: "Cada contacto calificado antes de llegar a un asesor",
       },
+      { nombre: "Asignación multi-asesor", detalle: "Cada lead con un solo dueño, sin asesores compitiendo por él" },
       {
         nombre: "CRM para ciclos largos",
         detalle: "Seguimiento de cada oportunidad hasta la visita y el cierre",
       },
       {
         nombre: "Cotizaciones automatizadas",
-        detalle: "Se preparan solas; una persona las aprueba antes de enviarlas",
+        detalle: "El agente las redacta; una persona las aprueba antes de enviarlas",
       },
+      { nombre: "Medición por visita", detalle: "Costo por visita realizada, no por lead" },
     ],
     sectorFacts: [
       { label: "Sistema recomendado", value: "Revenue Engine + Operations System" },
@@ -351,25 +359,25 @@ export const SECTORS: Record<string, SectorPageData> = {
     sectorImageAlt: "Reunión de consultoría revisando indicadores",
     funnelStages: ["Google/LinkedIn", "Lead", "Reunión", "Propuesta", "Cierre"],
     funnelLeaks: [
-      { afterStage: 1, label: "Dependencia de referidos" },
+      { afterStage: 1, label: "Depende de referidos" },
       { afterStage: 2, label: "Pipeline corto" },
-      { afterStage: 3, label: "Reuniones sin medir" },
+      { afterStage: 3, label: "CRM mal usado" },
     ],
     doloresDetalle: [
       {
-        titulo: "Pipeline impredecible",
-        descripcion: "Pipeline corto e impredecible.",
+        titulo: "Pipeline corto",
+        descripcion: "Pocas oportunidades nuevas cada mes y un equipo comercial que espera a que lleguen.",
         resuelve: "Demand en Google y LinkedIn",
       },
       {
-        titulo: "Dependencia de referidos",
-        descripcion: "Dependencia excesiva de referidos.",
+        titulo: "Depende de referidos",
+        descripcion: "Cuando los referidos bajan, la facturación baja con ellos.",
         resuelve: "Captación propia medida hasta la venta",
       },
       {
-        titulo: "Reuniones sin medir",
-        descripcion: "Dificultad para medir qué genera reuniones calificadas.",
-        resuelve: "CRM con calificación",
+        titulo: "CRM mal usado",
+        descripcion: "El CRM existe, pero nadie lo actualiza ni sabe en qué etapa está cada oportunidad.",
+        resuelve: "CRM & RevOps con scoring",
       },
     ],
     sistemaTitle: (
@@ -377,14 +385,16 @@ export const SECTORS: Record<string, SectorPageData> = {
         Lo que hacemos: <em className="font-serif-accent">Revenue Engine.</em>
       </>
     ),
-    sistemaTexto: "Demanda en Google y LinkedIn, calificación y CRM medidos hasta el contrato.",
+    sistemaTexto: "Revenue Engine, con Demand (Google, LinkedIn) y CRM con scoring como el componente que más pesa.",
     sistemaFilas: [
-      { nombre: "Google y LinkedIn", detalle: "Captura de demanda para llegar a quien decide" },
+      { nombre: "Google Search", detalle: "Captura de la demanda que ya busca tu servicio" },
+      { nombre: "LinkedIn selectivo B2B", detalle: "Llegar a quien decide, no solo a quien hace clic" },
       {
         nombre: "Calificación",
         detalle: "Cada lead calificado antes de llegar al equipo comercial",
       },
       { nombre: "CRM & RevOps", detalle: "Pipeline, etapas y seguimiento que el equipo sí usa" },
+      { nombre: "Medición hasta la venta", detalle: "Costo por oportunidad aceptada por ventas, no por lead" },
     ],
     sectorFacts: [
       { label: "Sistema recomendado", value: "Revenue Engine" },
@@ -410,26 +420,27 @@ export const SECTORS: Record<string, SectorPageData> = {
     sectorImageAlt: "Equipo preparando pedidos de una tienda online",
     funnelStages: ["Anuncios", "Tienda", "Compra", "Recompra"],
     funnelLeaks: [
-      { afterStage: 1, label: "CAC en aumento" },
+      { afterStage: 1, label: "CAC alto" },
+      { afterStage: 2, label: "Conversión baja" },
       { afterStage: 3, label: "WhatsApp sin medir" },
-      { afterStage: 4, label: "Poca recompra" },
     ],
     doloresDetalle: [
       {
-        titulo: "CAC en aumento",
-        descripcion: "CAC en aumento campaña tras campaña.",
+        titulo: "CAC alto",
+        descripcion: "Cada cliente nuevo cuesta más que el del mes anterior.",
         resuelve: "Medios optimizados por margen",
       },
       {
-        titulo: "WhatsApp sin medir",
-        descripcion: "WhatsApp usado en la venta, pero sin medir.",
-        resuelve: "WhatsApp integrado y medido",
+        titulo: "Conversión baja",
+        descripcion: "El tráfico llega a la tienda, pero no compra.",
+        resuelve: "CRO de la tienda",
       },
       {
-        titulo: "Poca recompra",
-        descripcion: "Poca recompra y sin sistema para provocarla.",
-        resuelve: "Secuencias de recompra",
+        titulo: "Creatividad agotada",
+        descripcion: "Los mismos anuncios desde hace meses y un rendimiento que va a la baja.",
+        resuelve: "Creative Performance",
       },
+      { titulo: "WhatsApp sin medir dentro del embudo", descripcion: "Parte de la venta pasa por WhatsApp y nadie la atribuye.", resuelve: "WhatsApp integrado y medido" },
     ],
     sistemaTitle: (
       <>
@@ -438,12 +449,14 @@ export const SECTORS: Record<string, SectorPageData> = {
     ),
     sistemaTexto: "Demand System, con Sales Flow si WhatsApp pesa en la conversión.",
     sistemaFilas: [
-      { nombre: "Medios por margen", detalle: "Pauta optimizada por margen, no solo por ROAS" },
+      { nombre: "Creative Performance", detalle: "Producción y testing creativo con IA, con iteración semanal" },
+      { nombre: "Medios por margen", detalle: "Meta, Google y PMax optimizados por margen, no solo por ROAS" },
+      { nombre: "CRO", detalle: "Mejoras de conversión en la tienda, siempre con tracking conectado" },
       {
         nombre: "WhatsApp medido",
         detalle: "Atención integrada al embudo cuando WhatsApp pesa en la venta",
       },
-      { nombre: "Recompra", detalle: "Secuencias para provocar la segunda compra" },
+      { nombre: "Medición por margen", detalle: "Margen de contribución tras adquisición, cada semana" },
     ],
     sectorFacts: [
       { label: "Sistema recomendado", value: "Demand System (+ Sales Flow si WhatsApp pesa)" },
@@ -472,23 +485,23 @@ export const SECTORS: Record<string, SectorPageData> = {
     funnelLeaks: [
       { afterStage: 1, label: "Cotizaciones manuales" },
       { afterStage: 2, label: "CRM y ERP desconectados" },
-      { afterStage: 5, label: "Reporting manual" },
+      { afterStage: 3, label: "Documentos manuales" },
     ],
     doloresDetalle: [
       {
-        titulo: "Cotizaciones lentas",
-        descripcion: "Cotizaciones manuales que tardan horas.",
-        resuelve: "Cotizaciones con aprobación humana",
+        titulo: "Cotizaciones manuales",
+        descripcion: "Cada cotización se prepara a mano y tarda horas.",
+        resuelve: "Cotizaciones desde WhatsApp o correo",
       },
       {
-        titulo: "Sistemas desconectados",
-        descripcion: "CRM y ERP desconectados entre sí.",
+        titulo: "Documentos manuales",
+        descripcion: "Datos que se copian de un sistema a otro, con errores y retrabajo.",
+        resuelve: "Documentos generados y verificados",
+      },
+      {
+        titulo: "CRM y ERP desconectados",
+        descripcion: "Comercial y operación trabajan con datos distintos.",
         resuelve: "Sincronización CRM ↔ ERP",
-      },
-      {
-        titulo: "Reporting manual",
-        descripcion: "Reporting manual que nadie confirma.",
-        resuelve: "Reportes desde una fuente de verdad",
       },
     ],
     sistemaTitle: (
@@ -497,14 +510,16 @@ export const SECTORS: Record<string, SectorPageData> = {
       </>
     ),
     sistemaTexto:
-      "Operations System: cotizaciones, documentos y sincronización CRM ↔ ERP, un proceso a la vez.",
+      "Operations System: cotizaciones, documentos y sincronización CRM ↔ ERP.",
     sistemaFilas: [
       {
-        nombre: "Cotizaciones",
-        detalle: "Preparadas automáticamente; una persona aprueba el envío",
+        nombre: "Cotizaciones desde WhatsApp o correo",
+        detalle: "El agente extrae la solicitud y la redacta; una persona aprueba el envío",
       },
-      { nombre: "Sincronización CRM ↔ ERP", detalle: "Datos consistentes entre sistemas" },
-      { nombre: "Reportes", detalle: "Generados desde una sola fuente de verdad" },
+      { nombre: "Documentos", detalle: "Generados desde plantillas y verificados antes de firmar" },
+      { nombre: "Sincronización CRM ↔ ERP", detalle: "Datos consistentes entre sistemas; los conflictos los resuelve una persona" },
+      { nombre: "Postventa de primer nivel", detalle: "Consultas frecuentes resueltas; reclamaciones escaladas a una persona" },
+      { nombre: "Costo por ejecución correcta", detalle: "Medido frente a la línea base del proceso" },
     ],
     sectorFacts: [
       { label: "Sistema recomendado", value: "Operations System" },
