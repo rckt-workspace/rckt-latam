@@ -17,7 +17,7 @@ export default function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const isActive = (href: string) => { const h = href.replace(/\/+$/, "") || "/"; const p = (pathname || "").replace(/\/+$/, "") || "/"; return p === h || p.startsWith(h + "/"); };
+  const isActive = (href: string) => { const h = href.replace(/\/+$/, "") || "/"; const p = (pathname || "").replace(/\/+$/, "") || "/"; return p === h || p.startsWith(h + "/") || p.startsWith(h + "."); };
   useEffect(() => { const onScroll = () => setScrolled(window.scrollY > 40); onScroll(); window.addEventListener("scroll", onScroll, { passive: true }); return () => window.removeEventListener("scroll", onScroll); }, []);
   useEffect(() => { const onResize = () => { if (window.innerWidth >= 1024) setMenuOpen(false); }; window.addEventListener("resize", onResize); return () => window.removeEventListener("resize", onResize); }, []);
   const logo = (
@@ -34,7 +34,7 @@ export default function SiteNav() {
           <div className={`nav-bg ${scrolled ? "nav-bg-off" : ""}`} />
           {logo}
           <div className="relative flex items-center gap-5 pl-10 text-sm text-ink/70 dark:text-paper/70 xl:gap-7">
-            {NAV_LINKS.map((l) => (<a key={l.href} href={l.href} className={`font-display transition-colors duration-200 ${isActive(l.href) ? "text-[#fc5c1f]" : "hover:text-ink dark:hover:text-paper"}`}>{l.label}</a>))}
+            {NAV_LINKS.map((l) => (<a key={l.href} href={l.href} aria-current={isActive(l.href) ? "page" : undefined} className={`font-display transition-colors duration-200 ${isActive(l.href) ? "text-orange" : "hover:text-ink dark:hover:text-paper"}`}>{l.label}</a>))}
           </div>
         </div>
         <div className={`relative mx-6 h-7 w-px bg-ink/15 transition-opacity duration-600 dark:bg-paper/15 ${scrolled ? "opacity-100" : "opacity-0"}`} />
@@ -61,7 +61,7 @@ export default function SiteNav() {
         </div>
         {menuOpen && (
           <div className="nav-pill nav-drawer mt-2 flex flex-col gap-1 p-3">
-            {NAV_LINKS.map((l) => (<a key={l.href} href={l.href} onClick={() => setMenuOpen(false)} className={`font-display rounded-xl px-3 py-2.5 text-base transition-colors ${isActive(l.href) ? "text-[#fc5c1f]" : "text-ink/80 hover:bg-ink/5 hover:text-ink dark:text-paper/80 dark:hover:bg-paper/10 dark:hover:text-paper"}`}>{l.label}</a>))}
+            {NAV_LINKS.map((l) => (<a key={l.href} href={l.href} onClick={() => setMenuOpen(false)} aria-current={isActive(l.href) ? "page" : undefined} className={`font-display rounded-xl px-3 py-2.5 text-base transition-colors ${isActive(l.href) ? "text-orange" : "text-ink/80 hover:bg-ink/5 hover:text-ink dark:text-paper/80 dark:hover:bg-paper/10 dark:hover:text-paper"}`}>{l.label}</a>))}
             <a href={DIAGNOSTIC_HREF} onClick={() => setMenuOpen(false)} className="btn-signal font-display mt-2 inline-flex items-center justify-center rounded-full px-[22px] py-3 text-sm font-semibold whitespace-nowrap">{CTA_LABEL}</a>
           </div>
         )}

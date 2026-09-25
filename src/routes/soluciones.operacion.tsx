@@ -41,9 +41,9 @@ const methodFields: MethodField[] = [
 ];
 const FAQS: FaqItem[] = [
   { question: "Quiero un chatbot con IA.", answer: "No vendemos chatbots. Si tienes un proceso que tu equipo repite muchas veces, lo medimos y lo automatizamos con supervisión. Si es curiosidad por la IA, hay herramientas gratis para probar." },
-  { question: "¿Qué procesos se pueden automatizar?", answer: "Cotizaciones desde WhatsApp o correo, clasificación y respuesta de solicitudes, generación y verificación de documentos, sincronización CRM ↔ ERP u hojas, reporting comercial y atención postventa de primer nivel. Si tu proceso no está en esta lista, se evalúa antes de cotizar." },
+  { question: "¿Qué tipo de procesos automatizan?", answer: "Cotizaciones que llegan por WhatsApp o correo, clasificación y respuesta de solicitudes, documentos que se generan y verifican, datos que se sincronizan entre CRM, ERP y hojas, reportes comerciales y atención post-venta básica. Si el tuyo no está, lo evaluamos antes de cotizar." },
   { question: "¿Por dónde empezamos?", answer: "Por el proceso que más se repite y más cuesta; si no sabes cuánto te cuesta hoy, el Revenue Diagnostic lo mide primero." },
-  { question: "¿Qué pasa con los casos que el sistema no resuelve?", answer: "Toda excepción tiene una ruta humana definida. Una persona aprueba lo que importa: envíos, condiciones especiales, firmas y reclamaciones." },
+  { question: "¿Qué pasa cuando algo se sale del patrón?", answer: "Cada excepción tiene una ruta definida hacia una persona. Envíos, condiciones especiales, firmas y reclamos los aprueba alguien de tu equipo." },
   { question: "¿Y si después quiero automatizar otro?", answer: "El segundo proceso reutiliza la infraestructura del primero." },
 ];
 export const Route = createFileRoute("/soluciones/operacion")({ staticData: { sitemap: true }, head: () => ({ meta: [

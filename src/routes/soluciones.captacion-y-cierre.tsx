@@ -45,11 +45,11 @@ const methodFields: MethodField[] = [
   { k: "Limitaciones", v: "No garantizamos ventas porque no controlamos tu cierre, tu stock ni tus precios. Garantizamos que en 30 días vas a ver tu embudo completo con datos reales." },
 ];
 const FAQS: FaqItem[] = [
-  { question: "¿Qué sistema necesito si pago por leads y no sé cuáles compran?", answer: "Normalmente Revenue Engine: Demand System y Sales Flow bajo un solo responsable, medido del clic al cierre. Lo confirmamos con datos en el Revenue Diagnostic." },
-  { question: "¿El diagnóstico es gratis?", answer: "No. Es trabajo real de tres semanas con tus datos, y se descuenta del sistema si sigues con nosotros." },
+  { question: "¿Qué sistema me sirve si pago por leads y no sé cuáles compran?", answer: "En la mayoría de los casos, Revenue Engine: la pauta y el proceso de WhatsApp y CRM con un solo responsable. El Revenue Diagnostic lo confirma con tus números." },
+  { question: "¿Hay que pagar el diagnóstico?", answer: "Sí. Son tres semanas de trabajo con tus datos, y lo que pagas se descuenta del sistema si sigues con nosotros." },
   { question: "¿Un sistema automático va a atender a mis clientes?", answer: "Responde lo que se repite mil veces y entrega la conversación a tu asesora en cuanto hay intención de agendar. Lo que hace y lo que no, queda por escrito." },
   { question: "¿Necesito más pauta?", answer: "No para empezar: el tiempo de primera respuesta es la variable más barata de arreglar y la que más cambia el resultado." },
-  { question: "¿Me garantizan resultados?", answer: "No garantizamos ventas porque no controlamos tu cierre, tu stock ni tus precios. Garantizamos que en 30 días vas a ver tu embudo completo con datos reales." },
+  { question: "¿Pueden garantizar ventas?", answer: "No, porque el cierre, el stock y los precios dependen de ti. Lo que sí garantizamos es que en 30 días vas a ver tu embudo completo con datos reales." },
 ];
 export const Route = createFileRoute("/soluciones/captacion-y-cierre")({ staticData: { sitemap: true }, head: () => ({ meta: [
   { title: "Captación y cierre — Pagas por leads y no sabes cuáles compran | RCKT" },

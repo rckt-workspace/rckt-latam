@@ -10,11 +10,11 @@ const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
 const SITE_URL = "https://rckt.lat";
 
 const SALES_FLOW_FAQS = [
-  { question: "¿Tengo que cambiar de CRM?", answer: "No necesariamente. Tu CRM es la fuente de verdad: lo configuramos y lo conectamos, no lo sustituimos por una herramienta nuestra. Si no tienes uno, te recomendamos uno y migramos si hace falta." },
+  { question: "¿Hay que cambiar el CRM que ya usamos?", answer: "No siempre. Tu CRM sigue siendo la fuente de verdad: lo ordenamos y lo conectamos a la pauta y a WhatsApp. Si todavía no tienes uno, te recomendamos cuál y hacemos la migración." },
   { question: "¿Un sistema automático va a atender a mis clientes?", answer: "Responde lo que se repite mil veces (horarios, sedes, disponibilidad) y entrega la conversación a tu asesora en cuanto hay intención de agendar. Lo que hace y lo que no, queda por escrito." },
-  { question: "¿Quién paga las licencias de CRM y WhatsApp API?", answer: "Tú. Las licencias de CRM y de WhatsApp Business API no están incluidas en Sales Flow." },
-  { question: "¿Qué necesitan de mí?", answer: "Un número de WhatsApp Business API verificado, un CRM, un equipo comercial con un responsable nombrado, un acuerdo de SLAs internos y acceso a los datos de ventas." },
-  { question: "¿Cuánto tarda en estar listo?", answer: "El sistema queda aceptado en un máximo de 30 días desde el inicio del setup, con el flujo probado con leads reales y el 100% de los leads entrando al CRM con su origen." },
+  { question: "¿Las licencias están incluidas?", answer: "No. El CRM y WhatsApp Business API los contratas tú, a tu nombre." },
+  { question: "¿Qué necesitan de mí?", answer: "Un número de WhatsApp Business API verificado, un CRM, una persona de tu equipo comercial que sea responsable, tiempos de respuesta acordados y acceso a tus datos de ventas." },
+  { question: "¿En cuánto tiempo queda funcionando?", answer: "En máximo 30 días desde que empieza el setup, probado con leads reales y con cada conversación entrando al CRM con su origen." },
   { question: "¿Qué pasa con el dato de venta?", answer: "Vive en tu CRM y las plataformas nunca lo ven. Cuando vuelve, Meta y Google empiezan a buscar personas parecidas a las que sí te compran." },
   { question: "¿Necesito más pauta?", answer: "No para empezar. El tiempo de primera respuesta es la variable más barata de arreglar y la que más cambia el resultado." },
 ];
@@ -85,32 +85,32 @@ const COMPONENTES = [
     Icono: MessagesSquare,
     titulo: "Conversational Revenue",
     detalle:
-      "Agentes de WhatsApp y voz para primera respuesta, calificación, agenda y FAQ, siempre con aprobación humana en decisiones de venta",
+      "Agentes de WhatsApp y voz que dan la primera respuesta, califican, agendan y resuelven preguntas; las decisiones de venta siempre las aprueba una persona",
   },
   {
     Icono: Database,
     titulo: "CRM & RevOps",
     detalle:
-      "Configuración o limpieza del pipeline, etapas, campos, automatizaciones, dashboards, gobierno de datos",
+      "Pipeline, etapas y campos ordenados, automatizaciones, dashboards y reglas claras sobre los datos",
   },
   {
     Icono: Monitor,
     titulo: "Conversion Platforms",
-    detalle: "Landing de conversión, web corporativa, ecommerce, siempre con tracking y CRM conectados",
+    detalle: "Landing, web corporativa o ecommerce, siempre conectados al tracking y al CRM",
   },
 ];
 
 const REGLAS = [
   "La web nunca se vende sola: sin tracking y CRM conectados no hay web de RCKT",
   "El sistema responde lo que se repite mil veces; en cuanto hay intención de agendar o una decisión de venta, la conversación pasa a tu asesora.",
-  "El CRM del cliente es la fuente de verdad: lo configuramos y conectamos, no lo sustituimos",
+  "Tu CRM manda: lo ordenamos y lo conectamos, no lo reemplazamos por una herramienta nuestra.",
 ];
 
 const ACEPTACION = [
-  "Flujo probado de extremo a extremo con leads reales",
-  "100% de los leads entrando al CRM con su origen",
-  "SLA visible en dashboard",
-  "Atribución offline enviando eventos a las plataformas",
+  "Flujo probado con leads reales",
+  "Cada lead en el CRM con su origen",
+  "Tiempos de respuesta visibles en el dashboard",
+  "Eventos de venta enviándose a Meta y Google",
 ];
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
