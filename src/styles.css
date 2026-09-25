@@ -7272,3 +7272,71 @@ a:hover .nos-arrow {
 
 .text-orange { color: var(--naranja); }
 .hero-hand { font-family: "Newsreader", serif; font-style: italic; font-weight: 400; }
+
+/* --- Accessibility & Visual Parity Compatible with España --- */
+
+:root {
+  --carbon-soft: rgba(33, 33, 33, 0.8);
+  --carbon-faint: rgba(33, 33, 33, 0.65);
+}
+
+[data-theme="dark"] {
+  --carbon-soft: rgba(245, 242, 237, 0.8);
+  --carbon-faint: rgba(245, 242, 237, 0.65);
+}
+
+/* Navigation visibility & focus leakage prevention */
+@media (max-width: 1152px) {
+  .nav-links:not(.mobile-open) {
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+/* Improved focus states for keyboard navigation */
+a:focus-visible, 
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--naranja);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Prevent layout shift in reveal animations */
+.rv {
+  will-change: opacity, transform;
+}
+
+/* High contrast for primary buttons in light mode */
+.btn-primary {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* Ensure FAQ Accordion contrast */
+[data-state="open"] > .AccordionTrigger {
+  color: var(--naranja-deep);
+}
+
+/* Mobile Nav Toggle colors sync */
+.nav-toggle span {
+  background: currentColor;
+}
+
+header {
+  color: var(--carbon);
+}
+
+/* Hero specific overrides for nav contrast */
+.hero header:not(.scrolled) {
+  color: #f5f2ed;
+}
+
+.hero header:not(.scrolled) .nav-links a {
+  color: #f5f2ed;
+}
+
+.hero header:not(.scrolled) .nav-toggle span {
+  background: #f5f2ed;
+}
+

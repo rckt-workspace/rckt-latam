@@ -1,10 +1,22 @@
-import { faqJsonLd } from "@/content/systemFaqs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import SectionHeader from "@/components/rckt/SectionHeader";
 
 export type FaqItem = { question: string; answer: string };
 
-export { faqJsonLd };
+export function faqJsonLd(items: FaqItem[]) {
+  return {
+    type: "application/ld+json",
+    children: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: items.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer", text: item.answer },
+      })),
+    }),
+  };
+}
 
 export default function FaqSection({ items }: { items: FaqItem[] }) {
   if (!items || items.length === 0) return null;
