@@ -6473,6 +6473,12 @@ body,
     font-weight: 600;
     line-height: 1.45;
   }
+  [data-theme="dark"] header .nav-links.mobile-open > a,
+  [data-theme="dark"] header .nav-links.mobile-open .nav-dropdown-trigger,
+  [data-theme="dark"] .rckt-site.tcn-page .subpage-hero .nav-links.mobile-open > a,
+  [data-theme="dark"] .rckt-site.tcn-page .subpage-hero .nav-links.mobile-open .nav-dropdown-trigger {
+    color: var(--hero-ink);
+  }
   .nav-links.mobile-open > a:hover,
   .nav-links.mobile-open .nav-dropdown-trigger:hover {
     background: rgba(33, 33, 33, 0.05);
