@@ -22,6 +22,7 @@ import { Route as ApiLeadsRouteImport } from './routes/api/leads'
 import { Route as ApiSaveChatLeadRouteImport } from './routes/api/save-chat-lead'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as CasosIndexRouteImport } from './routes/casos.index'
 import { Route as LegalAvisoLegalRouteImport } from './routes/legal.aviso-legal'
 import { Route as LegalCookiesRouteImport } from './routes/legal.cookies'
 import { Route as LegalPrivacidadRouteImport } from './routes/legal.privacidad'
@@ -29,6 +30,7 @@ import { Route as NosotrosIndexRouteImport } from './routes/nosotros.index'
 import { Route as NosotrosComoTrabajamosRouteImport } from './routes/nosotros.como-trabajamos'
 import { Route as OpsAiControlRouteImport } from './routes/ops/ai-control'
 import { Route as OpsLoginRouteImport } from './routes/ops/login'
+import { Route as RecursosIndexRouteImport } from './routes/recursos.index'
 import { Route as SectoresIndexRouteImport } from './routes/sectores.index'
 import { Route as SectoresConstruccionInmobiliarioRouteImport } from './routes/sectores.construccion-inmobiliario'
 import { Route as SectoresEcommerceRouteImport } from './routes/sectores.ecommerce'
@@ -127,6 +129,11 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CasosIndexRoute = CasosIndexRouteImport.update({
+  id: '/casos/',
+  path: '/casos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LegalAvisoLegalRoute = LegalAvisoLegalRouteImport.update({
   id: '/legal/aviso-legal',
   path: '/legal/aviso-legal',
@@ -160,6 +167,11 @@ const OpsAiControlRoute = OpsAiControlRouteImport.update({
 const OpsLoginRoute = OpsLoginRouteImport.update({
   id: '/ops/login',
   path: '/ops/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecursosIndexRoute = RecursosIndexRouteImport.update({
+  id: '/recursos/',
+  path: '/recursos/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SectoresIndexRoute = SectoresIndexRouteImport.update({
@@ -367,7 +379,9 @@ export interface FileRoutesByFullPath {
   '/soluciones/ecommerce-rentable': typeof SolucionesEcommerceRentableRoute
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog/': typeof BlogIndexRoute
+  '/casos/': typeof CasosIndexRoute
   '/nosotros/': typeof NosotrosIndexRoute
+  '/recursos/': typeof RecursosIndexRoute
   '/sectores/': typeof SectoresIndexRoute
   '/sistemas/': typeof SistemasIndexRoute
   '/soluciones/': typeof SolucionesIndexRoute
@@ -421,7 +435,9 @@ export interface FileRoutesByTo {
   '/soluciones/ecommerce-rentable': typeof SolucionesEcommerceRentableRoute
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog': typeof BlogIndexRoute
+  '/casos': typeof CasosIndexRoute
   '/nosotros': typeof NosotrosIndexRoute
+  '/recursos': typeof RecursosIndexRoute
   '/sectores': typeof SectoresIndexRoute
   '/sistemas': typeof SistemasIndexRoute
   '/soluciones': typeof SolucionesIndexRoute
@@ -476,7 +492,9 @@ export interface FileRoutesById {
   '/soluciones/ecommerce-rentable': typeof SolucionesEcommerceRentableRoute
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog/': typeof BlogIndexRoute
+  '/casos/': typeof CasosIndexRoute
   '/nosotros/': typeof NosotrosIndexRoute
+  '/recursos/': typeof RecursosIndexRoute
   '/sectores/': typeof SectoresIndexRoute
   '/sistemas/': typeof SistemasIndexRoute
   '/soluciones/': typeof SolucionesIndexRoute
@@ -532,7 +550,9 @@ export interface FileRouteTypes {
     | '/soluciones/ecommerce-rentable'
     | '/soluciones/operacion'
     | '/blog/'
+    | '/casos/'
     | '/nosotros/'
+    | '/recursos/'
     | '/sectores/'
     | '/sistemas/'
     | '/soluciones/'
@@ -586,7 +606,9 @@ export interface FileRouteTypes {
     | '/soluciones/ecommerce-rentable'
     | '/soluciones/operacion'
     | '/blog'
+    | '/casos'
     | '/nosotros'
+    | '/recursos'
     | '/sectores'
     | '/sistemas'
     | '/soluciones'
@@ -640,7 +662,9 @@ export interface FileRouteTypes {
     | '/soluciones/ecommerce-rentable'
     | '/soluciones/operacion'
     | '/blog/'
+    | '/casos/'
     | '/nosotros/'
+    | '/recursos/'
     | '/sectores/'
     | '/sistemas/'
     | '/soluciones/'
@@ -695,7 +719,9 @@ export interface RootRouteChildren {
   SolucionesEcommerceRentableRoute: typeof SolucionesEcommerceRentableRoute
   SolucionesOperacionRoute: typeof SolucionesOperacionRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  CasosIndexRoute: typeof CasosIndexRoute
   NosotrosIndexRoute: typeof NosotrosIndexRoute
+  RecursosIndexRoute: typeof RecursosIndexRoute
   SectoresIndexRoute: typeof SectoresIndexRoute
   SistemasIndexRoute: typeof SistemasIndexRoute
   SolucionesIndexRoute: typeof SolucionesIndexRoute
@@ -809,6 +835,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/casos/': {
+      id: '/casos/'
+      path: '/casos'
+      fullPath: '/casos/'
+      preLoaderRoute: typeof CasosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/legal/aviso-legal': {
       id: '/legal/aviso-legal'
       path: '/legal/aviso-legal'
@@ -856,6 +889,13 @@ declare module '@tanstack/react-router' {
       path: '/ops/login'
       fullPath: '/ops/login'
       preLoaderRoute: typeof OpsLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recursos/': {
+      id: '/recursos/'
+      path: '/recursos'
+      fullPath: '/recursos/'
+      preLoaderRoute: typeof RecursosIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sectores/': {
@@ -1119,7 +1159,9 @@ const rootRouteChildren: RootRouteChildren = {
   SolucionesEcommerceRentableRoute: SolucionesEcommerceRentableRoute,
   SolucionesOperacionRoute: SolucionesOperacionRoute,
   BlogIndexRoute: BlogIndexRoute,
+  CasosIndexRoute: CasosIndexRoute,
   NosotrosIndexRoute: NosotrosIndexRoute,
+  RecursosIndexRoute: RecursosIndexRoute,
   SectoresIndexRoute: SectoresIndexRoute,
   SistemasIndexRoute: SistemasIndexRoute,
   SolucionesIndexRoute: SolucionesIndexRoute,

@@ -14,26 +14,26 @@ import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SectionHeader from "@/components/rckt/SectionHeader";
 import { useInView } from "@/hooks/use-in-view";
 
-const SITE_URL = "https://rckt-latam.lovable.app";
+const SITE_URL = "https://rckt.lat";
 
 const MODALIDADES = [
   {
     nombre: "Operar",
     pill: "Por defecto",
     quees: "RCKT opera el sistema con responsabilidad sobre el resultado. Es la modalidad por defecto.",
-    cuando: "Demand o Revenue Engine.",
+    cuando: "Demand, Conversion, Revenue Engine y Growth OS.",
   },
   {
     nombre: "Sprint",
     pill: null,
-    quees: "Implementación acotada de 6-8 semanas, alcance y aceptación cerrados antes de empezar.",
-    cuando: "Operations, Sales Flow o implementaciones puntuales.",
+    quees: "Implementación acotada de 6–8 semanas, con alcance y aceptación cerrados antes de empezar.",
+    cuando: "Operations; Sales Flow suelto; web y ecommerce; migraciones de CRM.",
   },
   {
     nombre: "Partner",
     pill: null,
-    quees: "Advisory, in-housing, capacitación o growth lead fraccional.",
-    cuando: "Equipos que quieren nuestro método y criterio, no nuestra ejecución.",
+    quees: "Advisory, in-housing, capacitación o un growth lead fraccional.",
+    cuando: "Empresas con equipo interno que quieren nuestro método y criterio, no nuestra ejecución.",
   },
 ];
 
@@ -49,32 +49,33 @@ const CONDICIONES = [
 const SELLOS = ["No se venden", "No se facturan aparte", "No se negocian"];
 
 const ESCALERA = [
-  { periodo: "Semanas 0-3", nombre: "Revenue Diagnostic", href: "/sistemas/revenue-diagnostic" },
-  { periodo: "Meses 1-6", nombre: "Demand o Revenue Engine", href: "/sistemas/revenue-engine" },
-  { periodo: "Meses 6-12", nombre: "+ Operations Sprint", href: "/sistemas/operations-system" },
-  { periodo: "Mes 12+", nombre: "Growth OS" },
+  { periodo: "Semanas 0–3", nombre: "Revenue Diagnostic", href: "/sistemas/revenue-diagnostic" },
+  { periodo: "Meses 1–3", nombre: "Demand System", href: "/sistemas/demand-system" },
+  { periodo: "Meses 1–6", nombre: "Revenue Engine", href: "/sistemas/revenue-engine" },
+  { periodo: "Meses 6–12", nombre: "+ Operations Sprint", href: "/sistemas/operations-system" },
+  { periodo: "Mes 12 en adelante", nombre: "Growth OS" },
 ];
 
 const TRIGGERS = [
   {
     de: "Diagnostic",
-    a: "Demand o Engine",
-    que: "Mapa de fugas con números reales y roadmap de 90 días priorizado por impacto económico.",
+    a: "Demand o Revenue Engine",
+    que: "Roadmap presentado; fuga principal identificada y cuantificada",
   },
   {
     de: "Demand",
     a: "Revenue Engine",
-    que: "Fuga documentada después del lead: respuesta tarde, sin seguimiento o fuera del CRM.",
+    que: "Fuga documentada después del prospecto: respuesta en más de una hora, menos del 60% de prospectos contactados, asesores fuera del CRM",
   },
   {
     de: "Revenue Engine",
     a: "+ Operations",
-    que: "Proceso manual detectado de alto volumen con reglas claras y datos accesibles.",
+    que: "Un proceso manual detectado en la revisión mensual, con 50 casos o más por semana",
   },
   {
     de: "Cualquiera",
     a: "Growth OS",
-    que: "Línea base cumplida, dos o más sistemas activos y un decisor que patrocina.",
+    que: "6 meses o más de relación, línea base cumplida, dos o más sistemas activos y un decisor que patrocina",
   },
 ];
 
@@ -188,10 +189,11 @@ function ComoTrabajamosPage() {
       <SiteHeader />
       <main id="top">
         <SystemPageHero
-          label="Nosotros"
-          title={<>Cómo <em className="hero-hand">trabajamos.</em></>}
-          descriptor="Tres modalidades, una base común y una escalera de cuenta que no se salta pasos."
-          ctaLabel="Revisar mi proceso comercial →"
+          label="Cómo trabajamos"
+          title={<>Tres modalidades, <span className="text-orange">una misma <span className="hero-hand">base.</span></span></>}
+          context="Hay tres formas de contratar el mismo conocimiento: Operar, cuando RCKT opera el sistema y responde por el resultado; Sprint, una implementación acotada de 6 a 8 semanas con alcance y aceptación cerrados antes de empezar; y Partner, cuando tu equipo interno quiere nuestro método y criterio, no nuestra ejecución. Las tres se apoyan en las mismas seis condiciones, que se cumplen en toda cuenta."
+          ctaLabel="Revisar mi proceso comercial"
+          ctaHref="/sistemas/revenue-diagnostic"
         />
 
         {/* 1. Modalidades */}
@@ -242,7 +244,7 @@ function ComoTrabajamosPage() {
             {/* desktop escalera */}
             <div className="ct-ladder relative mt-16 hidden md:block">
               <div aria-hidden="true" className="ct-ladder__line absolute inset-x-0 bottom-[40px] h-px origin-left" />
-              <div className="relative grid grid-cols-4 items-end gap-4">
+              <div className="relative grid grid-cols-5 items-end gap-4">
                 {ESCALERA.map((e, i) => (
                   <EscalonCard key={e.nombre} e={e} i={i} />
                 ))}

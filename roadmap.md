@@ -51,3 +51,4 @@
 - [x] Paso A5 — Reconstruir las cuatro páginas de Soluciones desde la referencia España con copy LATAM.
 - [x] Paso A5 — Reconstruir el índice y seis páginas de Sectores con sus variantes completas/cortas.
 - [x] Paso A5 — Validar 11 páginas en 1280/1024/390 px, claro/oscuro, metadatos, FAQ y ausencia de cambios protegidos.
+- [ ] Paso A6 — Portar Nosotros, Cómo trabajamos, Trabaja con nosotros, Casos, Recursos, Contacto y legales; validar integraciones y protegidos.
