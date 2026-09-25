@@ -34,7 +34,7 @@ function MercadosPage() {
         <SystemPageHero
           label="MERCADOS"
           title={<>Dónde <span className="hero-hand">operamos.</span></>}
-          context="Operamos en Latinoamérica desde Colombia, con Bogotá, Medellín y Barranquilla como mercados activos. Abrimos nuevas ciudades cuando tenemos capacidad real de atención y contenido útil para cada una."
+           context="Operamos en Latinoamérica desde Colombia, con Bogotá, Medellín y Barranquilla como mercados activos. Abrimos nuevas ciudades cuando tenemos capacidad real de atención."
           ctaLabel="Revisar mi proceso comercial →"
           ctaHref="/sistemas/revenue-diagnostic"
         />

@@ -76,11 +76,11 @@ function Contacto() {
           label="Contacto"
           title={
             <>
-              Cuéntanos cómo está hoy tu <span className="hero-hand">operación.</span>
+               Escríbenos por donde te quede <span className="hero-hand">más fácil</span>.
             </>
           }
           descriptor="Formulario o WhatsApp — lo que prefieras, llega al mismo lugar."
-          context="WhatsApp y el formulario de calificación están al mismo nivel: los dos llegan al mismo CRM con su origen y hacen las mismas preguntas."
+           context="WhatsApp y el formulario están al mismo nivel: los dos llegan al mismo CRM con su origen y te hacemos las mismas preguntas."
           ctaLabel="Ir al formulario →"
           ctaHref="#formulario"
         />

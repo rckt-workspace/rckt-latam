@@ -202,10 +202,10 @@ function CasosPage() {
           label="Casos"
           title={
             <>
-              Ningún resultado <span className="hero-hand">sin ficha.</span>
+               Primero la ficha, después la <span className="hero-hand">cifra</span>.
             </>
           }
-          descriptor="Aquí publicaremos los casos de éxito de nuestros clientes, cada uno con su ficha completa: situación inicial, inversión, intervención, resultado y método de medición."
+           descriptor="Aquí vas a ver casos de clientes de Colombia, cada uno con su punto de partida, la pauta invertida, lo que cambiamos y cómo lo medimos."
           ctaLabel="Revisar mi proceso comercial"
           ctaHref="/sistemas/revenue-diagnostic"
         />
@@ -224,14 +224,14 @@ function CasosPage() {
               className="cs-rev cs-strike font-display font-semibold tracking-tight"
               style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", lineHeight: 1.05 }}
             >
-              +300% de leads
+               47 conversaciones
             </p>
             <p
               data-reveal
               className="cs-rev font-serif-accent mx-auto mt-8 max-w-[26ch] text-[28px] leading-[1.3]"
               style={{ ["--d" as string]: "500ms" }}
             >
-              Sin denominador no es un caso, es un titular.
+               Sin saber cuántas compraron, no es un caso.
             </p>
             <p
               data-reveal
@@ -263,7 +263,7 @@ function CasosPage() {
                     <span className="label-orange">Anatomía de una ficha</span>
                   </div>
                   <h2 className="font-display text-[30px] leading-[1.12] font-semibold tracking-tight md:text-[38px]">
-                    Ocho campos, <em className="font-serif-accent">siempre los mismos.</em>
+                     Así se lee una ficha.
                   </h2>
                   <ul className="mt-8 space-y-0.5">
                     {CAMPOS.map((c, i) => (
@@ -354,11 +354,10 @@ function CasosPage() {
 
                 <div className="mx-auto mt-14 max-w-[620px] text-center">
                   <p className="text-[16px] leading-[1.6] text-foreground">
-                    Aquí publicaremos los casos de éxito de nuestros clientes, cada uno con su ficha completa: situación inicial, inversión, intervención, resultado y método de medición.
+                     Aquí vas a encontrar los casos de éxito de clientes en Colombia. Cada ficha se publica solo cuando tiene línea base y resultado medido.
                   </p>
                   <p className="mt-3 text-[14px] leading-[1.6] text-muted-foreground">
-                    Primero casos de Colombia. Un caso de otro mercado solo se publica si el sector coincide, y siempre
-                    indicando su país.
+                     Primero casos de Colombia. Un caso de España solo se publica si el sector coincide, y siempre indicando el país.
                   </p>
                 </div>
               </>
