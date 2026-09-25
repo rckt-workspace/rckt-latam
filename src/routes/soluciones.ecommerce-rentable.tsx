@@ -1,28 +1,29 @@
-import type { CSSProperties } from "react";
+import { Image, MessageCircle, ShoppingBag, TrendingUp } from "lucide-react";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
-import heroAsset from "@/assets/rckt-hero.jpg";
-
-const delay = (i: number) => ({ "--i": i }) as CSSProperties;
+import FaqSection, { faqJsonLd, type FaqItem } from "@/components/rckt/FaqSection";
+import MilestoneCards from "@/components/rckt/MilestoneCards";
+import SignalCards from "@/components/rckt/SignalCards";
+import SolutionSystemPanel from "@/components/rckt/SolutionSystemPanel";
+import SystemFinalCta from "@/components/rckt/SystemFinalCta";
+import SystemPageHero from "@/components/rckt/SystemPageHero";
+import SystemSection from "@/components/rckt/SystemSection";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
-const tePasa = [
-  "Creatividad agotada.",
-  "Catálogo sin lectura comercial.",
-  "WhatsApp entra en la venta pero nadie lo mide.",
-  "El costo de adquisición sube más rápido que el ticket promedio.",
-] as const;
+const signals = [
+  { titulo: "Creatividad agotada.", Icono: Image },
+  { titulo: "Catálogo sin lectura comercial.", Icono: ShoppingBag },
+  { titulo: "WhatsApp entra en la venta pero nadie lo mide.", Icono: MessageCircle },
+  { titulo: "El costo de adquisición sube más rápido que el ticket promedio.", Icono: TrendingUp },
+];
 
-const noventa = [
-  ["01.", "Testing creativo continuo", "Producción y rotación con criterio, no por intuición."],
-  [
-    "02.",
-    "Medición por margen de contribución",
-    "No solo ROAS: el resultado se lee en el margen.",
-  ],
-  ["03.", "WhatsApp integrado al embudo", "Si aplica, la conversación entra al mismo sistema."],
-] as const;
+const milestones = [
+  { dia: "01", texto: "Testing creativo continuo — Producción y rotación con criterio, no por intuición." },
+  { dia: "02", texto: "Medición por margen de contribución — No solo ROAS: el resultado se lee en el margen." },
+  { dia: "03", texto: "WhatsApp integrado al embudo — Si aplica, la conversación entra al mismo sistema." },
+];
+const FAQS: FaqItem[] = [];
 
 export const Route = createFileRoute("/soluciones/ecommerce-rentable")({
   staticData: { sitemap: true },
@@ -44,6 +45,7 @@ export const Route = createFileRoute("/soluciones/ecommerce-rentable")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: SITE_URL + "/soluciones/ecommerce-rentable" }],
+    scripts: FAQS.length > 0 ? [faqJsonLd(FAQS)] : [],
   }),
   component: EcommercePage,
   errorComponent: EcommerceError,
@@ -56,101 +58,13 @@ function EcommercePage() {
   return (
     <div className="rckt-site tcn-page">
       <main id="top">
-        <section className="subpage-hero">
-          <div className="subpage-hero-photo" aria-hidden="true">
-            <img src={heroAsset} alt="" />
-            <span className="subpage-hero-photo-overlay" />
-          </div>
-          <span className="tcn-orb tcn-orb-hero-corner" aria-hidden="true" />
-          <span className="tcn-orb tcn-orb-hero" aria-hidden="true" />
-          <SiteHeader />
-          <div className="container">
-            <div className="subpage-hero-inner">
-              <span className="kicker">Soluciones</span>
-              <h1>Inviertes en pauta y no crece con margen</h1>
-              <p className="sub">El ROAS sube en la plataforma; el margen no sube en el banco.</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="band" data-mode="motion" id="te-pasa-esto">
-          <span className="tcn-orb tcn-orb-cultura-left" aria-hidden="true" />
-          <div className="container">
-            <div className="section-head">
-              <span className="num">01.</span>
-              <span className="kicker ital-label">Te pasa esto</span>
-              <span className="divider"></span>
-            </div>
-            <div className="lineas-grid rv-group">
-              {tePasa.map((texto, i) => (
-                <div className="linea-card rv" key={texto} style={delay(i)}>
-                  <span className="num">{String(i + 1).padStart(2, "0")}</span>
-                  <p>{texto}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="band band-alt" id="lo-que-hacemos">
-          <span className="tcn-orb tcn-orb-cultura-right" aria-hidden="true" />
-          <div className="container">
-            <div className="section-head">
-              <span className="num">02.</span>
-              <span className="kicker ital-label">Lo que hacemos</span>
-              <span className="divider"></span>
-            </div>
-            <div className="juicio rv">
-              <span className="tag">Demand System</span>
-              Demand System, con Sales Flow si WhatsApp pesa en la conversión.
-            </div>
-          </div>
-        </section>
-
-        <section className="band" data-mode="motion" id="noventa-dias">
-          <div className="container">
-            <div className="section-head">
-              <span className="num">03.</span>
-              <span className="kicker ital-label">Qué cambia en 90 días</span>
-              <span className="divider"></span>
-            </div>
-            <div className="metodo-grid rv-group">
-              {noventa.map(([n, titulo, texto], i) => (
-                <div className="metodo-step rv" key={titulo} style={delay(i)}>
-                  <span className="num">{n}</span>
-                  <h4>{titulo}</h4>
-                  <p>{texto}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="band band-alt" id="para-quien-no-es">
-          <div className="container">
-            <div className="section-head">
-              <span className="num">04.</span>
-              <span className="kicker ital-label">Para quién no es</span>
-              <span className="divider"></span>
-            </div>
-            <div className="sol-note rv">
-              <p>
-                Tiendas sin margen para sostener pauta, catálogos sin unit economics claras.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="cta-final">
-          <span className="tcn-orb tcn-orb-cta" aria-hidden="true" />
-          <div className="container">
-            <span className="kicker">Siguiente paso</span>
-            <h2 className="rv">Medimos antes de tocar nada.</h2>
-            <a className="btn btn-primary" href="/sistemas/revenue-diagnostic">
-              Revisar mi proceso comercial →
-            </a>
-          </div>
-        </section>
+        <SystemPageHero label="Ecommerce rentable" title={<>Inviertes en pauta y no crece con <em>margen</em></>} descriptor="El ROAS sube en la plataforma; el margen no sube en el banco." promise="Demand System con Sales Flow cuando WhatsApp pesa en la conversión." ctaLabel="Revisar mi proceso comercial →" />
+        <SystemSection id="te-pasa-esto" num="01." label="Señales" title={<>El ROAS no cuenta toda la <em className="font-serif-accent">historia</em>.</>} phrase="Creatividad, catálogo, WhatsApp y costo de adquisición muestran dónde se pierde margen."><SignalCards items={signals} /></SystemSection>
+        <SystemSection id="lo-que-hacemos" num="02." label="Lo que hacemos" title={<>Demanda que se lee en el <em className="font-serif-accent">margen</em>.</>} phrase="Demand System, con Sales Flow cuando WhatsApp pesa en la conversión."><SolutionSystemPanel features={[{ name: "Demand System", detail: "Demand System, con Sales Flow si WhatsApp pesa en la conversión.", Icon: TrendingUp }]} system="Demand System" summary="Demand System, con Sales Flow si WhatsApp pesa en la conversión." href="/sistemas/demand-system" /></SystemSection>
+        <SystemSection id="noventa-dias" num="03." label="Qué cambia en 90 días" title={<>Tres cambios que sí llegan al <em className="font-serif-accent">negocio</em>.</>} phrase="Creatividad, margen y conversación dentro del mismo sistema."><MilestoneCards items={milestones} kicker="Cambio" /></SystemSection>
+        <SystemSection id="para-quien-no-es" num="04." label="Para quién no es" title={<>La base también tiene que estar <em className="font-serif-accent">lista</em>.</>}><div className="solution-honesty"><p>Tiendas sin margen para sostener pauta, catálogos sin unit economics claras.</p></div></SystemSection>
+        <FaqSection items={FAQS} />
+        <SystemFinalCta label="Revisar mi proceso comercial →" />
       </main>
       <SiteFooter />
     </div>

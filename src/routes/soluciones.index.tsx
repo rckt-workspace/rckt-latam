@@ -1,27 +1,11 @@
-import type { CSSProperties } from "react";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
-import heroAsset from "@/assets/rckt-hero.jpg";
-
-const delay = (i: number) => ({ "--i": i }) as CSSProperties;
+import SolutionCards from "@/components/rckt/SolutionCards";
+import SystemFinalCta from "@/components/rckt/SystemFinalCta";
+import SystemPageHero from "@/components/rckt/SystemPageHero";
+import SystemSection from "@/components/rckt/SystemSection";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
-
-const soluciones = [
-  [
-    "01.",
-    "Captación y cierre",
-    "Pagas por prospectos y no sabes cuáles compran",
-    "/soluciones/captacion-y-cierre",
-  ],
-  [
-    "02.",
-    "Ecommerce rentable",
-    "Inviertes en pauta y no crece con margen",
-    "/soluciones/ecommerce-rentable",
-  ],
-  ["03.", "Operación", "Tu equipo hace lo mismo cien veces por semana", "/soluciones/operacion"],
-] as const;
 
 export const Route = createFileRoute("/soluciones/")({
   staticData: { sitemap: true },
@@ -56,63 +40,9 @@ function SolucionesPage() {
   return (
     <div className="rckt-site tcn-page">
       <main id="top">
-        <section className="subpage-hero">
-          <div className="subpage-hero-photo" aria-hidden="true">
-            <img src={heroAsset} alt="" />
-            <span className="subpage-hero-photo-overlay" />
-          </div>
-          <span className="tcn-orb tcn-orb-hero-corner" aria-hidden="true" />
-          <span className="tcn-orb tcn-orb-hero" aria-hidden="true" />
-          <SiteHeader />
-          <div className="container">
-            <div className="subpage-hero-inner">
-              <span className="kicker">Soluciones</span>
-              <h1>Entras por tu problema, no por el nombre de un sistema.</h1>
-            </div>
-          </div>
-        </section>
-
-        <section className="band" data-mode="motion" id="puertas">
-          <span className="tcn-orb tcn-orb-cultura-left" aria-hidden="true" />
-          <span className="tcn-orb tcn-orb-vacantes" aria-hidden="true" />
-          <div className="container">
-            <div className="section-head">
-              <span className="num">01.</span>
-              <span className="kicker ital-label">Tres puertas de entrada</span>
-              <span className="divider"></span>
-            </div>
-            <div className="sol-cards rv-group">
-              {soluciones.map(([n, titulo, senal, href], i) => (
-                <div
-                  className="sol-card rv"
-                  key={titulo}
-                  style={delay(i)}
-                >
-                  <span className="sol-num">{n.replace(".", "")}</span>
-                  <h3>{titulo}</h3>
-                  <p>{senal}</p>
-                  <div className="sol-links">
-                    <a href={href}>Ver solución →</a>
-                    <a className="secondary" href="/sistemas/revenue-diagnostic">
-                      Revisar mi proceso comercial →
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="cta-final">
-          <span className="tcn-orb tcn-orb-cta" aria-hidden="true" />
-          <div className="container">
-            <span className="kicker">Siguiente paso</span>
-            <h2 className="rv">Toda cuenta empieza por el diagnóstico.</h2>
-            <a className="btn btn-primary" href="/sistemas/revenue-diagnostic">
-              Revisar mi proceso comercial →
-            </a>
-          </div>
-        </section>
+        <SystemPageHero label="Soluciones" title={<>Entras por tu problema, no por el nombre de un <em>sistema</em>.</>} promise="Tres puertas de entrada según el problema real de tu negocio, medidas del clic al cierre." ctaLabel="Revisar mi proceso comercial →" />
+        <SystemSection id="puertas" num="01." label="Tres puertas de entrada" title={<>El problema decide por dónde <em className="font-serif-accent">empezamos</em>.</>} phrase="Captación y cierre, ecommerce rentable u operación: primero ubicamos la fuga."><SolutionCards /></SystemSection>
+        <SystemFinalCta title={<>Toda cuenta empieza por el <em className="font-serif-accent">diagnóstico</em>.</>} label="Revisar mi proceso comercial →" />
       </main>
       <SiteFooter />
     </div>

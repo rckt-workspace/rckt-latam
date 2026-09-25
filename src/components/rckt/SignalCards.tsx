@@ -1,6 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 
-export type Signal = { titulo: string; frase: string; Icono: LucideIcon };
+export type Signal = { titulo: string; frase?: string; Icono: LucideIcon };
 
 export default function SignalCards({ items }: { items: Signal[] }) {
   const grid = items.slice(0, 4);
@@ -19,7 +19,7 @@ function SignalCard({ n, signal, wide = false }: { n: number; signal: Signal; wi
     <article className={`signal-card ${wide ? "signal-card--wide" : ""}`}>
       <div className="signal-card__body">
         <div className="signal-card__heading"><span className="signal-card__num">{n}</span><h3>{signal.titulo}</h3></div>
-        <p>{signal.frase}</p>
+        {signal.frase ? <p>{signal.frase}</p> : null}
       </div>
       <span className="signal-card__art" aria-hidden="true"><Icon /></span>
     </article>
