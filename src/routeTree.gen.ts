@@ -26,7 +26,6 @@ import { Route as CasosIndexRouteImport } from './routes/casos.index'
 import { Route as LegalAvisoLegalRouteImport } from './routes/legal.aviso-legal'
 import { Route as LegalCookiesRouteImport } from './routes/legal.cookies'
 import { Route as LegalPrivacidadRouteImport } from './routes/legal.privacidad'
-import { Route as LpSalesFlowRouteImport } from './routes/lp.sales-flow'
 import { Route as MercadosIndexRouteImport } from './routes/mercados.index'
 import { Route as MercadosBarranquillaRouteImport } from './routes/mercados.barranquilla'
 import { Route as MercadosBogotaRouteImport } from './routes/mercados.bogota'
@@ -60,6 +59,7 @@ import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
 import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
 import { Route as ApiAdminVerifyRouteImport } from './routes/api/admin/verify'
 import { Route as ApiAplicacionesEnviarRouteImport } from './routes/api/aplicaciones/enviar'
+import { Route as LpSalesFlowIndexRouteImport } from './routes/lp.sales-flow.index'
 import { Route as LpSalesFlowGraciasRouteImport } from './routes/lp.sales-flow.gracias'
 import { Route as TrabajaConNosotrosAplicarIdRouteImport } from './routes/trabaja-con-nosotros_.aplicar.$id'
 import { Route as ApiAdminAiConfigRouteImport } from './routes/api/admin/ai/config'
@@ -154,11 +154,6 @@ const LegalCookiesRoute = LegalCookiesRouteImport.update({
 const LegalPrivacidadRoute = LegalPrivacidadRouteImport.update({
   id: '/legal/privacidad',
   path: '/legal/privacidad',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LpSalesFlowRoute = LpSalesFlowRouteImport.update({
-  id: '/lp/sales-flow',
-  path: '/lp/sales-flow',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MercadosIndexRoute = MercadosIndexRouteImport.update({
@@ -333,10 +328,15 @@ const ApiAplicacionesEnviarRoute = ApiAplicacionesEnviarRouteImport.update({
   path: '/api/aplicaciones/enviar',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LpSalesFlowIndexRoute = LpSalesFlowIndexRouteImport.update({
+  id: '/lp/sales-flow/',
+  path: '/lp/sales-flow/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LpSalesFlowGraciasRoute = LpSalesFlowGraciasRouteImport.update({
-  id: '/gracias',
-  path: '/gracias',
-  getParentRoute: () => LpSalesFlowRoute,
+  id: '/lp/sales-flow/gracias',
+  path: '/lp/sales-flow/gracias',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const TrabajaConNosotrosAplicarIdRoute =
   TrabajaConNosotrosAplicarIdRouteImport.update({
@@ -403,7 +403,6 @@ export interface FileRoutesByFullPath {
   '/legal/aviso-legal': typeof LegalAvisoLegalRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacidad': typeof LegalPrivacidadRoute
-  '/lp/sales-flow': typeof LpSalesFlowRouteWithChildren
   '/mercados/barranquilla': typeof MercadosBarranquillaRoute
   '/mercados/bogota': typeof MercadosBogotaRoute
   '/mercados/colombia': typeof MercadosColombiaRoute
@@ -441,6 +440,7 @@ export interface FileRoutesByFullPath {
   '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
   '/lp/sales-flow/gracias': typeof LpSalesFlowGraciasRoute
   '/trabaja-con-nosotros/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
+  '/lp/sales-flow/': typeof LpSalesFlowIndexRoute
   '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
   '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
   '/api/admin/ai/test-provider': typeof ApiAdminAiTestProviderRoute
@@ -466,7 +466,6 @@ export interface FileRoutesByTo {
   '/legal/aviso-legal': typeof LegalAvisoLegalRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacidad': typeof LegalPrivacidadRoute
-  '/lp/sales-flow': typeof LpSalesFlowRouteWithChildren
   '/mercados/barranquilla': typeof MercadosBarranquillaRoute
   '/mercados/bogota': typeof MercadosBogotaRoute
   '/mercados/colombia': typeof MercadosColombiaRoute
@@ -504,6 +503,7 @@ export interface FileRoutesByTo {
   '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
   '/lp/sales-flow/gracias': typeof LpSalesFlowGraciasRoute
   '/trabaja-con-nosotros/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
+  '/lp/sales-flow': typeof LpSalesFlowIndexRoute
   '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
   '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
   '/api/admin/ai/test-provider': typeof ApiAdminAiTestProviderRoute
@@ -530,7 +530,6 @@ export interface FileRoutesById {
   '/legal/aviso-legal': typeof LegalAvisoLegalRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacidad': typeof LegalPrivacidadRoute
-  '/lp/sales-flow': typeof LpSalesFlowRouteWithChildren
   '/mercados/barranquilla': typeof MercadosBarranquillaRoute
   '/mercados/bogota': typeof MercadosBogotaRoute
   '/mercados/colombia': typeof MercadosColombiaRoute
@@ -568,6 +567,7 @@ export interface FileRoutesById {
   '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
   '/lp/sales-flow/gracias': typeof LpSalesFlowGraciasRoute
   '/trabaja-con-nosotros_/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
+  '/lp/sales-flow/': typeof LpSalesFlowIndexRoute
   '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
   '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
   '/api/admin/ai/test-provider': typeof ApiAdminAiTestProviderRoute
@@ -595,7 +595,6 @@ export interface FileRouteTypes {
     | '/legal/aviso-legal'
     | '/legal/cookies'
     | '/legal/privacidad'
-    | '/lp/sales-flow'
     | '/mercados/barranquilla'
     | '/mercados/bogota'
     | '/mercados/colombia'
@@ -633,6 +632,7 @@ export interface FileRouteTypes {
     | '/api/aplicaciones/enviar'
     | '/lp/sales-flow/gracias'
     | '/trabaja-con-nosotros/aplicar/$id'
+    | '/lp/sales-flow/'
     | '/api/admin/ai/config'
     | '/api/admin/ai/models'
     | '/api/admin/ai/test-provider'
@@ -658,7 +658,6 @@ export interface FileRouteTypes {
     | '/legal/aviso-legal'
     | '/legal/cookies'
     | '/legal/privacidad'
-    | '/lp/sales-flow'
     | '/mercados/barranquilla'
     | '/mercados/bogota'
     | '/mercados/colombia'
@@ -696,6 +695,7 @@ export interface FileRouteTypes {
     | '/api/aplicaciones/enviar'
     | '/lp/sales-flow/gracias'
     | '/trabaja-con-nosotros/aplicar/$id'
+    | '/lp/sales-flow'
     | '/api/admin/ai/config'
     | '/api/admin/ai/models'
     | '/api/admin/ai/test-provider'
@@ -721,7 +721,6 @@ export interface FileRouteTypes {
     | '/legal/aviso-legal'
     | '/legal/cookies'
     | '/legal/privacidad'
-    | '/lp/sales-flow'
     | '/mercados/barranquilla'
     | '/mercados/bogota'
     | '/mercados/colombia'
@@ -759,6 +758,7 @@ export interface FileRouteTypes {
     | '/api/aplicaciones/enviar'
     | '/lp/sales-flow/gracias'
     | '/trabaja-con-nosotros_/aplicar/$id'
+    | '/lp/sales-flow/'
     | '/api/admin/ai/config'
     | '/api/admin/ai/models'
     | '/api/admin/ai/test-provider'
@@ -785,7 +785,6 @@ export interface RootRouteChildren {
   LegalAvisoLegalRoute: typeof LegalAvisoLegalRoute
   LegalCookiesRoute: typeof LegalCookiesRoute
   LegalPrivacidadRoute: typeof LegalPrivacidadRoute
-  LpSalesFlowRoute: typeof LpSalesFlowRouteWithChildren
   MercadosBarranquillaRoute: typeof MercadosBarranquillaRoute
   MercadosBogotaRoute: typeof MercadosBogotaRoute
   MercadosColombiaRoute: typeof MercadosColombiaRoute
@@ -821,7 +820,9 @@ export interface RootRouteChildren {
   ApiAdminLogoutRoute: typeof ApiAdminLogoutRoute
   ApiAdminVerifyRoute: typeof ApiAdminVerifyRoute
   ApiAplicacionesEnviarRoute: typeof ApiAplicacionesEnviarRoute
+  LpSalesFlowGraciasRoute: typeof LpSalesFlowGraciasRoute
   TrabajaConNosotrosAplicarIdRoute: typeof TrabajaConNosotrosAplicarIdRoute
+  LpSalesFlowIndexRoute: typeof LpSalesFlowIndexRoute
   ApiAdminAiConfigRoute: typeof ApiAdminAiConfigRoute
   ApiAdminAiModelsRoute: typeof ApiAdminAiModelsRoute
   ApiAdminAiTestProviderRoute: typeof ApiAdminAiTestProviderRoute
@@ -951,13 +952,6 @@ declare module '@tanstack/react-router' {
       path: '/legal/privacidad'
       fullPath: '/legal/privacidad'
       preLoaderRoute: typeof LegalPrivacidadRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lp/sales-flow': {
-      id: '/lp/sales-flow'
-      path: '/lp/sales-flow'
-      fullPath: '/lp/sales-flow'
-      preLoaderRoute: typeof LpSalesFlowRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mercados/': {
@@ -1191,12 +1185,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAplicacionesEnviarRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lp/sales-flow/': {
+      id: '/lp/sales-flow/'
+      path: '/lp/sales-flow'
+      fullPath: '/lp/sales-flow/'
+      preLoaderRoute: typeof LpSalesFlowIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lp/sales-flow/gracias': {
       id: '/lp/sales-flow/gracias'
-      path: '/gracias'
+      path: '/lp/sales-flow/gracias'
       fullPath: '/lp/sales-flow/gracias'
       preLoaderRoute: typeof LpSalesFlowGraciasRouteImport
-      parentRoute: typeof LpSalesFlowRoute
+      parentRoute: typeof rootRouteImport
     }
     '/trabaja-con-nosotros_/aplicar/$id': {
       id: '/trabaja-con-nosotros_/aplicar/$id'
@@ -1264,18 +1265,6 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface LpSalesFlowRouteChildren {
-  LpSalesFlowGraciasRoute: typeof LpSalesFlowGraciasRoute
-}
-
-const LpSalesFlowRouteChildren: LpSalesFlowRouteChildren = {
-  LpSalesFlowGraciasRoute: LpSalesFlowGraciasRoute,
-}
-
-const LpSalesFlowRouteWithChildren = LpSalesFlowRoute._addFileChildren(
-  LpSalesFlowRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AvisoLegalRoute: AvisoLegalRoute,
@@ -1292,7 +1281,6 @@ const rootRouteChildren: RootRouteChildren = {
   LegalAvisoLegalRoute: LegalAvisoLegalRoute,
   LegalCookiesRoute: LegalCookiesRoute,
   LegalPrivacidadRoute: LegalPrivacidadRoute,
-  LpSalesFlowRoute: LpSalesFlowRouteWithChildren,
   MercadosBarranquillaRoute: MercadosBarranquillaRoute,
   MercadosBogotaRoute: MercadosBogotaRoute,
   MercadosColombiaRoute: MercadosColombiaRoute,
@@ -1328,7 +1316,9 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAdminLogoutRoute: ApiAdminLogoutRoute,
   ApiAdminVerifyRoute: ApiAdminVerifyRoute,
   ApiAplicacionesEnviarRoute: ApiAplicacionesEnviarRoute,
+  LpSalesFlowGraciasRoute: LpSalesFlowGraciasRoute,
   TrabajaConNosotrosAplicarIdRoute: TrabajaConNosotrosAplicarIdRoute,
+  LpSalesFlowIndexRoute: LpSalesFlowIndexRoute,
   ApiAdminAiConfigRoute: ApiAdminAiConfigRoute,
   ApiAdminAiModelsRoute: ApiAdminAiModelsRoute,
   ApiAdminAiTestProviderRoute: ApiAdminAiTestProviderRoute,

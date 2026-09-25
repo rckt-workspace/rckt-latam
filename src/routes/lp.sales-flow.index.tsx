@@ -13,7 +13,7 @@ import { scoreLead } from "@/components/rckt/leadScoring";
 import { gtmHeadScripts, saveCampaignParams, track } from "@/components/rckt/tracking";
 
 const description = "Convierte las conversaciones de WhatsApp en un proceso comercial medible. Revisa dónde se pierden las conversaciones y mide hasta la venta.";
-export const Route = createFileRoute("/lp/sales-flow")({
+export const Route = createFileRoute("/lp/sales-flow/")({
   staticData: { sitemap: false },
   head: () => ({
     meta: [
