@@ -3,6 +3,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { useCallback, useEffect, useState } from "react";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import { PostulacionForm } from "@/components/PostulacionForm";
+import GeneralCta from "@/components/rckt/GeneralCta";
 import heroAsset from "@/assets/rckt-hero.jpg";
 import { getActiveVacancies, type VacantePublica } from "@/lib/vacantes.functions";
 
@@ -221,6 +222,7 @@ function TrabajaConNosotros() {
             </div>
           </div>
         </section>
+        <GeneralCta />
       </main>
       <SiteFooter />
 

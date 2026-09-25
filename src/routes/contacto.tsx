@@ -2,6 +2,7 @@ import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { FileText, MessageCircle } from "lucide-react";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import DiagnosticForm from "@/components/rckt/DiagnosticForm";
+import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
@@ -128,6 +129,7 @@ function Contacto() {
             </aside>
           </div>
         </section>
+        <GeneralCta />
       </main>
       <SiteFooter />
     </div>

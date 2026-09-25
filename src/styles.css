@@ -49,6 +49,7 @@
   --mode-badge-text: #f5f2ed;
   --mode-text: var(--mode-accent-deep);
   --paper: var(--papel-fija);
+  --line-lt: rgba(245, 242, 237, 0.18);
   --ink: #212121;
   --ink-soft: rgba(33, 33, 33, 0.68);
   --orange: var(--naranja);
@@ -6642,3 +6643,90 @@ header.pointer-events-none img.hidden { display: none; }
   header.pointer-events-none.md\:top-6 { top: 1.5rem; }
   header.pointer-events-none.md\:top-4 { top: 1rem; }
 }
+
+
+/* Paso A2 — héroes interiores, CTA general y footer homologados con rckt.es. */
+.section-deep,
+.section-light {
+  --paper: #212121;
+  --line-lt: rgba(33, 33, 33, 0.12);
+  background: #f5f2ed;
+}
+[data-theme="dark"] .section-deep,
+[data-theme="dark"] .section-light {
+  --paper: #212121;
+  --line-lt: rgba(33, 33, 33, 0.12);
+  background: #f5f2ed;
+}
+.system-page-hero,
+[data-theme="dark"] .system-page-hero {
+  --paper: #212121;
+  position: relative;
+  isolation: isolate;
+  min-height: auto;
+  background: #f5f2ed;
+  color: #212121;
+}
+.system-page-hero h1,
+[data-theme="dark"] .system-page-hero h1 {
+  margin: 0;
+  color: #212121;
+  font-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0;
+}
+.system-page-hero h1 em.hero-hand {
+  font-family: "Homemade Apple", cursive;
+  font-size: .98em;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--naranja);
+  display: inline-block;
+  transform: rotate(-2deg);
+  padding-inline: .04em;
+}
+.system-page-hero h1 em:not(.hero-hand) {
+  color: var(--naranja);
+  font-family: "Newsreader", serif;
+  font-style: italic;
+  font-weight: 400;
+}
+.system-page-hero .hero-context-para,
+[data-theme="dark"] .system-page-hero .hero-context-para {
+  color: rgba(33, 33, 33, 0.68);
+}
+.system-page-hero .text-paper\/70,
+[data-theme="dark"] .system-page-hero .text-paper\/70 {
+  color: rgba(33, 33, 33, 0.7);
+}
+.general-cta {
+  --paper: #f5f2ed;
+  min-height: 460px;
+  background: #212121;
+  color: #f5f2ed;
+}
+.general-cta h2,
+.general-cta .text-paper,
+.general-cta .text-paper\/70 {
+  color: #f5f2ed;
+}
+.general-cta .border-paper\/20 {
+  border-color: rgba(245, 242, 237, 0.2);
+}
+.general-cta .btn-outline-lt {
+  border: 1.5px solid rgba(245, 242, 237, 0.4);
+  color: #f5f2ed;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.general-cta .btn-outline-lt:hover { opacity: .85; transform: translateY(-1px); }
+.rckt-site footer.section-deep,
+[data-theme="dark"] .rckt-site footer.section-deep {
+  --paper: #212121;
+  background: #f5f2ed;
+  color: #212121;
+}
+.rckt-site footer.section-deep .text-paper\/50 { color: rgba(33,33,33,.5); }
+.rckt-site footer.section-deep .text-paper\/55 { color: rgba(33,33,33,.55); }
+.rckt-site footer.section-deep .text-paper\/40 { color: rgba(33,33,33,.4); }
+.rckt-site footer.section-deep .text-paper\/35 { color: rgba(33,33,33,.35); }
+.rckt-site footer.section-deep .hover\:text-paper:hover { color: #212121; }
+.rckt-site footer.section-deep .border-t { border-color: rgba(33,33,33,.12); }
