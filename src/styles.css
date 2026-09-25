@@ -4935,7 +4935,7 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 .campaign-close h2 { max-width: 750px; margin: 16px auto 0; color: var(--papel-fija); font-family: "Inter Tight", sans-serif; font-size: clamp(34px, 4vw, 56px); font-weight: 600; line-height: 1.1; }
 .campaign-close .campaign-actions { justify-content: center; }
 .campaign-close .btn-orange { border: 1px solid var(--papel-fija); background: var(--papel-fija); color: var(--carbon-fija); }
-.campaign-close .hero-whatsapp-btn { border-color: color-mix(in srgb,var(--papel-fija) 55%,transparent); color: var(--papel-fija); }
+.campaign-close .hero-whatsapp-btn { border-color: color-mix(in srgb,var(--papel-fija) 55%,transparent); color: var(--carbon-fija); }
 .campaign-legal { display: flex; justify-content: center; gap: 14px; padding: 28px 24px; border-top: 1px solid var(--line); color: var(--carbon-soft); font-size: 13px; }
 .campaign-legal a:hover { color: var(--naranja); }
 .campaign-thanks { min-height: max(530px, 76svh); display: flex; align-items: center; padding-block: 88px; }
