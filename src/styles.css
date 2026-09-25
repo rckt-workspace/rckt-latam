@@ -2567,6 +2567,9 @@ header.scrolled {
 /* ---------- v13: páginas interiores (trabaja con nosotros / aplicar / panel) ---------- */
 .rckt-site .subpage-hero {
   position: relative;
+  /* z-index alto: el hero contiene el header fijo; sin esto las secciones
+     posteriores con fondo opaco lo tapan al hacer scroll */
+  z-index: 100;
   overflow: hidden;
   padding: 160px 0 40px;
   background: var(--papel);
@@ -4041,6 +4044,26 @@ header.scrolled {
   [data-theme="dark"] header .nav-links a,
   .rckt-site.tcn-page .subpage-hero header .nav-links a {
     color: var(--carbon);
+  }
+  /* La cápsula del nav siempre es clara; en modo oscuro el texto debe seguir oscuro */
+  [data-theme="dark"] header .nav-capsule .nav-links a,
+  [data-theme="dark"] header .nav-capsule .nav-dropdown-trigger {
+    color: #212121;
+  }
+  [data-theme="dark"] header .nav-capsule .theme-toggle {
+    color: #212121;
+    border-color: rgba(33, 33, 33, 0.15);
+    background: rgba(33, 33, 33, 0.05);
+  }
+  [data-theme="dark"] header .nav-capsule .theme-toggle:hover {
+    background: rgba(33, 33, 33, 0.1);
+  }
+  [data-theme="dark"] header .nav-capsule .theme-toggle__thumb {
+    background: #212121;
+    box-shadow: 0 1px 2px rgba(33, 33, 33, 0.3);
+  }
+  [data-theme="dark"] header .nav-capsule .theme-toggle__thumb svg {
+    color: #f5f2ed;
   }
   header .nav-right .hero-nav-cta,
   header .nav-capsule-right .hero-nav-cta {
@@ -5785,7 +5808,7 @@ body,
 }
 
 /* Sistemas — componentes homologados con la referencia de España. */
-.system-page-hero { position: relative; isolation: isolate; min-height: 660px; overflow: hidden; background: var(--papel-fija); color: var(--carbon-fija); }
+.system-page-hero { position: relative; z-index: 100; isolation: isolate; min-height: 660px; overflow: hidden; background: var(--papel-fija); color: var(--carbon-fija); }
 .system-page-hero__photo { position: absolute; inset: 0; z-index: 0; }
 .system-page-hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center center; }
 .system-page-hero__fade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(245,242,237,.99) 0%, rgba(245,242,237,.96) 22%, rgba(245,242,237,.82) 40%, rgba(245,242,237,.45) 58%, rgba(245,242,237,0) 78%); }
