@@ -7,6 +7,7 @@ import logoLightAsset from "@/assets/rckt-logo-light.png";
 import MethodCard, { type MethodField } from "@/components/rckt/MethodCard";
 import { SectionHeader } from "@/components/rckt/SectionHeader";
 import { SystemCards, type SystemCardData } from "@/components/rckt/SystemCards";
+import { SiteFooter } from "@/components/SiteChrome";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
@@ -596,7 +597,7 @@ function RcktLanding() {
         <ProofSection />
         <FinalCta />
       </main>
-      <div dangerouslySetInnerHTML={{ __html: footerMarkup }} />
+      <SiteFooter />
     </div>
   );
 }
