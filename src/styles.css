@@ -7231,6 +7231,33 @@ body,
 a:hover .nos-arrow {
   transform: translateX(4px);
 }
+.ct-ladder__line {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--naranja) 15%, transparent), color-mix(in srgb, var(--naranja) 90%, transparent));
+  transform: rotate(-7deg);
+}
+.ct-ladder-mobile {
+  border-left: 2px solid color-mix(in srgb, var(--naranja) 35%, transparent);
+}
+.ct-trigger-row {
+  border-color: color-mix(in srgb, var(--naranja) 18%, transparent);
+}
+.ct-trigger-from {
+  border: 1px solid color-mix(in srgb, var(--naranja) 40%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .nos-rise,
+  .ct-card-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .nos-ficha,
+  .ct-card,
+  .nos-arrow,
+  .btn-orange {
+    transition: none;
+  }
+}
 /* ── Utilities ported from Spain ── */
 @utility font-display {
   font-family: "Switzer", ui-sans-serif, system-ui, sans-serif;

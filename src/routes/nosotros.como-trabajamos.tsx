@@ -183,7 +183,7 @@ function ComoTrabajamosPage() {
   useSiteMotion([]);
 
   return (
-    <div className="rckt-site tcn-page">
+    <div className="rckt-site tcn-page nos-page">
       <SiteHeader />
       <main id="top">
         <SystemPageHero
@@ -197,7 +197,7 @@ function ComoTrabajamosPage() {
         <section className="nos-sec">
           <div className="container">
             <SectionHeader num="01." label="Tres modalidades" title="Tres formas de contratar el mismo conocimiento." />
-            <div className="mt-10 grid items-stretch gap-6 md:grid-cols-3">
+            <div className="ct-modalities-grid mt-10 grid items-stretch gap-6 md:grid-cols-3">
               {MODALIDADES.map((m, i) => (
                 <ModalidadCard key={m.nombre} m={m} i={i} />
               ))}
@@ -239,15 +239,8 @@ function ComoTrabajamosPage() {
             <SectionHeader num="03." label="La escalera" title={<>Cómo crece una <em className="font-serif-accent text-orange">cuenta</em>.</>} />
 
             {/* desktop escalera */}
-            <div className="relative mt-16 hidden md:block">
-              <div
-                aria-hidden="true"
-                className="absolute inset-x-0 bottom-[40px] h-px origin-left"
-                style={{
-                  background: "linear-gradient(90deg, rgba(252, 92, 31, 0.15), rgba(252, 92, 31, 0.9))",
-                  transform: "rotate(-4deg)",
-                }}
-              />
+            <div className="ct-ladder relative mt-16 hidden md:block">
+              <div aria-hidden="true" className="ct-ladder__line absolute inset-x-0 bottom-[40px] h-px origin-left" />
               <div className="relative grid grid-cols-4 items-end gap-4">
                 {ESCALERA.map((e, i) => (
                   <EscalonCard key={e.nombre} e={e} i={i} />
@@ -256,7 +249,7 @@ function ComoTrabajamosPage() {
             </div>
 
             {/* móvil escalera */}
-            <div className="mt-10 space-y-6 pl-6 md:hidden" style={{ borderLeft: "2px solid rgba(252, 92, 31, 0.35)" }}>
+            <div className="ct-ladder-mobile mt-10 space-y-6 pl-6 md:hidden">
               {ESCALERA.map((e) => (
                 <div key={e.nombre}>
                   <span className="label-orange block">{e.periodo}</span>
@@ -277,13 +270,9 @@ function ComoTrabajamosPage() {
               </p>
               <div className="mt-10">
                 {TRIGGERS.map((t) => (
-                  <div
-                    key={t.de + t.a}
-                    className="flex flex-col gap-4 border-t py-6 md:flex-row md:items-center md:gap-10"
-                    style={{ borderColor: "rgba(252, 92, 31, 0.18)" }}
-                  >
+                  <div key={t.de + t.a} className="ct-trigger-row flex flex-col gap-4 border-t py-6 md:flex-row md:items-center md:gap-10">
                     <div className="flex flex-wrap items-center gap-3 md:w-[420px] md:shrink-0">
-                      <span className="font-display inline-flex items-center rounded-full px-4 py-2 text-[14px] font-semibold" style={{ border: "1px solid rgba(252, 92, 31, 0.4)" }}>
+                      <span className="ct-trigger-from font-display inline-flex items-center rounded-full px-4 py-2 text-[14px] font-semibold">
                         {t.de}
                       </span>
                       <span className="text-orange" aria-hidden="true">→</span>
