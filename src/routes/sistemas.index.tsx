@@ -9,9 +9,9 @@ import { useInView } from "@/hooks/use-in-view";
 
 
 const SISTEMAS_CARDS: SystemCardData[] = [
-  { badge: "S1", kicker: "Sistema 01", title: "Generación de demanda medida hasta la venta", shortName: "Demand System", desc: "Media, creatividad, search y AI visibility, optimizados por SQL y venta.", href: "/sistemas/demand-system", art: "demand" },
-  { badge: "S2", kicker: "Sistema 02", title: "De lead a venta sin fugas", shortName: "Sales Flow", desc: "El núcleo de Conversion System: Ads → WhatsApp → calificación → CRM → seguimiento → venta.", href: "/sistemas/sales-flow", art: "sales" },
-  { badge: "S3", kicker: "Sistema 03", title: "Procesos que se ejecutan solos, con supervisión", shortName: "Operations System", desc: "Agentes y automatizaciones para procesos internos, un proceso a la vez.", href: "/sistemas/operations-system", art: "operations" },
+  { badge: "S1", kicker: "Sistema 01", title: "Generación de demanda medida hasta la venta", shortName: "Demand System", desc: "Media, creatividad, search y AI visibility, optimizados por SQL y venta.", href: "/sistemas/demand-system", art: "radar" },
+  { badge: "S2", kicker: "Sistema 02", title: "De lead a venta sin fugas", shortName: "Sales Flow", desc: "El núcleo de Conversion System: Ads → WhatsApp → calificación → CRM → seguimiento → venta.", href: "/sistemas/sales-flow", art: "flow" },
+  { badge: "S3", kicker: "Sistema 03", title: "Procesos que se ejecutan solos, con supervisión", shortName: "Operations System", desc: "Agentes y automatizaciones para procesos internos, un proceso a la vez.", href: "/sistemas/operations-system", art: "cycle" },
 ];
 
 const DIAGRAM_BOXES = [

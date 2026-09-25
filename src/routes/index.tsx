@@ -6,7 +6,7 @@ import MethodCard, { type MethodField } from "@/components/rckt/MethodCard";
 import { SectionHeader } from "@/components/rckt/SectionHeader";
 import SiteFooter from "@/components/rckt/SiteFooter";
 import SiteNav from "@/components/rckt/SiteNav";
-import { SystemCards, type SystemCardData } from "@/components/rckt/SystemCards";
+import { SystemCards, SISTEMAS_CARDS } from "@/components/rckt/SystemCards";
 
 const SITE_URL = "https://rckt.lat";
 const HERO_HAND = "humano";
@@ -123,18 +123,12 @@ function Problems() {
   );
 }
 
-const SYSTEMS: SystemCardData[] = [
-  { badge: "S1", kicker: "Demanda hasta la venta", title: "Demand System", shortName: "Demand", desc: "Manejamos tus campañas, pero no las optimizamos por leads baratos: las optimizamos por las oportunidades que tu equipo comercial acepta y por las que terminan en venta. Cada semana ves el embudo completo, no solo los clics.", href: "/sistemas/demand-system", art: "demand" },
-  { badge: "S2", kicker: "Núcleo de Conversion System", title: "Sales Flow", shortName: "Sales Flow", desc: "Hoy pagas por un lead, te escribe por WhatsApp, y ahí empieza a perderse: respuesta tarde, sin seguimiento, fuera del CRM, sin saber de qué campaña vino. Sales Flow conecta tus campañas, WhatsApp y CRM para que cada lead tenga respuesta, seguimiento y dueño.", meta: "Ads → WhatsApp → CRM → venta", href: "/sistemas/sales-flow", art: "sales" },
-  { badge: "S3", kicker: "Procesos con supervisión", title: "Operations System", shortName: "Operations", desc: "No te vendemos IA. Elegimos un proceso que tu equipo repite cien veces por semana, medimos cuánto te cuesta hoy, y en ocho semanas lo dejamos funcionando solo, con una persona aprobando lo que importa.", href: "/sistemas/operations-system", art: "operations" },
-];
-
 function Systems() {
   return (
     <section id="sistema" className="home-system-section relative isolate overflow-clip scroll-mt-28 py-14 md:py-20">
       <div className="relative z-10 mx-auto max-w-6xl px-6">
         <SectionHeader num="02." label="Un sistema operativo de crecimiento" title={<>Tres <em className="font-serif-accent">sistemas</em>.</>} phrase="Los tres sistemas siguen la cadena de ingresos de cualquier negocio: conseguir clientes, cerrarlos y atenderlos sin fricción." />
-        <div className="mt-14"><SystemCards systems={SYSTEMS} /></div>
+        <div className="mt-14"><SystemCards systems={SISTEMAS_CARDS} /></div>
         <div className="band-orange-sistema relative mt-10 overflow-hidden rounded-3xl px-8 py-10 md:px-12">
           <h3 className="relative font-display text-2xl leading-tight font-semibold text-paper-fixed md:text-3xl">Luego, el <span className="text-paper-fixed/60 text-xl md:text-2xl">sistema completo.</span></h3>
           <p className="text-paper-fixed/90 relative mt-3 max-w-2xl text-sm leading-relaxed md:text-base">Demand + Sales Flow, combinados, son Revenue Engine: nuestro producto principal.</p>
