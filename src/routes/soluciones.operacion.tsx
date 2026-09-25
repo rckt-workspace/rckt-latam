@@ -1,18 +1,22 @@
-import type { CSSProperties } from "react";
+import { AlertCircle, Copy, FileClock, Table2, Workflow } from "lucide-react";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
-import heroAsset from "@/assets/rckt-hero.jpg";
-
-const delay = (i: number) => ({ "--i": i }) as CSSProperties;
+import FaqSection, { faqJsonLd, type FaqItem } from "@/components/rckt/FaqSection";
+import SignalCards from "@/components/rckt/SignalCards";
+import SolutionSystemPanel from "@/components/rckt/SolutionSystemPanel";
+import SystemFinalCta from "@/components/rckt/SystemFinalCta";
+import SystemPageHero from "@/components/rckt/SystemPageHero";
+import SystemSection from "@/components/rckt/SystemSection";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
-const tePasa = [
-  "Cotizaciones que tardan horas y dependen de una persona.",
-  "Datos duplicados entre CRM, ERP y hojas de cálculo.",
-  "Reporting manual cada semana.",
-  "Errores que se repiten porque nadie los documenta.",
-] as const;
+const signals = [
+  { titulo: "Cotizaciones lentas", frase: "Cotizaciones que tardan horas y dependen de una persona.", Icono: FileClock },
+  { titulo: "Datos duplicados", frase: "Datos duplicados entre CRM, ERP y hojas de cálculo.", Icono: Copy },
+  { titulo: "Reporting manual", frase: "Reporting manual cada semana.", Icono: Table2 },
+  { titulo: "Errores repetidos", frase: "Errores que se repiten porque nadie los documenta.", Icono: AlertCircle },
+];
+const FAQS: FaqItem[] = [];
 
 export const Route = createFileRoute("/soluciones/operacion")({
   staticData: { sitemap: true },
@@ -35,6 +39,7 @@ export const Route = createFileRoute("/soluciones/operacion")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: SITE_URL + "/soluciones/operacion" }],
+    scripts: FAQS.length > 0 ? [faqJsonLd(FAQS)] : [],
   }),
   component: OperacionPage,
   errorComponent: OperacionError,
@@ -47,85 +52,12 @@ function OperacionPage() {
   return (
     <div className="rckt-site tcn-page">
       <main id="top">
-        <section className="subpage-hero">
-          <div className="subpage-hero-photo" aria-hidden="true">
-            <img src={heroAsset} alt="" />
-            <span className="subpage-hero-photo-overlay" />
-          </div>
-          <span className="tcn-orb tcn-orb-hero-corner" aria-hidden="true" />
-          <span className="tcn-orb tcn-orb-hero" aria-hidden="true" />
-          <SiteHeader />
-          <div className="container">
-            <div className="subpage-hero-inner">
-              <span className="kicker">Soluciones</span>
-              <h1>Tu equipo hace lo mismo cien veces por semana</h1>
-              <p className="sub">
-                Cotizaciones a mano, documentos que se copian entre sistemas, Excel donde debería
-                haber un proceso.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="band" data-mode="motion" id="te-pasa-esto">
-          <span className="tcn-orb tcn-orb-cultura-left" aria-hidden="true" />
-          <div className="container">
-            <div className="section-head">
-              <span className="num">01.</span>
-              <span className="kicker ital-label">Te pasa esto</span>
-              <span className="divider"></span>
-            </div>
-            <div className="lineas-grid rv-group">
-              {tePasa.map((texto, i) => (
-                <div className="linea-card rv" key={texto} style={delay(i)}>
-                  <span className="num">{String(i + 1).padStart(2, "0")}</span>
-                  <p>{texto}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="band band-alt" id="lo-que-hacemos">
-          <span className="tcn-orb tcn-orb-cultura-right" aria-hidden="true" />
-          <div className="container">
-            <div className="section-head">
-              <span className="num">02.</span>
-              <span className="kicker ital-label">Lo que hacemos</span>
-              <span className="divider"></span>
-            </div>
-            <div className="juicio rv">
-              <span className="tag">Operations System</span>
-              Un proceso a la vez, Sprint de 6-8 semanas, aprobación humana en lo que importa.
-            </div>
-          </div>
-        </section>
-
-        <section className="band" id="para-quien-no-es">
-          <div className="container">
-            <div className="section-head">
-              <span className="num">03.</span>
-              <span className="kicker ital-label">Para quién no es</span>
-              <span className="divider"></span>
-            </div>
-            <div className="sol-note rv">
-              <p>
-                Procesos críticos sin responsable del lado del cliente, o sin datos accesibles.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="cta-final">
-          <span className="tcn-orb tcn-orb-cta" aria-hidden="true" />
-          <div className="container">
-            <span className="kicker">Siguiente paso</span>
-            <h2 className="rv">Medimos antes de tocar nada.</h2>
-            <a className="btn btn-primary" href="/sistemas/revenue-diagnostic">
-              Revisar mi proceso →
-            </a>
-          </div>
-        </section>
+        <SystemPageHero label="Operación" title={<>Tu equipo hace lo mismo cien veces por <em>semana</em></>} descriptor="Cotizaciones a mano, documentos que se copian entre sistemas, Excel donde debería haber un proceso." promise="Operations System: un proceso a la vez, Sprint de 6-8 semanas, aprobación humana en lo que importa." ctaLabel="Revisar mi proceso →" />
+        <SystemSection id="te-pasa-esto" num="01." label="Señales" title={<>Lo repetitivo ya está costando <em className="font-serif-accent">demasiado</em>.</>} phrase="Tiempo, datos duplicados, reportes manuales y errores revelan el proceso a intervenir."><SignalCards items={signals} /></SystemSection>
+        <SystemSection id="lo-que-hacemos" num="02." label="Lo que hacemos" title={<>Un proceso a la vez, con supervisión <em className="font-serif-accent">humana</em>.</>} phrase="Un Sprint de 6–8 semanas y aprobación humana en lo que importa."><SolutionSystemPanel features={[{ name: "Operations System", detail: "Un proceso a la vez, Sprint de 6-8 semanas, aprobación humana en lo que importa.", Icon: Workflow }]} system="Operations System" summary="Un proceso a la vez, Sprint de 6-8 semanas, aprobación humana en lo que importa." href="/sistemas/operations-system" /></SystemSection>
+        <SystemSection id="para-quien-no-es" num="03." label="Para quién no es" title={<>La base también tiene que estar <em className="font-serif-accent">lista</em>.</>}><div className="solution-honesty"><p>Procesos críticos sin responsable del lado del cliente, o sin datos accesibles.</p></div></SystemSection>
+        <FaqSection items={FAQS} />
+        <SystemFinalCta label="Revisar mi proceso →" />
       </main>
       <SiteFooter />
     </div>
