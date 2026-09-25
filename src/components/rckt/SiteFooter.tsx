@@ -42,8 +42,8 @@ export default function SiteFooter() {
             <p className="font-display mt-4 text-sm text-paper/55">RCKT, Inc. — 584 Castro Street #3209, San Francisco, CA 94114, EE. UU.</p>
             <p className="font-display mt-2 text-sm text-paper/55">En Colombia: RCKT S.A.S. · NIT 902.075.396-5 · Carrera 11B # 99-25, Bogotá D.C.</p>
             <p className="label-orange mt-8 !text-[10px]">Correo</p>
-            <a href="mailto:hola@rckt.lat" className="font-display mt-3 block text-sm text-paper/55 transition-colors hover:text-paper">hola@rckt.lat (general)</a>
-            <a href="mailto:privacy@rckt.lat" className="font-display mt-2 block text-sm text-paper/55 transition-colors hover:text-paper">privacy@rckt.lat (datos personales)</a>
+            <a href="mailto:hola@rckt.lat" className="font-display mt-3 block text-sm text-paper/55 transition-colors hover:text-paper">hola@rckt.lat</a>
+            <a href="mailto:privacy@rckt.lat" className="font-display mt-2 block text-sm text-paper/55 transition-colors hover:text-paper">privacy@rckt.lat</a>
             {phone !== "[pendiente]" && <p className="font-display mt-2 text-sm text-paper/55">{phone}</p>}
             {hours !== "[pendiente]" && <p className="font-display mt-2 max-w-xs text-sm text-paper/55">{hours}</p>}
           </div>
