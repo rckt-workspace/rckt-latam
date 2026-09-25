@@ -48,7 +48,7 @@ export default function SectorPage(data: SectorPageData) {
   return (
     <div className="rckt-site tcn-page">
       <main id="top">
-        <SystemPageHero label={data.label} title={data.title} descriptor={data.descriptor} promise={data.context} ctaLabel={data.ctaLabel} ctaHref={DIAGNOSTIC_HREF} />
+        <SystemPageHero label={data.label} title={data.title} descriptor={data.descriptor} promise={data.descriptor ? undefined : data.context} ctaLabel={data.ctaLabel} ctaHref={DIAGNOSTIC_HREF} />
 
         <section className="sector-section sector-journey-section" id="como-vende">
           <div className="container">
