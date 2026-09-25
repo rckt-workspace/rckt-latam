@@ -5,13 +5,13 @@ export const Route = createFileRoute("/legal/privacidad")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Política de privacidad — RCKT" },
+      { title: "Aviso de privacidad — RCKT" },
       {
         name: "description",
         content:
           "Cómo RCKT trata los datos que nos envías a través del formulario de diagnóstico y del correo de contacto.",
       },
-      { property: "og:title", content: "Política de privacidad — RCKT" },
+      { property: "og:title", content: "Aviso de privacidad — RCKT" },
       {
         property: "og:description",
         content: "Cómo RCKT trata los datos que nos envías y qué derechos tienes sobre ellos.",
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/legal/privacidad")({
 
 function Privacidad() {
   return (
-    <LegalPage title="Política de privacidad">
+    <LegalPage title="Aviso de privacidad">
       <p>
         En RCKT tratamos los datos personales que nos facilitas con una única finalidad: responder a
         tu solicitud de diagnóstico o a tu consulta.
