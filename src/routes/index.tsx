@@ -392,8 +392,9 @@ function RcktLanding() {
 
     // --- Máquina de escribir solo en la palabra "humano" ---
     const typeTarget = document.querySelector<HTMLElement>(".hero-inner h1 .type-target");
-    if (typeTarget && !reduceMotion) {
+    if (typeTarget && !reduceMotion && typeTarget.dataset.typed !== "true") {
       const finalText = typeTarget.textContent ?? "";
+      typeTarget.dataset.typed = "true";
       typeTarget.textContent = "";
       const cursor = document.createElement("span");
       cursor.className = "type-cursor";

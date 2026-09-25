@@ -533,10 +533,6 @@ body.menu-open {
 .hero h1 .hero-line {
   display: block;
 }
-.hero h1 .type-target {
-  color: var(--carbon);
-  font-style: normal;
-}
 .hero-nowrap {
   white-space: nowrap;
 }
@@ -1908,10 +1904,6 @@ font-size: 11.5px;
 }
 
 /* ===== Hero: restauración de elementos (v4) ===== */
-.hero h1 .type-target {
-  color: var(--carbon);
-  font-style: normal;
-}
 .hero-inner {
   padding: 132px 0 104px;
 }
@@ -2244,9 +2236,6 @@ header.scrolled {
 }
 .hero-inner h1,
 .hero-inner h1 .hero-line {
-  color: var(--carbon);
-}
-.hero-inner h1 .type-target {
   color: var(--carbon);
 }
 .hero-inner p.sub {
@@ -7226,12 +7215,6 @@ body,
 a:hover .nos-arrow {
   transform: translateX(4px);
 }
-.hero-hand {
-  font-family: "Newsreader", serif;
-  font-style: italic;
-  font-weight: 400;
-}
-
 /* ── Utilities ported from Spain ── */
 @utility font-display {
   font-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
@@ -7273,7 +7256,6 @@ a:hover .nos-arrow {
 }
 
 .text-orange { color: var(--naranja); }
-.hero-hand { font-family: "Newsreader", serif; font-style: italic; font-weight: 400; }
 
 /* --- Accessibility & Visual Parity Compatible with España --- */
 
