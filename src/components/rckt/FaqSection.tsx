@@ -21,6 +21,7 @@ export function faqJsonLd(items: FaqItem[]) {
 export default function FaqSection({ items }: { items: FaqItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const baseId = useId();
+  if (items.length === 0) return null;
   return (
     <section className="system-section system-faq" id="faq">
       <div className="container">
