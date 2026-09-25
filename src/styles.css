@@ -6391,12 +6391,13 @@ body,
   }
   header nav::before { content: none; }
   header.scrolled nav { padding-block: 4px; }
-  header .nav-capsule-left { display: contents; }
-  header .logo { grid-column: 1; min-width: 0; }
+  header .nav-capsule-left { display: contents !important; }
+  header .logo { grid-column: 1; grid-row: 1; min-width: 0; }
   header .logo img { height: 26px; transition: height 600ms cubic-bezier(0.16, 1, 0.3, 1); }
   header.scrolled .logo img { height: 23px; }
   header .nav-right {
     grid-column: 2;
+    grid-row: 1;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -6431,6 +6432,7 @@ body,
   }
   .nav-links.mobile-open {
     grid-column: 1 / -1;
+    grid-row: 2;
     display: flex;
     position: static;
     inset: auto;
