@@ -8,7 +8,7 @@ import SystemPageHero from "@/components/rckt/SystemPageHero";
 import { blogRepository } from "@/lib/blog.repository";
 import type { BlogCategory, BlogPost } from "@/types/blog";
 
-const SITE_URL = "https://rckt-latam.lovable.app";
+const SITE_URL = "https://rckt.lat";
 
 export const blogIntro = {
   title: "RCKT Insights",
