@@ -19,8 +19,14 @@ const TIERS = [
   { titulo: "Scale", detalle: "Según canales e inversión en pauta." },
 ];
 const ACEPTACION = ["Tracking validado de extremo a extremo", "Estructura de campañas activa", "Primer reporte por etapa entregado"];
-// Paso 9: completar con las objeciones reales del equipo comercial LATAM.
-const FAQS: FaqItem[] = [];
+const FAQS: FaqItem[] = [
+  { question: "¿RCKT maneja pauta en Meta y Google aunque no tenga CRM todavía?", answer: "Demand System solo se vende suelto si ya tienes proceso comercial y CRM funcionando. Si no los tienes, lo que necesitas es Revenue Engine, y te lo decimos con datos en el Diagnostic." },
+  { question: "¿Por qué mi agencia me da prospectos más baratos pero igual no aumentan las ventas?", answer: "Porque el prospecto barato suele ser el que no compra. Nosotros nunca optimizamos por costo por prospecto: la unidad es SQL o venta, aunque cueste más por unidad." },
+  { question: "¿Cuál es el compromiso mínimo de tiempo para contratar Demand System?", answer: "3 meses." },
+  { question: "¿Qué NO incluye el manejo de pauta de RCKT?", answer: "El gasto en pauta (lo pagas tú, en tus propias cuentas), desarrollo web, CRM y RevOps, ni agentes conversacionales — eso vive en Sales Flow." },
+  { question: "¿Cómo mide RCKT si la pauta está funcionando, por costo por lead o por venta?", answer: "Por costo por oportunidad aceptada por ventas (SQL) y por venta, nunca por costo por prospecto." },
+  { question: "¿Qué porcentaje de prospectos deben calificar para considerar que la pauta está bien optimizada?", answer: "Al menos 45% deben calificar como MQL." },
+];
 
 export const Route = createFileRoute("/sistemas/demand-system")({
   staticData: { sitemap: true },

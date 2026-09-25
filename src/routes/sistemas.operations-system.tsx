@@ -7,8 +7,12 @@ import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SystemSection from "@/components/rckt/SystemSection";
 const SITE_URL="https://rckt-latam.lovable.app";
 const CATALOGO=["Cotizaciones desde WhatsApp o correo","Clasificación y respuesta de solicitudes","Generación y verificación de documentos","Sincronización CRM ↔ ERP","Reporting comercial","Atención post-venta de primer nivel"].map((titulo)=>({titulo,detalle:"Proceso diseñado con trazabilidad y supervisión humana."}));
-// Paso 9: completar con las objeciones reales del equipo comercial LATAM.
-const FAQS: FaqItem[]=[];
+const FAQS: FaqItem[]=[
+  {question:"¿RCKT vende chatbots de inteligencia artificial como producto?",answer:"No. Elegimos un proceso que tu equipo repite muchas veces, medimos cuánto cuesta hoy, y lo dejamos funcionando solo, con una persona aprobando lo que importa."},
+  {question:"¿Cuánto dura un Operations Sprint para automatizar un proceso interno?",answer:"6 a 8 semanas, más soporte mensual."},
+  {question:"¿Qué tipo de procesos automatiza RCKT?",answer:"Cotizaciones desde WhatsApp o correo, clasificación de solicitudes, generación y verificación de documentos, sincronización CRM-ERP, reporting comercial y atención post-venta de primer nivel."},
+  {question:"¿Qué pasa si no sé cuánto me cuesta hoy un proceso manual, igual puedo contratar un Sprint?",answer:"No. Sin línea base no hay sprint — el Revenue Diagnostic la mide primero."},
+];
 export const Route=createFileRoute("/sistemas/operations-system")({staticData:{sitemap:true},head:()=>({meta:[{title:"Operations System — RCKT"},{name:"description",content:"Procesos que se ejecutan solos, con supervisión: un Operations Sprint de 6-8 semanas y soporte mensual."},{property:"og:title",content:"Operations System — RCKT"},{property:"og:description",content:"Un proceso repetido cien veces por semana, funcionando solo en ocho semanas, con aprobación humana en lo que importa."},{property:"og:type",content:"website"},{property:"og:url",content:SITE_URL+"/sistemas/operations-system"},{name:"twitter:card",content:"summary_large_image"}],links:[{rel:"canonical",href:SITE_URL+"/sistemas/operations-system"}],scripts:FAQS.length>0?[faqJsonLd(FAQS)]:[]}),component:OperationsPage,errorComponent:OperationsError,notFoundComponent:()=> <OperationsError/>});
 function OperationsPage(){useSiteMotion([]);return <div className="rckt-site tcn-page"><main id="top">
 <SystemPageHero label="Operations System" title={<>Procesos que se ejecutan solos, con <em>supervisión</em>.</>} promise="Elegimos un proceso que tu equipo repite cien veces por semana, medimos cuánto cuesta hoy, y en ocho semanas lo dejamos funcionando solo, con una persona aprobando lo que importa."/>

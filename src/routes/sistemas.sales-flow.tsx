@@ -7,8 +7,13 @@ import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SystemSection from "@/components/rckt/SystemSection";
 const SITE_URL="https://rckt-latam.lovable.app";
 const COMPONENTES=[{titulo:"Sales Flow núcleo",detalle:"Ads ↔ WhatsApp Business API ↔ CRM, routing y asignación a asesores, calificación con agente supervisado, SLAs, secuencias, gestión de inasistencia, atribución offline."},{titulo:"Conversational Revenue",detalle:"Agentes con aprobación humana en toda decisión de venta."},{titulo:"CRM & RevOps",detalle:"El proceso comercial vive en un solo lugar."},{titulo:"Conversion Platforms",detalle:"Landing, web, ecommerce, siempre con tracking y CRM conectados."}];
-// Paso 9: completar con las objeciones reales del equipo comercial LATAM.
-const FAQS: FaqItem[]=[];
+const FAQS: FaqItem[]=[
+  {question:"¿Necesito que me hagan una página web nueva para que Sales Flow funcione?",answer:"No necesariamente, pero si haces una web con nosotros, siempre va conectada a tracking y CRM — una web sin eso es decoración, y no la vendemos así."},
+  {question:"¿Un agente de WhatsApp con IA puede cerrarle una venta a un cliente sin que un humano intervenga?",answer:"Nunca. Un agente nunca cierra una venta ni promete condiciones sin aprobación humana."},
+  {question:"¿En cuánto tiempo queda funcionando la integración de WhatsApp, campañas y CRM?",answer:"Máximo 30 días desde el inicio del setup."},
+  {question:"¿Sales Flow reemplaza mi CRM actual o se conecta con el que ya tengo?",answer:"Se conecta. Tu CRM es la fuente de verdad; lo configuramos y lo conectamos, no lo sustituimos."},
+  {question:"¿Qué necesito tener listo antes de implementar Sales Flow?",answer:"Un número de WhatsApp Business API verificado, un CRM (o migramos si hace falta), y un equipo comercial con un responsable nombrado."},
+];
 export const Route=createFileRoute("/sistemas/sales-flow")({staticData:{sitemap:true},head:()=>({meta:[{title:"Sales Flow — RCKT"},{name:"description",content:"De lead a venta sin fugas: pauta, WhatsApp y CRM conectados, con respuesta, seguimiento y dueño para cada prospecto."},{property:"og:title",content:"Sales Flow — RCKT"},{property:"og:description",content:"La web nunca se vende sola."},{property:"og:type",content:"website"},{property:"og:url",content:SITE_URL+"/sistemas/sales-flow"},{name:"twitter:card",content:"summary_large_image"}],links:[{rel:"canonical",href:SITE_URL+"/sistemas/sales-flow"}],scripts:FAQS.length>0?[faqJsonLd(FAQS)]:[]}),component:SalesFlowPage,errorComponent:SalesFlowError,notFoundComponent:()=> <SalesFlowError/>});
 function SalesFlowPage(){useSiteMotion([]);return <div className="rckt-site tcn-page"><main id="top">
 <SystemPageHero label="Sales Flow" title={<>De lead a venta sin <em>fugas</em>.</>} promise="Hoy pagas por un prospecto, te escribe por WhatsApp, y ahí empieza a perderse: respuesta tarde, sin seguimiento, fuera del CRM. Sales Flow conecta tu pauta, WhatsApp y CRM para que cada prospecto tenga respuesta, seguimiento y dueño —y para que sepas cuáles compran."/>
