@@ -1,11 +1,12 @@
 import useInView from "@/hooks/use-in-view";
+import type { CSSProperties } from "react";
 
 export type Milestone = { dia: string; texto: string; kicker?: string };
 
 export default function MilestoneCards({ items, kicker = "Día" }: { items: Milestone[]; kicker?: string }) {
   const { ref, inView } = useInView<HTMLDivElement>(0.25);
   return (
-    <div ref={ref} className={`milestones ${items.length === 4 ? "milestones--4" : ""}`} style={{ "--ms-cols": String(items.length) } as React.CSSProperties}>
+    <div ref={ref} className={`milestones ${items.length === 4 ? "milestones--4" : ""}`} style={{ "--ms-cols": String(items.length) } as CSSProperties}>
       <div className="milestones__bar"><div className="milestones__track"><span className={`milestones__fill ${inView ? "is-in" : ""}`} /></div></div>
       <div className="milestones__grid">
         {items.map((item, index) => (

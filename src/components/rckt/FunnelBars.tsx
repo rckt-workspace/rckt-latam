@@ -13,7 +13,7 @@ export default function FunnelBars({ stages, leaks = [] }: { stages: string[]; l
         const leak = leaks.find((item) => item.stage === stage);
         return (
           <div className="funnel__row" key={stage}>
-            <div className="funnel__track"><div className={`funnel__bar ${inView ? "is-in" : ""}`} style={{ width: `${width}%`, opacity: OPACITY[index] ?? 0.16, transitionDelay: `${index * 80}ms` }}>{stage}</div></div>
+            <div className="funnel__track"><div className={`funnel__bar ${inView ? "is-in" : ""}`} style={{ width: `${width}%`, "--bar-opacity": OPACITY[index] ?? 0.16, transitionDelay: `${index * 80}ms` } as React.CSSProperties}>{stage}</div></div>
             <div className="funnel__leak">{leak ? <><span className="funnel__dash" aria-hidden="true" /><span className="funnel__pill"><Droplet aria-hidden="true" />{leak.label}</span></> : null}</div>
           </div>
         );
