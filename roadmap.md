@@ -44,6 +44,6 @@
 - [x] Bloque 7 — Portar la puesta en escena de Cómo trabajamos.
 - [x] Bloque 8 — Igualar “Lo que somos / no somos” en Nosotros.
 - [x] Bloque 9 — Igualar legales y footer conservando contenido LATAM.
-- [ ] Bloque 10 — Normalizar espaciados, tarjetas, CTA y manchas; validar todas las rutas.
-- [ ] Reportar estado real por bloque y validar cada bloque en desktop/móvil, claro/oscuro antes de marcarlo completo.
-- [ ] Pausa de estabilidad: confirmar compilación y carga de Inicio, Nosotros, Cómo trabajamos y legales antes de continuar los bloques 4–8.
+- [x] Bloque 10 — Normalizar espaciados, tarjetas, CTA y manchas; validar todas las rutas.
+- [x] Reportar estado real por bloque y validar cada bloque en desktop/móvil, claro/oscuro antes de marcarlo completo.
+- [x] Pausa de estabilidad: confirmar compilación y carga de Inicio, Nosotros, Cómo trabajamos y legales antes de continuar los bloques 4–8.

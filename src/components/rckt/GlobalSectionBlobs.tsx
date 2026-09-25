@@ -90,10 +90,10 @@ const hasOnlyOrangeContent = (section: HTMLElement) => {
 
 const isExcluded = (section: HTMLElement) =>
   section.matches(
-    ".system-page-hero, #top, .general-cta, .band--orange, .hero, .subpage-hero, .cta-final",
+    ".system-page-hero, #top, .general-cta, .band--orange, .hero, .subpage-hero, .cta-final, .sales-rule-band, .system-orange-statement, .engine-metric-band",
   ) ||
   section.querySelector(
-    ":scope > .hero-photo, :scope > .subpage-hero-photo, :scope > .cta-final-photo",
+    ":scope > .hero-photo, :scope > .subpage-hero-photo, :scope > .system-page-hero__photo, :scope > .cta-final-photo",
   ) !== null ||
   hasOnlyOrangeContent(section) ||
   !hasLightSurface(section);
