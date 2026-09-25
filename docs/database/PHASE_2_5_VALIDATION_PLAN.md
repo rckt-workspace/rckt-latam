@@ -71,6 +71,7 @@ supabase link --project-ref abcdefghijklmnop
 Sustituye `abcdefghijklmnop` por tu Project Reference ID.
 
 Te pedirá:
+
 - **Database password:** La contraseña que creaste en Paso 1
 
 Confirma que dice "✔ Linked to project..."
@@ -84,6 +85,7 @@ supabase status
 ```
 
 **Esperado:**
+
 ```
 Supabase API Status: healthy
 PostgreSQL Status: healthy
@@ -98,6 +100,7 @@ supabase db push
 ```
 
 Este comando ejecutará en orden:
+
 1. Históricas (chat_leads, leads, ai_*)
 2. **Nueva:** 20260921_001_rckt_latam_foundation.sql
 
@@ -151,6 +154,7 @@ SELECT extname FROM pg_extension WHERE extname IN ('vector', 'pgcrypto');
 ```
 
 **Esperado:**
+
 ```
 vector
 pgcrypto
@@ -199,6 +203,7 @@ AND tablename IN (
 Ve a **Storage** en el panel lateral.
 
 **Esperado:** 3 buckets
+
 - `cvs` (privado)
 - `blog-media` (público)
 - `knowledge` (privado)
@@ -266,6 +271,7 @@ supabase db seed
 ```
 
 Esto ejecuta `supabase/seed.sql` e inserta:
+
 - 6 categorías de blog
 
 **Esperado:** Sin errores
@@ -287,6 +293,7 @@ SELECT name, slug FROM public.blog_categories ORDER BY orden;
 ```
 
 **Esperado:**
+
 ```
 Inteligencia Artificial | inteligencia-artificial
 Growth | growth
@@ -307,12 +314,14 @@ supabase gen types typescript --linked > src/integrations/supabase/types.ts
 ```
 
 Este comando:
+
 1. Se conecta a Supabase remoto (linked)
 2. Descarga el schema real (incluyendo las 7 nuevas tablas)
 3. Genera tipos TypeScript
 
 **Esperado:** Archivo `src/integrations/supabase/types.ts` actualizado con:
-- 13 Tables (chat_leads, leads, ai_*, vacantes, postulaciones, blog_*, knowledge_*)
+
+- 13 Tables (chat_leads, leads, ai__, vacantes, postulaciones, blog__, knowledge_*)
 - 5 Enums (vacante_estado, postulacion_tipo, postulacion_estado, blog_status, knowledge_status)
 - Types correctos para Insert/Update/Row
 
@@ -337,6 +346,7 @@ npm run build
 ```
 
 **Esperado:**
+
 ```
 ✓ built in X.XXs
 ✓ [nitro] ✔ You can preview this build
@@ -347,6 +357,7 @@ npm run build
 ## 📋 Resumen de Verificaciones
 
 ### ✅ Tablas (7 nuevas)
+
 - [ ] vacantes
 - [ ] postulaciones
 - [ ] postulacion_eventos
@@ -356,6 +367,7 @@ npm run build
 - [ ] knowledge_chunks
 
 ### ✅ ENUMs (5)
+
 - [ ] vacante_estado (borrador, activa, cerrada)
 - [ ] postulacion_tipo (candidato, servicio)
 - [ ] postulacion_estado (nueva, revision, contactado, entrevista, descartado, seleccionado)
@@ -363,11 +375,13 @@ npm run build
 - [ ] knowledge_status (pending, processing, ready, failed)
 
 ### ✅ Storage (3 buckets)
+
 - [ ] cvs (privado, 10 MB, PDF)
 - [ ] blog-media (público, 50 MB, imágenes)
 - [ ] knowledge (privado, 100 MB, documentos)
 
 ### ✅ RLS
+
 - [ ] Anon puede leer vacantes activas
 - [ ] Anon NO puede leer borradores
 - [ ] Anon puede leer posts publicados
@@ -378,15 +392,18 @@ npm run build
 - [ ] service_role tiene acceso completo
 
 ### ✅ Seed
+
 - [ ] 6 categorías de blog insertadas
 - [ ] Datos verificables
 
 ### ✅ Types
+
 - [ ] TypeScript types regenerados
 - [ ] Incluyen todas las tablas nuevas
 - [ ] Incluyen todos los ENUMs
 
 ### ✅ Build
+
 - [ ] npm run build exitoso
 - [ ] Sin errores de compilación
 
@@ -397,6 +414,7 @@ npm run build
 Una vez completadas todas las verificaciones:
 
 **Entrega a coordinador:**
+
 1. Resultado de `supabase db push` (output completo)
 2. Resultado de `supabase migration list`
 3. Resultado de verificaciones en SQL Editor (5 screenshots o outputs)
