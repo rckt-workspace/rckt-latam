@@ -6886,3 +6886,4 @@ body,
 @media (max-width: 640px) { .sector-index-grid { grid-template-columns: 1fr; } }
 .sector-section { position: relative; overflow: hidden; }
 .rckt-site > main { overflow-x: clip; }
+.sector-section { padding: clamp(64px, 9vw, 112px) 0; }
