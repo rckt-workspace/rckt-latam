@@ -57,7 +57,7 @@ function RevenueDiagnostic() {
       <main id="top">
         <SystemPageHero
           label="Revenue Diagnostic"
-          title={<>Antes de tocar nada, <em>medimos</em>.</>}
+          title={<>Antes de tocar nada, <em>medimos</em>.</>} quoteLabel="La realidad de la mayoría" quote="El 85% de los leads se pierden entre la campaña y la venta sin que nadie sepa exactamente por qué."
           descriptor="Diagnóstico de ingresos — la única puerta de entrada."
           promise="En tres semanas te decimos cuánto pierdes entre la campaña y el cierre, en qué punto exacto, y qué haríamos en 90 días. Si sigues con nosotros, lo que pagas por el diagnóstico se descuenta del sistema."
           ctaHref="#solicitar"

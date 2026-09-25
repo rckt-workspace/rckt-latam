@@ -4,20 +4,21 @@ import logoDarkAsset from "@/assets/rckt-logo-dark.png";
 import logoLightAsset from "@/assets/rckt-logo-light.png";
 import ThemeToggle from "@/components/rckt/ThemeToggle";
 import { useEffect, useState } from "react";
-import { currentTheme, THEME_EVENT } from "@/components/rckt/ThemeToggle";
+import { currentTheme, THEME_EVENT } from "@/lib/theme";
 
 export function LegalPage({ title, children }: { title: string; children: ReactNode }) {
   useSiteMotion([]);
-  const [theme, setTheme] = useState(currentTheme());
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   useEffect(() => {
+    setTheme(currentTheme());
     const onThemeChange = () => setTheme(currentTheme());
     window.addEventListener(THEME_EVENT, onThemeChange);
     return () => window.removeEventListener(THEME_EVENT, onThemeChange);
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-primary/20">
+    <div className="legal-page min-h-screen bg-background text-foreground selection:bg-primary/20">
       <div className="mx-auto max-w-3xl px-6">
         {/* Simple Header: Logo + Theme Toggle only. No main nav, no CTA. */}
         <header className="flex items-center justify-between py-10 md:py-14">
@@ -37,7 +38,7 @@ export function LegalPage({ title, children }: { title: string; children: ReactN
               {title}
             </h1>
             
-            <div className="legal-content space-y-8 text-[16px] leading-relaxed text-foreground/80 md:text-[17px]">
+            <div className="legal-content space-y-8 text-[16px] leading-relaxed text-foreground md:text-[17px]">
               {children}
             </div>
           </article>
@@ -45,7 +46,7 @@ export function LegalPage({ title, children }: { title: string; children: ReactN
           {/* Final Line / Footer info */}
           <footer className="mt-24 border-t border-border pt-10">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-              <div className="font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground/60">
+              <div className="font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
                 &gt; sistema activo · 2026
               </div>
               <a 

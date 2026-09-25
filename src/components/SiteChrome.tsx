@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import logoLightAsset from "@/assets/rckt-logo-light.png";
 import logoDarkAsset from "@/assets/rckt-logo-dark.png";
 import logoLightAsset from "@/assets/rckt-logo-light.png";
 import ThemeToggle from "@/components/rckt/ThemeToggle";
@@ -7,7 +6,7 @@ import { currentTheme, THEME_EVENT } from "@/lib/theme";
 
 /** Navegación y pie compartidos con la home, más las animaciones del sitio. */
 
-export function SiteHeader({ dark = false }: { dark?: boolean }) {
+export function SiteHeader() {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   useEffect(() => {
@@ -69,7 +68,7 @@ export function SiteFooter() {
         <div className="footer-top">
           <div className="footer-brand">
             <a className="logo" href="/" aria-label="RCKT Home">
-              <img alt="RCKT" src={dark ? logoLightAsset : logoDarkAsset} />
+              <img alt="RCKT" src={logoDarkAsset} />
             </a>
             <p>Menos ruido, más crecimiento.</p>
             <h5>Correo</h5>
