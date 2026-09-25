@@ -4332,6 +4332,10 @@ header.scrolled {
     opacity: 1;
     pointer-events: auto;
   }
+  body.menu-open header .container {
+    position: relative;
+    z-index: 200;
+  }
 }
 
 /* fix apilado: el drawer y su X quedan por encima de la cápsula derecha */
