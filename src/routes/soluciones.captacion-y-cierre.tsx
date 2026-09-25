@@ -1,4 +1,4 @@
-import { BarChart3, CalendarX, MessageCircle, Search, Workflow } from "lucide-react";
+import { BarChart3, CalendarX, Gauge, Layout, LineChart, Megaphone, MessageCircle, RefreshCw, Search, Users, Workflow } from "lucide-react";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import FaqSection, { faqJsonLd, type FaqItem } from "@/components/rckt/FaqSection";
@@ -23,6 +23,16 @@ const milestones = [
   { dia: "30", texto: "Sistema operativo con fuente de verdad." },
   { dia: "60", texto: "Prospectos entrando al CRM con seguimiento dentro del SLA." },
   { dia: "90", texto: "Revisión de línea base frente a resultado." },
+];
+const features = [
+  { name: "Demand", detail: "Tier según tu inversión en pauta", Icon: Megaphone },
+  { name: "Sales Flow", detail: "Campañas, WhatsApp y CRM conectados", Icon: Workflow },
+  { name: "Landing de conversión", detail: "Con tracking y CRM conectados", Icon: Layout },
+  { name: "CRM & RevOps", detail: "Pipeline, etapas, automatizaciones y dashboards", Icon: Gauge },
+  { name: "Medición completa", detail: "Del clic al cierre, con una sola fuente de verdad", Icon: LineChart },
+  { name: "Responsable de cuenta", detail: "Un solo responsable para todo el sistema", Icon: Users },
+  { name: "Revisión mensual con decisores", detail: "Fugas y prioridades", Icon: RefreshCw },
+  { name: "Ciclo de optimización de 90 días", detail: "Línea base frente a resultado", Icon: BarChart3 },
 ];
 const methodFields: MethodField[] = [
   { k: "Situación inicial", v: "Meta o Google reportan un número de conversiones, mientras que Ventas registra otro; las asesoras atienden WhatsApp fuera del CRM y tardan más de una hora en responder." },
@@ -72,7 +82,7 @@ function CaptacionPage() {
         <SystemPageHero label="Captación y cierre" title={<>Pagas por prospectos y no sabes cuáles <em>compran</em></>} descriptor="Meta dice una cosa; tu cuenta bancaria, otra." promise="Revenue Engine: un responsable, una fuente de verdad, medición del clic al cierre." ctaLabel="Revisar mi proceso comercial →" />
         <SystemSection id="te-pasa-esto" num="01." label="Señales" title={<>La venta se pierde antes de llegar al <em className="font-serif-accent">cierre</em>.</>} phrase="WhatsApp, tiempos de respuesta, citas y atribución dejan señales concretas."><SignalCards items={signals} /></SystemSection>
         <SystemSection id="fugas" num="02." label="El embudo real" title={<>Seis pasos. Seis lugares donde se pierde una <em className="font-serif-accent">venta</em>.</>} phrase="Seguimos el recorrido completo desde la inversión hasta el cierre."><FunnelBars stages={["Inversión", "Lead", "Contacto", "Calificación", "Cita", "Propuesta", "Venta"]} leaks={[{ stage: "Contacto", label: "Respuesta tarde" }, { stage: "Calificación", label: "WhatsApp fuera del CRM" }, { stage: "Cita", label: "Inasistencia" }, { stage: "Venta", label: "Sin atribución" }]} /></SystemSection>
-        <SystemSection id="lo-que-hacemos" num="03." label="Lo que hacemos" title={<>Un solo sistema del clic al <em className="font-serif-accent">cierre</em>.</>} phrase="Revenue Engine une Demand y Sales Flow bajo un responsable y una fuente de verdad."><SolutionSystemPanel features={[{ name: "Revenue Engine", detail: "Revenue Engine (Demand + Sales Flow): un responsable, una fuente de verdad, medición del clic al cierre.", Icon: Workflow }]} system="Revenue Engine" summary="Demand System + Sales Flow bajo un solo responsable." href="/sistemas/revenue-engine" /></SystemSection>
+        <SystemSection id="lo-que-hacemos" num="03." label="Lo que hacemos" title={<>Un solo sistema del clic al <em className="font-serif-accent">cierre</em>.</>} phrase="Revenue Engine une Demand y Sales Flow bajo un responsable y una fuente de verdad."><SolutionSystemPanel features={features} system="Revenue Engine" summary="Demand System + Sales Flow bajo un solo responsable." href="/sistemas/revenue-engine"><p className="solution-system-card__meta">Compromiso mínimo: 6 meses</p></SolutionSystemPanel></SystemSection>
         <SystemSection id="noventa-dias" num="04." label="Qué cambia en 90 días" title={<>Tres cortes para medir el <em className="font-serif-accent">cambio</em>.</>} phrase="Día 30, día 60 y día 90 contra la misma línea base."><MilestoneCards items={milestones} /></SystemSection>
         <SystemSection id="caso" num="05." label="Prueba" title={<>El método antes que el <em className="font-serif-accent">titular</em>.</>} phrase="La ficha describe cómo medimos esta puerta sin presentar un caso de cliente."><MethodCard fields={methodFields} /></SystemSection>
         <SystemSection id="para-quien-no-es" num="06." label="Para quién no es" title={<>La base también tiene que estar <em className="font-serif-accent">lista</em>.</>}><div className="solution-honesty"><p>Negocios que aún no venden, sin presupuesto de pauta, o que solo quieren optimizar por costo por lead.</p></div></SystemSection>
