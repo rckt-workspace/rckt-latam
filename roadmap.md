@@ -32,6 +32,6 @@
 - [x] Corregir contraste y apilado del nav: enlaces/toggle oscuros sobre la cápsula clara en modo oscuro, y z-index del hero para que el menú fijo no quede enterrado tras el scroll (claro y oscuro).
 - [x] Paso 8.1 — Reconstruir /contacto con SystemPageHero y layout de formulario + canales.
 - [x] Auditar /casos, /recursos, páginas legales y /rckt-equipo antes de definir el resto del Paso 8.
-- [ ] Paso 8.2 — Crear /recursos con buscador, filtros, clusters y CTA compartido.
-- [ ] Paso 8.3 — Mover legales a /legal/*, conservar redirecciones permanentes y actualizar el footer.
-- [ ] Paso 8.4 — Realinear visualmente /rckt-equipo sin modificar lógica ni datos.
+- [x] Paso 8.2 — Crear /recursos con buscador, filtros, clusters y CTA compartido.
+- [x] Paso 8.3 — Mover legales a /legal/*, conservar redirecciones permanentes y actualizar el footer.
+- [x] Paso 8.4 — Realinear visualmente /rckt-equipo sin modificar lógica ni datos.
