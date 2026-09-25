@@ -357,7 +357,7 @@ function CasosPage() {
                     Aquí publicaremos los casos de éxito de nuestros clientes, cada uno con su ficha completa: situación inicial, inversión, intervención, resultado y método de medición.
                   </p>
                   <p className="mt-3 text-[14px] leading-[1.6] text-muted-foreground">
-                    Primero casos de España. Un caso de otro mercado solo se publica si el sector coincide, y siempre
+                    Primero casos de Colombia. Un caso de otro mercado solo se publica si el sector coincide, y siempre
                     indicando su país.
                   </p>
                 </div>

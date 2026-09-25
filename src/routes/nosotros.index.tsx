@@ -7,7 +7,7 @@ import SiteNav from "@/components/rckt/SiteNav";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 
 const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
-const SITE_URL = "https://rckt-latam.lovable.app";
+const SITE_URL = "https://rckt.lat";
 
 const SOMOS = [
   "Una firma que se hace responsable del resultado comercial, no de una tarea.",

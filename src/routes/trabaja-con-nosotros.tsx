@@ -8,7 +8,7 @@ import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import { getActiveVacancies, type VacantePublica } from "@/lib/vacantes.functions";
 
-const SITE_URL = "https://rckt-latam.lovable.app";
+const SITE_URL = "https://rckt.lat";
 
 export const Route = createFileRoute("/trabaja-con-nosotros")({
   staticData: { sitemap: true },

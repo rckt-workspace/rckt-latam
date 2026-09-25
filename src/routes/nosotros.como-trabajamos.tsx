@@ -14,7 +14,7 @@ import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SectionHeader from "@/components/rckt/SectionHeader";
 import { useInView } from "@/hooks/use-in-view";
 
-const SITE_URL = "https://rckt-latam.lovable.app";
+const SITE_URL = "https://rckt.lat";
 
 const MODALIDADES = [
   {

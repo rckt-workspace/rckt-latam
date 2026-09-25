@@ -5,7 +5,7 @@ import DiagnosticForm from "@/components/rckt/DiagnosticForm";
 import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 
-const SITE_URL = "https://rckt-latam.lovable.app";
+const SITE_URL = "https://rckt.lat";
 
 // TODO: reemplazar por el número real de WhatsApp Business (formato internacional, sin signos).
 const WHATSAPP_NUMBER = "573000000000";
@@ -57,7 +57,7 @@ function Contacto() {
             </>
           }
           descriptor="Formulario o WhatsApp — lo que prefieras, llega al mismo lugar."
-          context="Con este contexto preparamos la primera conversación con datos reales."
+          context="WhatsApp y el formulario de calificación están al mismo nivel: los dos llegan al mismo CRM con su origen y hacen las mismas preguntas."
           ctaLabel="Ir al formulario →"
           ctaHref="#formulario"
         />
