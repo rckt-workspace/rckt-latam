@@ -1,20 +1,47 @@
-import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { 
-  Database, 
-  Layers, 
-  Lock, 
-  PackageOpen, 
-  ShieldCheck, 
+import { createFileRoute } from "@tanstack/react-router";
+import {
+  Ban,
+  Database,
+  Layers,
+  Lock,
+  PackageOpen,
+  ShieldCheck,
   UserRoundCheck,
-  Ban
 } from "lucide-react";
-import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
+
+import SiteFooter from "@/components/rckt/SiteFooter";
+import SiteNav from "@/components/rckt/SiteNav";
 import GeneralCta from "@/components/rckt/GeneralCta";
-import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SectionHeader from "@/components/rckt/SectionHeader";
+import SystemPageHero from "@/components/rckt/SystemPageHero";
 import { useInView } from "@/hooks/use-in-view";
+const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
+
 
 const SITE_URL = "https://rckt.lat";
+
+export const Route = createFileRoute("/nosotros/como-trabajamos")({
+  staticData: { sitemap: true },
+  head: () => ({
+    meta: [
+      { title: "Cómo trabajamos — RCKT" },
+      {
+        name: "description",
+        content: "Tres modalidades de trabajo, una base común en toda cuenta y la escalera de cuenta: del Revenue Diagnostic al Growth OS.",
+      },
+      { property: "og:title", content: "Cómo trabajamos — RCKT" },
+      {
+        property: "og:description",
+        content: "Operar, Sprint o Partner. Lo que no se negocia en ninguna cuenta y cómo escala el trabajo en el tiempo.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL + "/nosotros/como-trabajamos" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: SITE_URL + "/nosotros/como-trabajamos" }],
+  }),
+  component: ComoTrabajamosPage,
+});
 
 const MODALIDADES = [
   {
@@ -26,18 +53,20 @@ const MODALIDADES = [
   {
     nombre: "Sprint",
     pill: null,
-    quees: "Implementación acotada de 6–8 semanas, con alcance y aceptación cerrados antes de empezar.",
+    quees:
+      "Implementación acotada de 6–8 semanas, con alcance y aceptación cerrados antes de empezar.",
     cuando: "Operations; Sales Flow suelto; web y ecommerce; migraciones de CRM.",
   },
   {
     nombre: "Partner",
     pill: null,
     quees: "Advisory, in-housing, capacitación o un growth lead fraccional.",
-    cuando: "Empresas con equipo interno que quieren nuestro método y criterio, no nuestra ejecución.",
+    cuando:
+      "Empresas con equipo interno que quieren nuestro método y criterio, no nuestra ejecución.",
   },
 ];
 
-const CONDICIONES = [
+const CONDICIONES: Array<{ n: string; nombre: string; desc: string; Icon: typeof Database }> = [
   { n: "01", nombre: "Una fuente de verdad", desc: "Un solo modelo de datos de la pauta a la venta, con definiciones que el cliente firma.", Icon: Database },
   { n: "02", nombre: "IA supervisada", desc: "Documentación de qué se automatiza, aprobación humana y detección de fallos.", Icon: ShieldCheck },
   { n: "03", nombre: "Un responsable con autoridad", desc: "Una persona que decide prioridades y responde por el resultado, no solo coordina.", Icon: UserRoundCheck },
@@ -48,7 +77,8 @@ const CONDICIONES = [
 
 const SELLOS = ["No se venden", "No se facturan aparte", "No se negocian"];
 
-const ESCALERA = [
+
+const ESCALERA: Array<{ periodo: string; nombre: string; href?: string }> = [
   { periodo: "Semanas 0–3", nombre: "Revenue Diagnostic", href: "/sistemas/revenue-diagnostic" },
   { periodo: "Meses 1–3", nombre: "Demand System", href: "/sistemas/demand-system" },
   { periodo: "Meses 1–6", nombre: "Revenue Engine", href: "/sistemas/revenue-engine" },
@@ -56,7 +86,7 @@ const ESCALERA = [
   { periodo: "Mes 12 en adelante", nombre: "Growth OS" },
 ];
 
-const TRIGGERS = [
+const TRIGGERS: Array<{ de: string; a: string; que: string }> = [
   {
     de: "Diagnostic",
     a: "Demand o Revenue Engine",
@@ -79,7 +109,8 @@ const TRIGGERS = [
   },
 ];
 
-function CondicionCard({ c, i }: { c: typeof CONDICIONES[0]; i: number }) {
+
+function CondicionCard({ c, i }: { c: (typeof CONDICIONES)[number]; i: number }) {
   const { ref, inView } = useInView<HTMLDivElement>(0.15);
   const Icon = c.Icon;
   return (
@@ -90,19 +121,19 @@ function CondicionCard({ c, i }: { c: typeof CONDICIONES[0]; i: number }) {
     >
       <div className="flex items-center justify-between">
         <span className="ct-ico">
-          <Icon size={22} strokeWidth={1.5} aria-hidden="true" />
+          <Icon className="h-[22px] w-[22px]" strokeWidth={1.5} aria-hidden="true" />
         </span>
-        <span className="font-hero text-[20px] leading-none font-semibold text-orange" style={{ color: 'var(--naranja)' }}>{c.n}</span>
+        <span className="font-hero text-[20px] leading-none font-semibold text-orange">{c.n}</span>
       </div>
       <h3 className="font-display mt-5 text-[19px] font-semibold tracking-tight">{c.nombre}</h3>
-      <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
+      <p data-align="left" className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
         {c.desc}
       </p>
     </div>
   );
 }
 
-function ModalidadCard({ m, i }: { m: typeof MODALIDADES[0]; i: number }) {
+function ModalidadCard({ m, i }: { m: (typeof MODALIDADES)[number]; i: number }) {
   const { ref, inView } = useInView<HTMLDivElement>(0.15);
   return (
     <div
@@ -119,19 +150,20 @@ function ModalidadCard({ m, i }: { m: typeof MODALIDADES[0]; i: number }) {
         ) : null}
       </div>
       <p className="label-orange mt-6">Qué es</p>
-      <p className="mt-2 text-[16px] leading-relaxed text-muted-foreground">
+      <p data-align="left" className="mt-2 text-[16px] leading-relaxed text-muted-foreground">
         {m.quees}
       </p>
-      <div className="my-6 h-px w-full" style={{ background: "rgba(252, 92, 31, 0.18)" }} />
+      <div className="my-6 h-px w-full" style={{ background: "rgba(252, 92, 31,0.18)" }} />
       <p className="label-orange">Cuándo aplica</p>
-      <p className="mt-2 text-[16px] leading-relaxed text-muted-foreground">
+      <p data-align="left" className="mt-2 text-[16px] leading-relaxed text-muted-foreground">
         {m.cuando}
       </p>
     </div>
   );
 }
 
-function EscalonCard({ e, i }: { e: typeof ESCALERA[0]; i: number }) {
+
+function EscalonCard({ e, i }: { e: (typeof ESCALERA)[number]; i: number }) {
   const { ref, inView } = useInView<HTMLDivElement>(0.15);
   const inner = (
     <>
@@ -156,75 +188,56 @@ function EscalonCard({ e, i }: { e: typeof ESCALERA[0]; i: number }) {
   );
 }
 
-export const Route = createFileRoute("/nosotros/como-trabajamos")({
-  staticData: { sitemap: true },
-  head: () => ({
-    meta: [
-      { title: "Cómo trabajamos — RCKT" },
-      {
-        name: "description",
-        content: "Tres modalidades de trabajo, una base común en toda cuenta y la escalera de cuenta: del Revenue Diagnostic al Growth OS.",
-      },
-      { property: "og:title", content: "Cómo trabajamos — RCKT" },
-      {
-        property: "og:description",
-        content: "Operar, Sprint o Partner. Lo que no se negocia en ninguna cuenta y cómo escala el trabajo en el tiempo.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: SITE_URL + "/nosotros/como-trabajamos" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: SITE_URL + "/nosotros/como-trabajamos" }],
-  }),
-  component: ComoTrabajamosPage,
-  errorComponent: ComoTrabajamosError,
-  notFoundComponent: () => <ComoTrabajamosError />,
-});
-
 function ComoTrabajamosPage() {
-  useSiteMotion([]);
-
   return (
-    <div className="rckt-site tcn-page nos-page">
-      <SiteHeader />
-      <main id="top">
+    <div className="nos-page bg-background text-foreground antialiased">
+      <SiteNav />
+      <main>
         <SystemPageHero
           label="Cómo trabajamos"
           title={<>Tres modalidades, <span className="text-orange">una misma <span className="hero-hand">base.</span></span></>}
           context="Hay tres formas de contratar el mismo conocimiento: Operar, cuando RCKT opera el sistema y responde por el resultado; Sprint, una implementación acotada de 6 a 8 semanas con alcance y aceptación cerrados antes de empezar; y Partner, cuando tu equipo interno quiere nuestro método y criterio, no nuestra ejecución. Las tres se apoyan en las mismas seis condiciones, que se cumplen en toda cuenta."
-          ctaLabel="Revisar mi proceso comercial"
-          ctaHref="/sistemas/revenue-diagnostic"
+          ctaLabel="Revisar mi proceso comercial →"
+          ctaHref={DIAGNOSTIC_HREF}
         />
 
-        {/* 1. Modalidades */}
-        <section className="nos-sec">
-          <div className="container">
+        {/* 2. Modalidades */}
+        <section className="nos-sec nos-glow--tr">
+          <div className="relative mx-auto max-w-6xl px-6">
             <SectionHeader num="01." label="Tres modalidades" title="Tres formas de contratar el mismo conocimiento." />
-            <div className="ct-modalities-grid mt-10 grid items-stretch gap-6 md:grid-cols-3">
+            <div className="mt-10 grid items-stretch gap-6 md:grid-cols-3">
               {MODALIDADES.map((m, i) => (
                 <ModalidadCard key={m.nombre} m={m} i={i} />
               ))}
             </div>
-            <p className="font-display mx-auto mt-12 max-w-[760px] text-center text-[22px] leading-snug font-semibold">
-              Partner no es un servicio distinto: es <em className="font-serif-accent text-orange">la misma cabeza</em> trabajando con el equipo del cliente en lugar de por él.
+            <p
+              data-center
+              className="font-display mx-auto mt-12 max-w-[760px] text-center text-[24px] leading-snug font-semibold"
+            >
+              Partner no es un servicio distinto: es{" "}
+              <span className="font-display text-orange not-italic">la misma cabeza</span> trabajando con el
+              equipo del cliente en lugar de por él.
             </p>
           </div>
         </section>
 
-        {/* 2. Base común (Condiciones) */}
+        {/* 3. Las seis condiciones */}
         <section className="ct-base">
-          <div className="container grid gap-12 lg:grid-cols-[38%_1fr]">
+          <div className="relative z-10 mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[38%_1fr]">
             <div className="lg:sticky lg:top-[120px] lg:self-start">
-              <SectionHeader num="02." label="Base común" title={<>Las seis condiciones de <em className="font-serif-accent text-orange">toda cuenta</em>.</>} />
+              <SectionHeader num="02." label="Base común" title={<>Las seis condiciones de <span className="text-orange">toda cuenta</span>.</>} />
               <div className="mt-8 flex flex-wrap gap-3 sm:flex-col sm:items-start">
                 {SELLOS.map((s) => (
                   <span key={s} className="ct-chip font-display">
-                    <Ban size={16} className="shrink-0 text-orange" strokeWidth={1.8} />
+                    <Ban className="h-4 w-4 shrink-0 text-orange" strokeWidth={1.8} aria-hidden="true" />
                     {s}
                   </span>
                 ))}
               </div>
-              <a href="/nosotros" className="font-display mt-8 inline-flex items-center gap-2 text-[15px] font-semibold text-orange">
+              <a
+                href="/nosotros"
+                className="font-display mt-8 inline-flex items-center gap-2 text-[15px] font-semibold text-orange"
+              >
                 Ver los principios completos <span className="nos-arrow">→</span>
               </a>
             </div>
@@ -236,14 +249,21 @@ function ComoTrabajamosPage() {
           </div>
         </section>
 
-        {/* 3. Escalera y Triggers */}
-        <section className="nos-sec nos-sec--warm">
-          <div className="container">
-            <SectionHeader num="03." label="La escalera" title={<>Cómo crece una <em className="font-serif-accent text-orange">cuenta</em>.</>} />
+        {/* La escalera y triggers */}
+        <section className="nos-sec nos-sec--warm nos-glow--bl">
+          <div className="relative mx-auto max-w-6xl px-6">
+            <SectionHeader num="03." label="La escalera" title={<>Cómo crece una <span className="text-orange">cuenta</span>.</>} />
 
-            {/* desktop escalera */}
-            <div className="ct-ladder relative mt-16 hidden md:block">
-              <div aria-hidden="true" className="ct-ladder__line absolute inset-x-0 bottom-[40px] h-px origin-left" />
+            {/* desktop: peldaños ascendentes */}
+            <div className="relative mt-16 hidden md:block">
+              <div
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-[40px] h-px origin-left"
+                style={{
+                  background: "linear-gradient(90deg, rgba(252, 92, 31,0.15), rgba(252, 92, 31,0.9))",
+                  transform: "rotate(-7deg)",
+                }}
+              />
               <div className="relative grid grid-cols-5 items-end gap-4">
                 {ESCALERA.map((e, i) => (
                   <EscalonCard key={e.nombre} e={e} i={i} />
@@ -251,15 +271,22 @@ function ComoTrabajamosPage() {
               </div>
             </div>
 
-            {/* móvil escalera */}
-            <div className="ct-ladder-mobile mt-10 space-y-6 pl-6 md:hidden">
+            {/* móvil: lista vertical con línea a la izquierda */}
+            <div
+              className="mt-10 space-y-5 pl-6 md:hidden"
+              style={{ borderLeft: "2px solid rgba(252, 92, 31,0.35)" }}
+            >
               {ESCALERA.map((e) => (
                 <div key={e.nombre}>
                   <span className="label-orange block">{e.periodo}</span>
                   {e.href ? (
-                    <a href={e.href} className="font-display mt-1 block text-[18px] font-semibold tracking-tight">{e.nombre}</a>
+                    <a href={e.href} className="font-display mt-1 block text-[18px] font-semibold tracking-tight">
+                      {e.nombre}
+                    </a>
                   ) : (
-                    <span className="font-display mt-1 block text-[18px] font-semibold tracking-tight">{e.nombre}</span>
+                    <span className="font-display mt-1 block text-[18px] font-semibold tracking-tight">
+                      {e.nombre}
+                    </span>
                   )}
                 </div>
               ))}
@@ -268,22 +295,31 @@ function ComoTrabajamosPage() {
             {/* Triggers */}
             <div className="mt-24">
               <SectionHeader num="04." label="Triggers de expansión" title="Cuándo ampliar el sistema." />
-              <p className="max-w-[720px] text-[16px] leading-relaxed text-muted-foreground">
+              <p data-align="left" className="max-w-[720px] text-[16px] leading-relaxed text-muted-foreground">
                 Se documentan en la revisión mensual. Nunca es venta cruzada automática.
               </p>
               <div className="mt-10">
                 {TRIGGERS.map((t) => (
-                  <div key={t.de + t.a} className="ct-trigger-row flex flex-col gap-4 border-t py-6 md:flex-row md:items-center md:gap-10">
+                  <div
+                    key={t.de + t.a}
+                    className="flex flex-col gap-4 border-t py-6 md:flex-row md:items-center md:gap-10"
+                    style={{ borderColor: "rgba(252, 92, 31,0.18)" }}
+                  >
                     <div className="flex flex-wrap items-center gap-3 md:w-[420px] md:shrink-0">
-                      <span className="ct-trigger-from font-display inline-flex items-center rounded-full px-4 py-2 text-[14px] font-semibold">
+                      <span
+                        className="font-display inline-flex items-center rounded-full px-4 py-2 text-[14px] font-semibold"
+                        style={{ border: "1px solid rgba(252, 92, 31,0.4)" }}
+                      >
                         {t.de}
                       </span>
-                      <span className="text-orange" aria-hidden="true">→</span>
+                      <span className="text-orange" aria-hidden="true">
+                        →
+                      </span>
                       <span className="btn-orange font-display inline-flex items-center rounded-full px-4 py-2 text-[14px] font-semibold">
                         {t.a}
                       </span>
                     </div>
-                    <p className="text-[16px] leading-relaxed text-muted-foreground">
+                    <p data-align="left" className="text-[16px] leading-relaxed text-muted-foreground">
                       {t.que}
                     </p>
                   </div>
@@ -292,40 +328,7 @@ function ComoTrabajamosPage() {
             </div>
           </div>
         </section>
-
         <GeneralCta />
-      </main>
-      <SiteFooter />
-    </div>
-  );
-}
-
-function ComoTrabajamosError() {
-  const router = useRouter();
-
-  return (
-    <div className="rckt-site tcn-page">
-      <SiteHeader />
-      <main className="band">
-        <div className="container">
-          <div className="form-card" role="alert">
-            <span className="kicker">Cómo trabajamos</span>
-            <h1>No pudimos mostrar esta página.</h1>
-            <p>Intenta cargarla nuevamente. Si el problema continúa, puedes volver al inicio.</p>
-            <div className="form-actions">
-              <button
-                className="btn btn-primary"
-                type="button"
-                onClick={() => void router.invalidate()}
-              >
-                Intentar de nuevo
-              </button>
-              <a className="btn" href="/">
-                Volver al inicio
-              </a>
-            </div>
-          </div>
-        </div>
       </main>
       <SiteFooter />
     </div>
