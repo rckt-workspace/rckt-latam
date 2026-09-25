@@ -37,7 +37,6 @@ function ThankYou() {
       <p className="campaign-thanks__text">{content.text}</p>
       <span className="campaign-thanks__rule" aria-hidden="true" />
       {nivel === "sql" ? <div className="campaign-calendar">[PENDIENTE: enlace de agenda]</div> : null}
-      {content.note ? <p className="campaign-thanks__note">{content.note}</p> : null}
       {nivel === "recurso" ? <Link to="/recursos" className="btn-orange campaign-resource-link">Ver recursos →</Link> : null}
       <a className="campaign-thanks__back" href="/lp/sales-flow">Volver al inicio</a>
     </div>
