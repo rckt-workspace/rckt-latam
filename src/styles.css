@@ -6363,6 +6363,8 @@ body,
     inset: auto;
     z-index: 110;
     width: 100%;
+    flex: 0 0 100%;
+    align-self: flex-start;
     padding: 12px;
   }
   header.scrolled {
@@ -6383,8 +6385,9 @@ body,
     padding: 6px 8px 6px 18px;
     border: 1px solid var(--line);
     border-radius: 28px;
+    color: var(--hero-ink);
     background: color-mix(in srgb, var(--papel-fija) 88%, transparent);
-    box-shadow: 0 12px 34px color-mix(in srgb, var(--carbon) 8%, transparent);
+    box-shadow: 0 12px 34px rgba(33, 33, 33, 0.08);
     backdrop-filter: blur(18px) saturate(1.35);
     -webkit-backdrop-filter: blur(18px) saturate(1.35);
     transition: padding 600ms cubic-bezier(0.16, 1, 0.3, 1), border-radius 600ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -6405,6 +6408,11 @@ body,
     z-index: 2;
   }
   header .nav-right-desktop { display: flex; }
+  header .nav-capsule .theme-toggle {
+    color: var(--hero-ink);
+    border-color: rgba(33, 33, 33, 0.15);
+    background: rgba(33, 33, 33, 0.05);
+  }
   header .nav-right .hero-nav-cta { display: none; }
   .nav-toggle {
     display: grid;
@@ -6416,7 +6424,7 @@ body,
     padding: 0;
     border: 1px solid var(--line-strong);
     border-radius: 999px;
-    color: var(--carbon);
+    color: var(--hero-ink);
     background: transparent;
     transition: width 600ms cubic-bezier(0.16, 1, 0.3, 1), height 600ms cubic-bezier(0.16, 1, 0.3, 1), color 300ms ease, border-color 300ms ease;
   }
@@ -6444,9 +6452,9 @@ body,
     align-items: stretch;
     gap: 4px;
     overflow: visible;
-    color: var(--carbon);
-    background: color-mix(in srgb, var(--papel-fija) 78%, transparent);
-    border: 1px solid var(--line);
+    color: var(--hero-ink);
+    background: color-mix(in srgb, var(--papel-fija) 90%, transparent);
+    border: 1px solid rgba(33, 33, 33, 0.14);
     border-radius: 20px;
     box-shadow: none;
     backdrop-filter: blur(18px) saturate(1.35);
@@ -6460,14 +6468,14 @@ body,
     min-height: 42px;
     padding: 10px 12px;
     border-radius: 12px;
-    color: var(--carbon);
+    color: var(--hero-ink);
     font-size: 15px;
     font-weight: 600;
     line-height: 1.45;
   }
   .nav-links.mobile-open > a:hover,
   .nav-links.mobile-open .nav-dropdown-trigger:hover {
-    background: color-mix(in srgb, var(--carbon) 5%, transparent);
+    background: rgba(33, 33, 33, 0.05);
     opacity: 1;
   }
   .nav-links.mobile-open a.is-active,
@@ -6495,7 +6503,7 @@ body,
   .nav-dropdown-item {
     padding: 9px 12px;
     border-radius: 12px;
-    color: var(--carbon);
+    color: var(--hero-ink);
     font-size: 14px;
   }
   .nav-menu-footer,
