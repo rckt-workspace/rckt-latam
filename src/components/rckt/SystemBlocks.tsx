@@ -20,9 +20,9 @@ export function CapabilityCards({
   items: Capability[];
   compact?: boolean;
 }) {
-  const { ref, inView, ready } = useInView<HTMLDivElement>({ fallbackMs: 1500 });
+  const { ref, inView } = useInView<HTMLDivElement>({ fallbackMs: 1500 });
   return (
-    <div ref={ref} className={`cap-grid mt-10 ${compact ? "cap-grid--compact" : ""}`} data-in={inView} data-ready={ready}>
+    <div ref={ref} className={`cap-grid mt-10 ${compact ? "cap-grid--compact" : ""}`} data-in={inView} data-ready="true">
       {items.map((item, index) => (
         <article className="cap-card" key={item.titulo} style={{ "--i": index } as CSSProperties}>
           <div className="cap-card__top">
@@ -43,9 +43,9 @@ export function CapabilityCards({
 }
 
 export function RuleList({ items }: { items: string[] }) {
-  const { ref, inView, ready } = useInView<HTMLOListElement>({ fallbackMs: 1500 });
+  const { ref, inView } = useInView<HTMLOListElement>({ fallbackMs: 1500 });
   return (
-    <ol ref={ref} className="rule-list mt-10" data-in={inView} data-ready={ready}>
+    <ol ref={ref} className="rule-list mt-10" data-in={inView} data-ready="true">
       {items.map((item, index) => (
         <li className="rule-row" key={item}>
           <span className="rule-row__num">{pad(index)}</span>
@@ -59,11 +59,11 @@ export function RuleList({ items }: { items: string[] }) {
 export type AcceptanceStep = { texto: ReactNode; hito?: string; label?: string };
 
 export function AcceptanceSteps({ items, plazo }: { items: AcceptanceStep[]; plazo?: string }) {
-  const { ref, inView, ready } = useInView<HTMLDivElement>({ fallbackMs: 1500 });
+  const { ref, inView } = useInView<HTMLDivElement>({ fallbackMs: 1500 });
   return (
     <div className="mt-10">
       {plazo ? <span className="acc-pill">{plazo}</span> : null}
-      <div ref={ref} className="acc-steps" data-in={inView} data-ready={ready} style={{ "--n": items.length } as CSSProperties}>
+      <div ref={ref} className="acc-steps" data-in={inView} data-ready="true" style={{ "--n": items.length } as CSSProperties}>
         <span className="acc-steps__line" aria-hidden="true" />
         {items.map((step, index) => (
           <div className="acc-step" key={index}>

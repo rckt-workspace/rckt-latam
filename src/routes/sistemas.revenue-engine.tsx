@@ -22,13 +22,14 @@ import { REVENUE_ENGINE_FAQS } from "@/content/faqs";
 const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
 
 export const Route = createFileRoute("/sistemas/revenue-engine")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Revenue Engine — El sistema completo de captación a cierre | RCKT.es" },
+      { title: "Revenue Engine — El sistema completo de captación a cierre | RCKT" },
       {
         name: "description",
         content:
-          "Demand System + Sales Flow en un solo sistema con un solo responsable: campañas, WhatsApp y CRM conectados y una sola cifra, el coste por cliente nuevo.",
+          "Demand System + Sales Flow en un solo sistema con un solo responsable: campañas, WhatsApp y CRM conectados y una sola cifra, el costo por cliente nuevo.",
       },
       { property: "og:title", content: "Revenue Engine — El sistema completo de captación a cierre" },
       {
@@ -38,7 +39,7 @@ export const Route = createFileRoute("/sistemas/revenue-engine")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://www.rckt.es/sistemas/revenue-engine" }],
+    links: [{ rel: "canonical", href: "https://rckt-latam.lovable.app/sistemas/revenue-engine" }],
     scripts: [faqJsonLd(REVENUE_ENGINE_FAQS)],
   }),
   component: RevenueEnginePage,
@@ -63,7 +64,7 @@ const STATS = [
   {
     label: "Qué mide el éxito",
     Icono: Target,
-    detalle: "Coste por cliente adquirido · cuánto vale ese cliente frente a lo que costó traerlo",
+    detalle: "Costo por cliente adquirido · cuánto vale ese cliente frente a lo que costó traerlo",
   },
 ];
 
@@ -76,7 +77,7 @@ const INCLUYE: {
   {
     Icono: Megaphone,
     titulo: "Demand System",
-    detalle: "Tier según inversión en medios",
+    detalle: "Tier según inversión en pauta",
     href: "/sistemas/demand-system",
   },
   {
@@ -134,7 +135,7 @@ function RevenueEnginePage() {
             </>
           }
           quote="Tus campañas, tu WhatsApp y tu CRM hoy son tres cosas separadas que gestionan tres personas distintas. Revenue Engine las convierte en un solo sistema con un solo responsable: nosotros. Tú ves una cifra: cuánto te cuesta cada cliente nuevo."
-          ctaLabel="Solicitar diagnóstico de captación →"
+          ctaLabel="Revisar mi proceso comercial →"
           ctaHref={DIAGNOSTIC_HREF}
         />
 

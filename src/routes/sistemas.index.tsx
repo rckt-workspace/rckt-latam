@@ -4,8 +4,15 @@ import { Bot, Database, Megaphone, MessageCircle, UserRound, Workflow } from "lu
 import SiteFooter from "@/components/rckt/SiteFooter";
 import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
-import { SystemCards, SISTEMAS_CARDS } from "@/components/rckt/SystemCards";
+import { SystemCards, type SystemCardData } from "@/components/rckt/SystemCards";
 import { useInView } from "@/hooks/use-in-view";
+
+
+const SISTEMAS_CARDS: SystemCardData[] = [
+  { badge: "S1", kicker: "Sistema 01", title: "Generación de demanda medida hasta la venta", shortName: "Demand System", desc: "Performance Media · Creative Performance · Search & AI Visibility · medición del clic al cierre.", href: "/sistemas/demand-system", art: "demand" },
+  { badge: "S2", kicker: "Sistema 02", title: "De lead a venta sin fugas", shortName: "Sales Flow", desc: "Pauta, WhatsApp y CRM conectados, con respuesta, seguimiento y dueño para cada prospecto.", href: "/sistemas/sales-flow", art: "sales" },
+  { badge: "S3", kicker: "Sistema 03", title: "Procesos que se ejecutan solos, con supervisión", shortName: "Operations System", desc: "Automatización de procesos repetitivos, medidos contra una línea base y con aprobación humana.", href: "/sistemas/operations-system", art: "operations" },
+];
 
 const DIAGRAM_BOXES = [
   { title: "Demand System", href: "/sistemas/demand-system" as const, Icon: Megaphone },
@@ -20,7 +27,7 @@ const BASE_COMUN = [
 ];
 
 function Arquitectura() {
-  const { ref, inView, ready } = useInView<HTMLDivElement>({ fallbackMs: 1200 });
+  const { ref, inView } = useInView<HTMLDivElement>({ fallbackMs: 1200 });
 
   return (
     <section className="relative isolate overflow-hidden py-16 md:py-24" style={{ background: "var(--kraft)" }}>
@@ -32,7 +39,7 @@ function Arquitectura() {
 
         <div
           data-in={inView ? "true" : "false"}
-          data-ready={ready ? "true" : "false"}
+          data-ready="true"
           className="arch mx-auto max-w-[960px] text-center"
         >
           {/* Capa 1 */}
@@ -241,15 +248,16 @@ function Combos() {
 }
 
 export const Route = createFileRoute("/sistemas/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Sistemas · RCKT.es" },
+      { title: "Sistemas · RCKT" },
       {
         name: "description",
         content:
           "Demand System, Sales Flow y Operations System: tres sistemas que siguen la cadena de ingresos de cualquier negocio, del clic al cierre.",
       },
-      { property: "og:title", content: "Sistemas · RCKT.es" },
+      { property: "og:title", content: "Sistemas · RCKT" },
       {
         property: "og:description",
         content: "Demand System, Sales Flow y Operations System: tres sistemas que siguen la cadena de ingresos de cualquier negocio, del clic al cierre.",
@@ -257,7 +265,7 @@ export const Route = createFileRoute("/sistemas/")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://www.rckt.es/sistemas" }],
+    links: [{ rel: "canonical", href: "https://rckt-latam.lovable.app/sistemas" }],
   }),
   component: SistemasIndex,
 });
@@ -274,7 +282,7 @@ function SistemasIndex() {
             </>
           }
           descriptor="Empiezas por un problema y siempre por un diagnóstico. Después eliges uno de los tres sistemas, o su combinación, según dónde se pierde tu dinero. Los tres siguen la cadena de ingresos de cualquier negocio: conseguir clientes, cerrarlos y atenderlos sin fricción."
-          ctaLabel="Solicitar diagnóstico de captación →"
+          ctaLabel="Revisar mi proceso comercial →"
           ctaHref="/sistemas/revenue-diagnostic#formulario"
         />
         <Arquitectura />

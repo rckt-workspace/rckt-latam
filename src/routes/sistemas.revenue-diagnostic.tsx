@@ -20,10 +20,13 @@ import QualificationForm, { type QualificationValues } from "@/components/rckt/Q
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
 import { REVENUE_DIAGNOSTIC_FAQS } from "@/content/faqs";
 
+const GLOW = "radial-gradient(ellipse 620px 460px at 100% 0%, rgba(252, 92, 31,0.22) 0%, rgba(252, 92, 31,0.1) 40%, rgba(252, 92, 31,0) 75%)";
+
 export const Route = createFileRoute("/sistemas/revenue-diagnostic")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Revenue Diagnostic — Tres semanas para saber dónde se pierde tu dinero | RCKT.es" },
+      { title: "Revenue Diagnostic — Tres semanas para saber dónde se pierde tu dinero | RCKT" },
       {
         name: "description",
         content:
@@ -38,7 +41,7 @@ export const Route = createFileRoute("/sistemas/revenue-diagnostic")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://www.rckt.es/sistemas/revenue-diagnostic" }],
+    links: [{ rel: "canonical", href: "https://rckt-latam.lovable.app/sistemas/revenue-diagnostic" }],
     scripts: [faqJsonLd(REVENUE_DIAGNOSTIC_FAQS)],
   }),
   component: RevenueDiagnostic,
@@ -160,7 +163,7 @@ function RevenueDiagnostic() {
           title={<>Tres semanas para saber dónde se pierde tu <span className="hero-hand">dinero</span>.</>}
           descriptor="Diagnóstico de ingresos"
           quote="En tres semanas te decimos cuánto pierdes entre la campaña y el cierre, en qué punto exacto, y qué haríamos en 90 días. Si sigues con nosotros, lo que pagas por el diagnóstico se descuenta del sistema."
-          ctaLabel="Solicitar diagnóstico de captación →"
+          ctaLabel="Revisar mi proceso comercial →"
           ctaHref="#formulario"
         />
 
@@ -307,8 +310,8 @@ function RevenueDiagnostic() {
               position: "absolute",
               top: "-50px",
               right: "-100px",
-              width: "900px",
-              height: "650px",
+              width: "620px",
+              height: "460px",
               zIndex: 0,
               pointerEvents: "none",
               background: GLOW,

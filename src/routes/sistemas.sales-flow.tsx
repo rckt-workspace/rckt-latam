@@ -9,10 +9,13 @@ import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
 import { SALES_FLOW_FAQS } from "@/content/faqs";
 const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
 
+const GLOW = "radial-gradient(ellipse 620px 460px at 100% 0%, rgba(252, 92, 31,0.22) 0%, rgba(252, 92, 31,0.1) 40%, rgba(252, 92, 31,0) 75%)";
+
 export const Route = createFileRoute("/sistemas/sales-flow")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Sales Flow — De lead a venta sin fugas | RCKT.es" },
+      { title: "Sales Flow — De lead a venta sin fugas | RCKT" },
       {
         name: "description",
         content:
@@ -26,7 +29,7 @@ export const Route = createFileRoute("/sistemas/sales-flow")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://www.rckt.es/sistemas/sales-flow" }],
+    links: [{ rel: "canonical", href: "https://rckt-latam.lovable.app/sistemas/sales-flow" }],
     scripts: [faqJsonLd(SALES_FLOW_FAQS)],
   }),
   component: SalesFlowPage,
@@ -56,7 +59,7 @@ const STATS = [
     label: "Qué mide el éxito",
     valor: null as string | null,
     Icono: Target,
-    detalle: "% de leads con seguimiento dentro del SLA · lead → reunión · coste por cliente adquirido",
+    detalle: "% de leads con seguimiento dentro del SLA · lead → reunión · costo por cliente adquirido",
   },
 ];
 
@@ -65,7 +68,7 @@ const COMPONENTES = [
     Icono: Workflow,
     titulo: "Sales Flow núcleo",
     detalle:
-      "Integración Ads ↔ WhatsApp Business API ↔ CRM; routing y asignación a asesores; calificación automática con agente supervisado y paso a humano; lead scoring; SLAs de respuesta; secuencias de seguimiento y recuperación; recordatorios de cita y gestión de no-show; atribución offline de vuelta a Meta y Google",
+      "Integración Ads ↔ WhatsApp Business API ↔ CRM; routing y asignación a asesores; calificación automática con agente supervisado y paso a humano; lead scoring; SLAs de respuesta; secuencias de seguimiento y recuperación; recordatorios de cita y gestión de inasistencia; atribución offline de vuelta a Meta y Google",
   },
   {
     Icono: MessagesSquare,
@@ -87,7 +90,7 @@ const COMPONENTES = [
 ];
 
 const REGLAS = [
-  "La web nunca se vende sola: sin tracking y CRM conectados no hay web de RCKT.es",
+  "La web nunca se vende sola: sin tracking y CRM conectados no hay web de RCKT",
   "Un agente nunca cierra una venta ni promete condiciones sin aprobación humana",
   "El CRM del cliente es la fuente de verdad: lo configuramos y conectamos, no lo sustituimos",
 ];
@@ -121,7 +124,7 @@ function SalesFlowPage() {
           }
           descriptor="Núcleo de Conversion System"
           quote="Hoy pagas por un lead, te escribe por WhatsApp, y ahí empieza a perderse: respuesta tarde, sin seguimiento, fuera del CRM, sin saber de qué campaña vino. Sales Flow conecta tus campañas, WhatsApp y CRM para que cada lead tenga respuesta, seguimiento y dueño, y para que sepas cuáles compran."
-          ctaLabel="Solicitar diagnóstico de captación →"
+          ctaLabel="Revisar mi proceso comercial →"
           ctaHref={DIAGNOSTIC_HREF}
         />
 
@@ -192,7 +195,7 @@ function SalesFlowPage() {
                 className="font-display mt-5 max-w-3xl text-[22px] leading-[1.3] font-semibold tracking-tight md:text-[30px]"
                 style={{ color: "#f5f2ed" }}
               >
-                Media spend ni gestión de campañas (eso es Demand) · licencias de CRM y WhatsApp API (las paga
+                Inversión en pauta ni gestión de campañas (eso es Demand) · licencias de CRM y WhatsApp API (las paga
                 el cliente) · redacción de contenidos editoriales · procesos internos no comerciales (eso es
                 Operations).
               </p>
@@ -222,8 +225,8 @@ function SalesFlowPage() {
               position: "absolute",
               top: "-50px",
               right: "-100px",
-              width: "900px",
-              height: "650px",
+              width: "620px",
+              height: "460px",
               zIndex: 0,
               pointerEvents: "none",
               background: GLOW,

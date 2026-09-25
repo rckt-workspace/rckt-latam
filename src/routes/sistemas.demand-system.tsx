@@ -19,10 +19,13 @@ import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
 import { DEMAND_SYSTEM_FAQS } from "@/content/faqs";
 const DIAGNOSTIC_FORM = "/sistemas/revenue-diagnostic#formulario";
 
+const GLOW = "radial-gradient(ellipse 620px 460px at 100% 0%, rgba(252, 92, 31,0.22) 0%, rgba(252, 92, 31,0.1) 40%, rgba(252, 92, 31,0) 75%)";
+
 export const Route = createFileRoute("/sistemas/demand-system")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Demand System — Generación de demanda medida hasta la venta | RCKT.es" },
+      { title: "Demand System — Generación de demanda medida hasta la venta | RCKT" },
       {
         name: "description",
         content:
@@ -31,12 +34,12 @@ export const Route = createFileRoute("/sistemas/demand-system")({
       { property: "og:title", content: "Demand System — Generación de demanda medida hasta la venta" },
       {
         property: "og:description",
-        content: "Optimizamos por SQL y venta, no por coste por lead. Reporte semanal por etapa del embudo.",
+        content: "Optimizamos por SQL y venta, no por costo por lead. Reporte semanal por etapa del embudo.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://www.rckt.es/sistemas/demand-system" }],
+    links: [{ rel: "canonical", href: "https://rckt-latam.lovable.app/sistemas/demand-system" }],
     scripts: [faqJsonLd(DEMAND_SYSTEM_FAQS)],
   }),
   component: DemandSystemPage,
@@ -67,7 +70,7 @@ const STATS = [
     valor: null as string | null,
     Icono: Target,
     detalle:
-      "Coste por oportunidad aceptada por ventas (SQL) y por venta — mínimo 45% de leads califican como MQL",
+      "Costo por oportunidad aceptada por ventas (SQL) y por venta — mínimo 45% de leads califican como MQL",
   },
 ];
 
@@ -123,7 +126,7 @@ const TIERS = [
 const CONDICIONES = [
   "Solo se vende suelto si el cliente tiene proceso comercial y CRM operativos — si no los tiene, lo que necesita es Revenue Engine",
   "Tiene un precio piso que no se negocia",
-  "Nunca optimizamos por coste por lead — la unidad es SQL o venta",
+  "Nunca optimizamos por costo por lead — la unidad es SQL o venta",
 ];
 
 const ACEPTACION = [
@@ -153,7 +156,7 @@ function DemandSystemPage() {
             </>
           }
           quote="Manejamos tus campañas, pero no las optimizamos por leads baratos: las optimizamos por las oportunidades que tu equipo comercial acepta y por las que terminan en venta. Cada semana ves el embudo completo, no solo los clics."
-          ctaLabel="Solicitar diagnóstico de captación →"
+          ctaLabel="Revisar mi proceso comercial →"
           ctaHref={DIAGNOSTIC_FORM}
         />
 
@@ -284,8 +287,8 @@ function DemandSystemPage() {
               position: "absolute",
               top: "-50px",
               right: "-100px",
-              width: "900px",
-              height: "650px",
+              width: "620px",
+              height: "460px",
               zIndex: 0,
               pointerEvents: "none",
               background: GLOW,

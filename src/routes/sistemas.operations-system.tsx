@@ -9,14 +9,17 @@ import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
 import { OPERATIONS_SYSTEM_FAQS } from "@/content/faqs";
 const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
 
+const GLOW = "radial-gradient(ellipse 620px 460px at 100% 0%, rgba(252, 92, 31,0.22) 0%, rgba(252, 92, 31,0.1) 40%, rgba(252, 92, 31,0) 75%)";
+
 export const Route = createFileRoute("/sistemas/operations-system")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Operations System — Procesos que se ejecutan solos | RCKT.es" },
+      { title: "Operations System — Procesos que se ejecutan solos | RCKT" },
       {
         name: "description",
         content:
-          "Elegimos un proceso repetitivo de alto volumen, medimos su coste y en ocho semanas lo dejamos funcionando solo, con supervisión humana.",
+          "Elegimos un proceso repetitivo de alto volumen, medimos su costo y en ocho semanas lo dejamos funcionando solo, con supervisión humana.",
       },
       { property: "og:title", content: "Operations System — Procesos que se ejecutan solos, con supervisión" },
       {
@@ -26,7 +29,7 @@ export const Route = createFileRoute("/sistemas/operations-system")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://www.rckt.es/sistemas/operations-system" }],
+    links: [{ rel: "canonical", href: "https://rckt-latam.lovable.app/sistemas/operations-system" }],
     scripts: [faqJsonLd(OPERATIONS_SYSTEM_FAQS)],
   }),
   component: OperationsSystemPage,
@@ -52,12 +55,12 @@ const STATS = [
   {
     label: "Qué mide el éxito",
     Icono: Target,
-    detalle: "Coste por ejecución correcta · tiempo de ciclo · tasa de excepciones · horas liberadas",
+    detalle: "Costo por ejecución correcta · tiempo de ciclo · tasa de excepciones · horas liberadas",
   },
 ];
 
 const SPRINT = [
-  { rango: "Semanas 1–2", titulo: "Mapa del proceso", detalle: "Volumen, tiempo, errores, coste" },
+  { rango: "Semanas 1–2", titulo: "Mapa del proceso", detalle: "Volumen, tiempo, errores, costo" },
   { rango: "Semanas 3–6", titulo: "Construcción e integración", detalle: "Con pruebas de casos reales" },
   { rango: "Semanas 7–8", titulo: "Piloto controlado", detalle: "Medición contra línea base, transferencia" },
   { rango: "Después", titulo: "Soporte mensual", detalle: "Monitoreo, excepciones, mejora" },
@@ -104,7 +107,7 @@ const REGLAS = [
 
 const ACEPTACION = [
   "Ejecuciones correctas sin intervención por encima del umbral acordado (típicamente 85–90% en piloto)",
-  "Coste por ejecución correcta documentado frente a la línea base",
+  "Costo por ejecución correcta documentado frente a la línea base",
   "Toda excepción con ruta humana definida",
 ];
 
@@ -128,8 +131,8 @@ function OperationsSystemPage() {
               Procesos que se ejecutan solos, <span className="hero-hand">con supervisión</span>.
             </>
           }
-          quote="No te vendemos IA. Elegimos un proceso que tu equipo repite cien veces por semana, medimos cuánto te cuesta hoy, y en ocho semanas lo dejamos funcionando solo, con una persona aprobando lo que importa. Si no baja el coste por ejecución, no seguimos."
-          ctaLabel="Solicitar diagnóstico de captación →"
+          quote="No te vendemos IA. Elegimos un proceso que tu equipo repite cien veces por semana, medimos cuánto te cuesta hoy, y en ocho semanas lo dejamos funcionando solo, con una persona aprobando lo que importa. Si no baja el costo por ejecución, no seguimos."
+          ctaLabel="Revisar mi proceso comercial →"
           ctaHref={DIAGNOSTIC_HREF}
         />
 
@@ -262,7 +265,7 @@ function OperationsSystemPage() {
             </div>
             <p className="mt-4 max-w-2xl text-[15.5px] leading-relaxed text-muted-foreground">
               Acotado a propósito: si el proceso que necesitas no está aquí, se evalúa con dirección antes de
-              presupuestar.
+              cotizar.
             </p>
 
             {/* Desktop: tabla */}
@@ -341,8 +344,8 @@ function OperationsSystemPage() {
               position: "absolute",
               top: "-50px",
               right: "-100px",
-              width: "900px",
-              height: "650px",
+              width: "620px",
+              height: "460px",
               zIndex: 0,
               pointerEvents: "none",
               background: GLOW,
