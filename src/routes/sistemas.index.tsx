@@ -9,9 +9,9 @@ import { useInView } from "@/hooks/use-in-view";
 
 
 const SISTEMAS_CARDS: SystemCardData[] = [
-  { badge: "S1", kicker: "Sistema 01", title: "Generación de demanda medida hasta la venta", shortName: "Demand System", desc: "Media, creatividad, search y AI visibility, optimizados por SQL y venta.", href: "/sistemas/demand-system", art: "radar" },
-  { badge: "S2", kicker: "Sistema 02", title: "De lead a venta sin fugas", shortName: "Sales Flow", desc: "El núcleo de Conversion System: Ads → WhatsApp → calificación → CRM → seguimiento → venta.", href: "/sistemas/sales-flow", art: "flow" },
-  { badge: "S3", kicker: "Sistema 03", title: "Procesos que se ejecutan solos, con supervisión", shortName: "Operations System", desc: "Agentes y automatizaciones para procesos internos, un proceso a la vez.", href: "/sistemas/operations-system", art: "cycle" },
+  { badge: "S1", kicker: "Sistema 01", title: "Generación de demanda medida hasta la venta", shortName: "Demand System", desc: "Cuando optimizas por costo por lead, las plataformas aprenden a traerte a quien llena formularios, no a quien compra. Manejamos tu pauta por las oportunidades que tu equipo acepta y por las que terminan en venta.", href: "/sistemas/demand-system", art: "radar" },
+  { badge: "S2", kicker: "Sistema 02", title: "De lead a venta sin fugas", shortName: "Sales Flow", desc: "El prospecto te escribe por WhatsApp y la respuesta depende de quién esté libre. Sales Flow conecta tu pauta, WhatsApp y CRM: cada conversación con respuesta, seguimiento y dueño, y cada venta de vuelta a Meta y Google.", href: "/sistemas/sales-flow", art: "flow" },
+  { badge: "S3", kicker: "Sistema 03", title: "Procesos que se ejecutan solos, con supervisión", shortName: "Operations System", desc: "6 de cada 10 pymes no ven retorno de la IA. Por eso empezamos por un proceso, no por una herramienta: medimos cuánto cuesta hoy y lo dejamos funcionando con una persona aprobando lo que importa.", href: "/sistemas/operations-system", art: "cycle" },
 ];
 
 const DIAGRAM_BOXES = [
@@ -204,7 +204,7 @@ function Combos() {
                 </span>
               </div>
               <p className="mt-5 max-w-md text-[15px] leading-relaxed text-left" data-align="left" style={{ color: "rgba(245,242,237,0.9)" }}>
-                Demand + Sales Flow, combinados, son nuestro producto principal.
+                Pauta, WhatsApp y CRM bajo un solo responsable: la pauta que trae la conversación y el proceso que la convierte en venta.
               </p>
               <Link
                 to="/sistemas/revenue-engine"
@@ -230,7 +230,7 @@ function Combos() {
                 Growth OS
               </h3>
               <p className="mt-5 max-w-md text-[15px] leading-relaxed text-left" data-align="left" style={{ color: "var(--ink-soft)" }}>
-                El bundle superior, solo para cuentas maduras. No se ofrece de entrada — se llega a él.
+                Para cuentas con Revenue Engine maduro y al menos un proceso operativo que automatizar. A Growth OS se llega por la escalera, nunca de entrada.
               </p>
               <a
                 href="/sistemas/revenue-engine#escalera"
@@ -280,10 +280,10 @@ function SistemasIndex() {
           label="Sistemas"
           title={
             <>
-              Tres sistemas, una sola cadena de <span className="hero-hand">ingresos</span>.
+              Del anuncio a la venta, en tres <span className="hero-hand">sistemas</span>.
             </>
           }
-          descriptor="Empiezas por un problema y siempre por un diagnóstico. Después eliges uno de los tres sistemas, o su combinación, según dónde se pierde tu dinero. Los tres siguen la cadena de ingresos de cualquier negocio: conseguir clientes, cerrarlos y atenderlos sin fricción."
+          descriptor="Todo empieza por tu problema y por un Revenue Diagnostic. Con tus números sobre la mesa decidimos qué sistema construir primero: el que consigue clientes, el que los cierra por WhatsApp o el que atiende sin fricción."
           ctaLabel="Revisar mi proceso comercial →"
           ctaHref="/sistemas/revenue-diagnostic#formulario"
         />
