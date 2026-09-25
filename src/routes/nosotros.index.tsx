@@ -3,7 +3,7 @@ import { Check, Database, Layers, Lock, PackageOpen, ShieldCheck, UserRoundCheck
 import type { ReactNode } from "react";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
-import SystemFinalCta from "@/components/rckt/SystemFinalCta";
+import GeneralCta from "@/components/rckt/GeneralCta";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
@@ -101,7 +101,7 @@ function NosotrosPage() {
           label="Nosotros"
           title={<>Qué es <span className="text-orange">RCKT.</span></>}
           descriptor="RCKT diseña y opera sistemas que convierten demanda en ventas: campañas, conversaciones, CRM e IA supervisada, medidos hasta el ingreso."
-          promise="Del clic al cierre."
+          context="Del clic al cierre."
           ctaLabel="Revisar mi proceso comercial →"
           ctaHref={DIAGNOSTIC_HREF}
         />
@@ -173,7 +173,7 @@ function NosotrosPage() {
             />
           </div>
         </section>
-        <SystemFinalCta />
+        <GeneralCta />
       </main>
       <SiteFooter />
     </div>

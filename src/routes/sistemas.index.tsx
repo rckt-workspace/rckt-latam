@@ -2,7 +2,7 @@ import { createFileRoute,Link,useRouter } from "@tanstack/react-router";
 import { Bot, Database, Megaphone, MessageCircle, UserRound, Workflow } from "lucide-react";
 import {SiteFooter,SiteHeader,useSiteMotion} from "@/components/SiteChrome";
 import {SystemCards,type SystemCardData} from "@/components/rckt/SystemCards";
-import SystemFinalCta from "@/components/rckt/SystemFinalCta";
+import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SystemSection from "@/components/rckt/SystemSection";
 import {useInView} from "@/hooks/use-in-view";
@@ -27,10 +27,10 @@ function Combos(){return <section className="system-combos"><div className="cont
 </div></div></section>}
 export const Route=createFileRoute("/sistemas/")({staticData:{sitemap:true},head:()=>({meta:[{title:"Sistemas — RCKT"},{name:"description",content:"Tres sistemas, no más: Demand System, Sales Flow y Operations System. Combinados son Revenue Engine y Growth OS."},{property:"og:title",content:"Sistemas — RCKT"},{property:"og:description",content:"Si algo no cabe en uno de los tres, no lo vendemos."},{property:"og:type",content:"website"},{property:"og:url",content:SITE_URL+"/sistemas"},{name:"twitter:card",content:"summary_large_image"}],links:[{rel:"canonical",href:SITE_URL+"/sistemas"}]}),component:SistemasPage,errorComponent:SistemasError,notFoundComponent:()=> <SistemasError/>});
 function SistemasPage(){useSiteMotion([]);return <div className="rckt-site tcn-page"><main id="top">
-<SystemPageHero label="Sistemas" title={<>Del clic al cierre, en tres <em>sistemas</em>.</>} promise="Si algo no cabe en uno de los tres, no lo vendemos."/>
+<SystemPageHero label="Sistemas" title={<>Del clic al cierre, en tres <em>sistemas</em>.</>} context="Si algo no cabe en uno de los tres, no lo vendemos."/>
 <Arquitectura/>
 <SystemSection id="sistemas" num="02." label="Los tres sistemas" title="Elige por la fuga, no por el nombre." phrase="Demand, Sales Flow y Operations cubren la cadena completa."><SystemCards systems={SYSTEMS}/></SystemSection>
 <Combos/>
-<SystemFinalCta title={<>Toda cuenta empieza por el <em className="font-serif-accent">diagnóstico</em>.</>}/>
+<GeneralCta />
 </main><SiteFooter/></div>}
 function SistemasError(){const router=useRouter();return <div className="rckt-site tcn-page"><SiteHeader/><main className="band"><div className="container"><div className="form-card" role="alert"><span className="kicker">Sistemas</span><h1>No pudimos mostrar esta página.</h1><p>Intenta cargarla nuevamente. Si el problema continúa, puedes volver al inicio.</p><div className="form-actions"><button className="btn btn-primary" type="button" onClick={()=>void router.invalidate()}>Intentar de nuevo</button><a className="btn" href="/">Volver al inicio</a></div></div></div></main><SiteFooter/></div>}

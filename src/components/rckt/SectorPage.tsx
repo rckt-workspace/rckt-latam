@@ -19,7 +19,7 @@ import SectionHeader from "@/components/rckt/SectionHeader";
 import MethodCard, { type MethodField } from "@/components/rckt/MethodCard";
 import { AcceptanceSteps, type AcceptanceStep } from "@/components/rckt/SystemBlocks";
 import FaqSection, { type FaqItem } from "@/components/rckt/FaqSection";
-import SystemFinalCta from "@/components/rckt/SystemFinalCta";
+import GeneralCta from "@/components/rckt/GeneralCta";
 
 export const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
 
@@ -76,7 +76,7 @@ export default function SectorPage(data: SectorPageData) {
           label={data.label}
           title={data.title}
           descriptor={data.descriptor}
-          promise={data.descriptor ? undefined : data.context}
+          context={data.descriptor ? undefined : data.context}
           ctaLabel={data.ctaLabel}
           ctaHref={DIAGNOSTIC_HREF}
         />
@@ -194,14 +194,7 @@ export default function SectorPage(data: SectorPageData) {
 
         {!isShort && data.faqItems ? <FaqSection items={data.faqItems} /> : null}
 
-        <SystemFinalCta
-          title={
-            <>
-              Medimos antes de tocar <em className="font-serif-accent">nada</em>.
-            </>
-          }
-          label={data.ctaFinalLabel ?? "Revisar mi proceso comercial →"}
-        />
+        <GeneralCta />
       </main>
       <SiteFooter />
     </div>

@@ -4,6 +4,7 @@ import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import { BlogCard, BlogCover } from "@/components/blog/BlogCard";
 import { BlogToc } from "@/components/blog/BlogToc";
 import { Markdown } from "@/components/blog/Markdown";
+import GeneralCta from "@/components/rckt/GeneralCta";
 import { blogRepository } from "@/lib/blog.repository";
 import { extractToc, formatBlogDate } from "@/lib/blog.utils";
 import type { BlogPost } from "@/types/blog";
@@ -183,6 +184,7 @@ function BlogArticlePage() {
             </div>
           </section>
         )}
+        <GeneralCta />
       </main>
       <SiteFooter />
     </div>

@@ -9,6 +9,7 @@ import {
   Ban
 } from "lucide-react";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
+import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SectionHeader from "@/components/rckt/SectionHeader";
 import { useInView } from "@/hooks/use-in-view";
@@ -290,24 +291,7 @@ function ComoTrabajamosPage() {
           </div>
         </section>
 
-        <section className="nos-sec" style={{ paddingBlock: 0 }}>
-           {/* Reusing final CTA section structure from Spain but with LATAM component/style */}
-           <div className="nos-sec--warm py-24 md:py-32">
-             <div className="container">
-               <div className="mx-auto max-w-[720px] text-center">
-                 <div className="mb-4"><span className="label-orange">¿Empezamos?</span></div>
-                 <h2 className="font-display text-[34px] leading-[1.08] font-semibold tracking-tight md:text-[56px]">
-                   El siguiente paso empieza con <em className="font-serif-accent text-orange">claridad.</em>
-                 </h2>
-                 <div className="mt-10 flex justify-center">
-                   <a href="/sistemas/revenue-diagnostic" className="btn btn-primary btn-orange rounded-full px-8 py-4">
-                     Solicitar diagnóstico de captación →
-                   </a>
-                 </div>
-               </div>
-             </div>
-           </div>
-        </section>
+        <GeneralCta />
       </main>
       <SiteFooter />
     </div>

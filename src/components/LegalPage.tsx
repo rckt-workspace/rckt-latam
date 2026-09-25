@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
+import GeneralCta from "@/components/rckt/GeneralCta";
 
 export function LegalPage({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -11,6 +12,7 @@ export function LegalPage({ title, children }: { title: string; children: ReactN
           <div className="legal-document">{children}</div>
           <div className="legal-page__status">&gt; sistema activo · 2026</div>
         </article>
+        <GeneralCta />
       </main>
       <SiteFooter />
     </div>

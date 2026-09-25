@@ -1,7 +1,7 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import SolutionCards from "@/components/rckt/SolutionCards";
-import SystemFinalCta from "@/components/rckt/SystemFinalCta";
+import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SystemSection from "@/components/rckt/SystemSection";
 
@@ -40,9 +40,9 @@ function SolucionesPage() {
   return (
     <div className="rckt-site tcn-page">
       <main id="top">
-        <SystemPageHero label="Soluciones" title={<>Entras por tu problema, no por el nombre de un <em>sistema</em>.</>} promise="Tres puertas de entrada según el problema real de tu negocio, medidas del clic al cierre." ctaLabel="Revisar mi proceso comercial →" />
+        <SystemPageHero label="Soluciones" title={<>Entras por tu problema, no por el nombre de un <em>sistema</em>.</>} context="Tres puertas de entrada según el problema real de tu negocio, medidas del clic al cierre." ctaLabel="Revisar mi proceso comercial →" />
         <SystemSection id="puertas" num="01." label="Tres puertas de entrada" title={<>El problema decide por dónde <em className="font-serif-accent">empezamos</em>.</>} phrase="Captación y cierre, ecommerce rentable u operación: primero ubicamos la fuga."><SolutionCards /></SystemSection>
-        <SystemFinalCta title={<>Toda cuenta empieza por el <em className="font-serif-accent">diagnóstico</em>.</>} label="Revisar mi proceso comercial →" />
+        <GeneralCta />
       </main>
       <SiteFooter />
     </div>
