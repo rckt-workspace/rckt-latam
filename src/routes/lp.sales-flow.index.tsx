@@ -2,7 +2,6 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { BarChart3, LayoutDashboard, Megaphone, MessageCircle, Waypoints } from "lucide-react";
 import { useEffect } from "react";
 import heroPhoto from "@/assets/rckt-hero.jpg";
-import ctaPhoto from "@/assets/rckt-cta.jpg";
 import CampaignShell from "@/components/rckt/CampaignShell";
 import DiagnosticForm from "@/components/rckt/DiagnosticForm";
 import FaqSection, { type FaqItem } from "@/components/rckt/FaqSection";
