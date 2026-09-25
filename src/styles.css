@@ -4319,6 +4319,12 @@ header.scrolled {
     opacity: 1;
     pointer-events: auto;
   }
+  /* El blur de la cápsula crea un bloque contenedor para elementos fixed.
+     Al abrir, se retira para que el drawer vuelva a medir el viewport completo. */
+  body.menu-open header nav {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 
 /* fix apilado: el drawer y su X quedan por encima de la cápsula derecha */
