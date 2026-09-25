@@ -25,6 +25,10 @@ export default function SystemPageHero({
   ctaLabel = "Revisar mi proceso comercial →",
   ctaHref = "/sistemas/revenue-diagnostic",
 }: Props) {
+  const diagnosticLabel = ctaHref.startsWith("/sistemas/revenue-diagnostic")
+    ? `Revisar mi proceso comercial${ctaLabel?.includes("→") ? " →" : ""}`
+    : ctaLabel;
+
   return (
     <section
       className="system-page-hero section-light relative isolate overflow-clip pt-[110px] md:pt-[120px] lg:pt-[140px]"
@@ -50,9 +54,9 @@ export default function SystemPageHero({
             <p className="hero-context-para">{quote}</p>
           </figure>
         ) : null}
-        {ctaLabel ? (
+        {diagnosticLabel ? (
           <div style={{ marginTop: "28px" }}>
-            <a href={ctaHref} className="btn-orange font-display inline-flex items-center justify-center rounded-full px-8 py-4 text-[15px] font-semibold">{ctaLabel}</a>
+            <a href={ctaHref} className="btn-orange font-display inline-flex items-center justify-center rounded-full px-8 py-4 text-[15px] font-semibold">{diagnosticLabel}</a>
           </div>
         ) : null}
       </div>

@@ -6674,7 +6674,7 @@ header.pointer-events-none img.hidden { display: none; }
   font-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
   letter-spacing: 0;
 }
-.system-page-hero h1 em.hero-hand {
+.system-page-hero h1 em {
   font-family: "Homemade Apple", cursive;
   font-size: .98em;
   line-height: 1;
@@ -6683,12 +6683,6 @@ header.pointer-events-none img.hidden { display: none; }
   display: inline-block;
   transform: rotate(-2deg);
   padding-inline: .04em;
-}
-.system-page-hero h1 em:not(.hero-hand) {
-  color: var(--naranja);
-  font-family: "Newsreader", serif;
-  font-style: italic;
-  font-weight: 400;
 }
 .system-page-hero .hero-context-para,
 [data-theme="dark"] .system-page-hero .hero-context-para {
