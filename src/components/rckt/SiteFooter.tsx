@@ -39,11 +39,7 @@ export default function SiteFooter() {
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-paper/50">IA supervisada y documentada</p>
             <p className="font-display mt-4 text-sm text-paper/55">RCKT S.A.S. · NIT 902.075.396-5</p>
             <p className="label-orange mt-8 !text-[10px]">Correo</p>
-            {email === "[pendiente]" ? (
-              <p className="font-display mt-3 text-sm text-paper/55">{email}</p>
-            ) : (
-              <a href={`mailto:${email}`} className="font-display mt-3 inline-block text-sm text-paper/55 transition-colors hover:text-paper">{email}</a>
-            )}
+            <a href={`mailto:${email}`} className="font-display mt-3 inline-block text-sm text-paper/55 transition-colors hover:text-paper">{email}</a>
             <p className="font-display mt-2 text-sm text-paper/55">{phone}</p>
             <p className="font-display mt-2 max-w-xs text-sm text-paper/55">{address}</p>
             <p className="font-display mt-2 max-w-xs text-sm text-paper/55">{hours}</p>
