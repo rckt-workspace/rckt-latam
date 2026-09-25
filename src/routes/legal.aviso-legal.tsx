@@ -17,10 +17,10 @@ export const Route = createFileRoute("/legal/aviso-legal")({
         content: "Información legal de RCKT: titular del sitio y condiciones de uso.",
       },
       { property: "og:type", content: "article" },
-      { property: "og:url", content: "https://rckt-latam.lovable.app/legal/aviso-legal" },
+      { property: "og:url", content: "https://rckt.lat/legal/aviso-legal" },
       { name: "twitter:card", content: "summary" },
     ],
-    links: [{ rel: "canonical", href: "https://rckt-latam.lovable.app/legal/aviso-legal" }],
+    links: [{ rel: "canonical", href: "https://rckt.lat/legal/aviso-legal" }],
   }),
   component: AvisoLegal,
 });

@@ -17,10 +17,10 @@ export const Route = createFileRoute("/legal/cookies")({
         content: "Qué cookies utiliza el sitio de RCKT y cómo controlarlas.",
       },
       { property: "og:type", content: "article" },
-      { property: "og:url", content: "https://rckt-latam.lovable.app/legal/cookies" },
+      { property: "og:url", content: "https://rckt.lat/legal/cookies" },
       { name: "twitter:card", content: "summary" },
     ],
-    links: [{ rel: "canonical", href: "https://rckt-latam.lovable.app/legal/cookies" }],
+    links: [{ rel: "canonical", href: "https://rckt.lat/legal/cookies" }],
   }),
   component: Cookies,
 });
