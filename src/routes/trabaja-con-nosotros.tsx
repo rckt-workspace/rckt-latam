@@ -1,10 +1,11 @@
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useCallback, useEffect, useState } from "react";
+import { Briefcase, Clock, Sparkles, Users } from "lucide-react";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import { PostulacionForm } from "@/components/PostulacionForm";
 import GeneralCta from "@/components/rckt/GeneralCta";
-import heroAsset from "@/assets/rckt-hero.jpg";
+import SystemPageHero from "@/components/rckt/SystemPageHero";
 import { getActiveVacancies, type VacantePublica } from "@/lib/vacantes.functions";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
@@ -41,18 +42,21 @@ type Vacante = VacantePublica;
 const cultura = [
   {
     n: "01.",
+    Icon: Users,
     titulo: "Todos somos RCKT",
     texto:
       "Tanto hombres como mujeres estamos comprometidos con la construcción de entornos laborales más equitativos e inclusivos. Impulsamos iniciativas para prevenir sesgos, fomentar el respeto y reconocer el talento sin distinción de género.",
   },
   {
     n: "02.",
+    Icon: Clock,
     titulo: "Flexibilidad que se adapta a las personas",
     texto:
       "Somos una organización 100% remota, y entendemos la flexibilidad como una herramienta para promover la autonomía, la confianza y una mejor integración entre la vida personal y profesional. Nos enfocamos en los objetivos, los resultados y la responsabilidad de cada integrante del equipo.",
   },
   {
     n: "03.",
+    Icon: Sparkles,
     titulo: "Humanizamos el trabajo mientras incorporamos IA",
     texto:
       "Creemos que la tecnología debe potenciar a las personas, no reemplazar aquello que nos hace humanos. Promovemos el uso responsable y estratégico de la Inteligencia Artificial para automatizar tareas, optimizar procesos y liberar tiempo para pensamiento crítico, creatividad, empatía y toma de decisiones.",
@@ -93,71 +97,24 @@ function TrabajaConNosotros() {
 
   return (
     <div className="rckt-site tcn-page">
+      <SiteHeader />
       <main id="top">
-        <section className="subpage-hero">
-          <div className="subpage-hero-photo" aria-hidden="true">
-            <img src={heroAsset} alt="" />
-            <span className="subpage-hero-photo-overlay" />
-          </div>
-          <span className="tcn-orb tcn-orb-hero-corner" aria-hidden="true" />
-          <span className="tcn-orb tcn-orb-hero" aria-hidden="true" />
-          <SiteHeader />
-          <div className="container">
-            <div className="subpage-hero-inner">
-              <span className="kicker">Trabaja con nosotros</span>
-              <h1>
-                Descubre el futuro del trabajo con <span className="hero-hand">nosotros</span>.
-              </h1>
-              <p className="sub">
-                En RCKT buscamos personas curiosas, autónomas, colaborativas y abiertas a aprender
-                constantemente. Si quieres hacer parte de una cultura flexible, humana, diversa y
-                preparada para el futuro, queremos conocerte.
-              </p>
+        <SystemPageHero label="Trabaja con nosotros" title={<>Descubre <span className="text-orange">el futuro del <span className="hero-hand">trabajo</span></span> con nosotros.</>} descriptor="En RCKT buscamos personas curiosas, autónomas, colaborativas y abiertas a aprender constantemente. Si quieres hacer parte de una cultura flexible, humana, diversa y preparada para el futuro, queremos conocerte." ctaLabel="Ver vacantes →" ctaHref="#vacantes" />
+
+        <section className="nos-sec nos-glow--tl">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="mb-4 flex items-center gap-3"><span className="inline-block h-4 w-[2px] bg-orange" /><span className="label-orange">01. Cultura</span></div>
+            <h2 className="font-display text-[28px] leading-tight font-semibold md:text-[40px]">Así nos <em className="font-serif-accent">diferenciamos</em>.</h2>
+            <div className="mt-12 grid items-stretch gap-6 md:grid-cols-3">
+              {cultura.map((c) => { const Icon = c.Icon; return <article className="tw-card flex h-full flex-col p-7" key={c.titulo}><div className="flex items-center justify-between"><span className="tw-icon-circle"><Icon className="h-[22px] w-[22px] text-orange" strokeWidth={1.5} /></span><span className="font-serif-accent text-[34px] leading-none text-orange italic">{c.n.replace('.', '')}</span></div><h3 className="font-display mt-5 text-[20px] font-semibold">{c.titulo}</h3><p className="mt-3 text-[15px] leading-[1.65] text-muted-foreground">{c.texto}</p></article>; })}
             </div>
           </div>
         </section>
 
-        <section className="band tcn-cultura">
-          <span className="tcn-orb tcn-orb-cultura-left" aria-hidden="true" />
-          <span className="tcn-orb tcn-orb-cultura-right" aria-hidden="true" />
-          <div className="container">
-            <div className="section-head">
-              <span className="num">01.</span>
-              <span className="kicker ital-label">Cultura</span>
-              <span className="divider"></span>
-            </div>
-            <h2
-              className="rv"
-              style={{ fontSize: "clamp(26px,3.4vw,36px)", margin: "0 0 48px", fontWeight: 800 }}
-            >
-              Desde People and Culture, así nos diferenciamos.
-            </h2>
-            <div className="three-grid">
-              {cultura.map((c) => (
-                <div className="three-card rv" key={c.titulo}>
-                  <span className="num">{c.n}</span>
-                  <h3>{c.titulo}</h3>
-                  <p>{c.texto}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="band band-alt" id="vacantes">
-          <span className="tcn-orb tcn-orb-vacantes" aria-hidden="true" />
-          <div className="container">
-            <div className="section-head">
-              <span className="num">02.</span>
-              <span className="kicker ital-label">Oportunidades</span>
-              <span className="divider"></span>
-            </div>
-            <h2
-              className="rv"
-              style={{ fontSize: "clamp(26px,3.4vw,36px)", margin: "0 0 48px", fontWeight: 800 }}
-            >
-              Vacantes abiertas
-            </h2>
+        <section className="nos-sec nos-sec--warm scroll-mt-24" id="vacantes">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="mb-4 flex items-center gap-3"><span className="inline-block h-4 w-[2px] bg-orange" /><span className="label-orange">02. Oportunidades</span></div>
+            <h2 className="font-display text-[28px] leading-tight font-semibold md:text-[40px]">Vacantes abiertas.</h2>
             <div className="vacantes-list">
               {vacantes === null && <p className="vacantes-nota">Cargando vacantes…</p>}
               {vacantesError && (
@@ -173,7 +130,8 @@ function TrabajaConNosotros() {
                 </div>
               )}
               {!vacantesError && vacantes?.length === 0 && (
-                <div className="vacante-card rv">
+                <div className="tw-empty mx-auto max-w-xl p-10 text-center md:p-12">
+                  <span className="tw-icon-circle mx-auto"><Briefcase className="h-[22px] w-[22px] text-orange" /></span>
                   <p>
                     Actualmente no tenemos vacantes abiertas, pero puedes dejarnos tu perfil en el
                     formulario de abajo.
@@ -199,27 +157,10 @@ function TrabajaConNosotros() {
           </div>
         </section>
 
-        <section className="band" id="freelance">
-          <span className="tcn-orb tcn-orb-cta" aria-hidden="true" />
-          <div className="container">
-            <div className="section-head">
-              <span className="num">03.</span>
-              <span className="kicker ital-label">Aliados</span>
-              <span className="divider"></span>
-            </div>
-            <h2
-              className="rv"
-              style={{ fontSize: "clamp(26px,3.4vw,36px)", margin: "0 0 18px", fontWeight: 800 }}
-            >
-              ¿Tienes un servicio o eres freelance?
-            </h2>
-            <p style={{ maxWidth: 680, marginBottom: 36 }}>
-              Cuéntanos qué haces. Sumamos aliados y especialistas a nuestros proyectos de forma
-              continua.
-            </p>
-            <div className="form-card rv">
-              <PostulacionForm tipo="servicio" />
-            </div>
+        <section className="nos-sec scroll-mt-24" id="freelance">
+          <div className="mx-auto grid max-w-6xl items-start gap-12 px-6 lg:grid-cols-2">
+            <div className="lg:sticky lg:top-[120px]"><div className="mb-4 flex items-center gap-3"><span className="inline-block h-4 w-[2px] bg-orange" /><span className="label-orange">03. Aliados</span></div><h2 className="font-display text-[28px] leading-tight font-semibold md:text-[38px]">¿Tienes un servicio o eres <em className="font-serif-accent">freelance</em>?</h2><p className="mt-4 max-w-md text-[16px] leading-[1.65] text-muted-foreground">Cuéntanos qué haces. Sumamos aliados y especialistas a nuestros proyectos de forma continua.</p></div>
+            <div className="tw-form-card relative p-8 md:p-9"><PostulacionForm tipo="servicio" /></div>
           </div>
         </section>
         <GeneralCta />
