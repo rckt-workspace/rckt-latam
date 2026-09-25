@@ -3578,7 +3578,7 @@ header.scrolled {
     grid-template-columns: 1fr;
   }
 }
-.rckt-site .rd-form select {
+.rckt-site .rd-form select:not(.ct-select) {
   width: 100%;
   background: transparent;
   border: none;
@@ -3589,7 +3589,7 @@ header.scrolled {
   font-family: inherit;
   border-radius: 0;
 }
-.rckt-site .rd-form select:focus {
+.rckt-site .rd-form select:not(.ct-select):focus {
   outline: none;
   border-color: var(--mode-text);
 }

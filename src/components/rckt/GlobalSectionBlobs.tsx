@@ -125,8 +125,11 @@ export default function GlobalSectionBlobs() {
         connect();
       }
     });
-    mutationObserver.observe(document.body, { childList: true, subtree: true });
-    timer = window.setTimeout(connect, 0);
+    // Esperar a que termine la hidratación antes de añadir nodos decorativos al HTML de las rutas.
+    timer = window.setTimeout(() => {
+      connect();
+      mutationObserver.observe(document.body, { childList: true, subtree: true });
+    }, 100);
     window.addEventListener("resize", classify, { passive: true });
 
     return () => {
