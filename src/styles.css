@@ -4970,8 +4970,11 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
   .campaign-funnel__step > span:last-child { font-size: 11px; overflow-wrap: anywhere; }
   .campaign-funnel__arrow { left: -7px; font-size: 14px; }
   .campaign-statement { font-size: 16px; }
-  .campaign-fit, .campaign-form-layout, .campaign-page .rd-form .rd-grid { grid-template-columns: 1fr; }
-  .campaign-fit, .campaign-form-layout { gap: 36px; }
+  .campaign-fit, .campaign-page .rd-form .rd-grid { grid-template-columns: 1fr; }
+  .campaign-fit { gap: 36px; }
+  .campaign-thanks { padding-block: 64px; }
+  .campaign-thanks__card { padding: 28px; }
+  .campaign-form-wrap { margin-top: 36px; }
   .campaign-process::before { display: none; }
   .campaign-process .cap-grid { flex-wrap: wrap; }
   .campaign-process .cap-card { flex-basis: 100%; }
