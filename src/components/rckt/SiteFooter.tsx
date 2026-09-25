@@ -24,6 +24,7 @@ const FOOTER_LEGAL = [
   { href: "#preferencias-cookies", label: "Preferencias de cookies" },
 ];
 
+// PENDIENTE: teléfono y horario de atención (Fabián)
 const phone = "[pendiente]";
 const hours = "[pendiente]";
 
@@ -43,8 +44,8 @@ export default function SiteFooter() {
             <p className="label-orange mt-8 !text-[10px]">Correo</p>
             <a href="mailto:hola@rckt.lat" className="font-display mt-3 block text-sm text-paper/55 transition-colors hover:text-paper">hola@rckt.lat (general)</a>
             <a href="mailto:privacy@rckt.lat" className="font-display mt-2 block text-sm text-paper/55 transition-colors hover:text-paper">privacy@rckt.lat (datos personales)</a>
-            <p className="font-display mt-2 text-sm text-paper/55">{phone}</p>
-            <p className="font-display mt-2 max-w-xs text-sm text-paper/55">{hours}</p>
+            {phone !== "[pendiente]" && <p className="font-display mt-2 text-sm text-paper/55">{phone}</p>}
+            {hours !== "[pendiente]" && <p className="font-display mt-2 max-w-xs text-sm text-paper/55">{hours}</p>}
           </div>
           <nav aria-label="Footer">
             <p className="label-orange !text-[10px]">Navegar</p>
