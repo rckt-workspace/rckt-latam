@@ -6,7 +6,7 @@ import GeneralCta from "@/components/rckt/GeneralCta";
 import { SectorError } from "@/components/rckt/SectorShortPage";
 import { SECTORS } from "@/components/rckt/sectorData";
 
-const SITE_URL = "https://rckt-latam.lovable.app";
+const SITE_URL = "https://rckt.lat";
 
 const CARDS = [
   ["01", "Salud, estética y odontología", "/sectores/salud-estetica-odontologia", "salud", "Revenue Engine"],
@@ -48,7 +48,7 @@ function SectoresPage() {
   return (
     <div className="rckt-site tcn-page">
       <main id="top">
-        <SystemPageHero label="Sectores" descriptor="Cada sector vende distinto. Aquí ves cómo vende hoy el tuyo, dónde se le escapa el dinero, y qué sistema recomendamos según tu forma real de vender." title={<>Vendemos distinto según cómo vende cada <em>sector</em>.</>} ctaLabel="Revisar mi proceso comercial →" />
+        <SystemPageHero label="Sectores" context="Cada sector vende distinto. Aquí ves cómo vende hoy el tuyo, dónde se le escapa el dinero y qué sistema recomendamos, con los indicadores que de verdad importan en tu negocio." title={<>Vendemos distinto según cómo vende cada <span className="hero-hand">sector.</span></>} ctaLabel="Revisar mi proceso comercial →" />
         <SystemSection id="sectores" num="01." label="Seis sectores" title={<>Seis formas de <em className="font-serif-accent">vender</em>.</>} phrase="Elige el tuyo y mira cómo lo medimos del clic al cierre.">
           <div className="sector-index-grid">
             {CARDS.map(([num, name, href, key, sistema]) => {

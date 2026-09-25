@@ -3,7 +3,7 @@ import SectorPage from "@/components/rckt/SectorPage";
 import { SectorError } from "@/components/rckt/SectorShortPage";
 import { SECTORS } from "@/components/rckt/sectorData";
 
-const SITE_URL = "https://rckt-latam.lovable.app";
+const SITE_URL = "https://rckt.lat";
 
 export const Route = createFileRoute("/sectores/construccion-inmobiliario")({
   staticData: { sitemap: true },

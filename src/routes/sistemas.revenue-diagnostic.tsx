@@ -25,10 +25,10 @@ const WHATSAPP_URL = "#whatsapp";
 const SITE_URL = "https://rckt.lat";
 
 const REVENUE_DIAGNOSTIC_FAQS = [
-  { question: "¿Es gratis?", answer: "No. Es un diagnóstico pagado y, si sigues con nosotros, lo que pagas se descuenta del sistema." },
-  { question: "¿Cuánto dura?", answer: "De 2 a 3 semanas, desde que contamos con los accesos y datos necesarios." },
-  { question: "¿Qué pasa después?", answer: "Recibes una línea base firmada y un roadmap de 90 días. Con esos datos recomendamos el sistema adecuado." },
-  { question: "¿Cuánto cuesta?", answer: "El alcance y el costo se confirman antes de empezar. Si continúas con el sistema recomendado, el valor del Diagnostic se descuenta." },
+  { question: "¿Es gratis?", answer: "No. Es trabajo real de tres semanas con tus datos, y se descuenta del sistema si sigues con nosotros." },
+  { question: "¿Cuánto dura?", answer: "2–3 semanas." },
+  { question: "¿Qué pasa después?", answer: "Recomendamos sistema o bundle según la fuga con mayor impacto económico." },
+  { question: "¿Cuánto cuesta?", answer: "Depende de dónde esté tu fuga — eso es justo lo que mide el Diagnostic. No damos precio de sistema sin diagnóstico." },
   { question: "¿Por qué necesitan tanto acceso y tantos datos?", answer: "Porque sin ellos no podemos medir hasta la venta, y sin medir hasta la venta seríamos una agencia más. Los accesos son de lectura donde se pueda y quedan documentados." },
   { question: "Quiero pagar solo por resultados.", answer: "Trabajamos con una parte variable, pero después de 90 días con línea base, porque antes ninguno de los dos sabe qué es un resultado. Y nunca cobramos 100% variable cuando el cierre depende de tu equipo, tu stock o tus precios." },
 ];
