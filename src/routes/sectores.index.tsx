@@ -1,40 +1,20 @@
-import type { CSSProperties } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
+import { SiteFooter, useSiteMotion } from "@/components/SiteChrome";
+import SystemPageHero from "@/components/rckt/SystemPageHero";
+import SystemSection from "@/components/rckt/SystemSection";
+import SystemFinalCta from "@/components/rckt/SystemFinalCta";
 import { SectorError } from "@/components/rckt/SectorShortPage";
-import heroAsset from "@/assets/rckt-hero.jpg";
-
-const delay = (i: number) => ({ "--i": i }) as CSSProperties;
+import { SECTORS } from "@/components/rckt/sectorData";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
-const sectores = [
-  [
-    "01",
-    "Salud, estética y odontología",
-    "Del clic al paciente que sí llega a la cita.",
-    "/sectores/salud-estetica-odontologia",
-  ],
-  [
-    "02",
-    "Educación privada",
-    "De la pauta de temporada a la matrícula firmada.",
-    "/sectores/educacion",
-  ],
-  [
-    "03",
-    "Construcción e inmobiliario",
-    "Del anuncio a la escritura.",
-    "/sectores/construccion-inmobiliario",
-  ],
-  ["04", "Servicios B2B", "De la búsqueda al contrato firmado.", "/sectores/servicios-b2b"],
-  ["05", "Ecommerce", "De la pauta al margen, no solo al ROAS.", "/sectores/ecommerce"],
-  [
-    "06",
-    "Industria y distribución",
-    "De la cotización al pedido entregado.",
-    "/sectores/industria-distribucion",
-  ],
+const CARDS = [
+  ["01", "Salud, estética y odontología", "/sectores/salud-estetica-odontologia", "salud", "Revenue Engine"],
+  ["02", "Educación privada", "/sectores/educacion", "educacion", "Revenue Engine"],
+  ["03", "Construcción e inmobiliario", "/sectores/construccion-inmobiliario", "construccion", "Revenue Engine + Operations"],
+  ["04", "Servicios B2B", "/sectores/servicios-b2b", "b2b", "Revenue Engine"],
+  ["05", "Ecommerce", "/sectores/ecommerce", "ecommerce", "Demand System"],
+  ["06", "Industria y distribución", "/sectores/industria-distribucion", "industria", "Operations System"],
 ] as const;
 
 export const Route = createFileRoute("/sectores/")({
@@ -65,60 +45,38 @@ export const Route = createFileRoute("/sectores/")({
 
 function SectoresPage() {
   useSiteMotion([]);
-
   return (
     <div className="rckt-site tcn-page">
       <main id="top">
-        <section className="subpage-hero">
-          <div className="subpage-hero-photo" aria-hidden="true">
-            <img src={heroAsset} alt="" />
-            <span className="subpage-hero-photo-overlay" />
-          </div>
-          <span className="tcn-orb tcn-orb-hero-corner" aria-hidden="true" />
-          <span className="tcn-orb tcn-orb-hero" aria-hidden="true" />
-          <SiteHeader />
-          <div className="container">
-            <div className="subpage-hero-inner">
-              <span className="kicker">Sectores</span>
-              <h1>Vendemos distinto según cómo vende cada sector.</h1>
-            </div>
-          </div>
-        </section>
-
-        <section className="band" data-mode="motion" id="sectores">
-          <span className="tcn-orb tcn-orb-cultura-left" aria-hidden="true" />
-          <span className="tcn-orb tcn-orb-vacantes" aria-hidden="true" />
-          <div className="container">
-            <div className="section-head">
-              <span className="num">01.</span>
-              <span className="kicker ital-label">Seis sectores</span>
-              <span className="divider"></span>
-            </div>
-            <div className="sol-cards rv-group">
-              {sectores.map(([n, titulo, senal, href], i) => (
-                <div className="sol-card rv" key={titulo} style={delay(i)}>
-                  <span className="sol-num">{n}</span>
-                  <h3>{titulo}</h3>
-                  <p>{senal}</p>
-                  <div className="sol-links">
-                    <a href={href}>Ver sector →</a>
+        <SystemPageHero label="Sectores" title={<>Vendemos distinto según cómo vende cada <em>sector</em>.</>} promise="Revenue Systems adaptados a la forma real de vender de cada sector." ctaLabel="Revisar mi proceso comercial →" />
+        <SystemSection id="sectores" num="01." label="Seis sectores" title={<>Seis formas de <em className="font-serif-accent">vender</em>.</>} phrase="Elige el tuyo y mira cómo lo medimos del clic al cierre.">
+          <div className="sector-index-grid">
+            {CARDS.map(([num, name, href, key, sistema]) => {
+              const d = SECTORS[key];
+              return (
+                <article key={href} className="sector-index-card">
+                  <div className="sector-index-card__photo">
+                    <img src={d.sectorImage} alt={d.sectorImageAlt} loading="lazy" />
+                    <span aria-hidden="true" />
                   </div>
-                </div>
-              ))}
-            </div>
+                  <div className="sector-index-card__body">
+                    <p className="sector-index-card__num">{num}</p>
+                    <h3>{name}</h3>
+                    <p className="sector-index-card__label">Cómo vende hoy</p>
+                    <div className="sector-index-card__steps">
+                      {d.funnelStages.map((st, i) => (
+                        <span key={st}>{i > 0 ? <em aria-hidden="true">→</em> : null}{st}</span>
+                      ))}
+                    </div>
+                    <p className="sector-index-card__system">Sistema recomendado · <strong>{sistema}</strong></p>
+                    <a className="sector-index-card__btn" href={href}>Ver sector →</a>
+                  </div>
+                </article>
+              );
+            })}
           </div>
-        </section>
-
-        <section className="cta-final">
-          <span className="tcn-orb tcn-orb-cta" aria-hidden="true" />
-          <div className="container">
-            <span className="kicker">Siguiente paso</span>
-            <h2 className="rv">Toda cuenta empieza por el diagnóstico.</h2>
-            <a className="btn btn-primary" href="/sistemas/revenue-diagnostic">
-              Solicitar Revenue Diagnostic →
-            </a>
-          </div>
-        </section>
+        </SystemSection>
+        <SystemFinalCta title={<>Toda cuenta empieza por el <em className="font-serif-accent">diagnóstico</em>.</>} label="Revisar mi proceso comercial →" />
       </main>
       <SiteFooter />
     </div>
