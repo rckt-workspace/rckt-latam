@@ -4340,6 +4340,9 @@ header.scrolled {
   body.menu-open .system-page-hero {
     overflow: visible;
   }
+  body.menu-open .system-page-hero {
+    z-index: 300;
+  }
 }
 
 /* fix apilado: el drawer y su X quedan por encima de la cápsula derecha */
