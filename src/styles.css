@@ -7320,6 +7320,12 @@ header {
   color: #f5f2ed;
 }
 
+@media (max-width: 1152px) {
+  .hero header:not(.scrolled) .nav-links.mobile-open > a {
+    color: var(--hero-ink);
+  }
+}
+
 .hero header:not(.scrolled) .nav-toggle span {
   background: #f5f2ed;
 }
