@@ -38,7 +38,9 @@ function createSupabaseClient() {
   // Debug logging (temporary)
   console.log("[SUPABASE DEBUG]", {
     viteUrl: SUPABASE_URL || "(empty)",
-    viteKey: SUPABASE_PUBLISHABLE_KEY ? `${SUPABASE_PUBLISHABLE_KEY.substring(0, 10)}...` : "(empty)",
+    viteKey: SUPABASE_PUBLISHABLE_KEY
+      ? `${SUPABASE_PUBLISHABLE_KEY.substring(0, 10)}...`
+      : "(empty)",
     hasProcess: typeof process !== "undefined",
   });
 

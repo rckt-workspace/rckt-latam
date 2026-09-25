@@ -13,6 +13,7 @@
 **Archivo creado:** `src/routes/api/aplicaciones/enviar.ts` (150 líneas)
 
 **Flujo implementado:**
+
 ```
 Browser (FormData)
   ↓ POST /api/aplicaciones/enviar
@@ -44,6 +45,7 @@ Respuesta segura:
 ```
 
 **Validaciones server-side:**
+
 - ✅ Content-Type multipart/form-data
 - ✅ Content-Length ≤15MB
 - ✅ Esquema Zod para todos los campos
@@ -56,6 +58,7 @@ Respuesta segura:
 ### 2. ✅ REFACTOR POSTULACIONFORM.TSX
 
 **Cambios:**
+
 - ❌ Removido: `import { getBrowserSupabase }`
 - ❌ Removido: Acceso directo a `supabase.storage.upload()`
 - ❌ Removido: Acceso directo a `supabase.from("postulaciones").insert()`
@@ -64,6 +67,7 @@ Respuesta segura:
 - ✅ Delegado: Validación server-side
 
 **Nuevo flujo:**
+
 ```javascript
 async function onSubmit(e: FormEvent) {
   // 1. UX validation (client-side)
@@ -92,6 +96,7 @@ async function onSubmit(e: FormEvent) {
 ```
 
 **Seguridad:**
+
 - ✅ Browser NO escribe en Storage
 - ✅ Browser NO escribe en BD
 - ✅ Toda la lógica sensible en servidor
@@ -104,11 +109,13 @@ async function onSubmit(e: FormEvent) {
 **Archivo creado:** `src/lib/supabase-blog-repository.ts` (220 líneas)
 
 **Implementa `BlogRepository` usando Supabase:**
+
 - ✅ `blog_posts` tabla real
 - ✅ `blog_categories` tabla real
 - ✅ RLS respetado (public SELECT con condiciones)
 
 **Métodos implementados:**
+
 ```typescript
 // Lectura pública (con RLS)
 getAllPosts()                    // status='published' AND published_at<=now()
@@ -129,12 +136,14 @@ resetToSeed()         // no-op (Supabase es source of truth)
 ```
 
 **Seguridad RLS:**
+
 - ✅ SELECT blog_posts donde `status='published' AND published_at<=now()`
 - ✅ SELECT blog_categories donde `active=true`
 - ✅ Admin writes bloqueadas (for future /ops implementation)
 - ✅ Sin relajar RLS para funcionar
 
 **Mapeo de campos:**
+
 ```typescript
 // Supabase snake_case → BlogPost camelCase
 blog_posts.cover_image_path  →  coverImage
@@ -152,20 +161,23 @@ blog_posts.seo_description   →  seo.description
 **Cambio:** Remover JsonBlogRepository, importar SupabaseBlogRepository
 
 **Antes:**
+
 ```typescript
 class JsonBlogRepository implements BlogRepository {
   // localStorage + JSON
 }
-export const blogRepository = new JsonBlogRepository()
+export const blogRepository = new JsonBlogRepository();
 ```
 
 **Después:**
+
 ```typescript
-import { supablogRepository } from "@/lib/supabase-blog-repository"
-export const blogRepository: BlogRepository = supablogRepository
+import { supablogRepository } from "@/lib/supabase-blog-repository";
+export const blogRepository: BlogRepository = supablogRepository;
 ```
 
 **Efecto:**
+
 - ✅ UI sigue usando `blogRepository` sin cambios
 - ✅ Interfaz se mantiene igual
 - ✅ Backend cambió a Supabase (transparent)
@@ -177,6 +189,7 @@ export const blogRepository: BlogRepository = supablogRepository
 ### 5. ✅ LIMPIAR .ENV.EXAMPLE
 
 **Cambios:**
+
 - ✅ AI_SERVICE_URL: 8000 → 8001
 - ✅ Estructura clara por sección
 - ✅ Sin VITE_*SERVICE_ROLE_KEY
@@ -220,7 +233,7 @@ SENTRY_DSN=
 Browser (página /trabaja-con-nosotros)
   ↓ getActiveVacancies() [server-side]
 Supabase (RLS: anon can read estado='activa')
-  ↓ 
+  ↓
   ✅ Funciona (vacantes públicas visibles)
 ```
 
@@ -265,16 +278,16 @@ Supabase (service_role bypassa RLS)
 
 ## 🔐 Seguridad Verificada
 
-| Aspecto | Verificado |
-|---------|-----------|
-| Service role key en browser | ❌ No está (correcto) |
-| Service role en server-side | ✅ Sí está (correcto) |
-| RLS respetado en blog | ✅ Sí (published only) |
-| RLS respetado en vacantes | ✅ Sí (activa only) |
+| Aspecto                        | Verificado                |
+| ------------------------------ | ------------------------- |
+| Service role key en browser    | ❌ No está (correcto)     |
+| Service role en server-side    | ✅ Sí está (correcto)     |
+| RLS respetado en blog          | ✅ Sí (published only)    |
+| RLS respetado en vacantes      | ✅ Sí (activa only)       |
 | RLS respetado en postulaciones | ✅ Sí (service_role only) |
-| Secrets en .env.example | ❌ No hay (correcto) |
-| CV con URL pública | ❌ No (privado) |
-| Validación server-side | ✅ Sí (completa) |
+| Secrets en .env.example        | ❌ No hay (correcto)      |
+| CV con URL pública             | ❌ No (privado)           |
+| Validación server-side         | ✅ Sí (completa)          |
 
 ---
 
@@ -313,33 +326,36 @@ Supabase (service_role bypassa RLS)
 ## ⏳ Qué Queda Pendiente para /ops
 
 ### Dashboard admin `/ops/blog` (PENDIENTE)
+
 ```typescript
 // Operaciones administrativas del blog
-POST /api/ops/blog/save     // savePost()
-DELETE /api/ops/blog/{id}   // deletePost()
-GET /api/ops/blog           // admin list
-PUT /api/ops/blog/{id}      // edit
+POST / api / ops / blog / save; // savePost()
+DELETE / api / ops / blog / { id }; // deletePost()
+GET / api / ops / blog; // admin list
+PUT / api / ops / blog / { id }; // edit
 ```
 
 **Status:** Preparado para implementar. SupabaseBlogRepository lanza `NotImplementedError` con mensaje claro.
 
 ### Dashboard admin `/ops/vacantes` (PENDIENTE)
+
 ```typescript
 // CRUD de vacantes
-POST /api/ops/vacantes
-GET /api/ops/vacantes
-PUT /api/ops/vacantes/{id}
-DELETE /api/ops/vacantes/{id}
+POST / api / ops / vacantes;
+GET / api / ops / vacantes;
+PUT / api / ops / vacantes / { id };
+DELETE / api / ops / vacantes / { id };
 ```
 
 **Status:** Estructura lista, solo necesita wiring con Supabase.
 
 ### Dashboard admin `/ops/postulaciones` (PENDIENTE)
+
 ```typescript
 // Gestión de postulaciones (lectura, estado, notas)
-GET /api/ops/postulaciones
-PUT /api/ops/postulaciones/{id}  // actualizar estado, notas
-GET /api/ops/postulaciones/{id}/historial  // postulacion_eventos
+GET / api / ops / postulaciones;
+PUT / api / ops / postulaciones / { id }; // actualizar estado, notas
+GET / api / ops / postulaciones / { id } / historial; // postulacion_eventos
 ```
 
 **Status:** Base de datos lista, necesita endpoints y UI.
@@ -363,14 +379,14 @@ npm run build
 
 ## 🎯 Resumen de FASE 3
 
-| Componente | Antes | Después | Status |
-|-----------|-------|---------|--------|
+| Componente    | Antes                           | Después                                     | Status           |
+| ------------- | ------------------------------- | ------------------------------------------- | ---------------- |
 | Postulaciones | Browser → Storage/DB directo ❌ | Browser → Endpoint → Server → Storage/DB ✅ | ✅ Refactorizado |
-| Blog | JSON + localStorage | Supabase real | ✅ Migrado |
-| Vacantes | Funcional | Funcional (sin cambios) | ✅ OK |
-| RLS | Implementado | Respetado | ✅ Secure |
-| Security | Secrets en types | Separado frontend/server | ✅ Improved |
-| Admin | Estructura lista | Conexión pendiente | ⏳ Ready |
+| Blog          | JSON + localStorage             | Supabase real                               | ✅ Migrado       |
+| Vacantes      | Funcional                       | Funcional (sin cambios)                     | ✅ OK            |
+| RLS           | Implementado                    | Respetado                                   | ✅ Secure        |
+| Security      | Secrets en types                | Separado frontend/server                    | ✅ Improved      |
+| Admin         | Estructura lista                | Conexión pendiente                          | ⏳ Ready         |
 
 ---
 

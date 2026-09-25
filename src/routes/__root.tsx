@@ -107,6 +107,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800,900&display=swap",
       },
     ],
+    scripts: [
+      {
+        children: `(function(){var d=false;try{var t=localStorage.getItem('rckt-theme');if(t==='dark'){d=true;}else if(t!=='light'){d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;}}catch(e){d=false;}var r=document.documentElement;r.classList.toggle('dark',!!d);r.setAttribute('data-theme',d?'dark':'light');})();`,
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -116,7 +121,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="es">
+    <html lang="es-419" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>

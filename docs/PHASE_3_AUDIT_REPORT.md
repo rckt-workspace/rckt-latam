@@ -10,6 +10,7 @@
 ### ✅ SUPABASE CLIENTS (Correcto)
 
 #### `src/integrations/supabase/client.ts`
+
 ```typescript
 // Browser client - CORRECTO
 - Usa VITE_SUPABASE_URL ✅
@@ -19,6 +20,7 @@
 ```
 
 #### `src/integrations/supabase/client.server.ts`
+
 ```typescript
 // Server client - CORRECTO
 - Usa process.env.SUPABASE_URL ✅
@@ -31,6 +33,7 @@
 ### 🟢 VACANTES (Estado: Funcional, sin cambios necesarios)
 
 #### `src/lib/vacantes.functions.ts`
+
 ```typescript
 export const getActiveVacancies = createServerFn({ method: "GET" })
   .inputValidator((data: {...}) => {...})  // ⚠️ Deprecated API?
@@ -38,6 +41,7 @@ export const getActiveVacancies = createServerFn({ method: "GET" })
 ```
 
 **Análisis:**
+
 - ✅ Consulta Supabase correctamente
 - ✅ Filtra `estado = 'activa'` (RLS public)
 - ✅ Ordena por fecha_publicacion
@@ -51,6 +55,7 @@ export const getActiveVacancies = createServerFn({ method: "GET" })
 ### 🔴 BLOG (Estado: JSON/localStorage, necesita migración)
 
 #### `src/lib/blog.repository.ts`
+
 ```typescript
 class JsonBlogRepository implements BlogRepository {
   // Implementa BlogRepository usando:
@@ -63,12 +68,14 @@ export const blogRepository = new JsonBlogRepository();
 ```
 
 **Problemas:**
+
 - ❌ No usa Supabase blog_posts
 - ❌ No usa Supabase blog_categories
 - ❌ Datos en localStorage (no reproducible en servidor)
 - ❌ Cambios locales no persisten en Supabase
 
 **Necesario:**
+
 - ✅ Crear `SupabaseBlogRepository` implementando `BlogRepository`
 - ✅ Usar blog_posts y blog_categories reales
 - ✅ RLS: SELECT donde status='published' AND published_at <= now()
@@ -80,13 +87,14 @@ export const blogRepository = new JsonBlogRepository();
 ### 🔴 POSTULACIONES (Estado: Inseguro, necesita refactor)
 
 #### `src/components/PostulacionForm.tsx`
+
 ```typescript
 async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
   // Línea 85-87: Sube directamente a Storage desde browser ❌
   const { data: upData, error: upErr } = await supabase.storage
     .from("cvs")
     .upload(path, archivoFinal, {...})
-  
+
   // Línea 101-110: Inserta directamente en postulaciones ❌
   const { error: insErr } = await supabase.from("postulaciones").insert({
     vacante_id: vacanteId,
@@ -97,6 +105,7 @@ async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 ```
 
 **Problemas:**
+
 - ❌ Storage CVS está RLS bloqueado (upload fallará)
 - ❌ Tabla postulaciones está RLS bloqueada (insert fallará)
 - ❌ CV pública en Storage (riesgo de seguridad)
@@ -104,6 +113,7 @@ async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 - ❌ Sin consentimiento GDPR (consent_at)
 
 **Necesario:**
+
 1. Crear endpoint server: `/api/aplicaciones/enviar`
 2. Validar formulario server-side
 3. Validar PDF server-side (máximo 10MB)
@@ -117,6 +127,7 @@ async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 ### ✅ ADMIN (Estado: Correcto, arquitectura lista)
 
 #### `src/lib/admin-auth.ts`
+
 ```typescript
 // Session management - CORRECTO
 - HMAC-SHA256 signing ✅
@@ -126,6 +137,7 @@ async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 ```
 
 #### `src/routes/api/admin/login.ts`
+
 ```typescript
 // Login endpoint - CORRECTO
 - POST /api/admin/login ✅
@@ -135,12 +147,14 @@ async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 ```
 
 **Rutas existentes:**
+
 - `/api/admin/login` — ✅ Funciona
 - `/api/admin/logout` — ✅ Existe
 - `/api/admin/ai/*` — ✅ Endpoints AI
 - `/ops/` — ⏳ Dashboard (estructura lista, datos pendientes)
 
 **Arquitectura para conectar en FASE 3:**
+
 ```
 /ops/vacantes     → Supabase vacantes
 /ops/postulaciones → Supabase postulaciones
@@ -153,6 +167,7 @@ async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 ### ⚠️ POSTULACION FORM DIRECT INSERT (Fallará)
 
 **Flujo actual:**
+
 ```
 Browser
   → FormData
@@ -161,6 +176,7 @@ Browser
 ```
 
 **Flujo requerido:**
+
 ```
 Browser
   → FormData
@@ -175,21 +191,22 @@ Browser
 
 ### 📋 SEGURIDAD (Estado: Verificado)
 
-| Item | Status | Notas |
-|------|--------|-------|
-| Service role en browser | ✅ No | client.ts no lo expone |
-| Service role en server | ✅ Sí | client.server.ts lo usa |
-| VITE_ en .env.example | ✅ Correcto | Sin secretos reales |
-| RLS habilitado | ✅ Sí | Todas las tablas |
-| Blog público | ✅ RLS restrictiva | Solo published |
-| Vacantes públicas | ✅ RLS restrictiva | Solo activa |
-| Postulaciones | ✅ RLS privada | service_role only |
+| Item                    | Status             | Notas                   |
+| ----------------------- | ------------------ | ----------------------- |
+| Service role en browser | ✅ No              | client.ts no lo expone  |
+| Service role en server  | ✅ Sí              | client.server.ts lo usa |
+| VITE_ en .env.example   | ✅ Correcto        | Sin secretos reales     |
+| RLS habilitado          | ✅ Sí              | Todas las tablas        |
+| Blog público            | ✅ RLS restrictiva | Solo published          |
+| Vacantes públicas       | ✅ RLS restrictiva | Solo activa             |
+| Postulaciones           | ✅ RLS privada     | service_role only       |
 
 ---
 
 ### 📁 ARCHIVOS QUE NECESITAN CAMBIOS
 
 #### TIER 1 (Crítico)
+
 1. **`src/components/PostulacionForm.tsx`**
    - Cambiar flujo a server-side
    - Usar `/api/aplicaciones/enviar`
@@ -208,6 +225,7 @@ Browser
    - Mantener interfaz BlogRepository
 
 #### TIER 2 (Mejora)
+
 4. **`src/lib/vacantes.functions.ts`**
    - Verificar `inputValidator()` vs `validator()`
    - Si es deprecated, actualizar
@@ -217,6 +235,7 @@ Browser
    - Documentar claramente
 
 #### TIER 3 (Admin)
+
 6. **`src/routes/ops/vacantes.tsx`** (si existe)
    - Conectar a Supabase vacantes (CRUD)
 
@@ -227,31 +246,35 @@ Browser
 
 ### 🔧 VALIDACIONES TECNOLÓGICAS
 
-| Check | Estado | Acción |
-|-------|--------|--------|
-| npm run build | ⏳ Después de cambios | Verificar |
-| TypeScript types | ✅ Actualizados (types.ts) | Usar directamente |
-| RLS en Supabase | ✅ Implementado | Respetar |
-| Storage buckets | ✅ Creados (cvs, blog-media, knowledge) | Usar correctamente |
-| Service role access | ✅ Disponible | Solo server-side |
+| Check               | Estado                                  | Acción             |
+| ------------------- | --------------------------------------- | ------------------ |
+| npm run build       | ⏳ Después de cambios                   | Verificar          |
+| TypeScript types    | ✅ Actualizados (types.ts)              | Usar directamente  |
+| RLS en Supabase     | ✅ Implementado                         | Respetar           |
+| Storage buckets     | ✅ Creados (cvs, blog-media, knowledge) | Usar correctamente |
+| Service role access | ✅ Disponible                           | Solo server-side   |
 
 ---
 
 ## 📌 Resumen de Accionesenumeradas
 
 ### CREAR
+
 - [ ] `src/routes/api/aplicaciones/enviar.ts` — Server-side aplicaciones endpoint
 
 ### REFACTOR
+
 - [ ] `src/components/PostulacionForm.tsx` — Usar endpoint en lugar de direct insert
 - [ ] `src/lib/blog.repository.ts` → Crear `SupabaseBlogRepository`
 - [ ] `src/lib/vacantes.functions.ts` — Revisar API deprecation
 
 ### VERIFICAR
+
 - [ ] `.env.example` — Sin duplicados, bien documentado
 - [ ] API Routes de admin — Conectar con Supabase
 
 ### NO TOCAR (por ahora)
+
 - ✅ Lovable bridge
 - ✅ AI runtime
 - ✅ Diseño visual

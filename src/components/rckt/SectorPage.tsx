@@ -1,5 +1,16 @@
 import type { ComponentType, ReactNode } from "react";
-import { BarChart3, Bot, ClipboardCheck, Gauge, GitBranch, Megaphone, MessageSquareText, RefreshCw, Target, UsersRound } from "lucide-react";
+import {
+  BarChart3,
+  Bot,
+  ClipboardCheck,
+  Gauge,
+  GitBranch,
+  Megaphone,
+  MessageSquareText,
+  RefreshCw,
+  Target,
+  UsersRound,
+} from "lucide-react";
 import { SiteFooter, useSiteMotion } from "@/components/SiteChrome";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SectorJourney, { type JourneyLeak } from "@/components/rckt/SectorJourney";
@@ -38,8 +49,21 @@ export type SectorPageData = {
   faqItems?: FaqItem[];
 };
 
-const ROW_ICONS: ComponentType<{ className?: string; strokeWidth?: number; "aria-hidden"?: boolean | "true" }>[] = [
-  Target, UsersRound, GitBranch, Bot, BarChart3, MessageSquareText, Gauge, RefreshCw, Megaphone, ClipboardCheck,
+const ROW_ICONS: ComponentType<{
+  className?: string;
+  strokeWidth?: number;
+  "aria-hidden"?: boolean | "true";
+}>[] = [
+  Target,
+  UsersRound,
+  GitBranch,
+  Bot,
+  BarChart3,
+  MessageSquareText,
+  Gauge,
+  RefreshCw,
+  Megaphone,
+  ClipboardCheck,
 ];
 
 export default function SectorPage(data: SectorPageData) {
@@ -48,16 +72,31 @@ export default function SectorPage(data: SectorPageData) {
   return (
     <div className="rckt-site tcn-page">
       <main id="top">
-        <SystemPageHero label={data.label} title={data.title} descriptor={data.descriptor} promise={data.descriptor ? undefined : data.context} ctaLabel={data.ctaLabel} ctaHref={DIAGNOSTIC_HREF} />
+        <SystemPageHero
+          label={data.label}
+          title={data.title}
+          descriptor={data.descriptor}
+          promise={data.descriptor ? undefined : data.context}
+          ctaLabel={data.ctaLabel}
+          ctaHref={DIAGNOSTIC_HREF}
+        />
 
         <section className="sector-section sector-journey-section" id="como-vende">
           <div className="container">
             <div className="sector-journey-layout">
               <div className="sector-journey-photo-wrap">
-                <img className="sector-journey-photo" src={data.sectorImage} alt={data.sectorImageAlt} />
+                <img
+                  className="sector-journey-photo"
+                  src={data.sectorImage}
+                  alt={data.sectorImageAlt}
+                />
               </div>
               <div>
-                <SectionHeader num="01." label="Cómo vende hoy" title="Cómo vende hoy este sector." />
+                <SectionHeader
+                  num="01."
+                  label="Cómo vende hoy"
+                  title="Cómo vende hoy este sector."
+                />
                 <SectorJourney stages={data.funnelStages} leaks={data.funnelLeaks} />
               </div>
             </div>
@@ -67,7 +106,16 @@ export default function SectorPage(data: SectorPageData) {
         <section className="sector-section sector-pains-section" id="que-le-duele">
           <div className="container">
             <div className="sector-pains-layout">
-              <SectionHeader num="02." label="Qué le duele" title={<>Donde se escapa <em className="font-serif-accent">el dinero</em> en tu sector.</>} phrase="Las fugas más habituales que encontramos al medir este sector." />
+              <SectionHeader
+                num="02."
+                label="Qué le duele"
+                title={
+                  <>
+                    Donde se escapa <em className="font-serif-accent">el dinero</em> en tu sector.
+                  </>
+                }
+                phrase="Las fugas más habituales que encontramos al medir este sector."
+              />
               <SectorPains items={data.doloresDetalle} />
             </div>
           </div>
@@ -84,8 +132,15 @@ export default function SectorPage(data: SectorPageData) {
                     const RowIcon = ROW_ICONS[idx % ROW_ICONS.length];
                     return (
                       <li key={f.nombre} className="sector-service-row">
-                        <RowIcon className="sector-service-icon" strokeWidth={1.7} aria-hidden="true" />
-                        <div><h3>{f.nombre}</h3><p>{f.detalle}</p></div>
+                        <RowIcon
+                          className="sector-service-icon"
+                          strokeWidth={1.7}
+                          aria-hidden="true"
+                        />
+                        <div>
+                          <h3>{f.nombre}</h3>
+                          <p>{f.detalle}</p>
+                        </div>
                       </li>
                     );
                   })}
@@ -96,12 +151,21 @@ export default function SectorPage(data: SectorPageData) {
                   <p className="label-orange">Ficha del sector</p>
                   <dl className="sector-facts">
                     {data.sectorFacts.map((fact) => (
-                      <div key={fact.label} className="sector-fact-row"><dt>{fact.label}</dt><dd>{fact.value}</dd></div>
+                      <div key={fact.label} className="sector-fact-row">
+                        <dt>{fact.label}</dt>
+                        <dd>{fact.value}</dd>
+                      </div>
                     ))}
                   </dl>
-                  <a href={data.primaryLink.href} className="btn btn-primary sector-fact-primary">{data.primaryLink.label}</a>
+                  <a href={data.primaryLink.href} className="btn btn-primary sector-fact-primary">
+                    {data.primaryLink.label}
+                  </a>
                   {data.secondaryLink ? (
-                    <div className="sector-fact-secondary-wrap"><a href={data.secondaryLink.href} className="sector-fact-secondary">{data.secondaryLink.label}</a></div>
+                    <div className="sector-fact-secondary-wrap">
+                      <a href={data.secondaryLink.href} className="sector-fact-secondary">
+                        {data.secondaryLink.label}
+                      </a>
+                    </div>
                   ) : null}
                 </div>
               </aside>
@@ -113,7 +177,9 @@ export default function SectorPage(data: SectorPageData) {
           <div className="container">
             <SectionHeader num="04." label="Cómo empezamos" title="Cómo empezamos." />
             <AcceptanceSteps items={data.acceptanceSteps} />
-            {data.acceptanceNote ? <p className="sector-acceptance-note">{data.acceptanceNote}</p> : null}
+            {data.acceptanceNote ? (
+              <p className="sector-acceptance-note">{data.acceptanceNote}</p>
+            ) : null}
           </div>
         </section>
 
@@ -128,7 +194,14 @@ export default function SectorPage(data: SectorPageData) {
 
         {!isShort && data.faqItems ? <FaqSection items={data.faqItems} /> : null}
 
-        <SystemFinalCta title={<>Medimos antes de tocar <em className="font-serif-accent">nada</em>.</>} label={data.ctaFinalLabel ?? "Revisar mi proceso comercial →"} />
+        <SystemFinalCta
+          title={
+            <>
+              Medimos antes de tocar <em className="font-serif-accent">nada</em>.
+            </>
+          }
+          label={data.ctaFinalLabel ?? "Revisar mi proceso comercial →"}
+        />
       </main>
       <SiteFooter />
     </div>

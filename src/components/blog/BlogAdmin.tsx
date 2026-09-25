@@ -81,11 +81,7 @@ export function BlogAdmin() {
       setVista("editar");
       await cargar();
     } catch (e) {
-      setError(
-        e instanceof Error
-          ? e.message
-          : "No se pudo guardar el artículo."
-      );
+      setError(e instanceof Error ? e.message : "No se pudo guardar el artículo.");
     }
   }
 

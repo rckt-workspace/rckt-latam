@@ -1,6 +1,7 @@
 # Paso 4 — Soluciones alineadas con España
 
 ## Cambios
+
 - Portar sin alterar la referencia los componentes propios de Soluciones: tarjetas de señales, embudo visual y tarjetas de hitos.
 - Reconstruir `/soluciones/` con el hero compartido, tres tarjetas fotográficas y el CTA final compartido. Las imágenes de referencia se copiarán físicamente al repositorio LATAM.
 - Reconstruir Captación y cierre con señales, embudo, Revenue Engine, hitos de 30/60/90 días, la ficha de método LATAM ya existente y el bloque “Para quién no es”.
@@ -12,6 +13,7 @@
 - Mantener el sistema global de manchas y la paleta ya instalados, sin manchas dentro de heroes, fondos oscuros ni CTA.
 
 ## Títulos editoriales nuevos propuestos
+
 - Índice — Tres puertas de entrada: **“El problema decide por dónde empezamos.”** Apoyo: “Captación y cierre, ecommerce rentable u operación: primero ubicamos la fuga.”
 - Captación — Señales: **“La venta se pierde antes de llegar al cierre.”** Apoyo: “WhatsApp, tiempos de respuesta, citas y atribución dejan señales concretas.”
 - Captación — Embudo: **“Seis pasos. Seis lugares donde se pierde una venta.”** Apoyo: “Seguimos el recorrido completo desde la inversión hasta el cierre.”
@@ -26,11 +28,13 @@
 - Todas — Para quién no es: **“La base también tiene que estar lista.”** El texto de apoyo seguirá siendo el ya existente en cada página.
 
 ## Verificación
+
 - Comparar las cuatro páginas con España sección por sección.
 - Probar 1280 px y celular, en claro y oscuro, revisando encuadre, legibilidad, navegación y ausencia de desbordes.
 - Confirmar que las FAQ vacías no generen contenido ni marcado estructurado.
 - Ejecutar las comprobaciones de tipos y compilación y revisar los errores de la vista previa.
 
 ## Detalles técnicos
+
 - No se modificarán APIs, formularios, backend, archivos protegidos ni el proyecto de España.
 - Los nuevos componentes serán copias locales adaptadas únicamente a los tokens y convenciones existentes de LATAM.
