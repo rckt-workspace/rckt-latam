@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useCallback } from "react";
 import heroAsset from "@/assets/rckt-hero.jpg";
+import { Theme, currentTheme, applyTheme, syncThemeButtons, THEME_EVENT } from "@/lib/theme";
 import ctaAsset from "@/assets/rckt-cta.jpg";
 import logoDarkAsset from "@/assets/rckt-logo-dark.png";
 import logoLightAsset from "@/assets/rckt-logo-light.png";
@@ -321,3 +322,230 @@ function RcktLanding() {
         .replaceAll("__LOGO_LIGHT__", logoLightAsset);
         const heroStart = markup.indexOf('<section class="hero">');
         const heroEnd = markup.indexOf("<!-- HOME CONTENT MOUNTED WITH REACT -->");
+        return {
+          heroMarkup: markup.slice(heroStart, heroEnd),
+        };
+      })(),
+    [],
+  );
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+    const timers: number[] = [];
+
+    // --- Títulos de sección palabra por palabra ---
+    document.querySelectorAll<HTMLElement>(".band h2.rv, .cta-final h2.rv").forEach((h2) => {
+      if (reduceMotion || h2.querySelector("*")) return;
+      const words = (h2.textContent ?? "").trim().split(/\s+/);
+      if (words.length < 2) return;
+      h2.textContent = "";
+      words.forEach((word, i) => {
+        const span = document.createElement("span");
+        span.className = "word";
+        span.style.setProperty("--w", String(i));
+        span.textContent = word;
+        h2.appendChild(span);
+        if (i < words.length - 1) h2.appendChild(document.createTextNode(" "));
+      });
+      h2.classList.add("words");
+    });
+
+    // --- Contadores animados ---
+    const counters = Array.from(document.querySelectorAll<HTMLElement>(".stat-num"));
+    const runCounter = (el: HTMLElement) => {
+      const raw = (el.textContent ?? "").trim();
+      const match = raw.match(/-?[\d.,]+/);
+      if (!match) return;
+      const numText = match[0].replace(",", ".");
+      const target = parseFloat(numText);
+      if (Number.isNaN(target)) return;
+      const decimals = numText.includes(".") ? (numText.split(".")[1] ?? "").length : 0;
+      const prefix = raw.slice(0, match.index ?? 0);
+      const suffix = raw.slice((match.index ?? 0) + match[0].length);
+      const duration = 1300;
+      const start = performance.now();
+      const step = (now: number) => {
+        const t = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = `${prefix}${(target * eased).toFixed(decimals)}${suffix}`;
+        if (t < 1) requestAnimationFrame(step);
+      };
+      if (reduceMotion) return;
+      el.textContent = `${prefix}${(0).toFixed(decimals)}${suffix}`;
+      requestAnimationFrame(step);
+    };
+    let counterObserver: IntersectionObserver | undefined;
+    if (!reduceMotion && "IntersectionObserver" in window) {
+      counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              runCounter(entry.target as HTMLElement);
+              counterObserver?.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.6 },
+      );
+      counters.forEach((el) => counterObserver?.observe(el));
+    }
+
+    // --- Máquina de escribir solo en la palabra "humano" ---
+    const typeTarget = document.querySelector<HTMLElement>(".hero-inner h1 .type-target");
+    if (typeTarget && !reduceMotion) {
+      const finalText = typeTarget.textContent ?? "";
+      typeTarget.textContent = "";
+      const cursor = document.createElement("span");
+      cursor.className = "type-cursor";
+      cursor.setAttribute("aria-hidden", "true");
+      typeTarget.appendChild(cursor);
+      let i = 0;
+      const tick = () => {
+        if (i < finalText.length) {
+          typeTarget.insertBefore(document.createTextNode(finalText.charAt(i)), cursor);
+          i += 1;
+          timers.push(window.setTimeout(tick, 45));
+        } else {
+          timers.push(
+            window.setTimeout(() => {
+              cursor.remove();
+            }, 2200),
+          );
+        }
+      };
+      timers.push(window.setTimeout(tick, 480));
+    }
+
+    const revealElements = Array.from(document.querySelectorAll<HTMLElement>(".rv"));
+    const observer: IntersectionObserver | undefined =
+      "IntersectionObserver" in window
+        ? new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("in");
+                  observer?.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+          )
+        : undefined;
+    revealElements.forEach((el) => (observer ? observer.observe(el) : el.classList.add("in")));
+
+    const header = document.querySelector<HTMLElement>("header");
+    const onScroll = () => header?.classList.toggle("scrolled", window.scrollY > 8);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    const toggle = document.getElementById("navToggle");
+    const links = document.querySelector<HTMLElement>(".nav-links");
+    const updateMenuState = () => {
+      const open = links?.classList.contains("mobile-open");
+      toggle?.classList.toggle("mobile-open", Boolean(open));
+      toggle?.setAttribute("aria-expanded", String(Boolean(open)));
+      toggle?.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+    };
+
+    const onToggle = () => {
+      links?.classList.toggle("mobile-open");
+      updateMenuState();
+    };
+    toggle?.addEventListener("click", onToggle);
+
+    const closeMenu = () => {
+      links?.classList.remove("mobile-open");
+      updateMenuState();
+    };
+    links?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+
+    const closeMenuOnResize = () => {
+      if (window.innerWidth > 960 && links?.classList.contains("mobile-open")) closeMenu();
+    };
+    const closeMenuOnEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && links?.classList.contains("mobile-open")) closeMenu();
+    };
+
+    window.addEventListener("resize", closeMenuOnResize);
+    window.addEventListener("keydown", closeMenuOnEsc);
+
+    const faqButtons = Array.from(document.querySelectorAll<HTMLButtonElement>(".faq-q"));
+    const onFaq = (event: Event) => {
+      const button = event.currentTarget as HTMLButtonElement;
+      const item = button.closest<HTMLElement>(".faq-item");
+      if (!item) return;
+      const wasOpen = item.classList.contains("open");
+      document.querySelectorAll<HTMLElement>(".faq-item").forEach((row) => {
+        row.classList.remove("open");
+        row.querySelector<HTMLElement>(".faq-a")?.style.removeProperty("max-height");
+      });
+      if (!wasOpen) {
+        item.classList.add("open");
+        const answer = item.querySelector<HTMLElement>(".faq-a");
+        if (answer) answer.style.maxHeight = `${answer.scrollHeight}px`;
+      }
+    };
+    faqButtons.forEach((button) => button.addEventListener("click", onFaq));
+
+    const form = document.getElementById("diagForm") as HTMLFormElement | null;
+    const onSubmit = (event: Event) => {
+      event.preventDefault();
+      form?.classList.add("submitted");
+    };
+    form?.addEventListener("submit", onSubmit);
+
+    const themeToggles = Array.from(document.querySelectorAll<HTMLButtonElement>(".theme-toggle"));
+    const applyTheme = (theme: "light" | "dark") => {
+      document.documentElement.setAttribute("data-theme", theme);
+      try {
+        localStorage.setItem("rckt-theme", theme);
+      } catch {
+        // Storage can be unavailable in private browsing contexts.
+      }
+      themeToggles.forEach((button) => {
+        const isDark = theme === "dark";
+        button.classList.toggle("is-dark", isDark);
+        button.classList.toggle("is-light", !isDark);
+        button.setAttribute("aria-label", isDark ? "Activar versión clara" : "Activar versión oscura");
+        button.setAttribute("title", isDark ? "Versión clara" : "Versión oscura");
+      });
+      window.dispatchEvent(new CustomEvent("rckt:theme", { detail: theme }));
+    };
+    let storedTheme: "light" | "dark" = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+    try {
+      if (localStorage.getItem("rckt-theme") === "dark") storedTheme = "dark";
+    } catch {
+      // Keep the rendered theme.
+    }
+    applyTheme(storedTheme);
+    const toggleTheme = () => applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
+    themeToggles.forEach((button) => button.addEventListener("click", toggleTheme));
+
+    return () => {
+      timers.forEach((t) => window.clearTimeout(t));
+      counterObserver?.disconnect();
+      observer?.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", closeMenuOnResize);
+      window.removeEventListener("keydown", closeMenuOnEsc);
+      toggle?.removeEventListener("click", onToggle);
+      links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu));
+      faqButtons.forEach((button) => button.removeEventListener("click", onFaq));
+      form?.removeEventListener("submit", onSubmit);
+      themeToggles.forEach((button) => button.removeEventListener("click", toggleTheme));
+    };
+  }, []);
+
+  return (
+    <div className="rckt-site">
+      <main id="top">
+        <div className="home-legacy-hero" dangerouslySetInnerHTML={{ __html: heroMarkup }} />
+        <ProblemsSection />
+        <SystemsSection />
+        <ProofSection />
+        <FinalCta />
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}

@@ -1,19 +1,33 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import logoLightAsset from "@/assets/rckt-logo-light.png";
 import logoDarkAsset from "@/assets/rckt-logo-dark.png";
+import logoLightAsset from "@/assets/rckt-logo-light.png";
 import ThemeToggle from "@/components/rckt/ThemeToggle";
+import { currentTheme, THEME_EVENT } from "@/lib/theme";
 
 /** Navegación y pie compartidos con la home, más las animaciones del sitio. */
 
-export function SiteHeader() {
+export function SiteHeader({ dark = false }: { dark?: boolean }) {
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
+
+  useEffect(() => {
+    setTheme(currentTheme());
+    const onThemeChange = () => setTheme(currentTheme());
+    window.addEventListener(THEME_EVENT, onThemeChange);
+    return () => window.removeEventListener(THEME_EVENT, onThemeChange);
+  }, []);
+
+  const logoSrc = theme === "dark" ? logoLightAsset : logoDarkAsset;
+
   return (
     <header>
       <div className="container">
         <nav>
           <div className="nav-capsule nav-capsule-left">
-            <a className="logo" href="/">
-              <img alt="RCKT" src={logoDarkAsset} />
+            <a className="logo" href="/" aria-label="RCKT Home">
+              <img alt="RCKT" src={logoSrc} />
             </a>
-            <div className="nav-links">
+            <div className="nav-links" role="navigation" aria-label="Navegación principal">
               <a href="/soluciones">Soluciones</a>
               <a href="/sistemas">Sistemas</a>
               <a href="/sectores">Sectores</a>
@@ -35,12 +49,10 @@ export function SiteHeader() {
             <a className="btn hero-nav-cta" href="/sistemas/revenue-diagnostic">
               Pedir diagnóstico
             </a>
-            <button aria-label="Abrir menú" className="nav-toggle" id="navToggle">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path className="nav-toggle-line nav-toggle-line--top" d="M5 7h14" />
-                <path className="nav-toggle-line nav-toggle-line--middle" d="M5 12h14" />
-                <path className="nav-toggle-line nav-toggle-line--bottom" d="M5 17h14" />
-              </svg>
+            <button aria-label="Abrir menú" aria-expanded="false" className="nav-toggle" id="navToggle">
+              <span></span>
+              <span></span>
+              <span></span>
             </button>
           </div>
         </nav>
@@ -49,65 +61,40 @@ export function SiteHeader() {
   );
 }
 
+
 export function SiteFooter() {
   return (
-    <footer className="section-deep">
+    <footer className="section-deep" role="contentinfo">
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
-            <a className="logo" href="/">
-              <img alt="RCKT" src={logoDarkAsset} />
+            <a className="logo" href="/" aria-label="RCKT Home">
+              <img alt="RCKT" src={dark ? logoLightAsset : logoDarkAsset} />
             </a>
             <p>Menos ruido, más crecimiento.</p>
             <h5>Correo</h5>
-            <a className="footer-contact" href="mailto:hola@rckt.lat">
-              hola@rckt.lat
-            </a>
+            <a className="footer-contact" href="mailto:hola@rckt.lat">hola@rckt.lat</a>
           </div>
           <div className="footer-col">
             <h5>Navegar</h5>
-            <ul>
-              <li>
-                <a href="/soluciones">Soluciones</a>
-              </li>
-              <li>
-                <a href="/sistemas">Sistemas</a>
-              </li>
-              <li>
-                <a href="/sectores">Sectores</a>
-              </li>
-              <li>
-                <a href="/nosotros">Nosotros</a>
-              </li>
-              <li>
-                <a href="/nosotros/como-trabajamos">Método</a>
-              </li>
-              <li>
-                <a href="/sistemas/revenue-diagnostic#faq">FAQ</a>
-              </li>
-              <li>
-                <a href="/contacto">Contacto</a>
-              </li>
-              <li>
-                <a href="/blog">Blog</a>
-              </li>
-              <li>
-                <a href="/trabaja-con-nosotros">Trabaja con nosotros</a>
-              </li>
+            <ul aria-label="Enlaces de navegación">
+              <li><a href="/soluciones">Soluciones</a></li>
+              <li><a href="/sistemas">Sistemas</a></li>
+              <li><a href="/sectores">Sectores</a></li>
+              <li><a href="/nosotros">Nosotros</a></li>
+              <li><a href="/nosotros/como-trabajamos">Método</a></li>
+              <li><a href="/sistemas/revenue-diagnostic#faq">FAQ</a></li>
+              <li><a href="/contacto">Contacto</a></li>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/trabaja-con-nosotros">Trabaja con nosotros</a></li>
             </ul>
           </div>
           <div className="footer-col">
             <h5>Legal</h5>
-            <ul>
-              <li>
-                <a href="/legal/aviso-legal">Aviso legal</a>
-              </li>
-              <li>
-                <a href="/legal/privacidad">Privacidad</a>
-              </li>
-              <li>
-                <a href="/legal/cookies">Cookies</a>
-              </li>
+            <ul aria-label="Información legal">
+              <li><a href="/legal/aviso-legal">Aviso legal</a></li>
+              <li><a href="/legal/privacidad">Privacidad</a></li>
+              <li><a href="/legal/cookies">Cookies</a></li>
               <li>
                 <a href="/politica-tratamiento-datos.pdf" download>
                   Política de Tratamiento de Datos
@@ -134,6 +121,7 @@ export function useSiteMotion(deps: unknown[] = []) {
   useEffect(() => {
     const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
 
+    // Word reveal animation logic
     document.querySelectorAll<HTMLElement>("h2.rv").forEach((h2) => {
       if (reduceMotion || h2.querySelector("*") || h2.classList.contains("words")) return;
       const words = (h2.textContent ?? "").trim().split(/\s+/);
@@ -150,6 +138,7 @@ export function useSiteMotion(deps: unknown[] = []) {
       h2.classList.add("words");
     });
 
+    // Intersection Observer for .rv elements
     let observer: IntersectionObserver | undefined;
     observer =
       "IntersectionObserver" in window
@@ -175,44 +164,68 @@ export function useSiteMotion(deps: unknown[] = []) {
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
+    // Mobile Menu logic
     const toggle = document.getElementById("navToggle");
     const links = document.querySelector<HTMLElement>(".nav-links");
-    const updateMenuState = () => {
-      const open = links?.classList.contains("mobile-open");
-      toggle?.classList.toggle("mobile-open", Boolean(open));
-      toggle?.setAttribute("aria-expanded", String(Boolean(open)));
-      toggle?.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+    
+    const updateMenuState = (isOpen: boolean) => {
+      toggle?.classList.toggle("mobile-open", isOpen);
+      toggle?.setAttribute("aria-expanded", String(isOpen));
+      toggle?.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+      document.body.classList.toggle("menu-open", isOpen);
+      if (links) {
+        links.classList.toggle("mobile-open", isOpen);
+        // Accessibility: prevent focus on hidden links
+        if (window.innerWidth <= 1152) {
+           links.style.visibility = isOpen ? "visible" : "hidden";
+        } else {
+           links.style.visibility = "visible";
+        }
+      }
     };
+
     const onToggle = () => {
-      links?.classList.toggle("mobile-open");
-      updateMenuState();
+      const isOpen = !links?.classList.contains("mobile-open");
+      updateMenuState(isOpen);
     };
+
     const closeMenu = () => {
-      links?.classList.remove("mobile-open");
-      updateMenuState();
+      updateMenuState(false);
     };
+
     const closeOnEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeMenu();
     };
+
     toggle?.addEventListener("click", onToggle);
     links?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+    
+    // Active link highlighting
     const currentPath = window.location.pathname.replace(/\/$/, "") || "/";
     links?.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((link) => {
       const href = new URL(link.href, window.location.origin).pathname.replace(/\/$/, "") || "/";
-      const active =
-        href === "/"
-          ? currentPath === "/"
-          : currentPath === href || currentPath.startsWith(`${href}/`);
+      const active = href === "/" ? currentPath === "/" : currentPath === href || currentPath.startsWith(`${href}/`);
       link.classList.toggle("is-active", active);
       if (active) link.setAttribute("aria-current", "page");
       else link.removeAttribute("aria-current");
     });
+    
     window.addEventListener("keydown", closeOnEsc);
 
     const closeOnResize = () => {
-      if (window.innerWidth > 1152) closeMenu();
+      if (window.innerWidth > 1152) {
+        closeMenu();
+        if (links) links.style.visibility = "visible";
+      } else {
+        if (links && !links.classList.contains("mobile-open")) {
+          links.style.visibility = "hidden";
+        }
+      }
     };
     window.addEventListener("resize", closeOnResize);
+    
+    // Initial call for visibility
+    closeOnResize();
 
     return () => {
       observer?.disconnect();
@@ -221,7 +234,7 @@ export function useSiteMotion(deps: unknown[] = []) {
       links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu));
       window.removeEventListener("keydown", closeOnEsc);
       window.removeEventListener("resize", closeOnResize);
+      document.body.classList.remove("menu-open");
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 }

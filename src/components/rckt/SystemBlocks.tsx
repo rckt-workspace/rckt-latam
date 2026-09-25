@@ -74,3 +74,19 @@ export function AcceptanceSteps({ items, plazo }: { items: AcceptanceStep[]; pla
     </div>
   );
 }
+
+export function StatCards({ items }: { items: { num: string; label: string; text: string }[] }) {
+  return (
+    <div className="stats">
+      {items.map((item, i) => (
+        <div key={i} className="stat-row">
+          <div className="stat-num">{item.num}</div>
+          <div>
+            <p className="label-orange" style={{ marginBottom: '4px' }}>{item.label}</p>
+            <p>{item.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}

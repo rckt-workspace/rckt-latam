@@ -1,4 +1,4 @@
-import { useId, useState } from "react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import SectionHeader from "@/components/rckt/SectionHeader";
 
 export type FaqItem = { question: string; answer: string };
@@ -19,36 +19,25 @@ export function faqJsonLd(items: FaqItem[]) {
 }
 
 export default function FaqSection({ items }: { items: FaqItem[] }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const baseId = useId();
-  if (items.length === 0) return null;
+  if (!items || items.length === 0) return null;
+
   return (
-    <section className="system-section system-faq" id="faq">
+    <section className="system-section system-faq" id="faq" aria-labelledby="faq-title">
       <div className="container">
-        <SectionHeader num="FAQ." label="Preguntas frecuentes" title="Lo que nos preguntan." />
-        <div className="system-faq__list">
-          {items.map((item, index) => {
-            const open = openIndex === index;
-            const trigger = `${baseId}-trigger-${index}`;
-            const panel = `${baseId}-panel-${index}`;
-            return (
-              <div className="system-faq__item" key={item.question}>
-                <button
-                  id={trigger}
-                  type="button"
-                  aria-expanded={open}
-                  aria-controls={panel}
-                  onClick={() => setOpenIndex(open ? null : index)}
-                >
-                  <span>{item.question}</span>
-                  <span aria-hidden="true">{open ? "−" : "+"}</span>
-                </button>
-                <div id={panel} role="region" aria-labelledby={trigger} hidden={!open}>
-                  <p>{item.answer}</p>
-                </div>
-              </div>
-            );
-          })}
+        <SectionHeader num="FAQ." label="Preguntas frecuentes" title={<span id="faq-title">Lo que nos preguntan.</span>} />
+        <div className="system-faq__list mt-8 max-w-3xl mx-auto">
+          <Accordion type="single" collapsible className="w-full">
+            {items.map((item, index) => (
+              <AccordionItem key={index} value={`item-${index}`} className="border-b border-line py-2">
+                <AccordionTrigger className="text-left font-semibold text-lg hover:no-underline py-4">
+                  {item.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-carbon-soft text-base leading-relaxed pb-6">
+                  {item.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
     </section>
