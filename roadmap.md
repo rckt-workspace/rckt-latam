@@ -19,3 +19,4 @@
 - [x] Reconstruir el índice /sistemas con arquitectura y cinco accesos.
 - [x] Validar las seis páginas en escritorio y celular, claro y oscuro.
 - [ ] Paso 9: redactar y publicar las FAQ propias de LATAM para Demand System, Sales Flow, Operations System y Revenue Engine.
+- [x] Reconstruir el nav móvil y desktop con el patrón real de España, y validarlo en Inicio/Sistemas, claro/oscuro y 375/414 px.
