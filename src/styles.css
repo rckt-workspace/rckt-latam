@@ -7361,3 +7361,9 @@ header {
 .legal-content p {
   margin-bottom: 1.5rem;
 }
+
+@utility font-hero {
+  font-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
