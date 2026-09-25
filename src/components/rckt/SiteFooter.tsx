@@ -45,8 +45,8 @@ export default function SiteFooter() {
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1.2fr_1fr]">
           <div className="self-start">
             <a href="/" className="flex items-center" aria-label="RCKT Home">
-              <img src={logoDark} alt="RCKT" className="h-8 w-auto dark:hidden" />
-              <img src={logoLight} alt="RCKT" className="hidden h-8 w-auto dark:block" />
+              <img src={logoDark} alt="RCKT" className="site-footer-logo site-footer-logo--dark h-8 w-auto" />
+              <img src={logoLight} alt="" className="site-footer-logo site-footer-logo--light h-8 w-auto" />
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-paper/50">IA supervisada y documentada</p>
             <p className="label-orange mt-8 !text-[10px]">Correo</p>
