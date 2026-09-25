@@ -32,14 +32,14 @@ const milestones = [
   { dia: "7–8", kicker: "Semanas", texto: "Piloto controlado — Medición contra la línea base y transferencia al equipo." },
 ];
 const methodFields: MethodField[] = [
-  { label: "Situación inicial", value: "Cotizaciones hechas a mano, datos duplicados entre CRM, ERP y hojas de cálculo, y reporting manual cada semana." },
-  { label: "Período", value: "Operations Sprint de 6 a 8 semanas, con los criterios de aceptación firmados en la semana 2; después, soporte mensual." },
-  { label: "Alcance", value: "Un proceso por sprint, con aprobación humana en lo que importa." },
-  { label: "Inversión", value: "Sprint por alcance y soporte mensual durante 6 meses." },
-  { label: "Intervención", value: "Mapa del proceso (volumen, tiempo, errores y costo), construcción e integración con casos reales y piloto controlado." },
-  { label: "Resultado", value: "Costo por ejecución correcta, tiempo de ciclo y tasa de excepciones, frente a la línea base." },
-  { label: "Método de medición", value: "Ejecuciones correctas sin intervención por encima del umbral acordado, normalmente entre el 85% y el 90% en el piloto." },
-  { label: "Limitaciones", value: "Sin línea base no hay sprint. Quedan fuera los procesos sin datos accesibles o sin un responsable del lado del cliente." },
+  { k: "Situación inicial", v: "Cotizaciones hechas a mano, datos duplicados entre CRM, ERP y hojas de cálculo, y reporting manual cada semana." },
+  { k: "Período", v: "Operations Sprint de 6 a 8 semanas, con los criterios de aceptación firmados en la semana 2; después, soporte mensual." },
+  { k: "Alcance", v: "Un proceso por sprint, con aprobación humana en lo que importa." },
+  { k: "Inversión", v: "Sprint por alcance y soporte mensual durante 6 meses." },
+  { k: "Intervención", v: "Mapa del proceso (volumen, tiempo, errores y costo), construcción e integración con casos reales y piloto controlado." },
+  { k: "Resultado", v: "Costo por ejecución correcta, tiempo de ciclo y tasa de excepciones, frente a la línea base." },
+  { k: "Método de medición", v: "Ejecuciones correctas sin intervención por encima del umbral acordado, normalmente entre el 85% y el 90% en el piloto." },
+  { k: "Limitaciones", v: "Sin línea base no hay sprint. Quedan fuera los procesos sin datos accesibles o sin un responsable del lado del cliente." },
 ];
 const FAQS: FaqItem[] = [];
 

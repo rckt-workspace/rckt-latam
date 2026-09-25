@@ -32,14 +32,14 @@ const features = [
   { name: "Sales Flow, si WhatsApp pesa", detail: "Campañas, WhatsApp y CRM conectados", Icon: Workflow },
 ];
 const methodFields: MethodField[] = [
-  { label: "Situación inicial", value: "ROAS alto en la plataforma y margen bajo en el banco; creatividad agotada; WhatsApp en el proceso de venta sin medir." },
-  { label: "Período", value: "Revenue Diagnostic de 2 a 3 semanas y Demand System con compromiso mínimo de 3 meses." },
-  { label: "Alcance", value: "Demand System, más Sales Flow si WhatsApp pesa en la conversión." },
-  { label: "Inversión", value: "La pauta la pagas tú, en tus propias cuentas. Lo que pagas por el Diagnostic se descuenta del sistema si sigues con nosotros." },
-  { label: "Intervención", value: "Testing creativo continuo con IA, tracking completo y lectura comercial del catálogo." },
-  { label: "Resultado", value: "Margen de contribución tras adquisición, frente a la línea base firmada." },
-  { label: "Método de medición", value: "Una sola fuente de verdad: pauta → prospecto → MQL → SQL → cita → oportunidad → venta → margen, con definiciones que firmas tú." },
-  { label: "Limitaciones", value: "No garantizamos ventas, porque no controlamos tu cierre, tu inventario ni tus precios. Garantizamos que en 30 días verás tu embudo completo con datos reales." },
+  { k: "Situación inicial", v: "ROAS alto en la plataforma y margen bajo en el banco; creatividad agotada; WhatsApp en el proceso de venta sin medir." },
+  { k: "Período", v: "Revenue Diagnostic de 2 a 3 semanas y Demand System con compromiso mínimo de 3 meses." },
+  { k: "Alcance", v: "Demand System, más Sales Flow si WhatsApp pesa en la conversión." },
+  { k: "Inversión", v: "La pauta la pagas tú, en tus propias cuentas. Lo que pagas por el Diagnostic se descuenta del sistema si sigues con nosotros." },
+  { k: "Intervención", v: "Testing creativo continuo con IA, tracking completo y lectura comercial del catálogo." },
+  { k: "Resultado", v: "Margen de contribución tras adquisición, frente a la línea base firmada." },
+  { k: "Método de medición", v: "Una sola fuente de verdad: pauta → prospecto → MQL → SQL → cita → oportunidad → venta → margen, con definiciones que firmas tú." },
+  { k: "Limitaciones", v: "No garantizamos ventas, porque no controlamos tu cierre, tu inventario ni tus precios. Garantizamos que en 30 días verás tu embudo completo con datos reales." },
 ];
 const FAQS: FaqItem[] = [];
 
