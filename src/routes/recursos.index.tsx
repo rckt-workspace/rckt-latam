@@ -371,6 +371,7 @@ function RecursosPage() {
 }
 
 export const Route = createFileRoute("/recursos/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Recursos: guías y artículos sobre captación, medición e IA | RCKT LATAM" },
