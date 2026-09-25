@@ -92,16 +92,16 @@ function Hero() {
 }
 
 const PROBLEMS = [
-  { num: "01", title: "Pago por leads y no sé cuáles compran", signals: ["Meta o Google reportan un número de conversiones, mientras que ventas registra otro", "las asesoras atienden WhatsApp desde el celular, fuera del CRM", "tardan más de una hora en responder", "muchos prospectos no llegan a la cita", "la agencia optimiza por costo por lead"], href: "/soluciones/captacion-y-cierre" as const },
-  { num: "02", title: "Invierto en pauta y no crece con margen", signals: ["ROAS alto en la plataforma y margen bajo en el banco", "creatividad agotada", "catálogo sin lectura comercial", "WhatsApp en el funnel sin medir"], href: "/soluciones/ecommerce-rentable" as const },
-  { num: "03", title: "Mi equipo hace lo mismo cien veces por semana", signals: ["cotizaciones a mano", "documentos que se copian entre sistemas", "correo + Excel + CRM", "reporting manual", "errores y retrabajo"], href: "/soluciones/operacion" as const },
+  { num: "01", title: "Pago por leads y no sé cuáles compran", signals: ["Meta te muestra cuántas personas escribieron; nadie te muestra cuántas compraron", "la asesora atiende bien a un cliente mientras se le acumulan mensajes sin leer en el celular", "después de 15 minutos, tu prospecto ya le escribió a otro", "tu agencia optimiza por costo por lead y te trae a quien llena formularios, no a quien compra"], href: "/soluciones/captacion-y-cierre" as const },
+  { num: "02", title: "Invierto en pauta y no crece con margen", signals: ["el ROAS se ve bien en la plataforma y el margen no aparece en el banco", "los mismos anuncios desde hace meses", "no sabes qué producto paga la pauta", "parte de la venta pasa por WhatsApp y nadie la atribuye"], href: "/soluciones/ecommerce-rentable" as const },
+  { num: "03", title: "Mi equipo hace lo mismo cien veces por semana", signals: ["cotizaciones que se arman a mano", "datos que se pasan de un sistema a otro", "correo, Excel y CRM que no se hablan", "reportes que alguien consolida cada semana", "errores que se corrigen dos veces"], href: "/soluciones/operacion" as const },
 ];
 
 function Problems() {
   return (
     <section id="problemas" className="relative isolate overflow-clip scroll-mt-28 py-20 md:py-32">
       <div className="relative z-10 mx-auto max-w-6xl px-6">
-        <SectionHeader num="01." label="Tres problemas" title={<>Entras por tu problema, no por el nombre de un <em className="font-serif-accent">sistema</em>.</>} phrase="Tres puertas de entrada. Elige la que se parece a lo que te pasa hoy." />
+        <SectionHeader num="01." label="Tres problemas" title={<>Empiezas por lo que te duele, no por el nombre de un <em className="font-serif-accent">sistema</em>.</>} phrase="Si puedes responder con datos cuántos prospectos atendiste en menos de 15 minutos y qué campaña trajo a los que compraron, tu proceso está mejor que el promedio. Si no, ahí está la fuga." />
         <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
           {PROBLEMS.map((problem) => (
             <article key={problem.num} className="relative pl-5">
@@ -127,11 +127,11 @@ function Systems() {
   return (
     <section id="sistema" className="home-system-section relative isolate overflow-clip scroll-mt-28 py-14 md:py-20">
       <div className="relative z-10 mx-auto max-w-6xl px-6">
-        <SectionHeader num="02." label="Un sistema operativo de crecimiento" title={<>Tres <em className="font-serif-accent">sistemas</em>.</>} phrase="Los tres sistemas siguen la cadena de ingresos de cualquier negocio: conseguir clientes, cerrarlos y atenderlos sin fricción." />
+        <SectionHeader num="02." label="Un sistema operativo de crecimiento" title="Tres sistemas, un solo recorrido." phrase="Conseguir clientes, cerrarlos y atenderlos sin fricción: Demand, Sales Flow y Operations siguen ese orden, del anuncio a la operación." />
         <div className="mt-14"><SystemCards systems={SISTEMAS_CARDS} /></div>
         <div className="band-orange-sistema relative mt-10 overflow-hidden rounded-3xl px-8 py-10 md:px-12">
-          <h3 className="relative font-display text-2xl leading-tight font-semibold text-paper-fixed md:text-3xl">Luego, el <span className="text-paper-fixed/60 text-xl md:text-2xl">sistema completo.</span></h3>
-          <p className="text-paper-fixed/90 relative mt-3 max-w-2xl text-sm leading-relaxed md:text-base">Demand + Sales Flow, combinados, son Revenue Engine: nuestro producto principal.</p>
+          <h3 className="relative font-display text-2xl leading-tight font-semibold text-paper-fixed md:text-3xl">Luego, el <span className="text-paper-fixed/60 text-xl md:text-2xl">recorrido completo.</span></h3>
+          <p className="text-paper-fixed/90 relative mt-3 max-w-2xl text-sm leading-relaxed md:text-base">Pauta → WhatsApp → CRM → venta bajo un solo responsable: eso es Revenue Engine, nuestro producto principal.</p>
           <Link to="/sistemas/revenue-engine" className="band-revenue-btn relative mt-6 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">Ver Revenue Engine →</Link>
         </div>
       </div>
@@ -140,23 +140,23 @@ function Systems() {
 }
 
 const METHOD_FIELDS: MethodField[] = [
-  { k: "Situación inicial", v: "Meta o Google reportan un número de conversiones, mientras que ventas registra otro; los leads se atienden por WhatsApp desde el celular de la asesora, sin registro en el CRM, y se tarda más de una hora en responder." },
+  { k: "Situación inicial", v: "Meta reporta muchas conversaciones y pocas ventas; los leads se atienden desde el celular de la asesora, sin registro en el CRM, y la primera respuesta depende de quién esté libre." },
   { k: "Periodo", v: "Revenue Diagnostic de 2 a 3 semanas; sistema operativo con fuente de verdad el día 30; revisión de línea base frente a resultado el día 90." },
   { k: "Alcance", v: "Revenue Engine: Demand System y Sales Flow bajo un solo responsable, medido del clic al cierre." },
   { k: "Inversión", v: "La pauta la pagas tú, en tus propias cuentas. Lo que pagas por el Diagnostic se descuenta del sistema si sigues con nosotros." },
-  { k: "Intervención", v: "Mapa de fugas con tus números reales, tracking completo y campañas, WhatsApp y CRM conectados, para que cada lead tenga respuesta, seguimiento y dueño." },
+  { k: "Intervención", v: "Primera respuesta en minutos, seguimiento a quien no contesta, cada conversación en el CRM y el dato de venta de vuelta a Meta y Google." },
   { k: "Resultado", v: "Se mide frente a la línea base firmada: costo por cliente adquirido y cuánto vale ese cliente frente a lo que costó traerlo." },
   { k: "Método de medición", v: "Una sola fuente de verdad: inversión → lead → MQL → SQL → reunión → oportunidad → venta → margen, con definiciones que firmas tú." },
-  { k: "Limitaciones", v: "No garantizamos ventas, porque no controlamos tu cierre, tu stock ni tus precios. Garantizamos que en 30 días verás tu embudo completo con datos reales." },
+  { k: "Limitaciones", v: "No garantizamos ventas porque no controlamos tu cierre, tu stock ni tus precios. Garantizamos que en 30 días vas a ver tu embudo completo con datos reales." },
 ];
 
 function Proof() {
   return (
     <section id="prueba" className="home-proof-section relative isolate overflow-clip scroll-mt-28 py-20 md:py-28">
       <div className="relative z-10 mx-auto max-w-6xl px-6">
-        <SectionHeader num="03." label="Prueba" title="Ningún resultado sin ficha." phrase="Una cifra con contexto vale más que un porcentaje sin denominador." />
+        <SectionHeader num="03." label="Prueba" title="Ningún resultado sin ficha." phrase="Si una cifra no dice desde dónde se midió ni con cuánta pauta, no sirve para decidir." />
         <figure className="relative mt-12 max-w-3xl text-left md:mt-16">
-          <blockquote className="home-proof-quote">+300% de leads sin decir desde dónde ni con cuánta inversión no es un caso, es un titular.</blockquote>
+          <blockquote className="home-proof-quote">“47 conversaciones este mes. 2 clientes nuevos.” La diferencia está entre las dos pantallas.</blockquote>
         </figure>
         <MethodCard fields={METHOD_FIELDS} className="mt-10 md:mt-12" />
       </div>

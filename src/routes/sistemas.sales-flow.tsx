@@ -11,10 +11,12 @@ const SITE_URL = "https://rckt.lat";
 
 const SALES_FLOW_FAQS = [
   { question: "¿Tengo que cambiar de CRM?", answer: "No necesariamente. Tu CRM es la fuente de verdad: lo configuramos y lo conectamos, no lo sustituimos por una herramienta nuestra. Si no tienes uno, te recomendamos uno y migramos si hace falta." },
-  { question: "¿Un agente de IA puede cerrar ventas por mí?", answer: "No. Los agentes hacen la primera respuesta, la calificación, la agenda y las preguntas frecuentes, pero un agente nunca cierra una venta ni promete condiciones sin aprobación humana." },
+  { question: "¿Un sistema automático va a atender a mis clientes?", answer: "Responde lo que se repite mil veces (horarios, sedes, disponibilidad) y entrega la conversación a tu asesora en cuanto hay intención de agendar. Lo que hace y lo que no, queda por escrito." },
   { question: "¿Quién paga las licencias de CRM y WhatsApp API?", answer: "Tú. Las licencias de CRM y de WhatsApp Business API no están incluidas en Sales Flow." },
   { question: "¿Qué necesitan de mí?", answer: "Un número de WhatsApp Business API verificado, un CRM, un equipo comercial con un responsable nombrado, un acuerdo de SLAs internos y acceso a los datos de ventas." },
   { question: "¿Cuánto tarda en estar listo?", answer: "El sistema queda aceptado en un máximo de 30 días desde el inicio del setup, con el flujo probado con leads reales y el 100% de los leads entrando al CRM con su origen." },
+  { question: "¿Qué pasa con el dato de venta?", answer: "Vive en tu CRM y las plataformas nunca lo ven. Cuando vuelve, Meta y Google empiezan a buscar personas parecidas a las que sí te compran." },
+  { question: "¿Necesito más pauta?", answer: "No para empezar. El tiempo de primera respuesta es la variable más barata de arreglar y la que más cambia el resultado." },
 ];
 
 const GLOW = "radial-gradient(ellipse 620px 460px at 100% 0%, rgba(252, 92, 31,0.22) 0%, rgba(252, 92, 31,0.1) 40%, rgba(252, 92, 31,0) 75%)";
@@ -50,7 +52,7 @@ const STATS = [
     valor: null as string | null,
     Icono: Users,
     detalle:
-      "Negocios donde la venta pasa por conversación humana: WhatsApp, llamada, asesor, cita. También clientes con media propia o con otra agencia que solo necesitan cerrar mejor",
+      "Negocios que venden por conversación: WhatsApp, llamada, asesora, cita. También si ya tienes quien te maneje la pauta y solo necesitas cerrar mejor.",
   },
   {
     label: "Cadencia",
@@ -68,7 +70,7 @@ const STATS = [
     label: "Qué mide el éxito",
     valor: null as string | null,
     Icono: Target,
-    detalle: "% de leads con seguimiento dentro del SLA · lead → reunión · costo por cliente adquirido",
+    detalle: "% de leads con seguimiento dentro del tiempo acordado · lead → cita · costo por cliente adquirido",
   },
 ];
 
@@ -100,7 +102,7 @@ const COMPONENTES = [
 
 const REGLAS = [
   "La web nunca se vende sola: sin tracking y CRM conectados no hay web de RCKT",
-  "Un agente nunca cierra una venta ni promete condiciones sin aprobación humana",
+  "El sistema responde lo que se repite mil veces; en cuanto hay intención de agendar o una decisión de venta, la conversación pasa a tu asesora.",
   "El CRM del cliente es la fuente de verdad: lo configuramos y conectamos, no lo sustituimos",
 ];
 
@@ -128,11 +130,11 @@ function SalesFlowPage() {
           label="Sales Flow"
           title={
             <>
-              De lead a venta <span className="hero-hand">sin fugas</span>.
+              Del WhatsApp a la venta, sin perder a <span className="hero-hand">nadie</span>.
             </>
           }
           descriptor="Núcleo de Conversion System"
-          quote="Hoy pagas por un lead, te escribe por WhatsApp, y ahí empieza a perderse: respuesta tarde, sin seguimiento, fuera del CRM, sin saber de qué campaña vino. Sales Flow conecta tus campañas, WhatsApp y CRM para que cada lead tenga respuesta, seguimiento y dueño, y para que sepas cuáles compran."
+          quote="Una persona no puede atender a quien tiene enfrente y responder en quince minutos a los que escriben. Por eso, con Sales Flow, la primera respuesta deja de depender de quién esté libre: tu pauta, WhatsApp y CRM quedan conectados, cada conversación tiene seguimiento y dueño, y la venta vuelve a Meta y Google."
           ctaLabel="Revisar mi proceso comercial →"
           ctaHref={DIAGNOSTIC_HREF}
         />
@@ -192,7 +194,7 @@ function SalesFlowPage() {
               <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
                 Qué hacemos
               </h2>
-              <span className="text-sm font-semibold text-orange">cada lead con dueño</span>
+              <span className="text-sm font-semibold text-orange">cada conversación con dueño</span>
             </div>
             <CapabilityCards items={COMPONENTES} />
             {/* Qué no incluye — integrada en la sección anterior */}

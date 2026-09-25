@@ -25,6 +25,7 @@ const DEMAND_SYSTEM_FAQS = [
   { question: "¿Cuál es el compromiso mínimo?", answer: "3 meses. La pauta se paga aparte, en tus propias cuentas publicitarias." },
   { question: "¿Qué necesitan de mí para empezar?", answer: "Acceso de administrador a tus cuentas publicitarias, GTM y GA4, aprobación de creatividades en menos de 48 horas y acceso a los datos de ventas para cerrar el ciclo." },
   { question: "¿Cuándo está funcionando?", answer: "En un máximo de 21 días: tracking validado de extremo a extremo, estructura de campañas activa y primer reporte por etapa entregado." },
+  { question: "¿Por qué no optimizan por costo por lead?", answer: "Porque te hace comprar barato lo que no compra: las plataformas aprenden a traerte a quien llena formularios, no a quien compra." },
 ];
 
 const GLOW = "radial-gradient(ellipse 620px 460px at 100% 0%, rgba(252, 92, 31,0.22) 0%, rgba(252, 92, 31,0.1) 40%, rgba(252, 92, 31,0) 75%)";
@@ -60,7 +61,7 @@ const STATS = [
     valor: null as string | null,
     Icono: Users,
     detalle:
-      "Cuentas con oferta probada que necesitan volumen o calidad de oportunidades y ya tienen proceso comercial y CRM funcionando",
+      "Empresas con una oferta que ya vende, que necesitan más o mejores oportunidades y ya tienen asesores y CRM funcionando",
   },
   {
     label: "Cadencia",
@@ -102,7 +103,7 @@ const CAPACIDADES = [
   {
     Icono: BarChart3,
     titulo: "Medición",
-    detalle: "Tracking completo, valores por etapa, reporte semanal por etapa del embudo",
+    detalle: "Tracking completo hasta la venta, valores por etapa y el dato de venta de vuelta a Meta y Google; reporte semanal por etapa del embudo",
   },
   {
     Icono: Layout,
@@ -121,21 +122,21 @@ const TIERS = [
   {
     nombre: "Growth",
     alcance: "2–3 canales, inversión media-alta",
-    detalle: "Core + creative testing continuo + AI Visibility + revisión mensual de calidad de pipeline",
+    detalle: "Core + testing creativo continuo + AI Visibility + revisión mensual de la calidad del pipeline con tus asesores",
     destacado: true,
   },
   {
     nombre: "Scale",
     alcance: "Multicanal o multipaís, inversión alta",
-    detalle: "Growth + squad dedicado + experimentación estructurada + creative studio",
+    detalle: "Growth + equipo dedicado + experimentación estructurada + estudio creativo",
     destacado: false,
   },
 ];
 
 const CONDICIONES = [
-  "Solo se vende suelto si el cliente tiene proceso comercial y CRM operativos — si no los tiene, lo que necesita es Revenue Engine",
-  "Tiene un precio piso que no se negocia",
-  "Nunca optimizamos por costo por lead — la unidad es SQL o venta",
+  "Si tu proceso comercial y tu CRM todavía no funcionan, no te conviene solo Demand: necesitas Revenue Engine, y te lo decimos.",
+  "Tiene un precio mínimo: por debajo de él dejaría de ser un sistema.",
+  "Nunca optimizamos por costo por lead, aunque nos lo pidas: la unidad es la oportunidad aceptada o la venta.",
 ];
 
 const ACEPTACION = [
@@ -161,10 +162,10 @@ function DemandSystemPage() {
           label="Demand System"
           title={
             <>
-              Generación de demanda medida hasta la <span className="hero-hand">venta</span>.
+              Pauta que se mide por <span className="hero-hand">ventas</span>, no por leads.
             </>
           }
-          quote="Manejamos tus campañas, pero no las optimizamos por leads baratos: las optimizamos por las oportunidades que tu equipo comercial acepta y por las que terminan en venta. Cada semana ves el embudo completo, no solo los clics."
+          quote="Cuando optimizas por costo por lead, las plataformas aprenden a traerte a quien llena formularios, no a quien compra: el número baja y las ventas no suben. Manejamos tu pauta por las oportunidades que tu equipo acepta y por las que terminan en venta, y cada semana ves el embudo completo."
           ctaLabel="Revisar mi proceso comercial →"
           ctaHref={DIAGNOSTIC_FORM}
         />
@@ -250,7 +251,6 @@ function DemandSystemPage() {
                     <h3 className="font-display text-[22px] leading-none font-semibold tracking-tight md:text-[26px]">
                       {t.nombre}
                     </h3>
-                    {t.destacado ? <span className="text-sm font-semibold text-orange">el más elegido</span> : null}
                   </div>
                   <p className="mt-3 font-mono text-[11px] tracking-[0.14em] uppercase text-muted-foreground">
                     {t.alcance}

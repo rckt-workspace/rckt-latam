@@ -53,3 +53,4 @@
 - [x] Paso A5 — Validar 11 páginas en 1280/1024/390 px, claro/oscuro, metadatos, FAQ y ausencia de cambios protegidos.
 - [x] Paso A6 — Portar Nosotros, Cómo trabajamos, Trabaja con nosotros, Casos, Recursos, Contacto y legales; validar integraciones y protegidos.
 - [x] Paso A7 — Crear Mercados LATAM, Colombia y sus tres ciudades con mapa estático y validar 20 vistas.
+- [x] Parte 1 de 3: sustituir solo textos aprobados de Home y Sistemas donde existen bloques de texto; ejecutar únicamente build.

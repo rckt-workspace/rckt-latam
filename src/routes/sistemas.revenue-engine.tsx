@@ -58,7 +58,7 @@ const STATS = [
   {
     label: "Para quién",
     Icono: Users,
-    detalle: "Negocios de captación y cierre. Salud y estética, educación, inmobiliario, servicios B2B",
+    detalle: "Negocios que captan por pauta y cierran por conversación: salud y estética, educación, inmobiliario y servicios B2B",
   },
   {
     label: "Setup",
@@ -86,13 +86,13 @@ const INCLUYE: {
   {
     Icono: Megaphone,
     titulo: "Demand System",
-    detalle: "Tier según inversión en pauta",
+    detalle: "Tier según tu inversión en pauta",
     href: "/sistemas/demand-system",
   },
   {
     Icono: Workflow,
     titulo: "Sales Flow",
-    detalle: "Campañas, WhatsApp y CRM conectados",
+    detalle: "Pauta, WhatsApp y CRM conectados",
     href: "/sistemas/sales-flow",
   },
   {
@@ -147,10 +147,10 @@ function RevenueEnginePage() {
           descriptor="Demand System + Sales Flow · nuestro producto principal"
           title={
             <>
-              El sistema completo de <span className="text-orange">captación a <span className="hero-hand">cierre</span></span>.
+              Pauta, WhatsApp y CRM como un solo <span className="hero-hand">sistema</span>.
             </>
           }
-          quote="Tus campañas, tu WhatsApp y tu CRM hoy son tres cosas separadas que gestionan tres personas distintas. Revenue Engine las convierte en un solo sistema con un solo responsable: nosotros. Tú ves una cifra: cuánto te cuesta cada cliente nuevo."
+          quote="Hoy una persona maneja la pauta, otra atiende el WhatsApp desde su celular y nadie cruza esos datos con el CRM. Revenue Engine junta el recorrido completo, pauta → WhatsApp → CRM → venta, bajo un solo responsable. Tú ves una cifra: cuánto te cuesta cada cliente nuevo."
           ctaLabel="Revisar mi proceso comercial →"
           ctaHref={DIAGNOSTIC_HREF}
         />
