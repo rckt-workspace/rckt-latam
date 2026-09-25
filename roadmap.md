@@ -38,7 +38,7 @@
 - [x] Bloque 1 — Corregir Homemade Apple, máquina de escribir y base global.
 - [x] Bloque 2 — Igualar navegación y footer; eliminar dropdown de Nosotros.
 - [x] Bloque 3 — Portar SystemPageHero y CTA final de España.
-- [ ] Bloque 4 — Reconstruir Inicio en JSX con medidas y animaciones de España.
+- [x] Bloque 4 — Igualar por CSS las medidas del hero de Inicio, sin convertirlo a JSX.
 - [ ] Bloque 5 — Reconstruir las cinco páginas de Sistemas con sus composiciones españolas.
 - [ ] Bloque 6 — Completar Ecommerce rentable y Operación a siete secciones.
 - [ ] Bloque 7 — Portar la puesta en escena de Cómo trabajamos.
