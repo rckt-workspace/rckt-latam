@@ -122,6 +122,13 @@ const INCLUYE: {
   },
 ];
 
+const ESCALERA = [
+  { hito: "0–3", label: "Semanas", texto: "Revenue Diagnostic" },
+  { hito: "1–6", label: "Meses", texto: "Demand o Revenue Engine" },
+  { hito: "6–12", label: "Meses", texto: "+ Operations" },
+  { hito: "12+", label: "Meses", texto: "Growth OS: destino de cuentas maduras" },
+];
+
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 flex items-center gap-3">
@@ -207,6 +214,19 @@ function RevenueEnginePage() {
             </div>
 
             <CapabilityCards compact items={INCLUYE} />
+          </div>
+        </section>
+
+        <section id="escalera" className="relative isolate overflow-hidden py-16 md:py-24 sys-sec">
+          <div className="relative z-10 mx-auto max-w-6xl px-6">
+            <SectionLabel>Cómo empieza</SectionLabel>
+            <div className="md:flex md:items-end md:justify-between md:gap-10">
+              <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+                La cuenta crece por etapas, no de golpe.
+              </h2>
+              <span className="text-sm font-semibold text-orange">con evidencia en cada etapa</span>
+            </div>
+            <AcceptanceSteps plazo="Escalera de cuenta" items={ESCALERA} />
           </div>
         </section>
 

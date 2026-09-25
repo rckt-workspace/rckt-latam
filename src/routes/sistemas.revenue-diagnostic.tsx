@@ -311,7 +311,7 @@ function RevenueDiagnostic() {
               </h2>
             </div>
             <div className="mt-10">
-              <DiagnosticForm whatsappUrl={WHATSAPP_URL} onSent={() => setSent(true)} />
+              <DiagnosticForm whatsappUrl={WHATSAPP_URL} submitLabel="Revisar mi proceso comercial →" onSent={() => setSent(true)} />
               <p className="mt-5 text-sm text-muted-foreground">¿Prefieres WhatsApp? <a className="text-orange hover:underline" href="#whatsapp">Escríbenos y hacemos las mismas preguntas.</a></p>
             </div>
           </div>
