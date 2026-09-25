@@ -16,9 +16,21 @@ import {
 import SiteFooter from "@/components/rckt/SiteFooter";
 import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
-import QualificationForm, { type QualificationValues } from "@/components/rckt/QualificationForm";
+import DiagnosticForm from "@/components/rckt/DiagnosticForm";
+import { useState } from "react";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
-import { REVENUE_DIAGNOSTIC_FAQS } from "@/content/faqs";
+
+
+const WHATSAPP_URL = "#whatsapp";
+
+const REVENUE_DIAGNOSTIC_FAQS = [
+  { question: "¿Es gratis?", answer: "No. Es un diagnóstico pagado y, si sigues con nosotros, lo que pagas se descuenta del sistema." },
+  { question: "¿Cuánto dura?", answer: "De 2 a 3 semanas, desde que contamos con los accesos y datos necesarios." },
+  { question: "¿Qué pasa después?", answer: "Recibes una línea base firmada y un roadmap de 90 días. Con esos datos recomendamos el sistema adecuado." },
+  { question: "¿Cuánto cuesta?", answer: "El alcance y el costo se confirman antes de empezar. Si continúas con el sistema recomendado, el valor del Diagnostic se descuenta." },
+  { question: "¿Por qué necesitan tanto acceso y tantos datos?", answer: "Porque sin ellos no podemos medir hasta la venta, y sin medir hasta la venta seríamos una agencia más. Los accesos son de lectura donde se pueda y quedan documentados." },
+  { question: "Quiero pagar solo por resultados.", answer: "Trabajamos con una parte variable, pero después de 90 días con línea base, porque antes ninguno de los dos sabe qué es un resultado. Y nunca cobramos 100% variable cuando el cierre depende de tu equipo, tu stock o tus precios." },
+];
 
 const GLOW = "radial-gradient(ellipse 620px 460px at 100% 0%, rgba(252, 92, 31,0.22) 0%, rgba(252, 92, 31,0.1) 40%, rgba(252, 92, 31,0) 75%)";
 
@@ -125,36 +137,8 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-async function submitDiagnostic(v: QualificationValues) {
-  const res = await fetch("/api/leads", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      name: v.nombre.trim(),
-      email: v.email.trim(),
-      company: v.empresa.trim(),
-      website: v.web.trim(),
-      concern: v.problema,
-      source: "revenue-diagnostic",
-      details: {
-        telefono: v.telefono.trim(),
-        cargo: v.cargo,
-        pais: v.pais,
-        ciudad: v.ciudad.trim(),
-        empleados: v.empleados,
-        sector: v.sector,
-        inversion_marketing: v.inversion,
-        leads_mes: v.leads,
-        crm: v.crm,
-        whatsapp: v.whatsapp,
-        inicio: v.inicio,
-      },
-    }),
-  });
-  if (!res.ok) throw new Error("fail");
-}
-
 function RevenueDiagnostic() {
+  const [, setSent] = useState(false);
   return (
     <div className="bg-background text-foreground antialiased">
       <main className="sys-page">
@@ -325,7 +309,8 @@ function RevenueDiagnostic() {
               </h2>
             </div>
             <div className="mt-10">
-              <QualificationForm onSubmit={submitDiagnostic} />
+              <DiagnosticForm whatsappUrl={WHATSAPP_URL} onSent={() => setSent(true)} />
+              <p className="mt-5 text-sm text-muted-foreground">¿Prefieres WhatsApp? <a className="text-orange hover:underline" href="#whatsapp">Escríbenos y hacemos las mismas preguntas.</a></p>
             </div>
           </div>
         </section>

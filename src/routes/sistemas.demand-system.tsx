@@ -16,8 +16,15 @@ import GeneralCta from "@/components/rckt/GeneralCta";
 import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/SystemBlocks";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
-import { DEMAND_SYSTEM_FAQS } from "@/content/faqs";
 const DIAGNOSTIC_FORM = "/sistemas/revenue-diagnostic#formulario";
+
+const DEMAND_SYSTEM_FAQS = [
+  { question: "Solo quiero que me manejen la pauta.", answer: "Podemos, si ya tienes CRM y proceso comercial funcionando. Si no, vas a pagar leads que se pierden después. Empecemos por el Diagnostic y te decimos con datos qué necesitas." },
+  { question: "Mi agencia actual me da leads a la mitad de precio.", answer: "¿Y cuántos de esos leads compran? Si no lo sabes, ese es el problema, no el precio del lead. Optimizamos por venta, no por lead, y por eso el costo por lead puede ser mayor." },
+  { question: "¿Cuál es el compromiso mínimo?", answer: "3 meses. La pauta se paga aparte, en tus propias cuentas publicitarias." },
+  { question: "¿Qué necesitan de mí para empezar?", answer: "Acceso de administrador a tus cuentas publicitarias, GTM y GA4, aprobación de creatividades en menos de 48 horas y acceso a los datos de ventas para cerrar el ciclo." },
+  { question: "¿Cuándo está funcionando?", answer: "En un máximo de 21 días: tracking validado de extremo a extremo, estructura de campañas activa y primer reporte por etapa entregado." },
+];
 
 const GLOW = "radial-gradient(ellipse 620px 460px at 100% 0%, rgba(252, 92, 31,0.22) 0%, rgba(252, 92, 31,0.1) 40%, rgba(252, 92, 31,0) 75%)";
 

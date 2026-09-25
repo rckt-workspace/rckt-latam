@@ -6,8 +6,15 @@ import GeneralCta from "@/components/rckt/GeneralCta";
 import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/SystemBlocks";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
-import { OPERATIONS_SYSTEM_FAQS } from "@/content/faqs";
 const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
+
+const OPERATIONS_SYSTEM_FAQS = [
+  { question: "Quiero un chatbot con IA.", answer: "No vendemos chatbots. Si tienes un proceso que tu equipo repite muchas veces, lo medimos y lo automatizamos con supervisión. Si es curiosidad por la IA, hay herramientas gratis para probar." },
+  { question: "¿Cuánto dura?", answer: "Un Operations Sprint de 6 a 8 semanas, con los criterios de aceptación firmados en la semana 2, y después soporte mensual." },
+  { question: "¿Qué pasa si el proceso no mejora?", answer: "Medimos cuánto te cuesta el proceso hoy y lo comparamos en el piloto. Si no baja el costo por ejecución, no seguimos." },
+  { question: "¿Dependen de un proveedor de IA concreto?", answer: "No. Podemos cambiar el proveedor de IA sin rehacer el sistema: nuestro activo es el diseño del proceso, no la herramienta." },
+  { question: "¿Qué necesitan de mí?", answer: "Un dueño del proceso nombrado, acceso a los sistemas y datos, casos históricos para las pruebas y disponibilidad para validar durante el piloto." },
+];
 
 const GLOW = "radial-gradient(ellipse 620px 460px at 100% 0%, rgba(252, 92, 31,0.22) 0%, rgba(252, 92, 31,0.1) 40%, rgba(252, 92, 31,0) 75%)";
 

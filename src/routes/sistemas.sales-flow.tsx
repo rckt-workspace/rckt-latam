@@ -6,8 +6,15 @@ import GeneralCta from "@/components/rckt/GeneralCta";
 import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/SystemBlocks";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
-import { SALES_FLOW_FAQS } from "@/content/faqs";
 const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
+
+const SALES_FLOW_FAQS = [
+  { question: "¿Tengo que cambiar de CRM?", answer: "No necesariamente. Tu CRM es la fuente de verdad: lo configuramos y lo conectamos, no lo sustituimos por una herramienta nuestra. Si no tienes uno, te recomendamos uno y migramos si hace falta." },
+  { question: "¿Un agente de IA puede cerrar ventas por mí?", answer: "No. Los agentes hacen la primera respuesta, la calificación, la agenda y las preguntas frecuentes, pero un agente nunca cierra una venta ni promete condiciones sin aprobación humana." },
+  { question: "¿Quién paga las licencias de CRM y WhatsApp API?", answer: "Tú. Las licencias de CRM y de WhatsApp Business API no están incluidas en Sales Flow." },
+  { question: "¿Qué necesitan de mí?", answer: "Un número de WhatsApp Business API verificado, un CRM, un equipo comercial con un responsable nombrado, un acuerdo de SLAs internos y acceso a los datos de ventas." },
+  { question: "¿Cuánto tarda en estar listo?", answer: "El sistema queda aceptado en un máximo de 30 días desde el inicio del setup, con el flujo probado con leads reales y el 100% de los leads entrando al CRM con su origen." },
+];
 
 const GLOW = "radial-gradient(ellipse 620px 460px at 100% 0%, rgba(252, 92, 31,0.22) 0%, rgba(252, 92, 31,0.1) 40%, rgba(252, 92, 31,0) 75%)";
 

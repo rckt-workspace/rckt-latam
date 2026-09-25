@@ -18,8 +18,15 @@ import GeneralCta from "@/components/rckt/GeneralCta";
 import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/SystemBlocks";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
-import { REVENUE_ENGINE_FAQS } from "@/content/faqs";
 const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
+
+const REVENUE_ENGINE_FAQS = [
+  { question: "Quiero todo desde el principio.", answer: "Growth OS es para cuentas que ya llevan tiempo con nosotros. Empezar por todo a la vez es la forma más rápida de no medir nada. Empezamos por Revenue Engine y crecemos con evidencia." },
+  { question: "Son más caros que otros.", answer: "Comparado con una agencia de pauta, sí. Comparado con pagar pauta, web, CRM, chatbot y consultor por separado sin que nadie responda por el resultado, no. Y el Diagnostic te dice si el sistema se paga solo antes de comprometerte." },
+  { question: "¿Cuál es el compromiso mínimo?", answer: "6 meses. El sistema necesita un ciclo completo para demostrar." },
+  { question: "¿Qué voy a ver y cuándo?", answer: "El día 30, el sistema operativo con su fuente de verdad. El día 90, la revisión de la línea base frente al resultado." },
+  { question: "¿Me garantizan resultados?", answer: "No garantizamos ventas porque no controlamos tu cierre, tu stock ni tus precios. Garantizamos que en 30 días vas a ver tu embudo completo con datos reales, y que cada decisión que tomemos esté medida hasta la venta." },
+];
 
 export const Route = createFileRoute("/sistemas/revenue-engine")({
   staticData: { sitemap: true },
