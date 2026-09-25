@@ -6893,3 +6893,6 @@ body,
 .cap-card__icon { display:inline-flex; color:var(--naranja); }
 .nosotros-quote { max-width:960px; margin:0 auto; }
 .nosotros-link-card { max-width:none; min-height:0; }
+.combo-card .rule-list { margin-top:24px; padding:0; border:0; background:transparent; box-shadow:none; }
+.combo-card--primary .rule-row__num, .combo-card--primary .rule-row__text { color:var(--papel-fija); }
+.combo-card--primary .rule-row { border-color:color-mix(in srgb,var(--papel-fija) 30%,transparent); }
