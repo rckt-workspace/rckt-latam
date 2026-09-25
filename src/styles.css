@@ -6857,3 +6857,9 @@ header.pointer-events-none img.hidden { display: none; }
 .dark .ct-divider, [data-theme="dark"] .ct-divider { border-top-color: rgba(245, 242, 237, 0.08); }
 [data-theme="dark"] .ct-card { background: rgba(245, 242, 237, 0.05); border-color: rgba(245, 242, 237, 0.09); }
 @media (prefers-reduced-motion: reduce) { .ct-rev, .ct-rev.is-in { opacity: 1 !important; transform: none !important; transition: none !important; } }
+
+/* La navegación fija queda fuera de las capas aisladas de los héroes en todo el sitio. */
+main .system-page-hero,
+[data-theme="dark"] main .system-page-hero { isolation: auto; z-index: auto; overflow: visible; }
+main section:not(.system-page-hero):not(#top) { z-index: 0; }
+header.pointer-events-none:has(.nav-bg) { z-index: 50; }
