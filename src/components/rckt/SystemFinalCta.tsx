@@ -13,7 +13,7 @@ export default function SystemFinalCta({
       <span className="cta-final-overlay" aria-hidden="true" />
       <span className="cta-final__glow" aria-hidden="true" />
       <div className="container">
-        <span className="kicker">Siguiente paso</span>
+      <span className="kicker">¿Empezamos?</span>
         <h2>{title}</h2>
         <a className="btn btn-primary" href={href}>{label}</a>
         <div className="cta-final__foot"><span>IA supervisada y documentada</span></div>

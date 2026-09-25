@@ -6,6 +6,7 @@ export const THEME_EVENT = "rckt:theme";
 
 export function applyTheme(theme: Theme) {
   const root = document.documentElement;
+  root.classList.toggle("dark", theme === "dark");
   root.setAttribute("data-theme", theme);
   try {
     localStorage.setItem("rckt-theme", theme);
@@ -16,22 +17,14 @@ export function applyTheme(theme: Theme) {
 }
 
 export function currentTheme(): Theme {
-  return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+  return document.documentElement.classList.contains("dark") ? "dark" : "light";
 }
 
 export default function ThemeToggle({ className = "" }: { className?: string }) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
-    let initialTheme = currentTheme();
-    try {
-      const storedTheme = localStorage.getItem("rckt-theme");
-      if (storedTheme === "light" || storedTheme === "dark") initialTheme = storedTheme;
-    } catch {
-      // Keep the rendered theme.
-    }
-    document.documentElement.setAttribute("data-theme", initialTheme);
-    setTheme(initialTheme);
+    setTheme(currentTheme());
     const onThemeChange = () => setTheme(currentTheme());
     window.addEventListener(THEME_EVENT, onThemeChange);
     window.addEventListener("storage", onThemeChange);
