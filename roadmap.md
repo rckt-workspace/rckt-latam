@@ -47,3 +47,7 @@
 - [x] Bloque 10 — Normalizar espaciados, tarjetas, CTA y manchas; validar todas las rutas.
 - [x] Reportar estado real por bloque y validar cada bloque en desktop/móvil, claro/oscuro antes de marcarlo completo.
 - [x] Pausa de estabilidad: confirmar compilación y carga de Inicio, Nosotros, Cómo trabajamos y legales antes de continuar los bloques 4–8.
+- [ ] Paso A5 — Aplicar las tres correcciones literales de Sistemas.
+- [ ] Paso A5 — Reconstruir las cuatro páginas de Soluciones desde la referencia España con copy LATAM.
+- [ ] Paso A5 — Reconstruir el índice y seis páginas de Sectores con sus variantes completas/cortas.
+- [ ] Paso A5 — Validar 11 páginas en 1280/1024/390 px, claro/oscuro, metadatos, FAQ y ausencia de cambios protegidos.
