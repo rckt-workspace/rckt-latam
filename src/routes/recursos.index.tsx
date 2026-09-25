@@ -40,10 +40,10 @@ const TEMAS: {
     id: "web",
     num: "03",
     nombre: "Web y conversión",
-    pregunta: "¿Dónde me da retorno la IA?",
-    sistema: "Operations System",
-    href: "/sistemas/operations-system",
-    angulo: "165deg",
+    pregunta: "¿Por qué mi web no genera oportunidades?",
+    sistema: "Sales Flow",
+    href: "/sistemas/sales-flow",
+    angulo: "60deg",
   },
   {
     id: "medios",
@@ -58,10 +58,10 @@ const TEMAS: {
     id: "ia",
     num: "05",
     nombre: "IA que se paga sola",
-    pregunta: "¿Por qué mi web no genera oportunidades?",
-    sistema: "Sales Flow",
-    href: "/sistemas/sales-flow",
-    angulo: "60deg",
+    pregunta: "¿Dónde me da retorno la IA?",
+    sistema: "Operations System",
+    href: "/sistemas/operations-system",
+    angulo: "165deg",
   },
 ];
 
@@ -135,7 +135,7 @@ const RECURSOS: Recurso[] = [
     tema: "ia",
     titulo: "Cuánto cuesta automatizar un proceso",
     formato: "Plantilla",
-    extracto: "Plantilla para calcular el coste por ejecución correcta.",
+    extracto: "Plantilla para calcular el costo por ejecución correcta.",
   },
   {
     tema: "ia",
@@ -182,13 +182,13 @@ const RECURSOS: Recurso[] = [
 ];
 
 function temaDe(id: Tema) {
-  return TEMAS.find((t) => t.id === id)!;
+  return TEMAS.find((t) => t.id === id) ?? TEMAS[0];
 }
 
 function Portada({ tema }: { tema: Tema }) {
   const t = temaDe(tema);
   return (
-    <div className="res-cover" style={{ ["--res-ang" as string]: t.angulo }} aria-hidden="true">
+    <div className="res-cover" data-theme-id={t.id} aria-hidden="true">
       <span className="res-cover__brand">RCKT</span>
       <span className="res-cover__theme">{t.nombre}</span>
     </div>
@@ -260,7 +260,7 @@ function RecursosPage() {
 
 
         {/* Buscador + filtros + destacado + grid */}
-        <section className="relative overflow-hidden pb-16 md:pb-24" style={{ background: "var(--kraft-2)" }}>
+        <section className="resources-catalog relative overflow-hidden pb-16 md:pb-24">
           <div className="mx-auto max-w-6xl px-5 pt-10 md:px-6 md:pt-16">
             <div className="max-w-md">
               <div className="relative">
@@ -348,10 +348,7 @@ function RecursosPage() {
                       <p className="mt-3 font-mono text-[11px] tracking-[0.16em] text-muted-foreground uppercase">
                         {r.formato} · Próximamente
                       </p>
-                      <span
-                        className="mt-auto inline-flex items-center gap-1 pt-5 text-[13.5px] font-semibold"
-                        style={{ color: "rgba(252, 92, 31,0.55)" }}
-                      >
+                      <span className="res-card__read mt-auto inline-flex items-center gap-1 pt-5 text-[13.5px] font-semibold">
                         Leer →
                       </span>
                     </div>
