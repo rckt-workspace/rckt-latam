@@ -76,9 +76,6 @@ export function SiteHeader() {
               <img alt="RCKT" src={logoDarkAsset} />
             </a>
             <div className="nav-links">
-              <button aria-label="Cerrar menú" className="nav-close" id="navClose" type="button">
-                ✕
-              </button>
               <a href="/soluciones">Soluciones</a>
               <a href="/sistemas">Sistemas</a>
               <a href="/sectores">Sectores</a>
@@ -101,14 +98,15 @@ export function SiteHeader() {
               Pedir diagnóstico
             </a>
             <button aria-label="Abrir menú" className="nav-toggle" id="navToggle">
-              <span></span>
-              <span></span>
-              <span></span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path className="nav-toggle-line nav-toggle-line--top" d="M5 7h14" />
+                <path className="nav-toggle-line nav-toggle-line--middle" d="M5 12h14" />
+                <path className="nav-toggle-line nav-toggle-line--bottom" d="M5 17h14" />
+              </svg>
             </button>
           </div>
         </nav>
       </div>
-      <div className="nav-overlay" id="navOverlay" />
     </header>
   );
 }
@@ -246,28 +244,33 @@ export function useSiteMotion(deps: unknown[] = []) {
 
     const toggle = document.getElementById("navToggle");
     const links = document.querySelector<HTMLElement>(".nav-links");
-    const updateMenuLock = () => {
+    const updateMenuState = () => {
       const open = links?.classList.contains("mobile-open");
-      document.body.classList.toggle("menu-open", Boolean(open));
       toggle?.classList.toggle("mobile-open", Boolean(open));
+      toggle?.setAttribute("aria-expanded", String(Boolean(open)));
+      toggle?.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
     };
     const onToggle = () => {
       links?.classList.toggle("mobile-open");
-      updateMenuLock();
+      updateMenuState();
     };
     const closeMenu = () => {
       links?.classList.remove("mobile-open");
-      updateMenuLock();
+      updateMenuState();
     };
     const closeOnEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeMenu();
     };
-    const closeBtn = document.getElementById("navClose");
-    const overlay = document.getElementById("navOverlay");
     toggle?.addEventListener("click", onToggle);
-    closeBtn?.addEventListener("click", closeMenu);
-    overlay?.addEventListener("click", closeMenu);
     links?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+    const currentPath = window.location.pathname.replace(/\/$/, "") || "/";
+    links?.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((link) => {
+      const href = new URL(link.href, window.location.origin).pathname.replace(/\/$/, "") || "/";
+      const active = href === "/" ? currentPath === "/" : currentPath === href || currentPath.startsWith(`${href}/`);
+      link.classList.toggle("is-active", active);
+      if (active) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    });
 
     // Dropdown menu toggle (mobile only - desktop uses CSS hover)
     const dropdownTrigger = links?.querySelector<HTMLButtonElement>(".nav-dropdown-trigger");
@@ -322,7 +325,6 @@ export function useSiteMotion(deps: unknown[] = []) {
         });
       }
       window.removeEventListener("resize", closeOnResize);
-      document.body.classList.remove("menu-open");
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);

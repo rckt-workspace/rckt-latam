@@ -3979,9 +3979,7 @@ header.scrolled {
     gap: clamp(40px, 8vw, 160px);
     min-height: 0;
     padding: 20px 0;
-    transition:
-      gap 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-      padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: gap 600ms cubic-bezier(0.16, 1, 0.3, 1), padding 600ms cubic-bezier(0.16, 1, 0.3, 1);
   }
   header .nav-capsule {
     display: flex;
@@ -3996,10 +3994,7 @@ header.scrolled {
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(33, 33, 33, 0.08);
     box-shadow: 0 12px 34px rgba(33, 33, 33, 0.07);
-    transition:
-      height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-      padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-      border-radius 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 600ms cubic-bezier(0.16, 1, 0.3, 1);
   }
   header.scrolled nav {
     gap: 0;
@@ -4020,9 +4015,21 @@ header.scrolled {
     border-left: 0;
     padding-left: 18px;
   }
+  header .nav-capsule-right::before {
+    content: "";
+    width: 1px;
+    height: 24px;
+    margin-left: -18px;
+    background: var(--line-strong);
+    opacity: 0;
+    transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  header.scrolled .nav-capsule-right::before {
+    opacity: 1;
+  }
   header .logo img {
     height: 30px;
-    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: height 600ms cubic-bezier(0.16, 1, 0.3, 1);
   }
   header.scrolled .logo img {
     height: 25px;

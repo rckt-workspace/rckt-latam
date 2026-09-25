@@ -104,7 +104,6 @@ const pageMarkup = `
 <div class="nav-capsule nav-capsule-left">
 <a class="logo" href="#top"><img alt="RCKT" src="__LOGO_DARK__"/></a>
 <div class="nav-links">
-<button aria-label="Cerrar menú" class="nav-close" id="navClose" type="button">✕</button>
 <a href="/soluciones">Soluciones</a>
 <a href="/sistemas">Sistemas</a>
 <a href="/sectores">Sectores</a>
@@ -133,12 +132,11 @@ Nosotros
 <button class="theme-toggle" type="button" aria-label="Activar versión oscura" title="Versión oscura"><span class="theme-toggle__thumb"><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></span></button>
 </div>
 <a class="btn hero-nav-cta" href="/sistemas/revenue-diagnostic">Pedir diagnóstico</a>
-<button aria-label="Abrir menú" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+<button aria-label="Abrir menú" aria-expanded="false" class="nav-toggle" id="navToggle"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="nav-toggle-line nav-toggle-line--top" d="M5 7h14"/><path class="nav-toggle-line nav-toggle-line--middle" d="M5 12h14"/><path class="nav-toggle-line nav-toggle-line--bottom" d="M5 17h14"/></svg></button>
 </div>
 </nav>
 
 </div>
-<div class="nav-overlay" id="navOverlay"></div>
 </header>
 <div class="container hero-content">
 <div class="hero-inner">
@@ -499,18 +497,19 @@ function RcktLanding() {
 
     const toggle = document.getElementById("navToggle");
     const links = document.querySelector<HTMLElement>(".nav-links");
-    const updateMenuLock = () => {
+    const updateMenuState = () => {
       const open = links?.classList.contains("mobile-open");
-      document.body.classList.toggle("menu-open", Boolean(open));
       toggle?.classList.toggle("mobile-open", Boolean(open));
+      toggle?.setAttribute("aria-expanded", String(Boolean(open)));
+      toggle?.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
     };
     const onToggle = () => {
       links?.classList.toggle("mobile-open");
-      updateMenuLock();
+      updateMenuState();
     };
     const closeMenu = () => {
       links?.classList.remove("mobile-open");
-      updateMenuLock();
+      updateMenuState();
     };
     const closeMenuOnResize = () => {
       if (window.innerWidth > 1152) closeMenu();
@@ -518,12 +517,16 @@ function RcktLanding() {
     const closeMenuOnEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeMenu();
     };
-    const closeBtn = document.getElementById("navClose");
-    const overlay = document.getElementById("navOverlay");
     toggle?.addEventListener("click", onToggle);
-    closeBtn?.addEventListener("click", closeMenu);
-    overlay?.addEventListener("click", closeMenu);
     links?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+    const currentPath = window.location.pathname.replace(/\/$/, "") || "/";
+    links?.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((link) => {
+      const href = new URL(link.href, window.location.origin).pathname.replace(/\/$/, "") || "/";
+      const active = href === "/" ? currentPath === "/" : currentPath === href || currentPath.startsWith(`${href}/`);
+      link.classList.toggle("is-active", active);
+      if (active) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    });
 
     // Dropdown menu toggle (mobile only - desktop uses CSS hover)
     const dropdownTrigger = links?.querySelector<HTMLButtonElement>(".nav-dropdown-trigger");
@@ -609,8 +612,6 @@ function RcktLanding() {
       window.removeEventListener("resize", closeMenuOnResize);
       window.removeEventListener("keydown", closeMenuOnEsc);
       toggle?.removeEventListener("click", onToggle);
-      closeBtn?.removeEventListener("click", closeMenu);
-      overlay?.removeEventListener("click", closeMenu);
       links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu));
       if (dropdownTrigger && dropdownMenuWrap) {
         dropdownTrigger.removeEventListener("click", () => {});
@@ -621,7 +622,6 @@ function RcktLanding() {
       faqButtons.forEach((button) => button.removeEventListener("click", onFaq));
       form?.removeEventListener("submit", onSubmit);
       themeToggles.forEach((button) => button.removeEventListener("click", toggleTheme));
-      document.body.classList.remove("menu-open");
     };
   }, []);
 
