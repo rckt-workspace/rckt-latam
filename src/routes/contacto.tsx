@@ -1,7 +1,8 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { FileText, MessageCircle } from "lucide-react";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import DiagnosticForm from "@/components/rckt/DiagnosticForm";
-import heroAsset from "@/assets/rckt-hero.jpg";
+import SystemPageHero from "@/components/rckt/SystemPageHero";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
@@ -45,98 +46,80 @@ function Contacto() {
   useSiteMotion([]);
 
   return (
-    <div className="rckt-site tcn-page">
+    <div className="rckt-site contacto-page">
       <main id="top">
-        <section className="subpage-hero">
-          <div className="subpage-hero-photo" aria-hidden="true">
-            <img src={heroAsset} alt="" />
-            <span className="subpage-hero-photo-overlay" />
-          </div>
-          <span className="tcn-orb tcn-orb-hero-corner" aria-hidden="true" />
-          <span className="tcn-orb tcn-orb-hero" aria-hidden="true" />
-          <SiteHeader />
-          <div className="container">
-            <div className="subpage-hero-inner">
-              <span className="kicker">Contacto</span>
-              <h1>Hablemos de tu proceso comercial</h1>
-              <p className="sub">
-                Formulario o WhatsApp — lo que prefieras, llega al mismo lugar.
-              </p>
-            </div>
-          </div>
-        </section>
+        <SystemPageHero
+          label="Contacto"
+          title={<>Cuéntanos cómo está hoy tu <em>operación.</em></>}
+          descriptor="Formulario o WhatsApp — lo que prefieras, llega al mismo lugar."
+          promise="Con este contexto preparamos la primera conversación con datos reales."
+          ctaLabel="Ir al formulario →"
+          ctaHref="#formulario"
+        />
 
-        <section className="band" id="formulario">
-          <span className="tcn-orb tcn-orb-cta" aria-hidden="true" />
-          <div className="container">
-            <div className="section-head">
-              <span className="num">01.</span>
-              <span className="kicker ital-label">Escríbenos</span>
-              <span className="divider"></span>
-            </div>
-            <h2
-              className="rv"
-              style={{ fontSize: "clamp(26px,3.4vw,36px)", margin: "0 0 18px", fontWeight: 800 }}
-            >
-              Cuéntanos cómo está hoy tu operación
-            </h2>
-            <p style={{ maxWidth: 680, marginBottom: 36 }}>
-              Con este contexto preparamos la primera conversación con datos reales. Si prefieres
-              hablar de una vez, escríbenos por WhatsApp: llega al mismo lugar.
-            </p>
-
-            <div className="form-card rv">
-              <DiagnosticForm
-                whatsappUrl={WHATSAPP_URL}
-                submitLabel="Enviar mensaje →"
-                legal={
-                  <span className="form-note">
-                    Al enviar este formulario, aceptas nuestra{" "}
-                    <a href="/politica-tratamiento-datos.pdf" download>
-                      Política de Tratamiento de Datos
-                    </a>
-                    .
-                  </span>
-                }
-              />
-            </div>
-          </div>
-        </section>
-
-        <section className="band band-alt" data-mode="editorial">
-          <span className="tcn-orb tcn-orb-cultura-left" aria-hidden="true" />
-          <div className="container">
-            <div className="section-head">
-              <span className="num">02.</span>
-              <span className="kicker ital-label">Datos</span>
-              <span className="divider"></span>
-            </div>
-            <h2
-              className="rv"
-              style={{ fontSize: "clamp(26px,3.4vw,36px)", margin: "0 0 48px", fontWeight: 800 }}
-            >
-              Dónde encontrarnos
-            </h2>
-            <div className="three-grid">
-              {datos.map(([titulo, valor, href], i) => (
-                <div className="three-card rv" key={titulo}>
-                  <span className="num">{String(i + 1).padStart(2, "0")}.</span>
-                  <h3>{titulo}</h3>
-                  <p>{href ? <a href={href}>{valor}</a> : valor}</p>
-                </div>
-              ))}
-            </div>
-            <div className="manifiesto rv" style={{ marginTop: 40 }}>
-              <div className="manifiesto-card">
-                <p>
-                  Al enviar este formulario, aceptas nuestra{" "}
-                  <a href="/politica-tratamiento-datos.pdf" download>
-                    Política de Tratamiento de Datos
-                  </a>
-                  .
-                </p>
+        <section className="contacto-main" id="formulario">
+          <div className="container contacto-layout">
+            <div className="contacto-form">
+              <div className="form-card">
+                <DiagnosticForm
+                  whatsappUrl={WHATSAPP_URL}
+                  submitLabel="Enviar mensaje →"
+                  legal={
+                    <span className="form-note">
+                      Al enviar este formulario, aceptas nuestra{" "}
+                      <a href="/politica-tratamiento-datos.pdf" download>
+                        Política de Tratamiento de Datos
+                      </a>
+                      .
+                    </span>
+                  }
+                />
               </div>
             </div>
+
+            <aside className="contacto-channels">
+              <div className="contacto-channels__sticky">
+                <h2>Otras formas de hablar <em>con nosotros.</em></h2>
+
+                <div className="contacto-channel-list">
+                  <div className="contacto-channel">
+                    <span className="contacto-channel__icon" aria-hidden="true">
+                      <FileText />
+                    </span>
+                    <div>
+                      <div className="contacto-channel__heading">
+                        <h3>Formulario</h3>
+                        <span className="contacto-channel__badge">RECOMENDADO</span>
+                      </div>
+                      <p>La vía principal. Es la más rápida para preparar el diagnóstico.</p>
+                    </div>
+                  </div>
+
+                  <div className="contacto-channel contacto-channel--divided">
+                    <span className="contacto-channel__icon" aria-hidden="true">
+                      <MessageCircle />
+                    </span>
+                    <div>
+                      <h3>WhatsApp</h3>
+                      <p>Si lo prefieres, escríbenos.</p>
+                      <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                        Escribir por WhatsApp →
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <dl className="contacto-data-card">
+                  <div className="contacto-data-card__label">Datos</div>
+                  {datos.map(([titulo, valor, href]) => (
+                    <div key={titulo}>
+                      <dt>{titulo}</dt>
+                      <dd>{href ? <a href={href}>{valor}</a> : valor}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </aside>
           </div>
         </section>
       </main>
