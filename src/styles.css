@@ -4750,6 +4750,8 @@ body,
 /* Todas las secciones de contenido comparten la misma alternancia, también sin .rckt-site. */
 main section[data-content-tone="base"] { background: var(--papel); }
 main section[data-content-tone="alternate"] { background: var(--papel-alt); }
+/* La banda integrada mantiene su superficie naranja aunque la sección alterne. */
+.band--orange { background: var(--naranja); color: var(--papel-fija); }
 
 /* Manchas adaptativas por altura, replicadas de la base visual de España. */
 .blob-section {
@@ -4803,6 +4805,7 @@ main section[data-content-tone="alternate"] { background: var(--papel-alt); }
 /* Las portadas con navegación fija no deben encerrar su z-50 en una capa aislada. */
 main > .system-page-hero,
 main > #top { isolation: auto; }
+main > .system-page-hero > header.pointer-events-none { z-index: 50; }
 
 /* Superficies homologadas con card-kraft. */
 .rckt-site :is(
