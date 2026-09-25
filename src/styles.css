@@ -4042,6 +4042,26 @@ header.scrolled {
   .rckt-site.tcn-page .subpage-hero header .nav-links a {
     color: var(--carbon);
   }
+  /* La cápsula del nav siempre es clara; en modo oscuro el texto debe seguir oscuro */
+  [data-theme="dark"] header .nav-capsule .nav-links a,
+  [data-theme="dark"] header .nav-capsule .nav-dropdown-trigger {
+    color: #212121;
+  }
+  [data-theme="dark"] header .nav-capsule .theme-toggle {
+    color: #212121;
+    border-color: rgba(33, 33, 33, 0.15);
+    background: rgba(33, 33, 33, 0.05);
+  }
+  [data-theme="dark"] header .nav-capsule .theme-toggle:hover {
+    background: rgba(33, 33, 33, 0.1);
+  }
+  [data-theme="dark"] header .nav-capsule .theme-toggle__thumb {
+    background: #212121;
+    box-shadow: 0 1px 2px rgba(33, 33, 33, 0.3);
+  }
+  [data-theme="dark"] header .nav-capsule .theme-toggle__thumb svg {
+    color: #f5f2ed;
+  }
   header .nav-right .hero-nav-cta,
   header .nav-capsule-right .hero-nav-cta {
     display: inline-flex;
