@@ -35,14 +35,14 @@ const features = [
   { name: "Ciclo de optimización de 90 días", detail: "Línea base frente a resultado", Icon: BarChart3 },
 ];
 const methodFields: MethodField[] = [
-  { k: "Situación inicial", v: "Meta o Google reportan un número de conversiones, mientras que Ventas registra otro; las asesoras atienden WhatsApp fuera del CRM y tardan más de una hora en responder." },
+  { k: "Situación inicial", v: "Meta reporta muchas conversaciones y pocas ventas; los leads se atienden desde el celular de la asesora, sin registro en el CRM, y la primera respuesta depende de quién esté libre." },
   { k: "Periodo", v: "Revenue Diagnostic de 2 a 3 semanas; sistema operativo con fuente de verdad el día 30; revisión de línea base frente a resultado el día 90." },
   { k: "Alcance", v: "Revenue Engine: Demand System y Sales Flow bajo un solo responsable, medido del clic al cierre." },
   { k: "Inversión", v: "La pauta la pagas tú, en tus propias cuentas. Lo que pagas por el Diagnostic se descuenta del sistema si sigues con nosotros." },
-  { k: "Intervención", v: "Mapa de fugas con tus números reales, tracking completo y campañas, WhatsApp y CRM conectados, para que cada prospecto tenga respuesta, seguimiento y dueño." },
+  { k: "Intervención", v: "Primera respuesta en minutos, seguimiento a quien no contesta, cada conversación en el CRM y el dato de venta de vuelta a Meta y Google." },
   { k: "Resultado", v: "Se mide frente a la línea base firmada: costo por cliente adquirido y cuánto vale ese cliente frente a lo que costó traerlo." },
   { k: "Método de medición", v: "Una sola fuente de verdad: inversión → lead → MQL → SQL → reunión → oportunidad → venta → margen, con definiciones que firmas tú." },
-  { k: "Limitaciones", v: "No garantizamos ventas, porque no controlamos tu cierre, tu stock ni tus precios. Garantizamos que en 30 días verás tu embudo completo con datos reales." },
+  { k: "Limitaciones", v: "No garantizamos ventas porque no controlamos tu cierre, tu stock ni tus precios. Garantizamos que en 30 días vas a ver tu embudo completo con datos reales." },
 ];
 const FAQS: FaqItem[] = [
   { question: "¿Qué sistema necesito si pago por leads y no sé cuáles compran?", answer: "Normalmente Revenue Engine: Demand System y Sales Flow bajo un solo responsable, medido del clic al cierre. Lo confirmamos con datos en el Revenue Diagnostic." },

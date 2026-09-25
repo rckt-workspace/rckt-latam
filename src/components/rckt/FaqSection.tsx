@@ -19,11 +19,11 @@ export function faqJsonLd(items: FaqItem[]) {
 }
 
 export default function FaqSection({ items }: { items: FaqItem[] }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   const baseId = useId();
 
   return (
-    <section className="relative isolate py-16 md:py-24" style={{ background: "var(--sand)" }} id="faq">
+    <section className="relative isolate py-16 md:py-24" id="faq">
       <div className="relative z-10 mx-auto max-w-6xl px-6">
         <SectionHeader num="FAQ." label="Preguntas frecuentes" title="Lo que nos preguntan." />
         <div className="mt-10 border-b" style={{ borderColor: "var(--line)" }}>

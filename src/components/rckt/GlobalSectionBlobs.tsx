@@ -3,59 +3,19 @@ import { useRouterState } from "@tanstack/react-router";
 
 const SECTION_SELECTOR = "main section";
 const BLOB_CLASS = "section-blob";
-const LIGHT_SURFACES = new Set(["rgb(245, 242, 237)", "rgb(247, 235, 225)"]);
-const DARK_SURFACE = "rgb(33, 33, 33)";
-
 type BlobSpec = {
   type: "strong" | "soft";
   x: number;
   y: number;
-  interior?: boolean;
 };
 
-const layouts: Record<1 | 2 | 3, BlobSpec[][]> = {
-  1: [[{ type: "strong", x: 14, y: 52 }], [{ type: "soft", x: 86, y: 48 }]],
-  2: [
-    [
-      { type: "soft", x: 14, y: 28 },
-      { type: "strong", x: 58, y: 68, interior: true },
-    ],
-    [
-      { type: "strong", x: 86, y: 30 },
-      { type: "soft", x: 42, y: 64, interior: true },
-    ],
-  ],
-  3: [
-    [
-      { type: "strong", x: 14, y: 22 },
-      { type: "soft", x: 56, y: 52, interior: true },
-      { type: "strong", x: 86, y: 78 },
-    ],
-    [
-      { type: "soft", x: 86, y: 20 },
-      { type: "strong", x: 44, y: 50, interior: true },
-      { type: "soft", x: 14, y: 80 },
-    ],
-  ],
-};
+const layouts: BlobSpec[][] = [
+  [{ type: "strong", x: 85, y: 20 }, { type: "soft", x: 10, y: 80 }, { type: "soft", x: 50, y: 55 }],
+  [{ type: "strong", x: 8, y: 50 }, { type: "soft", x: 90, y: 15 }, { type: "soft", x: 50, y: 55 }],
+];
 
 const removeBlobs = (section: HTMLElement) => {
   section.querySelectorAll<HTMLElement>(`:scope > .${BLOB_CLASS}`).forEach((blob) => blob.remove());
-};
-
-const hasLightSurface = (section: HTMLElement) => {
-  const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-  let element: HTMLElement | null = section;
-
-  while (element) {
-    const color = window.getComputedStyle(element).backgroundColor;
-    if (color !== "rgba(0, 0, 0, 0)" && color !== "transparent") {
-      return LIGHT_SURFACES.has(color) || (isDark && color === DARK_SURFACE);
-    }
-    element = element.parentElement;
-  }
-
-  return false;
 };
 
 const hasOnlyOrangeContent = (section: HTMLElement) => {
@@ -95,23 +55,7 @@ const isExcluded = (section: HTMLElement) =>
   section.querySelector(
     ":scope > .hero-photo, :scope > .subpage-hero-photo, :scope > .system-page-hero__photo, :scope > .cta-final-photo",
   ) !== null ||
-  hasOnlyOrangeContent(section) ||
-  !hasLightSurface(section);
-
-const isTextBehindPoint = (section: HTMLElement, x: number, y: number) => {
-  const sectionRect = section.getBoundingClientRect();
-  const pointX = sectionRect.left + (sectionRect.width * x) / 100;
-  const pointY = sectionRect.top + (sectionRect.height * y) / 100;
-  const textBlocks = section.querySelectorAll<HTMLElement>("h1, h2, h3, p");
-
-  return Array.from(textBlocks).some((block) => {
-    if (block.tagName === "P" && (block.textContent?.trim().length ?? 0) < 100) return false;
-    const rect = block.getBoundingClientRect();
-    return (
-      pointX >= rect.left && pointX <= rect.right && pointY >= rect.top && pointY <= rect.bottom
-    );
-  });
-};
+  hasOnlyOrangeContent(section);
 
 export default function GlobalSectionBlobs() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
@@ -124,13 +68,11 @@ export default function GlobalSectionBlobs() {
     const classify = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
-        const isMobile = window.innerWidth < 768;
-        const mediumThreshold = isMobile ? 360 : 450;
-        const longThreshold = isMobile ? 880 : 1100;
-        let patternIndex = 0;
+        const contentIndexes = new Map<HTMLElement, number>();
 
         sections.forEach((section) => {
           const excluded = isExcluded(section);
+          const main = section.closest("main");
           section.classList.toggle("blob-section", !excluded);
           section.toggleAttribute("data-no-blobs", excluded);
           removeBlobs(section);
@@ -138,39 +80,29 @@ export default function GlobalSectionBlobs() {
           if (excluded) {
             section.removeAttribute("data-blob-count");
             section.removeAttribute("data-blob-pattern");
+            section.removeAttribute("data-content-tone");
             return;
           }
 
+          const index = main ? (contentIndexes.get(main) ?? 0) : 0;
+          if (main) contentIndexes.set(main, index + 1);
           const height = section.getBoundingClientRect().height;
-          const count: 1 | 2 | 3 = height < mediumThreshold ? 1 : height <= longThreshold ? 2 : 3;
-          const pattern = patternIndex % 2;
-          const specs = layouts[count][pattern];
+          const count: 1 | 2 | 3 = height < 450 ? 1 : height <= 1100 ? 2 : 3;
+          const pattern = index % 2;
+          const specs = layouts[pattern].slice(0, count);
+          section.dataset.contentTone = pattern === 0 ? "base" : "alternate";
           section.dataset.blobCount = String(count);
           section.dataset.blobPattern = String(pattern);
           specs.forEach((spec, blobIndex) => {
-            const isEdge = !spec.interior;
-            const blobSize = spec.type === "strong" ? 430 : 620;
-            const edgeOffset = blobSize * 0.25;
-            const edgeX = spec.x < 50 ? edgeOffset : section.clientWidth - edgeOffset;
             const blob = document.createElement("span");
             blob.className = `${BLOB_CLASS} ${BLOB_CLASS}--${spec.type} pointer-events-none`;
             blob.setAttribute("aria-hidden", "true");
-            blob.dataset.blobPosition = spec.interior ? "interior" : "edge";
+            blob.dataset.blobPosition = blobIndex === 2 ? "interior" : "edge";
             blob.dataset.blobIndex = String(blobIndex);
-            blob.style.setProperty("--blob-x", isEdge ? `${edgeX}px` : `${spec.x}%`);
+            blob.style.setProperty("--blob-x", `${spec.x}%`);
             blob.style.setProperty("--blob-y", `${spec.y}%`);
-
-            if (
-              spec.interior &&
-              spec.type === "strong" &&
-              isTextBehindPoint(section, spec.x, spec.y)
-            ) {
-              blob.classList.add(`${BLOB_CLASS}--muted`);
-            }
-
             section.append(blob);
           });
-          patternIndex += 1;
         });
       });
     };
@@ -207,6 +139,7 @@ export default function GlobalSectionBlobs() {
         section.removeAttribute("data-blob-count");
         section.removeAttribute("data-blob-pattern");
         section.removeAttribute("data-no-blobs");
+        section.removeAttribute("data-content-tone");
       });
     };
   }, [pathname]);

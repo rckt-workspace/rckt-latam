@@ -268,8 +268,7 @@ function DemandSystemPage() {
                 className="font-display mt-5 max-w-3xl text-[22px] leading-[1.3] font-semibold tracking-tight md:text-[30px]"
                 style={{ color: "#f5f2ed" }}
               >
-                El gasto en medios, desarrollo web, CRM y RevOps, agentes conversacionales, community
-                management, branding.
+                La inversión en pauta, desarrollo web, CRM y RevOps, agentes conversacionales, community management y branding.
               </p>
             </div>
           </div>
