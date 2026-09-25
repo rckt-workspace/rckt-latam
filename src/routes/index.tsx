@@ -527,13 +527,14 @@ function RcktLanding() {
       if (active) link.setAttribute("aria-current", "page");
       else link.removeAttribute("aria-current");
     });
+    const dropdownTrigger = links?.querySelector<HTMLButtonElement>(".nav-dropdown-trigger");
+    dropdownTrigger?.classList.toggle("is-active", currentPath === "/nosotros" || currentPath.startsWith("/nosotros/"));
 
     // Dropdown menu toggle (mobile only - desktop uses CSS hover)
-    const dropdownTrigger = links?.querySelector<HTMLButtonElement>(".nav-dropdown-trigger");
     const dropdownMenuWrap = links?.querySelector<HTMLElement>(".nav-dropdown-menu-wrap");
     if (dropdownTrigger && dropdownMenuWrap) {
       dropdownTrigger.addEventListener("click", (e) => {
-        const isMobile = window.innerWidth < 980;
+        const isMobile = window.innerWidth <= 1152;
         if (!isMobile) return;
         e.preventDefault();
         const isOpen = dropdownMenuWrap.getAttribute("data-open") === "true";
