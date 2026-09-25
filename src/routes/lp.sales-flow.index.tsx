@@ -124,11 +124,12 @@ function SalesFlowCampaign() {
         <SectionHeader num="07." label="Revenue Diagnostic" title="Revisemos tu proceso comercial." />
         <p className="campaign-statement">Meta te muestra cuántas personas escribieron. Nadie te muestra cuántas compraron.</p>
         <div className="campaign-form-wrap">
-        <DiagnosticForm whatsappUrl="#whatsapp" submitLabel="Revisar mi proceso comercial →" onSuccess={values => {
-          const { score, nivel } = scoreLead(values);
-          track("lead_valido", { score, nivel });
-          void navigate({ to: "/lp/sales-flow/gracias", search: { nivel } });
-        }} legal={<span className="form-note">Al enviar este formulario, aceptas nuestra <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer">Política de Tratamiento de Datos</a>.</span>} />
+          <DiagnosticForm whatsappUrl="#whatsapp" submitLabel="Revisar mi proceso comercial →" onSuccess={values => {
+            const { score, nivel } = scoreLead(values);
+            track("lead_valido", { score, nivel });
+            void navigate({ to: "/lp/sales-flow/gracias", search: { nivel } });
+          }} legal={<span className="form-note">Al enviar este formulario, aceptas nuestra <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer">Política de Tratamiento de Datos</a>.</span>} />
+        </div>
       </div>
     </section>
     <section className="campaign-close"><div className="campaign-shell"><div className="campaign-close__card band--orange"><p className="label-on-orange">¿Empezamos?</p><h2>¿Revisamos tu proceso comercial?</h2><CampaignActions section="cierre" /></div></div></section>
