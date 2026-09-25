@@ -22,6 +22,7 @@ import { Route as ApiLeadsRouteImport } from './routes/api/leads'
 import { Route as ApiSaveChatLeadRouteImport } from './routes/api/save-chat-lead'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as CasosIndexRouteImport } from './routes/casos.index'
 import { Route as LegalAvisoLegalRouteImport } from './routes/legal.aviso-legal'
 import { Route as LegalCookiesRouteImport } from './routes/legal.cookies'
 import { Route as LegalPrivacidadRouteImport } from './routes/legal.privacidad'
@@ -125,6 +126,11 @@ const BlogIndexRoute = BlogIndexRouteImport.update({
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/blog/$slug',
   path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CasosIndexRoute = CasosIndexRouteImport.update({
+  id: '/casos/',
+  path: '/casos/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LegalAvisoLegalRoute = LegalAvisoLegalRouteImport.update({
@@ -367,6 +373,7 @@ export interface FileRoutesByFullPath {
   '/soluciones/ecommerce-rentable': typeof SolucionesEcommerceRentableRoute
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog/': typeof BlogIndexRoute
+  '/casos/': typeof CasosIndexRoute
   '/nosotros/': typeof NosotrosIndexRoute
   '/sectores/': typeof SectoresIndexRoute
   '/sistemas/': typeof SistemasIndexRoute
@@ -421,6 +428,7 @@ export interface FileRoutesByTo {
   '/soluciones/ecommerce-rentable': typeof SolucionesEcommerceRentableRoute
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog': typeof BlogIndexRoute
+  '/casos': typeof CasosIndexRoute
   '/nosotros': typeof NosotrosIndexRoute
   '/sectores': typeof SectoresIndexRoute
   '/sistemas': typeof SistemasIndexRoute
@@ -476,6 +484,7 @@ export interface FileRoutesById {
   '/soluciones/ecommerce-rentable': typeof SolucionesEcommerceRentableRoute
   '/soluciones/operacion': typeof SolucionesOperacionRoute
   '/blog/': typeof BlogIndexRoute
+  '/casos/': typeof CasosIndexRoute
   '/nosotros/': typeof NosotrosIndexRoute
   '/sectores/': typeof SectoresIndexRoute
   '/sistemas/': typeof SistemasIndexRoute
@@ -532,6 +541,7 @@ export interface FileRouteTypes {
     | '/soluciones/ecommerce-rentable'
     | '/soluciones/operacion'
     | '/blog/'
+    | '/casos/'
     | '/nosotros/'
     | '/sectores/'
     | '/sistemas/'
@@ -586,6 +596,7 @@ export interface FileRouteTypes {
     | '/soluciones/ecommerce-rentable'
     | '/soluciones/operacion'
     | '/blog'
+    | '/casos'
     | '/nosotros'
     | '/sectores'
     | '/sistemas'
@@ -640,6 +651,7 @@ export interface FileRouteTypes {
     | '/soluciones/ecommerce-rentable'
     | '/soluciones/operacion'
     | '/blog/'
+    | '/casos/'
     | '/nosotros/'
     | '/sectores/'
     | '/sistemas/'
@@ -695,6 +707,7 @@ export interface RootRouteChildren {
   SolucionesEcommerceRentableRoute: typeof SolucionesEcommerceRentableRoute
   SolucionesOperacionRoute: typeof SolucionesOperacionRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  CasosIndexRoute: typeof CasosIndexRoute
   NosotrosIndexRoute: typeof NosotrosIndexRoute
   SectoresIndexRoute: typeof SectoresIndexRoute
   SistemasIndexRoute: typeof SistemasIndexRoute
@@ -807,6 +820,13 @@ declare module '@tanstack/react-router' {
       path: '/blog/$slug'
       fullPath: '/blog/$slug'
       preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/casos/': {
+      id: '/casos/'
+      path: '/casos'
+      fullPath: '/casos/'
+      preLoaderRoute: typeof CasosIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/legal/aviso-legal': {
@@ -1119,6 +1139,7 @@ const rootRouteChildren: RootRouteChildren = {
   SolucionesEcommerceRentableRoute: SolucionesEcommerceRentableRoute,
   SolucionesOperacionRoute: SolucionesOperacionRoute,
   BlogIndexRoute: BlogIndexRoute,
+  CasosIndexRoute: CasosIndexRoute,
   NosotrosIndexRoute: NosotrosIndexRoute,
   SectoresIndexRoute: SectoresIndexRoute,
   SistemasIndexRoute: SistemasIndexRoute,
