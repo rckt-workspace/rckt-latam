@@ -190,20 +190,6 @@ function RevenueEnginePage() {
 
         {/* Qué incluye */}
         <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="tr">
-          <div
-            aria-hidden="true"
-            style={{
-              position: "absolute",
-              bottom: "-140px",
-              left: "-160px",
-              width: "820px",
-              height: "620px",
-              zIndex: 0,
-              pointerEvents: "none",
-              background:
-                "radial-gradient(ellipse 620px 460px at 0% 100%, rgba(252, 92, 31,0.26) 0%, rgba(252, 92, 31,0.13) 42%, rgba(252, 92, 31,0) 72%)",
-            }}
-          />
           <div className="relative z-10 mx-auto max-w-6xl px-6">
             <SectionLabel>Qué incluye</SectionLabel>
             <div className="md:flex md:items-end md:justify-between md:gap-10">
