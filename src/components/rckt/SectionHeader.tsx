@@ -12,17 +12,15 @@ export function SectionHeader({
   phrase?: ReactNode;
 }) {
   return (
-    <div className="home-section-header">
-      <div className="home-section-header__eyebrow">
+    <div className="text-left">
+      <div className="mb-10 flex flex-wrap items-center gap-x-4 gap-y-2">
         <span className="num-orange">{num}</span>
         <div className="rule" />
         <span className="label-orange">{label}</span>
       </div>
-      <div
-        className={`home-section-header__copy ${phrase ? "home-section-header__copy--split" : ""}`}
-      >
-        <h2>{title}</h2>
-        {phrase ? <p>{phrase}</p> : null}
+      <div className={`grid gap-6 md:items-start md:gap-12 ${phrase ? "md:grid-cols-2" : ""}`}>
+        <h2 className="font-display text-3xl leading-tight font-semibold md:text-5xl">{title}</h2>
+        {phrase ? <p className="text-muted-foreground text-sm leading-relaxed md:pt-2 md:text-base">{phrase}</p> : null}
       </div>
     </div>
   );
