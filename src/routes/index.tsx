@@ -124,9 +124,9 @@ function Problems() {
 }
 
 const SYSTEMS: SystemCardData[] = [
-  { badge: "S1", kicker: "Demanda hasta la venta", title: "Demand System", shortName: "Demand", desc: "Manejamos tus campañas, pero no las optimizamos por leads baratos: las optimizamos por las oportunidades que tu equipo comercial acepta y por las que terminan en venta. Cada semana ves el embudo completo, no solo los clics.", href: "/sistemas/demand-system", art: "demand" },
-  { badge: "S2", kicker: "Núcleo de Conversion System", title: "Sales Flow", shortName: "Sales Flow", desc: "Hoy pagas por un lead, te escribe por WhatsApp, y ahí empieza a perderse: respuesta tarde, sin seguimiento, fuera del CRM, sin saber de qué campaña vino. Sales Flow conecta tus campañas, WhatsApp y CRM para que cada lead tenga respuesta, seguimiento y dueño.", meta: "Ads → WhatsApp → CRM → venta", href: "/sistemas/sales-flow", art: "sales" },
-  { badge: "S3", kicker: "Procesos con supervisión", title: "Operations System", shortName: "Operations", desc: "No te vendemos IA. Elegimos un proceso que tu equipo repite cien veces por semana, medimos cuánto te cuesta hoy, y en ocho semanas lo dejamos funcionando solo, con una persona aprobando lo que importa.", href: "/sistemas/operations-system", art: "operations" },
+  { badge: "S1", kicker: "Demanda hasta la venta", title: "Demand System", shortName: "Demand", desc: "Manejamos tus campañas, pero no las optimizamos por leads baratos: las optimizamos por las oportunidades que tu equipo comercial acepta y por las que terminan en venta. Cada semana ves el embudo completo, no solo los clics.", href: "/sistemas/demand-system", art: "radar" },
+  { badge: "S2", kicker: "Núcleo de Conversion System", title: "Sales Flow", shortName: "Sales Flow", desc: "Hoy pagas por un lead, te escribe por WhatsApp, y ahí empieza a perderse: respuesta tarde, sin seguimiento, fuera del CRM, sin saber de qué campaña vino. Sales Flow conecta tus campañas, WhatsApp y CRM para que cada lead tenga respuesta, seguimiento y dueño.", meta: "Ads → WhatsApp → CRM → venta", href: "/sistemas/sales-flow", art: "flow" },
+  { badge: "S3", kicker: "Procesos con supervisión", title: "Operations System", shortName: "Operations", desc: "No te vendemos IA. Elegimos un proceso que tu equipo repite cien veces por semana, medimos cuánto te cuesta hoy, y en ocho semanas lo dejamos funcionando solo, con una persona aprobando lo que importa.", href: "/sistemas/operations-system", art: "cycle" },
 ];
 
 function Systems() {

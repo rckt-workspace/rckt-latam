@@ -689,61 +689,6 @@ img {
   overflow: hidden;
   margin-bottom: 56px;
 }
-.sys-card {
-  background: var(--card);
-  padding: 44px;
-}
-.sys-card .sys-id {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Switzer", sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 13px;
-  color: var(--mode-badge-text);
-  background: var(--mode-accent);
-  padding: 6px 14px;
-  border-radius: 999px;
-  letter-spacing: 0.03em;
-}
-.sys-card h3 {
-  font-size: 22px;
-  margin: 10px 0 2px;
-  font-weight: 700;
-}
-.sys-card .tag-line {
-  color: var(--carbon-faint);
-  font-size: 14px;
-  margin: 0 0 18px;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-}
-.sys-card p.desc {
-  font-size: 15.5px;
-  color: var(--color-muted-foreground);
-  margin: 0 0 22px;
-}
-.sys-card .incluye {
-  font-size: 13.5px;
-  color: var(--color-muted-foreground);
-  line-height: 1.7;
-  margin: 0 0 20px;
-}
-.sys-card .incluye b {
-  color: var(--carbon);
-  font-weight: 600;
-}
-.sys-card .medida {
-  font-size: 13.5px;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
-  color: var(--carbon-faint);
-}
-.sys-card .medida b {
-  color: var(--carbon);
-  font-weight: 600;
-}
 
 /* ---------- producto + torres ---------- */
 .producto-block {
@@ -1253,38 +1198,11 @@ font-size: 11.5px;
   .logo:hover img {
     transform: scale(1.05);
   }
-
-  .sys-card,
-  .service-lead,
-  .linea-card,
-  .metodo-step {
-    transition:
-      background-color 0.35s ease,
-      border-color 0.35s ease;
-  }
   .faq-q {
     transition: color 0.2s ease;
   }
   .faq-item:hover .faq-q {
     color: var(--naranja-deep);
-  }
-  .sys-grid .sys-card:nth-child(2),
-  .lineas-grid .linea-card:nth-child(2),
-  .metodo-grid .metodo-step:nth-child(2),
-  .three-grid .three-card:nth-child(2),
-  .service-lead-grid .service-lead:nth-child(2) {
-    transition-delay: 0.08s;
-  }
-  .sys-grid .sys-card:nth-child(3),
-  .lineas-grid .linea-card:nth-child(3),
-  .metodo-grid .metodo-step:nth-child(3),
-  .three-grid .three-card:nth-child(3) {
-    transition-delay: 0.16s;
-  }
-  .sys-grid .sys-card:nth-child(4),
-  .lineas-grid .linea-card:nth-child(4),
-  .metodo-grid .metodo-step:nth-child(4) {
-    transition-delay: 0.24s;
   }
   .lineas-grid .linea-card:nth-child(5) {
     transition-delay: 0.32s;
@@ -1356,9 +1274,6 @@ font-size: 11.5px;
   color: var(--color-muted-foreground);
   margin: 0;
   line-height: 1.65;
-}
-.sys-grid .sys-card:last-child:nth-child(odd) {
-  grid-column: 1 / -1;
 }
 @media (max-width: 980px) {
   .hero-inner {
@@ -1498,12 +1413,6 @@ font-size: 11.5px;
   overflow: visible;
   margin-bottom: 56px;
 }
-.sys-grid .sys-card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 34px;
-}
 .service-lead-grid {
   gap: 24px;
 }
@@ -1529,23 +1438,6 @@ font-size: 11.5px;
 
 /* 7) Hover sutil: elevación + sombra, sin cambio de color */
 @media (prefers-reduced-motion: no-preference) {
-  .sys-card,
-  .service-lead,
-  .linea-card,
-  .metodo-step,
-  .torre {
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
-  }
-  .sys-card:hover,
-  .service-lead:hover,
-  .linea-card:hover,
-  .metodo-step:hover,
-  .torre:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 14px 30px rgba(33, 33, 33, 0.1);
-  }
 }
 
 /* 8) Manifiesto con más presencia */
@@ -1783,34 +1675,6 @@ font-size: 11.5px;
   }
 
   /* Entrada con escala en tarjetas */
-  .sys-card.rv,
-  .service-lead.rv,
-  .linea-card.rv,
-  .metodo-step.rv,
-  .three-card.rv,
-  .torre.rv,
-  .principio.rv,
-  .faq-item.rv,
-  .manifiesto-card.rv,
-  .stat-row.rv {
-    scale: 0.95;
-    transition:
-      opacity 0.7s cubic-bezier(0.16, 0.8, 0.3, 1),
-      translate 0.7s cubic-bezier(0.16, 0.8, 0.3, 1),
-      scale 0.7s cubic-bezier(0.16, 0.8, 0.3, 1);
-  }
-  .sys-card.rv.in,
-  .service-lead.rv.in,
-  .linea-card.rv.in,
-  .metodo-step.rv.in,
-  .three-card.rv.in,
-  .torre.rv.in,
-  .principio.rv.in,
-  .faq-item.rv.in,
-  .manifiesto-card.rv.in,
-  .stat-row.rv.in {
-    scale: 1;
-  }
   .stats .stat-row:nth-child(2) {
     transition-delay: 0.09s;
   }
@@ -4752,115 +4616,6 @@ body,
 .home-proof-section {
   background: linear-gradient(180deg, var(--papel) 0%, var(--papel-alt) 100%);
 }
-.sys-card {
-  opacity: 0;
-  transform: translateY(16px);
-}
-.sys-card.is-in {
-  opacity: 1;
-  transform: none;
-  transition: opacity 0.5s ease var(--d, 0ms), transform 0.5s ease var(--d, 0ms), box-shadow 0.25s ease, border-color 0.25s ease;
-}
-.sys-card.is-in:hover {
-  transform: translateY(-4px);
-  border-color: rgba(252, 92, 31, 0.45);
-  box-shadow: 0 18px 40px -20px rgba(252, 92, 31, 0.35);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-}
-.sys-card__head {
-  position: relative;
-  width: 100%;
-  height: 160px;
-  overflow: hidden;
-  background: linear-gradient(135deg, rgba(252, 92, 31, 0.35) 0%, rgba(252, 92, 31, 0.5) 45%, rgba(252, 92, 31, 0.9) 100%);
-}
-.sys-card__art {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.4s ease;
-  pointer-events: none;
-}
-.sys-card:hover .sys-card__art { transform: scale(1.03); }
-.sys-card__head::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(33, 33, 33, 0.55) 0%, rgba(33, 33, 33, 0) 100%);
-  pointer-events: none;
-}
-.sys-card__head > span { z-index: 1; }
-.sys-card__name {
-  position: absolute;
-  left: 20px;
-  bottom: 14px;
-  font-family: "Newsreader", Georgia, serif;
-  font-style: italic;
-  font-size: 30px;
-  line-height: 1;
-  color: var(--papel-fija);
-  text-shadow: 0 1px 8px rgba(33, 33, 33, 0.35);
-  pointer-events: none;
-}
-.sys-card__badge {
-  z-index: 1;
-  background: rgba(245, 242, 237, 0.85);
-  color: var(--ink);
-}
-.sys-card__arrow {
-  z-index: 1;
-  background: rgba(245, 242, 237, 0.85);
-  color: var(--ink);
-  transition: background-color 0.25s ease, color 0.25s ease;
-}
-.sys-card:hover .sys-card__arrow {
-  background: var(--naranja);
-  color: var(--papel-fija);
-}
-.sys-card__kicker {
-  font-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--naranja);
-}
-.sys-card__meta {
-  margin-top: 12px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 11px;
-  line-height: 1.5;
-  color: var(--carbon-soft);
-}
-.sys-card__more {
-  margin-top: auto;
-  padding-top: 16px;
-  border-top: 1px solid rgba(252, 92, 31, 0.18);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--naranja);
-  align-self: flex-start;
-}
-.sys-card__more svg { transition: transform 0.25s ease; }
-.sys-card:hover .sys-card__more svg { transform: translateX(4px); }
-[data-theme="dark"] .sys-card__head {
-  background: linear-gradient(135deg, rgba(252, 92, 31, 0.28) 0%, rgba(252, 92, 31, 0.1) 100%);
-}
-[data-theme="dark"] .sys-card__arrow {
-  background: rgba(245, 242, 237, 0.12);
-  color: var(--papel-fija);
-}
-[data-theme="dark"] .sys-card__badge {
-  background: rgba(33, 33, 33, 0.75);
-  border: 1px solid rgba(245, 242, 237, 0.14);
-  color: var(--papel-fija);
-}
 .band-orange-sistema {
   background: linear-gradient(135deg, var(--naranja) 0%, var(--naranja-deep) 100%);
 }
@@ -4914,12 +4669,6 @@ body,
   .ficha-metodo { padding: 24px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .sys-card,
-  .sys-card.is-in,
-  .sys-card.is-in:hover { opacity: 1; transform: none; transition: none; }
-  .sys-card__art,
-  .sys-card__arrow,
-  .sys-card__more svg { transition: none; }
 }
 
 /* El fondo continuo y el grano histórico quedan anulados. */
@@ -6512,3 +6261,139 @@ header.pointer-events-none img.hidden { display: none; }
 .site-footer-logo--light { display: none; }
 [data-theme="dark"] .site-footer-logo--dark { display: none; }
 [data-theme="dark"] .site-footer-logo--light { display: block; }
+/* Home: cards de sistemas — copia literal de España */
+.sys-card {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.sys-card.is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.5s ease var(--d, 0ms),
+    transform 0.5s ease var(--d, 0ms),
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.sys-card.is-in:hover {
+  transform: translateY(-4px);
+  border-color: rgba(252, 92, 31, 0.45);
+  box-shadow: 0 18px 40px -20px rgba(252, 92, 31, 0.35);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.sys-card__head {
+  position: relative;
+  height: 160px;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(252, 92, 31, 0.35) 0%, rgba(252, 92, 31, 0.5) 45%, rgba(252, 92, 31, 0.9) 100%);
+}
+.sys-card__art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+  pointer-events: none;
+}
+.sys-card:hover .sys-card__art {
+  transform: scale(1.03);
+}
+.sys-card__head::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(33, 33, 33, 0.55) 0%, rgba(33, 33, 33, 0) 100%);
+  pointer-events: none;
+}
+.sys-card__head > span {
+  z-index: 1;
+}
+.sys-card__name {
+  position: absolute;
+  left: 20px;
+  bottom: 14px;
+  font-family: "Newsreader", Georgia, serif;
+  font-style: italic;
+  font-size: 30px;
+  line-height: 1;
+  color: #f5f2ed;
+  text-shadow: 0 1px 8px rgba(33, 33, 33, 0.35);
+  pointer-events: none;
+}
+.sys-card__arrow {
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+.sys-card:hover .sys-card__arrow {
+  background: #fc5c1f;
+  color: #f5f2ed;
+}
+.sys-card__kicker {
+  font-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fc5c1f;
+}
+.sys-card__more {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(252, 92, 31, 0.18);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #fc5c1f;
+  align-self: flex-start;
+}
+.sys-card__more svg {
+  transition: transform 0.25s ease;
+}
+.sys-card:hover .sys-card__more svg {
+  transform: translateX(4px);
+}
+.dark .sys-card__head {
+  background: linear-gradient(135deg, rgba(252, 92, 31, 0.28) 0%, rgba(252, 92, 31, 0.1) 100%);
+}
+.dark .sys-card__name {
+  color: #f5f2ed;
+}
+.dark .sys-card__arrow {
+  background: rgba(245, 242, 237, 0.12);
+  color: #f5f2ed;
+}
+.dark .sys-card:hover .sys-card__arrow {
+  background: #fc5c1f;
+  color: #f5f2ed;
+}
+.dark .sys-card__badge {
+  background: rgba(33, 33, 33, 0.75);
+  border: 1px solid rgba(245, 242, 237, 0.14);
+  color: #f5f2ed;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sys-card {
+    opacity: 1;
+    transform: none;
+  }
+  .sys-card.is-in,
+  .sys-card.is-in:hover {
+    transition: none;
+  }
+  .sys-card__art,
+  .sys-card__arrow,
+  .sys-card__more svg {
+    transition: none;
+  }
+}
+.dark .sys-card__head,
+.dark .res-cover {
+  background: radial-gradient(circle closest-side at 88% 12%, rgba(252, 92, 31, 0.33) 0%, rgba(252, 92, 31, 0.14) 35%, rgba(252, 92, 31, 0.05) 60%, transparent 78%), var(--surface-alt);
+}
