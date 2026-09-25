@@ -5127,6 +5127,10 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 .site-footer.section-deep .text-paper\/40 { color: rgba(33, 33, 33, .4); font-weight: 400; }
 .site-footer.section-deep .text-paper\/35 { color: rgba(33, 33, 33, .35); font-weight: 400; }
 .site-footer.section-deep .hover\:text-paper:hover { color: #212121; }
+.site-footer .site-footer-logo--dark { display: block; }
+.site-footer .site-footer-logo--light,
+[data-theme="dark"] .site-footer .site-footer-logo--light { display: none; }
+[data-theme="dark"] .site-footer .site-footer-logo--dark { display: block; }
 
 /* Ajustes puntuales solicitados. */
 .hero-whatsapp-btn {
