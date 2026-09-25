@@ -24,6 +24,7 @@ const FOOTER_LEGAL = [
   { href: "#preferencias-cookies", label: "Preferencias de cookies" },
 ];
 
+// PENDIENTE: teléfono y horario de atención (Fabián)
 const phone = "[pendiente]";
 const hours = "[pendiente]";
 
