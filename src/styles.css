@@ -4951,6 +4951,7 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
   .campaign-logo img { height: 26px; }
   .campaign-hero { min-height: 670px; max-height: none; padding-block: 90px 70px; }
   .campaign-hero__photo::after { background: linear-gradient(180deg, rgba(245,242,237,0.97) 0%, rgba(245,242,237,0.89) 50%, rgba(245,242,237,0.42) 100%); }
+  .campaign-hero__photo img { object-position: 46% center; }
   .campaign-hero h1 { font-size: 34px; overflow-wrap: break-word; }
   .campaign-hero h1 .hero-hand { white-space: normal; font-size: .82em; }
   .campaign-actions > a { width: 100%; }
