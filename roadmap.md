@@ -29,3 +29,4 @@
 - [x] Confirmar vacíos de contenido en Educación antes de redactar cualquier ficha o FAQ.
 - [x] Validar las siete páginas de Sectores en escritorio/celular y claro/oscuro.
 - [x] Paso 6 — Nosotros, Cómo trabajamos, Trabaja con nosotros
+- [x] Corregir contraste y apilado del nav: enlaces/toggle oscuros sobre la cápsula clara en modo oscuro, y z-index del hero para que el menú fijo no quede enterrado tras el scroll (claro y oscuro).
