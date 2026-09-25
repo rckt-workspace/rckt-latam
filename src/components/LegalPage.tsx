@@ -4,7 +4,7 @@ import logoDarkAsset from "@/assets/rckt-logo-dark.png";
 import logoLightAsset from "@/assets/rckt-logo-light.png";
 import ThemeToggle from "@/components/rckt/ThemeToggle";
 import { useEffect, useState } from "react";
-import { currentTheme, THEME_EVENT } from "@/components/rckt/ThemeToggle";
+import { currentTheme, THEME_EVENT } from "@/lib/theme";
 
 export function LegalPage({ title, children }: { title: string; children: ReactNode }) {
   useSiteMotion([]);
