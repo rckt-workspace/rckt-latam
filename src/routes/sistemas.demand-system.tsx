@@ -1,11 +1,10 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
-import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
+import FaqSection, { faqJsonLd, type FaqItem } from "@/components/rckt/FaqSection";
 import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/SystemBlocks";
 import SystemFinalCta from "@/components/rckt/SystemFinalCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SystemSection from "@/components/rckt/SystemSection";
-import { DEMAND_SYSTEM_FAQS } from "@/content/systemFaqs";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 const INCLUYE = [
@@ -20,6 +19,8 @@ const TIERS = [
   { titulo: "Scale", detalle: "Según canales e inversión en pauta." },
 ];
 const ACEPTACION = ["Tracking validado de extremo a extremo", "Estructura de campañas activa", "Primer reporte por etapa entregado"];
+// Paso 9: completar con las objeciones reales del equipo comercial LATAM.
+const FAQS: FaqItem[] = [];
 
 export const Route = createFileRoute("/sistemas/demand-system")({
   staticData: { sitemap: true },
@@ -34,7 +35,7 @@ export const Route = createFileRoute("/sistemas/demand-system")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: SITE_URL + "/sistemas/demand-system" }],
-    scripts: [faqJsonLd(DEMAND_SYSTEM_FAQS)],
+    scripts: FAQS.length > 0 ? [faqJsonLd(FAQS)] : [],
   }), component: DemandPage, errorComponent: DemandError, notFoundComponent: () => <DemandError />,
 });
 
@@ -49,7 +50,7 @@ function DemandPage() {
     <SystemSection id="condicion" num="05." label="Reglas" title={<>Nunca optimizamos por costo por <em className="font-serif-accent">lead</em>.</>} phrase="La unidad es SQL o venta."><div className="system-highlight"><p>Nunca optimizamos por costo por lead; la unidad es SQL o venta.</p></div></SystemSection>
     <SystemSection id="para-quien" num="06." label="Para quién" title={<>Oferta probada, proceso comercial y CRM <em className="font-serif-accent">funcionando</em>.</>} phrase="Si esa base no existe, la recomendación es Revenue Engine."><RuleList items={["Cuentas con oferta probada", "Proceso comercial funcionando", "CRM funcionando", "Si no los tienes, la recomendación es Revenue Engine"]} /></SystemSection>
     <SystemSection num="07." label="Cómo empieza" title={<>Primero conectamos la medición de extremo a <em className="font-serif-accent">extremo</em>.</>} phrase="El sistema se acepta cuando ya puede leerse por etapa."><AcceptanceSteps plazo="Sistema aceptado en máximo 21 días" items={ACEPTACION.map((texto) => ({ texto }))} /></SystemSection>
-    <FaqSection items={DEMAND_SYSTEM_FAQS} /><SystemFinalCta />
+    <FaqSection items={FAQS} /><SystemFinalCta />
   </main><SiteFooter /></div>;
 }
 
