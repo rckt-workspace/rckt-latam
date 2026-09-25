@@ -25,3 +25,6 @@
 - [x] Corregir el velo de los heroes compartidos y verificar Sistemas, Soluciones, Sectores e Inicio en escritorio/celular y claro/oscuro.
 - [x] Reconstruir Arquitectura y Los dos combos del índice de Sistemas con el patrón real de España.
 - [x] Completar los paneles “Lo que hacemos” de las tres Soluciones con sus listados reales y el compromiso mínimo de Revenue Engine.
+- [ ] Reconstruir /sectores y sus seis páginas con SectorPage, SectorJourney y SectorPains, usando las imágenes aprobadas.
+- [ ] Confirmar vacíos de contenido en Educación antes de redactar cualquier ficha o FAQ.
+- [ ] Validar las siete páginas de Sectores en escritorio/celular y claro/oscuro.
