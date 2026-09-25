@@ -1,5 +1,5 @@
 import { createFileRoute, useSearch } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface SearchParams {
   next?: string;
@@ -41,6 +41,15 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    try {
+      const theme = localStorage.getItem("rckt-theme");
+      if (theme === "light" || theme === "dark") document.documentElement.setAttribute("data-theme", theme);
+    } catch {
+      // Keep the rendered theme when browser storage is unavailable.
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

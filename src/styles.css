@@ -3676,6 +3676,16 @@ header.scrolled {
 }
 .res-featured { border-radius: 8px !important; }
 .res-card__read { color: color-mix(in srgb, var(--naranja) 64%, transparent); }
+[data-theme="dark"] .resources-catalog { background: var(--papel); }
+[data-theme="dark"] .res-card,
+[data-theme="dark"] .res-input,
+[data-theme="dark"] .res-featured {
+  background: color-mix(in srgb, var(--papel-fija) 6%, transparent);
+}
+[data-theme="dark"] .res-cover {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--naranja) 30%, transparent), color-mix(in srgb, var(--durazno) 8%, transparent));
+}
+[data-theme="dark"] .res-cover__theme { color: var(--papel-fija); }
 @media (prefers-reduced-motion: reduce) {
   .res-card, .res-card.is-in { opacity: 1 !important; transform: none !important; transition: none !important; }
 }

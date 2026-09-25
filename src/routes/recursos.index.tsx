@@ -244,7 +244,7 @@ function RecursosPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="rckt-site tcn-page min-h-screen bg-background text-foreground">
       <main>
         <SystemPageHero
           label="Recursos"
