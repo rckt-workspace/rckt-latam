@@ -1,14 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useCallback } from "react";
+import { useEffect, useMemo } from "react";
 import heroAsset from "@/assets/rckt-hero.jpg";
-import { Theme, currentTheme, applyTheme, syncThemeButtons, THEME_EVENT } from "@/lib/theme";
 import ctaAsset from "@/assets/rckt-cta.jpg";
-import logoDarkAsset from "@/assets/rckt-logo-dark.png";
-import logoLightAsset from "@/assets/rckt-logo-light.png";
 import MethodCard, { type MethodField } from "@/components/rckt/MethodCard";
 import { SectionHeader } from "@/components/rckt/SectionHeader";
 import { SystemCards, type SystemCardData } from "@/components/rckt/SystemCards";
 import { SiteFooter } from "@/components/SiteChrome";
+import SiteNav from "@/components/rckt/SiteNav";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
 
@@ -99,35 +97,7 @@ const pageMarkup = `
 <main id="top">
 <!-- HERO -->
 <section class="hero">
-<div class="hero-photo"><img src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/><span class="hero-photo-overlay"></span></div>
-<header>
-<div class="container">
-<nav>
-<div class="nav-capsule nav-capsule-left">
-<a class="logo" href="#top"><img alt="RCKT" src="__LOGO_DARK__"/></a>
-<div class="nav-links">
-<a href="/soluciones">Soluciones</a>
-<a href="/sistemas">Sistemas</a>
-<a href="/sectores">Sectores</a>
-<a href="/nosotros">Nosotros</a>
-<a href="/blog">Blog</a>
-<div class="nav-menu-footer">
-<button class="theme-toggle" type="button" aria-label="Activar versión oscura" title="Versión oscura"><span class="theme-toggle__thumb"><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></span></button>
-<a class="btn hero-nav-cta nav-menu-cta" href="/sistemas/revenue-diagnostic">Pedir diagnóstico</a>
-</div>
-</div>
-</div>
-<div class="nav-capsule nav-capsule-right nav-right">
-<div class="nav-right-desktop">
-<button class="theme-toggle" type="button" aria-label="Activar versión oscura" title="Versión oscura"><span class="theme-toggle__thumb"><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></span></button>
-</div>
-<a class="btn hero-nav-cta" href="/sistemas/revenue-diagnostic">Pedir diagnóstico</a>
-<button aria-label="Abrir menú" aria-expanded="false" class="nav-toggle" id="navToggle"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="nav-toggle-line nav-toggle-line--top" d="M5 7h14"/><path class="nav-toggle-line nav-toggle-line--middle" d="M5 12h14"/><path class="nav-toggle-line nav-toggle-line--bottom" d="M5 17h14"/></svg></button>
-</div>
-</nav>
-
-</div>
-</header>
+<div class="hero-photo"><img class="hero-photo-img" src="__HERO__" alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA"/><span class="hero-photo-fade"></span></div>
 <div class="container hero-content">
 <div class="hero-inner">
 <span class="kicker hero-kicker">Technology with a human pulse.</span>
@@ -298,8 +268,8 @@ function FinalCta() {
   return (
     <section className="cta-final general-cta">
       <span className="cta-final__topline" aria-hidden="true" />
-      <img className="cta-final-photo" src={ctaAsset} alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA" />
-      <span className="cta-final-overlay" aria-hidden="true" />
+      <img className="cta-final-photo cta-photo-img" src={ctaAsset} alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA" />
+      <span className="cta-final-overlay cta-photo-fade" aria-hidden="true" />
       <span className="cta-final__glow" aria-hidden="true" />
       <div className="container">
         <span className="kicker">Siguiente paso</span>
@@ -317,9 +287,7 @@ function RcktLanding() {
     () =>
       (() => {
         const markup = pageMarkup
-        .replaceAll("__HERO__", heroAsset)
-        .replaceAll("__LOGO_DARK__", logoDarkAsset)
-        .replaceAll("__LOGO_LIGHT__", logoLightAsset);
+        .replaceAll("__HERO__", heroAsset);
         const heroStart = markup.indexOf('<section class="hero">');
         const heroEnd = markup.indexOf("<!-- HOME CONTENT MOUNTED WITH REACT -->");
         return {
@@ -434,42 +402,6 @@ function RcktLanding() {
         : undefined;
     revealElements.forEach((el) => (observer ? observer.observe(el) : el.classList.add("in")));
 
-    const header = document.querySelector<HTMLElement>("header");
-    const onScroll = () => header?.classList.toggle("scrolled", window.scrollY > 40);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-
-    const toggle = document.getElementById("navToggle");
-    const links = document.querySelector<HTMLElement>(".nav-links");
-    const updateMenuState = () => {
-      const open = links?.classList.contains("mobile-open");
-      toggle?.classList.toggle("mobile-open", Boolean(open));
-      toggle?.setAttribute("aria-expanded", String(Boolean(open)));
-      toggle?.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
-    };
-
-    const onToggle = () => {
-      links?.classList.toggle("mobile-open");
-      updateMenuState();
-    };
-    toggle?.addEventListener("click", onToggle);
-
-    const closeMenu = () => {
-      links?.classList.remove("mobile-open");
-      updateMenuState();
-    };
-    links?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
-
-    const closeMenuOnResize = () => {
-      if (window.innerWidth > 1100 && links?.classList.contains("mobile-open")) closeMenu();
-    };
-    const closeMenuOnEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && links?.classList.contains("mobile-open")) closeMenu();
-    };
-
-    window.addEventListener("resize", closeMenuOnResize);
-    window.addEventListener("keydown", closeMenuOnEsc);
-
     const faqButtons = Array.from(document.querySelectorAll<HTMLButtonElement>(".faq-q"));
     const onFaq = (event: Event) => {
       const button = event.currentTarget as HTMLButtonElement;
@@ -495,52 +427,22 @@ function RcktLanding() {
     };
     form?.addEventListener("submit", onSubmit);
 
-    const themeToggles = Array.from(document.querySelectorAll<HTMLButtonElement>(".theme-toggle"));
-    const applyTheme = (theme: "light" | "dark") => {
-      document.documentElement.setAttribute("data-theme", theme);
-      try {
-        localStorage.setItem("rckt-theme", theme);
-      } catch {
-        // Storage can be unavailable in private browsing contexts.
-      }
-      themeToggles.forEach((button) => {
-        const isDark = theme === "dark";
-        button.classList.toggle("is-dark", isDark);
-        button.classList.toggle("is-light", !isDark);
-        button.setAttribute("aria-label", isDark ? "Activar versión clara" : "Activar versión oscura");
-        button.setAttribute("title", isDark ? "Versión clara" : "Versión oscura");
-      });
-      window.dispatchEvent(new CustomEvent("rckt:theme", { detail: theme }));
-    };
-    let storedTheme: "light" | "dark" = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
-    try {
-      if (localStorage.getItem("rckt-theme") === "dark") storedTheme = "dark";
-    } catch {
-      // Keep the rendered theme.
-    }
-    applyTheme(storedTheme);
-    const toggleTheme = () => applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
-    themeToggles.forEach((button) => button.addEventListener("click", toggleTheme));
-
     return () => {
       timers.forEach((t) => window.clearTimeout(t));
       counterObserver?.disconnect();
       observer?.disconnect();
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", closeMenuOnResize);
-      window.removeEventListener("keydown", closeMenuOnEsc);
-      toggle?.removeEventListener("click", onToggle);
-      links?.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu));
       faqButtons.forEach((button) => button.removeEventListener("click", onFaq));
       form?.removeEventListener("submit", onSubmit);
-      themeToggles.forEach((button) => button.removeEventListener("click", toggleTheme));
     };
   }, []);
 
   return (
     <div className="rckt-site">
       <main id="top">
-        <div className="home-legacy-hero" dangerouslySetInnerHTML={{ __html: heroMarkup }} />
+        <div className="home-legacy-hero">
+          <SiteNav />
+          <div dangerouslySetInnerHTML={{ __html: heroMarkup }} />
+        </div>
         <ProblemsSection />
         <SystemsSection />
         <ProofSection />
