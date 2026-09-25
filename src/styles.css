@@ -6288,3 +6288,11 @@ body,
     padding: 15px 0;
   }
 }
+.system-architecture { display:grid; gap:20px; }
+.arch-row { display:grid; grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr) 36px minmax(0,1.2fr); align-items:center; gap:14px; padding:22px; border:1px solid var(--line); border-radius:8px; background:color-mix(in srgb,var(--papel-fija) 70%,transparent); }
+.arch-node,.arch-result { display:flex; min-height:86px; align-items:center; justify-content:center; padding:18px; border:1px solid var(--line); border-radius:6px; color:var(--carbon); font-weight:600; text-align:center; }
+.arch-result { flex-direction:column; border-color:var(--naranja); background:var(--naranja); color:var(--papel-fija); font-size:20px; }
+.arch-result small { display:block; margin-top:5px; font-size:11px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; }
+.arch-sign { color:var(--naranja); font-size:28px; font-weight:600; text-align:center; }
+[data-theme="dark"] .arch-row { background:rgba(245,242,237,.05); }
+@media(max-width:760px){.arch-row{grid-template-columns:1fr;}.arch-sign{line-height:1}.arch-node,.arch-result{min-height:70px}}

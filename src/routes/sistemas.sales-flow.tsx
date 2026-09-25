@@ -1,188 +1,22 @@
-import type { CSSProperties } from "react";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
-import heroAsset from "@/assets/rckt-hero.jpg";
-
-const delay = (i: number) => ({ "--i": i }) as CSSProperties;
-
-const SITE_URL = "https://rckt-latam.lovable.app";
-
-const componentes = [
-  [
-    "01",
-    "Sales Flow núcleo",
-    "Ads ↔ WhatsApp Business API ↔ CRM, routing y asignación a asesores, calificación con agente supervisado, SLAs, secuencias, gestión de inasistencia, atribución offline.",
-  ],
-  [
-    "02",
-    "Conversational Revenue",
-    "Agentes con aprobación humana en toda decisión de venta.",
-  ],
-  ["03", "CRM & RevOps", "El proceso comercial vive en un solo lugar."],
-  [
-    "04",
-    "Conversion Platforms",
-    "Landing, web, ecommerce, siempre con tracking y CRM conectados.",
-  ],
-] as const;
-
-export const Route = createFileRoute("/sistemas/sales-flow")({
-  staticData: { sitemap: true },
-  head: () => ({
-    meta: [
-      { title: "Sales Flow — RCKT" },
-      {
-        name: "description",
-        content:
-          "De lead a venta sin fugas: pauta, WhatsApp y CRM conectados, con respuesta, seguimiento y dueño para cada prospecto.",
-      },
-      { property: "og:title", content: "Sales Flow — RCKT" },
-      { property: "og:description", content: "La web nunca se vende sola." },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: SITE_URL + "/sistemas/sales-flow" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: SITE_URL + "/sistemas/sales-flow" }],
-  }),
-  component: SalesFlowPage,
-  errorComponent: SalesFlowError,
-  notFoundComponent: () => <SalesFlowError />,
-});
-
-function SalesFlowPage() {
-  useSiteMotion([]);
-
-  return (
-    <div className="rckt-site tcn-page">
-      <main id="top">
-        <section className="subpage-hero">
-          <div className="subpage-hero-photo" aria-hidden="true">
-            <img src={heroAsset} alt="" />
-            <span className="subpage-hero-photo-overlay" />
-          </div>
-          <span className="tcn-orb tcn-orb-hero-corner" aria-hidden="true" />
-          <span className="tcn-orb tcn-orb-hero" aria-hidden="true" />
-          <SiteHeader />
-          <div className="container">
-            <div className="subpage-hero-inner">
-              <span className="kicker">Sistema</span>
-              <h1>De lead a venta sin fugas</h1>
-            </div>
-          </div>
-        </section>
-
-        <section className="band" data-mode="motion" id="treinta-segundos">
-          <span className="tcn-orb tcn-orb-cultura-left" aria-hidden="true" />
-          <div className="container">
-            <div className="section-head">
-              <span className="num">01.</span>
-              <span className="kicker ital-label">En 30 segundos</span>
-              <span className="divider"></span>
-            </div>
-            <div className="juicio rv">
-              <span className="tag">Sales Flow</span>
-              Hoy pagas por un prospecto, te escribe por WhatsApp, y ahí empieza a perderse:
-              respuesta tarde, sin seguimiento, fuera del CRM. Sales Flow conecta tu pauta, WhatsApp
-              y CRM para que cada prospecto tenga respuesta, seguimiento y dueño —y para que sepas
-              cuáles compran.
-            </div>
-          </div>
-        </section>
-
-        <section className="band band-alt" id="componentes">
-          <div className="container">
-            <div className="section-head">
-              <span className="num">02.</span>
-              <span className="kicker ital-label">Componentes</span>
-              <span className="divider"></span>
-            </div>
-            <div className="lineas-grid rv-group">
-              {componentes.map(([n, titulo, texto], i) => (
-                <div className="linea-card rv" key={titulo} style={delay(i)}>
-                  <span className="num">{n}</span>
-                  <h4>{titulo}</h4>
-                  <p>{texto}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="band" id="regla">
-          <span className="tcn-orb tcn-orb-vacantes" aria-hidden="true" />
-          <div className="container">
-            <div className="section-head">
-              <span className="num">03.</span>
-              <span className="kicker ital-label">Regla</span>
-              <span className="divider"></span>
-            </div>
-            <div className="juicio rv">
-              <span className="tag">Regla</span>
-              La web nunca se vende sola.
-            </div>
-            <div className="sol-note rv" style={{ margin: "32px auto 0" }}>
-              <p>Esta es la página más visitada desde campañas en Latinoamérica.</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="band band-alt" id="para-quien">
-          <div className="container">
-            <div className="section-head">
-              <span className="num">04.</span>
-              <span className="kicker ital-label">Para quién</span>
-              <span className="divider"></span>
-            </div>
-            <div className="sol-note rv">
-              <p>Negocios donde la venta pasa por conversación humana.</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="cta-final">
-          <span className="tcn-orb tcn-orb-cta" aria-hidden="true" />
-          <div className="container">
-            <span className="kicker">Siguiente paso</span>
-            <h2 className="rv">Antes de tocar nada, medimos.</h2>
-            <a className="btn btn-primary" href="/sistemas/revenue-diagnostic">
-              Solicitar Revenue Diagnostic →
-            </a>
-          </div>
-        </section>
-      </main>
-      <SiteFooter />
-    </div>
-  );
-}
-
-function SalesFlowError() {
-  const router = useRouter();
-
-  return (
-    <div className="rckt-site tcn-page">
-      <SiteHeader />
-      <main className="band">
-        <div className="container">
-          <div className="form-card" role="alert">
-            <span className="kicker">Sales Flow</span>
-            <h1>No pudimos mostrar esta página.</h1>
-            <p>Intenta cargarla nuevamente. Si el problema continúa, puedes volver al inicio.</p>
-            <div className="form-actions">
-              <button
-                className="btn btn-primary"
-                type="button"
-                onClick={() => void router.invalidate()}
-              >
-                Intentar de nuevo
-              </button>
-              <a className="btn" href="/">
-                Volver al inicio
-              </a>
-            </div>
-          </div>
-        </div>
-      </main>
-      <SiteFooter />
-    </div>
-  );
-}
+import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
+import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/SystemBlocks";
+import SystemFinalCta from "@/components/rckt/SystemFinalCta";
+import SystemPageHero from "@/components/rckt/SystemPageHero";
+import SystemSection from "@/components/rckt/SystemSection";
+import { SALES_FLOW_FAQS } from "@/content/systemFaqs";
+const SITE_URL="https://rckt-latam.lovable.app";
+const COMPONENTES=[{titulo:"Sales Flow núcleo",detalle:"Ads ↔ WhatsApp Business API ↔ CRM, routing y asignación a asesores, calificación con agente supervisado, SLAs, secuencias, gestión de inasistencia, atribución offline."},{titulo:"Conversational Revenue",detalle:"Agentes con aprobación humana en toda decisión de venta."},{titulo:"CRM & RevOps",detalle:"El proceso comercial vive en un solo lugar."},{titulo:"Conversion Platforms",detalle:"Landing, web, ecommerce, siempre con tracking y CRM conectados."}];
+export const Route=createFileRoute("/sistemas/sales-flow")({staticData:{sitemap:true},head:()=>({meta:[{title:"Sales Flow — RCKT"},{name:"description",content:"De lead a venta sin fugas: pauta, WhatsApp y CRM conectados, con respuesta, seguimiento y dueño para cada prospecto."},{property:"og:title",content:"Sales Flow — RCKT"},{property:"og:description",content:"La web nunca se vende sola."},{property:"og:type",content:"website"},{property:"og:url",content:SITE_URL+"/sistemas/sales-flow"},{name:"twitter:card",content:"summary_large_image"}],links:[{rel:"canonical",href:SITE_URL+"/sistemas/sales-flow"}],scripts:[faqJsonLd(SALES_FLOW_FAQS)]}),component:SalesFlowPage,errorComponent:SalesFlowError,notFoundComponent:()=> <SalesFlowError/>});
+function SalesFlowPage(){useSiteMotion([]);return <div className="rckt-site tcn-page"><main id="top">
+<SystemPageHero label="Sales Flow" title={<>De lead a venta sin <em>fugas</em>.</>} promise="Hoy pagas por un prospecto, te escribe por WhatsApp, y ahí empieza a perderse: respuesta tarde, sin seguimiento, fuera del CRM. Sales Flow conecta tu pauta, WhatsApp y CRM para que cada prospecto tenga respuesta, seguimiento y dueño —y para que sepas cuáles compran."/>
+<SystemSection num="01." label="El problema" title={<>El prospecto llega. La fuga empieza <em className="font-serif-accent">después</em>.</>} phrase="Respuesta tarde, sin seguimiento y conversaciones fuera del CRM."><p className="system-section__lead">Hoy pagas por un prospecto, te escribe por WhatsApp, y ahí empieza a perderse: respuesta tarde, sin seguimiento, fuera del CRM.</p></SystemSection>
+<SystemSection id="componentes" num="02." label="Qué incluye" title={<>Cada prospecto con respuesta, seguimiento y <em className="font-serif-accent">dueño</em>.</>} phrase="Pauta, WhatsApp, CRM y atribución conectados en un solo flujo."><CapabilityCards items={COMPONENTES}/></SystemSection>
+<SystemSection num="03." label="Qué no incluye" title={<>Conectar la venta no significa hacerlo <em className="font-serif-accent">todo</em>.</>} phrase="Sales Flow ordena el recorrido comercial; otras capacidades pertenecen a otros sistemas."><RuleList items={["Inversión en pauta", "Gestión de campañas", "Operación de cierre por parte de RCKT", "Licencias de CRM y WhatsApp Business API"]}/></SystemSection>
+<SystemSection id="regla" num="04." label="Regla" title={<>La web nunca se vende <em className="font-serif-accent">sola</em>.</>} phrase="La conversión ocurre cuando el sistema acompaña la conversación humana."><div className="system-highlight"><p>La web nunca se vende sola.</p></div><p style={{marginTop:24}}>Esta es la página más visitada desde campañas en Latinoamérica.</p></SystemSection>
+<SystemSection id="para-quien" num="05." label="Para quién" title={<>Cuando vender exige una conversación <em className="font-serif-accent">humana</em>.</>} phrase="Negocios donde la venta pasa por una persona, pero el sistema evita que el prospecto se pierda."><RuleList items={["Negocios donde la venta pasa por conversación humana"]}/></SystemSection>
+<SystemSection num="06." label="Cómo empieza" title={<>Probamos el flujo completo con prospectos <em className="font-serif-accent">reales</em>.</>} phrase="La aceptación exige trazabilidad, respuesta y asignación funcionando."><AcceptanceSteps plazo="Sistema aceptado en máximo 30 días" items={[{texto:"Pauta, WhatsApp Business API y CRM conectados"},{texto:"Flujo probado con prospectos reales"},{texto:"Todos los prospectos entran al CRM con su origen"}]}/></SystemSection>
+<FaqSection items={SALES_FLOW_FAQS}/><SystemFinalCta/>
+</main><SiteFooter/></div>}
+function SalesFlowError(){const router=useRouter();return <div className="rckt-site tcn-page"><SiteHeader/><main className="band"><div className="container"><div className="form-card" role="alert"><span className="kicker">Sales Flow</span><h1>No pudimos mostrar esta página.</h1><p>Intenta cargarla nuevamente. Si el problema continúa, puedes volver al inicio.</p><div className="form-actions"><button className="btn btn-primary" type="button" onClick={()=>void router.invalidate()}>Intentar de nuevo</button><a className="btn" href="/">Volver al inicio</a></div></div></div></main><SiteFooter/></div>}
