@@ -1,7 +1,6 @@
 import { useEffect } from "react";
-import logoDarkAsset from "@/assets/rckt-logo-dark.png";
-import ThemeToggle from "@/components/rckt/ThemeToggle";
 import SiteNav from "@/components/rckt/SiteNav";
+import RcktSiteFooter from "@/components/rckt/SiteFooter";
 
 /** Navegación y pie compartidos con la home, más las animaciones del sitio. */
 
@@ -11,57 +10,7 @@ export function SiteHeader() {
 
 
 export function SiteFooter() {
-  return (
-    <footer className="section-deep" role="contentinfo">
-      <div className="container">
-        <div className="footer-top">
-          <div className="footer-brand">
-            <a className="logo" href="/" aria-label="RCKT Home">
-              <img alt="RCKT" src={logoDarkAsset} />
-            </a>
-            <p>Menos ruido, más crecimiento.</p>
-            <h5>Correo</h5>
-            <a className="footer-contact" href="mailto:hola@rckt.lat">hola@rckt.lat</a>
-          </div>
-          <div className="footer-col">
-            <h5>Navegar</h5>
-            <ul aria-label="Enlaces de navegación">
-              <li><a href="/soluciones">Soluciones</a></li>
-              <li><a href="/sistemas">Sistemas</a></li>
-              <li><a href="/sectores">Sectores</a></li>
-              <li><a href="/nosotros">Nosotros</a></li>
-              <li><a href="/nosotros/como-trabajamos">Método</a></li>
-              <li><a href="/sistemas/revenue-diagnostic#faq">FAQ</a></li>
-              <li><a href="/contacto">Contacto</a></li>
-              <li><a href="/blog">Blog</a></li>
-              <li><a href="/trabaja-con-nosotros">Trabaja con nosotros</a></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h5>Legal</h5>
-            <ul aria-label="Información legal">
-              <li><a href="/legal/aviso-legal">Aviso legal</a></li>
-              <li><a href="/legal/privacidad">Privacidad</a></li>
-              <li><a href="/legal/cookies">Cookies</a></li>
-              <li>
-                <a href="/politica-tratamiento-datos.pdf" download>
-                  Política de Tratamiento de Datos
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="footer-col footer-appearance">
-            <h5>Apariencia</h5>
-            <ThemeToggle />
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <span>sistema activo</span>
-          <span>2026© RCKT</span>
-        </div>
-      </div>
-    </footer>
-  );
+  return <RcktSiteFooter />;
 }
 
 /** Revelado al scroll, títulos por palabra, menú móvil y selector de tema. */
