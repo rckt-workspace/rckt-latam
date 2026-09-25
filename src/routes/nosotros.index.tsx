@@ -10,16 +10,16 @@ const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
 const SITE_URL = "https://rckt.lat";
 
 const SOMOS = [
-  "Una firma que se hace responsable del resultado comercial, no de una tarea.",
-  "Un equipo que conecta lo que el cliente hoy tiene separado: pauta, WhatsApp, web, CRM, ventas y operación.",
-  "Una forma de trabajar donde todo se mide hasta la venta, con una sola fuente de verdad que el cliente firma.",
-  "IA en cada sistema, siempre con supervisión humana y con un documento que dice qué hace sola y qué no.",
+  "Nos hacemos responsables del resultado comercial, no de una tarea.",
+  "Conectamos lo que hoy tienes separado: pauta, WhatsApp, web, CRM, ventas y operación.",
+  "Medimos todo hasta la venta, con una sola fuente de verdad que tú firmas.",
+  "Usamos IA en cada sistema, siempre supervisada y con un documento que dice qué hace sola y qué no.",
 ];
 const NO_SOMOS = [
   "No somos una agencia de pauta que optimiza por costo por lead.",
   "No hacemos webs sueltas, community management ni diseño gráfico por encargo.",
-  "No vendemos chatbots ni «IA» como producto. Vendemos un proceso que mejora y se puede medir.",
-  "No prometemos lo que no controlamos: stock, precios, cierre o calidad de atención del cliente.",
+  "No vendemos chatbots ni «IA» como producto: vendemos un proceso que mejora y se mide.",
+  "No prometemos lo que no depende de nosotros: stock, precios, cierre o atención.",
 ];
 const PILARES = [
   ["01", "SELL BETTER", "Haz que cada oportunidad cuente."],
@@ -29,12 +29,12 @@ const PILARES = [
   ["05", "PROOF > PROMISES", "Resultados que hablan por sí solos."],
 ] as const;
 const PRINCIPIOS = [
-  ["01", Database, "Una fuente de verdad", "Un solo modelo de datos: pauta → prospecto → MQL → SQL → cita → oportunidad → venta → margen, con definiciones que el cliente firma."],
-  ["02", ShieldCheck, "IA supervisada", "Cada cuenta documenta qué se automatiza, qué requiere aprobación humana, cómo se detectan fallos y quién interviene."],
-  ["03", UserRoundCheck, "Un responsable con autoridad", "Decide prioridades entre pauta, creatividad, conversión y operación. No coordina: responde por el resultado."],
-  ["04", Layers, "Activos reutilizables", "Conectores, tracking, evaluaciones, playbooks y biblioteca creativa. Lo que se repite se documenta y se versiona."],
-  ["05", Lock, "Gobierno y seguridad", "Accesos, datos personales, consentimiento y cumplimiento local, con apoyo jurídico cuando haga falta."],
-  ["06", PackageOpen, "Transferencia", "Documentación y accesos completos desde el primer día. El cliente puede irse con su sistema."],
+  ["01", Database, "Una fuente de verdad", "Un solo modelo de datos, de la inversión al margen, con definiciones que tú firmas."],
+  ["02", ShieldCheck, "IA supervisada", "Por cuenta, un documento de una página: qué se automatiza, qué aprueba una persona, cómo se detectan fallos y quién interviene."],
+  ["03", UserRoundCheck, "Un responsable con autoridad", "Una persona decide prioridades entre pauta, creatividad, conversión y operación, y responde por el resultado."],
+  ["04", Layers, "Activos reutilizables", "Conectores, tracking, playbooks y creatividades que se documentan y se reutilizan."],
+  ["05", Lock, "Gobierno y seguridad", "Accesos, datos personales, consentimiento y normativa local bajo control, con apoyo jurídico cuando se necesita."],
+  ["06", PackageOpen, "Transferencia", "Desde el primer día tienes la documentación y los accesos; si te vas, te llevas tu sistema."],
 ] as const;
 
 export const Route = createFileRoute("/nosotros/")({
