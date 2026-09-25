@@ -393,27 +393,28 @@ function RcktLanding() {
     // --- Máquina de escribir solo en la palabra "humano" ---
     const typeTarget = document.querySelector<HTMLElement>(".hero-inner h1 .type-target");
     if (typeTarget && !reduceMotion) {
-      const finalText = typeTarget.textContent ?? "";
-      typeTarget.textContent = "";
-      const cursor = document.createElement("span");
-      cursor.className = "type-cursor";
-      cursor.setAttribute("aria-hidden", "true");
-      typeTarget.appendChild(cursor);
-      let i = 0;
-      const tick = () => {
-        if (i < finalText.length) {
-          typeTarget.insertBefore(document.createTextNode(finalText.charAt(i)), cursor);
-          i += 1;
-          timers.push(window.setTimeout(tick, 45));
-        } else {
-          timers.push(
-            window.setTimeout(() => {
-              cursor.remove();
-            }, 2200),
-          );
-        }
+      const startTyping = () => {
+        if (typeTarget.dataset.typed === "true") return;
+        const finalText = typeTarget.textContent ?? "";
+        typeTarget.dataset.typed = "true";
+        typeTarget.textContent = "";
+        const cursor = document.createElement("span");
+        cursor.className = "type-cursor";
+        cursor.setAttribute("aria-hidden", "true");
+        typeTarget.appendChild(cursor);
+        let i = 0;
+        const tick = () => {
+          if (i < finalText.length) {
+            typeTarget.insertBefore(document.createTextNode(finalText.charAt(i)), cursor);
+            i += 1;
+            timers.push(window.setTimeout(tick, 45));
+          } else {
+            timers.push(window.setTimeout(() => cursor.remove(), 2200));
+          }
+        };
+        tick();
       };
-      timers.push(window.setTimeout(tick, 480));
+      timers.push(window.setTimeout(startTyping, 480));
     }
 
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>(".rv"));
