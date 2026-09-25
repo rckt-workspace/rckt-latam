@@ -9,7 +9,7 @@ import { blogRepository } from "@/lib/blog.repository";
 import { extractToc, formatBlogDate } from "@/lib/blog.utils";
 import type { BlogPost } from "@/types/blog";
 
-const SITE_URL = "https://rckt-latam.lovable.app";
+const SITE_URL = "https://rckt.lat";
 
 export const Route = createFileRoute("/blog/$slug")({
   staticData: { sitemap: false },

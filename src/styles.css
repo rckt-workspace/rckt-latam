@@ -1328,11 +1328,11 @@ font-size: 11.5px;
 }
 .rckt-site .legal-page__inner > h1 {
   margin: 0;
-  font-family: "Inter Tight", sans-serif;
+  font-family: "Switzer", sans-serif;
   font-size: 52px;
   line-height: 1.05;
   font-weight: 600;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.02em;
 }
 .legal-document {
   margin-top: 40px;
@@ -3097,8 +3097,9 @@ header.scrolled {
 .rckt-panel h2,
 .rckt-panel h3,
 .panel-modal h3 {
-  font-family: "Inter Tight", sans-serif;
-  letter-spacing: 0;
+  font-family: "Switzer", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 .rckt-panel .panel-btn,
 .rckt-panel .panel-btn-ghost,

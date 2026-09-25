@@ -291,7 +291,7 @@ export const SECTORS: Record<string, SectorPageData> = {
     doloresDetalle: [
       {
         titulo: "Leads de baja calidad",
-        descripcion: "Muchos contactos sin presupuesto ni intención real de compra.",
+        descripcion: "Muchos contactos sin cotización ni intención real de compra.",
         resuelve: "Lead scoring",
       },
       {
