@@ -1,44 +1,379 @@
-import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { CalendarCheck, LayoutGrid, Target, Users } from "lucide-react";
-import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
-import FaqSection,{faqJsonLd,type FaqItem} from "@/components/rckt/FaqSection";
+
+import SiteFooter from "@/components/rckt/SiteFooter";
 import GeneralCta from "@/components/rckt/GeneralCta";
+import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/SystemBlocks";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
-const SITE_URL="https://rckt-latam.lovable.app";
-const CATALOGO=[
-  {proceso:"Cotizaciones desde WhatsApp o correo",agente:"Proceso diseñado con trazabilidad",humano:"Supervisión humana"},
-  {proceso:"Clasificación y respuesta de solicitudes",agente:"Proceso diseñado con trazabilidad",humano:"Supervisión humana"},
-  {proceso:"Generación y verificación de documentos",agente:"Proceso diseñado con trazabilidad",humano:"Supervisión humana"},
-  {proceso:"Sincronización CRM ↔ ERP",agente:"Proceso diseñado con trazabilidad",humano:"Supervisión humana"},
-  {proceso:"Reporting comercial",agente:"Proceso diseñado con trazabilidad",humano:"Supervisión humana"},
-  {proceso:"Atención post-venta de primer nivel",agente:"Proceso diseñado con trazabilidad",humano:"Supervisión humana"},
+import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
+const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
+const SITE_URL = "https://rckt.lat";
+
+const OPERATIONS_SYSTEM_FAQS = [
+  { question: "Quiero un chatbot con IA.", answer: "No vendemos chatbots. Si tienes un proceso que tu equipo repite muchas veces, lo medimos y lo automatizamos con supervisión. Si es curiosidad por la IA, hay herramientas gratis para probar." },
+  { question: "¿Cuánto dura?", answer: "Un Operations Sprint de 6 a 8 semanas, con los criterios de aceptación firmados en la semana 2, y después soporte mensual." },
+  { question: "¿Qué pasa si el proceso no mejora?", answer: "Medimos cuánto te cuesta el proceso hoy y lo comparamos en el piloto. Si no baja el costo por ejecución, no seguimos." },
+  { question: "¿Dependen de un proveedor de IA concreto?", answer: "No. Podemos cambiar el proveedor de IA sin rehacer el sistema: nuestro activo es el diseño del proceso, no la herramienta." },
+  { question: "¿Qué necesitan de mí?", answer: "Un dueño del proceso nombrado, acceso a los sistemas y datos, casos históricos para las pruebas y disponibilidad para validar durante el piloto." },
 ];
-const STATS=[
-  {label:"Para quién",detail:"30-250 empleados y procesos manuales de alto volumen",Icon:Users},
-  {label:"Formato",detail:"Operations Sprint, 6-8 semanas, más soporte mensual",Icon:LayoutGrid},
-  {label:"Compromiso mínimo",detail:"Un proceso, ocho semanas, una línea base",Icon:CalendarCheck},
-  {label:"Qué mide el éxito",detail:"Costo, tiempo, excepciones y horas liberadas",Icon:Target},
+
+const GLOW = "radial-gradient(ellipse 620px 460px at 100% 0%, rgba(252, 92, 31,0.22) 0%, rgba(252, 92, 31,0.1) 40%, rgba(252, 92, 31,0) 75%)";
+
+export const Route = createFileRoute("/sistemas/operations-system")({
+  staticData: { sitemap: true },
+  head: () => ({
+    meta: [
+      { title: "Operations System — Procesos que se ejecutan solos | RCKT" },
+      {
+        name: "description",
+        content:
+          "Elegimos un proceso repetitivo de alto volumen, medimos su costo y en ocho semanas lo dejamos funcionando solo, con supervisión humana.",
+      },
+      { property: "og:title", content: "Operations System — Procesos que se ejecutan solos, con supervisión" },
+      {
+        property: "og:description",
+        content: "Sprint de 6–8 semanas con línea base, piloto medido y criterios de aceptación firmados.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL + "/sistemas/operations-system" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: SITE_URL + "/sistemas/operations-system" }],
+    scripts: [faqJsonLd(OPERATIONS_SYSTEM_FAQS)],
+  }),
+  component: OperationsSystemPage,
+});
+
+const STATS = [
+  {
+    label: "Para quién",
+    Icono: Users,
+    detalle:
+      "Empresas de 30–250 empleados con procesos manuales de alto volumen. Se habla con Operaciones, Tecnología o gerencia, no con Marketing",
+  },
+  {
+    label: "Formato",
+    Icono: LayoutGrid,
+    detalle: "Operations Sprint de 6–8 semanas + soporte mensual",
+  },
+  {
+    label: "Compromiso mínimo",
+    Icono: CalendarCheck,
+    detalle: "Sprint por alcance · soporte 6 meses",
+  },
+  {
+    label: "Qué mide el éxito",
+    Icono: Target,
+    detalle: "Costo por ejecución correcta · tiempo de ciclo · tasa de excepciones · horas liberadas",
+  },
 ];
-const SPRINT=[
-  {range:"Semanas 1–2",title:"Mapa del proceso",text:"Volumen, tiempo, errores y costo."},
-  {range:"Semanas 3–6",title:"Construcción e integración",text:"Con pruebas de casos reales."},
-  {range:"Semanas 7–8",title:"Piloto controlado",text:"Medición contra línea base y transferencia."},
-  {range:"Después",title:"Soporte mensual",text:"Monitoreo, excepciones y mejora."},
+
+const SPRINT = [
+  { rango: "Semanas 1–2", titulo: "Mapa del proceso", detalle: "Volumen, tiempo, errores, costo" },
+  { rango: "Semanas 3–6", titulo: "Construcción e integración", detalle: "Con pruebas de casos reales" },
+  { rango: "Semanas 7–8", titulo: "Piloto controlado", detalle: "Medición contra línea base, transferencia" },
+  { rango: "Después", titulo: "Soporte mensual", detalle: "Monitoreo, excepciones, mejora" },
 ];
-const FAQS: FaqItem[]=[
-  {question:"¿RCKT vende chatbots de inteligencia artificial como producto?",answer:"No. Elegimos un proceso que tu equipo repite muchas veces, medimos cuánto cuesta hoy, y lo dejamos funcionando solo, con una persona aprobando lo que importa."},
-  {question:"¿Cuánto dura un Operations Sprint para automatizar un proceso interno?",answer:"6 a 8 semanas, más soporte mensual."},
-  {question:"¿Qué tipo de procesos automatiza RCKT?",answer:"Cotizaciones desde WhatsApp o correo, clasificación de solicitudes, generación y verificación de documentos, sincronización CRM-ERP, reporting comercial y atención post-venta de primer nivel."},
-  {question:"¿Qué pasa si no sé cuánto me cuesta hoy un proceso manual, igual puedo contratar un Sprint?",answer:"No. Sin línea base no hay sprint — el Revenue Diagnostic la mide primero."},
+
+const CATALOGO = [
+  {
+    proceso: "Cotizaciones desde WhatsApp o correo",
+    agente: "Extrae la solicitud, consulta catálogo y precios, redacta la cotización",
+    humano: "Envío y condiciones especiales",
+  },
+  {
+    proceso: "Clasificación y respuesta de solicitudes",
+    agente: "Clasifica, prioriza y responde lo repetitivo",
+    humano: "Casos fuera de patrón",
+  },
+  {
+    proceso: "Generación y verificación de documentos",
+    agente: "Genera desde plantillas, verifica campos y coherencia",
+    humano: "Firma y excepciones",
+  },
+  {
+    proceso: "Sincronización CRM ↔ ERP u hojas",
+    agente: "Mantiene datos consistentes entre sistemas",
+    humano: "Conflictos de datos",
+  },
+  {
+    proceso: "Reporting comercial",
+    agente: "Consolida fuentes y publica el reporte en la cadencia acordada",
+    humano: "Interpretación y decisiones",
+  },
+  {
+    proceso: "Atención post-venta de primer nivel",
+    agente: "Resuelve consultas frecuentes, escala el resto",
+    humano: "Reclamaciones y devoluciones",
+  },
 ];
-export const Route=createFileRoute("/sistemas/operations-system")({staticData:{sitemap:true},head:()=>({meta:[{title:"Operations System — RCKT"},{name:"description",content:"Procesos que se ejecutan solos, con supervisión: un Operations Sprint de 6-8 semanas y soporte mensual."},{property:"og:title",content:"Operations System — RCKT"},{property:"og:description",content:"Un proceso repetido cien veces por semana, funcionando solo en ocho semanas, con aprobación humana en lo que importa."},{property:"og:type",content:"website"},{property:"og:url",content:SITE_URL+"/sistemas/operations-system"},{name:"twitter:card",content:"summary_large_image"}],links:[{rel:"canonical",href:SITE_URL+"/sistemas/operations-system"}],scripts:FAQS.length>0?[faqJsonLd(FAQS)]:[]}),component:OperationsPage,errorComponent:OperationsError,notFoundComponent:()=> <OperationsError/>});
-function OperationsPage(){useSiteMotion([]);return <div className="rckt-site tcn-page"><main id="top">
-<SystemPageHero label="Operations System" title={<>Procesos que se ejecutan solos, con <em>supervisión</em>.</>} context="Elegimos un proceso que tu equipo repite cien veces por semana, medimos cuánto cuesta hoy, y en ocho semanas lo dejamos funcionando solo, con una persona aprobando lo que importa."/>
-<section className="system-composition system-stats"><div className="container system-stat-grid">{STATS.map(({label,detail,Icon})=><article className="system-stat-card" key={label}><span className="system-icon"><Icon aria-hidden="true"/></span><p className="label-orange">{label}</p><p>{detail}</p></article>)}</div></section>
-<section className="system-composition system-warm" id="formato"><div className="container"><div className="system-composition__heading"><span className="label-orange">El sprint</span><h2>Un proceso, ocho semanas, una línea base.</h2><p>Operations Sprint, 6-8 semanas, más soporte mensual.</p></div><div className="operations-timeline">{SPRINT.map((item)=><article key={item.range}><span>{item.range}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div><p className="operations-note">Los criterios de aceptación se firman en la semana 2, antes de construir nada.</p></div></section>
-<section className="system-composition" id="catalogo"><div className="container"><div className="system-composition__heading"><span className="label-orange">Qué incluye</span><h2>Automatizamos procesos con un humano donde <em className="font-serif-accent">importa</em>.</h2><p>Un catálogo concreto de procesos que hoy consumen tiempo del equipo.</p></div><div className="operations-table" role="table" aria-label="Catálogo de procesos"><div className="operations-table__head" role="row"><span>Proceso</span><span>Qué hace el agente</span><span>Qué aprueba el humano</span></div>{CATALOGO.map((row)=><div className="operations-table__row" role="row" key={row.proceso}><strong>{row.proceso}</strong><span data-label="Agente">{row.agente}</span><span data-label="Humano">{row.humano}</span></div>)}</div><aside className="system-orange-band"><span className="label-on-orange">Qué no incluye</span><h3>No automatizamos lo que todavía no tiene dueño.</h3><p>Sin responsable, acceso y reglas claras, no hay sistema que sostener.</p><small>Procesos sin un dueño nombrado · Automatizaciones sin línea base · Decisiones irreversibles sin aprobación humana · Un chatbot aislado como solución</small></aside></div></section>
-<section className="system-composition system-warm"><div className="container"><div className="system-composition__heading"><span className="label-orange">Reglas</span><h2>Sin línea base no hay <em className="font-serif-accent">sprint</em>.</h2><p>El proceso se acepta contra costo, tiempo, excepciones y horas liberadas.</p></div><ol className="system-rule-lines"><li>Medimos el costo actual antes de construir</li><li>Firmamos criterios de aceptación en la semana 2</li><li>Una persona aprueba lo que importa</li><li>Si el piloto no mejora el costo por ejecución, no seguimos</li></ol><p className="system-audience-note" id="para-quien"><strong>Para quién:</strong> Alto volumen, reglas claras y datos accesibles. 30-250 empleados, un dueño de proceso disponible y acceso a sistemas, datos y casos históricos. Habla Operaciones o Tecnología, no Mercadeo.</p></div></section>
-<section className="system-composition"><div className="container"><div className="system-composition__heading"><span className="label-orange">Cómo se mide</span><h2>Costo, tiempo, excepciones y horas <em className="font-serif-accent">liberadas</em>.</h2><p>La aceptación compara el piloto contra la línea base firmada.</p></div><span className="system-deadline">Operations Sprint de 6–8 semanas</span><div className="system-step-grid system-step-grid--four">{["Línea base de costo y tiempo","Criterios de aceptación firmados en semana 2","Piloto con casos históricos y reales","Comparación contra la línea base"].map((texto,index)=><article key={texto}><span>{String(index+1).padStart(2,"0")}</span><p>{texto}</p></article>)}</div></div></section>
-<FaqSection items={FAQS}/><GeneralCta />
-</main><SiteFooter/></div>}
-function OperationsError(){const router=useRouter();return <div className="rckt-site tcn-page"><SiteHeader/><main className="band"><div className="container"><div className="form-card" role="alert"><span className="kicker">Operations System</span><h1>No pudimos mostrar esta página.</h1><p>Intenta cargarla nuevamente. Si el problema continúa, puedes volver al inicio.</p><div className="form-actions"><button className="btn btn-primary" type="button" onClick={()=>void router.invalidate()}>Intentar de nuevo</button><a className="btn" href="/">Volver al inicio</a></div></div></div></main><SiteFooter/></div>}
+
+const REGLAS = [
+  "Un proceso por sprint: el segundo reutiliza la infraestructura del primero",
+  "Podemos cambiar el proveedor de IA sin rehacer el sistema: nuestro activo es el diseño del proceso",
+  "Sin línea base no hay sprint",
+];
+
+const ACEPTACION = [
+  "Ejecuciones correctas sin intervención por encima del umbral acordado (típicamente 85–90% en piloto)",
+  "Costo por ejecución correcta documentado frente a la línea base",
+  "Toda excepción con ruta humana definida",
+];
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mb-4 flex items-center gap-3">
+      <span className="inline-block h-4 w-[2px] bg-orange" />
+      <span className="label-orange">{children}</span>
+    </div>
+  );
+}
+
+function OperationsSystemPage() {
+  return (
+    <div className="bg-background text-foreground antialiased">
+      <main className="sys-page">
+        <SystemPageHero
+          label="Operations System"
+          title={
+            <>
+              Procesos que se ejecutan solos, <span className="hero-hand">con supervisión</span>.
+            </>
+          }
+          quote="No te vendemos IA. Elegimos un proceso que tu equipo repite cien veces por semana, medimos cuánto te cuesta hoy, y en ocho semanas lo dejamos funcionando solo, con una persona aprobando lo que importa. Si no baja el costo por ejecución, no seguimos."
+          ctaLabel="Revisar mi proceso comercial →"
+          ctaHref={DIAGNOSTIC_HREF}
+        />
+
+        {/* Stats */}
+        <section className="relative py-16 md:py-20 sys-sec">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {STATS.map((s) => {
+                const valor = (s as { valor?: string | null }).valor ?? null;
+                return (
+                  <div key={s.label} className="stat-card">
+                    <span className="stat-card__icon">
+                      <s.Icono className="h-5 w-5 text-orange" strokeWidth={1.6} aria-hidden="true" />
+                    </span>
+                    <p className="font-mono mt-4 text-[11px] tracking-[0.16em] text-orange uppercase">{s.label}</p>
+                    {valor ? (
+                      <p className="mt-2 text-[16px] leading-[1.55]" style={{ color: "var(--ink)" }}>
+                        {valor}
+                      </p>
+                    ) : null}
+                    {s.detalle ? (
+                      <p
+                        className="mt-2 text-[16px] leading-[1.55]"
+                        data-align="left"
+                        style={{ textAlign: "left", color: "var(--ink)" }}
+                      >
+                        {s.detalle}
+                      </p>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Sprint timeline */}
+        <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="tr">
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              bottom: "-120px",
+              left: "-150px",
+              width: "800px",
+              height: "600px",
+              zIndex: 0,
+              pointerEvents: "none",
+              background:
+                "radial-gradient(ellipse 600px 450px at 0% 100%, rgba(252, 92, 31,0.28) 0%, rgba(252, 92, 31,0.14) 42%, rgba(252, 92, 31,0) 72%)",
+            }}
+          />
+          <div className="relative z-10 mx-auto max-w-6xl px-6">
+            <SectionLabel>El sprint</SectionLabel>
+            <div className="md:flex md:items-end md:justify-between md:gap-10">
+              <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+                El Sprint, semana a semana.
+              </h2>
+              <span className="text-sm font-semibold text-orange">criterios firmados en la semana 2</span>
+            </div>
+
+            {/* Desktop: horizontal */}
+            <div className="relative mt-14 hidden md:block">
+              <div
+                aria-hidden="true"
+                className="absolute top-[5px] right-0 left-0 h-px"
+                style={{ background: "rgba(252, 92, 31,0.35)" }}
+              />
+              <div className="grid grid-cols-4 gap-8">
+                {SPRINT.map((s) => (
+                  <div key={s.titulo} className="relative pr-4">
+                    <span
+                      className="absolute top-0 left-0 block h-[11px] w-[11px] rounded-full"
+                      style={{ background: "var(--orange)" }}
+                      aria-hidden="true"
+                    />
+                    <p className="label-orange mt-8">{s.rango}</p>
+                    <h3 className="font-display mt-3 text-[18px] leading-snug font-semibold tracking-tight">
+                      {s.titulo}
+                    </h3>
+                    <p className="mt-2 text-[14.5px] leading-relaxed text-muted-foreground">{s.detalle}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Móvil: vertical */}
+            <div className="relative mt-10 md:hidden">
+              <div
+                aria-hidden="true"
+                className="absolute top-0 bottom-0 left-[5px] w-px"
+                style={{ background: "rgba(252, 92, 31,0.35)" }}
+              />
+              <div className="flex flex-col gap-9">
+                {SPRINT.map((s) => (
+                  <div key={s.titulo} className="relative pl-8">
+                    <span
+                      className="absolute top-[6px] left-0 block h-[11px] w-[11px] rounded-full"
+                      style={{ background: "var(--orange)" }}
+                      aria-hidden="true"
+                    />
+                    <p className="label-orange">{s.rango}</p>
+                    <h3 className="font-display mt-2 text-[18px] leading-snug font-semibold tracking-tight">
+                      {s.titulo}
+                    </h3>
+                    <p className="mt-2 text-[14.5px] leading-relaxed text-muted-foreground">{s.detalle}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <p
+              className="mt-12 max-w-2xl text-[17px] leading-relaxed md:text-[19px]"
+              style={{ fontFamily: '"Newsreader", Georgia, serif', fontStyle: "italic" }}
+            >
+              Los criterios de aceptación se firman en la semana 2, antes de construir nada.
+            </p>
+          </div>
+        </section>
+
+        {/* Catálogo de procesos */}
+        <section className="relative py-16 md:py-24 sys-sec">
+          <div className="mx-auto max-w-6xl px-6">
+            <SectionLabel>Catálogo</SectionLabel>
+            <div className="md:flex md:items-end md:justify-between md:gap-10">
+              <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+                Catálogo de procesos.
+              </h2>
+              <span className="text-sm font-semibold text-orange">acotado a propósito</span>
+            </div>
+            <p className="mt-4 max-w-2xl text-[15.5px] leading-relaxed text-muted-foreground">
+              Acotado a propósito: si el proceso que necesitas no está aquí, se evalúa con dirección antes de
+              cotizar.
+            </p>
+
+            {/* Desktop: tabla */}
+            <div className="mt-10 hidden md:block">
+              <div
+                className="grid grid-cols-[1.1fr_1.3fr_1fr] gap-8 pb-4 font-mono text-[11px] tracking-[0.16em] uppercase text-orange"
+                style={{ borderBottom: "1px solid var(--line)" }}
+              >
+                <span>Proceso</span>
+                <span>Qué hace el agente</span>
+                <span>Qué aprueba el humano</span>
+              </div>
+              {CATALOGO.map((r) => (
+                <div
+                  key={r.proceso}
+                  className="grid grid-cols-[1.1fr_1.3fr_1fr] gap-8 py-5 text-[15px] leading-relaxed"
+                  style={{ borderBottom: "1px solid var(--line)" }}
+                >
+                  <span className="font-semibold">{r.proceso}</span>
+                  <span className="text-muted-foreground">{r.agente}</span>
+                  <span className="text-muted-foreground">{r.humano}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Móvil: bloques */}
+            <div className="mt-8 md:hidden">
+              {CATALOGO.map((r) => (
+                <div key={r.proceso} className="py-6" style={{ borderTop: "1px solid var(--line)" }}>
+                  <h3 className="font-display text-[17px] leading-snug font-semibold tracking-tight">
+                    {r.proceso}
+                  </h3>
+                  <p className="mt-3 text-[14.5px] leading-relaxed text-muted-foreground">
+                    <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-orange">Agente: </span>
+                    {r.agente}
+                  </p>
+                  <p className="mt-2 text-[14.5px] leading-relaxed text-muted-foreground">
+                    <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-orange">Humano: </span>
+                    {r.humano}
+                  </p>
+                </div>
+              ))}
+            </div>
+            {/* Qué no incluye — integrada en la sección anterior */}
+            <div
+              className="band--orange mt-10 md:mt-14 rounded-[28px] px-8 py-10 md:px-12 md:py-12"
+            >
+              <p className="label-on-orange">Qué no incluye</p>
+              <p
+                className="font-display mt-5 max-w-3xl text-[22px] leading-[1.3] font-semibold tracking-tight md:text-[30px]"
+                style={{ color: "#f5f2ed" }}
+              >
+                Transformación empresarial completa · ERP o software a medida · procesos críticos sin
+                responsable del lado del cliente · procesos sin datos accesibles.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Reglas */}
+        <section className="relative py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="bl">
+          <div className="mx-auto max-w-6xl px-6">
+            <SectionLabel>Reglas</SectionLabel>
+            <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+              Cómo trabajamos aquí
+            </h2>
+            <RuleList items={REGLAS} />
+          </div>
+        </section>
+
+        {/* Aceptación */}
+        <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec">
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              top: "-50px",
+              right: "-100px",
+              width: "620px",
+              height: "460px",
+              zIndex: 0,
+              pointerEvents: "none",
+              background: GLOW,
+            }}
+          />
+          <div className="relative z-10 mx-auto max-w-6xl px-6">
+            <SectionLabel>Aceptación</SectionLabel>
+            <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+              Cuándo damos el sistema por aceptado
+            </h2>
+            <AcceptanceSteps items={ACEPTACION.map((texto) => ({ texto }))} />
+          </div>
+        </section>
+
+        <FaqSection items={OPERATIONS_SYSTEM_FAQS} />
+
+        <GeneralCta />
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}

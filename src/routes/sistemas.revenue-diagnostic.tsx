@@ -1,48 +1,56 @@
-import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { Calculator, Check, Clock, FileSignature, FileText, Map, MessagesSquare, Route as RouteIcon, Search, Target, Users } from "lucide-react";
-import { useState } from "react";
-import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
-import DiagnosticForm from "@/components/rckt/DiagnosticForm";
-import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
+import { createFileRoute } from "@tanstack/react-router";
+import {
+  Calculator,
+  Check,
+  Clock,
+  FileSignature,
+  FileText,
+  Map,
+  MessagesSquare,
+  Route as RouteIcon,
+  Search,
+  Target,
+  Users,
+} from "lucide-react";
+
+import SiteFooter from "@/components/rckt/SiteFooter";
 import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
-import { REVENUE_DIAGNOSTIC_FAQS } from "@/content/systemFaqs";
+import DiagnosticForm from "@/components/rckt/DiagnosticForm";
+import { useState } from "react";
+import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
 
-const SITE_URL = "https://rckt-latam.lovable.app";
-// TODO: reemplazar por el número real de WhatsApp Business (formato internacional, sin signos).
-const WHATSAPP_NUMBER = "573000000000";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola,%20quiero%20solicitar%20el%20Revenue%20Diagnostic`;
 
-const INCLUYE = [
-  { titulo: "Mapa de fugas", detalle: "Con tus números reales, punto por punto del embudo." },
-  { titulo: "Auditoría de adquisición", detalle: "Oferta, campañas, landing, web y tracking: GTM, GA4, píxel, CAPI, UTMs y conversiones offline." },
-  { titulo: "Auditoría comercial", detalle: "CRM y proceso de ventas, de la primera respuesta al cierre." },
-  { titulo: "Unit economics", detalle: "CAC, MQL, SQL, show rate, close rate y payback." },
-  { titulo: "Línea base firmada", detalle: "El punto de partida acordado, sin interpretaciones." },
-  { titulo: "Roadmap de 90 días", detalle: "Priorizado por impacto económico, no por facilidad." },
+const WHATSAPP_URL = "#whatsapp";
+const SITE_URL = "https://rckt.lat";
+
+const REVENUE_DIAGNOSTIC_FAQS = [
+  { question: "¿Es gratis?", answer: "No. Es un diagnóstico pagado y, si sigues con nosotros, lo que pagas se descuenta del sistema." },
+  { question: "¿Cuánto dura?", answer: "De 2 a 3 semanas, desde que contamos con los accesos y datos necesarios." },
+  { question: "¿Qué pasa después?", answer: "Recibes una línea base firmada y un roadmap de 90 días. Con esos datos recomendamos el sistema adecuado." },
+  { question: "¿Cuánto cuesta?", answer: "El alcance y el costo se confirman antes de empezar. Si continúas con el sistema recomendado, el valor del Diagnostic se descuenta." },
+  { question: "¿Por qué necesitan tanto acceso y tantos datos?", answer: "Porque sin ellos no podemos medir hasta la venta, y sin medir hasta la venta seríamos una agencia más. Los accesos son de lectura donde se pueda y quedan documentados." },
+  { question: "Quiero pagar solo por resultados.", answer: "Trabajamos con una parte variable, pero después de 90 días con línea base, porque antes ninguno de los dos sabe qué es un resultado. Y nunca cobramos 100% variable cuando el cierre depende de tu equipo, tu stock o tus precios." },
 ];
-const NECESITAMOS = ["Acceso de lectura a Meta, Google, GA4 y GTM", "CRM o exportación", "Datos de venta del último trimestre", "2–3 entrevistas (comercial, mercadeo, operaciones)", "Acceso a WhatsApp Business o muestra de conversaciones"];
-const PASOS = [
-  { label: "Diagnostic", texto: "2–3 semanas. Medimos, firmamos línea base y priorizamos." },
-  { label: "Setup con aceptación", texto: "Implementamos solo lo aprobado, con criterio de éxito escrito." },
-  { label: "Operación", texto: "Ciclos de 90 días, medidos hasta la venta." },
-];
-const STATS = [
-  { label: "Duración", value: "2–3 semanas", detail: "de diagnóstico", Icon: Clock },
-  { label: "Entregable", detail: "Mapa de fugas, línea base firmada y roadmap de 90 días", Icon: FileText },
-  { label: "Para quién", detail: "Toda cuenta nueva, sin excepción", Icon: Users },
-  { label: "Qué mide el éxito", detail: "Que decidas con datos", Icon: Target },
-];
-const INCLUDE_ICONS = [Map, Search, MessagesSquare, Calculator, FileSignature, RouteIcon];
+
+const GLOW = "radial-gradient(ellipse 620px 460px at 100% 0%, rgba(252, 92, 31,0.22) 0%, rgba(252, 92, 31,0.1) 40%, rgba(252, 92, 31,0) 75%)";
 
 export const Route = createFileRoute("/sistemas/revenue-diagnostic")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Revenue Diagnostic — RCKT" },
-      { name: "description", content: "En tres semanas medimos cuánto pierdes entre la campaña y el cierre, en qué punto exacto y qué haríamos en 90 días. La única puerta de entrada a RCKT." },
-      { property: "og:title", content: "Revenue Diagnostic — RCKT" },
-      { property: "og:description", content: "Diagnóstico de ingresos: mapa de fugas, línea base firmada y roadmap de 90 días priorizado por impacto económico." },
+      { title: "Revenue Diagnostic — Tres semanas para saber dónde se pierde tu dinero | RCKT" },
+      {
+        name: "description",
+        content:
+          "Diagnóstico de ingresos de 2–3 semanas: mapa de fugas del embudo con tus números reales, línea base firmada y roadmap de 90 días.",
+      },
+      { property: "og:title", content: "Revenue Diagnostic — Tres semanas para saber dónde se pierde tu dinero" },
+      {
+        property: "og:description",
+        content:
+          "Te decimos cuánto pierdes entre la campaña y el cierre, en qué punto exacto, y qué haríamos en 90 días.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:url", content: SITE_URL + "/sistemas/revenue-diagnostic" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -51,38 +59,269 @@ export const Route = createFileRoute("/sistemas/revenue-diagnostic")({
     scripts: [faqJsonLd(REVENUE_DIAGNOSTIC_FAQS)],
   }),
   component: RevenueDiagnostic,
-  errorComponent: RevenueDiagnosticError,
-  notFoundComponent: () => <RevenueDiagnosticError />,
 });
 
-function RevenueDiagnostic() {
-  const [listo, setListo] = useState(false);
-  useSiteMotion([listo]);
+const STATS = [
+  {
+    label: "Duración",
+    valor: "2–3 semanas",
+    Icono: Clock,
+    detalle: "de diagnóstico",
+  },
+  {
+    label: "Entregable",
+    valor: null,
+    Icono: FileText,
+    detalle: "Documento + línea base firmada + roadmap 90 días",
+  },
+  {
+    label: "Para quién",
+    valor: null,
+    Icono: Users,
+    detalle: "Toda cuenta nueva, sin excepción",
+  },
+  {
+    label: "Qué mide el éxito",
+    valor: null,
+    Icono: Target,
+    detalle: "Que decidas con datos",
+  },
+];
+
+const INCLUYE = [
+  {
+    Icono: Map,
+    titulo: "Mapa de fugas",
+    detalle:
+      "Embudo completo con tus números reales: inversión → lead → contacto → calificación → cita → propuesta → venta → margen",
+  },
+  {
+    Icono: Search,
+    titulo: "Auditoría completa",
+    detalle: "Oferta, campañas activas, landing, web y tracking (GTM, GA4, píxel, CAPI)",
+  },
+  {
+    Icono: MessagesSquare,
+    titulo: "CRM y proceso comercial",
+    detalle: "Uso de WhatsApp, automatizaciones existentes",
+  },
+  {
+    Icono: Calculator,
+    titulo: "Unit economics",
+    detalle: "CAC, tasa MQL/SQL, show rate, close rate, payback",
+  },
+  {
+    Icono: FileSignature,
+    titulo: "Línea base firmada",
+    detalle: "Documentada y acordada contigo",
+  },
+  {
+    Icono: RouteIcon,
+    titulo: "Roadmap de 90 días",
+    detalle: "Priorizado por impacto económico",
+  },
+];
+
+const NECESITAMOS = [
+  "Acceso de lectura a Meta, Google, GA4 y GTM",
+  "CRM o exportación",
+  "Datos de venta del último trimestre",
+  "2–3 entrevistas (comercial, marketing, operaciones)",
+  "Acceso a WhatsApp Business o muestra de conversaciones",
+];
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="rckt-site tcn-page">
-      <main id="top">
+    <div className="mb-4 flex items-center gap-3">
+      <span className="inline-block h-4 w-[2px] bg-orange" />
+      <span className="label-orange">{children}</span>
+    </div>
+  );
+}
+
+function RevenueDiagnostic() {
+  const [, setSent] = useState(false);
+  return (
+    <div className="bg-background text-foreground antialiased">
+      <main className="sys-page">
         <SystemPageHero
           label="Revenue Diagnostic"
-          title={<>Antes de tocar nada, <em>medimos</em>.</>} quoteLabel="La realidad de la mayoría" quote="El 85% de los leads se pierden entre la campaña y la venta sin que nadie sepa exactamente por qué."
-          descriptor="Diagnóstico de ingresos — la única puerta de entrada."
-          context="En tres semanas te decimos cuánto pierdes entre la campaña y el cierre, en qué punto exacto, y qué haríamos en 90 días. Si sigues con nosotros, lo que pagas por el diagnóstico se descuenta del sistema."
-          ctaHref="#solicitar"
+          title={<>Tres semanas para saber dónde se pierde tu <span className="hero-hand">dinero</span>.</>}
+          descriptor="Diagnóstico de ingresos"
+          quote="En tres semanas te decimos cuánto pierdes entre la campaña y el cierre, en qué punto exacto, y qué haríamos en 90 días. Si sigues con nosotros, lo que pagas por el diagnóstico se descuenta del sistema."
+          ctaLabel="Revisar mi proceso comercial →"
+          ctaHref="#formulario"
         />
-        <section className="system-composition system-stats"><div className="container system-stat-grid">{STATS.map(({ label, value, detail, Icon }) => <article className="system-stat-card" key={label}><span className="system-icon"><Icon aria-hidden="true" /></span><p className="label-orange">{label}</p>{value ? <strong>{value}</strong> : null}<p>{detail}</p></article>)}</div></section>
-        <section className="system-composition system-warm" id="incluye"><div className="container"><div className="system-composition__heading"><span className="label-orange">Qué incluye</span><h2>Primero encontramos la <em className="font-serif-accent">fuga</em>.</h2><p>Mapa, auditorías y economía unitaria con una línea base acordada contigo.</p></div><div className="system-feature-grid">{INCLUYE.map((item, index) => { const Icon = INCLUDE_ICONS[index]; return <article className="system-feature-card" key={item.titulo}>{Icon ? <span className="system-icon"><Icon aria-hidden="true" /></span> : null}<h3>{item.titulo}</h3><p>{item.detalle}</p></article>; })}</div><aside className="system-orange-band"><span className="label-on-orange">Qué no incluye</span><h3>Diagnosticar no es implementar.</h3><p>El alcance termina en una decisión informada y un roadmap priorizado.</p><small>Implementación · Cambios en campañas · Desarrollo · Configuración de CRM · Creatividades</small></aside></div></section>
-        <section className="system-composition"><div className="container"><div className="system-composition__heading"><span className="label-orange">Requisitos</span><h2>Para medir, necesitamos ver el sistema <em className="font-serif-accent">completo</em>.</h2><p>Trabajamos con acceso de lectura y evidencia del último trimestre.</p></div><ul className="system-check-grid">{NECESITAMOS.map((item) => <li key={item}><span className="system-check"><Check aria-hidden="true" /></span>{item}</li>)}</ul></div></section>
-        <section className="system-orange-statement"><div className="container"><span className="label-on-orange">El problema</span><p>Sin línea base, cualquier decisión es una apuesta. Antes de recomendar un sistema, medimos la cadena completa entre la campaña y el cierre.</p></div></section>
-        <section className="system-composition system-warm"><div className="container"><div className="system-composition__heading"><span className="label-orange">Cómo empieza</span><h2>Medimos antes de mover una <em className="font-serif-accent">pieza</em>.</h2><p>Del diagnóstico a ciclos de operación medidos hasta la venta.</p></div><div className="system-step-grid">{PASOS.map((item, index) => <article key={item.label}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.label}</h3><p>{item.texto}</p></article>)}</div></div></section>
-        <section className="system-composition" id="solicitar"><div className="container system-form-container"><div className="system-composition__heading"><span className="label-orange">Formulario</span><h2>Cuéntanos cómo está hoy tu <em className="font-serif-accent">operación</em>.</h2><p>Con esto preparamos la primera conversación con contexto real.</p></div><div className="form-card"><DiagnosticForm whatsappUrl={WHATSAPP_URL} onSent={() => setListo(true)} /></div></div></section>
+
+        {/* Datos clave — fila de stats */}
+        <section className="relative py-16 md:py-20 sys-sec">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {STATS.map((s) => {
+                const valor = (s as { valor?: string | null }).valor ?? null;
+                return (
+                  <div key={s.label} className="stat-card">
+                    <span className="stat-card__icon">
+                      <s.Icono className="h-5 w-5 text-orange" strokeWidth={1.6} aria-hidden="true" />
+                    </span>
+                    <p className="font-mono mt-4 text-[11px] tracking-[0.16em] text-orange uppercase">{s.label}</p>
+                    {valor ? (
+                      <p className="font-display mt-2 text-[28px] leading-tight font-semibold tracking-tight">
+                        {valor}
+                      </p>
+                    ) : null}
+                    {s.detalle ? (
+                      <p
+                        className="mt-2 text-[16px] leading-[1.55]"
+                        data-align="left"
+                        style={{ textAlign: "left", color: "var(--ink)" }}
+                      >
+                        {s.detalle}
+                      </p>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Qué incluye — grid de cards */}
+        <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="tr">
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              bottom: "-120px",
+              left: "-150px",
+              width: "800px",
+              height: "600px",
+              zIndex: 0,
+              pointerEvents: "none",
+              background:
+                "radial-gradient(ellipse 600px 450px at 0% 100%, rgba(252, 92, 31,0.28) 0%, rgba(252, 92, 31,0.14) 42%, rgba(252, 92, 31,0) 72%)",
+            }}
+          />
+          <div className="relative z-10 mx-auto max-w-6xl px-6">
+            <div className="md:flex md:items-end md:justify-between md:gap-10">
+              <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+                Qué incluye
+              </h2>
+            </div>
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {INCLUYE.map((c) => (
+                <article
+                  key={c.titulo}
+                  className="rounded-2xl p-6"
+                  style={{
+                    background: "var(--card-surface)",
+                    border: "1px solid rgba(252, 92, 31,0.18)",
+                  }}
+                >
+                  <span
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full"
+                    style={{ background: "var(--orange-bg)" }}
+                  >
+                    <c.Icono className="h-5 w-5 text-orange" strokeWidth={1.6} aria-hidden="true" />
+                  </span>
+                  <h3 className="font-display mt-5 text-[18px] leading-snug font-semibold tracking-tight">
+                    {c.titulo}
+                  </h3>
+                  <p className="mt-2 text-[14.5px] leading-relaxed text-muted-foreground">{c.detalle}</p>
+                </article>
+              ))}
+            </div>
+            {/* Qué no incluye — integrada en la sección anterior */}
+            <div
+              className="band--orange mt-10 md:mt-14 rounded-[28px] px-8 py-10 md:px-12 md:py-12"
+            >
+              <p className="label-on-orange">Qué no incluye</p>
+              <p
+                className="font-display mt-5 max-w-3xl text-[22px] leading-[1.3] font-semibold tracking-tight md:text-[30px]"
+                style={{ color: "#f5f2ed" }}
+              >
+                Implementación, cambios en campañas, desarrollo, configuración de CRM, creatividades.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Qué necesitamos de ti — checklist */}
+        <section className="relative py-16 md:py-24 sys-sec">
+          <div className="mx-auto max-w-6xl px-6">
+            <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+              Qué necesitamos de ti
+            </h2>
+            <ul className="mt-10 grid gap-5 md:grid-cols-2">
+              {NECESITAMOS.map((t) => (
+                <li key={t} className="flex items-start gap-4">
+                  <span
+                    className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
+                    style={{ background: "var(--orange-bg)" }}
+                  >
+                    <Check className="h-4 w-4 text-orange" strokeWidth={2.2} aria-hidden="true" />
+                  </span>
+                  <span className="text-[15.5px] leading-relaxed">{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* Regla */}
+        <section className="relative isolate overflow-hidden" >
+          <div
+            className="relative"
+            style={{ background: "linear-gradient(110deg, #fc5c1f 0%, #fc5c1f 100%)" }}
+          >
+            <div className="relative z-10 mx-auto max-w-6xl px-6 py-16 md:py-20">
+              <p className="label-orange !text-white/80">Regla</p>
+              <p
+                className="mt-5 max-w-4xl text-[24px] leading-[1.25] md:text-[38px]"
+                style={{ fontFamily: '"Newsreader", Georgia, serif', fontStyle: "italic", color: "#f5f2ed" }}
+              >
+                Sin línea base no arrancamos ningún sistema: primero medimos, después decidimos contigo.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Formulario */}
+        <section
+          id="formulario"
+          className="relative isolate overflow-hidden scroll-mt-28 py-20 md:py-28 sys-sec sys-sec--warm section--glow" data-corner="bl">
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              top: "-50px",
+              right: "-100px",
+              width: "620px",
+              height: "460px",
+              zIndex: 0,
+              pointerEvents: "none",
+              background: GLOW,
+            }}
+          />
+          <div className="relative z-10 mx-auto max-w-4xl px-6">
+            <SectionLabel>Formulario</SectionLabel>
+            <div className="md:flex md:items-end md:justify-between md:gap-10">
+              <h2 className="font-display text-[30px] leading-tight font-semibold tracking-tight md:text-[46px]">
+                Revisar mi proceso comercial
+              </h2>
+            </div>
+            <div className="mt-10">
+              <DiagnosticForm whatsappUrl={WHATSAPP_URL} submitLabel="Revisar mi proceso comercial →" onSent={() => setSent(true)} />
+              <p className="mt-5 text-sm text-muted-foreground">¿Prefieres WhatsApp? <a className="text-orange hover:underline" href="#whatsapp">Escríbenos y hacemos las mismas preguntas.</a></p>
+            </div>
+          </div>
+        </section>
+
         <FaqSection items={REVENUE_DIAGNOSTIC_FAQS} />
+
         <GeneralCta />
       </main>
       <SiteFooter />
     </div>
   );
-}
-
-function RevenueDiagnosticError() {
-  const router = useRouter();
-  return <div className="rckt-site tcn-page"><SiteHeader /><main className="band"><div className="container"><div className="form-card" role="alert"><span className="kicker">Revenue Diagnostic</span><h1>No pudimos mostrar esta página.</h1><p>Intenta cargarla nuevamente. Si el problema continúa, puedes volver al inicio.</p><div className="form-actions"><button className="btn btn-primary" type="button" onClick={() => void router.invalidate()}>Intentar de nuevo</button><a className="btn" href="/">Volver al inicio</a></div></div></div></main><SiteFooter /></div>;
 }

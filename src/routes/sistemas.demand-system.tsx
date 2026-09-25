@@ -1,68 +1,322 @@
-import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { BarChart3, Calendar, CalendarCheck, Layout, Megaphone, Search, Target, Users, Wand2 } from "lucide-react";
-import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
-import FaqSection, { faqJsonLd, type FaqItem } from "@/components/rckt/FaqSection";
-import GeneralCta from "@/components/rckt/GeneralCta";
-import SystemPageHero from "@/components/rckt/SystemPageHero";
+import { createFileRoute } from "@tanstack/react-router";
+import {
+  CalendarCheck,
+  BarChart3,
+  Calendar,
+  Layout,
+  Megaphone,
+  Search,
+  Target,
+  Users,
+  Wand2,
+} from "lucide-react";
 
-const SITE_URL = "https://rckt-latam.lovable.app";
-const INCLUYE = [
-  { titulo: "Performance Media", detalle: "Meta, Google Search, PMax cuando aplique, LinkedIn selectivo para B2B, retargeting." },
-  { titulo: "Creative Performance", detalle: "Testing continuo de piezas y mensajes." },
-  { titulo: "Search & AI Visibility", detalle: "Presencia en buscadores y en respuestas generadas con IA." },
-  { titulo: "Medición completa", detalle: "Lectura por etapa, del clic a la venta." },
+import SiteFooter from "@/components/rckt/SiteFooter";
+import GeneralCta from "@/components/rckt/GeneralCta";
+import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/SystemBlocks";
+import SystemPageHero from "@/components/rckt/SystemPageHero";
+import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
+const DIAGNOSTIC_FORM = "/sistemas/revenue-diagnostic#formulario";
+const SITE_URL = "https://rckt.lat";
+
+const DEMAND_SYSTEM_FAQS = [
+  { question: "Solo quiero que me manejen la pauta.", answer: "Podemos, si ya tienes CRM y proceso comercial funcionando. Si no, vas a pagar leads que se pierden después. Empecemos por el Diagnostic y te decimos con datos qué necesitas." },
+  { question: "Mi agencia actual me da leads a la mitad de precio.", answer: "¿Y cuántos de esos leads compran? Si no lo sabes, ese es el problema, no el precio del lead. Optimizamos por venta, no por lead, y por eso el costo por lead puede ser mayor." },
+  { question: "¿Cuál es el compromiso mínimo?", answer: "3 meses. La pauta se paga aparte, en tus propias cuentas publicitarias." },
+  { question: "¿Qué necesitan de mí para empezar?", answer: "Acceso de administrador a tus cuentas publicitarias, GTM y GA4, aprobación de creatividades en menos de 48 horas y acceso a los datos de ventas para cerrar el ciclo." },
+  { question: "¿Cuándo está funcionando?", answer: "En un máximo de 21 días: tracking validado de extremo a extremo, estructura de campañas activa y primer reporte por etapa entregado." },
 ];
-const TIERS = [
-  { titulo: "Core", detalle: "Según canales e inversión en pauta." },
-  { titulo: "Growth", detalle: "Según canales e inversión en pauta." },
-  { titulo: "Scale", detalle: "Según canales e inversión en pauta." },
-];
-const ACEPTACION = ["Tracking validado de extremo a extremo", "Estructura de campañas activa", "Primer reporte por etapa entregado"];
-const STATS = [
-  { label: "Para quién", detail: "Oferta probada, proceso comercial y CRM funcionando", Icon: Users },
-  { label: "Cadencia", detail: "Cada semana debes poder ver el embudo completo, no solo los clics", Icon: Calendar },
-  { label: "Compromiso mínimo", value: "3 meses", detail: "Core, Growth o Scale", Icon: CalendarCheck },
-  { label: "Qué mide el éxito", detail: "La unidad es SQL o venta", Icon: Target },
-];
-const INCLUDE_ICONS = [Megaphone, Wand2, Search, BarChart3, Layout];
-const FAQS: FaqItem[] = [
-  { question: "¿RCKT maneja pauta en Meta y Google aunque no tenga CRM todavía?", answer: "Demand System solo se vende suelto si ya tienes proceso comercial y CRM funcionando. Si no los tienes, lo que necesitas es Revenue Engine, y te lo decimos con datos en el Diagnostic." },
-  { question: "¿Por qué mi agencia me da prospectos más baratos pero igual no aumentan las ventas?", answer: "Porque el prospecto barato suele ser el que no compra. Nosotros nunca optimizamos por costo por prospecto: la unidad es SQL o venta, aunque cueste más por unidad." },
-  { question: "¿Cuál es el compromiso mínimo de tiempo para contratar Demand System?", answer: "3 meses." },
-  { question: "¿Qué NO incluye el manejo de pauta de RCKT?", answer: "El gasto en pauta (lo pagas tú, en tus propias cuentas), desarrollo web, CRM y RevOps, ni agentes conversacionales — eso vive en Sales Flow." },
-  { question: "¿Cómo mide RCKT si la pauta está funcionando, por costo por lead o por venta?", answer: "Por costo por oportunidad aceptada por ventas (SQL) y por venta, nunca por costo por prospecto." },
-  { question: "¿Qué porcentaje de prospectos deben calificar para considerar que la pauta está bien optimizada?", answer: "Al menos 45% deben calificar como MQL." },
-];
+
+const GLOW = "radial-gradient(ellipse 620px 460px at 100% 0%, rgba(252, 92, 31,0.22) 0%, rgba(252, 92, 31,0.1) 40%, rgba(252, 92, 31,0) 75%)";
 
 export const Route = createFileRoute("/sistemas/demand-system")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Demand System — RCKT" },
-      { name: "description", content: "Generación de demanda medida hasta la venta: performance media, creatividad con testing continuo, visibilidad en IA y medición por etapa." },
-      { property: "og:title", content: "Demand System — RCKT" },
-      { property: "og:description", content: "Nunca optimizamos por costo por lead; la unidad es SQL o venta." },
+      { title: "Demand System — Generación de demanda medida hasta la venta | RCKT" },
+      {
+        name: "description",
+        content:
+          "Campañas optimizadas por oportunidades aceptadas por ventas y por ventas cerradas, no por leads baratos. Embudo completo cada semana.",
+      },
+      { property: "og:title", content: "Demand System — Generación de demanda medida hasta la venta" },
+      {
+        property: "og:description",
+        content: "Optimizamos por SQL y venta, no por costo por lead. Reporte semanal por etapa del embudo.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:url", content: SITE_URL + "/sistemas/demand-system" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: SITE_URL + "/sistemas/demand-system" }],
-    scripts: FAQS.length > 0 ? [faqJsonLd(FAQS)] : [],
-  }), component: DemandPage, errorComponent: DemandError, notFoundComponent: () => <DemandError />,
+    scripts: [faqJsonLd(DEMAND_SYSTEM_FAQS)],
+  }),
+  component: DemandSystemPage,
 });
 
-function DemandPage() {
-  useSiteMotion([]);
-  return <div className="rckt-site tcn-page"><main id="top">
-    <SystemPageHero label="Demand System" title={<>Generación de demanda medida hasta la <em>venta</em>.</>} context="Manejamos tu pauta, pero no la optimizamos por leads baratos: la optimizamos por las oportunidades que tu equipo comercial acepta y por las que terminan en venta." />
-    <section className="system-orange-statement"><div className="container"><span className="label-on-orange">El problema</span><p>Los leads baratos pueden salir muy caros. Cada semana debes poder ver el embudo completo, no solo los clics.</p></div></section>
-    <section className="system-composition system-stats"><div className="container system-stat-grid">{STATS.map(({label,value,detail,Icon})=><article className="system-stat-card" key={label}><span className="system-icon"><Icon aria-hidden="true"/></span><p className="label-orange">{label}</p>{value?<strong>{value}</strong>:null}<p>{detail}</p></article>)}</div></section>
-    <section className="system-composition system-warm" id="que-incluye"><div className="container"><div className="system-composition__heading"><span className="label-orange">Qué incluye</span><h2>Demanda medida hasta la <em className="font-serif-accent">venta</em>.</h2><p>Medios, creatividad, visibilidad y medición por etapa.</p></div><div className="system-feature-grid system-feature-grid--four">{INCLUYE.map((item,index)=>{const Icon=INCLUDE_ICONS[index];return <article className="system-feature-card" key={item.titulo}>{Icon?<span className="system-icon"><Icon aria-hidden="true"/></span>:null}<h3>{item.titulo}</h3><p>{item.detalle}</p></article>})}</div></div></section>
-    <section className="system-composition" id="tiers"><div className="container"><div className="system-composition__heading"><span className="label-orange">Niveles</span><h2>La intensidad cambia; la regla no.</h2><p>Core, Growth y Scale se definen según canales e inversión en pauta.</p></div><div className="system-tier-grid">{TIERS.map((item,index)=><article className={index===1?"system-tier system-tier--featured":"system-tier"} key={item.titulo}><span>{String(index+1).padStart(2,"0")}</span><h3>{item.titulo}</h3><p>{item.detalle}</p></article>)}</div><aside className="system-orange-band" id="no-incluye"><span className="label-on-orange">Qué no incluye</span><h3>La pauta no arregla lo que pasa después.</h3><p>Estos elementos pertenecen a otros sistemas o los paga directamente tu empresa.</p><small>El gasto en pauta · Desarrollo web · CRM y RevOps · Agentes conversacionales</small></aside></div></section>
-    <section className="system-composition system-warm" id="condicion"><div className="container"><div className="system-composition__heading"><span className="label-orange">Reglas</span><h2>Nunca optimizamos por costo por <em className="font-serif-accent">lead</em>.</h2><p>La unidad es SQL o venta.</p></div><ol className="system-rule-lines"><li>Nunca optimizamos por costo por lead; la unidad es SQL o venta.</li><li>Cuentas con oferta probada</li><li>Proceso comercial funcionando</li><li>CRM funcionando</li><li>Si no los tienes, la recomendación es Revenue Engine</li></ol><p className="system-audience-note" id="para-quien"><strong>Para quién:</strong> Oferta probada, proceso comercial y CRM funcionando. Si esa base no existe, la recomendación es Revenue Engine.</p></div></section>
-    <section className="system-composition"><div className="container"><div className="system-composition__heading"><span className="label-orange">Cómo empieza</span><h2>Primero conectamos la medición de extremo a <em className="font-serif-accent">extremo</em>.</h2><p>El sistema se acepta cuando ya puede leerse por etapa.</p></div><span className="system-deadline">Sistema aceptado en máximo 21 días</span><div className="system-step-grid">{ACEPTACION.map((texto,index)=><article key={texto}><span>{String(index+1).padStart(2,"0")}</span><p>{texto}</p></article>)}</div></div></section>
-    <FaqSection items={FAQS} /><GeneralCta />
-  </main><SiteFooter /></div>;
+const STATS = [
+  {
+    label: "Para quién",
+    valor: null as string | null,
+    Icono: Users,
+    detalle:
+      "Cuentas con oferta probada que necesitan volumen o calidad de oportunidades y ya tienen proceso comercial y CRM funcionando",
+  },
+  {
+    label: "Cadencia",
+    valor: null as string | null,
+    Icono: Calendar,
+    detalle: "Semanal de rendimiento · mensual con decisores · trimestral de estrategia",
+  },
+  {
+    label: "Compromiso mínimo",
+    valor: "3 meses",
+    Icono: CalendarCheck,
+    detalle: "",
+  },
+  {
+    label: "Qué mide el éxito",
+    valor: null as string | null,
+    Icono: Target,
+    detalle:
+      "Costo por oportunidad aceptada por ventas (SQL) y por venta — mínimo 45% de leads califican como MQL",
+  },
+];
+
+const CAPACIDADES = [
+  {
+    Icono: Megaphone,
+    titulo: "Performance Media",
+    detalle: "Meta, Google Search, PMax, LinkedIn selectivo B2B, YouTube y Display en retargeting",
+  },
+  {
+    Icono: Wand2,
+    titulo: "Creative Performance",
+    detalle: "Producción y testing con IA: hooks, ángulos, formatos, iteración semanal",
+  },
+  {
+    Icono: Search,
+    titulo: "Search & AI Visibility",
+    detalle: "SEO técnico y de contenido, presencia en respuestas de IA con snapshot trimestral",
+  },
+  {
+    Icono: BarChart3,
+    titulo: "Medición",
+    detalle: "Tracking completo, valores por etapa, reporte semanal por etapa del embudo",
+  },
+  {
+    Icono: Layout,
+    titulo: "Landing de campaña",
+    detalle: "Recomendaciones y ajustes menores (una landing nueva es de Sales Flow)",
+  },
+];
+
+const TIERS = [
+  {
+    nombre: "Core",
+    alcance: "1–2 canales, inversión baja-media",
+    detalle: "Media + medición + 4 creativos/mes + reporte semanal",
+    destacado: false,
+  },
+  {
+    nombre: "Growth",
+    alcance: "2–3 canales, inversión media-alta",
+    detalle: "Core + creative testing continuo + AI Visibility + revisión mensual de calidad de pipeline",
+    destacado: true,
+  },
+  {
+    nombre: "Scale",
+    alcance: "Multicanal o multipaís, inversión alta",
+    detalle: "Growth + squad dedicado + experimentación estructurada + creative studio",
+    destacado: false,
+  },
+];
+
+const CONDICIONES = [
+  "Solo se vende suelto si el cliente tiene proceso comercial y CRM operativos — si no los tiene, lo que necesita es Revenue Engine",
+  "Tiene un precio piso que no se negocia",
+  "Nunca optimizamos por costo por lead — la unidad es SQL o venta",
+];
+
+const ACEPTACION = [
+  "Tracking validado de extremo a extremo",
+  "Estructura de campañas activa",
+  "Primer reporte por etapa entregado",
+];
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mb-4 flex items-center gap-3">
+      <span className="inline-block h-4 w-[2px] bg-orange" />
+      <span className="label-orange">{children}</span>
+    </div>
+  );
 }
 
-function DemandError() { const router = useRouter(); return <div className="rckt-site tcn-page"><SiteHeader /><main className="band"><div className="container"><div className="form-card" role="alert"><span className="kicker">Demand System</span><h1>No pudimos mostrar esta página.</h1><p>Intenta cargarla nuevamente. Si el problema continúa, puedes volver al inicio.</p><div className="form-actions"><button className="btn btn-primary" type="button" onClick={() => void router.invalidate()}>Intentar de nuevo</button><a className="btn" href="/">Volver al inicio</a></div></div></div></main><SiteFooter /></div>; }
+function DemandSystemPage() {
+  return (
+    <div className="bg-background text-foreground antialiased">
+      <main className="sys-page">
+        <SystemPageHero
+          label="Demand System"
+          title={
+            <>
+              Generación de demanda medida hasta la <span className="hero-hand">venta</span>.
+            </>
+          }
+          quote="Manejamos tus campañas, pero no las optimizamos por leads baratos: las optimizamos por las oportunidades que tu equipo comercial acepta y por las que terminan en venta. Cada semana ves el embudo completo, no solo los clics."
+          ctaLabel="Revisar mi proceso comercial →"
+          ctaHref={DIAGNOSTIC_FORM}
+        />
+
+        {/* Stats */}
+        <section className="relative py-16 md:py-20 sys-sec">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {STATS.map((s) => {
+                const valor = (s as { valor?: string | null }).valor ?? null;
+                return (
+                  <div key={s.label} className="stat-card">
+                    <span className="stat-card__icon">
+                      <s.Icono className="h-5 w-5 text-orange" strokeWidth={1.6} aria-hidden="true" />
+                    </span>
+                    <p className="font-mono mt-4 text-[11px] tracking-[0.16em] text-orange uppercase">{s.label}</p>
+                    {valor ? (
+                      <p className="mt-2 text-[16px] leading-[1.55]" style={{ color: "var(--ink)" }}>
+                        {valor}
+                      </p>
+                    ) : null}
+                    {s.detalle ? (
+                      <p
+                        className="mt-2 text-[16px] leading-[1.55]"
+                        data-align="left"
+                        style={{ textAlign: "left", color: "var(--ink)" }}
+                      >
+                        {s.detalle}
+                      </p>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Capacidades */}
+        <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="tr">
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              bottom: "-120px",
+              left: "-150px",
+              width: "800px",
+              height: "600px",
+              zIndex: 0,
+              pointerEvents: "none",
+              background:
+                "radial-gradient(ellipse 600px 450px at 0% 100%, rgba(252, 92, 31,0.28) 0%, rgba(252, 92, 31,0.14) 42%, rgba(252, 92, 31,0) 72%)",
+            }}
+          />
+          <div className="relative z-10 mx-auto max-w-6xl px-6">
+            <SectionLabel>Capacidades</SectionLabel>
+            <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+              Qué hacemos
+            </h2>
+            <CapabilityCards items={CAPACIDADES} />
+          </div>
+        </section>
+
+        {/* Tiers */}
+        <section className="relative py-16 md:py-24 sys-sec">
+          <div className="mx-auto max-w-6xl px-6">
+            <SectionLabel>Niveles</SectionLabel>
+            <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+              Tres niveles
+            </h2>
+            <div className="mt-10 grid gap-5 md:grid-cols-3">
+              {TIERS.map((t) => (
+                <article
+                  key={t.nombre}
+                  className="relative flex flex-col rounded-2xl p-7"
+                  style={{
+                    background: t.destacado ? "var(--orange-bg)" : "rgba(245,242,237,0.6)",
+                    border: t.destacado
+                      ? "1.5px solid var(--orange)"
+                      : "1px solid rgba(252, 92, 31,0.18)",
+                  }}
+                >
+                  <div className="md:flex md:items-start md:justify-between md:gap-4">
+                    <h3 className="font-display text-[22px] leading-none font-semibold tracking-tight md:text-[26px]">
+                      {t.nombre}
+                    </h3>
+                    {t.destacado ? <span className="text-sm font-semibold text-orange">el más elegido</span> : null}
+                  </div>
+                  <p className="mt-3 font-mono text-[11px] tracking-[0.14em] uppercase text-muted-foreground">
+                    {t.alcance}
+                  </p>
+                  <p className="mt-5 text-[15px] leading-relaxed">{t.detalle}</p>
+                </article>
+              ))}
+            </div>
+            {/* Qué no incluye — integrada en la sección anterior */}
+            <div
+              className="band--orange mt-10 md:mt-14 rounded-[28px] px-8 py-10 md:px-12 md:py-12"
+            >
+              <p className="label-on-orange">Qué no incluye</p>
+              <p
+                className="font-display mt-5 max-w-3xl text-[22px] leading-[1.3] font-semibold tracking-tight md:text-[30px]"
+                style={{ color: "#f5f2ed" }}
+              >
+                El gasto en medios, desarrollo web, CRM y RevOps, agentes conversacionales, community
+                management, branding.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Condiciones de venta */}
+        <section className="relative py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="bl">
+          <div className="mx-auto max-w-6xl px-6">
+            <SectionLabel>Condiciones</SectionLabel>
+            <div className="md:flex md:items-end md:justify-between md:gap-10">
+              <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+                Condiciones de venta
+              </h2>
+            </div>
+            <RuleList items={CONDICIONES} />
+          </div>
+        </section>
+
+        {/* Aceptación */}
+        <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec">
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              top: "-50px",
+              right: "-100px",
+              width: "620px",
+              height: "460px",
+              zIndex: 0,
+              pointerEvents: "none",
+              background: GLOW,
+            }}
+          />
+          <div className="relative z-10 mx-auto max-w-6xl px-6">
+            <SectionLabel>Aceptación</SectionLabel>
+            <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+              Cuándo damos el sistema por aceptado
+            </h2>
+            <AcceptanceSteps plazo="Sistema aceptado en máximo 21 días" items={ACEPTACION.map((texto) => ({ texto }))} />
+          </div>
+        </section>
+
+        <FaqSection items={DEMAND_SYSTEM_FAQS} />
+
+        <GeneralCta />
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}

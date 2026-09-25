@@ -1,33 +1,260 @@
-import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { Calendar, CalendarCheck, Database, Monitor, MessagesSquare, Target, Users, Workflow } from "lucide-react";
-import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
-import FaqSection, { faqJsonLd, type FaqItem } from "@/components/rckt/FaqSection";
+
+import SiteFooter from "@/components/rckt/SiteFooter";
 import GeneralCta from "@/components/rckt/GeneralCta";
+import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/SystemBlocks";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
-const SITE_URL="https://rckt-latam.lovable.app";
-const COMPONENTES=[{titulo:"Sales Flow núcleo",detalle:"Ads ↔ WhatsApp Business API ↔ CRM, routing y asignación a asesores, calificación con agente supervisado, SLAs, secuencias, gestión de inasistencia, atribución offline."},{titulo:"Conversational Revenue",detalle:"Agentes con aprobación humana en toda decisión de venta."},{titulo:"CRM & RevOps",detalle:"El proceso comercial vive en un solo lugar."},{titulo:"Conversion Platforms",detalle:"Landing, web, ecommerce, siempre con tracking y CRM conectados."}];
-const COMPONENT_ICONS=[Workflow,MessagesSquare,Database,Monitor];
-const STATS=[
-  {label:"Para quién",detail:"Negocios donde la venta pasa por conversación humana",Icon:Users},
-  {label:"Cadencia",detail:"Seguimiento de SLAs y fugas",Icon:Calendar},
-  {label:"Compromiso mínimo",detail:"Sistema aceptado en máximo 30 días",Icon:CalendarCheck},
-  {label:"Qué mide el éxito",detail:"Respuesta, seguimiento, atribución y cierre",Icon:Target},
+import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
+const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
+const SITE_URL = "https://rckt.lat";
+
+const SALES_FLOW_FAQS = [
+  { question: "¿Tengo que cambiar de CRM?", answer: "No necesariamente. Tu CRM es la fuente de verdad: lo configuramos y lo conectamos, no lo sustituimos por una herramienta nuestra. Si no tienes uno, te recomendamos uno y migramos si hace falta." },
+  { question: "¿Un agente de IA puede cerrar ventas por mí?", answer: "No. Los agentes hacen la primera respuesta, la calificación, la agenda y las preguntas frecuentes, pero un agente nunca cierra una venta ni promete condiciones sin aprobación humana." },
+  { question: "¿Quién paga las licencias de CRM y WhatsApp API?", answer: "Tú. Las licencias de CRM y de WhatsApp Business API no están incluidas en Sales Flow." },
+  { question: "¿Qué necesitan de mí?", answer: "Un número de WhatsApp Business API verificado, un CRM, un equipo comercial con un responsable nombrado, un acuerdo de SLAs internos y acceso a los datos de ventas." },
+  { question: "¿Cuánto tarda en estar listo?", answer: "El sistema queda aceptado en un máximo de 30 días desde el inicio del setup, con el flujo probado con leads reales y el 100% de los leads entrando al CRM con su origen." },
 ];
-const FAQS: FaqItem[]=[
-  {question:"¿Necesito que me hagan una página web nueva para que Sales Flow funcione?",answer:"No necesariamente, pero si haces una web con nosotros, siempre va conectada a tracking y CRM — una web sin eso es decoración, y no la vendemos así."},
-  {question:"¿Un agente de WhatsApp con IA puede cerrarle una venta a un cliente sin que un humano intervenga?",answer:"Nunca. Un agente nunca cierra una venta ni promete condiciones sin aprobación humana."},
-  {question:"¿En cuánto tiempo queda funcionando la integración de WhatsApp, campañas y CRM?",answer:"Máximo 30 días desde el inicio del setup."},
-  {question:"¿Sales Flow reemplaza mi CRM actual o se conecta con el que ya tengo?",answer:"Se conecta. Tu CRM es la fuente de verdad; lo configuramos y lo conectamos, no lo sustituimos."},
-  {question:"¿Qué necesito tener listo antes de implementar Sales Flow?",answer:"Un número de WhatsApp Business API verificado, un CRM (o migramos si hace falta), y un equipo comercial con un responsable nombrado."},
+
+const GLOW = "radial-gradient(ellipse 620px 460px at 100% 0%, rgba(252, 92, 31,0.22) 0%, rgba(252, 92, 31,0.1) 40%, rgba(252, 92, 31,0) 75%)";
+
+export const Route = createFileRoute("/sistemas/sales-flow")({
+  staticData: { sitemap: true },
+  head: () => ({
+    meta: [
+      { title: "Sales Flow — De lead a venta sin fugas | RCKT" },
+      {
+        name: "description",
+        content:
+          "Conectamos campañas, WhatsApp y CRM para que cada lead tenga respuesta, seguimiento y dueño, y para que sepas cuáles compran.",
+      },
+      { property: "og:title", content: "Sales Flow — De lead a venta sin fugas" },
+      {
+        property: "og:description",
+        content: "Integración Ads ↔ WhatsApp ↔ CRM, SLAs de respuesta y atribución offline.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL + "/sistemas/sales-flow" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: SITE_URL + "/sistemas/sales-flow" }],
+    scripts: [faqJsonLd(SALES_FLOW_FAQS)],
+  }),
+  component: SalesFlowPage,
+});
+
+const STATS = [
+  {
+    label: "Para quién",
+    valor: null as string | null,
+    Icono: Users,
+    detalle:
+      "Negocios donde la venta pasa por conversación humana: WhatsApp, llamada, asesor, cita. También clientes con media propia o con otra agencia que solo necesitan cerrar mejor",
+  },
+  {
+    label: "Cadencia",
+    valor: null as string | null,
+    Icono: Calendar,
+    detalle: "Semanal (SLAs y fugas) · mensual con decisores",
+  },
+  {
+    label: "Compromiso mínimo",
+    valor: null as string | null,
+    Icono: CalendarCheck,
+    detalle: "Setup por alcance + 3 meses de operación",
+  },
+  {
+    label: "Qué mide el éxito",
+    valor: null as string | null,
+    Icono: Target,
+    detalle: "% de leads con seguimiento dentro del SLA · lead → reunión · costo por cliente adquirido",
+  },
 ];
-export const Route=createFileRoute("/sistemas/sales-flow")({staticData:{sitemap:true},head:()=>({meta:[{title:"Sales Flow — RCKT"},{name:"description",content:"De lead a venta sin fugas: pauta, WhatsApp y CRM conectados, con respuesta, seguimiento y dueño para cada prospecto."},{property:"og:title",content:"Sales Flow — RCKT"},{property:"og:description",content:"La web nunca se vende sola."},{property:"og:type",content:"website"},{property:"og:url",content:SITE_URL+"/sistemas/sales-flow"},{name:"twitter:card",content:"summary_large_image"}],links:[{rel:"canonical",href:SITE_URL+"/sistemas/sales-flow"}],scripts:FAQS.length>0?[faqJsonLd(FAQS)]:[]}),component:SalesFlowPage,errorComponent:SalesFlowError,notFoundComponent:()=> <SalesFlowError/>});
-function SalesFlowPage(){useSiteMotion([]);return <div className="rckt-site tcn-page"><main id="top">
-<SystemPageHero label="Sales Flow" title={<>De lead a venta sin <em>fugas</em>.</>} context="Hoy pagas por un prospecto, te escribe por WhatsApp, y ahí empieza a perderse: respuesta tarde, sin seguimiento, fuera del CRM. Sales Flow conecta tu pauta, WhatsApp y CRM para que cada prospecto tenga respuesta, seguimiento y dueño —y para que sepas cuáles compran."/>
-<section className="system-composition system-stats"><div className="container system-stat-grid">{STATS.map(({label,detail,Icon})=><article className="system-stat-card" key={label}><span className="system-icon"><Icon aria-hidden="true"/></span><p className="label-orange">{label}</p><p>{detail}</p></article>)}</div></section>
-<section className="system-composition system-warm" id="componentes"><div className="container"><div className="system-composition__heading"><span className="label-orange">Qué incluye</span><h2>Cada prospecto con respuesta, seguimiento y <em className="font-serif-accent">dueño</em>.</h2><p>Pauta, WhatsApp, CRM y atribución conectados en un solo flujo.</p></div><div className="sales-flow-grid">{COMPONENTES.map((item,index)=>{const Icon=COMPONENT_ICONS[index];return <article className={index===0?"sales-flow-card sales-flow-card--core":"sales-flow-card"} key={item.titulo}><span className="system-icon"><Icon aria-hidden="true"/></span><span className="sales-flow-card__index">{String(index+1).padStart(2,"0")}</span><h3>{item.titulo}</h3><p>{item.detalle}</p></article>})}</div><aside className="system-orange-band"><span className="label-on-orange">Qué no incluye</span><h3>Conectar la venta no significa hacerlo todo.</h3><p>Sales Flow ordena el recorrido comercial; otras capacidades pertenecen a otros sistemas.</p><small>Inversión en pauta · Gestión de campañas · Operación de cierre por parte de RCKT · Licencias de CRM y WhatsApp Business API</small></aside></div></section>
-<section className="sales-rule-band" id="regla"><div className="container"><span className="label-orange">Regla</span><p>La web nunca se vende <em>sola</em>.</p><small>La conversión ocurre cuando el sistema acompaña la conversación humana. Esta es la página más visitada desde campañas en Latinoamérica.</small></div></section>
-<section className="system-composition" id="para-quien"><div className="container"><div className="system-composition__heading"><span className="label-orange">Para quién</span><h2>Cuando vender exige una conversación <em className="font-serif-accent">humana</em>.</h2><p>Negocios donde la venta pasa por una persona, pero el sistema evita que el prospecto se pierda.</p></div><div className="sales-flow-track" aria-label="Flujo comercial"><span>Pauta</span><i>→</i><span>WhatsApp</span><i>→</i><span>CRM</span><i>→</i><span>Venta</span></div></div></section>
-<section className="system-composition system-warm"><div className="container"><div className="system-composition__heading"><span className="label-orange">Cómo empieza</span><h2>Probamos el flujo completo con prospectos <em className="font-serif-accent">reales</em>.</h2><p>La aceptación exige trazabilidad, respuesta y asignación funcionando.</p></div><span className="system-deadline">Sistema aceptado en máximo 30 días</span><div className="system-step-grid">{["Pauta, WhatsApp Business API y CRM conectados","Flujo probado con prospectos reales","Todos los prospectos entran al CRM con su origen"].map((texto,index)=><article key={texto}><span>{String(index+1).padStart(2,"0")}</span><p>{texto}</p></article>)}</div></div></section>
-<FaqSection items={FAQS}/><GeneralCta />
-</main><SiteFooter/></div>}
-function SalesFlowError(){const router=useRouter();return <div className="rckt-site tcn-page"><SiteHeader/><main className="band"><div className="container"><div className="form-card" role="alert"><span className="kicker">Sales Flow</span><h1>No pudimos mostrar esta página.</h1><p>Intenta cargarla nuevamente. Si el problema continúa, puedes volver al inicio.</p><div className="form-actions"><button className="btn btn-primary" type="button" onClick={()=>void router.invalidate()}>Intentar de nuevo</button><a className="btn" href="/">Volver al inicio</a></div></div></div></main><SiteFooter/></div>}
+
+const COMPONENTES = [
+  {
+    Icono: Workflow,
+    titulo: "Sales Flow núcleo",
+    detalle:
+      "Integración Ads ↔ WhatsApp Business API ↔ CRM; routing y asignación a asesores; calificación automática con agente supervisado y paso a humano; lead scoring; SLAs de respuesta; secuencias de seguimiento y recuperación; recordatorios de cita y gestión de inasistencia; atribución offline de vuelta a Meta y Google",
+  },
+  {
+    Icono: MessagesSquare,
+    titulo: "Conversational Revenue",
+    detalle:
+      "Agentes de WhatsApp y voz para primera respuesta, calificación, agenda y FAQ, siempre con aprobación humana en decisiones de venta",
+  },
+  {
+    Icono: Database,
+    titulo: "CRM & RevOps",
+    detalle:
+      "Configuración o limpieza del pipeline, etapas, campos, automatizaciones, dashboards, gobierno de datos",
+  },
+  {
+    Icono: Monitor,
+    titulo: "Conversion Platforms",
+    detalle: "Landing de conversión, web corporativa, ecommerce, siempre con tracking y CRM conectados",
+  },
+];
+
+const REGLAS = [
+  "La web nunca se vende sola: sin tracking y CRM conectados no hay web de RCKT",
+  "Un agente nunca cierra una venta ni promete condiciones sin aprobación humana",
+  "El CRM del cliente es la fuente de verdad: lo configuramos y conectamos, no lo sustituimos",
+];
+
+const ACEPTACION = [
+  "Flujo probado de extremo a extremo con leads reales",
+  "100% de los leads entrando al CRM con su origen",
+  "SLA visible en dashboard",
+  "Atribución offline enviando eventos a las plataformas",
+];
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mb-4 flex items-center gap-3">
+      <span className="inline-block h-4 w-[2px] bg-orange" />
+      <span className="label-orange">{children}</span>
+    </div>
+  );
+}
+
+function SalesFlowPage() {
+  return (
+    <div className="bg-background text-foreground antialiased">
+      <main className="sys-page">
+        <SystemPageHero
+          label="Sales Flow"
+          title={
+            <>
+              De lead a venta <span className="hero-hand">sin fugas</span>.
+            </>
+          }
+          descriptor="Núcleo de Conversion System"
+          quote="Hoy pagas por un lead, te escribe por WhatsApp, y ahí empieza a perderse: respuesta tarde, sin seguimiento, fuera del CRM, sin saber de qué campaña vino. Sales Flow conecta tus campañas, WhatsApp y CRM para que cada lead tenga respuesta, seguimiento y dueño, y para que sepas cuáles compran."
+          ctaLabel="Revisar mi proceso comercial →"
+          ctaHref={DIAGNOSTIC_HREF}
+        />
+
+        {/* Stats */}
+        <section className="relative py-16 md:py-20 sys-sec">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {STATS.map((s) => {
+                const valor = (s as { valor?: string | null }).valor ?? null;
+                return (
+                  <div key={s.label} className="stat-card">
+                    <span className="stat-card__icon">
+                      <s.Icono className="h-5 w-5 text-orange" strokeWidth={1.6} aria-hidden="true" />
+                    </span>
+                    <p className="font-mono mt-4 text-[11px] tracking-[0.16em] text-orange uppercase">{s.label}</p>
+                    {valor ? (
+                      <p className="mt-2 text-[16px] leading-[1.55]" style={{ color: "var(--ink)" }}>
+                        {valor}
+                      </p>
+                    ) : null}
+                    {s.detalle ? (
+                      <p
+                        className="mt-2 text-[16px] leading-[1.55]"
+                        data-align="left"
+                        style={{ textAlign: "left", color: "var(--ink)" }}
+                      >
+                        {s.detalle}
+                      </p>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Componentes */}
+        <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="tr">
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              bottom: "-120px",
+              left: "-150px",
+              width: "800px",
+              height: "600px",
+              zIndex: 0,
+              pointerEvents: "none",
+              background:
+                "radial-gradient(ellipse 600px 450px at 0% 100%, rgba(252, 92, 31,0.28) 0%, rgba(252, 92, 31,0.14) 42%, rgba(252, 92, 31,0) 72%)",
+            }}
+          />
+          <div className="relative z-10 mx-auto max-w-6xl px-6">
+            <SectionLabel>Componentes</SectionLabel>
+            <div className="md:flex md:items-end md:justify-between md:gap-10">
+              <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+                Qué hacemos
+              </h2>
+              <span className="text-sm font-semibold text-orange">cada lead con dueño</span>
+            </div>
+            <CapabilityCards items={COMPONENTES} />
+            {/* Qué no incluye — integrada en la sección anterior */}
+            <div
+              className="band--orange mt-10 md:mt-14 rounded-[28px] px-8 py-10 md:px-12 md:py-12"
+            >
+              <p className="label-on-orange">Qué no incluye</p>
+              <p
+                className="font-display mt-5 max-w-3xl text-[22px] leading-[1.3] font-semibold tracking-tight md:text-[30px]"
+                style={{ color: "#f5f2ed" }}
+              >
+                Inversión en pauta ni gestión de campañas (eso es Demand) · licencias de CRM y WhatsApp API (las paga
+                el cliente) · redacción de contenidos editoriales · procesos internos no comerciales (eso es
+                Operations).
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Reglas */}
+        <section className="relative py-16 md:py-24 sys-sec">
+          <div className="mx-auto max-w-6xl px-6">
+            <SectionLabel>Reglas</SectionLabel>
+            <div className="md:flex md:items-end md:justify-between md:gap-10">
+              <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+                Cómo trabajamos aquí
+              </h2>
+              <span className="text-sm font-semibold text-orange">tu CRM es la fuente de verdad</span>
+            </div>
+            <RuleList items={REGLAS} />
+          </div>
+        </section>
+
+        {/* Aceptación */}
+        <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="bl">
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              top: "-50px",
+              right: "-100px",
+              width: "620px",
+              height: "460px",
+              zIndex: 0,
+              pointerEvents: "none",
+              background: GLOW,
+            }}
+          />
+          <div className="relative z-10 mx-auto max-w-6xl px-6">
+            <SectionLabel>Aceptación</SectionLabel>
+            <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+              Cuándo damos el sistema por aceptado
+            </h2>
+            <AcceptanceSteps plazo="Sistema aceptado en máximo 30 días desde el inicio del setup" items={ACEPTACION.map((texto) => ({ texto }))} />
+          </div>
+        </section>
+
+        <FaqSection items={SALES_FLOW_FAQS} />
+
+        <GeneralCta />
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}

@@ -8,22 +8,18 @@ import SiteFooter from "@/components/rckt/SiteFooter";
 import SiteNav from "@/components/rckt/SiteNav";
 import { SystemCards, type SystemCardData } from "@/components/rckt/SystemCards";
 
-const SITE_URL = "https://rckt-latam.lovable.app";
+const SITE_URL = "https://rckt.lat";
 const HERO_HAND = "humano";
-
-const services = [
-  ["AI Growth Audit", "Revisamos tu inversión publicitaria, tus datos, tu sitio y tu contenido con la misma vara, y entregamos un informe con lo que estás dejando sobre la mesa."],
-  ["AI Visibility Snapshot", "Comprobamos con evidencia si tu marca aparece cuando alguien pregunta por tu categoría en ChatGPT, Gemini o Perplexity."],
-] as const;
+const META_DESCRIPTION = "Diseñamos y operamos sistemas que convierten demanda en ventas: campañas, conversaciones de WhatsApp, CRM e IA supervisada, medidos hasta el ingreso.";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "RCKT — Sistemas de crecimiento con IA" },
-      { name: "description", content: "Diseñamos y operamos sistemas de marketing con IA ligados a resultados medibles. Empieza con un diagnóstico." },
-      { property: "og:title", content: "RCKT — Sistemas de crecimiento con IA" },
-      { property: "og:description", content: "Resultados, no horas. Sistemas de medios, creativo, visibilidad en IA y ventas por conversación." },
+      { title: "RCKT — Sistemas que convierten demanda en ventas" },
+      { name: "description", content: META_DESCRIPTION },
+      { property: "og:title", content: "RCKT — Sistemas que convierten demanda en ventas" },
+      { property: "og:description", content: META_DESCRIPTION },
       { property: "og:type", content: "website" },
       { property: "og:url", content: SITE_URL + "/" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -34,9 +30,8 @@ export const Route = createFileRoute("/")({
       children: JSON.stringify({
         "@context": "https://schema.org",
         "@graph": [
-          { "@type": "Organization", "@id": SITE_URL + "/#organization", name: "RCKT", url: SITE_URL + "/", description: "Firma de sistemas de crecimiento con IA para el mercado hispanohablante.", email: "hola@rckt.lat", contactPoint: [{ "@type": "ContactPoint", contactType: "sales", email: "hola@rckt.lat", availableLanguage: ["es"] }] },
-          { "@type": "WebSite", "@id": SITE_URL + "/#website", url: SITE_URL + "/", name: "RCKT", inLanguage: "es", publisher: { "@id": SITE_URL + "/#organization" } },
-          ...services.map(([name, description]) => ({ "@type": "Service", name, description, serviceType: name, provider: { "@id": SITE_URL + "/#organization" }, areaServed: "Mercado hispanohablante" })),
+          { "@type": "Organization", "@id": SITE_URL + "/#organization", name: "RCKT", url: SITE_URL + "/", description: META_DESCRIPTION, areaServed: "Latinoamérica", email: "hola@rckt.lat", contactPoint: [{ "@type": "ContactPoint", contactType: "sales", email: "hola@rckt.lat", availableLanguage: ["es-419"] }] },
+          { "@type": "WebSite", "@id": SITE_URL + "/#website", url: SITE_URL + "/", name: "RCKT", inLanguage: "es-419", publisher: { "@id": SITE_URL + "/#organization" } },
         ],
       }),
     }],

@@ -184,14 +184,21 @@ export default function GlobalSectionBlobs() {
     };
 
     let observer: ResizeObserver | null = null;
-    timer = window.setTimeout(() => {
-      observer = connect();
-    }, 100);
+    const connectWhenHydrated = () => {
+      timer = window.setTimeout(() => {
+        observer = connect();
+      }, 750);
+    };
+    window.addEventListener("load", connectWhenHydrated, { once: true });
+    if (document.readyState === "complete") {
+      frame = requestAnimationFrame(connectWhenHydrated);
+    }
     window.addEventListener("resize", classify, { passive: true });
 
     return () => {
-      window.clearTimeout(timer);
       cancelAnimationFrame(frame);
+      window.clearTimeout(timer);
+      window.removeEventListener("load", connectWhenHydrated);
       observer?.disconnect();
       window.removeEventListener("resize", classify);
       sections.forEach((section) => {

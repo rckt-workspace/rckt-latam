@@ -1,33 +1,240 @@
-import { createFileRoute,useRouter } from "@tanstack/react-router";
-import { BarChart3, CalendarCheck, CalendarDays, Database, Megaphone, MonitorSmartphone, Target, UserRound, Users, Workflow, Wrench } from "lucide-react";
-import {SiteFooter,SiteHeader,useSiteMotion} from "@/components/SiteChrome";
-import FaqSection,{faqJsonLd,type FaqItem} from "@/components/rckt/FaqSection";
+import { createFileRoute } from "@tanstack/react-router";
+import {
+  CalendarCheck,
+  BarChart3,
+  CalendarDays,
+  Database,
+  Megaphone,
+  MonitorSmartphone,
+  Target,
+  UserRound,
+  Users,
+  Wrench,
+  Workflow,
+} from "lucide-react";
+
+import SiteFooter from "@/components/rckt/SiteFooter";
 import GeneralCta from "@/components/rckt/GeneralCta";
+import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/SystemBlocks";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
-const SITE_URL="https://rckt-latam.lovable.app";
-const INCLUYE=[{titulo:"Demand",detalle:"Tier según inversión."},{titulo:"Sales Flow",detalle:"Ads, WhatsApp y CRM conectados."},{titulo:"Landing de conversión",detalle:"Con tracking y CRM conectados."},{titulo:"CRM & RevOps",detalle:"El proceso comercial en un solo lugar."},{titulo:"Medición completa",detalle:"Del clic al cierre."},{titulo:"Responsable de cuenta",detalle:"Una persona con autoridad."},{titulo:"Revisión mensual",detalle:"Con decisores, no con coordinadores."},{titulo:"Ciclo de optimización",detalle:"90 días."}];
-const ESCALERA=[{label:"Revenue Diagnostic",texto:"Semanas 0-3."},{label:"Demand o Revenue Engine",texto:"Meses 1-6."},{label:"+ Operations",texto:"Meses 6-12."},{label:"Growth OS",texto:"Destino de cuentas maduras, mes 12 en adelante."}];
-const INCLUDE_ICONS=[Megaphone,Workflow,MonitorSmartphone,Database,BarChart3,UserRound,CalendarDays,Wrench];
-const STATS=[
-  {label:"Para quién",detail:"Negocios de captación y cierre",Icon:Users},
-  {label:"Setup",detail:"Demand, Sales Flow, landing, CRM y tracking",Icon:Wrench},
-  {label:"Compromiso mínimo",detail:"6 meses",Icon:CalendarCheck},
-  {label:"Qué mide el éxito",detail:"Costo por cliente adquirido",Icon:Target},
+import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
+const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
+const SITE_URL = "https://rckt.lat";
+
+const REVENUE_ENGINE_FAQS = [
+  { question: "Quiero todo desde el principio.", answer: "Growth OS es para cuentas que ya llevan tiempo con nosotros. Empezar por todo a la vez es la forma más rápida de no medir nada. Empezamos por Revenue Engine y crecemos con evidencia." },
+  { question: "Son más caros que otros.", answer: "Comparado con una agencia de pauta, sí. Comparado con pagar pauta, web, CRM, chatbot y consultor por separado sin que nadie responda por el resultado, no. Y el Diagnostic te dice si el sistema se paga solo antes de comprometerte." },
+  { question: "¿Cuál es el compromiso mínimo?", answer: "6 meses. El sistema necesita un ciclo completo para demostrar." },
+  { question: "¿Qué voy a ver y cuándo?", answer: "El día 30, el sistema operativo con su fuente de verdad. El día 90, la revisión de la línea base frente al resultado." },
+  { question: "¿Me garantizan resultados?", answer: "No garantizamos ventas porque no controlamos tu cierre, tu stock ni tus precios. Garantizamos que en 30 días vas a ver tu embudo completo con datos reales, y que cada decisión que tomemos esté medida hasta la venta." },
 ];
-const FAQS: FaqItem[]=[
-  {question:"¿RCKT garantiza resultados o un número de ventas nuevas al mes?",answer:"No garantizamos ventas, porque no controlamos tu cierre, tu inventario ni tus precios. Garantizamos que en 30 días verás tu embudo completo con datos reales."},
-  {question:"¿Puedo contratar Growth OS directamente sin pasar por Revenue Engine primero?",answer:"No. Growth OS es para cuentas maduras que ya llevan tiempo con nosotros; empezamos por Revenue Engine y crecemos con evidencia."},
-  {question:"¿Cuál es el compromiso mínimo de tiempo para Revenue Engine?",answer:"6 meses — el sistema necesita un ciclo completo para demostrar resultados."},
-  {question:"¿Qué debería ver en mi negocio a los 30, 60 y 90 días de empezar Revenue Engine?",answer:"Día 30: sistema operativo con fuente de verdad. Día 90: revisión de línea base frente a resultado."},
+
+export const Route = createFileRoute("/sistemas/revenue-engine")({
+  staticData: { sitemap: true },
+  head: () => ({
+    meta: [
+      { title: "Revenue Engine — El sistema completo de captación a cierre | RCKT" },
+      {
+        name: "description",
+        content:
+          "Demand System + Sales Flow en un solo sistema con un solo responsable: campañas, WhatsApp y CRM conectados y una sola cifra, el costo por cliente nuevo.",
+      },
+      { property: "og:title", content: "Revenue Engine — El sistema completo de captación a cierre" },
+      {
+        property: "og:description",
+        content: "Campañas, conversación y CRM como un solo sistema medido del clic al cierre.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL + "/sistemas/revenue-engine" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: SITE_URL + "/sistemas/revenue-engine" }],
+    scripts: [faqJsonLd(REVENUE_ENGINE_FAQS)],
+  }),
+  component: RevenueEnginePage,
+});
+
+const STATS = [
+  {
+    label: "Para quién",
+    Icono: Users,
+    detalle: "Negocios de captación y cierre. Salud y estética, educación, inmobiliario, servicios B2B",
+  },
+  {
+    label: "Setup",
+    Icono: Wrench,
+    detalle: "Sales Flow, landing, CRM y tracking. Acredita lo pagado en el Diagnostic",
+  },
+  {
+    label: "Compromiso mínimo",
+    Icono: CalendarCheck,
+    detalle: "6 meses — el sistema necesita un ciclo completo para demostrar",
+  },
+  {
+    label: "Qué mide el éxito",
+    Icono: Target,
+    detalle: "Costo por cliente adquirido · cuánto vale ese cliente frente a lo que costó traerlo",
+  },
 ];
-export const Route=createFileRoute("/sistemas/revenue-engine")({staticData:{sitemap:true},head:()=>({meta:[{title:"Revenue Engine — RCKT"},{name:"description",content:"El sistema completo de captación a cierre: Demand, Sales Flow, CRM y medición con un solo responsable."},{property:"og:title",content:"Revenue Engine — RCKT"},{property:"og:description",content:"Un solo sistema, un solo responsable y una sola cifra: cuánto cuesta cada cliente nuevo."},{property:"og:type",content:"website"},{property:"og:url",content:SITE_URL+"/sistemas/revenue-engine"},{name:"twitter:card",content:"summary_large_image"}],links:[{rel:"canonical",href:SITE_URL+"/sistemas/revenue-engine"}],scripts:FAQS.length>0?[faqJsonLd(FAQS)]:[]}),component:RevenueEnginePage,errorComponent:RevenueEngineError,notFoundComponent:()=> <RevenueEngineError/>});
-function RevenueEnginePage(){useSiteMotion([]);return <div className="rckt-site tcn-page"><main id="top">
-<SystemPageHero label="Revenue Engine" title={<>El sistema completo de captación a <em>cierre</em>.</>} context="Tu pauta, tu WhatsApp y tu CRM hoy son tres cosas separadas que maneja gente distinta. Revenue Engine las convierte en un solo sistema con un solo responsable: nosotros. Tú ves una cifra: cuánto te cuesta cada cliente nuevo."/>
-<section className="system-composition system-stats"><div className="container system-stat-grid">{STATS.map(({label,detail,Icon})=><article className="system-stat-card" key={label}><span className="system-icon"><Icon aria-hidden="true"/></span><p className="label-orange">{label}</p><p>{detail}</p></article>)}</div></section>
-<section className="system-composition system-warm" id="incluye"><div className="container"><div className="system-composition__heading"><span className="label-orange">Qué incluye</span><h2>Todo el sistema, un solo <em className="font-serif-accent">responsable</em>.</h2><p>De la generación de demanda al cierre, con una fuente de verdad.</p></div><div className="engine-grid">{INCLUYE.map((item,index)=>{const Icon=INCLUDE_ICONS[index];return <article className={index<2?"engine-card engine-card--primary":"engine-card"} key={item.titulo}><span className="system-icon"><Icon aria-hidden="true"/></span><h3>{item.titulo}</h3><p>{item.detalle}</p></article>})}</div></div></section>
-<section className="engine-metric-band" id="compromiso"><div className="container"><div><span className="label-on-orange">Compromiso mínimo</span><strong>6 meses</strong><p>Seis meses para demostrar un ciclo completo. El sistema necesita tiempo suficiente para operar, aprender y comparar.</p></div><div><span className="label-on-orange">Cómo se mide</span><strong>1 cifra</strong><p>Costo por cliente adquirido · Valor del cliente frente a lo que costó traerlo · Embudo completo: prospecto → MQL → SQL → cita → oportunidad → venta → margen</p></div></div></section>
-<section className="system-composition" id="escalera"><div className="container"><div className="system-composition__heading"><span className="label-orange">Cómo empieza</span><h2>La cuenta crece por etapas, no de golpe.</h2><p>Cada sistema entra cuando la cuenta está lista.</p></div><span className="system-deadline">Escalera de cuenta</span><div className="engine-ladder">{ESCALERA.map((item,index)=><article key={item.label}><span>{String(index+1).padStart(2,"0")}</span><h3>{item.label}</h3><p>{item.texto}</p></article>)}</div><a className="engine-method-link" href="/nosotros/como-trabajamos">Cómo trabajamos →</a></div></section>
-<section className="system-composition system-warm"><div className="container"><div className="system-composition__heading"><span className="label-orange">Criterios de aceptación</span><h2>Día 30: sistema operativo. Día 90: resultado contra línea base.</h2><p>La operación se prueba antes de atribuirle un resultado.</p></div><div className="engine-milestones"><article><strong>30</strong><p>Sistema operativo con una sola fuente de verdad.</p></article><article><strong>90</strong><p>Revisión de la línea base frente al resultado.</p></article></div></div></section>
-<FaqSection items={FAQS}/><GeneralCta />
-</main><SiteFooter/></div>}
-function RevenueEngineError(){const router=useRouter();return <div className="rckt-site tcn-page"><SiteHeader/><main className="band"><div className="container"><div className="form-card" role="alert"><span className="kicker">Revenue Engine</span><h1>No pudimos mostrar esta página.</h1><p>Intenta cargarla nuevamente. Si el problema continúa, puedes volver al inicio.</p><div className="form-actions"><button className="btn btn-primary" type="button" onClick={()=>void router.invalidate()}>Intentar de nuevo</button><a className="btn" href="/">Volver al inicio</a></div></div></div></main><SiteFooter/></div>}
+
+const INCLUYE: {
+  Icono: typeof Megaphone;
+  titulo: string;
+  detalle: string;
+  href?: string;
+}[] = [
+  {
+    Icono: Megaphone,
+    titulo: "Demand System",
+    detalle: "Tier según inversión en pauta",
+    href: "/sistemas/demand-system",
+  },
+  {
+    Icono: Workflow,
+    titulo: "Sales Flow",
+    detalle: "Campañas, WhatsApp y CRM conectados",
+    href: "/sistemas/sales-flow",
+  },
+  {
+    Icono: MonitorSmartphone,
+    titulo: "Landing de conversión",
+    detalle: "Con tracking y CRM conectados",
+  },
+  {
+    Icono: Database,
+    titulo: "CRM & RevOps",
+    detalle: "Pipeline, etapas, automatizaciones y dashboards",
+  },
+  {
+    Icono: BarChart3,
+    titulo: "Medición completa",
+    detalle: "Del clic al cierre, con una sola fuente de verdad",
+  },
+  {
+    Icono: UserRound,
+    titulo: "Responsable de cuenta",
+    detalle: "Un solo responsable para todo el sistema",
+  },
+  {
+    Icono: CalendarDays,
+    titulo: "Revisión mensual con decisores",
+    detalle: "Fugas y decisiones del mes",
+  },
+];
+
+const ESCALERA = [
+  { hito: "0–3", label: "Semanas", texto: "Revenue Diagnostic" },
+  { hito: "1–6", label: "Meses", texto: "Demand o Revenue Engine" },
+  { hito: "6–12", label: "Meses", texto: "+ Operations" },
+  { hito: "12+", label: "Meses", texto: "Growth OS: destino de cuentas maduras" },
+];
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mb-4 flex items-center gap-3">
+      <span className="inline-block h-4 w-[2px] bg-orange" />
+      <span className="label-orange">{children}</span>
+    </div>
+  );
+}
+
+function RevenueEnginePage() {
+  return (
+    <div className="bg-background text-foreground antialiased">
+      <main className="sys-page">
+        <SystemPageHero
+          label="Revenue Engine"
+          descriptor="Demand System + Sales Flow · nuestro producto principal"
+          title={
+            <>
+              El sistema completo de <span className="text-orange">captación a <span className="hero-hand">cierre</span></span>.
+            </>
+          }
+          quote="Tus campañas, tu WhatsApp y tu CRM hoy son tres cosas separadas que gestionan tres personas distintas. Revenue Engine las convierte en un solo sistema con un solo responsable: nosotros. Tú ves una cifra: cuánto te cuesta cada cliente nuevo."
+          ctaLabel="Revisar mi proceso comercial →"
+          ctaHref={DIAGNOSTIC_HREF}
+        />
+
+        {/* Stats */}
+        <section className="relative py-16 md:py-20 sys-sec">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {STATS.map((s) => {
+                const valor = (s as { valor?: string | null }).valor ?? null;
+                return (
+                  <div key={s.label} className="stat-card">
+                    <span className="stat-card__icon">
+                      <s.Icono className="h-5 w-5 text-orange" strokeWidth={1.6} aria-hidden="true" />
+                    </span>
+                    <p className="font-mono mt-4 text-[11px] tracking-[0.16em] text-orange uppercase">{s.label}</p>
+                    {valor ? (
+                      <p className="mt-2 text-[16px] leading-[1.55]" style={{ color: "var(--ink)" }}>
+                        {valor}
+                      </p>
+                    ) : null}
+                    {s.detalle ? (
+                      <p
+                        className="mt-2 text-[16px] leading-[1.55]"
+                        data-align="left"
+                        style={{ textAlign: "left", color: "var(--ink)" }}
+                      >
+                        {s.detalle}
+                      </p>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Qué incluye */}
+        <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="tr">
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              bottom: "-140px",
+              left: "-160px",
+              width: "820px",
+              height: "620px",
+              zIndex: 0,
+              pointerEvents: "none",
+              background:
+                "radial-gradient(ellipse 620px 460px at 0% 100%, rgba(252, 92, 31,0.26) 0%, rgba(252, 92, 31,0.13) 42%, rgba(252, 92, 31,0) 72%)",
+            }}
+          />
+          <div className="relative z-10 mx-auto max-w-6xl px-6">
+            <SectionLabel>Qué incluye</SectionLabel>
+            <div className="md:flex md:items-end md:justify-between md:gap-10">
+              <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+                Todo el sistema, un solo responsable.
+              </h2>
+              <span className="text-sm font-semibold text-orange">un solo responsable</span>
+            </div>
+
+            <CapabilityCards compact items={INCLUYE} />
+          </div>
+        </section>
+
+        <section id="escalera" className="relative isolate overflow-hidden py-16 md:py-24 sys-sec">
+          <div className="relative z-10 mx-auto max-w-6xl px-6">
+            <SectionLabel>Cómo empieza</SectionLabel>
+            <div className="md:flex md:items-end md:justify-between md:gap-10">
+              <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+                La cuenta crece por etapas, no de golpe.
+              </h2>
+              <span className="text-sm font-semibold text-orange">con evidencia en cada etapa</span>
+            </div>
+            <AcceptanceSteps plazo="Escalera de cuenta" items={ESCALERA} />
+          </div>
+        </section>
+
+        <FaqSection items={REVENUE_ENGINE_FAQS} />
+
+        <GeneralCta />
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}

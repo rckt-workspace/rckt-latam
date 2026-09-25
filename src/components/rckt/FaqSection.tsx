@@ -1,4 +1,4 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useId, useState } from "react";
 import SectionHeader from "@/components/rckt/SectionHeader";
 
 export type FaqItem = { question: string; answer: string };
@@ -19,25 +19,22 @@ export function faqJsonLd(items: FaqItem[]) {
 }
 
 export default function FaqSection({ items }: { items: FaqItem[] }) {
-  if (!items || items.length === 0) return null;
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const baseId = useId();
 
   return (
-    <section className="system-section system-faq" id="faq" aria-labelledby="faq-title">
-      <div className="container">
-        <SectionHeader num="FAQ." label="Preguntas frecuentes" title={<span id="faq-title">Lo que nos preguntan.</span>} />
-        <div className="system-faq__list mt-8 max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="w-full">
-            {items.map((item, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border-b border-line py-2">
-                <AccordionTrigger className="text-left font-semibold text-lg hover:no-underline py-4">
-                  {item.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-carbon-soft text-base leading-relaxed pb-6">
-                  {item.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+    <section className="relative isolate py-16 md:py-24" style={{ background: "var(--sand)" }} id="faq">
+      <div className="relative z-10 mx-auto max-w-6xl px-6">
+        <SectionHeader num="FAQ." label="Preguntas frecuentes" title="Lo que nos preguntan." />
+        <div className="mt-10 border-b" style={{ borderColor: "var(--line)" }}>
+          {items.map((item, index) => { const isOpen = openIndex === index; const triggerId = `${baseId}-trigger-${index}`; const panelId = `${baseId}-panel-${index}`; return (
+            <div key={item.question} className="border-t" style={{ borderColor: "var(--line)" }}>
+              <button id={triggerId} type="button" aria-expanded={isOpen} aria-controls={panelId} onClick={() => setOpenIndex(isOpen ? null : index)} className="flex min-h-16 w-full items-center justify-between gap-6 py-5 text-left font-display text-[17px] font-semibold text-foreground transition-colors hover:text-orange focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+                <span>{item.question}</span><span className="shrink-0 text-2xl font-normal leading-none text-orange" aria-hidden="true">{isOpen ? "−" : "+"}</span>
+              </button>
+              <div id={panelId} role="region" aria-labelledby={triggerId} hidden={!isOpen} className="max-w-4xl pb-6 pr-12 text-[16px] leading-relaxed text-muted-foreground">{item.answer}</div>
+            </div>
+          ); })}
         </div>
       </div>
     </section>
