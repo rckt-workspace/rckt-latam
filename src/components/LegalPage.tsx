@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 
@@ -8,21 +7,12 @@ export function LegalPage({ title, children }: { title: string; children: ReactN
   return (
     <div className="rckt-site legal-shell">
       <SiteHeader />
-      <main>
-        <section className="legal-hero section-light">
-          <div className="container">
-            <span className="kicker">Legal</span>
-            <h1>{title}</h1>
-          </div>
-        </section>
-        <section className="legal-page section-light">
-          <div className="container">
-            <Link className="legal-back" to="/">
-              ← Volver al inicio
-            </Link>
-            <article className="legal-document">{children}</article>
-          </div>
-        </section>
+      <main className="legal-page">
+        <div className="legal-page__inner">
+          <h1>{title}</h1>
+          <article className="legal-document">{children}</article>
+          <div className="legal-page__status">&gt; sistema activo · 2026</div>
+        </div>
       </main>
       <SiteFooter />
     </div>
