@@ -6,12 +6,12 @@ import SystemFinalCta from "@/components/rckt/SystemFinalCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 const SITE_URL="https://rckt-latam.lovable.app";
 const CATALOGO=[
-  {proceso:"Cotizaciones desde WhatsApp o correo",agente:"Extrae la solicitud, consulta catálogo y precios, redacta la cotización",humano:"Envío y condiciones especiales"},
-  {proceso:"Clasificación y respuesta de solicitudes",agente:"Clasifica, prioriza y responde lo repetitivo",humano:"Casos fuera de patrón"},
-  {proceso:"Generación y verificación de documentos",agente:"Genera desde plantillas, verifica campos y coherencia",humano:"Firma y excepciones"},
-  {proceso:"Sincronización CRM ↔ ERP",agente:"Mantiene datos consistentes entre sistemas",humano:"Conflictos de datos"},
-  {proceso:"Reporting comercial",agente:"Consolida fuentes y publica el reporte en la cadencia acordada",humano:"Interpretación y decisiones"},
-  {proceso:"Atención post-venta de primer nivel",agente:"Resuelve consultas frecuentes y escala el resto",humano:"Reclamaciones y devoluciones"},
+  {proceso:"Cotizaciones desde WhatsApp o correo",agente:"Proceso diseñado con trazabilidad",humano:"Supervisión humana"},
+  {proceso:"Clasificación y respuesta de solicitudes",agente:"Proceso diseñado con trazabilidad",humano:"Supervisión humana"},
+  {proceso:"Generación y verificación de documentos",agente:"Proceso diseñado con trazabilidad",humano:"Supervisión humana"},
+  {proceso:"Sincronización CRM ↔ ERP",agente:"Proceso diseñado con trazabilidad",humano:"Supervisión humana"},
+  {proceso:"Reporting comercial",agente:"Proceso diseñado con trazabilidad",humano:"Supervisión humana"},
+  {proceso:"Atención post-venta de primer nivel",agente:"Proceso diseñado con trazabilidad",humano:"Supervisión humana"},
 ];
 const STATS=[
   {label:"Para quién",detail:"30-250 empleados y procesos manuales de alto volumen",Icon:Users},
