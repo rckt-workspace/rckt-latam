@@ -130,14 +130,14 @@ function NosotrosPage() {
         </section>
 
         <section className="page-section">
-          <div className="page-shell grid items-stretch gap-6 md:grid-cols-2">
-            <div className="band--orange rounded-[8px] p-8 md:p-10">
+          <div className="nos-identity page-shell grid items-stretch gap-6 md:grid-cols-2">
+            <div className="nos-identity__yes band--orange rounded-[8px] p-8 md:p-10">
               <h2 className="font-display text-[28px] font-semibold">Lo que somos</h2>
-              <ul className="mt-6 space-y-4">{somos.map((text) => <li key={text} className="flex gap-3 leading-relaxed"><Check className="mt-1 h-4 w-4 shrink-0" /><span>{text}</span></li>)}</ul>
+              <ul className="mt-6 space-y-4">{somos.map((text) => <li key={text} className="flex gap-3 leading-relaxed"><Check aria-hidden="true" className="mt-1 h-4 w-4 shrink-0" /><span>{text}</span></li>)}</ul>
             </div>
-            <div className="content-card p-8 md:p-10">
+            <div className="nos-identity__no content-card p-8 md:p-10">
               <h2 className="font-display text-[28px] font-semibold">Lo que no somos</h2>
-              <ul className="mt-6 space-y-4">{noSomos.map((text) => <li key={text} className="flex gap-3 leading-relaxed text-muted-foreground"><X className="mt-1 h-4 w-4 shrink-0 text-orange" /><span>{text}</span></li>)}</ul>
+              <ul className="mt-6 space-y-4">{noSomos.map((text) => <li key={text} className="flex gap-3 leading-relaxed text-muted-foreground"><X aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-orange" /><span>{text}</span></li>)}</ul>
             </div>
           </div>
         </section>

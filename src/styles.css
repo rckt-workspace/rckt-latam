@@ -7300,6 +7300,39 @@ a:hover .nos-arrow {
 
 .text-orange { color: var(--naranja); }
 
+/* Nosotros: geometría de identidad compartida con España */
+.nos-identity > div {
+  border-radius: 8px;
+  padding: 32px;
+}
+.nos-identity__yes {
+  background: var(--naranja);
+  color: var(--papel-fija);
+}
+.nos-identity__yes::before {
+  content: none;
+}
+.nos-identity__yes svg,
+.nos-identity__no svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  margin-top: 4px;
+  stroke-width: 2;
+}
+.nos-identity__no {
+  border: 1px solid var(--line);
+  background: var(--card-surface);
+}
+.nos-identity__no svg {
+  color: var(--naranja);
+}
+@media (min-width: 768px) {
+  .nos-identity > div {
+    padding: 40px;
+  }
+}
+
 /* --- Accessibility & Visual Parity Compatible with España --- */
 
 :root {
