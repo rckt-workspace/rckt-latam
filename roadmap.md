@@ -45,3 +45,4 @@
 - [ ] Bloque 8 — Igualar “Lo que somos / no somos” en Nosotros.
 - [ ] Bloque 9 — Igualar legales y footer conservando contenido LATAM.
 - [ ] Bloque 10 — Normalizar espaciados, tarjetas, CTA y manchas; validar todas las rutas.
+- [ ] Reportar estado real por bloque y validar cada bloque en desktop/móvil, claro/oscuro antes de marcarlo completo.

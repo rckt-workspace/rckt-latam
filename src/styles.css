@@ -1250,11 +1250,6 @@ footer {
   padding-bottom: 24px;
   border-bottom: 1px solid var(--line);
 }
-.footer-top p {
-  color: var(--carbon-soft);
-  font-size: 14.5px;
-  max-width: 280px;
-  margin: 16px 0 0;
 }
 .footer-brand h5 {
   margin: 32px 0 0;
@@ -1266,10 +1261,6 @@ footer {
   color: rgba(33, 33, 33, 0.55);
   transition: color 0.2s ease;
 }
-.footer-contact:hover {
-  color: #212121;
-}
-.footer-col h5 {
   font-size: 11.5px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -1290,12 +1281,6 @@ footer {
 }
 .footer-appearance .theme-switch {
   margin-top: 16px;
-}
-.footer-appearance::after {
-  content: "Versión clara u oscura, a tu gusto.";
-  display: block;
-  margin-top: 12px;
-  color: rgba(33, 33, 33, 0.4);
   font-size: 12px;
 }
 .theme-switch {
@@ -2481,9 +2466,6 @@ header.scrolled {
   content: none;
 }
 .rckt-site.tcn-page .subpage-hero-photo {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
   overflow: hidden;
   background: var(--papel);
 }
@@ -4568,9 +4550,7 @@ header.scrolled {
   body.menu-open .system-page-hero {
     overflow: visible;
   }
-  body.menu-open .system-page-hero {
-    z-index: 300;
-  }
+  body.menu-open .hero, body.menu-open .system-page-hero, body.menu-open .subpage-hero { overflow: visible; }
 }
 
 /* fix apilado: el drawer y su X quedan por encima de la cápsula derecha */
@@ -7113,3 +7093,182 @@ body,
 .combo-card--primary .rule-row { border-color:color-mix(in srgb,var(--papel-fija) 30%,transparent); }
 .rckt-site .combo-card .rule-list, [data-theme="dark"] .rckt-site .combo-card .rule-list { padding:0; border:0; background:transparent; box-shadow:none; }
 .rckt-site .combo-card--primary .rule-row__num, .rckt-site .combo-card--primary .rule-row__text { color:var(--papel-fija); }
+
+/* --- Rediseño Cómo Trabajamos (estilo España) --- */
+.nos-sec {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--papel);
+  padding-block: 72px;
+}
+.nos-sec--warm {
+  background: var(--durazno);
+}
+@media (min-width: 768px) {
+  .nos-sec {
+    padding-block: 120px;
+  }
+}
+.nos-rise {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.nos-rise.is-in {
+  opacity: 1;
+  transform: none;
+}
+.nos-ficha {
+  background: rgba(245, 242, 237, 0.75);
+  border: 1px solid rgba(252, 92, 31, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(33, 33, 33, 0.06);
+  padding: 28px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.dark .nos-ficha {
+  background: rgba(245, 242, 237, 0.05);
+  border-color: rgba(245, 242, 237, 0.08);
+  box-shadow: none;
+}
+.nos-ficha:hover {
+  transform: translateY(-4px);
+  border-color: rgba(252, 92, 31, 0.4);
+}
+.ct-base {
+  position: relative;
+  overflow: clip;
+  background: var(--papel);
+  padding: 120px 0;
+}
+@media (max-width: 768px) {
+  .ct-base {
+    padding: 72px 0;
+  }
+}
+.ct-card {
+  background: rgba(245, 242, 237, 0.85);
+  border: 1px solid rgba(252, 92, 31, 0.18);
+  border-radius: 24px;
+  box-shadow: 0 30px 70px -40px rgba(252, 92, 31, 0.35);
+  padding: 24px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.dark .ct-card {
+  background: rgba(245, 242, 237, 0.05);
+  border-color: rgba(245, 242, 237, 0.09);
+  box-shadow: 0 30px 70px -40px rgba(33, 33, 33, 0.6);
+}
+.ct-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(252, 92, 31, 0.4);
+}
+.ct-card-in {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.ct-card-in.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.ct-ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: var(--durazno);
+  color: var(--naranja);
+}
+.dark .ct-ico {
+  background: rgba(252, 92, 31, 0.15);
+}
+.label-orange {
+  font-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--naranja);
+  font-weight: 600;
+  display: block;
+}
+.ct-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--durazno);
+  color: var(--naranja);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.dark .ct-chip {
+  background: rgba(252, 92, 31, 0.12);
+}
+.btn-orange {
+  background: var(--naranja);
+  color: #f5f2ed;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.btn-orange:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+.nos-arrow {
+  display: inline-flex;
+  transition: transform 0.25s ease;
+}
+a:hover .nos-arrow {
+  transform: translateX(4px);
+}
+.hero-hand {
+  font-family: "Newsreader", serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ── Utilities ported from Spain ── */
+@utility font-display {
+  font-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+@utility font-serif-accent {
+  font-family: "Newsreader", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--naranja);
+  letter-spacing: -0.01em;
+}
+
+@utility label-orange {
+  font-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--naranja);
+  font-weight: 600;
+}
+
+@utility num-orange {
+  font-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
+  color: var(--naranja);
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.rule {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, rgba(252, 92, 31, 0.7), rgba(33, 33, 33, 0.06));
+}
+.dark .rule {
+  background: linear-gradient(90deg, rgba(252, 92, 31, 0.7), rgba(245, 242, 237, 0.08));
+}
+
+.text-orange { color: var(--naranja); }
+.hero-hand { font-family: "Newsreader", serif; font-style: italic; font-weight: 400; }
