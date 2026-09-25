@@ -28,7 +28,7 @@ function ThankYou() {
     ? { label: "Solicitud prioritaria", title: "Tu solicitud cumple el perfil.", text: "Agenda tu reunión en las próximas 48 horas." }
     : nivel === "recurso"
       ? { label: "Solicitud recibida", title: "Gracias por escribirnos.", text: "Mientras tanto, esto te puede servir." }
-      : { label: "Solicitud recibida", title: "Recibimos tu solicitud.", text: "Te contactamos en menos de 24 horas.", note: "Te escribiremos desde el mismo WhatsApp o correo que dejaste." };
+      : { label: "Solicitud recibida", title: "Recibimos tu solicitud.", text: "Te contactamos en menos de 24 horas." };
   return <CampaignShell thanks><main><section className="campaign-thanks"><div className="campaign-shell">
     <div className="campaign-thanks__card">
       <span className="campaign-thanks__icon" aria-hidden="true"><Check strokeWidth={2.5} /></span>
