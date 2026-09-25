@@ -10,7 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AvisoLegalRouteImport } from './routes/aviso-legal'
 import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as CookiesRouteImport } from './routes/cookies'
+import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as RcktEquipoRouteImport } from './routes/rckt-equipo'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TrabajaConNosotrosRouteImport } from './routes/trabaja-con-nosotros'
@@ -64,9 +67,24 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AvisoLegalRoute = AvisoLegalRouteImport.update({
+  id: '/aviso-legal',
+  path: '/aviso-legal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactoRoute = ContactoRouteImport.update({
   id: '/contacto',
   path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacidadRoute = PrivacidadRouteImport.update({
+  id: '/privacidad',
+  path: '/privacidad',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RcktEquipoRoute = RcktEquipoRouteImport.update({
@@ -317,7 +335,10 @@ const ApiAdminPeopleVacantesRoute = ApiAdminPeopleVacantesRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/aviso-legal': typeof AvisoLegalRoute
   '/contacto': typeof ContactoRoute
+  '/cookies': typeof CookiesRoute
+  '/privacidad': typeof PrivacidadRoute
   '/rckt-equipo': typeof RcktEquipoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/trabaja-con-nosotros': typeof TrabajaConNosotrosRoute
@@ -368,7 +389,10 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/aviso-legal': typeof AvisoLegalRoute
   '/contacto': typeof ContactoRoute
+  '/cookies': typeof CookiesRoute
+  '/privacidad': typeof PrivacidadRoute
   '/rckt-equipo': typeof RcktEquipoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/trabaja-con-nosotros': typeof TrabajaConNosotrosRoute
@@ -420,7 +444,10 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/aviso-legal': typeof AvisoLegalRoute
   '/contacto': typeof ContactoRoute
+  '/cookies': typeof CookiesRoute
+  '/privacidad': typeof PrivacidadRoute
   '/rckt-equipo': typeof RcktEquipoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/trabaja-con-nosotros': typeof TrabajaConNosotrosRoute
@@ -473,7 +500,10 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/aviso-legal'
     | '/contacto'
+    | '/cookies'
+    | '/privacidad'
     | '/rckt-equipo'
     | '/sitemap.xml'
     | '/trabaja-con-nosotros'
@@ -524,7 +554,10 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/aviso-legal'
     | '/contacto'
+    | '/cookies'
+    | '/privacidad'
     | '/rckt-equipo'
     | '/sitemap.xml'
     | '/trabaja-con-nosotros'
@@ -575,7 +608,10 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/aviso-legal'
     | '/contacto'
+    | '/cookies'
+    | '/privacidad'
     | '/rckt-equipo'
     | '/sitemap.xml'
     | '/trabaja-con-nosotros'
@@ -627,7 +663,10 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AvisoLegalRoute: typeof AvisoLegalRoute
   ContactoRoute: typeof ContactoRoute
+  CookiesRoute: typeof CookiesRoute
+  PrivacidadRoute: typeof PrivacidadRoute
   RcktEquipoRoute: typeof RcktEquipoRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TrabajaConNosotrosRoute: typeof TrabajaConNosotrosRoute
@@ -686,11 +725,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/aviso-legal': {
+      id: '/aviso-legal'
+      path: '/aviso-legal'
+      fullPath: '/aviso-legal'
+      preLoaderRoute: typeof AvisoLegalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contacto': {
       id: '/contacto'
       path: '/contacto'
       fullPath: '/contacto'
       preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacidad': {
+      id: '/privacidad'
+      path: '/privacidad'
+      fullPath: '/privacidad'
+      preLoaderRoute: typeof PrivacidadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rckt-equipo': {
@@ -1027,7 +1087,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AvisoLegalRoute: AvisoLegalRoute,
   ContactoRoute: ContactoRoute,
+  CookiesRoute: CookiesRoute,
+  PrivacidadRoute: PrivacidadRoute,
   RcktEquipoRoute: RcktEquipoRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TrabajaConNosotrosRoute: TrabajaConNosotrosRoute,
