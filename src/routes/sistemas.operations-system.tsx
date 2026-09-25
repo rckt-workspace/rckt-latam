@@ -15,6 +15,7 @@ const OPERATIONS_SYSTEM_FAQS = [
   { question: "¿Qué pasa si el proceso no mejora?", answer: "Medimos cuánto te cuesta el proceso hoy y lo comparamos en el piloto. Si no baja el costo por ejecución, no seguimos." },
   { question: "¿Dependen de un proveedor de IA concreto?", answer: "No. Podemos cambiar el proveedor de IA sin rehacer el sistema: nuestro activo es el diseño del proceso, no la herramienta." },
   { question: "¿Qué necesitan de mí?", answer: "Un dueño del proceso nombrado, acceso a los sistemas y datos, casos históricos para las pruebas y disponibilidad para validar durante el piloto." },
+  { question: "¿Y si la IA no nos da retorno?", answer: "Por eso se mide el costo por ejecución correcta frente a la línea base desde el piloto. Si no baja, no seguimos." },
 ];
 
 const GLOW = "radial-gradient(ellipse 620px 460px at 100% 0%, rgba(252, 92, 31,0.22) 0%, rgba(252, 92, 31,0.1) 40%, rgba(252, 92, 31,0) 75%)";
@@ -49,7 +50,7 @@ const STATS = [
     label: "Para quién",
     Icono: Users,
     detalle:
-      "Empresas de 30–250 empleados con procesos manuales de alto volumen. Se habla con Operaciones, Tecnología o gerencia, no con Marketing",
+      "Empresas de 30 a 250 empleados con procesos manuales de alto volumen. La conversación es con operaciones, tecnología o gerencia general, no con mercadeo.",
   },
   {
     label: "Formato",
@@ -137,10 +138,10 @@ function OperationsSystemPage() {
           label="Operations System"
           title={
             <>
-              Procesos que se ejecutan solos, <span className="hero-hand">con supervisión</span>.
+              Un proceso a la vez, funcionando solo y con alguien <span className="hero-hand">aprobando</span>.
             </>
           }
-          quote="No te vendemos IA. Elegimos un proceso que tu equipo repite cien veces por semana, medimos cuánto te cuesta hoy, y en ocho semanas lo dejamos funcionando solo, con una persona aprobando lo que importa. Si no baja el costo por ejecución, no seguimos."
+          quote="6 de cada 10 pymes no ven retorno de la IA. Por eso no empezamos por la herramienta: empezamos por una cotización o un documento que tu equipo arma cien veces por semana, medimos cuánto cuesta hoy y lo dejamos funcionando con supervisión. Si no baja el costo por ejecución, no seguimos."
           ctaLabel="Revisar mi proceso comercial →"
           ctaHref={DIAGNOSTIC_HREF}
         />

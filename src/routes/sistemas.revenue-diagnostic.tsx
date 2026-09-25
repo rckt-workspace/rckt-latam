@@ -25,10 +25,10 @@ const WHATSAPP_URL = "#whatsapp";
 const SITE_URL = "https://rckt.lat";
 
 const REVENUE_DIAGNOSTIC_FAQS = [
-  { question: "¿Es gratis?", answer: "No. Es trabajo real de tres semanas con tus datos, y se descuenta del sistema si sigues con nosotros." },
-  { question: "¿Cuánto dura?", answer: "2–3 semanas." },
-  { question: "¿Qué pasa después?", answer: "Recomendamos sistema o bundle según la fuga con mayor impacto económico." },
-  { question: "¿Cuánto cuesta?", answer: "Depende de dónde esté tu fuga — eso es justo lo que mide el Diagnostic. No damos precio de sistema sin diagnóstico." },
+  { question: "¿Es gratis?", answer: "No. Es trabajo real de tres semanas con tus datos, y se descuenta del sistema si sigues con nosotros. Si no estás seguro de querer saber dónde pierdes dinero, quizá no es el momento." },
+  { question: "¿Cuánto dura?", answer: "De 2 a 3 semanas, y cierra con una sesión de 90 minutos con quienes deciden." },
+  { question: "¿Qué pasa después?", answer: "Decides con datos: seguir con el sistema recomendado o no. Si sigues, lo que pagaste se descuenta." },
+  { question: "¿Cuánto cuesta?", answer: "Depende de dónde esté tu fuga, y eso es justo lo que mide el Diagnostic. Lo que sí te podemos decir es cómo funciona y qué incluye." },
   { question: "¿Por qué necesitan tanto acceso y tantos datos?", answer: "Porque sin ellos no podemos medir hasta la venta, y sin medir hasta la venta seríamos una agencia más. Los accesos son de lectura donde se pueda y quedan documentados." },
   { question: "Quiero pagar solo por resultados.", answer: "Trabajamos con una parte variable, pero después de 90 días con línea base, porque antes ninguno de los dos sabe qué es un resultado. Y nunca cobramos 100% variable cuando el cierre depende de tu equipo, tu stock o tus precios." },
 ];
@@ -72,7 +72,7 @@ const STATS = [
     label: "Entregable",
     valor: null,
     Icono: FileText,
-    detalle: "Documento + línea base firmada + roadmap 90 días",
+    detalle: "Documento, línea base firmada y roadmap de 90 días, presentados en una sesión de 90 minutos",
   },
   {
     label: "Para quién",
@@ -84,7 +84,7 @@ const STATS = [
     label: "Qué mide el éxito",
     valor: null,
     Icono: Target,
-    detalle: "Que decidas con datos",
+    detalle: "Que decidas con datos, sigas o no con nosotros",
   },
 ];
 
@@ -93,7 +93,7 @@ const INCLUYE = [
     Icono: Map,
     titulo: "Mapa de fugas",
     detalle:
-      "Embudo completo con tus números reales: inversión → lead → contacto → calificación → cita → propuesta → venta → margen",
+      "Tu embudo con tus números reales: pauta → lead → primera respuesta → calificación → cita → cotización → venta → margen",
   },
   {
     Icono: Search,
@@ -103,17 +103,17 @@ const INCLUYE = [
   {
     Icono: MessagesSquare,
     titulo: "CRM y proceso comercial",
-    detalle: "Uso de WhatsApp, automatizaciones existentes",
+    detalle: "Cómo se atiende hoy el WhatsApp, quién responde, qué queda en el CRM y qué automatizaciones ya existen",
   },
   {
     Icono: Calculator,
     titulo: "Unit economics",
-    detalle: "CAC, tasa MQL/SQL, show rate, close rate, payback",
+    detalle: "CAC, tasa MQL/SQL, tasa de asistencia a citas, tasa de cierre, payback",
   },
   {
     Icono: FileSignature,
     titulo: "Línea base firmada",
-    detalle: "Documentada y acordada contigo",
+    detalle: "Documentada y firmada contigo: será la fuente de verdad del contrato",
   },
   {
     Icono: RouteIcon,
@@ -126,8 +126,8 @@ const NECESITAMOS = [
   "Acceso de lectura a Meta, Google, GA4 y GTM",
   "CRM o exportación",
   "Datos de venta del último trimestre",
-  "2–3 entrevistas (comercial, marketing, operaciones)",
-  "Acceso a WhatsApp Business o muestra de conversaciones",
+  "2–3 entrevistas (comercial, mercadeo, operaciones)",
+  "Acceso a WhatsApp Business o una muestra de conversaciones",
 ];
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -146,9 +146,9 @@ function RevenueDiagnostic() {
       <main className="sys-page">
         <SystemPageHero
           label="Revenue Diagnostic"
-          title={<>Tres semanas para saber dónde se pierde tu <span className="hero-hand">dinero</span>.</>}
+          title={<>En tres semanas sabrás dónde se te va la <span className="hero-hand">venta</span>.</>}
           descriptor="Diagnóstico de ingresos"
-          quote="En tres semanas te decimos cuánto pierdes entre la campaña y el cierre, en qué punto exacto, y qué haríamos en 90 días. Si sigues con nosotros, lo que pagas por el diagnóstico se descuenta del sistema."
+          quote="Antes de tocar tu pauta, medimos. Te mostramos cuántos prospectos se pierden entre el anuncio, el WhatsApp y la venta, en qué punto exacto, y qué haríamos en 90 días. Si sigues con nosotros, lo que pagas se descuenta del sistema."
           ctaLabel="Revisar mi proceso comercial →"
           ctaHref="#formulario"
         />
@@ -312,7 +312,7 @@ function RevenueDiagnostic() {
             </div>
             <div className="mt-10">
               <DiagnosticForm whatsappUrl={WHATSAPP_URL} submitLabel="Revisar mi proceso comercial →" onSent={() => setSent(true)} />
-              <p className="mt-5 text-sm text-muted-foreground">¿Prefieres WhatsApp? <a className="text-orange hover:underline" href="#whatsapp">Escríbenos y hacemos las mismas preguntas.</a></p>
+              <p className="mt-5 text-sm text-muted-foreground">¿Prefieres WhatsApp? <a className="text-orange hover:underline" href="#whatsapp">Escríbenos y te hacemos las mismas preguntas.</a></p>
             </div>
           </div>
         </section>

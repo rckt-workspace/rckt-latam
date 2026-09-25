@@ -193,7 +193,7 @@ export default function DiagnosticForm({
           <input id="email" name="email" type="email" />
         </div>
         <div className="field">
-          <label htmlFor="telefono">Teléfono</label>
+          <label htmlFor="telefono">Celular</label>
           <input id="telefono" name="telefono" type="tel" />
         </div>
       </div>
