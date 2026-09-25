@@ -4951,6 +4951,7 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 .campaign-thanks .campaign-resource-link { margin-top: 0; }
 .campaign-thanks__back { margin-top: 32px; color: var(--carbon-soft); font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
 .campaign-thanks__back:hover { color: var(--naranja); }
+.campaign-thanks .section-blob--strong { display: none; }
 @media (max-width: 700px) {
   .campaign-shell { width: min(calc(100% - 40px), 1152px); }
   .campaign-header__inner { min-height: 72px; }
