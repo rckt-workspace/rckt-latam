@@ -5738,9 +5738,6 @@ body,
   isolation: isolate;
   overflow: hidden;
   background-color: #212121;
-  background-image: linear-gradient(rgba(33, 33, 33, 0.68), rgba(33, 33, 33, 0.68)), url("./assets/rckt-hero.jpg");
-  background-position: center;
-  background-size: cover;
   color: #f5f2ed;
 }
 .rckt-site .cta-final::before {
