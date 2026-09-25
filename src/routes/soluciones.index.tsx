@@ -42,7 +42,7 @@ function SolucionesPage() {
       <main id="top">
         <SystemPageHero label="Soluciones" title={<>Entras por tu problema, no por el nombre de un <em>sistema</em>.</>} context="Tres puertas de entrada según el problema real de tu negocio, medidas del clic al cierre." ctaLabel="Revisar mi proceso comercial →" />
         <SystemSection id="puertas" num="01." label="Tres puertas de entrada" title={<>El problema decide por dónde <em className="font-serif-accent">empezamos</em>.</>} phrase="Captación y cierre, ecommerce rentable u operación: primero ubicamos la fuga."><SolutionCards /></SystemSection>
-        <GeneralCta />} label="Revisar mi proceso comercial →" />
+        <GeneralCta />
       </main>
       <SiteFooter />
     </div>

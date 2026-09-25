@@ -76,7 +76,7 @@ function SectoresPage() {
             })}
           </div>
         </SystemSection>
-        <GeneralCta />} label="Revisar mi proceso comercial →" />
+        <GeneralCta />
       </main>
       <SiteFooter />
     </div>

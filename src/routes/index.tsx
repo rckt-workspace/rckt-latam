@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo } from "react";
 import heroAsset from "@/assets/rckt-hero.jpg";
-import ctaAsset from "@/assets/rckt-cta.jpg";
 import MethodCard, { type MethodField } from "@/components/rckt/MethodCard";
 import { SectionHeader } from "@/components/rckt/SectionHeader";
 import { SystemCards, type SystemCardData } from "@/components/rckt/SystemCards";
 import { SiteFooter } from "@/components/SiteChrome";
+import GeneralCta from "@/components/rckt/GeneralCta";
 import SiteNav from "@/components/rckt/SiteNav";
 
 const SITE_URL = "https://rckt-latam.lovable.app";
@@ -263,23 +263,6 @@ function ProofSection() {
   );
 }
 
-function FinalCta() {
-  return (
-    <section className="cta-final general-cta">
-      <span className="cta-final__topline" aria-hidden="true" />
-      <img className="cta-final-photo cta-photo-img" src={ctaAsset} alt="Profesional de RCKT trabajando con sistemas de crecimiento con IA" />
-      <span className="cta-final-overlay cta-photo-fade" aria-hidden="true" />
-      <div className="container">
-        <span className="kicker">Siguiente paso</span>
-        <h2>El siguiente paso empieza con <em className="font-serif-accent">claridad.</em></h2>
-        <p className="cta-final-copy">Formulario o WhatsApp — los dos llegan al mismo lugar: alguien de nuestro equipo revisando tu proceso, no un bot respondiéndote.</p>
-        <a className="btn btn-primary" href="/sistemas/revenue-diagnostic">Revisar mi proceso comercial →</a>
-        <div className="cta-final__foot"><span>IA supervisada y documentada</span></div>
-      </div>
-    </section>
-  );
-}
-
 function RcktLanding() {
   const { heroMarkup } = useMemo(
     () =>
@@ -444,7 +427,7 @@ function RcktLanding() {
         <ProblemsSection />
         <SystemsSection />
         <ProofSection />
-        <FinalCta />
+        <GeneralCta />
       </main>
       <SiteFooter />
     </div>

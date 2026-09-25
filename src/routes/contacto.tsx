@@ -56,7 +56,7 @@ function Contacto() {
             </>
           }
           descriptor="Formulario o WhatsApp — lo que prefieras, llega al mismo lugar."
-          promise="Con este contexto preparamos la primera conversación con datos reales."
+          context="Con este contexto preparamos la primera conversación con datos reales."
           ctaLabel="Ir al formulario →"
           ctaHref="#formulario"
         />

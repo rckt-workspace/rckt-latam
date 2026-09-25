@@ -31,6 +31,6 @@ function SistemasPage(){useSiteMotion([]);return <div className="rckt-site tcn-p
 <Arquitectura/>
 <SystemSection id="sistemas" num="02." label="Los tres sistemas" title="Elige por la fuga, no por el nombre." phrase="Demand, Sales Flow y Operations cubren la cadena completa."><SystemCards systems={SYSTEMS}/></SystemSection>
 <Combos/>
-<GeneralCta />}/>
+<GeneralCta />
 </main><SiteFooter/></div>}
 function SistemasError(){const router=useRouter();return <div className="rckt-site tcn-page"><SiteHeader/><main className="band"><div className="container"><div className="form-card" role="alert"><span className="kicker">Sistemas</span><h1>No pudimos mostrar esta página.</h1><p>Intenta cargarla nuevamente. Si el problema continúa, puedes volver al inicio.</p><div className="form-actions"><button className="btn btn-primary" type="button" onClick={()=>void router.invalidate()}>Intentar de nuevo</button><a className="btn" href="/">Volver al inicio</a></div></div></div></main><SiteFooter/></div>}

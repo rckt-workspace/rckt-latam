@@ -195,9 +195,6 @@ export default function SectorPage(data: SectorPageData) {
         {!isShort && data.faqItems ? <FaqSection items={data.faqItems} /> : null}
 
         <GeneralCta />
-          }
-          label={data.ctaFinalLabel ?? "Revisar mi proceso comercial →"}
-        />
       </main>
       <SiteFooter />
     </div>
