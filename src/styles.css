@@ -462,7 +462,7 @@ body.menu-open {
   border-color: var(--line-strong);
 }
 [data-theme="dark"] .nav-links.mobile-open .theme-switch button {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
 }
 [data-theme="dark"] .nav-links.mobile-open .theme-switch button.active,
 [data-theme="dark"] .rckt-site.tcn-page .nav-links.mobile-open .theme-switch button.active {
@@ -543,7 +543,7 @@ body.menu-open {
 .hero p.sub {
   font-size: 19px;
   line-height: 1.55;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   max-width: 650px;
   margin: 0 0 38px;
   text-align: left;
@@ -647,7 +647,7 @@ body.menu-open {
 }
 .stat-row p {
   font-size: 15px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   margin: 0;
 }
 @media (max-width: 560px) {
@@ -682,7 +682,7 @@ body.menu-open {
   margin: 0 0 14px;
 }
 .three-card p {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 15.5px;
   margin: 0;
 }
@@ -746,7 +746,7 @@ body.menu-open {
 }
 .posn-left li {
   font-size: 15.5px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
 }
 .posn-left .grp.si h4 {
   color: var(--naranja-deep);
@@ -809,7 +809,7 @@ body.menu-open {
 }
 .lenguaje-col li {
   font-size: 16px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
 }
 
 /* ---------- seis lineas ---------- */
@@ -840,7 +840,7 @@ body.menu-open {
 }
 .linea-card p {
   font-size: 14px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   margin: 0;
   line-height: 1.6;
 }
@@ -866,7 +866,7 @@ body.menu-open {
   margin: 10px 0 16px;
 }
 .service-lead p {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 15.5px;
   margin: 0 0 26px;
 }
@@ -914,12 +914,12 @@ body.menu-open {
 }
 .sys-card p.desc {
   font-size: 15.5px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   margin: 0 0 22px;
 }
 .sys-card .incluye {
   font-size: 13.5px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   line-height: 1.7;
   margin: 0 0 20px;
 }
@@ -954,7 +954,7 @@ body.menu-open {
   margin: 0 0 14px;
 }
 .producto-block p {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 16px;
   margin: 0;
 }
@@ -981,7 +981,7 @@ body.menu-open {
 }
 .torre p {
   font-size: 14.5px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   margin: 0;
 }
 
@@ -989,7 +989,7 @@ body.menu-open {
   max-width: none;
   width: 100%;
   font-size: 16px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   background: color-mix(in srgb, #f5f2ed 30%, transparent);
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -1028,7 +1028,7 @@ body.menu-open {
 }
 .metodo-step p {
   font-size: 14.5px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   margin: 0;
 }
 
@@ -1045,7 +1045,7 @@ body.menu-open {
 }
 .principio p {
   font-size: 14.5px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   margin: 0;
 }
 
@@ -1116,7 +1116,7 @@ body.menu-open {
 .faq-a p {
   padding-bottom: 26px;
   margin: 0;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 15.5px;
   max-width: 640px;
   line-height: 1.65;
@@ -1134,7 +1134,7 @@ body.menu-open {
   line-height: 1.15;
 }
 .contact-left p {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 16.5px;
   max-width: 420px;
 }
@@ -1193,7 +1193,7 @@ input:focus {
   border-radius: 999px;
   padding: 9px 16px;
   font-size: 13.5px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   transition: all 0.15s ease;
 }
 .pill input {
@@ -1274,7 +1274,7 @@ footer {
 }
 .footer-col a {
   font-size: 14.5px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
 }
 .footer-col a:hover {
   color: var(--carbon);
@@ -1299,7 +1299,7 @@ footer {
   padding: 6px 14px;
   font-size: 13px;
   border-radius: 999px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
 }
 .theme-switch button.active {
   background: var(--carbon);
@@ -1601,7 +1601,7 @@ footer {
 
 .posn-left p {
   font-size: 16.5px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   margin: 0;
   line-height: 1.65;
 }
@@ -1622,7 +1622,7 @@ footer {
 .legal-page__inner > h1 { font-family:"Inter Tight",sans-serif; font-size:52px; line-height:1.05; font-weight:600; letter-spacing:-.045em; }
 .legal-document {
   margin-top:40px;
-  color:var(--muted-foreground);
+  color:var(--color-muted-foreground);
   font-size:15.5px;
   line-height:1.7;
 }
@@ -1632,14 +1632,14 @@ footer {
   letter-spacing: 0;
 }
 .legal-page p {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   line-height: 1.7;
   margin: 0 0 14px;
 }
 .legal-page a {
   color: var(--naranja-deep);
 }
-.legal-page__status { margin-top:64px; color:var(--muted-foreground); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px; }
+.legal-page__status { margin-top:64px; color:var(--color-muted-foreground); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px; }
 @media (max-width: 700px) {
   .legal-page__inner { width:min(100% - 40px,768px); padding:128px 0 80px; }
   .legal-page__inner > h1 { font-size:36px; }
@@ -1945,7 +1945,7 @@ footer {
   background: transparent;
 }
 .hero .theme-switch button {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   padding: 5px 14px;
   font-size: 12.5px;
   transition:
@@ -1975,7 +1975,7 @@ footer {
 .hero-inner .hero-kicker {
   display: block;
   margin: 0 0 18px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 12px;
@@ -2196,7 +2196,7 @@ footer {
 .rckt-site .mercado-left p,
 .rckt-site .no-vendemos,
 .rckt-site .faq-a p {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
 }
 
 /* 4) Insignias numeradas menos saturadas */
@@ -2248,7 +2248,7 @@ header.scrolled {
   color: var(--carbon);
 }
 .hero-inner p.sub {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
 }
 
 /* Manchas difuminadas de acento: solo 3 en toda la página */
@@ -2327,7 +2327,7 @@ header.scrolled {
   color: var(--carbon);
 }
 [data-theme="dark"] .nav-links.mobile-open .theme-switch button {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
 }
 [data-theme="dark"] .nav-links.mobile-open .theme-switch button.active {
   background: var(--carbon);
@@ -2443,7 +2443,7 @@ header.scrolled {
 .rckt-site .subpage-hero-inner .sub {
   font-size: 17px;
   line-height: 1.65;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   max-width: 720px;
 }
 
@@ -2542,7 +2542,7 @@ header.scrolled {
   gap: 18px;
 }
 .rckt-site .vacantes-nota {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
 }
 .rckt-site .vacante-card {
   display: flex;
@@ -2570,7 +2570,7 @@ header.scrolled {
   margin: 0 0 8px;
 }
 .rckt-site .vacante-card p {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 15px;
   line-height: 1.6;
   margin: 0 0 8px;
@@ -2633,7 +2633,7 @@ header.scrolled {
   text-transform: none;
   letter-spacing: 0;
   font-size: 14px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
 }
 .rckt-site .consent input {
   width: auto;
@@ -2824,7 +2824,7 @@ header.scrolled {
   font-size: 14px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
 }
 .rckt-site .vacante-modal p {
   margin: 0 0 12px;
@@ -2888,7 +2888,7 @@ header.scrolled {
 }
 .rckt-site .cv-hint {
   font-size: 12px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
 }
 .rckt-site .cv-file {
   display: flex;
@@ -2918,7 +2918,7 @@ header.scrolled {
 }
 .rckt-site .cv-size {
   font-size: 12px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
 }
 .rckt-site .cv-remove {
   margin-left: auto;
@@ -3013,7 +3013,7 @@ header.scrolled {
   right: 16px;
   font-size: 26px;
   line-height: 1;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   background: none;
   border: none;
   cursor: pointer;
@@ -3034,7 +3034,7 @@ header.scrolled {
 }
 .panel-modal .dato span:first-child {
   min-width: 112px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.07em;
@@ -3073,7 +3073,7 @@ header.scrolled {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   margin-bottom: 8px;
 }
 
@@ -3091,7 +3091,7 @@ header.scrolled {
 
 .rckt-panel .panel-subtitle {
   font-size: 15px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   margin: 0;
   line-height: 1.5;
 }
@@ -3154,7 +3154,7 @@ header.scrolled {
 
 .rckt-panel .panel-section-desc {
   font-size: 14px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   margin: 0;
 }
 
@@ -3243,7 +3243,7 @@ header.scrolled {
 
 .rckt-panel .panel-vacante-meta {
   font-size: 13px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   margin: 6px 0 0 0;
   display: flex;
   gap: 16px;
@@ -3274,7 +3274,7 @@ header.scrolled {
 
 .rckt-panel .panel-status.cerrada {
   background: rgba(33, 33, 33, 0.08);
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
 }
 
 .rckt-panel .panel-form-section {
@@ -3337,7 +3337,7 @@ header.scrolled {
 
 .rckt-panel .panel-postulacion-meta {
   font-size: 13px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   line-height: 1.6;
 }
 
@@ -3467,7 +3467,7 @@ header.scrolled {
   font-size: 13px;
   font-weight: 600;
   border: 1px solid color-mix(in srgb, var(--naranja) 42%, transparent);
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   background: transparent;
   transition: background-color .2s ease, color .2s ease, border-color .2s ease;
 }
@@ -3551,7 +3551,7 @@ header.scrolled {
 
 /* ---------- mobile menu overrides ---------- */
 .rckt-site .nav-links.mobile-open .theme-switch button {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
 }
 [data-theme="dark"] .rckt-site .nav-links.mobile-open .theme-switch button {
   color: var(--papel-fija);
@@ -3611,7 +3611,7 @@ header.scrolled {
   border-radius: 999px;
   border: 1px solid color-mix(in srgb, var(--naranja) 58%, transparent);
   background: transparent;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
@@ -3681,13 +3681,13 @@ header.scrolled {
   margin: 12px 0 8px;
 }
 .rckt-site .blog-excerpt {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 14.5px;
   line-height: 1.6;
   margin: 0 0 12px;
 }
 .rckt-site .blog-meta {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 12.5px;
   margin: 0 0 12px;
 }
@@ -3802,7 +3802,7 @@ header.scrolled {
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   margin: 0 0 12px;
 }
 .rckt-site .blog-toc ul {
@@ -3813,7 +3813,7 @@ header.scrolled {
   gap: 8px;
 }
 .rckt-site .blog-toc a {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 13.5px;
   text-decoration: none;
 }
@@ -3830,7 +3830,7 @@ header.scrolled {
   margin: 12px 0 14px;
 }
 .rckt-site .blog-back {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 13.5px;
   font-weight: 600;
   text-decoration: none;
@@ -3855,7 +3855,7 @@ header.scrolled {
   font-size: 16.5px;
   line-height: 1.75;
   margin: 0 0 18px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
 }
 .rckt-site .blog-body a {
   color: var(--naranja-deep);
@@ -3865,7 +3865,7 @@ header.scrolled {
   padding-left: 20px;
   display: grid;
   gap: 8px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 16.5px;
   line-height: 1.7;
 }
@@ -4073,7 +4073,7 @@ header.scrolled {
 }
 .contacto-channel p {
   margin: 7px 0 0;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 14.5px;
   line-height: 1.55;
 }
@@ -4119,7 +4119,7 @@ header.scrolled {
   border-top: 1px solid var(--line);
 }
 .contacto-data-card dt {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 12px;
   font-weight: 600;
 }
@@ -4369,7 +4369,7 @@ header.scrolled {
   margin: 0;
 }
 .sol-card p {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 15.5px;
   margin: 0;
 }
@@ -4387,7 +4387,7 @@ header.scrolled {
   font-weight: 600;
 }
 .sol-card .sol-links a.secondary {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-weight: 500;
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -4418,7 +4418,7 @@ header.scrolled {
 .sol-note p {
   margin: 0;
   font-size: 16.5px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
 }
 @media (max-width: 900px) {
   .sol-cards {
@@ -4639,7 +4639,7 @@ header.scrolled {
 .problem-signals li {
   position: relative;
   padding-left: 22px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 13.5px;
   line-height: 1.45;
 }
@@ -4868,7 +4868,7 @@ header.scrolled {
 #tres-sistemas .system-copy p {
   max-width: 480px;
   margin: 0 0 18px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 15px;
   line-height: 1.48;
 }
@@ -5058,7 +5058,7 @@ header.scrolled {
   border: 1px solid color-mix(in srgb, var(--naranja) 48%, var(--line));
   border-radius: 999px;
   background: color-mix(in srgb, var(--naranja) 8%, var(--card));
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 11px;
   font-weight: 700;
   line-height: 1.2;
@@ -6364,7 +6364,7 @@ body,
 .rckt-site .problem-signals {
   display: block;
   margin: 0;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 13.5px;
   line-height: 1.65;
 }
@@ -6402,7 +6402,7 @@ body,
 .rckt-site .systems-intro > p {
   max-width: 460px;
   margin: 0;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
   font-size: 15px;
   font-style: normal;
@@ -6511,7 +6511,7 @@ body,
 .rckt-site #tres-sistemas .system-copy p {
   max-width: none;
   margin: 12px 0 22px;
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-size: 13.5px;
   line-height: 1.65;
 }
@@ -6589,7 +6589,7 @@ body,
 .rckt-site #prueba .case-fields dt,
 .rckt-site #prueba .case-fields dd { margin: 0; }
 .rckt-site #prueba .case-fields dd {
-  color: var(--carbon-soft);
+  color: var(--color-muted-foreground);
   font-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
   font-size: 15px;
   font-style: normal;
@@ -7340,3 +7340,24 @@ header {
   background: #f5f2ed;
 }
 
+
+/* Legal Content Styles */
+.legal-content a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--line-strong);
+  transition: text-decoration-color 0.2s ease;
+}
+.legal-content a:hover {
+  text-decoration-color: var(--naranja);
+}
+.legal-content h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 48px;
+  margin-bottom: 20px;
+  color: var(--carbon);
+}
+.legal-content p {
+  margin-bottom: 1.5rem;
+}
