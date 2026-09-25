@@ -435,7 +435,7 @@ function RcktLanding() {
     revealElements.forEach((el) => (observer ? observer.observe(el) : el.classList.add("in")));
 
     const header = document.querySelector<HTMLElement>("header");
-    const onScroll = () => header?.classList.toggle("scrolled", window.scrollY > 8);
+    const onScroll = () => header?.classList.toggle("scrolled", window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
@@ -461,7 +461,7 @@ function RcktLanding() {
     links?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
 
     const closeMenuOnResize = () => {
-      if (window.innerWidth > 960 && links?.classList.contains("mobile-open")) closeMenu();
+      if (window.innerWidth > 1100 && links?.classList.contains("mobile-open")) closeMenu();
     };
     const closeMenuOnEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape" && links?.classList.contains("mobile-open")) closeMenu();
