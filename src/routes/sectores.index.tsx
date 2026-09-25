@@ -43,7 +43,7 @@ export const Route = createFileRoute("/sectores/")({
   component: SectoresPage,
 });
 
-const IMAGE_POSITION: Partial<Record<string, string>> = { salud: "30% center", b2b: "30% center" };
+const IMAGE_POSITION: Partial<Record<string, string>> = { salud: "30% center", educacion: "55% 30%", b2b: "30% center" };
 
 function Cards() {
   return (
@@ -114,7 +114,7 @@ function SectoresPage() {
         <SystemPageHero
           label="Sectores"
           title={<>Vendemos distinto según cómo vende cada <span className="hero-hand">sector.</span></>}
-          context="Una clínica no vende como un colegio ni como una constructora. Elige tu sector y mira su recorrido real, del anuncio a la venta, dónde se pierde la plata y qué indicador usamos para medirlo."
+          context="Una clínica no vende como un colegio ni como una constructora. Elige tu sector y mira su recorrido real, del anuncio a la venta, dónde se pierde el dinero y qué indicador usamos para medirlo."
           ctaLabel="Revisar mi proceso comercial →"
           ctaHref={DIAGNOSTIC_HREF}
         />

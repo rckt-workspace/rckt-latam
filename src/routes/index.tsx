@@ -84,7 +84,7 @@ function Hero() {
         </p>
         <div className="rckt-reveal mt-5 flex flex-wrap items-center gap-4" style={{ animationDelay: "240ms" }}>
           <a href="/sistemas/revenue-diagnostic" className="btn-orange inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-medium">Revisar mi proceso comercial →</a>
-          <a href="#whatsapp" className="btn-outline-lt inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-medium">Escribir por WhatsApp</a>
+          <a href="#whatsapp" className="hero-whatsapp-btn inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-medium">Escribir por WhatsApp</a>
         </div>
       </div>
     </section>

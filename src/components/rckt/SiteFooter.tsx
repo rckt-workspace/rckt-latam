@@ -1,5 +1,4 @@
 import ThemeToggle from "@/components/rckt/ThemeToggle";
-import { contactConfig } from "@/config/contact";
 import logoDark from "@/assets/rckt-logo-dark.png";
 import logoLight from "@/assets/rckt-logo-light.png";
 
@@ -22,25 +21,14 @@ const FOOTER_LEGAL = [
   { href: "/legal/cookies", label: "Cookies" },
 ];
 
-const isComplete = (value?: string) =>
-  Boolean(value && !/to be updated|xxx|por definir|pendiente/i.test(value));
-
-const email = isComplete(contactConfig.headquarters.email)
-  ? contactConfig.headquarters.email
-  : "[pendiente]";
-const phone = isComplete(contactConfig.headquarters.phone)
-  ? contactConfig.headquarters.phone
-  : "[pendiente]";
-const address = isComplete(contactConfig.headquarters.address)
-  ? [contactConfig.headquarters.address, contactConfig.headquarters.city, contactConfig.headquarters.country]
-      .filter(Boolean)
-      .join(", ")
-  : "[pendiente]";
+const email = "privacy@rckt.lat";
+const phone = "[pendiente]";
+const address = "Carrera 11B # 99-25, Bogotá D.C., Colombia";
 const hours = "[pendiente]";
 
 export default function SiteFooter() {
   return (
-    <footer className="section-deep" style={{ borderTop: "1px solid var(--line-lt)" }} role="contentinfo">
+    <footer className="site-footer section-deep" style={{ borderTop: "1px solid var(--line-lt)" }} role="contentinfo">
       <div className="mx-auto max-w-6xl px-5 py-16 md:px-6 md:py-20">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1.2fr_1fr]">
           <div className="self-start">
@@ -49,6 +37,7 @@ export default function SiteFooter() {
               <img src={logoLight} alt="" className="site-footer-logo site-footer-logo--light h-8 w-auto" />
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-paper/50">IA supervisada y documentada</p>
+            <p className="font-display mt-4 text-sm text-paper/55">RCKT S.A.S. · NIT 902.075.396-5</p>
             <p className="label-orange mt-8 !text-[10px]">Correo</p>
             {email === "[pendiente]" ? (
               <p className="font-display mt-3 text-sm text-paper/55">{email}</p>

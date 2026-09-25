@@ -233,7 +233,7 @@ function RevenueDiagnostic() {
         {/* Qué necesitamos de ti — checklist */}
         <section className="relative py-16 md:py-24 sys-sec">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
+            <h2 className="diagnostic-needs-title font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
               Qué necesitamos de ti
             </h2>
             <ul className="mt-10 grid gap-5 md:grid-cols-2">
