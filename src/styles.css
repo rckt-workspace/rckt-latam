@@ -25,7 +25,7 @@
 
 :root {
   --papel: #f5f2ed;
-  --papel-alt: #f5f2ed;
+  --papel-alt: #f7ebe1;
   --carbon: #212121;
   --carbon-soft: #212121;
   --carbon-faint: #212121;
@@ -4747,18 +4747,11 @@ body,
   letter-spacing: .16em;
 }
 
-/* Alternancia estable de superficies de contenido. */
-.rckt-site main > section:not(.hero):not(.subpage-hero):not(.cta-final):not(.band--orange) {
-  background-color: var(--papel);
-  background-image: none;
-}
-.rckt-site main > section:not(.hero):not(.subpage-hero):not(.cta-final):not(.band--orange):nth-of-type(even) {
-  background-color: var(--papel-alt);
-}
-[data-theme="dark"] .rckt-site main > section:not(.hero):not(.subpage-hero):not(.cta-final):not(.band--orange),
-[data-theme="dark"] .rckt-site main > section:not(.hero):not(.subpage-hero):not(.cta-final):not(.band--orange):nth-of-type(even) {
-  background-color: var(--papel-alt);
-}
+/* Todas las secciones de contenido comparten la misma alternancia, también sin .rckt-site. */
+main section[data-content-tone="base"] { background: var(--papel); }
+main section[data-content-tone="alternate"] { background: var(--papel-alt); }
+/* La banda integrada mantiene su superficie naranja aunque la sección alterne. */
+.band--orange { background: var(--naranja); color: var(--papel-fija); }
 
 /* Manchas adaptativas por altura, replicadas de la base visual de España. */
 .blob-section {
@@ -4792,6 +4785,9 @@ body,
   background: radial-gradient(circle closest-side, rgba(252, 92, 31, 0.45) 0%, rgba(252, 92, 31, 0.20) 40%, rgba(252, 92, 31, 0.06) 62%, rgba(252, 92, 31, 0) 78%);
   filter: blur(80px);
 }
+.blob-section > .section-blob--soft[data-blob-index="2"] {
+  background: radial-gradient(circle closest-side, rgba(252, 92, 31, 0.40) 0%, rgba(252, 92, 31, 0.20) 40%, rgba(252, 92, 31, 0.06) 62%, rgba(252, 92, 31, 0) 78%);
+}
 .blob-section > .section-blob--strong.section-blob--muted {
   background: radial-gradient(circle closest-side, rgba(252, 92, 31, 0.45) 0%, rgba(252, 92, 31, 0.28) 28%, rgba(252, 92, 31, 0.10) 56%, rgba(252, 92, 31, 0) 76%);
 }
@@ -4806,6 +4802,10 @@ body,
   position: relative;
   z-index: 1;
 }
+/* Las portadas con navegación fija no deben encerrar su z-50 en una capa aislada. */
+main > .system-page-hero,
+main > #top { isolation: auto; }
+main > .system-page-hero > header.pointer-events-none { z-index: 50; }
 
 /* Superficies homologadas con card-kraft. */
 .rckt-site :is(
