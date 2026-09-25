@@ -220,8 +220,12 @@ export const SECTORS: Record<string, SectorPageData> = {
         detalle: "Pipeline, etapas y tableros del proceso de admisión",
       },
       {
+        nombre: "Campañas medidas por matrícula",
+        detalle: "Demand optimizado por la matrícula, no por el lead",
+      },
+      {
         nombre: "Medición hasta la matrícula",
-        detalle: "Conversión de prospecto a matrícula frente a la línea base",
+        detalle: "Tasa de lead a matrícula frente a la línea base",
       },
     ],
     sectorFacts: [
