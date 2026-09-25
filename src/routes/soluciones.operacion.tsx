@@ -2,6 +2,7 @@ import { AlertCircle, Copy, FileCheck2, FileClock, Inbox, LifeBuoy, MessageSquar
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import FaqSection, { faqJsonLd, type FaqItem } from "@/components/rckt/FaqSection";
+import MilestoneCards from "@/components/rckt/MilestoneCards";
 import SignalCards from "@/components/rckt/SignalCards";
 import SolutionSystemPanel from "@/components/rckt/SolutionSystemPanel";
 import SystemFinalCta from "@/components/rckt/SystemFinalCta";
@@ -23,6 +24,11 @@ const features = [
   { name: "Sincronización CRM ↔ ERP u hojas", detail: "El humano resuelve los conflictos de datos", Icon: RefreshCw },
   { name: "Reporting comercial", detail: "El humano interpreta y decide", Icon: Table2 },
   { name: "Atención post-venta de primer nivel", detail: "El humano gestiona reclamaciones y devoluciones", Icon: LifeBuoy },
+];
+const milestones = [
+  { dia: "1–2", kicker: "Semanas", texto: "Mapa del proceso — Volumen, tiempo, errores y costo; criterios de aceptación firmados antes de construir." },
+  { dia: "3–6", kicker: "Semanas", texto: "Construcción e integración — El proceso se prueba con casos históricos y reales." },
+  { dia: "7–8", kicker: "Semanas", texto: "Piloto controlado — Medición contra la línea base y transferencia al equipo." },
 ];
 const FAQS: FaqItem[] = [];
 
@@ -63,7 +69,9 @@ function OperacionPage() {
         <SystemPageHero label="Operación" title={<>Tu equipo hace lo mismo cien veces por <em>semana</em></>} descriptor="Cotizaciones a mano, documentos que se copian entre sistemas, Excel donde debería haber un proceso." promise="Operations System: un proceso a la vez, Sprint de 6-8 semanas, aprobación humana en lo que importa." ctaLabel="Revisar mi proceso →" />
         <SystemSection id="te-pasa-esto" num="01." label="Señales" title={<>Lo repetitivo ya está costando <em className="font-serif-accent">demasiado</em>.</>} phrase="Tiempo, datos duplicados, reportes manuales y errores revelan el proceso a intervenir."><SignalCards items={signals} /></SystemSection>
         <SystemSection id="lo-que-hacemos" num="02." label="Lo que hacemos" title={<>Un proceso a la vez, con supervisión <em className="font-serif-accent">humana</em>.</>} phrase="Un Sprint de 6–8 semanas y aprobación humana en lo que importa."><SolutionSystemPanel features={features} system="Operations System" summary="Un proceso a la vez, Sprint de 6-8 semanas, aprobación humana en lo que importa." href="/sistemas/operations-system" /></SystemSection>
-        <SystemSection id="para-quien-no-es" num="03." label="Para quién no es" title={<>La base también tiene que estar <em className="font-serif-accent">lista</em>.</>}><div className="solution-honesty"><p>Procesos críticos sin responsable del lado del cliente, o sin datos accesibles.</p></div></SystemSection>
+        <SystemSection id="noventa-dias" num="03." label="Qué cambia en 90 días" title={<>Del mapa a un proceso <em className="font-serif-accent">operativo</em>.</>} phrase="El Sprint mide la operación antes de construir, durante el piloto y contra la línea base."><MilestoneCards items={milestones} /></SystemSection>
+        <SystemSection id="caso" num="04." label="Un caso" title={<>Una ficha completa, cuando exista evidencia <em className="font-serif-accent">real</em>.</>}><div className="solution-honesty"><p>[ficha completa de un caso del sector, mercado colombiano — pendiente de casos reales]</p></div></SystemSection>
+        <SystemSection id="para-quien-no-es" num="05." label="Para quién no es" title={<>La base también tiene que estar <em className="font-serif-accent">lista</em>.</>}><div className="solution-honesty"><p>Procesos críticos sin responsable del lado del cliente, o sin datos accesibles.</p></div></SystemSection>
         <FaqSection items={FAQS} />
         <SystemFinalCta label="Revisar mi proceso →" />
       </main>
