@@ -19,8 +19,6 @@ const SALES_FLOW_FAQS = [
   { question: "¿Necesito más pauta?", answer: "No para empezar. El tiempo de primera respuesta es la variable más barata de arreglar y la que más cambia el resultado." },
 ];
 
-const GLOW = "radial-gradient(ellipse 620px 460px at 100% 0%, rgba(252, 92, 31,0.22) 0%, rgba(252, 92, 31,0.1) 40%, rgba(252, 92, 31,0) 75%)";
-
 export const Route = createFileRoute("/sistemas/sales-flow")({
   staticData: { sitemap: true },
   head: () => ({
@@ -174,20 +172,6 @@ function SalesFlowPage() {
 
         {/* Componentes */}
         <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="tr">
-          <div
-            aria-hidden="true"
-            style={{
-              position: "absolute",
-              bottom: "-120px",
-              left: "-150px",
-              width: "800px",
-              height: "600px",
-              zIndex: 0,
-              pointerEvents: "none",
-              background:
-                "radial-gradient(ellipse 600px 450px at 0% 100%, rgba(252, 92, 31,0.28) 0%, rgba(252, 92, 31,0.14) 42%, rgba(252, 92, 31,0) 72%)",
-            }}
-          />
           <div className="relative z-10 mx-auto max-w-6xl px-6">
             <SectionLabel>Componentes</SectionLabel>
             <div className="md:flex md:items-end md:justify-between md:gap-10">
@@ -230,19 +214,6 @@ function SalesFlowPage() {
 
         {/* Aceptación */}
         <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="bl">
-          <div
-            aria-hidden="true"
-            style={{
-              position: "absolute",
-              top: "-50px",
-              right: "-100px",
-              width: "620px",
-              height: "460px",
-              zIndex: 0,
-              pointerEvents: "none",
-              background: GLOW,
-            }}
-          />
           <div className="relative z-10 mx-auto max-w-6xl px-6">
             <SectionLabel>Aceptación</SectionLabel>
             <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">

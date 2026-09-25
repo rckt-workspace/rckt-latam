@@ -64,6 +64,7 @@ export default function GlobalSectionBlobs() {
     let frame = 0;
     let timer = 0;
     let sections: HTMLElement[] = [];
+    let observer: ResizeObserver | null = null;
 
     const classify = () => {
       cancelAnimationFrame(frame);
@@ -108,29 +109,30 @@ export default function GlobalSectionBlobs() {
     };
 
     const connect = () => {
+      observer?.disconnect();
       sections = Array.from(document.querySelectorAll<HTMLElement>(SECTION_SELECTOR));
-      const observer = new ResizeObserver(classify);
-      sections.forEach((section) => observer.observe(section));
+      const nextObserver = new ResizeObserver(classify);
+      observer = nextObserver;
+      sections.forEach((section) => nextObserver.observe(section));
       classify();
-      return observer;
     };
 
-    let observer: ResizeObserver | null = null;
-    const connectWhenHydrated = () => {
-      timer = window.setTimeout(() => {
-        observer = connect();
-      }, 750);
-    };
-    window.addEventListener("load", connectWhenHydrated, { once: true });
-    if (document.readyState === "complete") {
-      frame = requestAnimationFrame(connectWhenHydrated);
-    }
+    // Las rutas pueden montar sus secciones después del cambio de pathname.
+    // Reconectar solo cuando cambian los nodos section, no al insertar las manchas.
+    const mutationObserver = new MutationObserver(() => {
+      const current = Array.from(document.querySelectorAll<HTMLElement>(SECTION_SELECTOR));
+      if (current.length !== sections.length || current.some((section, index) => section !== sections[index])) {
+        connect();
+      }
+    });
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+    timer = window.setTimeout(connect, 0);
     window.addEventListener("resize", classify, { passive: true });
 
     return () => {
       cancelAnimationFrame(frame);
       window.clearTimeout(timer);
-      window.removeEventListener("load", connectWhenHydrated);
+      mutationObserver.disconnect();
       observer?.disconnect();
       window.removeEventListener("resize", classify);
       sections.forEach((section) => {
