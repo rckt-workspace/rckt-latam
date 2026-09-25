@@ -29,6 +29,7 @@ export const EDUCACION_FAQS = [
 
 export const SECTORS: Record<string, SectorPageData> = {
   salud: {
+    descriptor: "Del clic al paciente que sí llega a la cita: cómo cerrar la fuga entre la campaña y la consulta.",
     variant: "full", label: "Salud, estética y odontología",
     title: <>Revenue Systems para salud, estética y <span className="hero-hand">odontología</span></>,
     context: "Del clic al paciente que sí llega a la cita.", ctaLabel: CTA,
@@ -71,6 +72,7 @@ export const SECTORS: Record<string, SectorPageData> = {
     faqItems: SALUD_FAQS,
   },
   educacion: {
+    descriptor: "Cómo convertir el volumen de prospectos en matrículas, sin perder calidad en el camino.",
     variant: "full", label: "Educación privada",
     title: <>Revenue Systems para educación <span className="hero-hand">privada</span></>,
     context: "De la pauta de temporada de matrículas a la matrícula firmada.", ctaLabel: CTA,
@@ -112,6 +114,7 @@ export const SECTORS: Record<string, SectorPageData> = {
     faqItems: EDUCACION_FAQS,
   },
   construccion: {
+    descriptor: "Cómo filtrar leads de baja calidad y acortar el ciclo entre el anuncio y la escritura.",
     variant: "short", label: "Construcción e inmobiliario",
     title: <>Revenue Systems para construcción e <span className="hero-hand">inmobiliario</span></>,
     context: "Del anuncio a la escritura.", ctaLabel: CTA,
@@ -139,6 +142,7 @@ export const SECTORS: Record<string, SectorPageData> = {
     secondaryLink: { label: "Ver Operations System →", href: "/sistemas/operations-system" },
   },
   b2b: {
+    descriptor: "Cómo construir un pipeline que no dependa solo de referidos.",
     variant: "short", label: "Servicios B2B",
     title: <>Revenue Systems para servicios <span className="hero-hand">B2B</span></>,
     context: "De la búsqueda al contrato firmado.", ctaLabel: CTA,
@@ -166,6 +170,7 @@ export const SECTORS: Record<string, SectorPageData> = {
     secondaryLink: { label: "Ver Demand System →", href: "/sistemas/demand-system" },
   },
   ecommerce: {
+    descriptor: "Cómo crecer en margen, no solo en ROAS.",
     variant: "short", label: "Ecommerce",
     title: <>Revenue Systems para <span className="hero-hand">ecommerce</span></>,
     context: "De la pauta al margen, no solo al ROAS.", ctaLabel: CTA,
@@ -193,6 +198,7 @@ export const SECTORS: Record<string, SectorPageData> = {
     secondaryLink: { label: "Ver Sales Flow →", href: "/sistemas/sales-flow" },
   },
   industria: {
+    descriptor: "Cómo automatizar cotizaciones y conectar tu CRM con el ERP.",
     variant: "short", label: "Industria y distribución",
     title: <>Revenue Systems para industria y <span className="hero-hand">distribución</span></>,
     context: "De la cotización al pedido entregado.", ctaLabel: CTA, ctaFinalLabel: "Revisar mi proceso →",
