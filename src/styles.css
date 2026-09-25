@@ -104,9 +104,13 @@
 .card-kraft .text-muted-foreground {
   color: var(--ink-soft);
 }
+.card-kraft {
+  background: rgba(245, 242, 237, 0.72);
+  border-color: rgba(33, 33, 33, 0.08);
+}
 [data-theme="dark"] .card-kraft {
   background: rgba(245, 242, 237, 0.05);
-  border: 1px solid rgba(245, 242, 237, 0.08);
+  border-color: rgba(245, 242, 237, 0.08);
   --line: rgba(245, 242, 237, 0.08);
 }
 
