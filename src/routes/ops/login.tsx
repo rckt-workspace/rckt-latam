@@ -45,7 +45,8 @@ function LoginPage() {
   useEffect(() => {
     try {
       const theme = localStorage.getItem("rckt-theme");
-      if (theme === "light" || theme === "dark") document.documentElement.setAttribute("data-theme", theme);
+      if (theme === "light" || theme === "dark")
+        document.documentElement.setAttribute("data-theme", theme);
     } catch {
       // Keep the rendered theme when browser storage is unavailable.
     }
@@ -92,9 +93,7 @@ function LoginPage() {
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="panel-login-kicker text-sm uppercase font-semibold mb-2">
-            RCKT
-          </div>
+          <div className="panel-login-kicker text-sm uppercase font-semibold mb-2">RCKT</div>
           <h1 className="text-3xl font-bold text-foreground mb-2">AI CONTROL CENTER</h1>
           <p className="text-sm text-muted-foreground">Acceso administrativo</p>
         </div>

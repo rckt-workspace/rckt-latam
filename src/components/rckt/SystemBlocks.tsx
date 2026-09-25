@@ -1,16 +1,39 @@
 import type { CSSProperties, ReactNode } from "react";
 
-export type Capability = { titulo: string; detalle: string; href?: string; linkLabel?: string; icon?: ReactNode };
+export type Capability = {
+  titulo: string;
+  detalle: string;
+  href?: string;
+  linkLabel?: string;
+  icon?: ReactNode;
+};
 
-export function CapabilityCards({ items, compact = false }: { items: Capability[]; compact?: boolean }) {
+export function CapabilityCards({
+  items,
+  compact = false,
+}: {
+  items: Capability[];
+  compact?: boolean;
+}) {
   return (
     <div className={`cap-grid${compact ? " cap-grid--compact" : ""}`}>
       {items.map((item, index) => (
         <article className="cap-card" key={item.titulo} style={{ "--i": index } as CSSProperties}>
-          <div className="cap-card__top"><span className="cap-card__num">{String(index + 1).padStart(2, "0")}</span>{item.icon ? <span className="cap-card__icon" aria-hidden="true">{item.icon}</span> : null}</div>
+          <div className="cap-card__top">
+            <span className="cap-card__num">{String(index + 1).padStart(2, "0")}</span>
+            {item.icon ? (
+              <span className="cap-card__icon" aria-hidden="true">
+                {item.icon}
+              </span>
+            ) : null}
+          </div>
           <h3 className="cap-card__title">{item.titulo}</h3>
           <p className="cap-card__text">{item.detalle}</p>
-          {item.href ? <a className="cap-card__link" href={item.href}>{item.linkLabel ?? "Ver sistema →"}</a> : null}
+          {item.href ? (
+            <a className="cap-card__link" href={item.href}>
+              {item.linkLabel ?? "Ver sistema →"}
+            </a>
+          ) : null}
         </article>
       ))}
     </div>

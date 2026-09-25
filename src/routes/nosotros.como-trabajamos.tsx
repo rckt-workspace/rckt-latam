@@ -76,18 +76,42 @@ function ComoTrabajamosPage() {
       <main id="top">
         <SystemPageHero
           label="Nosotros"
-          title={<>Cómo <em>trabajamos</em>.</>}
+          title={
+            <>
+              Cómo <em>trabajamos</em>.
+            </>
+          }
           descriptor="Tres modalidades, una base común y una escalera de cuenta que no se salta pasos."
           ctaLabel="Revisar mi proceso comercial →"
         />
-        <SystemSection id="modalidades" num="01." label="Tres modalidades" title="Tres modalidades.">
-          <CapabilityCards items={modalidades.map(([, titulo, detalle]) => ({ titulo, detalle }))} />
+        <SystemSection
+          id="modalidades"
+          num="01."
+          label="Tres modalidades"
+          title="Tres modalidades."
+        >
+          <CapabilityCards
+            items={modalidades.map(([, titulo, detalle]) => ({ titulo, detalle }))}
+          />
         </SystemSection>
-        <SystemSection id="base-comun" num="02." label="Base común" title="Lo que hacemos siempre, en toda cuenta.">
+        <SystemSection
+          id="base-comun"
+          num="02."
+          label="Base común"
+          title="Lo que hacemos siempre, en toda cuenta."
+        >
           <RuleList items={[...base]} />
         </SystemSection>
-        <SystemSection id="escalera" num="03." label="Escalera de cuenta" title="Una escalera de cuenta que no se salta pasos.">
-          <AcceptanceSteps plazo="Escalera de cuenta" items={escalera.map(([, label, texto]) => ({ label, texto }))} />
+        <SystemSection
+          id="escalera"
+          num="03."
+          label="Escalera de cuenta"
+          title="Una escalera de cuenta que no se salta pasos."
+        >
+          <AcceptanceSteps
+            plazo="Escalera de cuenta"
+            items={escalera.map(([, label, texto]) => ({ label, texto }))}
+          />
         </SystemSection>
         <SystemFinalCta />
       </main>

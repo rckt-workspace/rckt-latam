@@ -12,7 +12,8 @@ export function useInView<T extends HTMLElement = HTMLDivElement>(
   const ref = useRef<T | null>(null);
   const [inView, setInView] = useState(false);
   const threshold = typeof options === "number" ? options : (options.threshold ?? 0.15);
-  const rootMargin = typeof options === "number" ? "0px 0px -5% 0px" : (options.rootMargin ?? "0px 0px -5% 0px");
+  const rootMargin =
+    typeof options === "number" ? "0px 0px -5% 0px" : (options.rootMargin ?? "0px 0px -5% 0px");
   const fallbackMs = typeof options === "number" ? undefined : options.fallbackMs;
 
   useEffect(() => {

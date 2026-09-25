@@ -49,7 +49,6 @@ export function SiteHeader() {
   );
 }
 
-
 export function SiteFooter() {
   return (
     <footer className="section-deep">
@@ -61,7 +60,9 @@ export function SiteFooter() {
             </a>
             <p>Menos ruido, más crecimiento.</p>
             <h5>Correo</h5>
-            <a className="footer-contact" href="mailto:hola@rckt.lat">hola@rckt.lat</a>
+            <a className="footer-contact" href="mailto:hola@rckt.lat">
+              hola@rckt.lat
+            </a>
           </div>
           <div className="footer-col">
             <h5>Navegar</h5>
@@ -198,7 +199,10 @@ export function useSiteMotion(deps: unknown[] = []) {
     const currentPath = window.location.pathname.replace(/\/$/, "") || "/";
     links?.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((link) => {
       const href = new URL(link.href, window.location.origin).pathname.replace(/\/$/, "") || "/";
-      const active = href === "/" ? currentPath === "/" : currentPath === href || currentPath.startsWith(`${href}/`);
+      const active =
+        href === "/"
+          ? currentPath === "/"
+          : currentPath === href || currentPath.startsWith(`${href}/`);
       link.classList.toggle("is-active", active);
       if (active) link.setAttribute("aria-current", "page");
       else link.removeAttribute("aria-current");

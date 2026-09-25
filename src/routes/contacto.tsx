@@ -50,7 +50,11 @@ function Contacto() {
       <main id="top">
         <SystemPageHero
           label="Contacto"
-          title={<>Cuéntanos cómo está hoy tu <em>operación.</em></>}
+          title={
+            <>
+              Cuéntanos cómo está hoy tu <em>operación.</em>
+            </>
+          }
           descriptor="Formulario o WhatsApp — lo que prefieras, llega al mismo lugar."
           promise="Con este contexto preparamos la primera conversación con datos reales."
           ctaLabel="Ir al formulario →"
@@ -79,7 +83,9 @@ function Contacto() {
 
             <aside className="contacto-channels">
               <div className="contacto-channels__sticky">
-                <h2>Otras formas de hablar <em>con nosotros.</em></h2>
+                <h2>
+                  Otras formas de hablar <em>con nosotros.</em>
+                </h2>
 
                 <div className="contacto-channel-list">
                   <div className="contacto-channel">

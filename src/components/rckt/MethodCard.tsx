@@ -1,6 +1,12 @@
 export type MethodField = { k: string; v: string };
 
-export default function MethodCard({ fields, className = "" }: { fields: MethodField[]; className?: string }) {
+export default function MethodCard({
+  fields,
+  className = "",
+}: {
+  fields: MethodField[];
+  className?: string;
+}) {
   return (
     <div className={`ficha-metodo ${className}`}>
       <span className="label-orange">Ficha del método · RCKT LATAM</span>

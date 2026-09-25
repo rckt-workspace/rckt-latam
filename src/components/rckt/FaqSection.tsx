@@ -33,10 +33,19 @@ export default function FaqSection({ items }: { items: FaqItem[] }) {
             const panel = `${baseId}-panel-${index}`;
             return (
               <div className="system-faq__item" key={item.question}>
-                <button id={trigger} type="button" aria-expanded={open} aria-controls={panel} onClick={() => setOpenIndex(open ? null : index)}>
-                  <span>{item.question}</span><span aria-hidden="true">{open ? "−" : "+"}</span>
+                <button
+                  id={trigger}
+                  type="button"
+                  aria-expanded={open}
+                  aria-controls={panel}
+                  onClick={() => setOpenIndex(open ? null : index)}
+                >
+                  <span>{item.question}</span>
+                  <span aria-hidden="true">{open ? "−" : "+"}</span>
                 </button>
-                <div id={panel} role="region" aria-labelledby={trigger} hidden={!open}><p>{item.answer}</p></div>
+                <div id={panel} role="region" aria-labelledby={trigger} hidden={!open}>
+                  <p>{item.answer}</p>
+                </div>
               </div>
             );
           })}

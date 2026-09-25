@@ -115,10 +115,7 @@ type NodeProcess = {
 };
 const nodeProcess = (globalThis as { process?: NodeProcess }).process;
 const ABORT_GUARD = Symbol.for("rckt.abortGuard");
-if (
-  nodeProcess?.on &&
-  !(globalThis as Record<symbol, unknown>)[ABORT_GUARD]
-) {
+if (nodeProcess?.on && !(globalThis as Record<symbol, unknown>)[ABORT_GUARD]) {
   (globalThis as Record<symbol, unknown>)[ABORT_GUARD] = true;
   nodeProcess.on("unhandledRejection", (reason) => {
     if (isRequestAbort(reason)) return;

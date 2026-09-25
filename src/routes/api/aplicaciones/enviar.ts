@@ -34,15 +34,10 @@ export const Route = createFileRoute("/api/aplicaciones/enviar")({
 
           // Límite aproximado para toda la solicitud.
           // El CV individual se valida nuevamente más abajo con máximo 10 MB.
-          const contentLength = Number(
-            request.headers.get("content-length") ?? 0,
-          );
+          const contentLength = Number(request.headers.get("content-length") ?? 0);
 
           if (contentLength > 15_000_000) {
-            return Response.json(
-              { error: "Solicitud demasiado grande" },
-              { status: 413 },
-            );
+            return Response.json({ error: "Solicitud demasiado grande" }, { status: 413 });
           }
 
           // 2. Parsear FormData
@@ -51,10 +46,7 @@ export const Route = createFileRoute("/api/aplicaciones/enviar")({
           try {
             formData = await request.formData();
           } catch {
-            return Response.json(
-              { error: "Formulario inválido" },
-              { status: 400 },
-            );
+            return Response.json({ error: "Formulario inválido" }, { status: 400 });
           }
 
           // 3. Extraer campos
@@ -100,17 +92,11 @@ export const Route = createFileRoute("/api/aplicaciones/enviar")({
 
           // 6. Validar archivo CV
           if (!(cvFile instanceof File)) {
-            return Response.json(
-              { error: "Archivo CV requerido" },
-              { status: 400 },
-            );
+            return Response.json({ error: "Archivo CV requerido" }, { status: 400 });
           }
 
           if (cvFile.size <= 0) {
-            return Response.json(
-              { error: "El archivo CV está vacío" },
-              { status: 400 },
-            );
+            return Response.json({ error: "El archivo CV está vacío" }, { status: 400 });
           }
 
           const maxCvBytes = 10 * 1024 * 1024;
@@ -120,9 +106,7 @@ export const Route = createFileRoute("/api/aplicaciones/enviar")({
 
             return Response.json(
               {
-                error: `El CV pesa ${cvMB.toFixed(
-                  1,
-                )} MB. El máximo permitido es 10 MB.`,
+                error: `El CV pesa ${cvMB.toFixed(1)} MB. El máximo permitido es 10 MB.`,
               },
               { status: 413 },
             );
@@ -136,31 +120,25 @@ export const Route = createFileRoute("/api/aplicaciones/enviar")({
           }
 
           // Importar cliente privilegiado únicamente en servidor.
-          const { supabaseAdmin: typedSupabaseAdmin } = await import(
-            "@/integrations/supabase/client.server"
-          )
+          const { supabaseAdmin: typedSupabaseAdmin } =
+            await import("@/integrations/supabase/client.server");
           // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
           const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
 
           // 7. Validar vacante si viene vacante_id
           if (parseResult.data.vacante_id) {
-            const { data: vacante, error: vacanteError } =
-              await supabaseAdmin
-                .from("vacantes")
-                .select("id, estado")
-                .eq("id", parseResult.data.vacante_id)
-                .maybeSingle();
+            const { data: vacante, error: vacanteError } = await supabaseAdmin
+              .from("vacantes")
+              .select("id, estado")
+              .eq("id", parseResult.data.vacante_id)
+              .maybeSingle();
 
             if (vacanteError) {
-              console.error(
-                "[POSTULACION] Error validating vacancy:",
-                vacanteError,
-              );
+              console.error("[POSTULACION] Error validating vacancy:", vacanteError);
 
               return Response.json(
                 {
-                  error:
-                    "No pudimos validar la vacante. Intenta de nuevo más tarde.",
+                  error: "No pudimos validar la vacante. Intenta de nuevo más tarde.",
                 },
                 { status: 500 },
               );
@@ -174,10 +152,7 @@ export const Route = createFileRoute("/api/aplicaciones/enviar")({
             }
 
             if (vacante.estado !== "activa") {
-              return Response.json(
-                { error: "La vacante ya no está disponible" },
-                { status: 409 },
-              );
+              return Response.json({ error: "La vacante ya no está disponible" }, { status: 409 });
             }
           }
 
@@ -195,59 +170,43 @@ export const Route = createFileRoute("/api/aplicaciones/enviar")({
             });
 
           if (uploadError) {
-            console.error(
-              "[POSTULACION] CV upload error:",
-              uploadError,
-            );
+            console.error("[POSTULACION] CV upload error:", uploadError);
 
             return Response.json(
               {
-                error:
-                  "No pudimos guardar tu CV. Intenta de nuevo más tarde.",
+                error: "No pudimos guardar tu CV. Intenta de nuevo más tarde.",
               },
               { status: 500 },
             );
           }
 
           // 10. Insertar postulación
-          const { error: insertError } = await supabaseAdmin
-            .from("postulaciones")
-            .insert({
-              vacante_id: parseResult.data.vacante_id || null,
-              tipo: parseResult.data.tipo,
-              nombre: parseResult.data.nombre,
-              email: parseResult.data.email,
-              telefono: parseResult.data.telefono || null,
-              portafolio_url: parseResult.data.portafolio || null,
-              mensaje: parseResult.data.mensaje || null,
-              cv_path: cvPath,
-              source: "web",
-              consent_at: new Date().toISOString(),
-            });
+          const { error: insertError } = await supabaseAdmin.from("postulaciones").insert({
+            vacante_id: parseResult.data.vacante_id || null,
+            tipo: parseResult.data.tipo,
+            nombre: parseResult.data.nombre,
+            email: parseResult.data.email,
+            telefono: parseResult.data.telefono || null,
+            portafolio_url: parseResult.data.portafolio || null,
+            mensaje: parseResult.data.mensaje || null,
+            cv_path: cvPath,
+            source: "web",
+            consent_at: new Date().toISOString(),
+          });
 
           if (insertError) {
-            console.error(
-              "[POSTULACION] Insert error:",
-              insertError,
-            );
+            console.error("[POSTULACION] Insert error:", insertError);
 
             // 11. Rollback del archivo si falla el INSERT
-            const { error: deleteError } =
-              await supabaseAdmin.storage
-                .from("cvs")
-                .remove([cvPath]);
+            const { error: deleteError } = await supabaseAdmin.storage.from("cvs").remove([cvPath]);
 
             if (deleteError) {
-              console.error(
-                "[POSTULACION] Cleanup failed:",
-                deleteError,
-              );
+              console.error("[POSTULACION] Cleanup failed:", deleteError);
             }
 
             return Response.json(
               {
-                error:
-                  "No pudimos procesar tu solicitud. Intenta de nuevo más tarde.",
+                error: "No pudimos procesar tu solicitud. Intenta de nuevo más tarde.",
               },
               { status: 500 },
             );
@@ -264,10 +223,7 @@ export const Route = createFileRoute("/api/aplicaciones/enviar")({
         } catch (err) {
           console.error("[POSTULACION] Server error:", err);
 
-          return Response.json(
-            { error: "Error interno del servidor" },
-            { status: 500 },
-          );
+          return Response.json({ error: "Error interno del servidor" }, { status: 500 });
         }
       },
     },

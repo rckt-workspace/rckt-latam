@@ -15,10 +15,11 @@ export const Route = createFileRoute("/api/admin/people/blog")({
           return Response.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-const { supabaseAdmin: typedSupabaseAdmin } = await import("@/integrations/supabase/client.server");
+        const { supabaseAdmin: typedSupabaseAdmin } =
+          await import("@/integrations/supabase/client.server");
 
-// Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
-const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
+        // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
+        const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
         try {
           // Get all posts with category details (admin can see all statuses)
           const { data: posts, error: postsError } = await supabaseAdmin
@@ -28,7 +29,7 @@ const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
                category_id, author_name, tags, status, featured,
                published_at, seo_title, seo_description,
                created_at, updated_at,
-               blog_categories!inner(id, name, slug)`
+               blog_categories!inner(id, name, slug)`,
             )
             .order("published_at", { ascending: false });
 
@@ -64,7 +65,8 @@ const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
           return Response.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        const { supabaseAdmin: typedSupabaseAdmin } = await import("@/integrations/supabase/client.server")
+        const { supabaseAdmin: typedSupabaseAdmin } =
+          await import("@/integrations/supabase/client.server");
         // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
         const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
 
@@ -89,7 +91,7 @@ const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
           if (!slug || !title || !content) {
             return Response.json(
               { error: "slug, title, and content are required" },
-              { status: 400 }
+              { status: 400 },
             );
           }
 
@@ -111,7 +113,7 @@ const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
                 console.error("[blog POST] Category not found:", category);
                 return Response.json(
                   { error: `Category "${category}" not found` },
-                  { status: 400 }
+                  { status: 400 },
                 );
               }
               categoryId = cat.id;
@@ -144,7 +146,7 @@ const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
                category_id, author_name, tags, status, featured,
                published_at, seo_title, seo_description,
                created_at, updated_at,
-               blog_categories!inner(id, name, slug)`
+               blog_categories!inner(id, name, slug)`,
             )
             .single();
 
@@ -166,7 +168,8 @@ const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
           return Response.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        const { supabaseAdmin: typedSupabaseAdmin } = await import("@/integrations/supabase/client.server")
+        const { supabaseAdmin: typedSupabaseAdmin } =
+          await import("@/integrations/supabase/client.server");
         // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
         const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
 
@@ -209,7 +212,7 @@ const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
                 console.error("[blog PUT] Category not found:", category);
                 return Response.json(
                   { error: `Category "${category}" not found` },
-                  { status: 400 }
+                  { status: 400 },
                 );
               }
               categoryId = cat.id;
@@ -243,7 +246,7 @@ const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
                category_id, author_name, tags, status, featured,
                published_at, seo_title, seo_description,
                created_at, updated_at,
-               blog_categories!inner(id, name, slug)`
+               blog_categories!inner(id, name, slug)`,
             )
             .single();
 
@@ -265,7 +268,8 @@ const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
           return Response.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        const { supabaseAdmin: typedSupabaseAdmin } = await import("@/integrations/supabase/client.server")
+        const { supabaseAdmin: typedSupabaseAdmin } =
+          await import("@/integrations/supabase/client.server");
         // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
         const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
 

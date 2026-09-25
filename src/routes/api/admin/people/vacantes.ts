@@ -15,7 +15,8 @@ export const Route = createFileRoute("/api/admin/people/vacantes")({
           return Response.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        const { supabaseAdmin: typedSupabaseAdmin } = await import("@/integrations/supabase/client.server")
+        const { supabaseAdmin: typedSupabaseAdmin } =
+          await import("@/integrations/supabase/client.server");
         // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
         const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
 
@@ -39,7 +40,8 @@ export const Route = createFileRoute("/api/admin/people/vacantes")({
           return Response.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        const { supabaseAdmin: typedSupabaseAdmin } = await import("@/integrations/supabase/client.server")
+        const { supabaseAdmin: typedSupabaseAdmin } =
+          await import("@/integrations/supabase/client.server");
         // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
         const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
 
@@ -75,14 +77,14 @@ export const Route = createFileRoute("/api/admin/people/vacantes")({
           return Response.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        const { supabaseAdmin: typedSupabaseAdmin } = await import("@/integrations/supabase/client.server")
+        const { supabaseAdmin: typedSupabaseAdmin } =
+          await import("@/integrations/supabase/client.server");
         // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
         const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
 
         try {
           const body = await request.json();
-          const { id, titulo, area, modalidad, ubicacion, descripcion, requisitos, estado } =
-            body;
+          const { id, titulo, area, modalidad, ubicacion, descripcion, requisitos, estado } = body;
 
           if (!id) {
             return Response.json({ error: "ID is required" }, { status: 400 });
@@ -116,7 +118,8 @@ export const Route = createFileRoute("/api/admin/people/vacantes")({
           return Response.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        const { supabaseAdmin: typedSupabaseAdmin } = await import("@/integrations/supabase/client.server")
+        const { supabaseAdmin: typedSupabaseAdmin } =
+          await import("@/integrations/supabase/client.server");
         // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
         const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
 

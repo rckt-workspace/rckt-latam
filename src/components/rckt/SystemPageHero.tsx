@@ -35,13 +35,27 @@ export default function SystemPageHero({
       </div>
       <SiteHeader />
       <div className="container system-page-hero__inner">
-        <div className="system-page-hero__kicker"><span />{label}</div>
+        <div className="system-page-hero__kicker">
+          <span />
+          {label}
+        </div>
         <h1>{title}</h1>
         {descriptor ? <p className="system-page-hero__descriptor">{descriptor}</p> : null}
-        {context ?? promise ? <p className="system-page-hero__promise hero-context-para">{context ?? promise}</p> : null}
+        {(context ?? promise) ? (
+          <p className="system-page-hero__promise hero-context-para">{context ?? promise}</p>
+        ) : null}
         {extra}
-        {quote ? <figure className="system-page-hero__quote">{quoteLabel ? <figcaption className="label-orange">{quoteLabel}</figcaption> : null}<p className="hero-context-para">{quote}</p></figure> : null}
-        {ctaLabel ? <a className="btn btn-primary" href={ctaHref}>{ctaLabel}</a> : null}
+        {quote ? (
+          <figure className="system-page-hero__quote">
+            {quoteLabel ? <figcaption className="label-orange">{quoteLabel}</figcaption> : null}
+            <p className="hero-context-para">{quote}</p>
+          </figure>
+        ) : null}
+        {ctaLabel ? (
+          <a className="btn btn-primary" href={ctaHref}>
+            {ctaLabel}
+          </a>
+        ) : null}
       </div>
     </section>
   );

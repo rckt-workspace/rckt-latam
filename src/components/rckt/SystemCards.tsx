@@ -5,7 +5,11 @@ import demandImg from "@/assets/sistema-demand.jpg";
 import salesFlowImg from "@/assets/sistema-sales-flow.jpg";
 import operationsImg from "@/assets/sistema-operations.jpg";
 
-const SYSTEM_IMAGES = { demand: demandImg, sales: salesFlowImg, operations: operationsImg } as const;
+const SYSTEM_IMAGES = {
+  demand: demandImg,
+  sales: salesFlowImg,
+  operations: operationsImg,
+} as const;
 
 export type SystemCardData = {
   badge: string;
@@ -29,12 +33,13 @@ export function SystemCards({ systems }: { systems: SystemCardData[] }) {
       return;
     }
     const observer = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-in");
-          observer.unobserve(entry.target);
-        }
-      }),
+      (entries) =>
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in");
+            observer.unobserve(entry.target);
+          }
+        }),
       { threshold: 0.15 },
     );
     cards.forEach((card) => observer.observe(card));
@@ -51,10 +56,24 @@ export function SystemCards({ systems }: { systems: SystemCardData[] }) {
           style={{ "--d": `${index * 100}ms` } as CSSProperties}
         >
           <div className="sys-card__head">
-            <img src={SYSTEM_IMAGES[system.art]} alt="" aria-hidden="true" loading="lazy" className="sys-card__art" />
+            <img
+              src={SYSTEM_IMAGES[system.art]}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              className="sys-card__art"
+            />
             <span className="sys-card__badge">{system.badge}</span>
             <span className="sys-card__arrow" aria-hidden="true">
-              <svg viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              <svg viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M2 8h11M9 4l4 4-4 4"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </span>
             <span className="sys-card__name">{system.shortName}</span>
           </div>
@@ -62,7 +81,9 @@ export function SystemCards({ systems }: { systems: SystemCardData[] }) {
             <span className="sys-card__kicker">{system.kicker}</span>
             <h3>{system.title}</h3>
             <p>{system.desc}</p>
-            <span className="sys-card__more">Ver sistema <span aria-hidden="true">→</span></span>
+            <span className="sys-card__more">
+              Ver sistema <span aria-hidden="true">→</span>
+            </span>
           </div>
         </Link>
       ))}

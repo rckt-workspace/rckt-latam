@@ -18,7 +18,9 @@ export function SectionHeader({
         <div className="rule" />
         <span className="label-orange">{label}</span>
       </div>
-      <div className={`home-section-header__copy ${phrase ? "home-section-header__copy--split" : ""}`}>
+      <div
+        className={`home-section-header__copy ${phrase ? "home-section-header__copy--split" : ""}`}
+      >
         <h2>{title}</h2>
         {phrase ? <p>{phrase}</p> : null}
       </div>

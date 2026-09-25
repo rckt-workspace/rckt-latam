@@ -14,10 +14,7 @@ type BlobSpec = {
 };
 
 const layouts: Record<1 | 2 | 3, BlobSpec[][]> = {
-  1: [
-    [{ type: "strong", x: 14, y: 52 }],
-    [{ type: "soft", x: 86, y: 48 }],
-  ],
+  1: [[{ type: "strong", x: 14, y: 52 }], [{ type: "soft", x: 86, y: 48 }]],
   2: [
     [
       { type: "soft", x: 14, y: 28 },
@@ -68,12 +65,15 @@ const hasOnlyOrangeContent = (section: HTMLElement) => {
     const copy = section.cloneNode(true) as HTMLElement;
     copy.querySelectorAll(`.${BLOB_CLASS}, .band--orange`).forEach((element) => element.remove());
     const remainingText = copy.textContent?.replace(/\s+/g, " ").trim() ?? "";
-    const remainingContent = copy.querySelector("img, picture, video, form, article, ul, ol, table");
+    const remainingContent = copy.querySelector(
+      "img, picture, video, form, article, ul, ol, table",
+    );
     if (remainingText.length === 0 && remainingContent === null) return true;
   }
 
   const contentChildren = Array.from(section.children).filter(
-    (child) => !child.classList.contains(BLOB_CLASS) && child.getAttribute("aria-hidden") !== "true",
+    (child) =>
+      !child.classList.contains(BLOB_CLASS) && child.getAttribute("aria-hidden") !== "true",
   ) as HTMLElement[];
 
   if (contentChildren.length !== 1) return false;
@@ -83,13 +83,18 @@ const hasOnlyOrangeContent = (section: HTMLElement) => {
   const childRect = onlyChild.getBoundingClientRect();
   const background = `${onlyChild.style.background} ${window.getComputedStyle(onlyChild).backgroundImage}`;
   const isOrange = background.includes("252, 92, 31") || background.includes("#fc5c1f");
-  const coversSection = childRect.width >= sectionRect.width * 0.9 && childRect.height >= sectionRect.height * 0.9;
+  const coversSection =
+    childRect.width >= sectionRect.width * 0.9 && childRect.height >= sectionRect.height * 0.9;
   return isOrange && coversSection;
 };
 
 const isExcluded = (section: HTMLElement) =>
-  section.matches(".system-page-hero, #top, .general-cta, .band--orange, .hero, .subpage-hero, .cta-final") ||
-  section.querySelector(":scope > .hero-photo, :scope > .subpage-hero-photo, :scope > .cta-final-photo") !== null ||
+  section.matches(
+    ".system-page-hero, #top, .general-cta, .band--orange, .hero, .subpage-hero, .cta-final",
+  ) ||
+  section.querySelector(
+    ":scope > .hero-photo, :scope > .subpage-hero-photo, :scope > .cta-final-photo",
+  ) !== null ||
   hasOnlyOrangeContent(section) ||
   !hasLightSurface(section);
 
@@ -102,7 +107,9 @@ const isTextBehindPoint = (section: HTMLElement, x: number, y: number) => {
   return Array.from(textBlocks).some((block) => {
     if (block.tagName === "P" && (block.textContent?.trim().length ?? 0) < 100) return false;
     const rect = block.getBoundingClientRect();
-    return pointX >= rect.left && pointX <= rect.right && pointY >= rect.top && pointY <= rect.bottom;
+    return (
+      pointX >= rect.left && pointX <= rect.right && pointY >= rect.top && pointY <= rect.bottom
+    );
   });
 };
 
@@ -153,7 +160,11 @@ export default function GlobalSectionBlobs() {
             blob.style.setProperty("--blob-x", isEdge ? `${edgeX}px` : `${spec.x}%`);
             blob.style.setProperty("--blob-y", `${spec.y}%`);
 
-            if (spec.interior && spec.type === "strong" && isTextBehindPoint(section, spec.x, spec.y)) {
+            if (
+              spec.interior &&
+              spec.type === "strong" &&
+              isTextBehindPoint(section, spec.x, spec.y)
+            ) {
               blob.classList.add(`${BLOB_CLASS}--muted`);
             }
 

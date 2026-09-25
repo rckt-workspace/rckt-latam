@@ -168,9 +168,7 @@ export class SupabaseBlogRepository implements BlogRepository {
     const otherPosts = posts.filter((p) => p.id !== post.id);
 
     const scored = otherPosts.map((candidate) => {
-      const sharedTags = candidate.tags.filter((tag) =>
-        post.tags.includes(tag)
-      ).length;
+      const sharedTags = candidate.tags.filter((tag) => post.tags.includes(tag)).length;
       const sameCategory = candidate.category === post.category ? 3 : 0;
       return { candidate, score: sameCategory + sharedTags };
     });
@@ -179,8 +177,7 @@ export class SupabaseBlogRepository implements BlogRepository {
       .sort((a, b) => {
         if (b.score !== a.score) return b.score - a.score;
         return (
-          new Date(b.candidate.publishedAt).getTime() -
-          new Date(a.candidate.publishedAt).getTime()
+          new Date(b.candidate.publishedAt).getTime() - new Date(a.candidate.publishedAt).getTime()
         );
       })
       .slice(0, limit)
