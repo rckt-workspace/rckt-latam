@@ -39,10 +39,10 @@ const methodFields: MethodField[] = [
   { k: "Limitaciones", v: "No garantizamos ventas, porque no controlamos tu cierre, tu stock ni tus precios. Garantizamos que en 30 días verás tu embudo completo con datos reales." },
 ];
 const FAQS: FaqItem[] = [
-  { question: "¿Por qué no se mide solo el ROAS?", answer: "Porque un ROAS alto en la plataforma puede convivir con un margen bajo en el banco. Medimos por margen de contribución tras adquisición." },
-  { question: "¿Qué sistema necesita mi tienda?", answer: "Demand System, con Sales Flow si WhatsApp pesa en tu conversión. Lo decidimos con datos en el Revenue Diagnostic." },
-  { question: "Vendo también por WhatsApp, ¿eso se mide?", answer: "Sí. Si WhatsApp entra en tu proceso de venta, se integra al embudo con Sales Flow para que esas ventas también se atribuyan." },
-  { question: "¿Cuál es el compromiso mínimo?", answer: "3 meses de Demand System, con la pauta pagada aparte en tus propias cuentas." },
+  { question: "¿El ROAS no es suficiente?", answer: "No. La plataforma puede mostrar un ROAS alto mientras el margen en el banco sigue bajo; por eso medimos el margen que queda después de pagar la adquisición." },
+  { question: "¿Qué necesita mi tienda?", answer: "Demand System, y Sales Flow si buena parte de la venta pasa por WhatsApp. El Revenue Diagnostic lo define con datos." },
+  { question: "¿Y las ventas que cierro por WhatsApp?", answer: "También se miden: con Sales Flow entran al embudo y se atribuyen a la campaña que las trajo." },
+  { question: "¿Cuál es el compromiso mínimo?", answer: "3 meses de Demand System; la pauta va aparte, en tus cuentas." },
   { question: "Mis anuncios ya no rinden como antes.", answer: "La creatividad se agota: en Demand System producimos y probamos piezas nuevas cada semana." },
 ];
 export const Route = createFileRoute("/soluciones/ecommerce-rentable")({ staticData: { sitemap: true }, head: () => ({ meta: [
