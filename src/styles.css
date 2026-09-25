@@ -5887,6 +5887,7 @@ body,
 .solution-system-card { position: sticky; top: 120px; padding: 32px; border: 1px solid color-mix(in srgb,var(--naranja) 18%,transparent); border-radius: 8px; background: color-mix(in srgb,var(--papel-fija) 68%,transparent); }
 .solution-system-card__name { margin: 12px 0 20px; color: var(--carbon); font-family: "Newsreader",serif; font-size: 38px; font-style: italic; line-height: 1; }
 .solution-system-card > p:not(.solution-system-card__name) { color: color-mix(in srgb,var(--carbon) 72%,transparent); line-height: 1.6; }
+.solution-system-card > .solution-system-card__meta { margin: 24px 0 0; padding-top: 24px; border-top: 1px solid var(--line); color: color-mix(in srgb,var(--carbon) 58%,transparent); font-size: 13px; line-height: 1.5; }
 .solution-system-card .btn { margin-top: 26px; }
 .solution-cards { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
 .solution-card { display: flex; min-width: 0; flex-direction: column; overflow: hidden; border: 1px solid color-mix(in srgb,var(--naranja) 16%,transparent); border-radius: 8px; background: color-mix(in srgb,var(--papel-fija) 68%,transparent); }
