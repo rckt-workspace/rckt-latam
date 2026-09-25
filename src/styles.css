@@ -6746,8 +6746,8 @@ body,
 .nav-toggle.mobile-open .nav-toggle-line--bottom { transform: translateY(-5px) rotate(-45deg); }
 
 @media (max-width: 1100px) {
-  /* The mobile header participates in layout. Stack it above the hero content
-     instead of leaving both as adjacent items in the hero's flex row. */
+  /* Keep the mobile/tablet header viewport-fixed like desktop. It must not
+     become a flex item inside whichever hero happens to render SiteHeader. */
   .home-legacy-hero .hero {
     flex-direction: column;
     align-items: stretch;
@@ -6757,17 +6757,14 @@ body,
     width: 100%;
   }
   header {
-    position: relative;
-    inset: auto;
+    position: fixed;
+    inset: 12px 12px auto;
     z-index: 110;
-    width: 100%;
-    flex: 0 0 100%;
-    align-self: flex-start;
-    padding: 12px;
+    width: auto;
+    padding: 0;
   }
   header.scrolled {
-    position: sticky;
-    top: 0;
+    position: fixed;
   }
   header .container {
     width: 100%;
@@ -7134,6 +7131,9 @@ body,
 .combo-card--primary .rule-row { border-color:color-mix(in srgb,var(--papel-fija) 30%,transparent); }
 .rckt-site .combo-card .rule-list, [data-theme="dark"] .rckt-site .combo-card .rule-list { padding:0; border:0; background:transparent; box-shadow:none; }
 .rckt-site .combo-card--primary .rule-row__num, .rckt-site .combo-card--primary .rule-row__text { color:var(--papel-fija); }
+@media (max-width: 639px) {
+  .manifest-card > p { font-size: 19px; line-height: 1.55; }
+}
 
 /* --- Rediseño Cómo Trabajamos (estilo España) --- */
 .nos-sec {
