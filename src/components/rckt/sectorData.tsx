@@ -143,11 +143,11 @@ export const SECTORS: Record<string, SectorPageData> = {
       },
       {
         k: "Método de medición",
-        v: "Una sola fuente de verdad: pauta → prospecto → contacto → cita → asistencia → venta, con definiciones que firmas tú.",
+        v: "Una sola fuente de verdad: inversión → lead → MQL → SQL → reunión → oportunidad → venta → margen, con definiciones que firmas tú.",
       },
       {
         k: "Limitaciones",
-        v: "No garantizamos ventas ni asistencia, porque no controlamos la decisión del paciente ni la disponibilidad de agenda. Garantizamos visibilidad del recorrido y medición contra una línea base acordada.",
+        v: "No garantizamos ventas porque no controlamos tu cierre, tu stock ni tus precios. Garantizamos que en 30 días vas a ver tu embudo completo con datos reales.",
       },
     ],
     faqItems: SALUD_FAQS,
@@ -172,9 +172,9 @@ export const SECTORS: Record<string, SectorPageData> = {
       "Matrícula",
     ],
     funnelLeaks: [
-      { afterStage: 2, label: "Volumen sin calificación" },
-      { afterStage: 4, label: "Picos de temporada" },
-      { afterStage: 5, label: "Sin medición hasta la matrícula" },
+      { afterStage: 2, label: "El volumen tapa a los interesados" },
+      { afterStage: 4, label: "Seguimiento que se corta" },
+      { afterStage: 5, label: "La matrícula no vuelve a la pauta" },
     ],
     doloresDetalle: [
       {
@@ -190,11 +190,6 @@ export const SECTORS: Record<string, SectorPageData> = {
       {
         titulo: "La matrícula no vuelve a la pauta",
         descripcion: "Se mide la solicitud, no la matrícula, y las plataformas siguen buscando a quien pregunta.",
-        resuelve: "CRM de admisiones",
-      },
-      {
-        titulo: "Campañas sin matrícula",
-        descripcion: "Dificultad para medir qué campaña trae familias que sí matriculan.",
         resuelve: "Medición hasta la matrícula",
       },
     ],
@@ -282,15 +277,15 @@ export const SECTORS: Record<string, SectorPageData> = {
     sectorImageAlt: "Dos personas revisando un proyecto en obra",
     funnelStages: ["Pauta", "landing", "asesor", "visita", "cotización", "cierre"],
     funnelLeaks: [
-      { afterStage: 2, label: "Leads de baja calidad" },
-      { afterStage: 3, label: "Varios asesores, el mismo contacto" },
-      { afterStage: 5, label: "Cotizaciones manuales" },
-      { afterStage: 6, label: "Ciclos largos" },
+      { afterStage: 2, label: "Prospectos sin intención real" },
+      { afterStage: 3, label: "Dos asesores, el mismo prospecto" },
+      { afterStage: 5, label: "Cotizaciones que tardan días" },
+      { afterStage: 6, label: "Meses sin seguimiento" },
     ],
     doloresDetalle: [
       {
         titulo: "Prospectos sin intención real",
-        descripcion: "Muchos contactos sin cotización ni intención real de compra.",
+        descripcion: "Muchos contactos sin presupuesto ni intención real de compra.",
         resuelve: "Lead scoring",
       },
       {
@@ -341,7 +336,7 @@ export const SECTORS: Record<string, SectorPageData> = {
       { label: "Indicador principal", value: "Costo por visita realizada; ciclo de cierre" },
       {
         label: "Flujo actual",
-        value: "Anuncios → Landing → Asesor → Visita → Cotización → Cierre",
+        value: "Pauta → Landing → Asesor → Visita → Cotización → Cierre",
       },
     ],
     acceptanceSteps: PASOS_RE,
@@ -431,7 +426,7 @@ export const SECTORS: Record<string, SectorPageData> = {
       {
         titulo: "Cada cliente cuesta más",
         descripcion: "Cada cliente nuevo cuesta más que el del mes anterior.",
-        resuelve: "Medios optimizados por margen",
+        resuelve: "Pauta optimizada por margen",
       },
       {
         titulo: "Tráfico que no compra",
@@ -453,7 +448,7 @@ export const SECTORS: Record<string, SectorPageData> = {
     sistemaTexto: "Demand System, con Sales Flow si WhatsApp pesa en la conversión.",
     sistemaFilas: [
       { nombre: "Creative Performance", detalle: "Producción y testing creativo con IA, con iteración semanal" },
-      { nombre: "Medios por margen", detalle: "Meta, Google y PMax optimizados por margen, no solo por ROAS" },
+      { nombre: "Pauta por margen", detalle: "Meta, Google y PMax optimizados por margen, no solo por ROAS" },
       { nombre: "CRO", detalle: "Mejoras de conversión en la tienda, siempre con tracking conectado" },
       {
         nombre: "WhatsApp medido",
@@ -465,7 +460,7 @@ export const SECTORS: Record<string, SectorPageData> = {
       { label: "Sistema recomendado", value: "Demand System (+ Sales Flow si WhatsApp pesa)" },
       { label: "Componente que más pesa", value: "Creative Performance, CRO y atención con IA" },
       { label: "Indicador principal", value: "Margen de contribución tras adquisición" },
-      { label: "Flujo actual", value: "Anuncios → Tienda → Compra → Recompra" },
+      { label: "Flujo actual", value: "Pauta → Tienda → Compra → Recompra" },
     ],
     acceptanceSteps: PASOS_RE,
     primaryLink: { label: "Ver Demand System →", href: "/sistemas/demand-system" },
