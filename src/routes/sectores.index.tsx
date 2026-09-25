@@ -6,7 +6,7 @@ import GeneralCta from "@/components/rckt/GeneralCta";
 import { SectorError } from "@/components/rckt/SectorShortPage";
 import { SECTORS } from "@/components/rckt/sectorData";
 
-const SITE_URL = "https://rckt-latam.lovable.app";
+const SITE_URL = "https://rckt.lat";
 
 const CARDS = [
   ["01", "Salud, estética y odontología", "/sectores/salud-estetica-odontologia", "salud", "Revenue Engine"],

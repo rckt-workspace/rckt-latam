@@ -4,7 +4,7 @@ import { SectorError } from "@/components/rckt/SectorShortPage";
 import { SECTORS } from "@/components/rckt/sectorData";
 import { faqJsonLd } from "@/components/rckt/FaqSection";
 
-const SITE_URL = "https://rckt-latam.lovable.app";
+const SITE_URL = "https://rckt.lat";
 
 export const Route = createFileRoute("/sectores/salud-estetica-odontologia")({
   staticData: { sitemap: true },

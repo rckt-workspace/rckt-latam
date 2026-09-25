@@ -26,45 +26,23 @@ const PERIODO =
   "Revenue Diagnostic de 2 a 3 semanas; sistema operativo con fuente de verdad el día 30; revisión de línea base frente a resultado el día 90.";
 
 export const SALUD_FAQS = [
-  {
-    question: "¿Sirve para consultorios pequeños o solo para clínicas grandes?",
-    answer:
-      "Sirve para ambos. Lo que cambia es el alcance: en consultorios pequeños el foco está en respuesta y agenda; en clínicas grandes, además, en la coordinación entre asesoras y sedes.",
-  },
-  {
-    question: "¿Pueden integrarse con el software de agenda que ya uso?",
-    answer:
-      "Sí, siempre que permita integración o exportación de datos. En el diagnóstico revisamos tu agenda actual y definimos cómo conectarla a la fuente de verdad.",
-  },
-  {
-    question: "¿Cómo manejan datos sensibles de pacientes?",
-    answer:
-      "Con accesos restringidos, registro de quién ve qué y el mínimo dato necesario en cada sistema. La IA opera con reglas escritas y supervisión humana en lo clínico.",
-  },
+  { question: "¿Funciona si atendemos a los pacientes por WhatsApp?", answer: "Sí. Sales Flow conecta tus campañas, WhatsApp Business API y tu CRM para que cada paciente tenga respuesta, seguimiento y dueño." },
+  { question: "¿Cómo reducen las inasistencias?", answer: "Con recordatorios de cita y secuencias de seguimiento y recuperación dentro de Sales Flow." },
+  { question: "¿Cómo sé qué campaña me trae pacientes?", answer: "Cada paciente entra al CRM con su origen, y las etapas vuelven a Meta y Google como conversiones offline." },
+  { question: "¿Un agente de IA responde a mis pacientes?", answer: "Puede hacer la primera respuesta, la calificación, la agenda y las preguntas frecuentes, siempre con aprobación humana en las decisiones de venta." },
+  { question: "¿Qué indicadores miden?", answer: "Costo por paciente que compra y porcentaje de citas realizadas." },
 ];
 
 export const EDUCACION_FAQS = [
-  {
-    question: "¿Cómo manejan los picos de temporada de matrículas?",
-    answer:
-      "Con secuencias y reglas de respuesta preparadas antes del pico: priorización de prospectos, respuesta inmediata fuera de horario y seguimiento automático supervisado por el equipo.",
-  },
-  {
-    question: "¿Se integra con el sistema académico que ya usamos?",
-    answer:
-      "Sí, si permite integración o exportación. En el diagnóstico revisamos el sistema actual y definimos cómo conectar admisiones con la fuente de verdad.",
-  },
-  {
-    question: "¿Funciona para colegios, no solo universidades?",
-    answer:
-      "Sí. El ciclo cambia, pero la estructura es la misma: campaña, conversación, calificación, seguimiento y matrícula medida hasta el ingreso.",
-  },
+  { question: "¿Funciona si atendemos a los interesados por WhatsApp?", answer: "Sí. Sales Flow conecta tus campañas, WhatsApp Business API y tu CRM para que cada lead tenga respuesta, seguimiento y dueño." },
+  { question: "¿Cómo manejan los picos de temporada de matrículas?", answer: "Con secuencias de seguimiento por temporada dentro de Sales Flow, para que ninguna solicitud se quede sin respuesta en los picos." },
+  { question: "¿Qué indicadores se miden?", answer: "Costo por matrícula y la tasa de lead a matrícula." },
+  { question: "¿Un agente de IA responde a los interesados?", answer: "Puede hacer la primera respuesta, la calificación, la agenda y las preguntas frecuentes, siempre con aprobación humana en las decisiones de venta." },
+  { question: "¿Cuál es el compromiso mínimo?", answer: "6 meses de Revenue Engine, porque el sistema necesita un ciclo completo para demostrar." },
 ];
 
 export const SECTORS: Record<string, SectorPageData> = {
   salud: {
-    descriptor:
-      "Del clic al paciente que sí llega a la cita: cómo cerrar la fuga entre la campaña y la consulta.",
     variant: "full",
     label: "Salud, estética y odontología",
     title: (
@@ -72,13 +50,13 @@ export const SECTORS: Record<string, SectorPageData> = {
         Revenue Systems para salud, estética y <span className="hero-hand">odontología</span>
       </>
     ),
-    context: "Del clic al paciente que sí llega a la cita.",
+    context: "Clínicas y centros donde la venta pasa por WhatsApp, una asesora y una cita. El dinero se pierde entre la respuesta, la agenda y la inasistencia, y lo medimos por paciente que compra.",
     ctaLabel: CTA,
     sectorImage: salud,
     sectorImageAlt: "Especialista atendiendo a una paciente en una clínica",
     funnelStages: ["Meta/Google", "WhatsApp", "Asesora", "Cita", "Venta"],
     funnelLeaks: [
-      { afterStage: 2, label: "Respuesta lenta fuera de horario" },
+      { afterStage: 2, label: "Respuesta lenta" },
       { afterStage: 3, label: "Seguimiento inconsistente" },
       { afterStage: 4, label: "Inasistencia" },
       { afterStage: 5, label: "Sin saber qué campaña trajo al paciente" },
@@ -101,7 +79,7 @@ export const SECTORS: Record<string, SectorPageData> = {
       },
       {
         titulo: "Respuesta lenta",
-        descripcion: "Respuesta lenta a pacientes que preguntan por WhatsApp fuera de horario.",
+        descripcion: "La paciente escribe por WhatsApp y la respuesta llega cuando ya agendó cita en otra clínica.",
         resuelve: "Respuesta supervisada por WhatsApp",
       },
     ],
@@ -176,8 +154,6 @@ export const SECTORS: Record<string, SectorPageData> = {
     faqItems: SALUD_FAQS,
   },
   educacion: {
-    descriptor:
-      "Cómo convertir el volumen de prospectos en matrículas, sin perder calidad en el camino.",
     variant: "full",
     label: "Educación privada",
     title: (
@@ -185,7 +161,7 @@ export const SECTORS: Record<string, SectorPageData> = {
         Revenue Systems para educación <span className="hero-hand">privada</span>
       </>
     ),
-    context: "De la pauta de temporada de matrículas a la matrícula firmada.",
+    context: "Colegios, universidades, institutos y educación continua con picos de demanda en temporada de matrículas. Calificamos ese volumen y lo seguimos hasta la matrícula.",
     ctaLabel: CTA,
     sectorImage: educacion,
     sectorImageAlt: "Asesor conversando con un estudiante en una biblioteca",
@@ -262,36 +238,34 @@ export const SECTORS: Record<string, SectorPageData> = {
     methodFields: [
       {
         k: "Situación inicial",
-        v: "Volumen alto sin calificación, picos de temporada, seguimiento fragmentado y campañas medidas por prospecto en lugar de matrícula.",
+        v: "Volumen sin calificación, picos por temporada de matrículas y sin medición hasta la matrícula.",
       },
       { k: "Período", v: PERIODO },
       {
         k: "Alcance",
-        v: "Revenue Engine, con Sales Flow y secuencias ajustadas a cada temporada de matrículas.",
+        v: "Revenue Engine, con Sales Flow y secuencias por temporada como el componente que más pesa.",
       },
       { k: "Inversión", v: MEDICION_INV },
       {
         k: "Intervención",
-        v: "Campañas, WhatsApp o llamadas y CRM conectados; calificación, priorización y seguimiento de cada prospecto hasta la matrícula.",
+        v: "Respuesta y calificación de cada solicitud por WhatsApp o llamada, secuencias por temporada y cada matrícula conectada a la campaña que la trajo.",
       },
       {
         k: "Resultado",
-        v: "Costo por matrícula y conversión de prospecto a matrícula, frente a la línea base.",
+        v: "Costo por matrícula y tasa de lead a matrícula, frente a la línea base.",
       },
       {
         k: "Método de medición",
-        v: "Una sola fuente de verdad: pauta → prospecto → contacto → admisión → matrícula, con definiciones que firmas tú.",
+        v: "Una sola fuente de verdad: inversión → lead → MQL → SQL → reunión → oportunidad → venta → margen, con definiciones que firmas tú.",
       },
       {
         k: "Limitaciones",
-        v: "No garantizamos matrículas, porque no controlamos la decisión de la familia, la oferta académica ni los cupos. Garantizamos trazabilidad y medición contra una línea base acordada.",
+        v: "No garantizamos matrículas, porque no controlamos tu oferta académica, tus precios ni tu proceso de admisión. Garantizamos que en 30 días verás tu embudo completo con datos reales.",
       },
     ],
     faqItems: EDUCACION_FAQS,
   },
   construccion: {
-    descriptor:
-      "Cómo filtrar leads de baja calidad y acortar el ciclo entre el anuncio y la escritura.",
     variant: "short",
     label: "Construcción e inmobiliario",
     title: (
@@ -299,7 +273,7 @@ export const SECTORS: Record<string, SectorPageData> = {
         Revenue Systems para construcción e <span className="hero-hand">inmobiliario</span>
       </>
     ),
-    context: "Del anuncio a la escritura.",
+    context: "Constructoras e inmobiliarias con varios asesores, ciclos largos y cotizaciones hechas a mano. Ordenamos la captación y automatizamos lo repetitivo, medido por visita realizada.",
     ctaLabel: CTA,
     sectorImage: construccion,
     sectorImageAlt: "Dos personas revisando un proyecto en obra",
@@ -364,7 +338,6 @@ export const SECTORS: Record<string, SectorPageData> = {
     secondaryLink: { label: "Ver Operations System →", href: "/sistemas/operations-system" },
   },
   b2b: {
-    descriptor: "Cómo construir un pipeline que no dependa solo de referidos.",
     variant: "short",
     label: "Servicios B2B",
     title: (
@@ -372,7 +345,7 @@ export const SECTORS: Record<string, SectorPageData> = {
         Revenue Systems para servicios <span className="hero-hand">B2B</span>
       </>
     ),
-    context: "De la búsqueda al contrato firmado.",
+    context: "Firmas de servicios profesionales que dependen de referidos y de un pipeline corto. Captamos demanda en Google y LinkedIn y medimos por oportunidad aceptada por ventas, no por lead.",
     ctaLabel: CTA,
     sectorImage: b2b,
     sectorImageAlt: "Reunión de consultoría revisando indicadores",
@@ -424,7 +397,6 @@ export const SECTORS: Record<string, SectorPageData> = {
     secondaryLink: { label: "Ver Demand System →", href: "/sistemas/demand-system" },
   },
   ecommerce: {
-    descriptor: "Cómo crecer en margen, no solo en ROAS.",
     variant: "short",
     label: "Ecommerce",
     title: (
@@ -432,7 +404,7 @@ export const SECTORS: Record<string, SectorPageData> = {
         Revenue Systems para <span className="hero-hand">ecommerce</span>
       </>
     ),
-    context: "De la pauta al margen, no solo al ROAS.",
+    context: "Tiendas con volumen donde el costo de adquisición sube más rápido que el ticket promedio. Medimos por margen de contribución tras adquisición.",
     ctaLabel: CTA,
     sectorImage: ecommerce,
     sectorImageAlt: "Equipo preparando pedidos de una tienda online",
@@ -484,7 +456,6 @@ export const SECTORS: Record<string, SectorPageData> = {
     secondaryLink: { label: "Ver Sales Flow →", href: "/sistemas/sales-flow" },
   },
   industria: {
-    descriptor: "Cómo automatizar cotizaciones y conectar tu CRM con el ERP.",
     variant: "short",
     label: "Industria y distribución",
     title: (
@@ -492,9 +463,9 @@ export const SECTORS: Record<string, SectorPageData> = {
         Revenue Systems para industria y <span className="hero-hand">distribución</span>
       </>
     ),
-    context: "De la cotización al pedido entregado.",
+    context: "Empresas con cotizaciones, documentos y datos que se mueven a mano entre CRM y ERP. Automatizamos un proceso a la vez, con aprobación humana.",
     ctaLabel: CTA,
-    ctaFinalLabel: "Revisar mi proceso →",
+    ctaFinalLabel: "Revisar mi proceso comercial →",
     sectorImage: industria,
     sectorImageAlt: "Operarios revisando pedidos en una bodega",
     funnelStages: ["Cotización", "Pedido", "Documento", "Entrega", "Soporte"],
