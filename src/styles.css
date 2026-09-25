@@ -2567,6 +2567,9 @@ header.scrolled {
 /* ---------- v13: páginas interiores (trabaja con nosotros / aplicar / panel) ---------- */
 .rckt-site .subpage-hero {
   position: relative;
+  /* z-index alto: el hero contiene el header fijo; sin esto las secciones
+     posteriores con fondo opaco lo tapan al hacer scroll */
+  z-index: 100;
   overflow: hidden;
   padding: 160px 0 40px;
   background: var(--papel);
@@ -5805,7 +5808,7 @@ body,
 }
 
 /* Sistemas — componentes homologados con la referencia de España. */
-.system-page-hero { position: relative; isolation: isolate; min-height: 660px; overflow: hidden; background: var(--papel-fija); color: var(--carbon-fija); }
+.system-page-hero { position: relative; z-index: 100; isolation: isolate; min-height: 660px; overflow: hidden; background: var(--papel-fija); color: var(--carbon-fija); }
 .system-page-hero__photo { position: absolute; inset: 0; z-index: 0; }
 .system-page-hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center center; }
 .system-page-hero__fade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(245,242,237,.99) 0%, rgba(245,242,237,.96) 22%, rgba(245,242,237,.82) 40%, rgba(245,242,237,.45) 58%, rgba(245,242,237,0) 78%); }
