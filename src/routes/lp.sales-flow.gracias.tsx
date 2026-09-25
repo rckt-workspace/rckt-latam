@@ -31,6 +31,6 @@ function ThankYou() {
   return <CampaignShell thanks><main><section className="campaign-thanks"><div className="campaign-shell campaign-thanks__inner">
     <p className="label-orange">RCKT LATAM · Solicitud recibida</p><h1>{content.title}</h1><p>{content.text}</p>
     {nivel === "sql" ? <div className="campaign-calendar">[PENDIENTE: enlace de agenda]</div> : null}
-    {nivel === "recurso" ? <Link to="/recursos/" className="btn-orange campaign-resource-link">Ver recursos →</Link> : null}
+    {nivel === "recurso" ? <Link to="/recursos" className="btn-orange campaign-resource-link">Ver recursos →</Link> : null}
   </div></section></main></CampaignShell>;
 }
