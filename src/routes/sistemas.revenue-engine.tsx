@@ -222,9 +222,9 @@ function RevenueEnginePage() {
             <SectionLabel>Cómo empieza</SectionLabel>
             <div className="md:flex md:items-end md:justify-between md:gap-10">
               <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
-                La cuenta crece por etapas, no de golpe.
+                Cómo crece una cuenta.
               </h2>
-              <span className="text-sm font-semibold text-orange">con evidencia en cada etapa</span>
+              <span className="text-sm font-semibold text-orange">Cada cuenta sube un peldaño cada 3–6 meses.</span>
             </div>
             <AcceptanceSteps plazo="Escalera de cuenta" items={ESCALERA} />
           </div>

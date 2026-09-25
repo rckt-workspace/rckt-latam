@@ -5,7 +5,7 @@ import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SystemSection from "@/components/rckt/SystemSection";
 
-const SITE_URL = "https://rckt-latam.lovable.app";
+const SITE_URL = "https://rckt.lat";
 
 export const Route = createFileRoute("/soluciones/")({
   staticData: { sitemap: true },
@@ -40,8 +40,10 @@ function SolucionesPage() {
   return (
     <div className="rckt-site tcn-page">
       <main id="top">
-        <SystemPageHero label="Soluciones" title={<>Entras por tu problema, no por el nombre de un <em>sistema</em>.</>} context="Tres puertas de entrada según el problema real de tu negocio, medidas del clic al cierre." ctaLabel="Revisar mi proceso comercial →" />
-        <SystemSection id="puertas" num="01." label="Tres puertas de entrada" title={<>El problema decide por dónde <em className="font-serif-accent">empezamos</em>.</>} phrase="Captación y cierre, ecommerce rentable u operación: primero ubicamos la fuga."><SolutionCards /></SystemSection>
+        <SystemPageHero label="Soluciones" title={<>Entras por <span className="hero-hand">tu problema,</span> no por el nombre de un sistema.</>} context="Toda conversación empieza por tu problema, en tus palabras, nunca por el nombre de un sistema. Cada puerta pasa primero por un Revenue Diagnostic y, si encajas en dos, entras por la que tenga la fuga económica mayor." ctaLabel="Revisar mi proceso comercial →" />
+        <section className="relative isolate overflow-hidden py-16 md:py-24" style={{ background: "var(--kraft)" }}>
+          <div className="relative z-10 mx-auto max-w-6xl px-6"><SolutionCards /></div>
+        </section>
         <GeneralCta />
       </main>
       <SiteFooter />

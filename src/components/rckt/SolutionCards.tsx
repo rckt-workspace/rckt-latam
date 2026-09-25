@@ -5,8 +5,8 @@ import operacion from "@/assets/solucion-operacion.jpg";
 const items = [
   {
     badge: "01",
-    title: "Pagas por prospectos y no sabes cuáles compran",
-    subtitle: "Meta dice una cosa; tu cuenta bancaria, otra.",
+    title: "Pagas por leads y no sabes cuáles compran.",
+    subtitle: "Meta y Google dicen una cosa, tu cuenta bancaria, otra.",
     system: "Revenue Engine",
     href: "/soluciones/captacion-y-cierre",
     label: "Ver captación y cierre →",
@@ -14,8 +14,8 @@ const items = [
   },
   {
     badge: "02",
-    title: "Inviertes en pauta y no crece con margen",
-    subtitle: "El ROAS sube en la plataforma; el margen no sube en el banco.",
+    title: "Inviertes en pauta y no crece con margen.",
+    subtitle: "El ROAS sube en la plataforma, el margen no sube en el banco.",
     system: "Demand System",
     href: "/soluciones/ecommerce-rentable",
     label: "Ver ecommerce rentable →",
@@ -23,7 +23,7 @@ const items = [
   },
   {
     badge: "03",
-    title: "Tu equipo hace lo mismo cien veces por semana",
+    title: "Tu equipo hace lo mismo cien veces por semana.",
     subtitle:
       "Cotizaciones a mano, documentos que se copian entre sistemas, Excel donde debería haber un proceso.",
     system: "Operations System",
