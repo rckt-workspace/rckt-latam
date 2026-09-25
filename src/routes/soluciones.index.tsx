@@ -40,7 +40,7 @@ const SOLUCIONES = [
   {
     badge: "01",
     titulo: "Pagas por leads y no sabes cuáles compran.",
-    subtitulo: "Meta y Google dicen una cosa, tu cuenta bancaria, otra.",
+    subtitulo: "Meta te muestra cuántas personas escribieron. Nadie te muestra cuántas compraron.",
     label: "Sistema recomendado · Revenue Engine",
     botonLabel: "Ver captación y cierre →",
     href: "/soluciones/captacion-y-cierre" as const,
@@ -49,7 +49,7 @@ const SOLUCIONES = [
   {
     badge: "02",
     titulo: "Inviertes en pauta y no crece con margen.",
-    subtitulo: "El ROAS sube en la plataforma, el margen no sube en el banco.",
+    subtitulo: "La plataforma celebra el ROAS; el banco no ve el margen.",
     label: "Sistema recomendado · Demand System",
     botonLabel: "Ver ecommerce rentable →",
     href: "/soluciones/ecommerce-rentable" as const,
@@ -59,7 +59,7 @@ const SOLUCIONES = [
     badge: "03",
     titulo: "Tu equipo hace lo mismo cien veces por semana.",
     subtitulo:
-      "Cotizaciones a mano, documentos que se copian entre sistemas, Excel donde debería haber un proceso.",
+      "La misma cotización armada a mano, los mismos datos pasados de un sistema a otro y un Excel que hace de proceso.",
     label: "Sistema recomendado · Operations System",
     botonLabel: "Ver operación →",
     href: "/soluciones/operacion" as const,
@@ -130,10 +130,10 @@ function SolucionesPage() {
           label="Soluciones"
           title={
             <>
-              Entras por <span className="hero-hand">tu problema,</span> no por el nombre de un sistema.
+              Cuéntanos qué te pasa; el sistema viene <span className="hero-hand">después</span>.
             </>
           }
-          context="Toda conversación empieza por tu problema, en tus palabras, nunca por el nombre de un sistema. Cada puerta pasa primero por un Revenue Diagnostic y, si encajas en dos, entras por la que tenga la fuga económica mayor."
+          context="No necesitas saber qué es Sales Flow ni Revenue Engine. Elige la frase que se parece a lo que te pasa: cada puerta empieza con un Revenue Diagnostic y, si encajas en dos, entras por la que te hace perder más plata."
           ctaLabel="Revisar mi proceso comercial →"
           ctaHref={DIAGNOSTIC_HREF}
         />

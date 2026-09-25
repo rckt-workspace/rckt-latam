@@ -114,7 +114,7 @@ function SectoresPage() {
         <SystemPageHero
           label="Sectores"
           title={<>Vendemos distinto según cómo vende cada <span className="hero-hand">sector.</span></>}
-          context="Cada sector vende distinto. Aquí ves cómo vende hoy el tuyo, dónde se le escapa el dinero y qué sistema recomendamos, con los indicadores que de verdad importan en tu negocio."
+          context="Una clínica no vende como un colegio ni como una constructora. Elige tu sector y mira su recorrido real, del anuncio a la venta, dónde se pierde la plata y qué indicador usamos para medirlo."
           ctaLabel="Revisar mi proceso comercial →"
           ctaHref={DIAGNOSTIC_HREF}
         />

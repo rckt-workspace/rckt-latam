@@ -13,16 +13,16 @@ import SystemSection from "@/components/rckt/SystemSection";
 
 const SITE_URL = "https://rckt.lat";
 const signals = [
-  { titulo: "Respuesta tarde", frase: "Tardas más de una hora en responder a un prospecto que ya pagaste.", Icono: Clock },
-  { titulo: "Fuera del CRM", frase: "Leads atendidos por WhatsApp desde el celular de la asesora, sin registro en el CRM.", Icono: MessageCircle },
-  { titulo: "Métrica equivocada", frase: "Tu agencia optimiza por costo por lead, no por venta.", Icono: BarChart3 },
-  { titulo: "Citas perdidas", frase: "Prospectos que agendan una cita y no llegan.", Icono: CalendarX },
-  { titulo: "Sin atribución", frase: "Meta reporta 47 conversiones y tu cuenta bancaria dice otra cosa.", Icono: Search },
+  { titulo: "47 conversaciones, 2 clientes", frase: "La diferencia está entre las dos pantallas.", Icono: Clock },
+  { titulo: "El celular de la asesora", frase: "Está atendiendo bien a un cliente y perdiendo otros tres.", Icono: MessageCircle },
+  { titulo: "Costo por lead", frase: "Te hace comprar barato lo que no compra.", Icono: BarChart3 },
+  { titulo: "Quince minutos", frase: "Después de ese minuto, tu prospecto ya le escribió a otro.", Icono: CalendarX },
+  { titulo: "La venta no vuelve", frase: "El dato de venta vive en tu CRM y las plataformas nunca lo ven.", Icono: Search },
 ];
 const milestones = [
-  { dia: "30", texto: "Sistema operativo con fuente de verdad." },
-  { dia: "60", texto: "Oportunidades entrando al CRM con seguimiento dentro del SLA." },
-  { dia: "90", texto: "Revisión de línea base frente a resultado." },
+  { dia: "30", texto: "Cada conversación entra al CRM con su campaña de origen" },
+  { dia: "60", texto: "Primera respuesta y seguimiento dentro del tiempo acordado" },
+  { dia: "90", texto: "Línea base frente a resultado, y el dato de venta de vuelta a Meta y Google" },
 ];
 const features = [
   { name: "Demand", detail: "Tier según tu inversión en pauta", Icon: Megaphone },
@@ -47,8 +47,8 @@ const methodFields: MethodField[] = [
 const FAQS: FaqItem[] = [
   { question: "¿Qué sistema necesito si pago por leads y no sé cuáles compran?", answer: "Normalmente Revenue Engine: Demand System y Sales Flow bajo un solo responsable, medido del clic al cierre. Lo confirmamos con datos en el Revenue Diagnostic." },
   { question: "¿El diagnóstico es gratis?", answer: "No. Es trabajo real de tres semanas con tus datos, y se descuenta del sistema si sigues con nosotros." },
-  { question: "¿Cuánto cuesta?", answer: "Depende de dónde esté tu fuga, y eso es justo lo que mide el Revenue Diagnostic. No damos precio de un sistema sin diagnóstico." },
-  { question: "Mi agencia actual me da leads a la mitad de precio.", answer: "¿Y cuántos de esos leads compran? Si no lo sabes, ese es el problema, no el precio del lead. Optimizamos por venta, no por lead, y por eso el costo por lead puede ser mayor." },
+  { question: "¿Un sistema automático va a atender a mis clientes?", answer: "Responde lo que se repite mil veces y entrega la conversación a tu asesora en cuanto hay intención de agendar. Lo que hace y lo que no, queda por escrito." },
+  { question: "¿Necesito más pauta?", answer: "No para empezar: el tiempo de primera respuesta es la variable más barata de arreglar y la que más cambia el resultado." },
   { question: "¿Me garantizan resultados?", answer: "No garantizamos ventas porque no controlamos tu cierre, tu stock ni tus precios. Garantizamos que en 30 días vas a ver tu embudo completo con datos reales." },
 ];
 export const Route = createFileRoute("/soluciones/captacion-y-cierre")({ staticData: { sitemap: true }, head: () => ({ meta: [
@@ -59,12 +59,12 @@ export const Route = createFileRoute("/soluciones/captacion-y-cierre")({ staticD
   { property: "og:type", content: "website" }, { property: "og:url", content: SITE_URL + "/soluciones/captacion-y-cierre" }, { name: "twitter:card", content: "summary_large_image" },
 ], links: [{ rel: "canonical", href: SITE_URL + "/soluciones/captacion-y-cierre" }], scripts: [faqJsonLd(FAQS)] }), component: CaptacionPage });
 function CaptacionPage() { return <div className="bg-background text-foreground antialiased"><main>
-  <SystemPageHero label="Captación y cierre" title={<>Pagas por leads y no sabes <span className="hero-hand">cuáles compran.</span></>} descriptor="Meta y Google dicen una cosa, tu cuenta bancaria, otra." context="Ya inviertes en pauta y ya recibes leads, pero entre el WhatsApp y la venta se pierde dinero que nadie mide. Lo resolvemos con Revenue Engine, medido del clic al cierre." ctaLabel="Revisar mi proceso comercial →" />
+  <SystemPageHero label="Captación y cierre" title={<>Pagas por leads y no sabes <span className="hero-hand">cuáles compran.</span></>} descriptor="Meta te muestra cuántas personas escribieron. Nadie te muestra cuántas compraron." context="Esa parte del recorrido casi nunca está medida, y es donde se decide si la pauta te sirve o no. Lo resolvemos con Revenue Engine, medido del clic al cierre." ctaLabel="Revisar mi proceso comercial →" />
   <SystemSection id="te-pasa-esto" num="01." label="Señales" title="Te pasa esto."><SignalCards items={signals} /></SystemSection>
-  <SystemSection id="fugas" num="02." label="El embudo" title="Dónde se pierde el dinero."><FunnelBars stages={["Inversión", "Lead", "Contacto", "Calificación", "Cita", "Cotización", "Venta"]} leaks={[{ stage: "Contacto", label: "Respuesta tarde" }, { stage: "Calificación", label: "WhatsApp fuera del CRM" }, { stage: "Cotización", label: "Inasistencia" }, { stage: "Venta", label: "Sin saber qué campaña la trajo" }]} /></SystemSection>
-  <SystemSection id="lo-que-hacemos" num="03." label="Lo que hacemos" title={<>Lo que hacemos: <span className="text-orange">Revenue Engine.</span></>}><SolutionSystemPanel features={features} system="Revenue Engine" summary="Demand System + Sales Flow bajo un solo responsable." href="/sistemas/revenue-engine"><p className="solution-system-card__meta">Compromiso mínimo: 6 meses</p></SolutionSystemPanel></SystemSection>
+  <SystemSection id="fugas" num="02." label="El embudo" title="Dónde se te va la venta."><FunnelBars stages={["Pauta", "WhatsApp", "Calificación", "CRM", "Venta"]} leaks={[{ stage: "WhatsApp", label: "¿respondiste en menos de 15 minutos?" }, { stage: "Calificación", label: "¿a cuántos les volviste a escribir?" }, { stage: "CRM", label: "¿cuántas conversaciones quedaron registradas?" }, { stage: "Venta", label: "¿qué campaña trajo a los que compraron?" }]} /></SystemSection>
+  <SystemSection id="lo-que-hacemos" num="03." label="Lo que hacemos" title={<>Lo que hacemos: <span className="text-orange">Revenue Engine.</span></>}><SolutionSystemPanel features={features} system="Revenue Engine" summary="La pauta que trae la conversación y el proceso que la convierte en venta, bajo un solo responsable y con una sola fuente de verdad." href="/sistemas/revenue-engine"><p className="solution-system-card__meta">Compromiso mínimo: 6 meses</p></SolutionSystemPanel></SystemSection>
   <SystemSection id="noventa-dias" num="04." label="Los primeros 90 días" title="Qué cambia en 90 días."><MilestoneCards items={milestones} /></SystemSection>
   <SystemSection id="metodo" num="05." label="Prueba" title="El método."><MethodCard fields={methodFields} /></SystemSection>
-  <SystemSection id="para-quien-no-es" num="06." label="Para quién no es" title="Honestidad antes de empezar."><div className="solution-honesty"><p>Negocios que aún no venden · sin presupuesto de mercadeo · que solo quieren optimizar por costo por lead · que buscan pagar solo por resultados.</p></div></SystemSection>
+  <SystemSection id="para-quien-no-es" num="06." label="Para quién no es" title="Honestidad antes de empezar."><div className="solution-honesty"><p>Si todavía no vendes, si no tienes presupuesto de mercadeo, si solo quieres bajar el costo por lead o si buscas pagar solo por resultados, hoy no somos la mejor opción.</p></div></SystemSection>
   <FaqSection items={FAQS} /><GeneralCta />
 </main><SiteFooter /></div> }

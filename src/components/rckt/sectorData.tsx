@@ -11,14 +11,14 @@ const PASOS_RE = [
   {
     hito: "1",
     label: "Revenue Diagnostic",
-    texto: "2 a 3 semanas para medir dónde se pierde el dinero y fijar la línea base",
+    texto: "2 a 3 semanas para ver dónde se pierden tus clientes y fijar la línea base",
   },
   {
     hito: "2",
     label: "Puesta en marcha",
-    texto: "Sistema operativo con fuente de verdad el día 30",
+    texto: "El día 30, cada conversación entra al CRM con su origen",
   },
-  { hito: "3", label: "Revisión", texto: "Línea base frente a resultado el día 90" },
+  { hito: "3", label: "Revisión", texto: "El día 90, línea base frente a resultado" },
 ];
 const MEDICION_INV =
   "La pauta la pagas tú, en tus propias cuentas. Lo que pagas por el Diagnostic se descuenta del sistema si sigues con nosotros.";
@@ -26,11 +26,11 @@ const PERIODO =
   "Revenue Diagnostic de 2 a 3 semanas; sistema operativo con fuente de verdad el día 30; revisión de línea base frente a resultado el día 90.";
 
 export const SALUD_FAQS = [
-  { question: "¿Funciona si atendemos a los pacientes por WhatsApp?", answer: "Sí. Sales Flow conecta tus campañas, WhatsApp Business API y tu CRM para que cada paciente tenga respuesta, seguimiento y dueño." },
-  { question: "¿Cómo reducen las inasistencias?", answer: "Con recordatorios de cita y secuencias de seguimiento y recuperación dentro de Sales Flow." },
-  { question: "¿Cómo sé qué campaña me trae pacientes?", answer: "Cada paciente entra al CRM con su origen, y las etapas vuelven a Meta y Google como conversiones offline." },
-  { question: "¿Un agente de IA responde a mis pacientes?", answer: "Puede hacer la primera respuesta, la calificación, la agenda y las preguntas frecuentes, siempre con aprobación humana en las decisiones de venta." },
-  { question: "¿Qué indicadores miden?", answer: "Costo por paciente que compra y porcentaje de citas realizadas." },
+  { question: "¿Un sistema automático va a atender a mis pacientes?", answer: "Responde a las 2 a. m., pero no decide el tratamiento: contesta lo que se repite mil veces y entrega la conversación a tu asesora en cuanto hay intención de agendar o una duda clínica. Lo que hace y lo que no, queda por escrito." },
+  { question: "¿Cuánto me cuesta una inasistencia?", answer: "Dos veces: lo que pagaste por traer a esa persona y la hora de agenda que nadie ocupó. La mayoría se evita con un recordatorio a tiempo y un mensaje de recuperación." },
+  { question: "¿Meta sabe qué pacientes se trataron?", answer: "No. Mientras el tratamiento aceptado viva solo en tu software de agenda, las plataformas buscan gente parecida a la que escribe, no a la que se trata. Ese dato se puede devolver." },
+  { question: "¿Por qué importa tanto responder primero?", answer: "Tu paciente escribió a tres clínicas y agenda con la que responde primero y hace seguimiento." },
+  { question: "¿Qué indicadores se miden?", answer: "Costo por paciente que compra y porcentaje de citas realizadas." },
 ];
 
 export const EDUCACION_FAQS = [
@@ -47,40 +47,39 @@ export const SECTORS: Record<string, SectorPageData> = {
     label: "Salud, estética y odontología",
     title: (
       <>
-        Revenue Systems para <span className="text-orange">clínicas y centros de <span className="hero-hand">estética.</span></span>
+        Revenue Systems para clínicas estéticas y <span className="hero-hand">odontológicas</span>.
       </>
     ),
-    context: "Clínicas y centros donde la venta pasa por WhatsApp, una asesora y una cita. El dinero se pierde entre la respuesta, la agenda y la inasistencia, y lo medimos por paciente que compra.",
+    context: "En estética y odontología casi nadie pide una sola cotización: la decisión se toma con la clínica que contesta antes y hace seguimiento. Esa ventaja no se compra con más pauta.",
     ctaLabel: CTA,
     sectorImage: salud,
     sectorImageAlt: "Especialista atendiendo a una paciente en una clínica",
-    funnelStages: ["Meta/Google", "WhatsApp", "Asesora", "Cita", "Venta"],
+    funnelStages: ["Meta / Google", "WhatsApp", "Asesora", "Valoración", "Cita", "Tratamiento"],
     funnelLeaks: [
-      { afterStage: 2, label: "Respuesta lenta" },
-      { afterStage: 3, label: "Seguimiento inconsistente" },
-      { afterStage: 4, label: "Inasistencia" },
-      { afterStage: 5, label: "Sin saber qué campaña trajo al paciente" },
+      { afterStage: 2, label: "respuesta al día siguiente" },
+      { afterStage: 5, label: "inasistencia" },
+      { afterStage: 6, label: "la venta nunca vuelve a Meta" },
     ],
     doloresDetalle: [
       {
-        titulo: "Seguimiento inconsistente",
-        descripcion: "Seguimiento inconsistente entre asesoras.",
+        titulo: "Entre el anuncio y la respuesta",
+        descripcion: "La asesora está en consulta. Un mensaje de las 9:47 p. m. se responde a las 10:20 a. m. del día siguiente.",
+        resuelve: "Primera respuesta que no depende de quién esté libre",
+      },
+      {
+        titulo: "Entre la conversación y la valoración",
+        descripcion: "Mandaste el precio y nadie volvió a escribir.",
         resuelve: "Secuencias de seguimiento",
       },
       {
-        titulo: "Inasistencia",
-        descripcion: "Inasistencia alta, sin recordatorio ni reprogramación.",
-        resuelve: "Recordatorios y reprogramación",
+        titulo: "Entre la cita y la asistencia",
+        descripcion: "Sin recordatorio, la agenda se queda con huecos. La inasistencia cuesta dos veces: lo que pagaste por traer al paciente y la hora que nadie ocupó.",
+        resuelve: "Recordatorios y mensaje de recuperación",
       },
       {
-        titulo: "Sin atribución",
-        descripcion: "No saber qué campaña trajo al paciente que sí compró.",
-        resuelve: "Atribución de vuelta a Meta y Google",
-      },
-      {
-        titulo: "Respuesta lenta",
-        descripcion: "La paciente escribe por WhatsApp y la respuesta llega cuando ya agendó cita en otra clínica.",
-        resuelve: "Respuesta supervisada por WhatsApp",
+        titulo: "Entre el tratamiento y la pauta",
+        descripcion: "Meta sabe quién hizo clic, no sabe quién se trató.",
+        resuelve: "El tratamiento aceptado vuelve a Meta y Google",
       },
     ],
     sistemaTitle: (
@@ -89,27 +88,27 @@ export const SECTORS: Record<string, SectorPageData> = {
       </>
     ),
     sistemaTexto:
-      "Sistema recomendado: Revenue Engine, con Sales Flow como componente que más pesa (respuesta, agenda y gestión de inasistencia).",
+       "Revenue Engine, con Sales Flow como lo que más pesa: primera respuesta, agenda e inasistencias.",
     sistemaFilas: [
       {
-        nombre: "Campañas conectadas",
-        detalle: "Cada paciente vinculado a la campaña que lo trajo",
+        nombre: "Pauta conectada",
+        detalle: "cada paciente con la campaña que lo trajo",
       },
       {
-        nombre: "Respuesta por WhatsApp",
-        detalle: "Atención rápida y trazable desde el primer contacto",
+        nombre: "Respuesta a cualquier hora",
+        detalle: "lo repetitivo (horarios, sedes, disponibilidad) se responde solo",
       },
       {
-        nombre: "Agenda y recordatorios",
-        detalle: "Confirmación de citas y seguimiento antes de la visita",
+        nombre: "Paso a tu asesora",
+        detalle: "en cuanto hay intención de agendar o una duda clínica",
       },
       {
-        nombre: "Gestión de inasistencia",
-        detalle: "Reprogramación de citas perdidas sin perder contexto",
+        nombre: "Recordatorios y recuperación",
+        detalle: "menos huecos en la agenda",
       },
       {
-        nombre: "Medición hasta la compra",
-        detalle: "Costo por paciente que compra, no solo por prospecto",
+        nombre: "Medición hasta el tratamiento",
+        detalle: "costo por paciente que se trata",
       },
     ],
     sectorFacts: [
@@ -126,7 +125,7 @@ export const SECTORS: Record<string, SectorPageData> = {
     methodFields: [
       {
         k: "Situación inicial",
-        v: "Seguimiento inconsistente, respuesta lenta, inasistencia y falta de atribución entre la campaña y el paciente que compra.",
+        v: "Mensajes que llegan de noche y se responden al día siguiente, precios enviados sin seguimiento, inasistencias sin recordatorio y tratamientos que nunca vuelven a Meta.",
       },
       { k: "Período", v: PERIODO },
       {
@@ -136,7 +135,7 @@ export const SECTORS: Record<string, SectorPageData> = {
       { k: "Inversión", v: MEDICION_INV },
       {
         k: "Intervención",
-        v: "Campañas, WhatsApp y CRM conectados; recordatorios de cita y recuperación de inasistencia; cada paciente conectado a la campaña que lo trajo.",
+        v: "Primera respuesta automática con paso a la asesora, seguimiento tras enviar el precio, recordatorios de cita y el tratamiento aceptado de vuelta a Meta y Google.",
       },
       {
         k: "Resultado",
@@ -161,7 +160,7 @@ export const SECTORS: Record<string, SectorPageData> = {
         Revenue Systems para <span className="text-orange">colegios, universidades e <span className="hero-hand">institutos.</span></span>
       </>
     ),
-    context: "Colegios, universidades, institutos y educación continua con picos de demanda en temporada de matrículas. Calificamos ese volumen y lo seguimos hasta la matrícula.",
+    context: "Universidades, institutos y educación continua que reciben cientos de solicitudes en temporada de matrículas y no saben cuáles terminan matriculadas. Calificamos ese volumen y lo seguimos hasta la matrícula.",
     ctaLabel: CTA,
     sectorImage: educacion,
     sectorImageAlt: "Asesor conversando con un estudiante en una biblioteca",
@@ -179,18 +178,18 @@ export const SECTORS: Record<string, SectorPageData> = {
     ],
     doloresDetalle: [
       {
-        titulo: "Volumen sin calificación",
-        descripcion: "Volumen alto de leads sin calificación real.",
+        titulo: "En temporada, el volumen tapa a los interesados",
+        descripcion: "Cientos de solicitudes y ninguna forma de saber cuáles están listas para matricularse.",
         resuelve: "Respuesta y calificación",
       },
       {
-        titulo: "Picos de temporada",
-        descripcion: "Picos de temporada que saturan al equipo de admisiones.",
+        titulo: "El seguimiento se corta después del primer mensaje",
+        descripcion: "En los picos, a quien no contesta no se le vuelve a escribir.",
         resuelve: "Secuencias por temporada",
       },
       {
-        titulo: "Seguimiento perdido",
-        descripcion: "Seguimiento que se pierde entre el primer contacto y la matrícula.",
+        titulo: "La matrícula no vuelve a la pauta",
+        descripcion: "Se mide la solicitud, no la matrícula, y las plataformas siguen buscando a quien pregunta.",
         resuelve: "CRM de admisiones",
       },
       {
@@ -277,11 +276,11 @@ export const SECTORS: Record<string, SectorPageData> = {
         Revenue Systems para <span className="text-orange">constructoras e <span className="hero-hand">inmobiliarias.</span></span>
       </>
     ),
-    context: "Constructoras e inmobiliarias con varios asesores, ciclos largos y cotizaciones hechas a mano. Ordenamos la captación y automatizamos lo repetitivo, medido por visita realizada.",
+    context: "Cuando varios asesores atienden los mismos prospectos y cada cotización se arma a mano, el ciclo se alarga y nadie sabe qué campaña trajo la visita. Ordenamos la captación, automatizamos lo repetitivo y medimos por visita realizada.",
     ctaLabel: CTA,
     sectorImage: construccion,
     sectorImageAlt: "Dos personas revisando un proyecto en obra",
-    funnelStages: ["Anuncios", "Landing", "Asesor", "Visita", "Cotización", "Cierre"],
+    funnelStages: ["Pauta", "landing", "asesor", "visita", "cotización", "cierre"],
     funnelLeaks: [
       { afterStage: 2, label: "Leads de baja calidad" },
       { afterStage: 3, label: "Varios asesores, el mismo contacto" },
@@ -290,22 +289,22 @@ export const SECTORS: Record<string, SectorPageData> = {
     ],
     doloresDetalle: [
       {
-        titulo: "Leads de baja calidad",
+        titulo: "Prospectos sin intención real",
         descripcion: "Muchos contactos sin cotización ni intención real de compra.",
         resuelve: "Lead scoring",
       },
       {
-        titulo: "Varios asesores compitiendo por el mismo contacto",
+        titulo: "Dos asesores llamando al mismo prospecto",
         descripcion: "El mismo prospecto recibe llamadas de dos asesores y ninguno es su dueño.",
         resuelve: "Asignación multi-asesor",
       },
       {
-        titulo: "Ciclos largos",
+        titulo: "Meses entre la visita y la firma sin seguimiento",
         descripcion: "Ciclos de venta largos sin seguimiento estructurado.",
         resuelve: "CRM para ciclos largos",
       },
       {
-        titulo: "Cotizaciones hechas a mano",
+        titulo: "Cotizaciones que tardan días",
         descripcion: "Cada cotización tarda días y depende de una sola persona.",
         resuelve: "Cotizaciones automáticas con aprobación humana",
       },
@@ -357,7 +356,7 @@ export const SECTORS: Record<string, SectorPageData> = {
         Revenue Systems para <span className="text-orange">servicios profesionales <span className="hero-hand">B2B.</span></span>
       </>
     ),
-    context: "Firmas de servicios profesionales que dependen de referidos y de un pipeline corto. Captamos demanda en Google y LinkedIn y medimos por oportunidad aceptada por ventas, no por lead.",
+    context: "Si tu firma vive de referidos, el mes que no llegan se nota en la facturación. Construimos demanda propia en Google y LinkedIn y la medimos por reuniones que terminan en propuesta, no por leads.",
     ctaLabel: CTA,
     sectorImage: b2b,
     sectorImageAlt: "Reunión de consultoría revisando indicadores",
@@ -369,17 +368,17 @@ export const SECTORS: Record<string, SectorPageData> = {
     ],
     doloresDetalle: [
       {
-        titulo: "Pipeline corto",
+        titulo: "Pocas oportunidades nuevas cada mes",
         descripcion: "Pocas oportunidades nuevas cada mes y un equipo comercial que espera a que lleguen.",
         resuelve: "Demand en Google y LinkedIn",
       },
       {
-        titulo: "Depende de referidos",
+        titulo: "Facturación atada a los referidos",
         descripcion: "Cuando los referidos bajan, la facturación baja con ellos.",
         resuelve: "Captación propia medida hasta la venta",
       },
       {
-        titulo: "CRM mal usado",
+        titulo: "Un CRM que el equipo no actualiza",
         descripcion: "El CRM existe, pero nadie lo actualiza ni sabe en qué etapa está cada oportunidad.",
         resuelve: "CRM & RevOps con scoring",
       },
@@ -418,11 +417,11 @@ export const SECTORS: Record<string, SectorPageData> = {
         Revenue Systems para <span className="text-orange">ecommerce con <span className="hero-hand">volumen.</span></span>
       </>
     ),
-    context: "Tiendas con volumen donde el costo de adquisición sube más rápido que el ticket promedio. Medimos por margen de contribución tras adquisición.",
+    context: "Tiendas que ya venden con volumen, pero cada cliente nuevo cuesta más que el anterior y parte de los pedidos se cierra por WhatsApp sin atribuirse. Medimos por lo que queda después de pagar la adquisición.",
     ctaLabel: CTA,
     sectorImage: ecommerce,
     sectorImageAlt: "Equipo preparando pedidos de una tienda online",
-    funnelStages: ["Anuncios", "Tienda", "Compra", "Recompra"],
+    funnelStages: ["Pauta", "Tienda (a veces WhatsApp)", "Compra", "Recompra"],
     funnelLeaks: [
       { afterStage: 1, label: "CAC alto" },
       { afterStage: 2, label: "Conversión baja" },
@@ -430,21 +429,21 @@ export const SECTORS: Record<string, SectorPageData> = {
     ],
     doloresDetalle: [
       {
-        titulo: "CAC alto",
+        titulo: "Cada cliente cuesta más",
         descripcion: "Cada cliente nuevo cuesta más que el del mes anterior.",
         resuelve: "Medios optimizados por margen",
       },
       {
-        titulo: "Conversión baja",
+        titulo: "Tráfico que no compra",
         descripcion: "El tráfico llega a la tienda, pero no compra.",
         resuelve: "CRO de la tienda",
       },
       {
-        titulo: "Creatividad agotada",
+        titulo: "Anuncios cansados",
         descripcion: "Los mismos anuncios desde hace meses y un rendimiento que va a la baja.",
         resuelve: "Creative Performance",
       },
-      { titulo: "WhatsApp sin medir dentro del embudo", descripcion: "Parte de la venta pasa por WhatsApp y nadie la atribuye.", resuelve: "WhatsApp integrado y medido" },
+      { titulo: "Pedidos por WhatsApp sin dueño", descripcion: "Parte de la venta pasa por WhatsApp y nadie la atribuye.", resuelve: "WhatsApp integrado y medido" },
     ],
     sistemaTitle: (
       <>
@@ -480,7 +479,7 @@ export const SECTORS: Record<string, SectorPageData> = {
         Revenue Systems para <span className="text-orange">industria y <span className="hero-hand">distribución.</span></span>
       </>
     ),
-    context: "Empresas con cotizaciones, documentos y datos que se mueven a mano entre CRM y ERP. Automatizamos un proceso a la vez, con aprobación humana.",
+    context: "Distribuidores e industrias donde cada pedido empieza con una cotización armada a mano y los datos viajan entre CRM, ERP y hojas de cálculo. Automatizamos un proceso a la vez y medimos el costo por ejecución correcta.",
     ctaLabel: CTA,
     ctaFinalLabel: "Revisar mi proceso comercial →",
     sectorImage: industria,
@@ -493,17 +492,17 @@ export const SECTORS: Record<string, SectorPageData> = {
     ],
     doloresDetalle: [
       {
-        titulo: "Cotizaciones manuales",
+        titulo: "Cotizaciones que tardan horas",
         descripcion: "Cada cotización se prepara a mano y tarda horas.",
         resuelve: "Cotizaciones desde WhatsApp o correo",
       },
       {
-        titulo: "Documentos manuales",
+        titulo: "Documentos que se copian con errores",
         descripcion: "Datos que se copian de un sistema a otro, con errores y retrabajo.",
         resuelve: "Documentos generados y verificados",
       },
       {
-        titulo: "CRM y ERP desconectados",
+        titulo: "Comercial y operación con datos distintos",
         descripcion: "Comercial y operación trabajan con datos distintos.",
         resuelve: "Sincronización CRM ↔ ERP",
       },

@@ -54,3 +54,5 @@
 - [x] Paso A6 — Portar Nosotros, Cómo trabajamos, Trabaja con nosotros, Casos, Recursos, Contacto y legales; validar integraciones y protegidos.
 - [x] Paso A7 — Crear Mercados LATAM, Colombia y sus tres ciudades con mapa estático y validar 20 vistas.
 - [x] Parte 1 de 3: sustituir solo textos aprobados de Home y Sistemas donde existen bloques de texto; ejecutar únicamente build.
+
+- [x] Parte 2 de 3: cambiar solo textos de Soluciones y Sectores existentes; ejecutar únicamente build.
