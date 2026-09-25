@@ -11,14 +11,14 @@ const PASOS_RE = [
   {
     hito: "1",
     label: "Revenue Diagnostic",
-    texto: "2 a 3 semanas para medir dónde se pierde el dinero y fijar la línea base",
+    texto: "2 a 3 semanas para ver dónde se pierden tus clientes y fijar la línea base",
   },
   {
     hito: "2",
     label: "Puesta en marcha",
-    texto: "Sistema operativo con fuente de verdad el día 30",
+    texto: "El día 30, cada conversación entra al CRM con su origen",
   },
-  { hito: "3", label: "Revisión", texto: "Línea base frente a resultado el día 90" },
+  { hito: "3", label: "Revisión", texto: "El día 90, línea base frente a resultado" },
 ];
 const MEDICION_INV =
   "La pauta la pagas tú, en tus propias cuentas. Lo que pagas por el Diagnostic se descuenta del sistema si sigues con nosotros.";
@@ -26,11 +26,11 @@ const PERIODO =
   "Revenue Diagnostic de 2 a 3 semanas; sistema operativo con fuente de verdad el día 30; revisión de línea base frente a resultado el día 90.";
 
 export const SALUD_FAQS = [
-  { question: "¿Funciona si atendemos a los pacientes por WhatsApp?", answer: "Sí. Sales Flow conecta tus campañas, WhatsApp Business API y tu CRM para que cada paciente tenga respuesta, seguimiento y dueño." },
-  { question: "¿Cómo reducen las inasistencias?", answer: "Con recordatorios de cita y secuencias de seguimiento y recuperación dentro de Sales Flow." },
-  { question: "¿Cómo sé qué campaña me trae pacientes?", answer: "Cada paciente entra al CRM con su origen, y las etapas vuelven a Meta y Google como conversiones offline." },
-  { question: "¿Un agente de IA responde a mis pacientes?", answer: "Puede hacer la primera respuesta, la calificación, la agenda y las preguntas frecuentes, siempre con aprobación humana en las decisiones de venta." },
-  { question: "¿Qué indicadores miden?", answer: "Costo por paciente que compra y porcentaje de citas realizadas." },
+  { question: "¿Un sistema automático va a atender a mis pacientes?", answer: "Responde a las 2 a. m., pero no decide el tratamiento: contesta lo que se repite mil veces y entrega la conversación a tu asesora en cuanto hay intención de agendar o una duda clínica. Lo que hace y lo que no, queda por escrito." },
+  { question: "¿Cuánto me cuesta una inasistencia?", answer: "Dos veces: lo que pagaste por traer a esa persona y la hora de agenda que nadie ocupó. La mayoría se evita con un recordatorio a tiempo y un mensaje de recuperación." },
+  { question: "¿Meta sabe qué pacientes se trataron?", answer: "No. Mientras el tratamiento aceptado viva solo en tu software de agenda, las plataformas buscan gente parecida a la que escribe, no a la que se trata. Ese dato se puede devolver." },
+  { question: "¿Por qué importa tanto responder primero?", answer: "Tu paciente escribió a tres clínicas y agenda con la que responde primero y hace seguimiento." },
+  { question: "¿Qué indicadores se miden?", answer: "Costo por paciente que compra y porcentaje de citas realizadas." },
 ];
 
 export const EDUCACION_FAQS = [
@@ -47,40 +47,39 @@ export const SECTORS: Record<string, SectorPageData> = {
     label: "Salud, estética y odontología",
     title: (
       <>
-        Revenue Systems para <span className="text-orange">clínicas y centros de <span className="hero-hand">estética.</span></span>
+        Revenue Systems para clínicas estéticas y <span className="hero-hand">odontológicas</span>.
       </>
     ),
-    context: "Clínicas y centros donde la venta pasa por WhatsApp, una asesora y una cita. El dinero se pierde entre la respuesta, la agenda y la inasistencia, y lo medimos por paciente que compra.",
+    context: "En estética y odontología casi nadie pide una sola cotización: la decisión se toma con la clínica que contesta antes y hace seguimiento. Esa ventaja no se compra con más pauta.",
     ctaLabel: CTA,
     sectorImage: salud,
     sectorImageAlt: "Especialista atendiendo a una paciente en una clínica",
-    funnelStages: ["Meta/Google", "WhatsApp", "Asesora", "Cita", "Venta"],
+    funnelStages: ["Meta / Google", "WhatsApp", "Asesora", "Valoración", "Cita", "Tratamiento"],
     funnelLeaks: [
-      { afterStage: 2, label: "Respuesta lenta" },
-      { afterStage: 3, label: "Seguimiento inconsistente" },
-      { afterStage: 4, label: "Inasistencia" },
-      { afterStage: 5, label: "Sin saber qué campaña trajo al paciente" },
+      { afterStage: 2, label: "respuesta al día siguiente" },
+      { afterStage: 5, label: "inasistencia" },
+      { afterStage: 6, label: "la venta nunca vuelve a Meta" },
     ],
     doloresDetalle: [
       {
-        titulo: "Seguimiento inconsistente",
-        descripcion: "Seguimiento inconsistente entre asesoras.",
+        titulo: "Entre el anuncio y la respuesta",
+        descripcion: "La asesora está en consulta. Un mensaje de las 9:47 p. m. se responde a las 10:20 a. m. del día siguiente.",
+        resuelve: "Primera respuesta que no depende de quién esté libre",
+      },
+      {
+        titulo: "Entre la conversación y la valoración",
+        descripcion: "Mandaste el precio y nadie volvió a escribir.",
         resuelve: "Secuencias de seguimiento",
       },
       {
-        titulo: "Inasistencia",
-        descripcion: "Inasistencia alta, sin recordatorio ni reprogramación.",
-        resuelve: "Recordatorios y reprogramación",
+        titulo: "Entre la cita y la asistencia",
+        descripcion: "Sin recordatorio, la agenda se queda con huecos. La inasistencia cuesta dos veces: lo que pagaste por traer al paciente y la hora que nadie ocupó.",
+        resuelve: "Recordatorios y mensaje de recuperación",
       },
       {
-        titulo: "Sin atribución",
-        descripcion: "No saber qué campaña trajo al paciente que sí compró.",
-        resuelve: "Atribución de vuelta a Meta y Google",
-      },
-      {
-        titulo: "Respuesta lenta",
-        descripcion: "La paciente escribe por WhatsApp y la respuesta llega cuando ya agendó cita en otra clínica.",
-        resuelve: "Respuesta supervisada por WhatsApp",
+        titulo: "Entre el tratamiento y la pauta",
+        descripcion: "Meta sabe quién hizo clic, no sabe quién se trató.",
+        resuelve: "El tratamiento aceptado vuelve a Meta y Google",
       },
     ],
     sistemaTitle: (
@@ -89,27 +88,27 @@ export const SECTORS: Record<string, SectorPageData> = {
       </>
     ),
     sistemaTexto:
-      "Sistema recomendado: Revenue Engine, con Sales Flow como componente que más pesa (respuesta, agenda y gestión de inasistencia).",
+       "Revenue Engine, con Sales Flow como lo que más pesa: primera respuesta, agenda e inasistencias.",
     sistemaFilas: [
       {
-        nombre: "Campañas conectadas",
-        detalle: "Cada paciente vinculado a la campaña que lo trajo",
+        nombre: "Pauta conectada",
+        detalle: "cada paciente con la campaña que lo trajo",
       },
       {
-        nombre: "Respuesta por WhatsApp",
-        detalle: "Atención rápida y trazable desde el primer contacto",
+        nombre: "Respuesta a cualquier hora",
+        detalle: "lo repetitivo (horarios, sedes, disponibilidad) se responde solo",
       },
       {
-        nombre: "Agenda y recordatorios",
-        detalle: "Confirmación de citas y seguimiento antes de la visita",
+        nombre: "Paso a tu asesora",
+        detalle: "en cuanto hay intención de agendar o una duda clínica",
       },
       {
-        nombre: "Gestión de inasistencia",
-        detalle: "Reprogramación de citas perdidas sin perder contexto",
+        nombre: "Recordatorios y recuperación",
+        detalle: "menos huecos en la agenda",
       },
       {
-        nombre: "Medición hasta la compra",
-        detalle: "Costo por paciente que compra, no solo por prospecto",
+        nombre: "Medición hasta el tratamiento",
+        detalle: "costo por paciente que se trata",
       },
     ],
     sectorFacts: [
@@ -126,7 +125,7 @@ export const SECTORS: Record<string, SectorPageData> = {
     methodFields: [
       {
         k: "Situación inicial",
-        v: "Seguimiento inconsistente, respuesta lenta, inasistencia y falta de atribución entre la campaña y el paciente que compra.",
+        v: "Mensajes que llegan de noche y se responden al día siguiente, precios enviados sin seguimiento, inasistencias sin recordatorio y tratamientos que nunca vuelven a Meta.",
       },
       { k: "Período", v: PERIODO },
       {
@@ -136,7 +135,7 @@ export const SECTORS: Record<string, SectorPageData> = {
       { k: "Inversión", v: MEDICION_INV },
       {
         k: "Intervención",
-        v: "Campañas, WhatsApp y CRM conectados; recordatorios de cita y recuperación de inasistencia; cada paciente conectado a la campaña que lo trajo.",
+        v: "Primera respuesta automática con paso a la asesora, seguimiento tras enviar el precio, recordatorios de cita y el tratamiento aceptado de vuelta a Meta y Google.",
       },
       {
         k: "Resultado",

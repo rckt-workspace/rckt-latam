@@ -95,7 +95,7 @@ export default function SectorPage(data: SectorPageData) {
                 <SectionHeader
                   num="01."
                   label="Cómo vende hoy"
-                  title="Cómo vende hoy este sector."
+                   title="El recorrido de venta de tu sector."
                 />
                 <SectorJourney stages={data.funnelStages} leaks={data.funnelLeaks} />
               </div>
@@ -111,10 +111,10 @@ export default function SectorPage(data: SectorPageData) {
                 label="Qué le duele"
                 title={
                   <>
-                    Donde se escapa <em className="font-serif-accent">el dinero</em> en tu sector.
+                     Dónde se pierden tus <em className="font-serif-accent">clientes</em>.
                   </>
                 }
-                phrase="Las fugas más habituales que encontramos al medir este sector."
+                 phrase="Lo que más encontramos cuando medimos este sector con números reales."
               />
               <SectorPains items={data.doloresDetalle} />
             </div>
@@ -175,7 +175,7 @@ export default function SectorPage(data: SectorPageData) {
 
         <section className="sector-section" id="como-empezamos">
           <div className="container">
-            <SectionHeader num="04." label="Cómo empezamos" title="Cómo empezamos." />
+             <SectionHeader num="04." label="Cómo empezamos" title="Así arrancamos." />
             <AcceptanceSteps items={data.acceptanceSteps} />
             {data.acceptanceNote ? (
               <p className="sector-acceptance-note">{data.acceptanceNote}</p>
