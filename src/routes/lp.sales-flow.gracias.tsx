@@ -28,7 +28,7 @@ function ThankYou() {
     ? { label: "Solicitud prioritaria", title: "Tu solicitud cumple el perfil.", text: "Agenda tu reunión en las próximas 48 horas." }
     : nivel === "recurso"
       ? { label: "Solicitud recibida", title: "Gracias por escribirnos.", text: "Mientras tanto, esto te puede servir." }
-      : { label: "Solicitud recibida", title: "Recibimos tu solicitud.", text: "Te contactamos en menos de 24 horas.", note: "Te escribiremos desde el mismo WhatsApp o correo que dejaste." };
+      : { label: "Solicitud recibida", title: "Recibimos tu solicitud.", text: "Te contactamos en menos de 24 horas." };
   return <CampaignShell thanks><main><section className="campaign-thanks"><div className="campaign-shell">
     <div className="campaign-thanks__card">
       <span className="campaign-thanks__icon" aria-hidden="true"><Check strokeWidth={2.5} /></span>
@@ -37,7 +37,6 @@ function ThankYou() {
       <p className="campaign-thanks__text">{content.text}</p>
       <span className="campaign-thanks__rule" aria-hidden="true" />
       {nivel === "sql" ? <div className="campaign-calendar">[PENDIENTE: enlace de agenda]</div> : null}
-      {content.note ? <p className="campaign-thanks__note">{content.note}</p> : null}
       {nivel === "recurso" ? <Link to="/recursos" className="btn-orange campaign-resource-link">Ver recursos →</Link> : null}
       <a className="campaign-thanks__back" href="/lp/sales-flow">Volver al inicio</a>
     </div>
