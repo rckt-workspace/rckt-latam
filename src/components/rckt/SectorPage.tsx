@@ -89,6 +89,7 @@ export default function SectorPage(data: SectorPageData) {
                   className="sector-journey-photo"
                   src={data.sectorImage}
                   alt={data.sectorImageAlt}
+                  style={data.sectorImagePosition ? { objectPosition: data.sectorImagePosition } : undefined}
                 />
               </div>
               <div>
