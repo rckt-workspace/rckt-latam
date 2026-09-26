@@ -4870,21 +4870,21 @@ main section:not(.system-page-hero):not(#top) { z-index: 0; }
 header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 
 /* Campaña Sales Flow: mismo lenguaje editorial sin navegación general. */
-.campaign-page { overflow: clip; }
+.campaign-page { position: relative; overflow: clip; }
 .campaign-shell { width: min(calc(100% - 48px), 1152px); margin-inline: auto; }
-.campaign-header { position: relative; z-index: 2; border-bottom: 1px solid var(--line); background: var(--papel); }
-.campaign-header__inner { min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.campaign-header { position: absolute; top: 0; left: 0; right: 0; z-index: 5; background: transparent; border: none; }
+.campaign-header__inner { min-height: 64px; margin-top: 16px; padding: 8px 12px 8px 20px; border: 1px solid rgba(33,33,33,0.10); border-radius: 999px; background: rgba(245,242,237,0.85); backdrop-filter: blur(12px) saturate(140%); display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .campaign-logo { display: inline-flex; align-items: center; flex: none; }
 .campaign-logo img { width: auto; height: 32px; }
 .campaign-logo--dark { display: none; }
 [data-theme="dark"] .campaign-logo--dark { display: block; }
 [data-theme="dark"] .campaign-logo--light { display: none; }
 .campaign-header__cta, .campaign-actions > a, .campaign-resource-link { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; border-radius: 999px; padding: 12px 22px; font-size: 14px; font-weight: 600; text-align: center; line-height: 1.25; }
-.campaign-hero { position: relative; isolation: isolate; display: flex; align-items: center; min-height: min(740px, 84svh); padding-block: 96px; overflow: hidden; background: var(--papel-fija); }
+.campaign-hero { position: relative; isolation: isolate; display: flex; align-items: center; min-height: min(740px, 84svh); padding-block: 150px 96px; overflow: hidden; background: var(--papel-fija); }
 .campaign-hero__photo, .campaign-close__photo { position: absolute; inset: 0; z-index: -1; }
 .campaign-hero__photo { z-index: 0; }
 .campaign-hero__photo::after, .campaign-close__photo::after { content: ""; position: absolute; inset: 0; }
-.campaign-hero__photo::after { background: linear-gradient(90deg, rgba(245,242,237,0.88) 0%, rgba(245,242,237,0.72) 30%, rgba(245,242,237,0.40) 55%, rgba(245,242,237,0.08) 80%); }
+.campaign-hero__photo::after { background: linear-gradient(90deg, rgba(245,242,237,0.99) 0%, rgba(245,242,237,0.96) 22%, rgba(245,242,237,0.82) 40%, rgba(245,242,237,0.45) 58%, rgba(245,242,237,0) 78%); }
 .campaign-close__photo::after { background: linear-gradient(90deg, color-mix(in srgb, var(--hero-ink) 93%, transparent), color-mix(in srgb, var(--hero-ink) 63%, transparent) 58%, color-mix(in srgb, var(--hero-ink) 8%, transparent)); }
 .campaign-hero__photo img, .campaign-close__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .campaign-hero__photo img { object-position: 70% center; }
@@ -4980,11 +4980,11 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 .campaign-thanks .section-blob--strong { display: none; }
 @media (max-width: 700px) {
   .campaign-shell { width: min(calc(100% - 40px), 1152px); }
-  .campaign-header__inner { min-height: 72px; }
+  .campaign-header__inner { min-height: 56px; margin-top: 12px; padding: 6px 8px 6px 16px; }
   .campaign-header__cta { max-width: 186px; min-height: 40px; padding: 9px 14px; font-size: 12px; }
   .campaign-logo img { height: 26px; }
-  .campaign-hero { min-height: 670px; max-height: none; padding-block: 90px 70px; }
-  .campaign-hero__photo::after { background: linear-gradient(180deg, rgba(245,242,237,0.82) 0%, rgba(245,242,237,0.55) 45%, rgba(245,242,237,0.15) 100%); }
+  .campaign-hero { min-height: 670px; max-height: none; padding-block: 128px 70px; }
+  .campaign-hero__photo::after { background: linear-gradient(180deg, rgba(245,242,237,0.92) 0%, rgba(245,242,237,0.72) 38%, rgba(245,242,237,0.28) 72%, rgba(245,242,237,0.05) 100%); }
   .campaign-hero__photo img { object-position: 54% center; }
   .campaign-hero h1 { font-size: 34px; overflow-wrap: break-word; }
   .campaign-hero h1 .hero-hand { white-space: normal; font-size: .82em; }
