@@ -4873,7 +4873,7 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 .campaign-page { position: relative; overflow: clip; }
 .campaign-shell { width: min(calc(100% - 48px), 1152px); margin-inline: auto; }
 .campaign-header { position: absolute; top: 0; left: 0; right: 0; z-index: 5; background: transparent; border: none; }
-.campaign-header__inner { min-height: 64px; margin-top: 16px; padding: 8px 12px 8px 20px; border: 1px solid rgba(33,33,33,0.10); border-radius: 999px; background: rgba(245,242,237,0.85); backdrop-filter: blur(12px) saturate(140%); display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.campaign-header__inner { min-height: 64px; margin-top: 16px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .campaign-logo { display: inline-flex; align-items: center; flex: none; }
 .campaign-logo img { width: auto; height: 32px; }
 .campaign-logo--dark { display: none; }
