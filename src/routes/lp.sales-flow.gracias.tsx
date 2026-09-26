@@ -24,6 +24,16 @@ export const Route = createFileRoute("/lp/sales-flow/gracias")({
 function ThankYou() {
   const { nivel } = Route.useSearch();
   useEffect(() => { saveCampaignParams(window.location.search); track("thank_you_view", { nivel }); }, [nivel]);
+  useEffect(() => {
+    const card = document.querySelector<HTMLElement>(".campaign-thanks__card");
+    if (!card || window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0]?.isIntersecting) { card.dataset.campaignVisible = "true"; observer.disconnect(); }
+    }, { threshold: 0.15 });
+    observer.observe(card);
+    card.dataset.campaignReady = "true";
+    return () => observer.disconnect();
+  }, []);
   const content = nivel === "sql"
     ? { label: "Solicitud prioritaria", title: "Recibido.", text: "Agenda aquí tu reunión de 30 minutos. Vamos a revisar tu pauta, tus conversaciones de WhatsApp y tu proceso comercial. Si prefieres, escríbenos directo por WhatsApp y seguimos por ahí." }
     : nivel === "recurso"
