@@ -1,13 +1,11 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { BarChart3, Megaphone, MessageCircle, Waypoints } from "lucide-react";
+import { BarChart3, Bot, CalendarClock, Megaphone, MessageCircle, ShieldCheck, Target, UserCheck, Waypoints } from "lucide-react";
 import { useEffect, useRef } from "react";
 import heroPhoto from "@/assets/lp-sales-flow-hero.jpg";
 import CampaignShell from "@/components/rckt/CampaignShell";
 import DiagnosticForm from "@/components/rckt/DiagnosticForm";
 import FaqSection, { type FaqItem } from "@/components/rckt/FaqSection";
 import SectionHeader from "@/components/rckt/SectionHeader";
-import { CapabilityCards } from "@/components/rckt/SystemBlocks";
-import MilestoneCards from "@/components/rckt/MilestoneCards";
 import { scoreLead } from "@/components/rckt/leadScoring";
 import { gtmHeadScripts, saveCampaignParams, track } from "@/components/rckt/tracking";
 
@@ -31,11 +29,11 @@ export const Route = createFileRoute("/lp/sales-flow/")({
 });
 
 const processCards = [
-  { titulo: "Entrada con origen.", detalle: "Cada conversación que entra por WhatsApp queda registrada con la campaña, el anuncio y el público que la generó." },
-  { titulo: "Calificación inmediata.", detalle: "Un agente supervisado responde al momento, hace las preguntas que ustedes definan y pasa la conversación a un asesor cuando hay intención real de compra, una queja o una pregunta que requiere criterio humano." },
-  { titulo: "Asignación y tiempo de respuesta.", detalle: "Cada oportunidad tiene dueño, sede y tiempo máximo de respuesta. Si se vence, el sistema avisa al asesor y a su líder." },
-  { titulo: "Seguimiento que no depende de la memoria.", detalle: "Secuencias en día 0, 1, 3 y 7; recordatorio de cita o reunión; recuperación de quien dejó de responder." },
-  { titulo: "El dato vuelve a la pauta.", detalle: "Oportunidad aceptada, reunión y venta se envían a Meta y Google para que optimicen por lo que factura, no por lo que conversa." },
+  { titulo: "Entrada con origen.", detalle: "Cada conversación que entra por WhatsApp queda registrada con la campaña, el anuncio y el público que la generó.", Icon: Target },
+  { titulo: "Calificación inmediata.", detalle: "Un agente supervisado responde al momento, hace las preguntas que ustedes definan y pasa la conversación a un asesor cuando hay intención real de compra, una queja o una pregunta que requiere criterio humano.", Icon: Bot },
+  { titulo: "Asignación y tiempo de respuesta.", detalle: "Cada oportunidad tiene dueño, sede y tiempo máximo de respuesta. Si se vence, el sistema avisa al asesor y a su líder.", Icon: UserCheck },
+  { titulo: "Seguimiento que no depende de la memoria.", detalle: "Secuencias en día 0, 1, 3 y 7; recordatorio de cita o reunión; recuperación de quien dejó de responder.", Icon: CalendarClock },
+  { titulo: "El dato vuelve a la pauta.", detalle: "Oportunidad aceptada, reunión y venta se envían a Meta y Google para que optimicen por lo que factura, no por lo que conversa.", Icon: BarChart3 },
 ];
 const milestones = [
   { dia: "30", texto: "Todas las conversaciones en el CRM con su origen. Tablero con oportunidades, tiempo de primera respuesta, porcentaje dentro del tiempo acordado y estado por asesor" },
@@ -76,7 +74,7 @@ function SalesFlowCampaign() {
   useEffect(() => {
     const main = document.querySelector<HTMLElement>(".campaign-page main");
     if (!main) return;
-    const groups = main.querySelectorAll<HTMLElement>(".campaign-questions, .campaign-process, .milestones__grid, .campaign-chips, .campaign-fit, .campaign-proof, .campaign-close");
+    const groups = main.querySelectorAll<HTMLElement>(".campaign-questions, .campaign-process, .campaign-timeline, .campaign-chips, .campaign-fit, .campaign-proof, .campaign-close");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced || !('IntersectionObserver' in window)) return;
     const frames = new Set<number>();
@@ -94,7 +92,7 @@ function SalesFlowCampaign() {
           };
           const frame = requestAnimationFrame(step);
           frames.add(frame);
-        }, index * 90);
+        }, index * 600);
         timers.push(delay);
       });
     };
@@ -104,7 +102,7 @@ function SalesFlowCampaign() {
         if (!entry.isIntersecting) return;
         const group = entry.target as HTMLElement;
         group.dataset.campaignVisible = "true";
-        if (group.classList.contains("milestones__grid")) animateNumbers(group);
+        if (group.classList.contains("campaign-timeline")) animateNumbers(group);
         observer.unobserve(group);
       });
     }, { threshold: 0.15 });
@@ -135,10 +133,10 @@ function SalesFlowCampaign() {
       </div>
     </section>
     <section className="campaign-section">
-       <div className="campaign-shell campaign-content"><SectionHeader num="02." label="Cómo funciona" title="Sales Flow: de la pauta a la venta, con responsable en cada paso." /><div className="campaign-process"><CapabilityCards items={processCards} compact /></div><p className="campaign-statement">El número de WhatsApp sigue siendo el de ustedes. El agente responde y ordena; las decisiones de precio, condiciones y cierre las toma su equipo.</p></div>
+        <div className="campaign-shell campaign-content"><SectionHeader num="02." label="Cómo funciona" title="Sales Flow: de la pauta a la venta, con responsable en cada paso." /><div className="campaign-process"><div className="campaign-process__line" aria-hidden="true" /><div className="campaign-process__steps">{processCards.map(({ titulo, detalle, Icon }, index) => <article className="campaign-process__step" key={titulo}><span className="campaign-process__circle"><Icon aria-hidden="true" strokeWidth={1.5} /></span><span className="campaign-process__number">{String(index + 1).padStart(2, "0")}</span><h3>{titulo}</h3><p>{detalle}</p></article>)}</div></div><p className="campaign-statement campaign-process__note"><ShieldCheck aria-hidden="true" strokeWidth={1.6} />El número de WhatsApp sigue siendo el de ustedes. El agente responde y ordena; las decisiones de precio, condiciones y cierre las toma su equipo.</p></div>
     </section>
     <section className="campaign-section">
-       <div className="campaign-shell campaign-content"><SectionHeader num="03." label="Qué cambia en 90 días" title="Qué cambia en 90 días" /><div className="mt-10"><MilestoneCards items={milestones} /></div></div>
+        <div className="campaign-shell campaign-content"><SectionHeader num="03." label="Qué cambia en 90 días" title="Qué cambia en 90 días" /><div className="campaign-timeline"><div className="campaign-timeline__line" aria-hidden="true" /><div className="campaign-timeline__steps">{milestones.map(item => <article className="campaign-timeline__step" key={item.dia}><span className="campaign-timeline__dot" aria-hidden="true" /><span className="label-orange">Día</span><p className="milestone-card__num">{item.dia}</p><p className="milestone-card__text">{item.texto}</p></article>)}</div></div></div>
     </section>
     <section className="campaign-section">
        <div className="campaign-shell campaign-content"><SectionHeader num="04." label="Prueba" title="Primero medimos, después prometemos." /><div className="campaign-proof"><p>El primer paso es un diagnóstico de tres semanas sobre tus datos reales: pauta, conversaciones, CRM y ventas de los últimos tres meses. De ahí sale el mapa de dónde se pierden las oportunidades, cuánto cuesta cada fuga al mes y qué se construye en los primeros 90 días. Esa medición queda firmada y es contra lo que se compara todo después.</p></div></div>
