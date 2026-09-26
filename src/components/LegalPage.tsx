@@ -7,11 +7,13 @@ export function LegalPage({ title, children }: { title: string; children: ReactN
     <div className="rckt-site legal-page">
       <SiteNav />
       <main>
-        <article className="legal-page__inner">
-          <h1>{title}</h1>
-          <div className="legal-document">{children}</div>
-          <div className="legal-page__status">&gt; sistema activo · 2026</div>
-        </article>
+        <section>
+          <article className="legal-page__inner">
+            <h1>{title}</h1>
+            <div className="legal-document">{children}</div>
+            <div className="legal-page__status">&gt; sistema activo · 2026</div>
+          </article>
+        </section>
       </main>
       <SiteFooter />
     </div>

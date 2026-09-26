@@ -1357,10 +1357,16 @@ font-size: 11.5px;
   padding-left: 24px;
   margin: 0 0 24px;
 }
-.legal-page a {
+.legal-document a {
   color: var(--naranja);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+.legal-page main section[data-content-tone] {
+  background: var(--papel);
+}
+.legal-page .blob-section > .section-blob--soft[data-blob-position="interior"] {
+  opacity: .45;
 }
 .legal-page__status {
   margin-top: 64px;
