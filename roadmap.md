@@ -62,3 +62,4 @@
 - [x] Publicar los tres textos legales literales y la política colombiana en PDF; actualizar footer y ficha de Contacto.
 - [x] Crear landing Sales Flow y gracias con scoring, atribución y formulario existente; validar escritorio/móvil.
 - [x] Igualar el formulario de calificación con España y reforzar las tarjetas visuales de Sales Flow; validar las cuatro vistas solicitadas.
+- [ ] Actualizar el contenido oficial de Sales Flow, la puntuación y medición; validar cuatro capturas y compilación.
