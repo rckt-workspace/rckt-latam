@@ -140,7 +140,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function RevenueEnginePage() {
   return (
-    <div className="bg-background text-foreground antialiased">
+    <div className="rckt-site bg-background text-foreground antialiased">
       <main className="sys-page">
         <SystemPageHero
           label="Revenue Engine"

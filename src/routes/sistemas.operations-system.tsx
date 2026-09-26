@@ -130,7 +130,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function OperationsSystemPage() {
   return (
-    <div className="bg-background text-foreground antialiased">
+    <div className="rckt-site bg-background text-foreground antialiased">
       <main className="sys-page">
         <SystemPageHero
           label="Operations System"
