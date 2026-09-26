@@ -117,7 +117,7 @@ function SalesFlowCampaign() {
       </div>
     </section>
      <FaqSection items={faq} title="Preguntas frecuentes" />
-     <section className="campaign-section" id="formulario" onInputCapture={event => { if (!formStarted.current && event.target instanceof HTMLInputElement && event.target.value.trim() && event.target.type !== "radio" && event.target.type !== "checkbox") { formStarted.current = true; track("form_start", {}); } }} onChangeCapture={event => { if (!formStarted.current && event.target instanceof HTMLSelectElement && event.target.value) { formStarted.current = true; track("form_start", {}); } }} onClickCapture={event => { if ((event.target as HTMLElement).closest('a[href="#whatsapp"]')) track("whatsapp_click", { section: "formulario" }); }}>
+     <section className="campaign-section" id="formulario" onInputCapture={event => { if (!formStarted.current && event.target instanceof HTMLInputElement && event.target.value.trim() && event.target.type !== "checkbox") { formStarted.current = true; track("form_start", {}); } }} onChangeCapture={event => { if (!formStarted.current && event.target instanceof HTMLSelectElement && event.target.value) { formStarted.current = true; track("form_start", {}); } }} onClickCapture={event => { if ((event.target as HTMLElement).closest('a[href="#whatsapp"]')) track("whatsapp_click", { section: "formulario" }); }}>
       <div className="campaign-shell campaign-content">
          <SectionHeader num="07." label="Revenue Diagnostic" title="Revisar mi proceso comercial" />
         <div className="campaign-form-wrap">
