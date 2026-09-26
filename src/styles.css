@@ -4984,7 +4984,7 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
   .campaign-header__cta { max-width: 186px; min-height: 40px; padding: 9px 14px; font-size: 12px; }
   .campaign-logo img { height: 26px; }
   .campaign-hero { min-height: 670px; max-height: none; padding-block: 90px 70px; }
-  .campaign-hero__photo::after { background: linear-gradient(180deg, rgba(245,242,237,0.92) 0%, rgba(245,242,237,0.72) 38%, rgba(245,242,237,0.28) 72%, rgba(245,242,237,0.05) 100%); }
+  .campaign-hero__photo::after { background: linear-gradient(180deg, rgba(245,242,237,0.82) 0%, rgba(245,242,237,0.55) 45%, rgba(245,242,237,0.15) 100%); }
   .campaign-hero__photo img { object-position: 54% center; }
   .campaign-hero h1 { font-size: 34px; overflow-wrap: break-word; }
   .campaign-hero h1 .hero-hand { white-space: normal; font-size: .82em; }
