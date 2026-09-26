@@ -164,6 +164,7 @@ export const SECTORS: Record<string, SectorPageData> = {
     ctaLabel: CTA,
     sectorImage: educacion,
     sectorImageAlt: "Asesor conversando con un estudiante en una biblioteca",
+    sectorImagePosition: "72% 35%",
     funnelStages: [
       "Google/Meta",
       "Prospecto",
