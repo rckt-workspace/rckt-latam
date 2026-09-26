@@ -4980,7 +4980,7 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 .campaign-thanks .section-blob--strong { display: none; }
 @media (max-width: 700px) {
   .campaign-shell { width: min(calc(100% - 40px), 1152px); }
-  .campaign-header__inner { min-height: 56px; margin-top: 12px; padding: 6px 8px 6px 16px; }
+  .campaign-header__inner { min-height: 56px; margin-top: 12px; }
   .campaign-header__cta { max-width: 186px; min-height: 40px; padding: 9px 14px; font-size: 12px; }
   .campaign-logo img { height: 26px; }
   .campaign-hero { min-height: 670px; max-height: none; padding-block: 128px 70px; }
