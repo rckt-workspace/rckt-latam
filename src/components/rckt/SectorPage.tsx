@@ -33,6 +33,7 @@ export type SectorPageData = {
   funnelLeaks: JourneyLeak[];
   sectorImage: string;
   sectorImageAlt: string;
+  sectorImagePosition?: string;
   doloresDetalle: SectorPain[];
   sistemaTitle: ReactNode;
   sistemaTexto: string;
