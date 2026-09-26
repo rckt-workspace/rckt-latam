@@ -63,3 +63,4 @@
 - [x] Crear landing Sales Flow y gracias con scoring, atribución y formulario existente; validar escritorio/móvil.
 - [x] Igualar el formulario de calificación con España y reforzar las tarjetas visuales de Sales Flow; validar las cuatro vistas solicitadas.
 - [x] Actualizar el contenido oficial de Sales Flow, la puntuación y medición; validar cuatro capturas y compilación. Las opciones exclusivas del formulario siguen pendientes por la restricción de no cambiar su lógica/campos.
+- [x] Centrar las tarjetas de Sales Flow y añadir animaciones de entrada, línea, números e iconos sin afectar al formulario ni otras páginas.

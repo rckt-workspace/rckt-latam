@@ -5019,8 +5019,12 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 .campaign-page .campaign-fit li { display: inline-flex; align-items: baseline; justify-content: center; width: min(100%, 440px); text-align: center; }
 .campaign-page .campaign-fit li::before { flex: none; margin-right: 0; }
 .campaign-page .campaign-close__card { text-align: center; }
+.campaign-page .campaign-thanks__card { align-items: center; text-align: center; }
+.campaign-page .campaign-thanks__list { width: fit-content; max-width: 100%; text-align: left; }
 
 @media (prefers-reduced-motion: no-preference) {
+  .campaign-page .campaign-thanks__card[data-campaign-ready="true"] { opacity: 0; transform: translateY(20px); transition: opacity .55s ease, transform .55s ease; }
+  .campaign-page .campaign-thanks__card[data-campaign-visible="true"] { opacity: 1; transform: none; }
   .campaign-page main[data-campaign-ready="true"] :is(.campaign-question, .campaign-process .cap-card, .milestone-card, .campaign-chip, .campaign-fit > div, .campaign-proof, .campaign-close__card) { opacity: 0; transform: translateY(20px); }
   .campaign-page main[data-campaign-ready="true"] :is(.campaign-questions, .campaign-process, .milestones__grid, .campaign-chips, .campaign-fit, .campaign-proof, .campaign-close)[data-campaign-visible="true"] :is(.campaign-question, .cap-card, .milestone-card, .campaign-chip, .campaign-fit > div, .campaign-proof, .campaign-close__card) { opacity: 1; transform: none; }
   .campaign-page main[data-campaign-ready="true"] .campaign-proof[data-campaign-visible="true"],
