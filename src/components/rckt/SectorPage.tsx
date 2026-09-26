@@ -11,7 +11,7 @@ import {
   Target,
   UsersRound,
 } from "lucide-react";
-import { SiteFooter, useSiteMotion } from "@/components/SiteChrome";
+import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SectorJourney, { type JourneyLeak } from "@/components/rckt/SectorJourney";
 import SectorPains, { type SectorPain } from "@/components/rckt/SectorPains";
@@ -72,6 +72,7 @@ export default function SectorPage(data: SectorPageData) {
   const isShort = data.variant === "short";
   return (
     <div className="rckt-site tcn-page">
+      <SiteHeader />
       <main id="top">
         <SystemPageHero
           label={data.label}
