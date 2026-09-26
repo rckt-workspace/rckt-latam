@@ -73,6 +73,45 @@ function SalesFlowCampaign() {
   const navigate = useNavigate();
   const formStarted = useRef(false);
   useEffect(() => { saveCampaignParams(window.location.search); track("lp_view", {}); }, []);
+  useEffect(() => {
+    const main = document.querySelector<HTMLElement>(".campaign-page main");
+    if (!main) return;
+    const groups = main.querySelectorAll<HTMLElement>(".campaign-questions, .campaign-process, .milestones__grid, .campaign-chips, .campaign-fit, .campaign-proof, .campaign-close");
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced || !('IntersectionObserver' in window)) return;
+    const frames = new Set<number>();
+    const animateNumbers = (group: HTMLElement) => {
+      group.querySelectorAll<HTMLElement>(".milestone-card__num").forEach((number, index) => {
+        const target = Number(number.textContent);
+        if (!Number.isFinite(target)) return;
+        const delay = window.setTimeout(() => {
+          let start: number | undefined;
+          const step = (now: number) => {
+            start ??= now;
+            const progress = Math.min((now - start) / 800, 1);
+            number.textContent = String(Math.round(target * (1 - (1 - progress) ** 3)));
+            if (progress < 1) { const frame = requestAnimationFrame(step); frames.add(frame); }
+          };
+          const frame = requestAnimationFrame(step);
+          frames.add(frame);
+        }, index * 90);
+        timers.push(delay);
+      });
+    };
+    const timers: number[] = [];
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const group = entry.target as HTMLElement;
+        group.dataset.campaignVisible = "true";
+        if (group.classList.contains("milestones__grid")) animateNumbers(group);
+        observer.unobserve(group);
+      });
+    }, { threshold: 0.15 });
+    groups.forEach(group => observer.observe(group));
+    main.dataset.campaignReady = "true";
+    return () => { observer.disconnect(); timers.forEach(clearTimeout); frames.forEach(cancelAnimationFrame); };
+  }, []);
   return <CampaignShell><main>
     <section id="top" className="campaign-hero">
       <div className="campaign-hero__photo" aria-hidden="true"><img src={heroPhoto} alt="" /></div>
