@@ -123,7 +123,7 @@ function Cards() {
 
 function SolucionesPage() {
   return (
-    <div className="bg-background text-foreground antialiased">
+    <div className="rckt-site bg-background text-foreground antialiased">
       <SiteNav />
       <main>
         <SystemPageHero

@@ -28,7 +28,7 @@ export const Route = createFileRoute("/mercados/")({
 
 function MercadosPage() {
   return (
-    <div className="market-page min-h-screen bg-background text-foreground antialiased">
+    <div className="rckt-site market-page min-h-screen bg-background text-foreground antialiased">
       <SiteNav />
       <main>
         <SystemPageHero

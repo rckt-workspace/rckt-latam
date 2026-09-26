@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import heroPhoto from "@/assets/rckt-hero.jpg";
-import SiteNav from "@/components/rckt/SiteNav";
 
 type Props = {
   label: string;
@@ -38,7 +37,6 @@ export default function SystemPageHero({
         <img src={heroPhoto} alt="" className="hero-photo-img" />
         <div className="hero-photo-fade" />
       </div>
-      <SiteNav />
       <div className="relative z-10 mx-auto max-w-6xl px-6">
         <div className="mb-4 flex items-center gap-3">
           <span className="inline-block h-4 w-[2px] bg-orange" />

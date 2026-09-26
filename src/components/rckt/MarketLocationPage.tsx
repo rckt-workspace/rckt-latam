@@ -36,7 +36,7 @@ export function getMarketJsonLd(name: string, areaServed: string) {
 
 export default function MarketLocationPage({ city, cityId, context, why }: { city: string; cityId: CityId; context: string; why: string }) {
   return (
-    <div className="market-page min-h-screen bg-background text-foreground antialiased">
+    <div className="rckt-site market-page min-h-screen bg-background text-foreground antialiased">
       <SiteNav />
       <main>
         <SystemPageHero label={city.toUpperCase()} title={<>RCKT en <span className="hero-hand">{city}.</span></>} context={context} ctaLabel="Revisar mi proceso comercial →" ctaHref="/sistemas/revenue-diagnostic" />

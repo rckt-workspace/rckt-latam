@@ -19,6 +19,7 @@ import SystemPageHero from "@/components/rckt/SystemPageHero";
 import DiagnosticForm from "@/components/rckt/DiagnosticForm";
 import { useState } from "react";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
+import SiteNav from "@/components/rckt/SiteNav";
 
 
 const WHATSAPP_URL = "#whatsapp";
@@ -140,7 +141,8 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 function RevenueDiagnostic() {
   const [, setSent] = useState(false);
   return (
-    <div className="bg-background text-foreground antialiased">
+    <div className="rckt-site bg-background text-foreground antialiased">
+      <SiteNav />
       <main className="sys-page">
         <SystemPageHero
           label="Revenue Diagnostic"

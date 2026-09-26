@@ -9,6 +9,7 @@ import SolutionSystemPanel from "@/components/rckt/SolutionSystemPanel";
 import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SystemSection from "@/components/rckt/SystemSection";
+import SiteNav from "@/components/rckt/SiteNav";
 const SITE_URL = "https://rckt.lat";
 const signals = [
   { titulo: "Anuncios cansados", frase: "La misma pieza lleva meses rotando y cada semana rinde menos.", Icono: ImageIcon },
@@ -50,7 +51,7 @@ export const Route = createFileRoute("/soluciones/ecommerce-rentable")({ staticD
   { property: "og:title", content: "Ecommerce rentable — Crecer con margen" }, { property: "og:description", content: "El ROAS sube en la plataforma, el margen no sube en el banco. Así se corrige." },
   { property: "og:type", content: "website" }, { property: "og:url", content: SITE_URL + "/soluciones/ecommerce-rentable" }, { name: "twitter:card", content: "summary_large_image" },
 ], links: [{ rel: "canonical", href: SITE_URL + "/soluciones/ecommerce-rentable" }], scripts: [faqJsonLd(FAQS)] }), component: EcommercePage });
-function EcommercePage() { return <div className="bg-background text-foreground antialiased"><main>
+function EcommercePage() { return <div className="rckt-site bg-background text-foreground antialiased"><SiteNav /><main>
   <SystemPageHero label="Ecommerce rentable" title={<>Inviertes en pauta y no crece <span className="hero-hand">con margen.</span></>} descriptor="La plataforma celebra el ROAS; el banco no ve el margen." context="Tu tienda vende y la pauta crece, pero cada cliente nuevo cuesta más y el margen no aparece. Por eso medimos lo que queda después de pagar la adquisición, no solo lo que reporta la plataforma." ctaLabel="Revisar mi proceso comercial →" />
   <SystemSection id="te-pasa-esto" num="01." label="Señales" title="Te pasa esto."><SignalCards items={signals} /></SystemSection>
   <SystemSection id="lo-que-hacemos" num="02." label="Lo que hacemos" title={<>Lo que hacemos: <span className="text-orange">Demand System.</span></>}><SolutionSystemPanel features={features} system="Demand System" summary="Pauta, creatividad y medición por margen; si WhatsApp pesa en la venta, sumamos Sales Flow." href="/sistemas/demand-system"><p className="solution-system-card__meta">Indicador: margen de contribución tras adquisición.</p></SolutionSystemPanel></SystemSection>
