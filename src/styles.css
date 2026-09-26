@@ -4884,7 +4884,7 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 .campaign-hero__photo, .campaign-close__photo { position: absolute; inset: 0; z-index: -1; }
 .campaign-hero__photo { z-index: 0; }
 .campaign-hero__photo::after, .campaign-close__photo::after { content: ""; position: absolute; inset: 0; }
-.campaign-hero__photo::after { background: linear-gradient(90deg, rgba(245,242,237,0.99) 0%, rgba(245,242,237,0.96) 22%, rgba(245,242,237,0.82) 40%, rgba(245,242,237,0.45) 58%, rgba(245,242,237,0) 78%); }
+.campaign-hero__photo::after { background: linear-gradient(90deg, rgba(245,242,237,0.88) 0%, rgba(245,242,237,0.72) 30%, rgba(245,242,237,0.40) 55%, rgba(245,242,237,0.08) 80%); }
 .campaign-close__photo::after { background: linear-gradient(90deg, color-mix(in srgb, var(--hero-ink) 93%, transparent), color-mix(in srgb, var(--hero-ink) 63%, transparent) 58%, color-mix(in srgb, var(--hero-ink) 8%, transparent)); }
 .campaign-hero__photo img, .campaign-close__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .campaign-hero__photo img { object-position: 70% center; }
