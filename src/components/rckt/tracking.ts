@@ -1,7 +1,7 @@
 // PENDIENTE: ID del contenedor GTM de rckt.lat.
 export const GTM_ID = "";
 
-const campaignKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid", "gclid"] as const;
+const campaignKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid", "gclid", "wbraid"] as const;
 const storageKey = "rckt-lp-campaign";
 type Campaign = Partial<Record<(typeof campaignKeys)[number], string>>;
 
@@ -17,7 +17,7 @@ export function saveCampaignParams(search: string) {
   } catch { /* El navegador puede bloquear el almacenamiento. */ }
 }
 
-export function track(event: "lead_valido" | "whatsapp_click" | "thank_you_view", params: Record<string, string | number>) {
+export function track(event: "lp_view" | "form_start" | "mql" | "lead_valido" | "whatsapp_click" | "thank_you_view", params: Record<string, string | number>) {
   if (typeof window === "undefined") return;
   let campaign: Campaign = {};
   try { campaign = JSON.parse(sessionStorage.getItem(storageKey) || "{}"); } catch { /* Sin atribución disponible. */ }
