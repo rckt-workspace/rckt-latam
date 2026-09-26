@@ -7201,3 +7201,22 @@ main .system-page-hero,
 [data-theme="dark"] main .system-page-hero { isolation: auto; z-index: auto; overflow: visible; }
 main section:not(.system-page-hero):not(#top) { z-index: 0; }
 header.pointer-events-none:has(.nav-bg) { z-index: 50; }
+
+/* Hero del Home: distribución vertical solo en móvil (max-width: 699px) */
+@media (max-width: 699px) {
+  #top {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+  }
+  #top > div.relative.z-10 {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 48px;
+  }
+  #top > div.relative.z-10 > div.rckt-reveal.mt-5 {
+    margin-top: auto;
+  }
+}
