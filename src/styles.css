@@ -4884,15 +4884,15 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 .campaign-hero__photo, .campaign-close__photo { position: absolute; inset: 0; z-index: -1; }
 .campaign-hero__photo { z-index: 0; }
 .campaign-hero__photo::after, .campaign-close__photo::after { content: ""; position: absolute; inset: 0; }
-.campaign-hero__photo::after { background: linear-gradient(90deg, rgba(245,242,237,0.99) 0%, rgba(245,242,237,0.96) 22%, rgba(245,242,237,0.82) 40%, rgba(245,242,237,0.45) 58%, rgba(245,242,237,0) 78%); }
+.campaign-hero__photo::after { background: linear-gradient(90deg, rgba(245,242,237,0.88) 0%, rgba(245,242,237,0.72) 30%, rgba(245,242,237,0.40) 55%, rgba(245,242,237,0.08) 80%); }
 .campaign-close__photo::after { background: linear-gradient(90deg, color-mix(in srgb, var(--hero-ink) 93%, transparent), color-mix(in srgb, var(--hero-ink) 63%, transparent) 58%, color-mix(in srgb, var(--hero-ink) 8%, transparent)); }
 .campaign-hero__photo img, .campaign-close__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .campaign-hero__photo img { object-position: 70% center; }
 .campaign-hero__inner { position: relative; z-index: 1; }
-.campaign-hero h1 { max-width: 870px; margin-top: 20px; color: var(--carbon-fija); font-family: "Inter Tight", "Switzer", sans-serif; font-size: clamp(34px, 4.6vw, 68px); font-weight: 600; line-height: 1.08; letter-spacing: 0; }
+.campaign-hero h1 { max-width: 870px; margin-top: 20px; color: var(--carbon-fija); font-family: "Inter Tight", "Switzer", sans-serif; font-size: clamp(34px, 4.6vw, 68px); font-weight: 600; line-height: 1.08; letter-spacing: 0; text-shadow: 0 0 16px rgba(245,242,237,0.55); }
 .campaign-hero h1 .hero-hand { white-space: nowrap; }
-.campaign-hero__sub { max-width: 580px; margin-top: 24px; color: var(--carbon-fija); font-size: clamp(16px, 1.5vw, 20px); line-height: 1.55; }
-.campaign-hero__note { max-width: 580px; margin-top: 18px; color: var(--carbon-fija); font-size: 13px; line-height: 1.5; }
+.campaign-hero__sub { max-width: 580px; margin-top: 24px; color: var(--carbon-fija); font-size: clamp(16px, 1.5vw, 20px); line-height: 1.55; text-shadow: 0 0 12px rgba(245,242,237,0.5); }
+.campaign-hero__note { max-width: 580px; margin-top: 18px; color: var(--carbon-fija); font-size: 13px; line-height: 1.5; text-shadow: 0 0 10px rgba(245,242,237,0.5); }
 .campaign-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 34px; }
 .campaign-section { position: relative; isolation: isolate; padding-block: 88px; }
 .campaign-section .campaign-content { position: relative; z-index: 1; }
@@ -4984,7 +4984,7 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
   .campaign-header__cta { max-width: 186px; min-height: 40px; padding: 9px 14px; font-size: 12px; }
   .campaign-logo img { height: 26px; }
   .campaign-hero { min-height: 670px; max-height: none; padding-block: 90px 70px; }
-  .campaign-hero__photo::after { background: linear-gradient(180deg, rgba(245,242,237,0.92) 0%, rgba(245,242,237,0.72) 38%, rgba(245,242,237,0.28) 72%, rgba(245,242,237,0.05) 100%); }
+  .campaign-hero__photo::after { background: linear-gradient(180deg, rgba(245,242,237,0.82) 0%, rgba(245,242,237,0.55) 45%, rgba(245,242,237,0.15) 100%); }
   .campaign-hero__photo img { object-position: 54% center; }
   .campaign-hero h1 { font-size: 34px; overflow-wrap: break-word; }
   .campaign-hero h1 .hero-hand { white-space: normal; font-size: .82em; }
