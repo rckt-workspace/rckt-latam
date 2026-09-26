@@ -137,7 +137,7 @@ function TrabajaConNosotros() {
   }, []);
 
   return (
-    <div className="nos-page bg-background text-foreground antialiased">
+    <div className="rckt-site nos-page bg-background text-foreground antialiased">
       <SiteNav />
       <main>
         <SystemPageHero label="Trabaja con nosotros" title={<>Descubre <span className="text-orange">el futuro del <span className="hero-hand">trabajo</span></span> con nosotros.</>} descriptor="En RCKT buscamos personas curiosas, autónomas, colaborativas y abiertas a aprender constantemente. Si quieres hacer parte de una cultura flexible, humana, diversa y preparada para el futuro, queremos conocerte." ctaLabel="Ver vacantes →" ctaHref="#vacantes" />

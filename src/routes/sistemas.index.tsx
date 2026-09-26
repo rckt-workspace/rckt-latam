@@ -274,7 +274,7 @@ export const Route = createFileRoute("/sistemas/")({
 
 function SistemasIndex() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="rckt-site min-h-screen bg-background text-foreground">
       <main>
         <SystemPageHero
           label="Sistemas"

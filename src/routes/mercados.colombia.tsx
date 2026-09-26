@@ -31,7 +31,7 @@ export const Route = createFileRoute("/mercados/colombia")({
 
 function ColombiaPage() {
   return (
-    <div className="market-page min-h-screen bg-background text-foreground antialiased">
+    <div className="rckt-site market-page min-h-screen bg-background text-foreground antialiased">
       <SiteNav />
       <main>
         <SystemPageHero label="COLOMBIA" title={<>RCKT en <span className="hero-hand">Colombia.</span></>} context="Colombia es nuestro mercado activo en Latinoamérica, con equipo y atención en Bogotá, Medellín y Barranquilla." ctaLabel="Revisar mi proceso comercial →" ctaHref="/sistemas/revenue-diagnostic" />

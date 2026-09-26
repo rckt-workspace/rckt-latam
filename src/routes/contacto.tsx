@@ -73,7 +73,7 @@ function useReveal<T extends HTMLElement>() {
 function Contacto() {
   const rootRef = useReveal<HTMLDivElement>();
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="rckt-site min-h-screen bg-background text-foreground">
       <SiteNav />
       <main>
         <SystemPageHero

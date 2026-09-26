@@ -190,7 +190,7 @@ function EscalonCard({ e, i }: { e: (typeof ESCALERA)[number]; i: number }) {
 
 function ComoTrabajamosPage() {
   return (
-    <div className="nos-page bg-background text-foreground antialiased">
+    <div className="rckt-site nos-page bg-background text-foreground antialiased">
       <SiteNav />
       <main>
         <SystemPageHero

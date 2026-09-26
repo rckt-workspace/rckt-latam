@@ -79,7 +79,7 @@ function RecursosPage() {
   const gridRef = useReveal(listing.length);
   const clear = () => { setQuery(""); setCategory("todas"); };
 
-  return <div className="min-h-screen bg-background text-foreground"><SiteNav /><main>
+  return <div className="rckt-site min-h-screen bg-background text-foreground"><SiteNav /><main>
      <SystemPageHero label="Recursos" title={<>Lo que conviene saber antes de hablar con <span className="hero-hand">nosotros</span>.</>} descriptor="Guías y artículos sobre WhatsApp y CRM, medición hasta la venta y web que convierte, con ejemplos de clínicas, educación y temporadas de matrícula." ctaLabel="Revisar mi proceso comercial" ctaHref="/sistemas/revenue-diagnostic" />
     <section className="recursos-catalog">
       <div className="mx-auto max-w-6xl px-5 pt-10 pb-16 md:px-6 md:pt-16 md:pb-24">
@@ -99,5 +99,5 @@ function RecursosPage() {
 
 function RecursosError() {
   const router = useRouter();
-  return <div className="min-h-screen bg-background text-foreground"><SiteNav /><main className="page-section"><div className="page-shell"><div className="content-card p-8" role="alert"><h1 className="font-display text-3xl font-semibold">No pudimos mostrar los recursos.</h1><p className="mt-3 text-muted-foreground">Intenta cargar la página nuevamente.</p><button className="btn-orange mt-6 rounded-full px-6 py-3" type="button" onClick={() => void router.invalidate()}>Intentar de nuevo</button></div></div></main><SiteFooter /></div>;
+  return <div className="rckt-site min-h-screen bg-background text-foreground"><SiteNav /><main className="page-section"><div className="page-shell"><div className="content-card p-8" role="alert"><h1 className="font-display text-3xl font-semibold">No pudimos mostrar los recursos.</h1><p className="mt-3 text-muted-foreground">Intenta cargar la página nuevamente.</p><button className="btn-orange mt-6 rounded-full px-6 py-3" type="button" onClick={() => void router.invalidate()}>Intentar de nuevo</button></div></div></main><SiteFooter /></div>;
 }

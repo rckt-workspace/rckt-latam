@@ -56,7 +56,7 @@ export const Route = createFileRoute("/nosotros/")({
 
 function NosotrosPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground antialiased">
+    <div className="rckt-site min-h-screen bg-background text-foreground antialiased">
       <SiteNav />
       <main>
         <SystemPageHero
