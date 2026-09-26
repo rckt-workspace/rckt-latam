@@ -6,6 +6,7 @@ import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import { SystemCards, type SystemCardData } from "@/components/rckt/SystemCards";
 import { useInView } from "@/hooks/use-in-view";
+import SiteNav from "@/components/rckt/SiteNav";
 
 
 const SISTEMAS_CARDS: SystemCardData[] = [
@@ -275,6 +276,7 @@ export const Route = createFileRoute("/sistemas/")({
 function SistemasIndex() {
   return (
     <div className="rckt-site min-h-screen bg-background text-foreground">
+      <SiteNav />
       <main>
         <SystemPageHero
           label="Sistemas"

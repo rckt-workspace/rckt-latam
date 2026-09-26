@@ -10,6 +10,7 @@ import SolutionSystemPanel from "@/components/rckt/SolutionSystemPanel";
 import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import SystemSection from "@/components/rckt/SystemSection";
+import SiteNav from "@/components/rckt/SiteNav";
 
 const SITE_URL = "https://rckt.lat";
 const signals = [

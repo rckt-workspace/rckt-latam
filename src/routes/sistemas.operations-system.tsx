@@ -6,6 +6,7 @@ import GeneralCta from "@/components/rckt/GeneralCta";
 import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/SystemBlocks";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
+import SiteNav from "@/components/rckt/SiteNav";
 const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
 const SITE_URL = "https://rckt.lat";
 
@@ -131,6 +132,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 function OperationsSystemPage() {
   return (
     <div className="rckt-site bg-background text-foreground antialiased">
+      <SiteNav />
       <main className="sys-page">
         <SystemPageHero
           label="Operations System"
