@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { Check } from "lucide-react";
 import CampaignShell from "@/components/rckt/CampaignShell";
@@ -25,10 +25,10 @@ function ThankYou() {
   const { nivel } = Route.useSearch();
   useEffect(() => { saveCampaignParams(window.location.search); track("thank_you_view", { nivel }); }, [nivel]);
   const content = nivel === "sql"
-    ? { label: "Solicitud prioritaria", title: "Tu solicitud cumple el perfil.", text: "Agenda tu reunión en las próximas 48 horas." }
+    ? { label: "Solicitud prioritaria", title: "Recibido.", text: "Agenda aquí tu reunión de 30 minutos. Vamos a revisar tu pauta, tus conversaciones de WhatsApp y tu proceso comercial. Si prefieres, escríbenos directo por WhatsApp y seguimos por ahí." }
     : nivel === "recurso"
-      ? { label: "Solicitud recibida", title: "Gracias por escribirnos.", text: "Mientras tanto, esto te puede servir." }
-      : { label: "Solicitud recibida", title: "Recibimos tu solicitud.", text: "Te contactamos en menos de 24 horas." };
+      ? { label: "Solicitud recibida", title: "Gracias por escribir.", text: "Por lo que nos cuentas, hoy no somos la mejor opción para ti y preferimos decírtelo. Te dejamos esta guía, que resuelve buena parte de lo que preguntas: [PENDIENTE: enlace a la guía del cluster]. Si más adelante ya estás invirtiendo y quieres escalar, escríbenos." }
+      : { label: "Solicitud recibida", title: "Recibido.", text: "Te contactamos en menos de 24 horas hábiles. Mientras tanto, esto es lo que incluye el diagnóstico:" };
   return <CampaignShell thanks><main><section className="campaign-thanks"><div className="campaign-shell">
     <div className="campaign-thanks__card">
       <span className="campaign-thanks__icon" aria-hidden="true"><Check strokeWidth={2.5} /></span>
@@ -37,7 +37,8 @@ function ThankYou() {
       <p className="campaign-thanks__text">{content.text}</p>
       <span className="campaign-thanks__rule" aria-hidden="true" />
       {nivel === "sql" ? <div className="campaign-calendar">[PENDIENTE: enlace de agenda]</div> : null}
-      {nivel === "recurso" ? <Link to="/recursos" className="btn-orange campaign-resource-link">Ver recursos →</Link> : null}
+       {nivel === "sql" ? <a className="btn-orange campaign-resource-link" href="#whatsapp" onClick={() => track("whatsapp_click", { section: "gracias" })}>Escríbenos por WhatsApp</a> : null}
+       {nivel === "mql" ? <><ul className="campaign-thanks__list"><li>Mapa de fugas con tus números reales</li><li>Línea base documentada y firmada</li><li>Roadmap de 90 días priorizado por impacto</li></ul><p className="campaign-thanks__note">Si quieres adelantar, responde este correo con acceso de lectura a tus cuentas de anuncios.</p></> : null}
       <a className="campaign-thanks__back" href="/lp/sales-flow">Volver al inicio</a>
     </div>
   </div></section></main></CampaignShell>;
