@@ -10,7 +10,7 @@ import {
 import type { ErrorComponentProps } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
-import appCss from "../styles.css?url";
+import "../styles.css";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import AdvisorChatLauncher from "@/components/rckt/AdvisorChatLauncher";
 import GlobalSectionBlobs from "@/components/rckt/GlobalSectionBlobs";
@@ -119,7 +119,6 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="es-419" suppressHydrationWarning>
       <head>
-        <link rel="stylesheet" href={appCss} />
         <HeadContent />
       </head>
       <body>
