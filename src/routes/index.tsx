@@ -6,6 +6,7 @@ import MethodCard, { type MethodField } from "@/components/rckt/MethodCard";
 import { SectionHeader } from "@/components/rckt/SectionHeader";
 import SiteFooter from "@/components/rckt/SiteFooter";
 import SiteNav from "@/components/rckt/SiteNav";
+import { WHATSAPP_URL, WHATSAPP_CONFIGURED } from "@/config/contact";
 import { SystemCards, SISTEMAS_CARDS } from "@/components/rckt/SystemCards";
 
 const SITE_URL = "https://rckt.lat";
@@ -84,7 +85,7 @@ function Hero() {
         </p>
         <div className="rckt-reveal mt-5 flex flex-wrap items-center gap-4" style={{ animationDelay: "240ms" }}>
           <a href="/sistemas/revenue-diagnostic" className="btn-orange inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-medium">Revisar mi proceso comercial →</a>
-          <a href="#whatsapp" className="hero-whatsapp-btn inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-medium">Escribir por WhatsApp</a>
+          {WHATSAPP_CONFIGURED && <a href={WHATSAPP_URL} className="hero-whatsapp-btn inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-medium">Escribir por WhatsApp</a>}
         </div>
       </div>
     </section>

@@ -4886,6 +4886,23 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 [data-theme="dark"] .campaign-logo--dark { display: block; }
 [data-theme="dark"] .campaign-logo--light { display: none; }
 .campaign-header__cta, .campaign-actions > a, .campaign-resource-link { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; border-radius: 999px; padding: 12px 22px; font-size: 14px; font-weight: 600; text-align: center; line-height: 1.25; }
+.campaign-header__nav { display: flex; align-items: center; justify-content: space-between; flex: 1; gap: 28px; }
+.campaign-header__desktop-nav { display: none; gap: 24px; align-items: center; }
+.campaign-nav-link { font-size: 14px; font-weight: 600; color: var(--carbon); text-decoration: none; transition: color 0.2s ease; padding: 8px 12px; }
+.campaign-nav-link:hover { color: var(--naranja); }
+.campaign-nav-link--active { color: var(--naranja); }
+.campaign-header__actions { display: flex; align-items: center; gap: 12px; }
+.campaign-header__menu-toggle { display: inline-flex; width: 40px; height: 40px; padding: 8px; border: 1px solid rgba(33, 33, 33, 0.15); border-radius: 8px; background: transparent; color: var(--carbon); cursor: pointer; transition: background-color 0.2s ease; }
+.campaign-header__menu-toggle:hover { background-color: rgba(33, 33, 33, 0.05); }
+.campaign-header__menu-toggle svg { width: 24px; height: 24px; }
+.campaign-header__mobile-nav { display: flex; position: absolute; top: 100%; left: 0; right: 0; margin-top: 12px; padding: 16px; background: white; border-radius: 12px; border: 1px solid var(--line); flex-direction: column; gap: 12px; z-index: 10; }
+.campaign-header__mobile-nav .campaign-nav-link { display: block; padding: 12px 16px; border-radius: 8px; }
+.campaign-header__mobile-nav .campaign-nav-link:hover { background-color: rgba(33, 33, 33, 0.05); }
+@media (min-width: 1100px) {
+  .campaign-header__desktop-nav { display: flex; }
+  .campaign-header__menu-toggle { display: none; }
+  .campaign-header__mobile-nav { display: none; }
+}
 .campaign-hero { position: relative; isolation: isolate; display: flex; align-items: center; min-height: min(740px, 84svh); padding-block: 150px 96px; overflow: hidden; background: var(--papel-fija); }
 .campaign-hero__photo, .campaign-close__photo { position: absolute; inset: 0; z-index: -1; }
 .campaign-hero__photo { z-index: 0; }

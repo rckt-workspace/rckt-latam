@@ -17,6 +17,35 @@ export function saveCampaignParams(search: string) {
   } catch { /* El navegador puede bloquear el almacenamiento. */ }
 }
 
+export function getCampaignParams(): Campaign {
+  if (typeof window === "undefined") return {};
+  try {
+    // Start with persisted values
+    const stored = JSON.parse(sessionStorage.getItem(storageKey) || "{}") as Campaign;
+
+    // Read current URL parameters (priority over stored)
+    const params = new URLSearchParams(window.location.search);
+    let updated = false;
+
+    for (const key of campaignKeys) {
+      const value = params.get(key);
+      if (value) {
+        stored[key] = value;
+        updated = true;
+      }
+    }
+
+    // Persist any new values found in URL
+    if (updated) {
+      sessionStorage.setItem(storageKey, JSON.stringify(stored));
+    }
+
+    return stored;
+  } catch {
+    return {};
+  }
+}
+
 export function track(event: "lp_view" | "form_start" | "mql" | "lead_valido" | "whatsapp_click" | "thank_you_view", params: Record<string, string | number>) {
   if (typeof window === "undefined") return;
   let campaign: Campaign = {};

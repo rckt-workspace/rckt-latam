@@ -6,8 +6,8 @@ import CampaignShell from "@/components/rckt/CampaignShell";
 import DiagnosticForm from "@/components/rckt/DiagnosticForm";
 import FaqSection, { type FaqItem } from "@/components/rckt/FaqSection";
 import SectionHeader from "@/components/rckt/SectionHeader";
-import { scoreLead } from "@/components/rckt/leadScoring";
 import { gtmHeadScripts, saveCampaignParams, track } from "@/components/rckt/tracking";
+import { WHATSAPP_URL, WHATSAPP_CONFIGURED } from "@/config/contact";
 
 const description = "Conectamos tus campañas, tu WhatsApp y tu CRM para calificar cada oportunidad, darle seguimiento y saber cuáles terminan comprando.";
 const title = "Sales Flow · De la conversación de WhatsApp a la venta, medido · RCKT";
@@ -63,7 +63,7 @@ const faq: FaqItem[] = [
 function CampaignActions({ section }: { section: string }) {
   return <div className="campaign-actions">
     <a className="btn-orange" href="#formulario">Revisar mi proceso comercial</a>
-    <a className="hero-whatsapp-btn" href="#whatsapp" onClick={() => track("whatsapp_click", { section })}>Escríbenos por WhatsApp</a>
+    {WHATSAPP_CONFIGURED && <a className="hero-whatsapp-btn" href={WHATSAPP_URL} onClick={() => track("whatsapp_click", { section })}>Escríbenos por WhatsApp</a>}
   </div>;
 }
 
@@ -158,12 +158,17 @@ function SalesFlowCampaign() {
       <div className="campaign-shell campaign-content">
          <SectionHeader num="07." label="Revenue Diagnostic" title="Revisar mi proceso comercial" />
         <div className="campaign-form-wrap">
-           <DiagnosticForm whatsappUrl="#whatsapp" submitLabel="Revisar mi proceso comercial" onSuccess={values => {
-            const { score, nivel } = scoreLead(values);
-            track("lead_valido", { score, nivel });
-             if (score >= 50) track("mql", { score, nivel });
-            void navigate({ to: "/lp/sales-flow/gracias", search: { nivel } });
-          }} legal={<span className="form-note">Al enviar este formulario, aceptas nuestra <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer">Política de Tratamiento de Datos</a>.</span>} />
+           <DiagnosticForm
+             source="lp-sales-flow"
+             consentVersion="RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf"
+             whatsappUrl={WHATSAPP_URL}
+             submitLabel="Revisar mi proceso comercial"
+             onSuccess={result => {
+              track("lead_valido", { score: result.score, nivel: result.nivel });
+              if (result.score >= 50) track("mql", { score: result.score, nivel: result.nivel });
+              void navigate({ to: "/lp/sales-flow/gracias", search: { nivel: result.nivel } });
+            }}
+           />
         </div>
       </div>
     </section>

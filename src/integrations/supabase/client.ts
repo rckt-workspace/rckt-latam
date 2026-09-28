@@ -35,15 +35,6 @@ function createSupabaseClient() {
   let SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL?.trim();
   let SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY?.trim();
 
-  // Debug logging (temporary)
-  console.log("[SUPABASE DEBUG]", {
-    viteUrl: SUPABASE_URL || "(empty)",
-    viteKey: SUPABASE_PUBLISHABLE_KEY
-      ? `${SUPABASE_PUBLISHABLE_KEY.substring(0, 10)}...`
-      : "(empty)",
-    hasProcess: typeof process !== "undefined",
-  });
-
   // Validate URL format
   if (!SUPABASE_URL || !/^https?:\/\/.+/i.test(SUPABASE_URL)) {
     const message = `[Supabase] Invalid VITE_SUPABASE_URL: ${JSON.stringify(SUPABASE_URL)}. Make sure .env.local has VITE_SUPABASE_URL set correctly.`;
