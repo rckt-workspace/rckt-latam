@@ -90,10 +90,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
       { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -123,6 +119,7 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="es-419" suppressHydrationWarning>
       <head>
+        <link rel="stylesheet" href={appCss} />
         <HeadContent />
       </head>
       <body>
