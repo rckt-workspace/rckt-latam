@@ -3,6 +3,10 @@
  * Regional contact information and support details
  */
 
+// TODO: Reemplazar #whatsapp con el número real de WhatsApp (ej: "https://wa.me/573001234567")
+export const WHATSAPP_URL = "#whatsapp";
+export const WHATSAPP_CONFIGURED = WHATSAPP_URL.startsWith("https://wa.me/");
+
 export const contactConfig = {
   // Regional headquarters
   headquarters: {

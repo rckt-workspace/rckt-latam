@@ -20,9 +20,8 @@ import DiagnosticForm from "@/components/rckt/DiagnosticForm";
 import { useState } from "react";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
 import SiteNav from "@/components/rckt/SiteNav";
+import { WHATSAPP_URL, WHATSAPP_CONFIGURED } from "@/config/contact";
 
-
-const WHATSAPP_URL = "#whatsapp";
 const SITE_URL = "https://rckt.lat";
 
 const REVENUE_DIAGNOSTIC_FAQS = [
@@ -284,8 +283,8 @@ function RevenueDiagnostic() {
               </h2>
             </div>
             <div className="mt-10">
-              <DiagnosticForm whatsappUrl={WHATSAPP_URL} submitLabel="Revisar mi proceso comercial →" onSent={() => setSent(true)} />
-              <p className="mt-5 text-sm text-muted-foreground">¿Prefieres WhatsApp? <a className="text-orange hover:underline" href="#whatsapp">Escríbenos y te hacemos las mismas preguntas.</a></p>
+              <DiagnosticForm source="revenue-diagnostic" consentVersion="RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" whatsappUrl={WHATSAPP_URL} submitLabel="Revisar mi proceso comercial →" onSent={() => setSent(true)} />
+              {WHATSAPP_CONFIGURED && <p className="mt-5 text-sm text-muted-foreground">¿Prefieres WhatsApp? <a className="text-orange hover:underline" href={WHATSAPP_URL}>Escríbenos y te hacemos las mismas preguntas.</a></p>}
             </div>
           </div>
         </section>

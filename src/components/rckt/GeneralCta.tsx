@@ -1,7 +1,7 @@
 import ctaPhoto from "@/assets/rckt-cta.jpg";
+import { WHATSAPP_URL, WHATSAPP_CONFIGURED } from "@/config/contact";
 
 const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
-const WHATSAPP_HREF = "#whatsapp"; // PENDIENTE: enlace click-to-chat con el WhatsApp colombiano
 
 export default function GeneralCta() {
   return (
@@ -18,7 +18,7 @@ export default function GeneralCta() {
           </h2>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <a href={DIAGNOSTIC_HREF} className="btn-orange font-display inline-flex items-center justify-center rounded-full px-8 py-4 text-[15px] font-semibold">Revisar mi proceso comercial →</a>
-            <a href={WHATSAPP_HREF} className="btn-outline-lt font-display inline-flex items-center justify-center rounded-full px-8 py-4 text-[15px] font-semibold">Escribir por WhatsApp</a>
+            {WHATSAPP_CONFIGURED && <a href={WHATSAPP_URL} className="btn-outline-lt font-display inline-flex items-center justify-center rounded-full px-8 py-4 text-[15px] font-semibold">Escribir por WhatsApp</a>}
           </div>
         </div>
         <div className="mt-16 flex justify-end border-t border-paper/20 pt-6 font-mono text-[11px] uppercase text-paper/70">

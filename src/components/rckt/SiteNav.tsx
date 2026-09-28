@@ -10,6 +10,7 @@ export const NAV_LINKS = [
   { href: "/casos/", label: "Casos" },
   { href: "/recursos/", label: "Recursos" },
   { href: "/nosotros/", label: "Nosotros" },
+  { href: "/contacto", label: "Contacto" },
 ];
 export const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic#formulario";
 const CTA_LABEL = "Revisar mi proceso comercial";
@@ -28,12 +29,12 @@ export default function SiteNav() {
   );
   return (
     <header className={`pointer-events-none fixed inset-x-0 z-50 px-4 transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] sm:px-5 md:px-12 ${scrolled ? "top-3 md:top-4" : "top-4 md:top-6"}`}>
-      <div className={`pointer-events-auto relative mx-auto hidden max-w-6xl items-stretch transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] min-[1100px]:flex ${scrolled ? "w-fit justify-center gap-0 py-1.5 px-6" : "justify-between gap-4"}`}>
+      <div className={`pointer-events-auto relative mx-auto hidden max-w-7xl items-stretch transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] min-[1200px]:flex ${scrolled ? "w-fit justify-center gap-0 py-1.5 px-6" : "justify-between gap-3"}`}>
         <div className={`nav-bg ${scrolled ? "" : "nav-bg-off"}`} />
         <div className={`relative flex items-center transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] ${scrolled ? "" : "px-6 py-2 xl:px-7"}`}>
           <div className={`nav-bg ${scrolled ? "nav-bg-off" : ""}`} />
           {logo}
-          <div className="relative flex items-center gap-5 pl-10 text-sm text-ink/70 dark:text-paper/70 xl:gap-7">
+          <div className="relative flex items-center gap-4 pl-8 text-sm text-ink/70 dark:text-paper/70 xl:gap-5">
             {NAV_LINKS.map((l) => (<a key={l.href} href={l.href} aria-current={isActive(l.href) ? "page" : undefined} className={`font-display transition-colors duration-200 ${isActive(l.href) ? "text-orange" : "hover:text-ink dark:hover:text-paper"}`}>{l.label}</a>))}
           </div>
         </div>
@@ -46,7 +47,7 @@ export default function SiteNav() {
           </div>
         </div>
       </div>
-      <div className="pointer-events-auto mx-auto max-w-6xl min-[1100px]:hidden">
+      <div className="pointer-events-auto mx-auto max-w-7xl min-[1200px]:hidden">
         <div className={`nav-pill flex items-center justify-between gap-2 px-3 transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] ${scrolled ? "py-1.5" : "py-2"}`}>
           {logo}
           <div className="flex items-center gap-1 sm:gap-2">

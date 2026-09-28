@@ -6,10 +6,9 @@ import SiteNav from "@/components/rckt/SiteNav";
 import DiagnosticForm from "@/components/rckt/DiagnosticForm";
 import GeneralCta from "@/components/rckt/GeneralCta";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
+import { WHATSAPP_URL, WHATSAPP_CONFIGURED } from "@/config/contact";
 
 const SITE_URL = "https://rckt.lat";
-
-const WHATSAPP_URL = "#whatsapp";
 
 export const Route = createFileRoute("/contacto")({
   staticData: { sitemap: true },
@@ -42,7 +41,6 @@ const datos = [
   ["NIT", "902.075.396-5", ""],
   ["Dirección", "Carrera 11B # 99-25, Bogotá D.C., Colombia", ""],
   ["Privacidad", "privacy@rckt.lat", "mailto:privacy@rckt.lat"],
-  ["Horario", "[pendiente]", ""],
 ] as const;
 
 function useReveal<T extends HTMLElement>() {
@@ -97,17 +95,10 @@ function Contacto() {
                 <div data-reveal className="ct-rev">
                   <div className="ct-card ct-card--form p-6 md:p-10">
                     <DiagnosticForm
+                      source="contacto"
+                      consentVersion="RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf"
                       whatsappUrl={WHATSAPP_URL}
                       submitLabel="Revisar mi proceso comercial →"
-                      legal={
-                        <span className="form-note">
-                          Al enviar este formulario, aceptas nuestra{" "}
-                          <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" download>
-                            Política de Tratamiento de Datos
-                          </a>
-                          .
-                        </span>
-                      }
                     />
                   </div>
                 </div>
@@ -122,14 +113,14 @@ function Contacto() {
                     </h2>
 
                     <div className="mt-8 space-y-0">
-                      <div className="flex gap-4 pb-7" id="whatsapp">
+                      {WHATSAPP_CONFIGURED && <div className="flex gap-4 pb-7" id="whatsapp">
                         <span className="ct-icon" aria-hidden="true"><MessageCircle className="h-5 w-5" /></span>
                         <div>
                           <h3 className="font-display text-[17px] font-semibold">WhatsApp</h3>
                           <p className="mt-1.5 text-[14.5px] leading-[1.55] text-muted-foreground">Escríbenos y responde las mismas preguntas del formulario.</p>
                           <a href={WHATSAPP_URL} className="mt-3 inline-block text-[14px] font-semibold text-orange hover:underline">Escribir por WhatsApp →</a>
                         </div>
-                      </div>
+                      </div>}
 
                       <div className="ct-divider flex gap-4 py-7">
                         <span className="ct-icon" aria-hidden="true"><FileText className="h-5 w-5" /></span>
@@ -143,13 +134,6 @@ function Contacto() {
                         </div>
                       </div>
 
-                      <div className="ct-divider flex gap-4 py-7">
-                        <span className="ct-icon" aria-hidden="true"><Phone className="h-5 w-5" /></span>
-                        <div>
-                          <h3 className="font-display text-[17px] font-semibold">Llamada</h3>
-                          <p className="mt-1.5 text-[14.5px] leading-[1.55] text-muted-foreground">[pendiente]</p>
-                        </div>
-                      </div>
                     </div>
 
                     <div className="ct-mini mt-6 p-5">
