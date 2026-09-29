@@ -69,11 +69,13 @@ function RecursosPage() {
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLocaleLowerCase("es");
+    const selectedCategory = category !== "todas" ? categories.find((item) => item.slug === category) : null;
+
     return (posts ?? []).filter((post) => {
-      if (category !== "todas" && post.category !== category) return false;
+      if (selectedCategory && post.category !== selectedCategory.name) return false;
       return !normalized || `${post.title} ${post.excerpt}`.toLocaleLowerCase("es").includes(normalized);
     });
-  }, [posts, query, category]);
+  }, [posts, query, category, categories]);
   const featured = query.trim() === "" && category === "todas" ? (filtered[0] ?? null) : null;
   const listing = filtered.filter((post) => post.id !== featured?.id);
   const gridRef = useReveal(listing.length);

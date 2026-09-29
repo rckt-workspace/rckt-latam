@@ -31,11 +31,8 @@ export class SupabaseBlogRepository implements BlogRepository {
    * Handles both public (no relations) and admin (with category relations) queries
    */
   private mapRowToPost(row: any): BlogPost {
-    // Extract category name from relation or fallback to ID
-    let categoryValue = row.category_id || "";
-    if (row.blog_categories?.name) {
-      categoryValue = row.blog_categories.name;
-    }
+    // Extract category name from relation, never show UUID
+    const categoryName = row.blog_categories?.name?.trim() || "General";
 
     return {
       id: row.id,
@@ -49,7 +46,7 @@ export class SupabaseBlogRepository implements BlogRepository {
         name: row.author_name || "RCKT",
         role: "Team",
       },
-      category: categoryValue,
+      category: categoryName,
       tags: Array.isArray(row.tags) ? row.tags : [],
       status: row.status as BlogStatus,
       featured: row.featured || false,
@@ -70,7 +67,7 @@ export class SupabaseBlogRepository implements BlogRepository {
   async getAllPosts(): Promise<BlogPost[]> {
     const { data, error } = await supabase
       .from("blog_posts")
-      .select("*")
+      .select("*, blog_categories(id, name, slug)")
       .eq("status", "published")
       .lte("published_at", new Date().toISOString())
       .order("published_at", { ascending: false });
@@ -96,7 +93,7 @@ export class SupabaseBlogRepository implements BlogRepository {
   async getPostBySlug(slug: string): Promise<BlogPost | null> {
     const { data, error } = await supabase
       .from("blog_posts")
-      .select("*")
+      .select("*, blog_categories(id, name, slug)")
       .eq("slug", slug)
       .eq("status", "published")
       .lte("published_at", new Date().toISOString())
@@ -131,7 +128,7 @@ export class SupabaseBlogRepository implements BlogRepository {
 
     const { data, error } = await supabase
       .from("blog_posts")
-      .select("*")
+      .select("*, blog_categories(id, name, slug)")
       .eq("category_id", categoryData.id)
       .eq("status", "published")
       .lte("published_at", new Date().toISOString())
