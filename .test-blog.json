@@ -1,0 +1,19 @@
+﻿{
+    "authorName":  "Equipo RCKT",
+    "coverImage":  "https://cfqkpennmppbdhtkjxnn.supabase.co/storage/v1/object/public/blog-media/posts/prueba-bucket-blog-rckt/7c5c7417-5259-47f8-b6dc-11d0d13cec0c.png",
+    "publishedAt":  "2026-09-29T02:43:15.1109630Z",
+    "title":  "Prueba bucket blog RCKT",
+    "tags":  [
+                 "prueba",
+                 "storage",
+                 "blog"
+             ],
+    "category":  "Inteligencia Artificial",
+    "featured":  false,
+    "status":  "draft",
+    "seoDescription":  "Prueba técnica de integración del blog.",
+    "slug":  "prueba-bucket-blog-1790649795",
+    "excerpt":  "Prueba técnica de integración entre Storage y Blog.",
+    "content":  "## Prueba técnica\n\nEsta entrada verifica la integración del bucket blog-media.",
+    "seoTitle":  "Prueba bucket blog RCKT"
+}

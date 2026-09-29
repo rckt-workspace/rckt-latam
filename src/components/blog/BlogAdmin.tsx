@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { blogRepository, hasLocalBlogChanges } from "@/lib/blog.repository";
 import { estimateReadingTime, formatShortDate, slugify } from "@/lib/blog.utils";
 import { Markdown } from "@/components/blog/Markdown";
@@ -42,6 +42,10 @@ export function BlogAdmin() {
   const [vista, setVista] = useState<"editar" | "preview">("editar");
   const [error, setError] = useState<string | null>(null);
   const [locales, setLocales] = useState(false);
+  const [coverFile, setCoverFile] = useState<File | null>(null);
+  const [uploadingCover, setUploadingCover] = useState(false);
+  const [coverPreviewUrl, setCoverPreviewUrl] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const cargar = useCallback(async () => {
     const [p, c] = await Promise.all([
@@ -59,6 +63,39 @@ export function BlogAdmin() {
 
   const categoriaPorDefecto = categories[0]?.name ?? "Growth";
 
+  // Cleanup object URLs cuando se cierra el editor
+  useEffect(() => {
+    return () => {
+      if (coverPreviewUrl) {
+        URL.revokeObjectURL(coverPreviewUrl);
+      }
+    };
+  }, [coverPreviewUrl]);
+
+  async function uploadCover(file: File, slug: string): Promise<string> {
+    setUploadingCover(true);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("slug", slug);
+
+      const response = await fetch("/api/admin/people/blog-media", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorData = (await response.json()) as { error: string };
+        throw new Error(errorData.error || "Error al subir la portada");
+      }
+
+      const data = (await response.json()) as { ok: boolean; publicUrl: string };
+      return data.publicUrl;
+    } finally {
+      setUploadingCover(false);
+    }
+  }
+
   async function guardar(estado: BlogStatus) {
     if (!draft) return;
     const slug = slugify(draft.slug || draft.title);
@@ -71,9 +108,22 @@ export function BlogAdmin() {
 
     setError(null);
     try {
+      let coverImage = draft.coverImage;
+
+      // Si hay archivo nuevo, subirlo primero
+      if (coverFile) {
+        coverImage = await uploadCover(coverFile, slug);
+        setCoverFile(null);
+        if (coverPreviewUrl) {
+          URL.revokeObjectURL(coverPreviewUrl);
+          setCoverPreviewUrl(null);
+        }
+      }
+
       await blogRepository.savePost({
         ...draft,
         slug,
+        coverImage,
         status: estado,
         readingTime: estimateReadingTime(draft.content),
       });
@@ -83,6 +133,33 @@ export function BlogAdmin() {
     } catch (e) {
       setError(e instanceof Error ? e.message : "No se pudo guardar el artículo.");
     }
+  }
+
+  function handleCoverFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Validar MIME type
+    const allowedMimes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+    if (!allowedMimes.includes(file.type)) {
+      setError("Tipo de archivo no permitido. Aceptados: JPEG, PNG, WebP, GIF");
+      return;
+    }
+
+    // Validar tamaño
+    if (file.size > 10 * 1024 * 1024) {
+      setError("El archivo pesa más de 10 MB");
+      return;
+    }
+
+    // Revocar URL anterior si existe
+    if (coverPreviewUrl) {
+      URL.revokeObjectURL(coverPreviewUrl);
+    }
+
+    setCoverFile(file);
+    setCoverPreviewUrl(URL.createObjectURL(file));
+    setError(null);
   }
 
   async function cambiarEstado(post: BlogPost, estado: BlogStatus) {
@@ -275,12 +352,30 @@ export function BlogAdmin() {
                   }
                 />
               </div>
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid gap-3">
+                <label className="text-[14px] font-medium">Portada</label>
                 <input
-                  placeholder="Ruta o URL de la imagen de portada"
-                  value={draft.coverImage}
-                  onChange={(e) => setDraft({ ...draft, coverImage: e.target.value })}
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp,image/gif"
+                  onChange={handleCoverFileChange}
+                  disabled={uploadingCover}
+                  className="text-[13px]"
                 />
+                {(coverPreviewUrl || draft.coverImage) && (
+                  <div className="relative max-w-xs">
+                    <img
+                      src={coverPreviewUrl || draft.coverImage}
+                      alt="Vista previa"
+                      className="w-full rounded border border-[var(--carbon-border)]"
+                    />
+                    {coverFile && (
+                      <p className="mt-1 text-[12px] text-[var(--verde)]">
+                        Nueva imagen seleccionada (se subirá al guardar)
+                      </p>
+                    )}
+                  </div>
+                )}
                 <input
                   placeholder="Texto alternativo de la portada"
                   value={draft.coverImageAlt}
@@ -332,11 +427,21 @@ export function BlogAdmin() {
           {error && <p className="text-[14px] text-[var(--naranja-deep)]">{error}</p>}
 
           <div className="flex flex-wrap gap-2">
-            <button className={btnGhost} type="button" onClick={() => void guardar("draft")}>
-              Guardar borrador
+            <button
+              className={btnGhost}
+              type="button"
+              onClick={() => void guardar("draft")}
+              disabled={uploadingCover}
+            >
+              {uploadingCover ? "Subiendo portada..." : "Guardar borrador"}
             </button>
-            <button className={btn} type="button" onClick={() => void guardar("published")}>
-              Publicar
+            <button
+              className={btn}
+              type="button"
+              onClick={() => void guardar("published")}
+              disabled={uploadingCover}
+            >
+              {uploadingCover ? "Subiendo portada..." : "Publicar"}
             </button>
             <button
               className={btnGhost}
@@ -344,7 +449,13 @@ export function BlogAdmin() {
               onClick={() => {
                 setDraft(null);
                 setError(null);
+                setCoverFile(null);
+                if (coverPreviewUrl) {
+                  URL.revokeObjectURL(coverPreviewUrl);
+                  setCoverPreviewUrl(null);
+                }
               }}
+              disabled={uploadingCover}
             >
               Cancelar
             </button>
