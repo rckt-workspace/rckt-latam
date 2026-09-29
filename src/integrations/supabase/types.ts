@@ -12,31 +12,6 @@ export type Database = {
   __InternalSupabase: {
     PostgrestVersion: "14.5"
   }
-  graphql_public: {
-    Tables: {
-      [_ in never]: never
-    }
-    Views: {
-      [_ in never]: never
-    }
-    Functions: {
-      graphql: {
-        Args: {
-          extensions?: Json
-          operationName?: string
-          query?: string
-          variables?: Json
-        }
-        Returns: Json
-      }
-    }
-    Enums: {
-      [_ in never]: never
-    }
-    CompositeTypes: {
-      [_ in never]: never
-    }
-  }
   public: {
     Tables: {
       ai_config_audit: {
@@ -198,104 +173,6 @@ export type Database = {
         }
         Relationships: []
       }
-      blog_categories: {
-        Row: {
-          active: boolean
-          created_at: string
-          description: string | null
-          id: string
-          name: string
-          orden: number
-          slug: string
-          updated_at: string
-        }
-        Insert: {
-          active?: boolean
-          created_at?: string
-          description?: string | null
-          id?: string
-          name: string
-          orden?: number
-          slug: string
-          updated_at?: string
-        }
-        Update: {
-          active?: boolean
-          created_at?: string
-          description?: string | null
-          id?: string
-          name?: string
-          orden?: number
-          slug?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      blog_posts: {
-        Row: {
-          author_name: string | null
-          category_id: string | null
-          content: string
-          cover_image_path: string | null
-          created_at: string
-          excerpt: string | null
-          featured: boolean
-          id: string
-          published_at: string | null
-          seo_description: string | null
-          seo_title: string | null
-          slug: string
-          status: Database["public"]["Enums"]["blog_status"]
-          tags: string[]
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          author_name?: string | null
-          category_id?: string | null
-          content: string
-          cover_image_path?: string | null
-          created_at?: string
-          excerpt?: string | null
-          featured?: boolean
-          id?: string
-          published_at?: string | null
-          seo_description?: string | null
-          seo_title?: string | null
-          slug: string
-          status?: Database["public"]["Enums"]["blog_status"]
-          tags?: string[]
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          author_name?: string | null
-          category_id?: string | null
-          content?: string
-          cover_image_path?: string | null
-          created_at?: string
-          excerpt?: string | null
-          featured?: boolean
-          id?: string
-          published_at?: string | null
-          seo_description?: string | null
-          seo_title?: string | null
-          slug?: string
-          status?: Database["public"]["Enums"]["blog_status"]
-          tags?: string[]
-          title?: string
-          updated_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "blog_posts_category_id_fkey"
-            columns: ["category_id"]
-            isOneToOne: false
-            referencedRelation: "blog_categories"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       chat_leads: {
         Row: {
           company: string | null
@@ -332,83 +209,6 @@ export type Database = {
           session_id?: string
           updated_at?: string
           user_agent?: string | null
-        }
-        Relationships: []
-      }
-      knowledge_chunks: {
-        Row: {
-          chunk_index: number
-          content: string
-          created_at: string
-          document_id: string
-          embedding: string | null
-          id: string
-          metadata: Json | null
-        }
-        Insert: {
-          chunk_index: number
-          content: string
-          created_at?: string
-          document_id: string
-          embedding?: string | null
-          id?: string
-          metadata?: Json | null
-        }
-        Update: {
-          chunk_index?: number
-          content?: string
-          created_at?: string
-          document_id?: string
-          embedding?: string | null
-          id?: string
-          metadata?: Json | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "knowledge_chunks_document_id_fkey"
-            columns: ["document_id"]
-            isOneToOne: false
-            referencedRelation: "knowledge_documents"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      knowledge_documents: {
-        Row: {
-          created_at: string
-          id: string
-          metadata: Json | null
-          mime_type: string | null
-          source_type: string | null
-          source_url: string | null
-          status: Database["public"]["Enums"]["knowledge_status"] | null
-          storage_path: string | null
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          metadata?: Json | null
-          mime_type?: string | null
-          source_type?: string | null
-          source_url?: string | null
-          status?: Database["public"]["Enums"]["knowledge_status"] | null
-          storage_path?: string | null
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          metadata?: Json | null
-          mime_type?: string | null
-          source_type?: string | null
-          source_url?: string | null
-          status?: Database["public"]["Enums"]["knowledge_status"] | null
-          storage_path?: string | null
-          title?: string
-          updated_at?: string
         }
         Relationships: []
       }
@@ -452,217 +252,100 @@ export type Database = {
         Row: {
           cargo: string | null
           ciudad: string | null
-          consent_at: string | null
-          consent_version: string | null
           created_at: string
           crm_actual: string | null
           email: string | null
           empleados: string | null
           empresa: string
-          fbclid: string | null
           fecha_inicio: string | null
-          gclid: string | null
           id: string
           inversion_pauta: string | null
-          landing_path: string | null
-          lead_level: string | null
-          lead_score: number | null
-          metadata: Json
           nombre: string | null
           pais: string | null
           problema_principal: string | null
-          referrer: string | null
           sector: string | null
           sitio_web: string | null
-          source: string | null
-          status: string
           telefono: string | null
-          updated_at: string
-          utm_campaign: string | null
-          utm_content: string | null
-          utm_medium: string | null
-          utm_source: string | null
-          utm_term: string | null
           volumen_leads: string | null
-          wbraid: string | null
           whatsapp_ventas: string | null
         }
         Insert: {
           cargo?: string | null
           ciudad?: string | null
-          consent_at?: string | null
-          consent_version?: string | null
           created_at?: string
           crm_actual?: string | null
           email?: string | null
           empleados?: string | null
           empresa: string
-          fbclid?: string | null
           fecha_inicio?: string | null
-          gclid?: string | null
           id?: string
           inversion_pauta?: string | null
-          landing_path?: string | null
-          lead_level?: string | null
-          lead_score?: number | null
-          metadata?: Json
           nombre?: string | null
           pais?: string | null
           problema_principal?: string | null
-          referrer?: string | null
           sector?: string | null
           sitio_web?: string | null
-          source?: string | null
-          status?: string
           telefono?: string | null
-          updated_at?: string
-          utm_campaign?: string | null
-          utm_content?: string | null
-          utm_medium?: string | null
-          utm_source?: string | null
-          utm_term?: string | null
           volumen_leads?: string | null
-          wbraid?: string | null
           whatsapp_ventas?: string | null
         }
         Update: {
           cargo?: string | null
           ciudad?: string | null
-          consent_at?: string | null
-          consent_version?: string | null
           created_at?: string
           crm_actual?: string | null
           email?: string | null
           empleados?: string | null
           empresa?: string
-          fbclid?: string | null
           fecha_inicio?: string | null
-          gclid?: string | null
           id?: string
           inversion_pauta?: string | null
-          landing_path?: string | null
-          lead_level?: string | null
-          lead_score?: number | null
-          metadata?: Json
           nombre?: string | null
           pais?: string | null
           problema_principal?: string | null
-          referrer?: string | null
           sector?: string | null
           sitio_web?: string | null
-          source?: string | null
-          status?: string
           telefono?: string | null
-          updated_at?: string
-          utm_campaign?: string | null
-          utm_content?: string | null
-          utm_medium?: string | null
-          utm_source?: string | null
-          utm_term?: string | null
           volumen_leads?: string | null
-          wbraid?: string | null
           whatsapp_ventas?: string | null
         }
         Relationships: []
       }
-      postulacion_eventos: {
-        Row: {
-          created_at: string
-          estado_anterior:
-            | Database["public"]["Enums"]["postulacion_estado"]
-            | null
-          estado_nuevo: Database["public"]["Enums"]["postulacion_estado"] | null
-          id: string
-          nota: string | null
-          postulacion_id: string
-          tipo: string
-        }
-        Insert: {
-          created_at?: string
-          estado_anterior?:
-            | Database["public"]["Enums"]["postulacion_estado"]
-            | null
-          estado_nuevo?:
-            | Database["public"]["Enums"]["postulacion_estado"]
-            | null
-          id?: string
-          nota?: string | null
-          postulacion_id: string
-          tipo: string
-        }
-        Update: {
-          created_at?: string
-          estado_anterior?:
-            | Database["public"]["Enums"]["postulacion_estado"]
-            | null
-          estado_nuevo?:
-            | Database["public"]["Enums"]["postulacion_estado"]
-            | null
-          id?: string
-          nota?: string | null
-          postulacion_id?: string
-          tipo?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "postulacion_eventos_postulacion_id_fkey"
-            columns: ["postulacion_id"]
-            isOneToOne: false
-            referencedRelation: "postulaciones"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       postulaciones: {
         Row: {
-          consent_at: string
-          created_at: string
-          cv_path: string | null
+          cv_url: string | null
           email: string
-          estado: Database["public"]["Enums"]["postulacion_estado"]
+          fecha: string
           id: string
           mensaje: string | null
           nombre: string
-          notas_internas: string | null
           portafolio_url: string | null
-          source: string | null
           telefono: string | null
           tipo: Database["public"]["Enums"]["postulacion_tipo"]
-          updated_at: string
           vacante_id: string | null
         }
         Insert: {
-          consent_at?: string
-          created_at?: string
-          cv_path?: string | null
+          cv_url?: string | null
           email: string
-          estado?: Database["public"]["Enums"]["postulacion_estado"]
+          fecha?: string
           id?: string
           mensaje?: string | null
           nombre: string
-          notas_internas?: string | null
           portafolio_url?: string | null
-          source?: string | null
           telefono?: string | null
           tipo?: Database["public"]["Enums"]["postulacion_tipo"]
-          updated_at?: string
           vacante_id?: string | null
         }
         Update: {
-          consent_at?: string
-          created_at?: string
-          cv_path?: string | null
+          cv_url?: string | null
           email?: string
-          estado?: Database["public"]["Enums"]["postulacion_estado"]
+          fecha?: string
           id?: string
           mensaje?: string | null
           nombre?: string
-          notas_internas?: string | null
           portafolio_url?: string | null
-          source?: string | null
           telefono?: string | null
           tipo?: Database["public"]["Enums"]["postulacion_tipo"]
-          updated_at?: string
           vacante_id?: string | null
         }
         Relationships: [
@@ -680,55 +363,37 @@ export type Database = {
           area: string | null
           created_at: string
           descripcion: string | null
-          destacada: boolean
           estado: Database["public"]["Enums"]["vacante_estado"]
-          fecha_cierre: string | null
-          fecha_publicacion: string | null
+          fecha_publicacion: string
           id: string
           modalidad: string | null
-          orden: number
           requisitos: string | null
-          responsabilidades: string | null
-          slug: string
           titulo: string
           ubicacion: string | null
-          updated_at: string
         }
         Insert: {
           area?: string | null
           created_at?: string
           descripcion?: string | null
-          destacada?: boolean
           estado?: Database["public"]["Enums"]["vacante_estado"]
-          fecha_cierre?: string | null
-          fecha_publicacion?: string | null
+          fecha_publicacion?: string
           id?: string
           modalidad?: string | null
-          orden?: number
           requisitos?: string | null
-          responsabilidades?: string | null
-          slug: string
           titulo: string
           ubicacion?: string | null
-          updated_at?: string
         }
         Update: {
           area?: string | null
           created_at?: string
           descripcion?: string | null
-          destacada?: boolean
           estado?: Database["public"]["Enums"]["vacante_estado"]
-          fecha_cierre?: string | null
-          fecha_publicacion?: string | null
+          fecha_publicacion?: string
           id?: string
           modalidad?: string | null
-          orden?: number
           requisitos?: string | null
-          responsabilidades?: string | null
-          slug?: string
           titulo?: string
           ubicacion?: string | null
-          updated_at?: string
         }
         Relationships: []
       }
@@ -737,20 +402,11 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_rckt_staff: { Args: never; Returns: boolean }
     }
     Enums: {
-      blog_status: "draft" | "published" | "archived"
-      knowledge_status: "pending" | "processing" | "ready" | "failed"
-      postulacion_estado:
-        | "nueva"
-        | "revision"
-        | "contactado"
-        | "entrevista"
-        | "descartado"
-        | "seleccionado"
       postulacion_tipo: "candidato" | "servicio"
-      vacante_estado: "borrador" | "activa" | "cerrada"
+      vacante_estado: "activa" | "cerrada"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -876,23 +532,10 @@ export type CompositeTypes<
     : never
 
 export const Constants = {
-  graphql_public: {
-    Enums: {},
-  },
   public: {
     Enums: {
-      blog_status: ["draft", "published", "archived"],
-      knowledge_status: ["pending", "processing", "ready", "failed"],
-      postulacion_estado: [
-        "nueva",
-        "revision",
-        "contactado",
-        "entrevista",
-        "descartado",
-        "seleccionado",
-      ],
       postulacion_tipo: ["candidato", "servicio"],
-      vacante_estado: ["borrador", "activa", "cerrada"],
+      vacante_estado: ["activa", "cerrada"],
     },
   },
 } as const
