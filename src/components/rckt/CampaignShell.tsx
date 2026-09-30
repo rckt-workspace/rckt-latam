@@ -14,7 +14,7 @@ const NAV_LINKS = [
   { href: "/contacto", label: "Contacto" },
 ];
 
-export default function CampaignShell({ children, thanks = false }: { children: ReactNode; thanks?: boolean }) {
+export default function CampaignShell({ children, thanks = false, minimal = false, landingBase = "/lp/sales-flow" }: { children: ReactNode; thanks?: boolean; minimal?: boolean; landingBase?: string }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const isActive = (href: string) => {
@@ -23,7 +23,7 @@ export default function CampaignShell({ children, thanks = false }: { children: 
     return p === h || p.startsWith(h + "/");
   };
 
-  const ctaHref = thanks ? "/lp/sales-flow#formulario" : "#formulario";
+  const ctaHref = thanks ? `${landingBase}#formulario` : "#formulario";
   const logo = (
     <a href="/" className="campaign-logo" aria-label="RCKT LATAM" onClick={() => setMenuOpen(false)}>
       <img className="campaign-logo--light" src={logoDark} alt="RCKT" />
@@ -37,7 +37,7 @@ export default function CampaignShell({ children, thanks = false }: { children: 
         <div className="campaign-shell campaign-header__inner">
           <div className="campaign-header__nav">
             {logo}
-            <nav className="campaign-header__desktop-nav">
+            {!minimal && <nav className="campaign-header__desktop-nav">
               {NAV_LINKS.map((l) => (
                 <a
                   key={l.href}
@@ -48,13 +48,13 @@ export default function CampaignShell({ children, thanks = false }: { children: 
                   {l.label}
                 </a>
               ))}
-            </nav>
+            </nav>}
           </div>
           <div className="campaign-header__actions">
             <a className="btn-orange campaign-header__cta" href={ctaHref}>
               Revisar mi proceso comercial
             </a>
-            <button
+            {!minimal && <button
               type="button"
               aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={menuOpen}
@@ -75,10 +75,10 @@ export default function CampaignShell({ children, thanks = false }: { children: 
                   </>
                 )}
               </svg>
-            </button>
+            </button>}
           </div>
         </div>
-        {menuOpen && (
+        {!minimal && menuOpen && (
           <div className="campaign-header__mobile-nav">
             {NAV_LINKS.map((l) => (
               <a

@@ -14,3 +14,5 @@
 Campaign routes under /lp/ stay outside shared site navigation and the sitemap; campaign-only scoring and analytics live in client-side rckt components so the existing lead submission remains unchanged.
 
 Sales Flow campaign card reveals and number counts use a route-local, one-shot IntersectionObserver so shared site cards and form behavior remain untouched.
+
+Clinic campaign A/B share one presentation component and their own route leaves; keep the existing diagnostic submission untouched to preserve lead integration.
