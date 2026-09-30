@@ -7244,4 +7244,9 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
   #top > div.relative.z-10 > div.rckt-reveal.mt-5 {
     margin-top: auto;
   }
+  .campaign-page #top {
+    min-height: 670px;
+    display: flex;
+    flex-direction: row;
+  }
 }
