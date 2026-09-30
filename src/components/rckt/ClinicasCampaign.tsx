@@ -169,7 +169,7 @@ export function ClinicasCampaign({ variant }: { variant: "a" | "b" }) {
     </section>
     <section className="campaign-close"><div className="campaign-shell"><div className="campaign-close__card band--orange"><h2>Empecemos por medir tu clínica.</h2><p className="campaign-close__text">Tres semanas, tus números y una reunión con quien decide.</p><Actions section="cierre" landing={landing} /></div></div></section>
   </main>
-    {variant === "b" && <a className="campaign-clinic-float" href={WHATSAPP_URL} aria-label="Escríbenos por WhatsApp" title="Escríbenos por WhatsApp" onClick={() => track("whatsapp_click", { section: "flotante", landing, utm_content: landing })}><MessageCircle aria-hidden="true" strokeWidth={2} /></a>}
+    {variant === "b" && <a className="campaign-clinic-float" href={WHATSAPP_URL} aria-label="Escríbenos por WhatsApp" title="Escríbenos por WhatsApp" onClick={() => track("whatsapp_click", { section: "flotante", landing, utm_content: landing })}><svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 .8A15.1 15.1 0 0 0 3 23.6L1 31l7.6-2a15.1 15.1 0 1 0 7.4-28.2Zm0 27.5a12.3 12.3 0 0 1-6.3-1.7l-.5-.3-4.4 1.2L6 23.2l-.3-.5A12.4 12.4 0 1 1 16 28.3Zm6.8-9.3c-.4-.2-2.2-1.1-2.5-1.2-.3-.1-.6-.2-.8.2-.2.3-1 1.2-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.5-.2-.4 0-.6.2-.8l.6-.7.4-.6c.1-.2 0-.5 0-.7l-1.2-2.7c-.3-.7-.6-.6-.8-.6h-.7c-.3 0-.7.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.8c.2.3 2.5 3.9 6 5.4.8.4 1.5.6 2 .7.9.3 1.7.2 2.3.1.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.7.2-1.8-.1-.2-.3-.3-.7-.5Z" /></svg></a>}
   </CampaignShell>;
 }
 

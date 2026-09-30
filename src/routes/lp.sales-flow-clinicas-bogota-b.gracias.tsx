@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ClinicasThanks } from "@/components/rckt/ClinicasCampaign";
 import { gtmHeadScripts } from "@/components/rckt/tracking";
 import type { LeadLevel } from "@/components/rckt/leadScoring";
-const title = "Solicitud recibida · Clínicas Bogotá · RCKT";
+const title = "Solicitud recibida · Clínicas Bogotá B · RCKT";
 const description = "Gracias por solicitar una revisión del proceso comercial de tu clínica con RCKT LATAM.";
 export const Route = createFileRoute("/lp/sales-flow-clinicas-bogota-b/gracias")({
   staticData: { sitemap: false },
