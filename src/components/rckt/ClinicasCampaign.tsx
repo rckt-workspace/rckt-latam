@@ -7,7 +7,7 @@ import DiagnosticForm from "@/components/rckt/DiagnosticForm";
 import FaqSection, { type FaqItem } from "@/components/rckt/FaqSection";
 import SectionHeader from "@/components/rckt/SectionHeader";
 import { saveCampaignParams, track } from "@/components/rckt/tracking";
-import { WHATSAPP_URL, WHATSAPP_CONFIGURED } from "@/config/contact";
+import { WHATSAPP_URL } from "@/config/contact";
 import type { LeadLevel } from "@/components/rckt/leadScoring";
 
 export const CLINIC_TITLE = "Sistema de captación y seguimiento de pacientes para clínicas · Bogotá · RCKT";
@@ -60,7 +60,7 @@ const faq: FaqItem[] = [
 function Actions({ section, landing }: { section: string; landing: string }) {
   return <div className="campaign-actions">
     <a className="btn-orange" href="#formulario">Revisar mi proceso comercial</a>
-    {WHATSAPP_CONFIGURED && <a className="hero-whatsapp-btn" href={WHATSAPP_URL} onClick={() => track("whatsapp_click", { section, landing, utm_content: landing })}>Escríbenos por WhatsApp</a>}
+    <a className="hero-whatsapp-btn" href={WHATSAPP_URL} onClick={() => track("whatsapp_click", { section, landing, utm_content: landing })}>Escríbenos por WhatsApp</a>
   </div>;
 }
 
@@ -169,7 +169,7 @@ export function ClinicasCampaign({ variant }: { variant: "a" | "b" }) {
     </section>
     <section className="campaign-close"><div className="campaign-shell"><div className="campaign-close__card band--orange"><h2>Empecemos por medir tu clínica.</h2><p className="campaign-close__text">Tres semanas, tus números y una reunión con quien decide.</p><Actions section="cierre" landing={landing} /></div></div></section>
   </main>
-    {variant === "b" && WHATSAPP_CONFIGURED && <a className="campaign-clinic-float" href={WHATSAPP_URL} aria-label="Escríbenos por WhatsApp" title="Escríbenos por WhatsApp" onClick={() => track("whatsapp_click", { section: "flotante", landing, utm_content: landing })}><MessageCircle aria-hidden="true" strokeWidth={2} /></a>}
+    {variant === "b" && <a className="campaign-clinic-float" href={WHATSAPP_URL} aria-label="Escríbenos por WhatsApp" title="Escríbenos por WhatsApp" onClick={() => track("whatsapp_click", { section: "flotante", landing, utm_content: landing })}><MessageCircle aria-hidden="true" strokeWidth={2} /></a>}
   </CampaignShell>;
 }
 

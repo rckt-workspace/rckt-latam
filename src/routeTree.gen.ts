@@ -27,6 +27,8 @@ import { Route as LegalAvisoLegalRouteImport } from './routes/legal.aviso-legal'
 import { Route as LegalCookiesRouteImport } from './routes/legal.cookies'
 import { Route as LegalPrivacidadRouteImport } from './routes/legal.privacidad'
 import { Route as LpSalesFlowRouteImport } from './routes/lp.sales-flow'
+import { Route as LpSalesFlowClinicasBogotaRouteImport } from './routes/lp.sales-flow-clinicas-bogota'
+import { Route as LpSalesFlowClinicasBogotaBRouteImport } from './routes/lp.sales-flow-clinicas-bogota-b'
 import { Route as MercadosIndexRouteImport } from './routes/mercados.index'
 import { Route as MercadosBarranquillaRouteImport } from './routes/mercados.barranquilla'
 import { Route as MercadosBogotaRouteImport } from './routes/mercados.bogota'
@@ -60,6 +62,10 @@ import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
 import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
 import { Route as ApiAdminVerifyRouteImport } from './routes/api/admin/verify'
 import { Route as ApiAplicacionesEnviarRouteImport } from './routes/api/aplicaciones/enviar'
+import { Route as LpSalesFlowClinicasBogotaBIndexRouteImport } from './routes/lp.sales-flow-clinicas-bogota-b.index'
+import { Route as LpSalesFlowClinicasBogotaBGraciasRouteImport } from './routes/lp.sales-flow-clinicas-bogota-b.gracias'
+import { Route as LpSalesFlowClinicasBogotaIndexRouteImport } from './routes/lp.sales-flow-clinicas-bogota.index'
+import { Route as LpSalesFlowClinicasBogotaGraciasRouteImport } from './routes/lp.sales-flow-clinicas-bogota.gracias'
 import { Route as LpSalesFlowIndexRouteImport } from './routes/lp.sales-flow.index'
 import { Route as LpSalesFlowGraciasRouteImport } from './routes/lp.sales-flow.gracias'
 import { Route as TrabajaConNosotrosAplicarIdRouteImport } from './routes/trabaja-con-nosotros_.aplicar.$id'
@@ -163,6 +169,18 @@ const LpSalesFlowRoute = LpSalesFlowRouteImport.update({
   path: '/lp/sales-flow',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LpSalesFlowClinicasBogotaRoute =
+  LpSalesFlowClinicasBogotaRouteImport.update({
+    id: '/lp/sales-flow-clinicas-bogota',
+    path: '/lp/sales-flow-clinicas-bogota',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LpSalesFlowClinicasBogotaBRoute =
+  LpSalesFlowClinicasBogotaBRouteImport.update({
+    id: '/lp/sales-flow-clinicas-bogota-b',
+    path: '/lp/sales-flow-clinicas-bogota-b',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const MercadosIndexRoute = MercadosIndexRouteImport.update({
   id: '/mercados/',
   path: '/mercados/',
@@ -335,6 +353,30 @@ const ApiAplicacionesEnviarRoute = ApiAplicacionesEnviarRouteImport.update({
   path: '/api/aplicaciones/enviar',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LpSalesFlowClinicasBogotaBIndexRoute =
+  LpSalesFlowClinicasBogotaBIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => LpSalesFlowClinicasBogotaBRoute,
+  } as any)
+const LpSalesFlowClinicasBogotaBGraciasRoute =
+  LpSalesFlowClinicasBogotaBGraciasRouteImport.update({
+    id: '/gracias',
+    path: '/gracias',
+    getParentRoute: () => LpSalesFlowClinicasBogotaBRoute,
+  } as any)
+const LpSalesFlowClinicasBogotaIndexRoute =
+  LpSalesFlowClinicasBogotaIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => LpSalesFlowClinicasBogotaRoute,
+  } as any)
+const LpSalesFlowClinicasBogotaGraciasRoute =
+  LpSalesFlowClinicasBogotaGraciasRouteImport.update({
+    id: '/gracias',
+    path: '/gracias',
+    getParentRoute: () => LpSalesFlowClinicasBogotaRoute,
+  } as any)
 const LpSalesFlowIndexRoute = LpSalesFlowIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -416,6 +458,8 @@ export interface FileRoutesByFullPath {
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacidad': typeof LegalPrivacidadRoute
   '/lp/sales-flow': typeof LpSalesFlowRouteWithChildren
+  '/lp/sales-flow-clinicas-bogota': typeof LpSalesFlowClinicasBogotaRouteWithChildren
+  '/lp/sales-flow-clinicas-bogota-b': typeof LpSalesFlowClinicasBogotaBRouteWithChildren
   '/mercados/barranquilla': typeof MercadosBarranquillaRoute
   '/mercados/bogota': typeof MercadosBogotaRoute
   '/mercados/colombia': typeof MercadosColombiaRoute
@@ -451,8 +495,12 @@ export interface FileRoutesByFullPath {
   '/api/admin/logout': typeof ApiAdminLogoutRoute
   '/api/admin/verify': typeof ApiAdminVerifyRoute
   '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
+  '/lp/sales-flow-clinicas-bogota-b/gracias': typeof LpSalesFlowClinicasBogotaBGraciasRoute
+  '/lp/sales-flow-clinicas-bogota/gracias': typeof LpSalesFlowClinicasBogotaGraciasRoute
   '/lp/sales-flow/gracias': typeof LpSalesFlowGraciasRoute
   '/trabaja-con-nosotros/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
+  '/lp/sales-flow-clinicas-bogota-b/': typeof LpSalesFlowClinicasBogotaBIndexRoute
+  '/lp/sales-flow-clinicas-bogota/': typeof LpSalesFlowClinicasBogotaIndexRoute
   '/lp/sales-flow/': typeof LpSalesFlowIndexRoute
   '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
   '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
@@ -515,8 +563,12 @@ export interface FileRoutesByTo {
   '/api/admin/logout': typeof ApiAdminLogoutRoute
   '/api/admin/verify': typeof ApiAdminVerifyRoute
   '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
+  '/lp/sales-flow-clinicas-bogota-b/gracias': typeof LpSalesFlowClinicasBogotaBGraciasRoute
+  '/lp/sales-flow-clinicas-bogota/gracias': typeof LpSalesFlowClinicasBogotaGraciasRoute
   '/lp/sales-flow/gracias': typeof LpSalesFlowGraciasRoute
   '/trabaja-con-nosotros/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
+  '/lp/sales-flow-clinicas-bogota-b': typeof LpSalesFlowClinicasBogotaBIndexRoute
+  '/lp/sales-flow-clinicas-bogota': typeof LpSalesFlowClinicasBogotaIndexRoute
   '/lp/sales-flow': typeof LpSalesFlowIndexRoute
   '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
   '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
@@ -546,6 +598,8 @@ export interface FileRoutesById {
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacidad': typeof LegalPrivacidadRoute
   '/lp/sales-flow': typeof LpSalesFlowRouteWithChildren
+  '/lp/sales-flow-clinicas-bogota': typeof LpSalesFlowClinicasBogotaRouteWithChildren
+  '/lp/sales-flow-clinicas-bogota-b': typeof LpSalesFlowClinicasBogotaBRouteWithChildren
   '/mercados/barranquilla': typeof MercadosBarranquillaRoute
   '/mercados/bogota': typeof MercadosBogotaRoute
   '/mercados/colombia': typeof MercadosColombiaRoute
@@ -581,8 +635,12 @@ export interface FileRoutesById {
   '/api/admin/logout': typeof ApiAdminLogoutRoute
   '/api/admin/verify': typeof ApiAdminVerifyRoute
   '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
+  '/lp/sales-flow-clinicas-bogota-b/gracias': typeof LpSalesFlowClinicasBogotaBGraciasRoute
+  '/lp/sales-flow-clinicas-bogota/gracias': typeof LpSalesFlowClinicasBogotaGraciasRoute
   '/lp/sales-flow/gracias': typeof LpSalesFlowGraciasRoute
   '/trabaja-con-nosotros_/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
+  '/lp/sales-flow-clinicas-bogota-b/': typeof LpSalesFlowClinicasBogotaBIndexRoute
+  '/lp/sales-flow-clinicas-bogota/': typeof LpSalesFlowClinicasBogotaIndexRoute
   '/lp/sales-flow/': typeof LpSalesFlowIndexRoute
   '/api/admin/ai/config': typeof ApiAdminAiConfigRoute
   '/api/admin/ai/models': typeof ApiAdminAiModelsRoute
@@ -613,6 +671,8 @@ export interface FileRouteTypes {
     | '/legal/cookies'
     | '/legal/privacidad'
     | '/lp/sales-flow'
+    | '/lp/sales-flow-clinicas-bogota'
+    | '/lp/sales-flow-clinicas-bogota-b'
     | '/mercados/barranquilla'
     | '/mercados/bogota'
     | '/mercados/colombia'
@@ -648,8 +708,12 @@ export interface FileRouteTypes {
     | '/api/admin/logout'
     | '/api/admin/verify'
     | '/api/aplicaciones/enviar'
+    | '/lp/sales-flow-clinicas-bogota-b/gracias'
+    | '/lp/sales-flow-clinicas-bogota/gracias'
     | '/lp/sales-flow/gracias'
     | '/trabaja-con-nosotros/aplicar/$id'
+    | '/lp/sales-flow-clinicas-bogota-b/'
+    | '/lp/sales-flow-clinicas-bogota/'
     | '/lp/sales-flow/'
     | '/api/admin/ai/config'
     | '/api/admin/ai/models'
@@ -712,8 +776,12 @@ export interface FileRouteTypes {
     | '/api/admin/logout'
     | '/api/admin/verify'
     | '/api/aplicaciones/enviar'
+    | '/lp/sales-flow-clinicas-bogota-b/gracias'
+    | '/lp/sales-flow-clinicas-bogota/gracias'
     | '/lp/sales-flow/gracias'
     | '/trabaja-con-nosotros/aplicar/$id'
+    | '/lp/sales-flow-clinicas-bogota-b'
+    | '/lp/sales-flow-clinicas-bogota'
     | '/lp/sales-flow'
     | '/api/admin/ai/config'
     | '/api/admin/ai/models'
@@ -742,6 +810,8 @@ export interface FileRouteTypes {
     | '/legal/cookies'
     | '/legal/privacidad'
     | '/lp/sales-flow'
+    | '/lp/sales-flow-clinicas-bogota'
+    | '/lp/sales-flow-clinicas-bogota-b'
     | '/mercados/barranquilla'
     | '/mercados/bogota'
     | '/mercados/colombia'
@@ -777,8 +847,12 @@ export interface FileRouteTypes {
     | '/api/admin/logout'
     | '/api/admin/verify'
     | '/api/aplicaciones/enviar'
+    | '/lp/sales-flow-clinicas-bogota-b/gracias'
+    | '/lp/sales-flow-clinicas-bogota/gracias'
     | '/lp/sales-flow/gracias'
     | '/trabaja-con-nosotros_/aplicar/$id'
+    | '/lp/sales-flow-clinicas-bogota-b/'
+    | '/lp/sales-flow-clinicas-bogota/'
     | '/lp/sales-flow/'
     | '/api/admin/ai/config'
     | '/api/admin/ai/models'
@@ -808,6 +882,8 @@ export interface RootRouteChildren {
   LegalCookiesRoute: typeof LegalCookiesRoute
   LegalPrivacidadRoute: typeof LegalPrivacidadRoute
   LpSalesFlowRoute: typeof LpSalesFlowRouteWithChildren
+  LpSalesFlowClinicasBogotaRoute: typeof LpSalesFlowClinicasBogotaRouteWithChildren
+  LpSalesFlowClinicasBogotaBRoute: typeof LpSalesFlowClinicasBogotaBRouteWithChildren
   MercadosBarranquillaRoute: typeof MercadosBarranquillaRoute
   MercadosBogotaRoute: typeof MercadosBogotaRoute
   MercadosColombiaRoute: typeof MercadosColombiaRoute
@@ -981,6 +1057,20 @@ declare module '@tanstack/react-router' {
       path: '/lp/sales-flow'
       fullPath: '/lp/sales-flow'
       preLoaderRoute: typeof LpSalesFlowRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/sales-flow-clinicas-bogota': {
+      id: '/lp/sales-flow-clinicas-bogota'
+      path: '/lp/sales-flow-clinicas-bogota'
+      fullPath: '/lp/sales-flow-clinicas-bogota'
+      preLoaderRoute: typeof LpSalesFlowClinicasBogotaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/sales-flow-clinicas-bogota-b': {
+      id: '/lp/sales-flow-clinicas-bogota-b'
+      path: '/lp/sales-flow-clinicas-bogota-b'
+      fullPath: '/lp/sales-flow-clinicas-bogota-b'
+      preLoaderRoute: typeof LpSalesFlowClinicasBogotaBRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mercados/': {
@@ -1214,6 +1304,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAplicacionesEnviarRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lp/sales-flow-clinicas-bogota-b/': {
+      id: '/lp/sales-flow-clinicas-bogota-b/'
+      path: '/'
+      fullPath: '/lp/sales-flow-clinicas-bogota-b/'
+      preLoaderRoute: typeof LpSalesFlowClinicasBogotaBIndexRouteImport
+      parentRoute: typeof LpSalesFlowClinicasBogotaBRoute
+    }
+    '/lp/sales-flow-clinicas-bogota-b/gracias': {
+      id: '/lp/sales-flow-clinicas-bogota-b/gracias'
+      path: '/gracias'
+      fullPath: '/lp/sales-flow-clinicas-bogota-b/gracias'
+      preLoaderRoute: typeof LpSalesFlowClinicasBogotaBGraciasRouteImport
+      parentRoute: typeof LpSalesFlowClinicasBogotaBRoute
+    }
+    '/lp/sales-flow-clinicas-bogota/': {
+      id: '/lp/sales-flow-clinicas-bogota/'
+      path: '/'
+      fullPath: '/lp/sales-flow-clinicas-bogota/'
+      preLoaderRoute: typeof LpSalesFlowClinicasBogotaIndexRouteImport
+      parentRoute: typeof LpSalesFlowClinicasBogotaRoute
+    }
+    '/lp/sales-flow-clinicas-bogota/gracias': {
+      id: '/lp/sales-flow-clinicas-bogota/gracias'
+      path: '/gracias'
+      fullPath: '/lp/sales-flow-clinicas-bogota/gracias'
+      preLoaderRoute: typeof LpSalesFlowClinicasBogotaGraciasRouteImport
+      parentRoute: typeof LpSalesFlowClinicasBogotaRoute
+    }
     '/lp/sales-flow/': {
       id: '/lp/sales-flow/'
       path: '/'
@@ -1315,6 +1433,40 @@ const LpSalesFlowRouteWithChildren = LpSalesFlowRoute._addFileChildren(
   LpSalesFlowRouteChildren,
 )
 
+interface LpSalesFlowClinicasBogotaRouteChildren {
+  LpSalesFlowClinicasBogotaGraciasRoute: typeof LpSalesFlowClinicasBogotaGraciasRoute
+  LpSalesFlowClinicasBogotaIndexRoute: typeof LpSalesFlowClinicasBogotaIndexRoute
+}
+
+const LpSalesFlowClinicasBogotaRouteChildren: LpSalesFlowClinicasBogotaRouteChildren =
+  {
+    LpSalesFlowClinicasBogotaGraciasRoute:
+      LpSalesFlowClinicasBogotaGraciasRoute,
+    LpSalesFlowClinicasBogotaIndexRoute: LpSalesFlowClinicasBogotaIndexRoute,
+  }
+
+const LpSalesFlowClinicasBogotaRouteWithChildren =
+  LpSalesFlowClinicasBogotaRoute._addFileChildren(
+    LpSalesFlowClinicasBogotaRouteChildren,
+  )
+
+interface LpSalesFlowClinicasBogotaBRouteChildren {
+  LpSalesFlowClinicasBogotaBGraciasRoute: typeof LpSalesFlowClinicasBogotaBGraciasRoute
+  LpSalesFlowClinicasBogotaBIndexRoute: typeof LpSalesFlowClinicasBogotaBIndexRoute
+}
+
+const LpSalesFlowClinicasBogotaBRouteChildren: LpSalesFlowClinicasBogotaBRouteChildren =
+  {
+    LpSalesFlowClinicasBogotaBGraciasRoute:
+      LpSalesFlowClinicasBogotaBGraciasRoute,
+    LpSalesFlowClinicasBogotaBIndexRoute: LpSalesFlowClinicasBogotaBIndexRoute,
+  }
+
+const LpSalesFlowClinicasBogotaBRouteWithChildren =
+  LpSalesFlowClinicasBogotaBRoute._addFileChildren(
+    LpSalesFlowClinicasBogotaBRouteChildren,
+  )
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AvisoLegalRoute: AvisoLegalRoute,
@@ -1332,6 +1484,8 @@ const rootRouteChildren: RootRouteChildren = {
   LegalCookiesRoute: LegalCookiesRoute,
   LegalPrivacidadRoute: LegalPrivacidadRoute,
   LpSalesFlowRoute: LpSalesFlowRouteWithChildren,
+  LpSalesFlowClinicasBogotaRoute: LpSalesFlowClinicasBogotaRouteWithChildren,
+  LpSalesFlowClinicasBogotaBRoute: LpSalesFlowClinicasBogotaBRouteWithChildren,
   MercadosBarranquillaRoute: MercadosBarranquillaRoute,
   MercadosBogotaRoute: MercadosBogotaRoute,
   MercadosColombiaRoute: MercadosColombiaRoute,
