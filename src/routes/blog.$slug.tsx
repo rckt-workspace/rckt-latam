@@ -1,12 +1,11 @@
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import { BlogCard, BlogCover } from "@/components/blog/BlogCard";
-import { BlogToc } from "@/components/blog/BlogToc";
 import { Markdown } from "@/components/blog/Markdown";
 import GeneralCta from "@/components/rckt/GeneralCta";
 import { blogRepository } from "@/lib/blog.repository";
-import { extractToc, formatBlogDate } from "@/lib/blog.utils";
+import { formatBlogDate } from "@/lib/blog.utils";
 import type { BlogPost } from "@/types/blog";
 
 const SITE_URL = "https://rckt.lat";
@@ -93,75 +92,67 @@ function BlogArticlePage() {
     };
   }, [slug]);
 
-  const toc = useMemo(() => (post ? extractToc(post.content) : []), [post]);
-
   useSiteMotion([post?.id, relacionados.length]);
 
   return (
     <div className="rckt-site tcn-page blog-page blog-article-page">
       <main id="top">
-        <section className="band blog-article-head">
+        {/* Una sola sección para cabecera, portada y contenido:
+            el fondo es continuo y GlobalSectionBlobs le pone las manchas. */}
+        <section className="band blog-article-band">
           <SiteHeader />
           <div className="container">
-            {!post && cargando && <p className="vacantes-nota">Cargando artículo…</p>}
-            {!post && !cargando && (
-              <div className="form-card" role="alert">
-                <span className="kicker">Blog</span>
-                <h1>No encontramos este artículo.</h1>
-                <p>Puede que haya cambiado de dirección o ya no esté publicado.</p>
-                <div className="form-actions">
-                  <Link className="btn btn-primary" to="/blog">
-                    Ver todos los artículos
-                  </Link>
+            <div className="blog-article-column">
+              {!post && cargando && <p className="vacantes-nota">Cargando artículo…</p>}
+              {!post && !cargando && (
+                <div className="form-card" role="alert">
+                  <span className="kicker">Blog</span>
+                  <h1>No encontramos este artículo.</h1>
+                  <p>Puede que haya cambiado de dirección o ya no esté publicado.</p>
+                  <div className="form-actions">
+                    <Link className="btn btn-primary" to="/blog">
+                      Ver todos los artículos
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            )}
-            {post && (
-              <div className="blog-article-header">
-                <Link className="blog-back" to="/blog">
-                  ← RCKT Insights
-                </Link>
-                <span className="blog-chip">{post.category}</span>
-                <h1>{post.title}</h1>
-                {post.excerpt && <p className="sub">{post.excerpt}</p>}
-                <p className="blog-meta">
-                  <span>{post.author.name}</span>
-                  <span aria-hidden="true"> · </span>
-                  <span>{post.author.role}</span>
-                  <span aria-hidden="true"> · </span>
-                  <time dateTime={post.publishedAt}>{formatBlogDate(post.publishedAt)}</time>
-                  <span aria-hidden="true"> · </span>
-                  <span>{post.readingTime} min de lectura</span>
-                </p>
-              </div>
-            )}
+              )}
+              {post && (
+                <article>
+                  <header className="blog-article-header">
+                    <Link className="blog-back" to="/blog">
+                      ← Volver al blog
+                    </Link>
+                    <span className="blog-chip">{post.category}</span>
+                    <h1>{post.title}</h1>
+                    {post.excerpt && <p className="sub">{post.excerpt}</p>}
+                    <p className="blog-meta">
+                      <span>{post.author.name}</span>
+                      <span className="blog-meta-dot" aria-hidden="true">
+                        •
+                      </span>
+                      <time dateTime={post.publishedAt}>{formatBlogDate(post.publishedAt)}</time>
+                    </p>
+                  </header>
+
+                  <BlogCover post={post} className="blog-cover-hero" />
+
+                  <div className="blog-article-content">
+                    <Markdown content={post.content} />
+                    {post.tags.length > 0 && (
+                      <div className="blog-tags">
+                        {post.tags.map((tag) => (
+                          <span className="blog-chip" key={tag}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </article>
+              )}
+            </div>
           </div>
         </section>
-
-        {post && (
-          <section className="band band-alt">
-            <div className="container">
-              <BlogCover post={post} className="blog-cover-hero" />
-              <div className="blog-article-layout">
-                <aside className="blog-article-aside">
-                  <BlogToc items={toc} />
-                </aside>
-                <div className="blog-article-content">
-                  <Markdown content={post.content} />
-                  {post.tags.length > 0 && (
-                    <div className="blog-tags">
-                      {post.tags.map((tag) => (
-                        <span className="blog-chip" key={tag}>
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
 
         {post && relacionados.length > 0 && (
           <section className="band">
