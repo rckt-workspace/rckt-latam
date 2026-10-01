@@ -7250,3 +7250,104 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
     flex-direction: row;
   }
 }
+
+
+
+/* ==========================================================================
+   Artículo individual del blog (/blog/<slug>)
+   Columna única centrada, como el artículo de rckt.es.
+   Todo va con el prefijo .rckt-site.blog-article-page para que NO afecte
+   al listado del blog ni a ninguna otra página.
+   ========================================================================== */
+
+/* Sección única: deja espacio para el menú flotante */
+.rckt-site.blog-article-page .blog-article-band {
+  padding-top: 150px;
+  padding-bottom: 88px;
+}
+
+/* Columna de lectura: cabecera, portada y texto comparten el mismo ancho */
+.rckt-site.blog-article-page .blog-article-column {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* --- Cabecera --- */
+.rckt-site.blog-article-page .blog-article-header {
+  max-width: none;
+  margin-bottom: 40px;
+}
+.rckt-site.blog-article-page .blog-back {
+  display: block;
+  width: fit-content;
+  margin-bottom: 20px;
+}
+.rckt-site.blog-article-page .blog-article-header .blog-chip {
+  padding: 6px 12px;
+  border-color: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.rckt-site.blog-article-page .blog-article-header h1 {
+  font-size: clamp(32px, 4.6vw, 48px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin: 18px 0 16px;
+}
+.rckt-site.blog-article-page .blog-article-header .sub {
+  font-size: clamp(17px, 1.6vw, 19px);
+  line-height: 1.6;
+  color: var(--color-muted-foreground);
+  margin: 0 0 22px;
+}
+.rckt-site.blog-article-page .blog-article-header .blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 14px;
+  margin: 0;
+}
+.rckt-site.blog-article-page .blog-meta-dot {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+/* --- Portada: mismo ancho que el texto, sin degradado oscuro --- */
+.rckt-site.blog-article-page .blog-cover-hero {
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  margin: 0 0 48px;
+}
+.rckt-site.blog-article-page .blog-cover-hero::after {
+  content: none;
+}
+
+/* --- Cuerpo del artículo --- */
+.rckt-site.blog-article-page .blog-article-content .blog-body {
+  max-width: none;
+}
+.rckt-site.blog-article-page .blog-article-content .blog-h2 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 44px;
+}
+.rckt-site.blog-article-page .blog-article-content .blog-paragraph {
+  line-height: 1.8;
+}
+
+/* Móvil */
+@media (max-width: 640px) {
+  .rckt-site.blog-article-page .blog-article-band {
+    padding-top: 120px;
+    padding-bottom: 64px;
+  }
+  .rckt-site.blog-article-page .blog-article-header {
+    margin-bottom: 28px;
+  }
+  .rckt-site.blog-article-page .blog-cover-hero {
+    margin-bottom: 32px;
+  }
+}
