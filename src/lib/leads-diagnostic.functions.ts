@@ -25,7 +25,13 @@ const DiagnosticSchema = z.object({
 });
 
 const AttributionSchema = z.object({
-  source: z.enum(["contacto", "revenue-diagnostic", "lp-sales-flow"]),
+  source: z.enum([
+    "contacto",
+    "revenue-diagnostic",
+    "lp-sales-flow",
+    "lp-sales-flow-clinicas-bogota",
+    "lp-sales-flow-clinicas-bogota-b",
+  ]),
   landing_path: t(500),
   referrer: t(500),
   utm_source: t(200),
