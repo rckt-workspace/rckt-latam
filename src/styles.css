@@ -7252,10 +7252,10 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 }
 
 
-
 /* ==========================================================================
    Artículo individual del blog (/blog/<slug>)
-   Columna única centrada, como el artículo de rckt.es.
+   Columna de contenido como el artículo de rckt.es (720px), con el índice
+   "En este artículo" a su izquierda.
    Todo va con el prefijo .rckt-site.blog-article-page para que NO afecte
    al listado del blog ni a ninguna otra página.
    ========================================================================== */
@@ -7266,10 +7266,37 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
   padding-bottom: 88px;
 }
 
-/* Columna de lectura: cabecera, portada y texto comparten el mismo ancho */
+/* Contenedor sin límite propio: el ancho lo controla la cuadrícula de abajo */
 .rckt-site.blog-article-page .blog-article-column {
-  max-width: 720px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
+}
+
+/* --- Cuadrícula de 2 columnas: [índice 220px] [contenido 720px] ---
+   El conjunto se centra en la página, así que la columna de contenido
+   queda un poco corrida a la derecha y el índice a su izquierda.
+   La columna de contenido (y por lo tanto la imagen) mantiene sus 720px. */
+.rckt-site.blog-article-page .blog-article-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 720px);
+  justify-content: center;
+  gap: 0 48px;
+  align-items: start;
+}
+/* Cabecera, portada y texto van en la columna de contenido */
+.rckt-site.blog-article-page .blog-article-layout > * {
+  grid-column: 2;
+}
+/* El índice va en la columna izquierda, a la altura del texto,
+   y se queda fijo mientras se baja por el artículo */
+.rckt-site.blog-article-page .blog-article-aside {
+  grid-column: 1;
+  grid-row: 3;
+  position: sticky;
+  top: 120px;
+}
+.rckt-site.blog-article-page .blog-article-content {
+  grid-row: 3;
 }
 
 /* --- Cabecera --- */
@@ -7315,7 +7342,7 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
   opacity: 0.7;
 }
 
-/* --- Portada: mismo ancho que el texto, sin degradado oscuro --- */
+/* --- Portada: franja panorámica como rckt.es, sin degradado oscuro --- */
 .rckt-site.blog-article-page .blog-cover-hero {
   aspect-ratio: 16 / 5;
   border-radius: 16px;
@@ -7336,6 +7363,32 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 }
 .rckt-site.blog-article-page .blog-article-content .blog-paragraph {
   line-height: 1.8;
+}
+
+/* --- Pantallas medianas y pequeñas: una sola columna; el índice pasa
+       arriba del texto como un recuadro --- */
+@media (max-width: 1099px) {
+  .rckt-site.blog-article-page .blog-article-layout {
+    grid-template-columns: minmax(0, 720px);
+    justify-content: center;
+  }
+  .rckt-site.blog-article-page .blog-article-layout > *,
+  .rckt-site.blog-article-page .blog-article-aside,
+  .rckt-site.blog-article-page .blog-article-content {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .rckt-site.blog-article-page .blog-article-aside {
+    position: static;
+    max-width: none;
+    justify-self: stretch;
+    margin-bottom: 32px;
+  }
+  .rckt-site.blog-article-page .blog-article-aside .blog-toc {
+    padding: 18px 20px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
 }
 
 /* Móvil */
