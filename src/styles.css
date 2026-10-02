@@ -7291,7 +7291,7 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
    y se queda fijo mientras se baja por el artículo */
 .rckt-site.blog-article-page .blog-article-aside {
   grid-column: 1;
-  grid-row: 3;
+  grid-row: 1 / span 3;
   position: sticky;
   top: 120px;
 }
