@@ -1,11 +1,12 @@
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SiteFooter, SiteHeader, useSiteMotion } from "@/components/SiteChrome";
 import { BlogCard, BlogCover } from "@/components/blog/BlogCard";
+import { BlogToc } from "@/components/blog/BlogToc";
 import { Markdown } from "@/components/blog/Markdown";
 import GeneralCta from "@/components/rckt/GeneralCta";
 import { blogRepository } from "@/lib/blog.repository";
-import { formatBlogDate } from "@/lib/blog.utils";
+import { extractToc, formatBlogDate } from "@/lib/blog.utils";
 import type { BlogPost } from "@/types/blog";
 
 const SITE_URL = "https://rckt.lat";
@@ -92,6 +93,8 @@ function BlogArticlePage() {
     };
   }, [slug]);
 
+  const toc = useMemo(() => (post ? extractToc(post.content) : []), [post]);
+
   useSiteMotion([post?.id, relacionados.length]);
 
   return (
@@ -117,7 +120,7 @@ function BlogArticlePage() {
                 </div>
               )}
               {post && (
-                <article>
+                <article className="blog-article-layout">
                   <header className="blog-article-header">
                     <Link className="blog-back" to="/blog">
                       ← Volver al blog
@@ -135,6 +138,12 @@ function BlogArticlePage() {
                   </header>
 
                   <BlogCover post={post} className="blog-cover-hero" />
+
+                  {/* Índice "En este artículo": en pantallas grandes va en el margen
+                      izquierdo; en pantallas pequeñas aparece antes del texto. */}
+                  <aside className="blog-article-aside">
+                    <BlogToc items={toc} />
+                  </aside>
 
                   <div className="blog-article-content">
                     <Markdown content={post.content} />
