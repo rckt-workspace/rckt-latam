@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
-import { BarChart3, Bot, CalendarClock, Check, ClipboardList, Megaphone, MessageCircle, ShieldCheck, Target, UserCheck } from "lucide-react";
+import { BarChart3, Bot, CalendarCheck, CalendarClock, Check, CircleAlert, ClipboardList, LockKeyhole, Megaphone, MessageCircle, ShieldCheck, Target, UserCheck } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 import heroPhoto from "@/assets/sector-salud.jpg";
 import CampaignShell from "@/components/rckt/CampaignShell";
@@ -64,6 +65,33 @@ function Actions({ section, landing }: { section: string; landing: string }) {
   </div>;
 }
 
+function CampaignNote({ icon: Icon, text, compact = false }: { icon: LucideIcon; text: string; compact?: boolean }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+      element.dataset.campaignVisible = "true";
+      return;
+    }
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0]?.isIntersecting) {
+        element.dataset.campaignVisible = "true";
+        observer.disconnect();
+      }
+    }, { threshold: 0.15 });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+  const colonIndex = text.indexOf(":");
+  const lead = colonIndex > 0 && colonIndex <= 90 ? text.slice(0, colonIndex + 1) : null;
+  return <div ref={ref} className={compact ? "campaign-note campaign-note--compact" : "campaign-note"}>
+    <span className="campaign-note__icon" aria-hidden="true"><Icon strokeWidth={1.6} /></span>
+    {compact ? null : <span className="campaign-note__line" aria-hidden="true" />}
+    <p className="campaign-note__text">{lead ? <><strong>{lead}</strong>{text.slice(colonIndex + 1)}</> : text}</p>
+  </div>;
+}
+
 function useCampaignReveal() {
   useEffect(() => {
     const main = document.querySelector<HTMLElement>(".campaign-page main");
@@ -118,19 +146,19 @@ export function ClinicasCampaign({ variant }: { variant: "a" | "b" }) {
         <h1>Tu clínica no tiene un problema de pacientes interesados. Tiene un problema de <span className="hero-hand">seguimiento</span>.</h1>
         <p className="campaign-hero__sub">{CLINIC_DESCRIPTION}</p>
         <Actions section="hero" landing={landing} />
-        <p className="campaign-hero__note">Tres semanas de diagnóstico con tus datos: cuántos interesados llegan, cuántos agendan, cuántos asisten y cuántos aceptan el tratamiento.</p>
+        <CampaignNote compact icon={CalendarCheck} text="Tres semanas de diagnóstico con tus datos: cuántos interesados llegan, cuántos agendan, cuántos asisten y cuántos aceptan el tratamiento." />
       </div>
     </section>
     <section className="campaign-section"><div className="campaign-shell campaign-content">
       <SectionHeader num="01." label="El problema económico" title="Pagaste por ese paciente. ¿Cuánto te demoras en responderle?" />
       <p className="campaign-statement">En una clínica, la persona que escribe por WhatsApp está comparando tres o cuatro opciones al mismo tiempo. La que responde primero y hace seguimiento se queda con la valoración. El resto de la inversión en pauta se pierde en conversaciones que nunca se retomaron.</p>
       <div className="campaign-funnel"><h3>Las cuatro fugas típicas de una clínica:</h3><div className="campaign-questions">{leaks.map(([where, what]) => <div className="campaign-question" key={where}><strong>{where}</strong><p>{what}</p></div>)}</div></div>
-      <p className="campaign-statement">El costo real no es el del mensaje: es el de la silla vacía y el del tratamiento que se fue a otra clínica.</p>
+      <CampaignNote icon={CircleAlert} text="El costo real no es el del mensaje: es el de la silla vacía y el del tratamiento que se fue a otra clínica." />
     </div></section>
     <section className="campaign-section"><div className="campaign-shell campaign-content">
       <SectionHeader num="02." label="Cómo funciona" title="Sales Flow para clínicas: del anuncio a la valoración, con seguimiento automático." />
       <div className="campaign-process"><div className="campaign-process__line" aria-hidden="true" /><div className="campaign-process__steps">{steps.map(({ title, text, Icon }, index) => <article className="campaign-process__step" key={title}><span className="campaign-process__circle"><Icon aria-hidden="true" strokeWidth={1.5} /></span><span className="campaign-process__number">{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div>
-      <p className="campaign-statement campaign-process__note"><ShieldCheck aria-hidden="true" strokeWidth={1.6} />El agente nunca da diagnósticos, no promete resultados clínicos y no negocia precios. Esas conversaciones pasan siempre a una persona de tu equipo.</p>
+      <CampaignNote icon={ShieldCheck} text="El agente nunca da diagnósticos, no promete resultados clínicos y no negocia precios. Esas conversaciones pasan siempre a una persona de tu equipo." />
     </div></section>
     <section className="campaign-section"><div className="campaign-shell campaign-content">
       <SectionHeader num="03." label="Qué cambia en 90 días" title="Qué cambia en 90 días" />
@@ -144,7 +172,7 @@ export function ClinicasCampaign({ variant }: { variant: "a" | "b" }) {
       <SectionHeader num="05." label="Integraciones y medición" title="Con tu número, tu agenda y tu software." />
       <p className="campaign-statement">Nos conectamos a tu WhatsApp Business, a tus cuentas de Meta y Google y a tu software de agenda o historia clínica cuando permite integración. Si no la permite, definimos el punto de registro manual más corto posible para no depender de la memoria de nadie. Todo queda a tu nombre y documentado.</p>
       <div className="campaign-chips">{integrations.map(({ name, Icon }) => <div className="campaign-chip" key={name}><Icon aria-hidden="true" /><span>{name}</span></div>)}</div>
-      <p className="campaign-statement">Manejo de datos personales conforme a la normativa colombiana, con autorización expresa. No se envía información clínica a las plataformas publicitarias: solo señales de etapa comercial.</p>
+      <CampaignNote icon={LockKeyhole} text="Manejo de datos personales conforme a la normativa colombiana, con autorización expresa. No se envía información clínica a las plataformas publicitarias: solo señales de etapa comercial." />
     </div></section>
     <section className="campaign-section"><div className="campaign-shell campaign-content">
       <SectionHeader num="06." label="Para quién" title="Es para tu clínica si:" />
