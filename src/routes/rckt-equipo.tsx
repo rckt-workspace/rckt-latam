@@ -3,6 +3,7 @@ import logoDark from "@/assets/rckt-logo-dark.png";
 import { useCallback, useEffect, useState } from "react";
 import { BlogAdmin } from "@/components/blog/BlogAdmin";
 import { BlogCalendar } from "@/components/blog/BlogCalendar";
+import { BlogImporter } from "@/components/blog/BlogImporter";
 
 export const Route = createFileRoute("/rckt-equipo")({
   staticData: { sitemap: false },
@@ -133,7 +134,7 @@ const vacanteVacia = {
 };
 
 function Dashboard() {
-  const [tab, setTab] = useState<"vacantes" | "postulaciones" | "blog" | "calendario">("vacantes");
+  const [tab, setTab] = useState<"vacantes" | "postulaciones" | "blog" | "calendario" | "importar">("vacantes");
   const [vacantes, setVacantes] = useState<Vacante[]>([]);
   const [postulaciones, setPostulaciones] = useState<Postulacion[]>([]);
   const [editando, setEditando] = useState<(typeof vacanteVacia & { id?: string }) | null>(null);
@@ -327,7 +328,7 @@ function Dashboard() {
 
         {/* Tabs */}
         <div style={{ display: "flex", gap: "12px", marginBottom: "32px", paddingBottom: "16px", borderBottom: "1px solid var(--line)", flexWrap: "wrap" }}>
-          {(["vacantes", "postulaciones", "blog", "calendario"] as const).map((t) => (
+          {(["vacantes", "postulaciones", "blog", "calendario", "importar"] as const).map((t) => (
             <button
               key={t}
               type="button"
@@ -340,7 +341,15 @@ function Dashboard() {
                 fontWeight: 600,
               }}
             >
-              {t === "vacantes" ? "Vacantes" : t === "postulaciones" ? "Postulaciones" : t === "blog" ? "Blog" : "Calendario"}
+              {t === "vacantes"
+                ? "Vacantes"
+                : t === "postulaciones"
+                  ? "Postulaciones"
+                  : t === "blog"
+                    ? "Blog"
+                    : t === "calendario"
+                      ? "Calendario"
+                      : "Importar plan"}
             </button>
           ))}
         </div>
@@ -357,6 +366,21 @@ function Dashboard() {
               </p>
             </div>
             <BlogCalendar onGoToBlog={() => setTab("blog")} />
+          </div>
+        )}
+
+        {/* Importar plan editorial (Excel + Word) */}
+        {tab === "importar" && (
+          <div style={{ marginBottom: "40px" }}>
+            <div style={{ marginBottom: "24px", paddingBottom: "16px", borderBottom: "1px solid var(--line)" }}>
+              <h2 style={{ fontSize: "24px", fontWeight: 800, color: "var(--carbon)", margin: "0 0 6px 0" }}>
+                Importar plan editorial
+              </h2>
+              <p style={{ fontSize: "14px", color: "var(--carbon-soft)", margin: 0 }}>
+                Carga varios artículos a la vez desde un Excel y sus Word
+              </p>
+            </div>
+            <BlogImporter onDone={() => setTab("calendario")} />
           </div>
         )}
 

@@ -7509,3 +7509,104 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
   .rckt-panel .bcal-drawer, .rckt-panel .bcal-scrim { transition: none; }
 }
 
+
+
+
+
+
+
+
+/* ==========================================================================
+   Importador del plan editorial (panel /rckt-equipo → pestaña Importar plan)
+   Todo con el prefijo .rckt-panel .bimp para no afectar otras páginas.
+   ========================================================================== */
+.rckt-panel .bimp {
+  --bimp-green: #2f7a55;
+  --bimp-amber: #9a6100;
+  --bimp-red: #b42318;
+  --bimp-panel: color-mix(in srgb, var(--papel) 92%, var(--carbon) 3%);
+  color: var(--carbon);
+}
+[data-theme="dark"] .rckt-panel .bimp { --bimp-green: #6cc596; --bimp-amber: #f2c063; --bimp-red: #ff8a80; }
+
+.rckt-panel .bimp-intro { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-bottom: 18px; }
+.rckt-panel .bimp-intro p { margin: 0; max-width: 680px; font-size: 14.5px; color: var(--carbon-soft); line-height: 1.55; }
+
+.rckt-panel .bimp-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 16px; }
+.rckt-panel .bimp-step, .rckt-panel .bimp-review { background: var(--bimp-panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+.rckt-panel .bimp-step h3, .rckt-panel .bimp-review h3 { margin: 0 0 12px; font-size: 17px; font-weight: 700; display: flex; gap: 10px; align-items: baseline; }
+.rckt-panel .bimp-step h3 span, .rckt-panel .bimp-review h3 span { color: var(--naranja); font-weight: 800; }
+
+.rckt-panel .bimp-drop { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; min-height: 112px; padding: 18px; border: 1.5px dashed var(--line-strong); border-radius: 12px; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+.rckt-panel .bimp-drop:hover { border-color: var(--naranja); background: color-mix(in srgb, var(--naranja) 8%, transparent); }
+.rckt-panel .bimp-drop input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.rckt-panel .bimp-drop span { font-size: 13px; color: var(--carbon-soft); opacity: 0.8; }
+.rckt-panel .bimp-file { margin: 10px 0 0; font-size: 13.5px; color: var(--bimp-green); font-weight: 600; }
+
+.rckt-panel .bimp-review-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+.rckt-panel .bimp-summary { display: flex; flex-wrap: wrap; gap: 8px; }
+.rckt-panel .bimp-pill { display: inline-flex; align-items: center; border-radius: 999px; padding: 3px 10px; font-size: 12.5px; font-weight: 600; white-space: nowrap; }
+.rckt-panel .bimp-pill.is-listo { background: color-mix(in srgb, var(--bimp-green) 15%, transparent); color: var(--bimp-green); }
+.rckt-panel .bimp-pill.is-revisar { background: color-mix(in srgb, var(--bimp-amber) 15%, transparent); color: var(--bimp-amber); }
+.rckt-panel .bimp-pill.is-error { background: color-mix(in srgb, var(--bimp-red) 13%, transparent); color: var(--bimp-red); }
+
+.rckt-panel .bimp-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+.rckt-panel .bimp-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 13.5px; }
+.rckt-panel .bimp-table th, .rckt-panel .bimp-table td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+.rckt-panel .bimp-table th { font-size: 12.5px; font-weight: 600; color: var(--carbon-soft); }
+.rckt-panel .bimp-table tr:last-child td { border-bottom: 0; }
+.rckt-panel .bimp-table tr.is-clickable { cursor: pointer; }
+.rckt-panel .bimp-table tr.is-clickable:hover td { background: color-mix(in srgb, var(--naranja) 6%, transparent); }
+.rckt-panel .bimp-title { font-weight: 600; }
+.rckt-panel .bimp-sub { font-size: 12px; color: var(--carbon-soft); opacity: 0.75; word-break: break-all; }
+.rckt-panel .bimp-issues { margin: 0; padding-left: 16px; font-size: 12.5px; }
+.rckt-panel .bimp-issues .is-e, .rckt-panel .bimp-bad { color: var(--bimp-red); }
+.rckt-panel .bimp-issues .is-w { color: var(--bimp-amber); }
+.rckt-panel .bimp-ok { color: var(--bimp-green); }
+
+.rckt-panel .bimp-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-top: 14px; }
+.rckt-panel .bimp-hint { font-size: 13px; color: var(--carbon-soft); opacity: 0.85; max-width: 560px; }
+.rckt-panel .bimp-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.rckt-panel .bimp-actions button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.rckt-panel .bimp-empty { text-align: center; padding: 28px 16px; color: var(--carbon-soft); }
+.rckt-panel .bimp-error { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--bimp-red); color: var(--bimp-red); font-size: 14px; }
+.rckt-panel .bimp-done { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--bimp-green); color: var(--bimp-green); font-size: 14px; font-weight: 600; }
+
+/* Vista previa */
+.rckt-panel .bimp-scrim { position: fixed; inset: 0; background: rgba(20, 14, 8, 0.35); opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 80; }
+.rckt-panel .bimp-scrim.is-open { opacity: 1; pointer-events: auto; }
+.rckt-panel .bimp-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(620px, 100%); background: var(--papel); border-left: 1px solid var(--line); transform: translateX(100%); transition: transform 0.25s ease; z-index: 81; display: flex; flex-direction: column; }
+.rckt-panel .bimp-drawer.is-open { transform: none; }
+.rckt-panel .bimp-drawer-head { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+.rckt-panel .bimp-drawer-body { overflow-y: auto; padding: 18px 22px 32px; }
+.rckt-panel .bimp-drawer-body h3 { margin: 0 0 12px; font-size: 24px; line-height: 1.2; font-weight: 700; }
+.rckt-panel .bimp-cover { width: 100%; aspect-ratio: 16 / 5; object-fit: cover; border-radius: 12px; margin-bottom: 14px; }
+.rckt-panel .bimp-meta { display: grid; grid-template-columns: 130px 1fr; gap: 6px 12px; font-size: 13.5px; margin: 0 0 16px; }
+.rckt-panel .bimp-meta dt { color: var(--carbon-soft); opacity: 0.8; }
+.rckt-panel .bimp-meta dd { margin: 0; word-break: break-word; }
+.rckt-panel .bimp-toc { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin-bottom: 18px; font-size: 13.5px; }
+.rckt-panel .bimp-toc b { display: block; margin-bottom: 6px; font-size: 12.5px; color: var(--carbon-soft); }
+.rckt-panel .bimp-toc ol { margin: 0; padding-left: 18px; }
+.rckt-panel .bimp-content { font-size: 15px; line-height: 1.7; }
+
+@media (max-width: 860px) {
+  .rckt-panel .bimp-steps { grid-template-columns: 1fr; }
+  .rckt-panel .bimp-meta { grid-template-columns: 1fr; gap: 2px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rckt-panel .bimp-drawer, .rckt-panel .bimp-scrim { transition: none; }
+}
+
+
+
+/* Ajustes del importador: textos sin mayúsculas forzadas y lista de archivos subidos */
+.rckt-panel .bimp-drop, .rckt-panel .bimp-drop strong, .rckt-panel .bimp-drop span { text-transform: none; letter-spacing: normal; }
+.rckt-panel .bimp-drop strong { font-size: 15px; color: var(--carbon); }
+.rckt-panel .bimp-files { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 4px; font-size: 13px; }
+.rckt-panel .bimp-files li { display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+.rckt-panel .bimp-files em { font-style: normal; font-weight: 600; white-space: nowrap; }
+.rckt-panel .bimp-warn { color: var(--bimp-amber); }
+
+
+.rckt-panel .bimp-files em { font-family: inherit; }
