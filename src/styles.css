@@ -7610,3 +7610,17 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 
 
 .rckt-panel .bimp-files em { font-family: inherit; }
+/* ===== Campaign note (frases finales con ícono, clínicas) ===== */
+.campaign-page .campaign-note { display: flex; flex-direction: column; align-items: center; max-width: 680px; margin: 40px auto 0; text-align: center; opacity: 0; transform: translateY(12px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.campaign-page .campaign-note[data-campaign-visible="true"] { opacity: 1; transform: translateY(0); }
+.campaign-note__icon { display: flex; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: 50%; background: rgba(252, 92, 31, 0.10); box-shadow: 0 0 0 6px rgba(252, 92, 31, 0.05); color: var(--naranja); }
+.campaign-note__icon svg { width: 18px; height: 18px; }
+.campaign-note__line { width: 32px; height: 1px; margin-top: 16px; background: var(--naranja); opacity: 0.55; }
+.campaign-note__text { margin-top: 16px; font-family: "Switzer", sans-serif; font-size: 16.5px; line-height: 1.6; color: rgba(33, 33, 33, 0.8); }
+.campaign-note__text strong { color: rgba(33, 33, 33, 0.92); font-weight: 600; }
+.campaign-note--compact { margin-top: 18px; }
+.campaign-note--compact .campaign-note__icon svg { width: 16px; height: 16px; }
+.campaign-note--compact .campaign-note__text { font-size: 14.5px; text-shadow: 0 0 10px rgba(245, 242, 237, 0.5); }
+@media (prefers-reduced-motion: reduce) {
+  .campaign-page .campaign-note { opacity: 1; transform: none; transition: none; }
+}
