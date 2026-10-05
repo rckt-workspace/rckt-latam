@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { blogRepository, hasLocalBlogChanges } from "@/lib/blog.repository";
-import { estimateReadingTime, formatShortDate, slugify } from "@/lib/blog.utils";
+import { estimateReadingTime, formatShortDate, slugify, isoToBogotaDatetimeLocal, bogotaDatetimeLocalToIso } from "@/lib/blog.utils";
 import { Markdown } from "@/components/blog/Markdown";
 import type { BlogCategory, BlogPost, BlogStatus } from "@/types/blog";
 
@@ -48,13 +48,66 @@ export function BlogAdmin() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const cargar = useCallback(async () => {
-    const [p, c] = await Promise.all([
-      blogRepository.getAllPosts(),
-      blogRepository.getCategories(),
-    ]);
-    setPosts(p);
-    setCategories(c);
-    setLocales(hasLocalBlogChanges());
+    try {
+      // Load from admin endpoint to get all statuses (draft, published, archived)
+      const adminResponse = await fetch("/api/admin/people/blog");
+
+      if (adminResponse.status === 401) {
+        window.location.href = "/ops/login?next=/rckt-equipo";
+        return;
+      }
+
+      if (!adminResponse.ok) {
+        console.error("Failed to load blog posts from admin endpoint");
+        setPosts([]);
+        setCategories([]);
+        return;
+      }
+
+      const adminData = await adminResponse.json() as { posts: any[]; categories: any[] };
+
+      // Map admin response to BlogPost[]
+      const mapped = (adminData.posts || []).map((row: any) => {
+        const categoryName = Array.isArray(row.blog_categories)
+          ? row.blog_categories[0]?.name || "General"
+          : row.blog_categories?.name || "General";
+
+        return {
+          id: row.id,
+          slug: row.slug,
+          title: row.title,
+          excerpt: row.excerpt || "",
+          content: row.content,
+          coverImage: row.cover_image_path || "",
+          coverImageAlt: "",
+          author: { name: row.author_name || "RCKT", role: "Team" },
+          category: categoryName,
+          tags: Array.isArray(row.tags) ? row.tags : [],
+          status: row.status as BlogStatus,
+          featured: row.featured || false,
+          publishedAt: row.published_at || new Date().toISOString(),
+          updatedAt: row.updated_at || new Date().toISOString(),
+          readingTime: Math.ceil((row.content || "").split(/\s+/).length / 200),
+          seo: {
+            title: row.seo_title || row.title,
+            description: row.seo_description || row.excerpt || "",
+            canonical: "",
+          },
+        };
+      });
+
+      setPosts(mapped);
+      setCategories((adminData.categories || []).map((cat: any) => ({
+        id: cat.id,
+        name: cat.name,
+        slug: cat.slug,
+      })));
+      setLocales(false);
+    } catch (e) {
+      console.error("Error loading blog posts:", e);
+      setPosts([]);
+      setCategories([]);
+    }
   }, []);
 
   useEffect(() => {
@@ -71,6 +124,17 @@ export function BlogAdmin() {
       }
     };
   }, [coverPreviewUrl]);
+
+  // Cleanup cover file and preview when draft changes to null or new draft
+  useEffect(() => {
+    if (!draft) {
+      setCoverFile(null);
+      if (coverPreviewUrl) {
+        URL.revokeObjectURL(coverPreviewUrl);
+        setCoverPreviewUrl(null);
+      }
+    }
+  }, [draft?.id]);
 
   async function uploadCover(file: File, slug: string): Promise<string> {
     setUploadingCover(true);
@@ -103,6 +167,9 @@ export function BlogAdmin() {
     if (!slug) return setError("El slug es obligatorio.");
     if (!draft.excerpt.trim()) return setError("El extracto es obligatorio.");
     if (!draft.content.trim()) return setError("El contenido es obligatorio.");
+    if (!draft.publishedAt) return setError("Selecciona una fecha y hora de publicación.");
+    if (Number.isNaN(new Date(draft.publishedAt).getTime()))
+      return setError("La fecha de publicación es inválida.");
     if (posts.some((p) => p.slug === slug && p.id !== draft.id))
       return setError("Ya existe un artículo con ese slug.");
 
@@ -168,21 +235,19 @@ export function BlogAdmin() {
   }
 
   async function duplicar(post: BlogPost) {
-    const id =
-      typeof crypto !== "undefined" && crypto.randomUUID
-        ? crypto.randomUUID()
-        : `post-${Date.now()}`;
     let slug = `${post.slug}-copia`;
     let n = 2;
     while (posts.some((p) => p.slug === slug)) slug = `${post.slug}-copia-${n++}`;
-    await blogRepository.savePost({
+    // Don't assign ID on duplicated post - backend will generate it
+    const duplicated = {
       ...post,
-      id,
       slug,
       title: `${post.title} (copia)`,
-      status: "draft",
+      status: "draft" as const,
       featured: false,
-    });
+    };
+    delete (duplicated as any).id;
+    await blogRepository.savePost(duplicated);
     await cargar();
   }
 
@@ -193,8 +258,9 @@ export function BlogAdmin() {
   }
 
   async function exportar() {
-    const data = await blogRepository.exportPosts();
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    // Export exactly what's loaded in admin: draft, published, and archived
+    // NOT filtered to public-only posts
+    const blob = new Blob([JSON.stringify(posts, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
@@ -341,16 +407,20 @@ export function BlogAdmin() {
                     setDraft({ ...draft, author: { ...draft.author, role: e.target.value } })
                   }
                 />
-                <input
-                  type="date"
-                  value={draft.publishedAt.slice(0, 10)}
-                  onChange={(e) =>
-                    setDraft({
-                      ...draft,
-                      publishedAt: new Date(`${e.target.value}T12:00:00Z`).toISOString(),
-                    })
-                  }
-                />
+                <div>
+                  <label htmlFor="publishedAt" className="block text-[12px] font-medium mb-1">Fecha y hora de publicación (Bogotá)</label>
+                  <input
+                    id="publishedAt"
+                    type="datetime-local"
+                    value={isoToBogotaDatetimeLocal(draft.publishedAt)}
+                    onChange={(e) =>
+                      setDraft({
+                        ...draft,
+                        publishedAt: bogotaDatetimeLocalToIso(e.target.value),
+                      })
+                    }
+                  />
+                </div>
               </div>
               <div className="grid gap-3">
                 <label className="text-[14px] font-medium">Portada</label>

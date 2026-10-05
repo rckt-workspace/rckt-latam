@@ -99,6 +99,8 @@ export type DiagnosticFormProps = {
   landingPath?: string;
   /** Versión del consentimiento de datos a guardar */
   consentVersion?: string;
+  /** Modo del formulario: "clinic" agrega campos específicos de clínicas */
+  mode?: "clinic";
   /** Se llama cuando el envío fue exitoso. */
   onSent?: () => void;
   /** Recibe el resultado del servidor (id, score, nivel) y valores del formulario. */
@@ -114,6 +116,8 @@ export type DiagnosticFormValues = {
   inversion_pauta: string; volumen_leads: string; crm_actual: string;
   whatsapp_ventas: string; fecha_inicio: string; nombre: string;
   email: string; telefono: string;
+  numero_sedes?: string | null;
+  tratamientos_principales?: string | null;
 };
 
 /** Formulario de calificación compartido: guarda en leads_diagnostic. */
@@ -123,6 +127,7 @@ export default function DiagnosticForm({
   source,
   landingPath,
   consentVersion,
+  mode,
   onSent,
   onSuccess,
 }: DiagnosticFormProps) {
@@ -135,6 +140,8 @@ export default function DiagnosticForm({
   const [paisSeleccionado, setPaisSeleccionado] = useState("");
   const [ciudadSeleccionada, setCiudadSeleccionada] = useState("");
   const [ciudadPersonalizada, setCiudadPersonalizada] = useState("");
+  const [numeroSedes, setNumeroSedes] = useState("");
+  const [tratamientosPrincipales, setTratamientosPrincipales] = useState("");
   const enviar = useServerFn(saveDiagnosticLead);
 
   const progressFields = ["nombre", "email", "cargo", "empresa", "empleados", "problema_principal"];
@@ -206,6 +213,10 @@ export default function DiagnosticForm({
       nombre: get("nombre"),
       email: get("email"),
       telefono: get("telefono"),
+      ...(mode === "clinic" && {
+        numero_sedes: numeroSedes.trim() || undefined,
+        tratamientos_principales: tratamientosPrincipales.trim() || undefined,
+      }),
     };
 
     const landing_path = landingPath || (typeof window !== "undefined" ? window.location.pathname : undefined);
@@ -297,6 +308,24 @@ export default function DiagnosticForm({
       </div>
 
       <p className="label-orange mt-10">Tu empresa</p>
+      {mode === "clinic" && (
+        <div className="rd-grid mt-4">
+          <div className="field">
+            <label className="ct-label" htmlFor="numero_sedes">Número de sedes</label>
+            <select className="ct-select mt-2" id="numero_sedes" value={numeroSedes} onChange={(e) => setNumeroSedes(e.target.value)}>
+              <option value="">Selecciona una opción</option>
+              <option value="1">1</option>
+              <option value="2 a 3">2 a 3</option>
+              <option value="4 a 10">4 a 10</option>
+              <option value="Más de 10">Más de 10</option>
+            </select>
+          </div>
+          <div className="field">
+            <label className="ct-label" htmlFor="tratamientos_principales">Tratamientos principales</label>
+            <input className="ct-input mt-2" id="tratamientos_principales" type="text" placeholder="Ej.: ortodoncia, implantes, botox" value={tratamientosPrincipales} onChange={(e) => setTratamientosPrincipales(e.target.value)} />
+          </div>
+        </div>
+      )}
       <div className="rd-grid mt-4">
         <div className="field">
           <label className="ct-label" htmlFor="empresa">Empresa {errors.empresa && <span style={{ color: "var(--naranja)" }}>*</span>}</label>

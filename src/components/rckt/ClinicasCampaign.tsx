@@ -182,12 +182,7 @@ export function ClinicasCampaign({ variant }: { variant: "a" | "b" }) {
     <section className="campaign-section" id="formulario" onInputCapture={event => { if (!formStarted.current && event.target instanceof HTMLInputElement && event.target.value.trim() && event.target.type !== "checkbox") { formStarted.current = true; track("form_start", { landing, utm_content: landing }); } }} onChangeCapture={event => { if (!formStarted.current && event.target instanceof HTMLSelectElement && event.target.value) { formStarted.current = true; track("form_start", { landing, utm_content: landing }); } }}>
       <div className="campaign-shell campaign-content"><SectionHeader num="07." label="Revenue Diagnostic" title="Revisar mi proceso comercial" />
         <div className="campaign-form-wrap">
-          {/* PENDIENTE: Jaime conecta estos campos; no forman parte de DiagnosticForm ni se envían. */}
-          <div className="campaign-clinic-fields rd-grid" aria-label="Datos adicionales de la clínica">
-            <div className="field"><label className="ct-label" htmlFor="clinic-sedes">Número de sedes</label><select className="ct-select mt-2" id="clinic-sedes" defaultValue=""><option value="">Selecciona una opción</option><option>1</option><option>2 a 3</option><option>4 a 10</option><option>Más de 10</option></select></div>
-            <div className="field"><label className="ct-label" htmlFor="clinic-tratamientos">Tratamientos principales</label><input className="ct-input mt-2" id="clinic-tratamientos" type="text" placeholder="Ej.: ortodoncia, implantes, botox" /></div>
-          </div>
-          <DiagnosticForm source={`lp-${landing}`} consentVersion="RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" whatsappUrl={WHATSAPP_URL} submitLabel="Revisar mi proceso comercial" onSuccess={result => {
+          <DiagnosticForm mode="clinic" source={`lp-${landing}`} consentVersion="RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" whatsappUrl={WHATSAPP_URL} submitLabel="Revisar mi proceso comercial" onSuccess={result => {
             track("lead_valido", { landing, utm_content: landing, score: result.score, nivel: result.nivel });
             if (result.score >= 50) track("mql", { landing, utm_content: landing, score: result.score, nivel: result.nivel });
             void navigate({ to: variant === "b" ? "/lp/sales-flow-clinicas-bogota-b/gracias" : "/lp/sales-flow-clinicas-bogota/gracias", search: { nivel: result.nivel } });

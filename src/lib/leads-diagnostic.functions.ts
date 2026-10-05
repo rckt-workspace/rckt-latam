@@ -22,6 +22,8 @@ const DiagnosticSchema = z.object({
   nombre: t(120),
   email: t(200),
   telefono: t(60),
+  numero_sedes: t(60),
+  tratamientos_principales: t(500),
 });
 
 const AttributionSchema = z.object({
@@ -81,13 +83,15 @@ export const saveDiagnosticLead = createServerFn({ method: "POST" })
       nombre: clean(formData.nombre) ?? "",
       email: clean(formData.email) ?? "",
       telefono: clean(formData.telefono) ?? "",
+      numero_sedes: clean(formData.numero_sedes),
+      tratamientos_principales: clean(formData.tratamientos_principales),
     };
 
     // Calculate score and level server-side
     const { score, nivel } = scoreLead(formValues);
 
     // Prepare insert payload
-    const insertPayload = {
+    const insertPayload: Record<string, unknown> = {
       empresa: formData.empresa.trim(),
       sitio_web: clean(formData.sitio_web),
       pais: clean(formData.pais),
@@ -104,6 +108,9 @@ export const saveDiagnosticLead = createServerFn({ method: "POST" })
       nombre: clean(formData.nombre),
       email: clean(formData.email)?.toLowerCase() ?? null,
       telefono: clean(formData.telefono),
+      // Clinic fields (will be added to BD after this sprint)
+      numero_sedes: clean(formData.numero_sedes),
+      tratamientos_principales: clean(formData.tratamientos_principales),
       // Attribution fields
       source: clean(attribution.source),
       landing_path: clean(attribution.landing_path),
@@ -127,9 +134,11 @@ export const saveDiagnosticLead = createServerFn({ method: "POST" })
       metadata: {},
     };
 
+    // Cast to any for insert because new columns (numero_sedes, tratamientos_principales)
+    // will be added to the DB after this sprint - types will be regenerated then.
     const { data: inserted, error } = await supabaseAdmin
       .from("leads_diagnostic")
-      .insert(insertPayload)
+      .insert(insertPayload as any)
       .select("id")
       .single();
 
