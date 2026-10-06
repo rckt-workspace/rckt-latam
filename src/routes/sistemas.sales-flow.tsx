@@ -172,6 +172,24 @@ function SalesFlowPage() {
           </div>
         </section>
 
+        {/* Clínicas */}
+        <section className="relative py-16 md:py-20 sys-sec">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="band--orange rounded-[28px] px-8 py-10 md:px-12 md:py-12">
+              <p className="label-on-orange">Para clínicas</p>
+              <h3 className="font-display mt-5 max-w-3xl text-[22px] leading-[1.3] font-semibold tracking-tight md:text-[28px]" style={{ color: "#f5f2ed" }}>
+                ¿Tienes una clínica? Hay una versión de Sales Flow pensada para tu operación.
+              </h3>
+              <p className="mt-4 max-w-3xl text-[15px] leading-[1.6]" style={{ color: "#f5f2ed" }}>
+                Seguimiento de pacientes, respuesta por WhatsApp, agenda, recordatorios y trazabilidad desde la campaña hasta el tratamiento.
+              </p>
+              <a className="btn-on-orange font-display inline-block mt-6 rounded-full px-8 py-3 text-[15px] font-semibold" href="/lp/sales-flow-clinicas-bogota">
+                Ver Sales Flow para clínicas →
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Componentes */}
         <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="tr">
           <div className="relative z-10 mx-auto max-w-6xl px-6">

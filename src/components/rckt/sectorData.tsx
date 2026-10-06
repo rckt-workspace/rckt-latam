@@ -121,7 +121,7 @@ export const SECTORS: Record<string, SectorPageData> = {
     ],
     acceptanceSteps: PASOS_RE,
     primaryLink: { label: "Ver Revenue Engine →", href: "/sistemas/revenue-engine" },
-    secondaryLink: { label: "Ver Sales Flow →", href: "/sistemas/sales-flow" },
+    secondaryLink: { label: "Ver Sales Flow para clínicas →", href: "/lp/sales-flow-clinicas-bogota" },
     methodFields: [
       {
         k: "Situación inicial",
