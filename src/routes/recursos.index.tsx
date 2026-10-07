@@ -6,10 +6,23 @@ import SiteFooter from "@/components/rckt/SiteFooter";
 import SiteNav from "@/components/rckt/SiteNav";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import { blogRepository } from "@/lib/blog.repository";
-import { formatBlogDate } from "@/lib/blog.utils";
 import type { BlogCategory, BlogPost } from "@/types/blog";
 
 const SITE_URL = "https://rckt.lat";
+
+// Fecha corta como en España: "06 oct 2026" (día de Bogotá)
+const fechaCorta = (iso: string) => {
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime())
+    ? ""
+    : new Intl.DateTimeFormat("es-ES", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        timeZone: "America/Bogota",
+      }).format(d);
+};
+
 
 export const Route = createFileRoute("/recursos/")({
   staticData: { sitemap: true },
@@ -91,9 +104,9 @@ function RecursosPage() {
           <div className="mt-6 flex flex-wrap gap-2"><button type="button" className="res-filter" data-active={category === "todas"} onClick={() => setCategory("todas")}>Todos</button>{categories.map((item) => <button key={item.id} type="button" className="res-filter" data-active={category === item.slug} onClick={() => setCategory(item.slug)}>{item.name}</button>)}</div>
         </div>
         {posts === null ? <p className="py-20 text-center text-muted-foreground">Cargando recursos…</p> : null}
-        {featured ? <div className="mt-12"><div className="mb-4 flex items-center gap-3"><span className="inline-block h-4 w-[2px] bg-orange" /><span className="label-orange">Destacado</span></div><Link to="/blog/$slug" params={{ slug: featured.slug }} className="res-featured grid overflow-hidden md:grid-cols-2"><ResourceCover post={featured} /><div className="flex flex-col justify-center p-6 text-left md:p-8"><span className="res-chip self-start">{featured.category}</span><h2 className="font-display mt-4 text-[24px] leading-[1.15] font-semibold text-foreground md:text-[30px]">{featured.title}</h2><p className="mt-3 text-[15px] leading-[1.6] text-muted-foreground">{featured.excerpt}</p><p className="mt-5 font-mono text-[11px] tracking-[0.16em] text-muted-foreground uppercase">{formatBlogDate(featured.publishedAt)} · {featured.readingTime} min de lectura</p></div></Link></div> : null}
+        {featured ? <div className="mt-12"><div className="mb-4 flex items-center gap-3"><span className="inline-block h-4 w-[2px] bg-orange" /><span className="label-orange">Destacado</span></div><Link to="/blog/$slug" params={{ slug: featured.slug }} className="res-featured grid overflow-hidden md:grid-cols-2"><ResourceCover post={featured} /><div className="flex flex-col justify-center p-6 text-left md:p-8"><span className="res-chip self-start">{featured.category}</span><h2 className="font-display mt-4 text-[24px] leading-[1.15] font-semibold text-foreground md:text-[30px]">{featured.title}</h2><p className="mt-3 text-[15px] leading-[1.6] text-muted-foreground">{featured.excerpt}</p><p className="mt-5 font-mono text-[11px] tracking-[0.16em] text-muted-foreground uppercase">{fechaCorta(featured.publishedAt)}</p></div></Link></div> : null}
         {posts !== null && filtered.length === 0 ? <div className="py-20 text-center"><p className="text-[15px] text-muted-foreground">No hay recursos con esos filtros todavía.</p>{(query || category !== "todas") ? <button type="button" onClick={clear} className="mt-3 text-[14px] font-semibold text-orange hover:underline">Quitar filtros</button> : null}{failed ? <p className="mt-3 text-[13px] text-muted-foreground">No pudimos cargar los recursos.</p> : null}</div> : null}
-        {listing.length > 0 ? <div ref={gridRef} className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{listing.map((post) => <Link key={post.id} to="/blog/$slug" params={{ slug: post.slug }} data-reveal className="res-card"><ResourceCover post={post} /><div className="flex flex-1 flex-col p-5 text-left"><span className="res-chip self-start">{post.category}</span><h3 className="font-display mt-3 text-[17px] leading-[1.25] font-semibold text-foreground">{post.title}</h3><p className="mt-2 text-[14px] leading-[1.55] text-muted-foreground">{post.excerpt}</p><p className="mt-3 font-mono text-[11px] tracking-[0.16em] text-muted-foreground uppercase">{formatBlogDate(post.publishedAt)} · {post.readingTime} min de lectura</p><span className="res-card__read mt-auto inline-flex items-center gap-1 pt-5 text-[13.5px] font-semibold">Leer →</span></div></Link>)}</div> : null}
+        {listing.length > 0 ? <div ref={gridRef} className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{listing.map((post) => <Link key={post.id} to="/blog/$slug" params={{ slug: post.slug }} data-reveal className="res-card"><ResourceCover post={post} /><div className="flex flex-1 flex-col p-5 text-left"><span className="res-chip self-start">{post.category}</span><h3 className="font-display mt-3 text-[17px] leading-[1.25] font-semibold text-foreground">{post.title}</h3><p className="mt-2 text-[14px] leading-[1.55] text-muted-foreground">{post.excerpt}</p><p className="mt-3 font-mono text-[11px] tracking-[0.16em] text-muted-foreground uppercase">{fechaCorta(post.publishedAt)}</p><span className="res-card__read mt-auto inline-flex items-center gap-1 pt-5 text-[13.5px] font-semibold">Leer →</span></div></Link>)}</div> : null}
          <p className="mt-16 text-center text-[14px] text-muted-foreground">Todo se lee y se descarga sin dejar tus datos.</p>
       </div>
     </section><GeneralCta />
