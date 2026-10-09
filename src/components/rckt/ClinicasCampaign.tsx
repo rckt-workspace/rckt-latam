@@ -3,6 +3,7 @@ import { BarChart3, Bot, CalendarCheck, CalendarClock, Check, CircleAlert, Clipb
 import type { LucideIcon } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 import heroPhoto from "@/assets/sector-salud.jpg";
+import heroPhotoB from "@/assets/lp-clinicas-bogota-b-hero.jpeg";
 import CampaignShell from "@/components/rckt/CampaignShell";
 import DiagnosticForm from "@/components/rckt/DiagnosticForm";
 import FaqSection, { type FaqItem } from "@/components/rckt/FaqSection";
@@ -166,9 +167,9 @@ export function ClinicasCampaign({ variant }: { variant: "a" | "b" }) {
     saveCampaignParams(`?utm_content=${landing}`);
     track("lp_view", { landing, utm_content: landing });
   }, [landing]);
-  return <CampaignShell minimal={variant === "b"} themeToggle={variant === "b"} landingBase={base}><main>
+    return <CampaignShell minimal={variant === "b"} landingBase={base}><main>
     <section id="top" className="campaign-hero">
-      <div className="campaign-hero__photo" aria-hidden="true"><img src={heroPhoto} alt="" /></div>
+      <div className="campaign-hero__photo" aria-hidden="true"><img src={variant === "b" ? heroPhotoB : heroPhoto} alt="" /></div>
       <div className="campaign-shell campaign-hero__inner">
         <p className="label-orange">Sales Flow · RCKT LATAM</p>
         <h1>Tu clínica no tiene un problema de pacientes interesados. Tiene un problema de <span className="hero-hand">seguimiento</span>.</h1>
@@ -246,7 +247,7 @@ export function ClinicasThanks({ variant, nivel }: { variant: "a" | "b"; nivel: 
     : nivel === "recurso"
       ? { label: "Solicitud recibida", title: "Gracias por escribir.", text: "Por lo que nos cuentas, hoy no somos la mejor opción para ti y preferimos decírtelo. Si más adelante ya estás invirtiendo y quieres escalar, nos encantaría hablar." }
       : { label: "Solicitud recibida", title: "Recibido.", text: "Te contactamos en menos de 24 horas hábiles. Mientras tanto, esto es lo que incluye el diagnóstico:" };
-  return <CampaignShell thanks minimal={variant === "b"} themeToggle={variant === "b"} landingBase={base}><main><section className="campaign-thanks"><div className="campaign-shell"><div className="campaign-thanks__card">
+  return <CampaignShell thanks minimal={variant === "b"} landingBase={base}><main><section className="campaign-thanks"><div className="campaign-shell"><div className="campaign-thanks__card">
     <span className="campaign-thanks__icon" aria-hidden="true"><Check strokeWidth={2.5} /></span>
     <p className="label-orange">{content.label}</p><h1>{content.title}</h1><p className="campaign-thanks__text">{content.text}</p><span className="campaign-thanks__rule" aria-hidden="true" />
     {nivel === "sql" || nivel === "recurso" ? <a className="btn-orange campaign-resource-link" href="/contacto">Hablar con RCKT</a> : null}
