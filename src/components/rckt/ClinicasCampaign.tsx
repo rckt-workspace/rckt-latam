@@ -169,7 +169,7 @@ export function ClinicasCampaign({ variant }: { variant: "a" | "b" }) {
   }, [landing]);
     return <CampaignShell minimal={variant === "b"} landingBase={base}><main>
     <section id="top" className="campaign-hero">
-      <div className="campaign-hero__photo" aria-hidden="true"><img src={variant === "b" ? heroPhotoB : heroPhoto} alt="" /></div>
+      <div className={variant === "b" ? "campaign-hero__photo campaign-hero__photo--b" : "campaign-hero__photo"} aria-hidden="true"><img src={variant === "b" ? heroPhotoB : heroPhoto} alt="" /></div>
       <div className="campaign-shell campaign-hero__inner">
         <p className="label-orange">Sales Flow · RCKT LATAM</p>
         <h1>Tu clínica no tiene un problema de pacientes interesados. Tiene un problema de <span className="hero-hand">seguimiento</span>.</h1>
