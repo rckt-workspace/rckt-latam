@@ -3,7 +3,8 @@ import { BarChart3, Bot, CalendarCheck, CalendarClock, Check, CircleAlert, Clipb
 import type { LucideIcon } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 import heroPhoto from "@/assets/sector-salud.jpg";
-import heroPhotoB from "@/assets/lp-clinicas-bogota-b-hero.jpeg";
+import heroPhotoBDesktop from "@/assets/hero_clinicas_escritorio_exacto.png";
+import heroPhotoBMobile from "@/assets/hero_clinicas_movil_exacto.png";
 import CampaignShell from "@/components/rckt/CampaignShell";
 import DiagnosticForm from "@/components/rckt/DiagnosticForm";
 import FaqSection, { type FaqItem } from "@/components/rckt/FaqSection";
@@ -169,7 +170,12 @@ export function ClinicasCampaign({ variant }: { variant: "a" | "b" }) {
   }, [landing]);
     return <CampaignShell minimal={variant === "b"} landingBase={base}><main>
     <section id="top" className="campaign-hero">
-      <div className={variant === "b" ? "campaign-hero__photo campaign-hero__photo--b" : "campaign-hero__photo"} aria-hidden="true"><img src={variant === "b" ? heroPhotoB : heroPhoto} alt="" /></div>
+      <div className={variant === "b" ? "campaign-hero__photo campaign-hero__photo--b" : "campaign-hero__photo"} aria-hidden="true">{variant === "b" ? (
+        <picture>
+          <source media="(max-width: 700px)" srcSet={heroPhotoBMobile} />
+          <img src={heroPhotoBDesktop} alt="" />
+        </picture>
+      ) : <img src={heroPhoto} alt="" />}</div>
       <div className="campaign-shell campaign-hero__inner">
         <p className="label-orange">Sales Flow · RCKT LATAM</p>
         <h1>Tu clínica no tiene un problema de pacientes interesados. Tiene un problema de <span className="hero-hand">seguimiento</span>.</h1>
