@@ -2,7 +2,17 @@
 # Single container with Nitro (public) + FastAPI (internal)
 
 # Stage 1: Builder - Bun/Node dependencies and TanStack build
-FROM oven/bun:1.2 AS builder-bun
+FROM python:3.12-slim AS builder-bun
+
+# Install Bun 1.2 without pulling oven/bun from Docker Hub
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl ca-certificates unzip \
+    && rm -rf /var/lib/apt/lists/*
+ARG BUN_VERSION=1.2.23
+ENV BUN_INSTALL=/root/.bun
+ENV PATH="${BUN_INSTALL}/bin:${PATH}"
+RUN curl -fsSL https://bun.sh/install | bash -s "bun-v${BUN_VERSION}" \
+    && bun --version
 
 WORKDIR /build
 
