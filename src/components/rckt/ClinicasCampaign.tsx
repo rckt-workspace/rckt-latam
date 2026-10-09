@@ -9,6 +9,7 @@ import FaqSection, { type FaqItem } from "@/components/rckt/FaqSection";
 import SectionHeader from "@/components/rckt/SectionHeader";
 import { saveCampaignParams, track } from "@/components/rckt/tracking";
 import { WHATSAPP_URL } from "@/config/contact";
+import { THEME_EVENT, STORAGE_KEY, getStoredTheme, getSystemTheme, type Theme } from "@/lib/theme";
 import type { LeadLevel } from "@/components/rckt/leadScoring";
 
 export const CLINIC_TITLE = "Sistema de captación y seguimiento de pacientes para clínicas · Bogotá · RCKT";
@@ -127,11 +128,37 @@ function useCampaignReveal() {
   }, []);
 }
 
+// Modo oscuro por defecto solo en la variante B: se aplica al entrar y se
+// restaura la preferencia guardada al salir, sin escribir en localStorage.
+function useDarkDefault(enabled: boolean) {
+  useEffect(() => {
+    if (!enabled) return;
+    const root = document.documentElement;
+    const saved = getStoredTheme();
+    let userChanged = false;
+    const apply = (theme: Theme) => { root.classList.toggle("dark", theme === "dark"); root.setAttribute("data-theme", theme); };
+    apply("dark");
+    const onThemeChange = () => { userChanged = true; };
+    window.addEventListener(THEME_EVENT, onThemeChange);
+    return () => {
+      window.removeEventListener(THEME_EVENT, onThemeChange);
+      apply(saved ?? getSystemTheme());
+      if (userChanged) {
+        try {
+          if (saved) localStorage.setItem(STORAGE_KEY, saved);
+          else localStorage.removeItem(STORAGE_KEY);
+        } catch { /* almacenamiento bloqueado */ }
+      }
+    };
+  }, [enabled]);
+}
+
 export function ClinicasCampaign({ variant }: { variant: "a" | "b" }) {
   const landing = variant === "b" ? "sales-flow-clinicas-bogota-b" : "sales-flow-clinicas-bogota";
   const base = `/lp/${landing}`;
   const navigate = useNavigate();
   const formStarted = useRef(false);
+  useDarkDefault(variant === "b");
   useCampaignReveal();
   useEffect(() => {
     saveCampaignParams(window.location.search);
