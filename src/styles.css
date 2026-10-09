@@ -7681,7 +7681,7 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 /* ===== Variante B: encuadre del hero desplazado a la derecha ===== */
 /* Encuadre centrado en las tres personas: paciente, enfermera y
    doctora. Solo afecta a la variante B. */
-.campaign-hero__photo--b img { object-position: 55% center; }
+.campaign-hero__photo--b img { object-position: 62% center; }
 @media (max-width: 700px) {
-  .campaign-hero__photo--b img { object-position: 54% center; }
+  .campaign-hero__photo--b img { object-position: 56% center; }
 }
