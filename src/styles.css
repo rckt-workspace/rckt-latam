@@ -7679,9 +7679,9 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
   box-shadow: 0 0 0 6px rgba(252,92,31,0.08);
 }
 /* ===== Variante B: encuadre del hero desplazado a la derecha ===== */
-/* Mueve la foto hacia la derecha para que se vean el paciente y la
-   enfermera, no solo la doctora. Solo afecta a la variante B. */
-.campaign-hero__photo--b img { object-position: 20% center; }
+/* Encuadre centrado en las tres personas: paciente, enfermera y
+   doctora. Solo afecta a la variante B. */
+.campaign-hero__photo--b img { object-position: center; }
 @media (max-width: 700px) {
-  .campaign-hero__photo--b img { object-position: 32% center; }
+  .campaign-hero__photo--b img { object-position: 54% center; }
 }
