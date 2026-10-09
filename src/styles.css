@@ -7681,7 +7681,24 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 /* ===== Variante B: encuadre del hero desplazado a la derecha ===== */
 /* Encuadre centrado en las tres personas: paciente, enfermera y
    doctora. Solo afecta a la variante B. */
-.campaign-hero__photo--b img { object-position: 62% center; }
+.campaign-hero__photo--b img { object-position: 32% center; }
 @media (max-width: 700px) {
-  .campaign-hero__photo--b img { object-position: 56% center; }
+  .campaign-hero__photo--b img { object-position: 26% center; }
+}
+
+/* Variante B: degradado del hero un poco más transparente para que
+   el paciente se note; el texto sigue legible. */
+.campaign-hero__photo--b::after {
+  background: linear-gradient(90deg, rgba(245,242,237,0.99) 0%, rgba(245,242,237,0.8) 20%, rgba(245,242,237,0.5) 40%, rgba(245,242,237,0.12) 62%, rgba(245,242,237,0) 85%);
+}
+[data-theme="dark"] .campaign-hero__photo--b::after {
+  background: linear-gradient(90deg, rgba(33,33,33,0.96) 0%, rgba(33,33,33,0.72) 20%, rgba(33,33,33,0.42) 40%, rgba(33,33,33,0.12) 62%, rgba(33,33,33,0) 85%);
+}
+@media (max-width: 700px) {
+  .campaign-hero__photo--b::after {
+    background: linear-gradient(180deg, rgba(245,242,237,0.92) 0%, rgba(245,242,237,0.6) 38%, rgba(245,242,237,0.25) 72%, rgba(245,242,237,0.05) 100%);
+  }
+  [data-theme="dark"] .campaign-hero__photo--b::after {
+    background: linear-gradient(180deg, rgba(33,33,33,0.85) 0%, rgba(33,33,33,0.5) 35%, rgba(33,33,33,0.18) 70%, rgba(33,33,33,0.02) 100%);
+  }
 }
