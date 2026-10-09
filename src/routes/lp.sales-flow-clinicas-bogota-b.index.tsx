@@ -8,6 +8,9 @@ export const Route = createFileRoute("/lp/sales-flow-clinicas-bogota-b/")({
     { name: "robots", content: "noindex, follow" },
     { property: "og:title", content: `${CLINIC_TITLE} · B` }, { property: "og:description", content: CLINIC_DESCRIPTION },
     { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
-  ], scripts: gtmHeadScripts }),
+  ], scripts: [
+    { children: "(function(){try{var r=document.documentElement;r.classList.add('dark');r.setAttribute('data-theme','dark');}catch(e){}})();" },
+    ...gtmHeadScripts,
+  ] }),
   component: () => <ClinicasCampaign variant="b" />,
 });

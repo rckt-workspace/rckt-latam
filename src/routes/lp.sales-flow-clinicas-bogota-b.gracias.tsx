@@ -11,7 +11,10 @@ export const Route = createFileRoute("/lp/sales-flow-clinicas-bogota-b/gracias")
     { title }, { name: "description", content: description }, { name: "robots", content: "noindex, follow" },
     { property: "og:title", content: title }, { property: "og:description", content: description },
     { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
-  ], scripts: gtmHeadScripts }),
+  ], scripts: [
+    { children: "(function(){try{var r=document.documentElement;r.classList.add('dark');r.setAttribute('data-theme','dark');}catch(e){}})();" },
+    ...gtmHeadScripts,
+  ] }),
   component: ThankYou,
 });
 function ThankYou() { const { nivel } = Route.useSearch(); return <ClinicasThanks variant="b" nivel={nivel} />; }

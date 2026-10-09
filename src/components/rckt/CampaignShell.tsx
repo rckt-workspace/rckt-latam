@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
 import logoDark from "@/assets/rckt-logo-dark.png";
 import logoLight from "@/assets/rckt-logo-light.png";
+import ThemeToggle from "@/components/rckt/ThemeToggle";
 
 const NAV_LINKS = [
   { href: "/soluciones/", label: "Soluciones" },
@@ -14,7 +15,7 @@ const NAV_LINKS = [
   { href: "/contacto", label: "Contacto" },
 ];
 
-export default function CampaignShell({ children, thanks = false, minimal = false, landingBase = "/lp/sales-flow" }: { children: ReactNode; thanks?: boolean; minimal?: boolean; landingBase?: string }) {
+export default function CampaignShell({ children, thanks = false, minimal = false, landingBase = "/lp/sales-flow", themeToggle = false }: { children: ReactNode; thanks?: boolean; minimal?: boolean; landingBase?: string; themeToggle?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const isActive = (href: string) => {
@@ -51,6 +52,7 @@ export default function CampaignShell({ children, thanks = false, minimal = fals
             </nav>}
           </div>
           <div className="campaign-header__actions">
+            {themeToggle && <ThemeToggle />}
             <a className="btn-orange campaign-header__cta" href={ctaHref}>
               Revisar mi proceso comercial
             </a>

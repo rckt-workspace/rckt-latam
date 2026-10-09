@@ -7624,3 +7624,57 @@ header.pointer-events-none:has(.nav-bg) { z-index: 50; }
 @media (prefers-reduced-motion: reduce) {
   .campaign-page .campaign-note { opacity: 1; transform: none; transition: none; }
 }
+
+
+
+/* ===== Landings de campaña en modo oscuro ===== */
+
+/* Hero: capa oscura para que se lean el logo y el texto */
+[data-theme="dark"] .campaign-hero { background: #212121; }
+[data-theme="dark"] .campaign-hero__photo::after {
+  background: linear-gradient(90deg, rgba(33,33,33,0.96) 0%, rgba(33,33,33,0.9) 25%, rgba(33,33,33,0.7) 45%, rgba(33,33,33,0.35) 65%, rgba(33,33,33,0.05) 85%);
+}
+[data-theme="dark"] .campaign-hero h1,
+[data-theme="dark"] .campaign-hero__sub {
+  color: #f5f2ed;
+  text-shadow: 0 0 16px rgba(33,33,33,0.55);
+}
+@media (max-width: 700px) {
+  [data-theme="dark"] .campaign-hero__photo::after {
+    background: linear-gradient(180deg, rgba(33,33,33,0.92) 0%, rgba(33,33,33,0.75) 40%, rgba(33,33,33,0.35) 75%, rgba(33,33,33,0.1) 100%);
+  }
+}
+
+/* Caja "Las cuatro fugas" y tarjeta de gracias: fondo oscuro */
+[data-theme="dark"] .campaign-funnel,
+[data-theme="dark"] .campaign-thanks__card {
+  background: rgba(245,242,237,0.05);
+  border-color: rgba(245,242,237,0.12);
+}
+[data-theme="dark"] .campaign-funnel h3,
+[data-theme="dark"] .campaign-thanks__card h1 {
+  color: #f5f2ed;
+}
+[data-theme="dark"] .campaign-thanks__text,
+[data-theme="dark"] .campaign-thanks__note,
+[data-theme="dark"] .campaign-thanks__list,
+[data-theme="dark"] .campaign-thanks__back {
+  color: rgba(245,242,237,0.78);
+}
+
+
+
+/* Notas con ícono en modo oscuro */
+[data-theme="dark"] .campaign-note__text {
+  color: rgba(245,242,237,0.82);
+}
+[data-theme="dark"] .campaign-note__text strong {
+  color: #f5f2ed;
+}
+[data-theme="dark"] .campaign-note--compact .campaign-note__text {
+  text-shadow: none;
+}
+[data-theme="dark"] .campaign-note__icon {
+  background: rgba(252,92,31,0.16);
+  box-shadow: 0 0 0 6px rgba(252,92,31,0.08);
+}
