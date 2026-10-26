@@ -1,16 +1,11 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
+# Todos los buscadores y asistentes de IA (Google, Bing, ChatGPT, Claude,
+# Perplexity…) pueden leer el sitio público.
 User-agent: *
 Allow: /
 
-Sitemap: https://rckt-latam.lovable.app/sitemap.xml
+# Zonas internas: no tienen contenido para buscadores
+Disallow: /api/
+Disallow: /ops/
+Disallow: /rckt-equipo
+
+Sitemap: https://rckt.lat/sitemap.xml

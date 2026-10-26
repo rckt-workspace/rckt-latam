@@ -17,7 +17,7 @@ export const blogIntro = {
 };
 
 export const Route = createFileRoute("/blog/")({
-  staticData: { sitemap: true },
+  staticData: { sitemap: false }, // El listado público es /recursos; /blog queda fuera del sitemap para no duplicarlo
   head: () => ({
     meta: [
       { title: "RCKT Insights — Blog de crecimiento, IA y performance" },
