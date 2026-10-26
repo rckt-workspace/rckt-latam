@@ -23,9 +23,27 @@ const fechaCorta = (iso: string) => {
       }).format(d);
 };
 
+type RecursosData = { posts: BlogPost[]; categories: BlogCategory[]; ok: boolean };
+
+const ordenar = (lista: BlogPost[]) => [...lista].sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
 
 export const Route = createFileRoute("/recursos/")({
   staticData: { sitemap: true },
+  // SEO: los artículos se cargan en el SERVIDOR, antes de enviar la página.
+  // Así Google, Bing y ChatGPT reciben la lista completa con sus enlaces,
+  // sin depender de que ejecuten JavaScript.
+  loader: async (): Promise<RecursosData> => {
+    try {
+      const [published, categories] = await Promise.all([
+        blogRepository.getPublishedPosts(),
+        blogRepository.getCategories(),
+      ]);
+      return { posts: ordenar(published), categories, ok: true };
+    } catch (err) {
+      console.error("No se pudieron cargar los recursos en el servidor:", err);
+      return { posts: [], categories: [], ok: false };
+    }
+  },
   head: () => ({
     meta: [
       { title: "Recursos: artículos y guías para vender mejor | RCKT" },
@@ -63,23 +81,27 @@ function ResourceCover({ post }: { post: BlogPost }) {
 }
 
 function RecursosPage() {
-  const [posts, setPosts] = useState<BlogPost[] | null>(null);
-  const [categories, setCategories] = useState<BlogCategory[]>([]);
+  const inicial = Route.useLoaderData();
+  // Si el servidor ya trajo los artículos, se muestran de inmediato.
+  // Si falló, se intentan cargar de nuevo en el navegador (como antes).
+  const [posts, setPosts] = useState<BlogPost[] | null>(inicial.ok ? inicial.posts : null);
+  const [categories, setCategories] = useState<BlogCategory[]>(inicial.categories);
   const [failed, setFailed] = useState(false);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("todas");
 
   useEffect(() => {
+    if (inicial.ok) return;
     let active = true;
     void Promise.all([blogRepository.getPublishedPosts(), blogRepository.getCategories()])
       .then(([published, realCategories]) => {
         if (!active) return;
-        setPosts([...published].sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt)));
+        setPosts(ordenar(published));
         setCategories(realCategories);
       })
       .catch(() => { if (active) { setPosts([]); setCategories([]); setFailed(true); } });
     return () => { active = false; };
-  }, []);
+  }, [inicial.ok]);
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLocaleLowerCase("es");
