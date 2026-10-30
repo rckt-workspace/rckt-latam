@@ -123,7 +123,7 @@ function HeroSection() {
   return (
     <section id="top" className="relative bg-[#FBFBFA]">
       <div className="relative overflow-hidden">
-        <ImagePlaceholder name="C-01-hero-consulta.jpg" tone="light" className="absolute inset-0 h-full w-full rounded-none border-0" />
+        <ImagePlaceholder name="C-01-hero-consulta.jpg" className="absolute inset-0 h-full w-full rounded-none border-0" />
         <div
           className="absolute inset-0"
           aria-hidden="true"
@@ -371,7 +371,7 @@ function DiferenciadorSection() {
   return (
     <section className="bg-[#212121] py-16 md:py-24">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
-        <ImagePlaceholder name="C-09-diferenciador-ojo.jpg" tone="dark" className="h-[300px] md:h-[420px]" />
+        <ImagePlaceholder name="C-09-diferenciador-ojo.jpg" className="h-[300px] md:h-[420px]" />
         <div>
           <h2 className={`${serif} text-white`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
             Transparencia antes que <em>promesas</em>.
@@ -604,7 +604,7 @@ function CierreSection() {
             <p className="text-[13px] text-[#4F4F4D]">Conversemos sobre una estrategia diseñada para tu clínica.</p>
           </div>
         </div>
-        <ImagePlaceholder name="C-10-cierre-pantalla.jpg" tone="light" className="h-[320px] w-full rounded-none border-0 lg:h-full lg:min-h-[480px]" />
+        <ImagePlaceholder name="C-10-cierre-pantalla.jpg" className="h-[320px] w-full rounded-none border-0 lg:h-full lg:min-h-[480px]" />
       </div>
     </section>
   );
