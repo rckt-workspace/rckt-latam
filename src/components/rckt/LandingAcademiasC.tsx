@@ -565,6 +565,7 @@ function FormularioSection() {
     }
     const form = new FormData(event.currentTarget);
     const get = (key: string) => String(form.get(key) ?? "").trim();
+    const registro = get("registro_programas");
     if (!get("nombre") || !get("empresa")) {
       setError("Completa tu nombre y el nombre de la academia.");
       return;
@@ -581,6 +582,7 @@ function FormularioSection() {
             telefono: get("telefono"),
             sector: get("sector"),
             pais: "Colombia",
+            problema_principal: registro ? `Registro de programas: ${registro}` : undefined,
           },
           attribution: {
             source: "lp-sales-flow",
@@ -640,6 +642,15 @@ function FormularioSection() {
                 {["Idiomas", "Preuniversitario", "Cursos técnicos", "Programación y tecnología", "Arte y música", "Otro"].map((o) => (
                   <option key={o} value={o}>{o}</option>
                 ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="c-registro" className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">¿Tus programas tienen registro ante la secretaría de educación?</label>
+              <select id="c-registro" name="registro_programas" defaultValue="" className={fieldClass}>
+                <option value="" disabled>Selecciona una opción</option>
+                <option value="Sí">Sí</option>
+                <option value="No">No</option>
+                <option value="Son cursos cortos (menos de 160 horas)">Son cursos cortos (menos de 160 horas)</option>
               </select>
             </div>
             <input type="hidden" name="pais" value="Colombia" />
