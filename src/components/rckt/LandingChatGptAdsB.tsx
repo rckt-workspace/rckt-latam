@@ -163,7 +163,7 @@ function ProblemaSection() {
     <section className="bg-[#212121] py-14 md:py-20">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
-          <h2 className="font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+          <h2 className="font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
             La conversación sobre dónde tratarse ya empezó en ChatGPT.
           </h2>
           <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
