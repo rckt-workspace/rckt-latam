@@ -217,7 +217,7 @@ function ProblemaSection() {
           </p>
         </div>
         <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <ImagePlaceholder name="C-02-problema.jpg" className="h-[280px] sm:col-span-2 sm:row-span-2 sm:h-full" />
+          <img src={imgC02Problema} alt="Joven comparando cursos en su celular" className="h-[280px] w-full rounded-[4px] object-cover sm:col-span-2 sm:row-span-2 sm:h-full" />
           {problemaCards.map((card) => (
             <article key={card.num} className="rounded-[4px] bg-[#EEF1F6] p-6">
               <span className="text-[14px] font-bold text-[#005CFF]">{card.num}</span>
@@ -443,7 +443,7 @@ function BeneficiosSection() {
           Llega a tus futuros estudiantes en el momento <em>justo</em>.
         </h2>
         <div className="mt-12 grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
-          <ImagePlaceholder name="C-03-beneficios.jpg" className="h-[320px] md:h-[440px]" />
+          <img src={imgC03Beneficios} alt="Equipo de una academia en reunión" className="h-[320px] w-full rounded-[4px] object-cover md:h-[440px]" />
           <ul>
             {beneficios.map((item) => (
               <li key={item.num} className="flex gap-6 border-t border-[#D9DDE4] py-6 first:pt-0 lg:first:border-t-0">
@@ -462,10 +462,10 @@ function BeneficiosSection() {
 }
 
 const servicios = [
-  { num: "01", tag: "para entrar bien", title: "Cuenta y verificación", text: "Abrimos tu cuenta con los datos de tu academia y la dejamos lista para la revisión de OpenAI.", image: "C-05-servicio-01.jpg" },
-  { num: "02", tag: "para que te encuentren", title: "Estrategia de intenciones", text: "Mapeamos cómo preguntan tus futuros estudiantes: programas, horarios, precios y ciudades.", image: "C-06-servicio-02.jpg" },
-  { num: "03", tag: "para convertir", title: "Anuncios y landing de inscripción", text: "Piezas claras y una página que convierte consultas en solicitudes.", image: "C-07-servicio-03.jpg" },
-  { num: "04", tag: "para no perder a nadie", title: "Seguimiento y reportes", text: "Cada lead llega a tu WhatsApp, con un reporte semanal de clics, leads e inscripciones.", image: "C-08-servicio-04.jpg" },
+  { num: "01", tag: "para entrar bien", title: "Cuenta y verificación", text: "Abrimos tu cuenta con los datos de tu academia y la dejamos lista para la revisión de OpenAI.", image: imgC05Servicio01 },
+  { num: "02", tag: "para que te encuentren", title: "Estrategia de intenciones", text: "Mapeamos cómo preguntan tus futuros estudiantes: programas, horarios, precios y ciudades.", image: imgC06Servicio02 },
+  { num: "03", tag: "para convertir", title: "Anuncios y landing de inscripción", text: "Piezas claras y una página que convierte consultas en solicitudes.", image: imgC07Servicio03 },
+  { num: "04", tag: "para no perder a nadie", title: "Seguimiento y reportes", text: "Cada lead llega a tu WhatsApp, con un reporte semanal de clics, leads e inscripciones.", image: imgC08Servicio04 },
 ];
 
 function ServiciosSection() {
@@ -478,7 +478,7 @@ function ServiciosSection() {
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {servicios.map((servicio) => (
             <article key={servicio.num}>
-              <ImagePlaceholder name={servicio.image} className="h-[240px] w-full" />
+              <img src={servicio.image} alt={servicio.title} className="h-[240px] w-full rounded-[4px] object-cover" />
               <div className="mt-4 flex items-baseline gap-2">
                 <span className="text-[14px] font-bold text-[#005CFF]">{servicio.num}</span>
                 <span className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "18px" }}>· {servicio.tag} ·</span>
@@ -499,7 +499,7 @@ function DiferenciadorSection() {
   return (
     <section className="bg-[#212121] py-16 md:py-24">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
-        <ImagePlaceholder name="C-09-diferenciador.jpg" className="h-[300px] md:h-[420px]" />
+        <img src={imgC09Diferenciador} alt="Campus de una academia" className="h-[300px] w-full rounded-[4px] object-cover md:h-[420px]" />
         <div>
           <h2 className={`${serif} text-white`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
             Publicidad <em>veraz</em> para educación.
@@ -625,7 +625,7 @@ function FormularioSection() {
           <p className="mt-6 text-[17px] leading-[1.5] text-[#4F4F4D]">
             Revisamos tus programas, tu página y tu competencia para definir cómo empezar a pautar en ChatGPT.
           </p>
-          <ImagePlaceholder name="C-04-formulario.jpg" className="mt-10 hidden h-[280px] lg:block" />
+          <img src={imgC04Formulario} alt="Director de una academia" className="mt-10 hidden! h-[280px] w-full rounded-[4px] object-cover lg:block" />
         </div>
         <form onSubmit={onSubmit} className="rounded-[4px] bg-[#F4F6FA] p-6 md:p-9">
           <div className="grid grid-cols-1 gap-6">
@@ -751,7 +751,7 @@ function CierreSection() {
             <p className="text-[13px] text-[#4F4F4D]">Conversemos sobre una estrategia diseñada para tu academia.</p>
           </div>
         </div>
-        <ImagePlaceholder name="C-10-cierre.jpg" className="h-[320px] w-full rounded-none border-0 lg:h-full lg:min-h-[480px]" />
+        <img src={imgC10Cierre} alt="Escritorio de una academia" className="h-[320px] w-full rounded-none border-0 object-cover lg:h-full lg:min-h-[480px]" />
       </div>
     </section>
   );
