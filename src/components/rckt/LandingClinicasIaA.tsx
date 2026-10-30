@@ -600,8 +600,18 @@ function FaqSectionLanding() {
 function CierreSection() {
   return (
     <section className="relative overflow-hidden" style={{ background: heroGradient }}>
-      <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-10 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-2">
-        <div className="relative z-10">
+      <div
+        className="absolute inset-y-0 right-0 hidden w-[55%] lg:block"
+        style={{
+          WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 38%)",
+          maskImage: "linear-gradient(to right, transparent 0%, black 38%)",
+        }}
+        aria-hidden="true"
+      >
+        <img src={imgA10} alt="" className="h-full w-full object-cover" loading="lazy" />
+      </div>
+      <div className="relative mx-auto w-full max-w-[1200px] px-5 py-16 md:px-8 md:py-20">
+        <div className="max-w-[520px]">
           <h2 className={`${fontDisplay} font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 48px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             El futuro del marketing también se está construyendo con inteligencia artificial.
           </h2>
@@ -613,14 +623,8 @@ function CierreSection() {
           </div>
           <p className="mt-4 text-[13px] text-[#4B4366]">Conversemos sobre una estrategia diseñada para tu negocio.</p>
         </div>
-        <div
-          className="relative h-[300px] mix-blend-multiply md:h-[420px]"
-          style={{
-            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 30%)",
-            maskImage: "linear-gradient(to right, transparent 0%, black 30%)",
-          }}
-        >
-          <ImagePlaceholder name="A-10-cierre-ojo.jpg" className="h-full w-full rounded-none border-0 bg-transparent" />
+        <div className="mt-10 lg:hidden">
+          <ImagePlaceholder name="A-10-cierre-ojo.jpg" className="h-[260px]" />
         </div>
       </div>
     </section>
