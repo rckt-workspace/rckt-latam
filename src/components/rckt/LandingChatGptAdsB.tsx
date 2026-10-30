@@ -382,9 +382,14 @@ const beneficios = [
 function BeneficiosSection() {
   return (
     <section id="beneficios" className="bg-[#212121] py-14 md:py-20">
+      <img
+        src={landingImages["B-03-beneficios-equipo.jpg"]}
+        alt=""
+        loading="lazy"
+        className="block h-[320px] w-full object-cover object-[50%_25%] md:h-[clamp(380px,42vw,620px)]"
+      />
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <ImagePlaceholder name="B-03-beneficios-equipo.jpg" className="h-[260px] w-full md:h-[380px]" />
-        <h2 className="mt-12 max-w-[900px] font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+        <h2 className="mt-12 max-w-[900px] font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(24px, 2.4vw, 34px)", lineHeight: 1.2, letterSpacing: "-0.01em" }}>
           No reemplaza a Google ni a Meta. Llega a un momento que ellos no cubren.
         </h2>
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
