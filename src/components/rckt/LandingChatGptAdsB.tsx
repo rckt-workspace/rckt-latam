@@ -349,7 +349,7 @@ function RequisitosSection() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <span className={labelClass}>Requisitos</span>
-          <h2 className="mt-6 font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+          <h2 className="mt-6 font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
             Cinco requisitos para estar lista antes que tu competencia.
           </h2>
           <p className="mt-6 max-w-[460px] text-[16px] leading-[1.5] text-[#D6D1CA]">
