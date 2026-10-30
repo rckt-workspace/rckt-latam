@@ -676,7 +676,24 @@ function WhatsAppFloat() {
   );
 }
 
+// Fija el tema claro mientras la landing está montada y restaura el tema del sitio al salir, sin tocar localStorage.
+function useLightThemePin() {
+  useEffect(() => {
+    const root = document.documentElement;
+    const hadDark = root.classList.contains("dark");
+    const previousTheme = root.getAttribute("data-theme");
+    root.classList.remove("dark");
+    root.setAttribute("data-theme", "light");
+    return () => {
+      root.classList.toggle("dark", hadDark);
+      if (previousTheme) root.setAttribute("data-theme", previousTheme);
+      else root.removeAttribute("data-theme");
+    };
+  }, []);
+}
+
 export function LandingClinicasIaA() {
+  useLightThemePin();
   useEffect(() => {
     saveCampaignParams(window.location.search);
     saveCampaignParams(`?utm_content=${LANDING}`);
@@ -704,6 +721,7 @@ export function LandingClinicasIaA() {
 }
 
 export function LandingClinicasIaAThanks() {
+  useLightThemePin();
   useEffect(() => {
     saveCampaignParams(window.location.search);
     saveCampaignParams(`?utm_content=${LANDING}`);
