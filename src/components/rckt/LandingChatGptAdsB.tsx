@@ -632,7 +632,7 @@ function FormularioSection() {
               </div>
             </div>
             <input type="hidden" name="pais" value="Colombia" />
-            <label htmlFor="b-consent" className="col-span-full grid w-full grid-cols-[20px_1fr] items-start gap-3 font-normal normal-case tracking-normal">
+            <label htmlFor="b-consent" className="col-span-full !grid !grid-cols-[20px_1fr] !items-start w-full gap-3 font-normal normal-case tracking-normal">
               <input
                 id="b-consent"
                 type="checkbox"
