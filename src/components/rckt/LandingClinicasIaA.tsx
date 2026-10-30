@@ -417,8 +417,8 @@ function RequisitosSection() {
           {requisitos.map((req, index) => (
             <article
               key={req.num}
-              className={`rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-6 ${
-                index < 3 ? "lg:col-span-2" : "md:col-span-1 lg:col-span-2 lg:col-start-auto"
+              className={`rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-6 lg:col-span-2 ${
+                index < 3 ? "" : "md:col-span-2 lg:col-span-2"
               } ${index === 3 ? "lg:col-start-2" : ""} ${index === 4 ? "lg:col-start-4" : ""}`}
             >
               <span className={`${fontDisplay} text-[15px] font-bold text-[#6A3FE0]`}>{req.num}</span>
