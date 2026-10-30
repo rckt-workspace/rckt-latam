@@ -146,7 +146,7 @@ function HeroSection() {
           aria-hidden="true"
           style={{ background: "linear-gradient(to bottom, rgba(26,26,26,0.80) 0%, rgba(26,26,26,0.45) 50%, rgba(26,26,26,0.85) 100%)" }}
         />
-        <div className="relative z-10 flex min-h-[520px] flex-col justify-center px-6 py-16 md:min-h-[600px] md:max-w-[58%] md:px-12">
+        <div className="relative z-10 flex min-h-[640px] flex-col justify-center px-6 py-16 md:min-h-[600px] md:max-w-[58%] md:px-12">
           <span className="inline-block w-fit rounded-full border border-[#FC5C1F] px-4 py-1.5 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#FC5C1F]">
             ChatGPT Ads ya llegó a Colombia
           </span>
