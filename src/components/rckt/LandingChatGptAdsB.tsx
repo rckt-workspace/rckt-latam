@@ -598,7 +598,7 @@ function FormularioSection() {
               <input id="b-nombre" name="nombre" type="text" autoComplete="name" className={inputClass} placeholder="Nombre y apellidos" onInput={(e) => markStarted(e.currentTarget.value)} />
             </div>
             <div>
-              <label htmlFor="b-empresa" className="text-[14px] font-semibold text-[#F5F2ED]">Nombre de la clínica *</label>
+              <label htmlFor="b-empresa" className={labelFormClass}>Nombre de la clínica *</label>
               <input id="b-empresa" name="empresa" type="text" autoComplete="organization" required className={inputClass} placeholder="Nombre de la clínica" onInput={(e) => markStarted(e.currentTarget.value)} />
             </div>
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
