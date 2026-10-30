@@ -7,6 +7,16 @@ import { saveDiagnosticLead } from "@/lib/leads-diagnostic.functions";
 import { getCampaignParams, saveCampaignParams, track } from "@/components/rckt/tracking";
 import { WHATSAPP_URL, contactConfig } from "@/config/contact";
 import logoDark from "@/assets/rckt-logo-dark.png";
+import imgC01Hero from "@/assets/C-01-hero.jpg";
+import imgC02Problema from "@/assets/C-02-problema.jpg";
+import imgC03Beneficios from "@/assets/C-03-beneficios.jpg";
+import imgC04Formulario from "@/assets/C-04-formulario.jpg";
+import imgC05Servicio01 from "@/assets/C-05-servicio-01.jpg";
+import imgC06Servicio02 from "@/assets/C-06-servicio-02.jpg";
+import imgC07Servicio03 from "@/assets/C-07-servicio-03.jpg";
+import imgC08Servicio04 from "@/assets/C-08-servicio-04.jpg";
+import imgC09Diferenciador from "@/assets/C-09-diferenciador.jpg";
+import imgC10Cierre from "@/assets/C-10-cierre.jpg";
 
 export const LANDING_C_TITLE = "ChatGPT Ads para academias y centros de formación | RCKT";
 export const LANDING_C_DESCRIPTION =
@@ -16,14 +26,6 @@ const LANDING = "chatgpt-ads-academias";
 const CONSENT_VERSION = "RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf";
 
 const serif = "font-['Instrument_Serif',serif]";
-
-function ImagePlaceholder({ name, className = "" }: { name: string; className?: string }) {
-  return (
-    <div className={`flex items-center justify-center overflow-hidden rounded-[4px] bg-[#EEF1F6] ${className}`}>
-      <span className="text-[12px] font-medium text-[#4F4F4D]">{name}</span>
-    </div>
-  );
-}
 
 function WhatsAppIcon({ className = "h-6 w-6" }: { className?: string }) {
   return (
@@ -127,11 +129,20 @@ function HeroSection() {
   return (
     <section id="top" className="relative bg-[#FBFBFA] pt-[68px]">
       <div className="relative overflow-hidden">
-        <ImagePlaceholder name="C-01-hero.jpg" className="absolute inset-0 h-full w-full rounded-none border-0" />
+        <img
+          src={imgC01Hero}
+          alt="Asesora de una academia orientando a un estudiante"
+          className="absolute! inset-0 h-full w-full rounded-none border-0 object-cover object-[75%_50%] md:object-center"
+        />
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 hidden! md:block!"
           aria-hidden="true"
           style={{ background: "linear-gradient(to right, rgba(251,251,250,0.97) 0%, rgba(251,251,250,0.85) 40%, rgba(251,251,250,0.25) 70%, transparent 100%)" }}
+        />
+        <div
+          className="absolute inset-0 md:hidden!"
+          aria-hidden="true"
+          style={{ background: "linear-gradient(to bottom, rgba(251,251,250,0.92) 0%, rgba(251,251,250,0.75) 50%, rgba(251,251,250,0.35) 100%)" }}
         />
         <div className="relative z-10 mx-auto w-full max-w-[1200px] px-5 py-16 md:px-8 md:py-24">
           <div className="max-w-[640px]">
