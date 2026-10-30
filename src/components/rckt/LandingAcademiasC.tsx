@@ -128,11 +128,17 @@ function HeroSection() {
   const chat = heroChats[active];
   return (
     <section id="top" className="relative bg-[#FBFBFA] pt-[68px]">
-      <div className="relative overflow-hidden">
+      <div className="relative grid overflow-hidden md:items-start">
         <img
           src={imgC01Hero}
           alt="Asesora de una academia orientando a un estudiante"
-          className="absolute! inset-0 h-full w-full rounded-none border-0 object-cover object-[72%_50%] md:object-[50%_50%]"
+          className="hidden! md:col-start-1 md:row-start-1 md:block! h-auto w-full self-start rounded-none border-0"
+        />
+        <img
+          src={imgC01Hero}
+          alt=""
+          aria-hidden="true"
+          className="absolute! inset-0 h-full w-full rounded-none border-0 object-cover object-[72%_50%] md:hidden!"
         />
         <div
           className="absolute inset-0 hidden! md:block!"
