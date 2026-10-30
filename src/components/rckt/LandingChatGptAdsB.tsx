@@ -8,6 +8,29 @@ import { getCampaignParams, saveCampaignParams, track } from "@/components/rckt/
 import { WHATSAPP_URL, contactConfig } from "@/config/contact";
 import logoDark from "@/assets/rckt-logo-dark.png";
 import logoLight from "@/assets/rckt-logo-light.png";
+import imgB01 from "@/assets/B-01-hero-consulta.jpg";
+import imgB02 from "@/assets/B-02-problema-paciente-celular.jpg";
+import imgB03 from "@/assets/B-03-beneficios-equipo.jpg";
+import imgB04 from "@/assets/B-04-formulario-director.jpg";
+import imgB05 from "@/assets/B-05-servicio-01-diagnostico.jpg";
+import imgB06 from "@/assets/B-06-servicio-02-estrategia.jpg";
+import imgB07 from "@/assets/B-07-servicio-03-landing.jpg";
+import imgB08 from "@/assets/B-08-servicio-04-seguimiento.jpg";
+import imgB09 from "@/assets/B-09-diferenciador-rostro.jpg";
+import imgB10 from "@/assets/B-10-cierre-mujer-celular.jpg";
+
+const landingImages: Record<string, string> = {
+  "B-01-hero-consulta.jpg": imgB01,
+  "B-02-problema-paciente-celular.jpg": imgB02,
+  "B-03-beneficios-equipo.jpg": imgB03,
+  "B-04-formulario-director.jpg": imgB04,
+  "B-05-servicio-01-diagnostico.jpg": imgB05,
+  "B-06-servicio-02-estrategia.jpg": imgB06,
+  "B-07-servicio-03-landing.jpg": imgB07,
+  "B-08-servicio-04-seguimiento.jpg": imgB08,
+  "B-09-diferenciador-rostro.jpg": imgB09,
+  "B-10-cierre-mujer-celular.jpg": imgB10,
+};
 
 export const LANDING_B_TITLE = "ChatGPT Ads para clínicas estéticas en Colombia | RCKT";
 export const LANDING_B_DESCRIPTION =
@@ -16,14 +39,10 @@ export const LANDING_B_DESCRIPTION =
 const LANDING = "chatgpt-ads-clinicas-esteticas";
 const CONSENT_VERSION = "RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf";
 
-function ImagePlaceholder({ name, className = "", dark = true }: { name: string; className?: string; dark?: boolean }) {
+function ImagePlaceholder({ name, className = "" }: { name: string; className?: string }) {
   return (
-    <div
-      className={`flex items-center justify-center rounded-[24px] border ${dark ? "border-[#3A3A3A] bg-[#2C2C2C]" : "border-[#D6D1CA] bg-[#EAE6DF]"} ${className}`}
-      role="img"
-      aria-label={name}
-    >
-      <span className={`px-3 text-center text-[12px] font-medium tracking-wide ${dark ? "text-[#BDB8B1]" : "text-[#4B4366]"}`}>{name}</span>
+    <div className={`overflow-hidden rounded-[24px] ${className}`}>
+      <img src={landingImages[name]} alt="" className="h-full w-full object-cover" loading="lazy" />
     </div>
   );
 }
