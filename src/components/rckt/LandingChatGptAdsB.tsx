@@ -511,7 +511,12 @@ const procedimientoOpciones = ["No quirúrgicos", "Quirúrgicos", "Ambos"] as co
 const sedesOpciones = ["1", "2 a 3", "4 o más"] as const;
 
 const inputClass =
-  "mt-2 w-full rounded-[12px] border border-[#3A3A3A] bg-[#212121] px-4 py-3 text-[15px] text-[#F5F2ED] placeholder:text-[#BDB8B1]/60 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#FC5C1F]";
+  "mt-2 w-full rounded-[12px] border border-[#3A3A3A] bg-[#212121] px-4 py-3 text-[15px] text-[#F5F2ED] placeholder:text-[#BDB8B1] focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#FC5C1F]";
+
+const selectClass =
+  "mt-2 w-full rounded-[12px] border border-[#3A3A3A] bg-[#2C2C2C] px-4 py-3 text-[15px] text-[#F5F2ED] placeholder:text-[#BDB8B1] focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#FC5C1F]";
+
+const labelFormClass = "text-[12px] font-semibold uppercase tracking-[0.08em] text-[#F5F2ED]";
 
 function FormularioSection() {
   const navigate = useNavigate();
