@@ -111,14 +111,14 @@ function HeroSection() {
             className="mt-6 font-extrabold text-[#F5F2ED]"
             style={{ fontSize: "clamp(44px, 6vw, 84px)", lineHeight: 0.98, letterSpacing: "-0.04em" }}
           >
-            Adelántate a tu competencia: capta pacientes con ChatGPT Ads antes de que se sature el mercado.
+            Adelántate a tu competencia: prepara tu clínica para ChatGPT Ads antes de que se sature el mercado.
           </h1>
           <p className="mt-6 text-[17px] leading-[1.5] text-[#D6D1CA] md:text-[19px]">
-            Llegamos a la persona que ya está comparando dónde hacerse un tratamiento estético, justo cuando se lo pregunta a la IA.
+            ChatGPT Ads ya llegó a Colombia. Dejamos tu clínica lista y visible en las respuestas de la IA mientras OpenAI habilita la publicidad de salud en el país.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <CtaButton>Solicitar auditoría de canales IA</CtaButton>
-            <p className="text-[13px] text-[#BDB8B1]">Para clínicas de medicina estética no quirúrgica en Colombia</p>
+            <CtaButton>Solicitar diagnóstico de preparación</CtaButton>
+            <p className="text-[13px] text-[#BDB8B1]">Para clínicas de medicina estética en Colombia</p>
           </div>
         </div>
       </div>
@@ -174,7 +174,7 @@ function OportunidadSection() {
             Así aparece tu clínica dentro de la conversación.
           </h2>
           <p className="text-[17px] leading-[1.5] text-[#4B4366] lg:pt-3">
-            El anuncio va debajo de la respuesta, nunca dentro, y siempre marcado como patrocinado. OpenAI no comparte las conversaciones con los anunciantes: el anuncio se activa por el tema de la consulta.
+            El anuncio va debajo de la respuesta, nunca dentro, y siempre marcado como patrocinado. OpenAI no comparte las conversaciones con los anunciantes. Así funcionará para tu clínica cuando se habilite la categoría de salud en Colombia.
           </p>
         </div>
         <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-2">
@@ -256,7 +256,7 @@ function BeneficiosSection() {
 const servicios = [
   { num: "01", title: "Cuenta y verificación", text: "Abrimos tu cuenta con los datos correctos de tu clínica y la dejamos lista para cuando se habilite la categoría de salud.", image: "B-05-servicio-01-diagnostico.jpg" },
   { num: "02", title: "Estrategia de intenciones", text: "Mapeamos cómo pregunta tu paciente: tratamientos, ciudades, comparaciones y dudas de precio.", image: "B-06-servicio-02-estrategia.jpg" },
-  { num: "03", title: "Anuncios y landing", text: "Piezas sin promesas de resultados ni descuentos, y una página pensada para convertir consultas en valoraciones.", image: "B-07-servicio-03-landing.jpg" },
+  { num: "03", title: "Anuncios y landing", text: "Preparamos piezas sin promesas de resultados ni descuentos, y una página pensada para convertir consultas en valoraciones.", image: "B-07-servicio-03-landing.jpg" },
   { num: "04", title: "WhatsApp y reportes", text: "Cada lead llega a tu equipo comercial, con un reporte semanal de clics, leads y citas agendadas.", image: "B-08-servicio-04-seguimiento.jpg" },
 ];
 
