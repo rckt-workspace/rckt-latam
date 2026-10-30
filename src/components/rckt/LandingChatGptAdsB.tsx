@@ -699,19 +699,18 @@ function FaqSectionLanding() {
 
 function CierreSection() {
   return (
-    <section className="bg-[#212121] px-4 pb-6 md:px-8 md:pb-10">
-      <div className="relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-[28px]">
-        <ImagePlaceholder name="B-10-cierre-mujer-celular.jpg" className="absolute inset-0 h-full w-full rounded-none border-0" />
-        <div
-          className="absolute inset-0"
-          aria-hidden="true"
-          style={{ background: "linear-gradient(to left, rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.55) 45%, transparent 75%)" }}
-        />
-        <div className="absolute inset-0 bg-[#1A1A1A]/[0.72] md:hidden" aria-hidden="true" />
-        <div className="relative z-10 flex min-h-[480px] flex-col items-end justify-center px-6 py-16 text-right md:px-12">
-          <div className="md:max-w-[52%]">
-            <h2 className="font-extrabold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3.2vw, 46px)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-              El paciente ya no busca “clínica estética”. Le pregunta a la IA cuál le conviene.
+    <section className="relative bg-[#212121]">
+      <ImagePlaceholder name="B-10-cierre-mujer-celular.jpg" className="absolute inset-0 h-full w-full rounded-none border-0" />
+      <div
+        className="absolute inset-0"
+        aria-hidden="true"
+        style={{ background: "linear-gradient(to left, rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.55) 45%, transparent 75%)" }}
+      />
+      <div className="absolute inset-0 bg-[#1A1A1A]/[0.72] md:hidden" aria-hidden="true" />
+      <div className="relative z-10 mx-auto flex min-h-[480px] w-full max-w-[1200px] flex-col items-end justify-center px-5 py-16 text-right md:px-8">
+        <div className="md:max-w-[52%]">
+          <h2 className="font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3.2vw, 46px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
+            El paciente ya no busca “clínica estética”. Le pregunta a la IA cuál le conviene.
             </h2>
             <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
               Ahí es donde tu clínica tiene que estar.
