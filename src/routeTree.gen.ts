@@ -26,6 +26,7 @@ import { Route as CasosIndexRouteImport } from './routes/casos.index'
 import { Route as LegalAvisoLegalRouteImport } from './routes/legal.aviso-legal'
 import { Route as LegalCookiesRouteImport } from './routes/legal.cookies'
 import { Route as LegalPrivacidadRouteImport } from './routes/legal.privacidad'
+import { Route as LpClinicasEsteticasIaRouteImport } from './routes/lp.clinicas-esteticas-ia'
 import { Route as LpSalesFlowRouteImport } from './routes/lp.sales-flow'
 import { Route as LpSalesFlowClinicasBogotaRouteImport } from './routes/lp.sales-flow-clinicas-bogota'
 import { Route as LpSalesFlowClinicasBogotaBRouteImport } from './routes/lp.sales-flow-clinicas-bogota-b'
@@ -62,6 +63,8 @@ import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
 import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
 import { Route as ApiAdminVerifyRouteImport } from './routes/api/admin/verify'
 import { Route as ApiAplicacionesEnviarRouteImport } from './routes/api/aplicaciones/enviar'
+import { Route as LpClinicasEsteticasIaIndexRouteImport } from './routes/lp.clinicas-esteticas-ia.index'
+import { Route as LpClinicasEsteticasIaGraciasRouteImport } from './routes/lp.clinicas-esteticas-ia.gracias'
 import { Route as LpSalesFlowClinicasBogotaBIndexRouteImport } from './routes/lp.sales-flow-clinicas-bogota-b.index'
 import { Route as LpSalesFlowClinicasBogotaBGraciasRouteImport } from './routes/lp.sales-flow-clinicas-bogota-b.gracias'
 import { Route as LpSalesFlowClinicasBogotaIndexRouteImport } from './routes/lp.sales-flow-clinicas-bogota.index'
@@ -162,6 +165,11 @@ const LegalCookiesRoute = LegalCookiesRouteImport.update({
 const LegalPrivacidadRoute = LegalPrivacidadRouteImport.update({
   id: '/legal/privacidad',
   path: '/legal/privacidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpClinicasEsteticasIaRoute = LpClinicasEsteticasIaRouteImport.update({
+  id: '/lp/clinicas-esteticas-ia',
+  path: '/lp/clinicas-esteticas-ia',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LpSalesFlowRoute = LpSalesFlowRouteImport.update({
@@ -353,6 +361,18 @@ const ApiAplicacionesEnviarRoute = ApiAplicacionesEnviarRouteImport.update({
   path: '/api/aplicaciones/enviar',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LpClinicasEsteticasIaIndexRoute =
+  LpClinicasEsteticasIaIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => LpClinicasEsteticasIaRoute,
+  } as any)
+const LpClinicasEsteticasIaGraciasRoute =
+  LpClinicasEsteticasIaGraciasRouteImport.update({
+    id: '/gracias',
+    path: '/gracias',
+    getParentRoute: () => LpClinicasEsteticasIaRoute,
+  } as any)
 const LpSalesFlowClinicasBogotaBIndexRoute =
   LpSalesFlowClinicasBogotaBIndexRouteImport.update({
     id: '/',
@@ -457,6 +477,7 @@ export interface FileRoutesByFullPath {
   '/legal/aviso-legal': typeof LegalAvisoLegalRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacidad': typeof LegalPrivacidadRoute
+  '/lp/clinicas-esteticas-ia': typeof LpClinicasEsteticasIaRouteWithChildren
   '/lp/sales-flow': typeof LpSalesFlowRouteWithChildren
   '/lp/sales-flow-clinicas-bogota': typeof LpSalesFlowClinicasBogotaRouteWithChildren
   '/lp/sales-flow-clinicas-bogota-b': typeof LpSalesFlowClinicasBogotaBRouteWithChildren
@@ -495,10 +516,12 @@ export interface FileRoutesByFullPath {
   '/api/admin/logout': typeof ApiAdminLogoutRoute
   '/api/admin/verify': typeof ApiAdminVerifyRoute
   '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
+  '/lp/clinicas-esteticas-ia/gracias': typeof LpClinicasEsteticasIaGraciasRoute
   '/lp/sales-flow-clinicas-bogota-b/gracias': typeof LpSalesFlowClinicasBogotaBGraciasRoute
   '/lp/sales-flow-clinicas-bogota/gracias': typeof LpSalesFlowClinicasBogotaGraciasRoute
   '/lp/sales-flow/gracias': typeof LpSalesFlowGraciasRoute
   '/trabaja-con-nosotros/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
+  '/lp/clinicas-esteticas-ia/': typeof LpClinicasEsteticasIaIndexRoute
   '/lp/sales-flow-clinicas-bogota-b/': typeof LpSalesFlowClinicasBogotaBIndexRoute
   '/lp/sales-flow-clinicas-bogota/': typeof LpSalesFlowClinicasBogotaIndexRoute
   '/lp/sales-flow/': typeof LpSalesFlowIndexRoute
@@ -563,10 +586,12 @@ export interface FileRoutesByTo {
   '/api/admin/logout': typeof ApiAdminLogoutRoute
   '/api/admin/verify': typeof ApiAdminVerifyRoute
   '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
+  '/lp/clinicas-esteticas-ia/gracias': typeof LpClinicasEsteticasIaGraciasRoute
   '/lp/sales-flow-clinicas-bogota-b/gracias': typeof LpSalesFlowClinicasBogotaBGraciasRoute
   '/lp/sales-flow-clinicas-bogota/gracias': typeof LpSalesFlowClinicasBogotaGraciasRoute
   '/lp/sales-flow/gracias': typeof LpSalesFlowGraciasRoute
   '/trabaja-con-nosotros/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
+  '/lp/clinicas-esteticas-ia': typeof LpClinicasEsteticasIaIndexRoute
   '/lp/sales-flow-clinicas-bogota-b': typeof LpSalesFlowClinicasBogotaBIndexRoute
   '/lp/sales-flow-clinicas-bogota': typeof LpSalesFlowClinicasBogotaIndexRoute
   '/lp/sales-flow': typeof LpSalesFlowIndexRoute
@@ -597,6 +622,7 @@ export interface FileRoutesById {
   '/legal/aviso-legal': typeof LegalAvisoLegalRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacidad': typeof LegalPrivacidadRoute
+  '/lp/clinicas-esteticas-ia': typeof LpClinicasEsteticasIaRouteWithChildren
   '/lp/sales-flow': typeof LpSalesFlowRouteWithChildren
   '/lp/sales-flow-clinicas-bogota': typeof LpSalesFlowClinicasBogotaRouteWithChildren
   '/lp/sales-flow-clinicas-bogota-b': typeof LpSalesFlowClinicasBogotaBRouteWithChildren
@@ -635,10 +661,12 @@ export interface FileRoutesById {
   '/api/admin/logout': typeof ApiAdminLogoutRoute
   '/api/admin/verify': typeof ApiAdminVerifyRoute
   '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
+  '/lp/clinicas-esteticas-ia/gracias': typeof LpClinicasEsteticasIaGraciasRoute
   '/lp/sales-flow-clinicas-bogota-b/gracias': typeof LpSalesFlowClinicasBogotaBGraciasRoute
   '/lp/sales-flow-clinicas-bogota/gracias': typeof LpSalesFlowClinicasBogotaGraciasRoute
   '/lp/sales-flow/gracias': typeof LpSalesFlowGraciasRoute
   '/trabaja-con-nosotros_/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
+  '/lp/clinicas-esteticas-ia/': typeof LpClinicasEsteticasIaIndexRoute
   '/lp/sales-flow-clinicas-bogota-b/': typeof LpSalesFlowClinicasBogotaBIndexRoute
   '/lp/sales-flow-clinicas-bogota/': typeof LpSalesFlowClinicasBogotaIndexRoute
   '/lp/sales-flow/': typeof LpSalesFlowIndexRoute
@@ -670,6 +698,7 @@ export interface FileRouteTypes {
     | '/legal/aviso-legal'
     | '/legal/cookies'
     | '/legal/privacidad'
+    | '/lp/clinicas-esteticas-ia'
     | '/lp/sales-flow'
     | '/lp/sales-flow-clinicas-bogota'
     | '/lp/sales-flow-clinicas-bogota-b'
@@ -708,10 +737,12 @@ export interface FileRouteTypes {
     | '/api/admin/logout'
     | '/api/admin/verify'
     | '/api/aplicaciones/enviar'
+    | '/lp/clinicas-esteticas-ia/gracias'
     | '/lp/sales-flow-clinicas-bogota-b/gracias'
     | '/lp/sales-flow-clinicas-bogota/gracias'
     | '/lp/sales-flow/gracias'
     | '/trabaja-con-nosotros/aplicar/$id'
+    | '/lp/clinicas-esteticas-ia/'
     | '/lp/sales-flow-clinicas-bogota-b/'
     | '/lp/sales-flow-clinicas-bogota/'
     | '/lp/sales-flow/'
@@ -776,10 +807,12 @@ export interface FileRouteTypes {
     | '/api/admin/logout'
     | '/api/admin/verify'
     | '/api/aplicaciones/enviar'
+    | '/lp/clinicas-esteticas-ia/gracias'
     | '/lp/sales-flow-clinicas-bogota-b/gracias'
     | '/lp/sales-flow-clinicas-bogota/gracias'
     | '/lp/sales-flow/gracias'
     | '/trabaja-con-nosotros/aplicar/$id'
+    | '/lp/clinicas-esteticas-ia'
     | '/lp/sales-flow-clinicas-bogota-b'
     | '/lp/sales-flow-clinicas-bogota'
     | '/lp/sales-flow'
@@ -809,6 +842,7 @@ export interface FileRouteTypes {
     | '/legal/aviso-legal'
     | '/legal/cookies'
     | '/legal/privacidad'
+    | '/lp/clinicas-esteticas-ia'
     | '/lp/sales-flow'
     | '/lp/sales-flow-clinicas-bogota'
     | '/lp/sales-flow-clinicas-bogota-b'
@@ -847,10 +881,12 @@ export interface FileRouteTypes {
     | '/api/admin/logout'
     | '/api/admin/verify'
     | '/api/aplicaciones/enviar'
+    | '/lp/clinicas-esteticas-ia/gracias'
     | '/lp/sales-flow-clinicas-bogota-b/gracias'
     | '/lp/sales-flow-clinicas-bogota/gracias'
     | '/lp/sales-flow/gracias'
     | '/trabaja-con-nosotros_/aplicar/$id'
+    | '/lp/clinicas-esteticas-ia/'
     | '/lp/sales-flow-clinicas-bogota-b/'
     | '/lp/sales-flow-clinicas-bogota/'
     | '/lp/sales-flow/'
@@ -881,6 +917,7 @@ export interface RootRouteChildren {
   LegalAvisoLegalRoute: typeof LegalAvisoLegalRoute
   LegalCookiesRoute: typeof LegalCookiesRoute
   LegalPrivacidadRoute: typeof LegalPrivacidadRoute
+  LpClinicasEsteticasIaRoute: typeof LpClinicasEsteticasIaRouteWithChildren
   LpSalesFlowRoute: typeof LpSalesFlowRouteWithChildren
   LpSalesFlowClinicasBogotaRoute: typeof LpSalesFlowClinicasBogotaRouteWithChildren
   LpSalesFlowClinicasBogotaBRoute: typeof LpSalesFlowClinicasBogotaBRouteWithChildren
@@ -1050,6 +1087,13 @@ declare module '@tanstack/react-router' {
       path: '/legal/privacidad'
       fullPath: '/legal/privacidad'
       preLoaderRoute: typeof LegalPrivacidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/clinicas-esteticas-ia': {
+      id: '/lp/clinicas-esteticas-ia'
+      path: '/lp/clinicas-esteticas-ia'
+      fullPath: '/lp/clinicas-esteticas-ia'
+      preLoaderRoute: typeof LpClinicasEsteticasIaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lp/sales-flow': {
@@ -1304,6 +1348,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAplicacionesEnviarRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lp/clinicas-esteticas-ia/': {
+      id: '/lp/clinicas-esteticas-ia/'
+      path: '/'
+      fullPath: '/lp/clinicas-esteticas-ia/'
+      preLoaderRoute: typeof LpClinicasEsteticasIaIndexRouteImport
+      parentRoute: typeof LpClinicasEsteticasIaRoute
+    }
+    '/lp/clinicas-esteticas-ia/gracias': {
+      id: '/lp/clinicas-esteticas-ia/gracias'
+      path: '/gracias'
+      fullPath: '/lp/clinicas-esteticas-ia/gracias'
+      preLoaderRoute: typeof LpClinicasEsteticasIaGraciasRouteImport
+      parentRoute: typeof LpClinicasEsteticasIaRoute
+    }
     '/lp/sales-flow-clinicas-bogota-b/': {
       id: '/lp/sales-flow-clinicas-bogota-b/'
       path: '/'
@@ -1419,6 +1477,21 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface LpClinicasEsteticasIaRouteChildren {
+  LpClinicasEsteticasIaGraciasRoute: typeof LpClinicasEsteticasIaGraciasRoute
+  LpClinicasEsteticasIaIndexRoute: typeof LpClinicasEsteticasIaIndexRoute
+}
+
+const LpClinicasEsteticasIaRouteChildren: LpClinicasEsteticasIaRouteChildren = {
+  LpClinicasEsteticasIaGraciasRoute: LpClinicasEsteticasIaGraciasRoute,
+  LpClinicasEsteticasIaIndexRoute: LpClinicasEsteticasIaIndexRoute,
+}
+
+const LpClinicasEsteticasIaRouteWithChildren =
+  LpClinicasEsteticasIaRoute._addFileChildren(
+    LpClinicasEsteticasIaRouteChildren,
+  )
+
 interface LpSalesFlowRouteChildren {
   LpSalesFlowGraciasRoute: typeof LpSalesFlowGraciasRoute
   LpSalesFlowIndexRoute: typeof LpSalesFlowIndexRoute
@@ -1483,6 +1556,7 @@ const rootRouteChildren: RootRouteChildren = {
   LegalAvisoLegalRoute: LegalAvisoLegalRoute,
   LegalCookiesRoute: LegalCookiesRoute,
   LegalPrivacidadRoute: LegalPrivacidadRoute,
+  LpClinicasEsteticasIaRoute: LpClinicasEsteticasIaRouteWithChildren,
   LpSalesFlowRoute: LpSalesFlowRouteWithChildren,
   LpSalesFlowClinicasBogotaRoute: LpSalesFlowClinicasBogotaRouteWithChildren,
   LpSalesFlowClinicasBogotaBRoute: LpSalesFlowClinicasBogotaBRouteWithChildren,

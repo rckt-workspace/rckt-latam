@@ -12,7 +12,6 @@ import { useEffect, type ReactNode } from "react";
 
 import "../styles.css";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import AdvisorChatLauncher from "@/components/rckt/AdvisorChatLauncher";
 import GlobalSectionBlobs from "@/components/rckt/GlobalSectionBlobs";
 
 function NotFoundComponent() {
@@ -137,7 +136,6 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <GlobalSectionBlobs />
-      <AdvisorChatLauncher />
     </QueryClientProvider>
   );
 }
