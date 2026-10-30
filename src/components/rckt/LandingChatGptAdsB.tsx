@@ -419,7 +419,7 @@ function ServiciosSection() {
   return (
     <section className="bg-[#212121] py-14 md:py-20">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <h2 className="max-w-[760px] font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+        <h2 className="max-w-[760px] font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
           Un servicio completo, de la cuenta a la cita agendada.
         </h2>
         <Accordion type="single" collapsible className="mt-12">
