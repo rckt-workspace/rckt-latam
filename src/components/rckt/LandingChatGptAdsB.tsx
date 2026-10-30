@@ -799,6 +799,8 @@ export function LandingChatGptAdsB() {
         <HeroSection />
         <ProblemaSection />
         <OportunidadSection />
+        <ContextoSection />
+        <RequisitosSection />
         <BeneficiosSection />
         <ServiciosSection />
         <DiferenciadorSection />
