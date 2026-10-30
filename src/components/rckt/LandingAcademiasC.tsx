@@ -64,14 +64,14 @@ function LandingHeader() {
             : "h-[68px] max-w-[1200px] border border-transparent bg-[#FBFBFA]"
         }`}
       >
-        <a href="#top" aria-label="RCKT">
+        <a href="#top" aria-label="RCKT" className="shrink-0">
           <img src={logoDark} alt="RCKT" className={`w-auto transition-all duration-500 ${scrolled ? "h-6" : "h-7"}`} />
         </a>
         <nav className="hidden items-center gap-8 md:flex" aria-label="Secciones">
           <a href="#beneficios" className={linkClass}>Beneficios</a>
           <a href="#proceso" className={linkClass}>Cómo funciona</a>
         </nav>
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex shrink-0 items-center gap-2 md:hidden">
           <a href="#diagnostico" className={`${btnClass} h-[40px] whitespace-nowrap px-4 text-[13px]`}>Solicitar diagnóstico</a>
           <button
             type="button"
@@ -83,7 +83,9 @@ function LandingHeader() {
             {menuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
           </button>
         </div>
-        <a href="#diagnostico" className={`${btnClass} hidden min-h-[42px] px-6 text-[14px] md:inline-flex`}>Solicitar diagnóstico</a>
+        <div className="hidden md:block">
+          <a href="#diagnostico" className={`${btnClass} min-h-[42px] px-6 text-[14px]`}>Solicitar diagnóstico</a>
+        </div>
       </div>
       {menuOpen && (
         <div className="mx-auto mt-2 w-full max-w-[1100px] rounded-[24px] border border-[#D9DDE4] bg-white/90 p-2 shadow-[0_10px_30px_rgba(0,0,0,0.12)] backdrop-blur-md md:hidden">

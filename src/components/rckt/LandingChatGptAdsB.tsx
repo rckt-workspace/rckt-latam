@@ -86,14 +86,14 @@ function LandingHeader() {
             : "h-[68px] max-w-[1200px] border border-transparent bg-transparent"
         }`}
       >
-        <a href="#top" aria-label="RCKT">
+        <a href="#top" aria-label="RCKT" className="shrink-0">
           <img src={logoLight} alt="RCKT" className={`w-auto transition-all duration-500 ${scrolled ? "h-6" : "h-7"}`} />
         </a>
         <nav className="hidden items-center gap-8 md:flex" aria-label="Secciones">
           <a href="#beneficios" className={linkClass}>Beneficios</a>
           <a href="#proceso" className={linkClass}>Cómo funciona</a>
         </nav>
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex shrink-0 items-center gap-2 md:hidden">
           <a href="#diagnostico" className={`${btnClass} h-[40px] whitespace-nowrap px-4 text-[13px]`}>Solicitar diagnóstico</a>
           <button
             type="button"
@@ -105,7 +105,9 @@ function LandingHeader() {
             {menuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
           </button>
         </div>
-        <a href="#diagnostico" className={`${btnClass} hidden min-h-[42px] px-6 text-[14px] md:inline-flex`}>Solicitar diagnóstico</a>
+        <div className="hidden md:block">
+          <a href="#diagnostico" className={`${btnClass} min-h-[42px] px-6 text-[14px]`}>Solicitar diagnóstico</a>
+        </div>
       </div>
       {menuOpen && (
         <div className="mx-auto mt-2 w-full max-w-[1100px] rounded-[24px] border border-[#3A3A3A] bg-[rgba(33,33,33,0.92)] p-2 shadow-[0_10px_30px_rgba(0,0,0,0.12)] backdrop-blur-md md:hidden">
@@ -142,7 +144,7 @@ function HeroSection() {
             ChatGPT Ads ya llegó a Colombia. Dejamos tu clínica lista y visible en las respuestas de la IA mientras OpenAI habilita la publicidad de salud en el país.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <CtaButton>Solicitar diagnóstico de preparación</CtaButton>
+            <CtaButton className="w-full sm:w-auto">Solicitar diagnóstico de preparación</CtaButton>
             <p className="text-[13px] text-[#BDB8B1]">Para clínicas de medicina estética en Colombia</p>
           </div>
         </div>
