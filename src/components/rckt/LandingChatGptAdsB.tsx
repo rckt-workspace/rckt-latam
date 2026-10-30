@@ -422,7 +422,7 @@ function ServiciosSection() {
         <h2 className="max-w-[760px] font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
           Un servicio completo, de la cuenta a la cita agendada.
         </h2>
-        <Accordion type="single" collapsible defaultValue="servicio-0" className="mt-12">
+        <Accordion type="single" collapsible className="mt-12">
           {servicios.map((servicio, index) => (
             <AccordionItem key={servicio.num} value={`servicio-${index}`} className="border-b border-[#3A3A3A]">
               <AccordionTrigger className="py-6 text-left hover:no-underline [&>svg]:text-[#FC5C1F]">
