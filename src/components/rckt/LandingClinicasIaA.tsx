@@ -185,9 +185,9 @@ function ProblemaSection() {
               Antes de contactar una clínica, una persona puede investigar procedimientos, comparar alternativas, consultar dudas y buscar información sobre seguridad, recuperación y resultados. Las herramientas de IA están ampliando las formas de acceder a esa información.
             </p>
           </div>
-          <ImagePlaceholder name="A-02-problema-paciente-celular.jpg" className="h-[300px] md:h-[380px]" />
+          <ImagePlaceholder name="A-02-problema-paciente-celular.jpg" className="h-[280px] md:h-[340px]" />
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {problemaCards.map((card) => (
             <article key={card.num} className="rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-6">
               <span className={`${fontDisplay} text-[15px] font-bold text-[#6A3FE0]`}>{card.num}</span>
@@ -197,7 +197,7 @@ function ProblemaSection() {
           ))}
         </div>
         <p
-          className={`${fontDisplay} mt-14 max-w-[820px] font-bold text-[#4B2BB8]`}
+          className={`${fontDisplay} mt-10 max-w-[820px] font-bold text-[#4B2BB8]`}
           style={{ fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: 1.2, letterSpacing: "-0.01em" }}
         >
           Tu clínica necesita una estrategia que acompañe ese recorrido, no solamente anuncios que generen clics.
@@ -263,8 +263,8 @@ function BeneficiosSection() {
         >
           No se trata de estar en todas partes. Se trata de invertir donde tenga sentido para tu clínica.
         </h2>
-        <div className="mt-12 grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
-          <ImagePlaceholder name="A-03-beneficios-equipo.jpg" className="h-[320px] md:h-[420px]" />
+        <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
+          <ImagePlaceholder name="A-03-beneficios-equipo.jpg" className="h-[280px] md:h-[360px]" />
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             {beneficios.map((item) => (
               <article key={item.title} className="rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-6">
@@ -290,7 +290,7 @@ function ServicioCard({ servicio }: { servicio: (typeof servicios)[number] }) {
   const [flipped, setFlipped] = useState(false);
   return (
     <div
-      className="group h-[420px] cursor-pointer [perspective:1200px]"
+      className="group h-[360px] cursor-pointer [perspective:1200px]"
       onClick={() => setFlipped((value) => !value)}
       onKeyDown={(event) => {
         if (event.key === "Enter" || event.key === " ") {
@@ -348,7 +348,7 @@ function ServiciosSection() {
           </h2>
           <p className="text-[13px] text-[#4B4366] md:pb-2">Pasa el cursor por cada tarjeta para ver qué incluye.</p>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {servicios.map((servicio) => (
             <ServicioCard key={servicio.num} servicio={servicio} />
           ))}
@@ -369,7 +369,7 @@ function DiferenciadorSection() {
   return (
     <section className="bg-[#2A1A55] py-12 md:py-16">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
-        <ImagePlaceholder name="A-09-diferenciador-libreta.jpg" className="h-[300px] md:h-[400px]" />
+        <ImagePlaceholder name="A-09-diferenciador-libreta.jpg" className="h-[260px] md:h-[340px]" />
         <div>
           <h2 className={`${fontDisplay} font-bold text-white`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             La tecnología cambia. Una buena estrategia sigue siendo esencial.
@@ -403,7 +403,7 @@ function ProcesoSection() {
         <h2 className={`${fontDisplay} max-w-[700px] font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
           Tu siguiente paso puede ser más sencillo de lo que imaginas.
         </h2>
-        <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
           {procesoPasos.map((paso) => (
             <article key={paso.num} className="rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-7">
               <span className={`${fontDisplay} flex h-[44px] w-[44px] items-center justify-center rounded-full bg-[#6A3FE0] text-[18px] font-bold text-white`}>
@@ -554,7 +554,7 @@ function FormularioSection() {
             <button
               type="submit"
               disabled={enviando}
-              className="inline-flex min-h-[50px] w-full items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[16px] font-semibold text-white transition-colors hover:bg-[#4B2BB8] disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]"
+              className="inline-flex min-h-[50px] w-full items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[16px] font-semibold !text-white transition-colors hover:bg-[#4B2BB8] disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]"
             >
               {enviando ? "Enviando…" : "Solicitar mi diagnóstico"}
             </button>
@@ -637,50 +637,50 @@ function LandingFooter() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-10 px-5 sm:grid-cols-2 md:px-8 lg:grid-cols-4">
         <div>
           <img src={logoLight} alt="RCKT" className="h-7 w-auto" />
-          <p className="mt-4 max-w-[260px] text-[14px] leading-[1.6] text-white/80">
+          <p className="mt-4 max-w-[260px] text-[14px] leading-[1.6] text-white">
             Estrategia, publicidad y automatización para clínicas estéticas en Colombia.
           </p>
         </div>
         <div>
-          <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white/60">Contacto</h3>
+          <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white">Contacto</h3>
           <ul className="mt-4 space-y-2 text-[14px]">
             <li>
-              <a href={`mailto:${contactConfig.sales.email}`} className="text-white/85 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href={`mailto:${contactConfig.sales.email}`} className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 {contactConfig.sales.email}
               </a>
             </li>
             <li>
-              <a href={WHATSAPP_URL} className="text-white/85 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href={WHATSAPP_URL} className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 WhatsApp
               </a>
             </li>
           </ul>
         </div>
         <div>
-          <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white/60">Redes</h3>
+          <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white">Redes</h3>
           <ul className="mt-4 space-y-2 text-[14px]">
             <li>
-              <a href={contactConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-white/85 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href={contactConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 Instagram
               </a>
             </li>
             <li>
-              <a href={contactConfig.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-white/85 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href={contactConfig.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 LinkedIn
               </a>
             </li>
           </ul>
         </div>
         <div>
-          <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white/60">Legal</h3>
+          <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white">Legal</h3>
           <ul className="mt-4 space-y-2 text-[14px]">
             <li>
-              <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer" className="text-white/85 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer" className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 Política de tratamiento de datos
               </a>
             </li>
             <li>
-              <a href="/legal/privacidad" className="text-white/85 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href="/legal/privacidad" className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 Aviso de privacidad
               </a>
             </li>
@@ -781,7 +781,7 @@ export function LandingClinicasIaAThanks() {
           </p>
           <a
             href="/"
-            className="mt-8 inline-flex min-h-[50px] items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[16px] font-semibold text-white transition-colors hover:bg-[#4B2BB8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]"
+            className="mt-8 inline-flex min-h-[50px] items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[16px] font-semibold !text-white transition-colors hover:bg-[#4B2BB8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]"
           >
             Volver al inicio
           </a>
