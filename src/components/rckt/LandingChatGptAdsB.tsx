@@ -195,7 +195,7 @@ function OportunidadSection() {
     <section className="bg-[#F5F2ED] py-14 md:py-20">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <h2 className="font-bold text-[#212121]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+          <h2 className="font-semibold text-[#212121]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
             Así aparece tu clínica dentro de la conversación.
           </h2>
           <p className="text-[16px] leading-[1.5] text-[#4B4366] lg:pt-3">
