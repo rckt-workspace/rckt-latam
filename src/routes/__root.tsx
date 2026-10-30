@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useLocation,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -128,14 +129,23 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+// Landings de campaña con diseño propio: no llevan los blobs ni el fondo editorial del sitio.
+const LANDING_NO_BLOBS_PREFIXES = [
+  "/lp/clinicas-esteticas-ia",
+  "/lp/chatgpt-ads-clinicas-esteticas",
+  "/lp/chatgpt-ads-cirugia-plastica",
+];
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useLocation({ select: (l) => l.pathname });
+  const hideBlobs = LANDING_NO_BLOBS_PREFIXES.some((p) => pathname.startsWith(p));
 
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-      <GlobalSectionBlobs />
+      {!hideBlobs && <GlobalSectionBlobs />}
     </QueryClientProvider>
   );
 }

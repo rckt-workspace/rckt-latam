@@ -647,12 +647,15 @@ function useLightThemePin() {
     const root = document.documentElement;
     const hadDark = root.classList.contains("dark");
     const previousTheme = root.getAttribute("data-theme");
+    const previousBodyBg = document.body.style.background;
     root.classList.remove("dark");
     root.setAttribute("data-theme", "light");
+    document.body.style.background = "#212121";
     return () => {
       root.classList.toggle("dark", hadDark);
       if (previousTheme) root.setAttribute("data-theme", previousTheme);
       else root.removeAttribute("data-theme");
+      document.body.style.background = previousBodyBg;
     };
   }, []);
 }
