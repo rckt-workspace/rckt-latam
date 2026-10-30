@@ -61,7 +61,7 @@ function CtaButton({ children, className = "" }: { children: React.ReactNode; cl
   return (
     <a
       href="#diagnostico"
-      className={`inline-flex min-h-[50px] items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[15px] font-semibold !text-white transition-colors hover:bg-[#4B2BB8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0] ${className}`}
+      className={`inline-flex min-h-[50px] items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[15px] font-semibold text-white! transition-colors hover:bg-[#4B2BB8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0] ${className}`}
     >
       {children}
     </a>
@@ -554,7 +554,7 @@ function FormularioSection() {
             <button
               type="submit"
               disabled={enviando}
-              className="inline-flex min-h-[50px] w-full items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[16px] font-semibold !text-white transition-colors hover:bg-[#4B2BB8] disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]"
+              className="inline-flex min-h-[50px] w-full items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[16px] font-semibold text-white! transition-colors hover:bg-[#4B2BB8] disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]"
             >
               {enviando ? "Enviando…" : "Solicitar mi diagnóstico"}
             </button>
@@ -645,12 +645,12 @@ function LandingFooter() {
           <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white">Contacto</h3>
           <ul className="mt-4 space-y-2 text-[14px]">
             <li>
-              <a href={`mailto:${contactConfig.sales.email}`} className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href={`mailto:${contactConfig.sales.email}`} className="text-white! transition-colors hover:text-white! hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 {contactConfig.sales.email}
               </a>
             </li>
             <li>
-              <a href={WHATSAPP_URL} className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href={WHATSAPP_URL} className="text-white! transition-colors hover:text-white! hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 WhatsApp
               </a>
             </li>
@@ -660,12 +660,12 @@ function LandingFooter() {
           <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white">Redes</h3>
           <ul className="mt-4 space-y-2 text-[14px]">
             <li>
-              <a href={contactConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href={contactConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-white! transition-colors hover:text-white! hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 Instagram
               </a>
             </li>
             <li>
-              <a href={contactConfig.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href={contactConfig.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-white! transition-colors hover:text-white! hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 LinkedIn
               </a>
             </li>
@@ -675,12 +675,12 @@ function LandingFooter() {
           <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white">Legal</h3>
           <ul className="mt-4 space-y-2 text-[14px]">
             <li>
-              <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer" className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer" className="text-white! transition-colors hover:text-white! hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 Política de tratamiento de datos
               </a>
             </li>
             <li>
-              <a href="/legal/privacidad" className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href="/legal/privacidad" className="text-white! transition-colors hover:text-white! hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 Aviso de privacidad
               </a>
             </li>
@@ -781,7 +781,7 @@ export function LandingClinicasIaAThanks() {
           </p>
           <a
             href="/"
-            className="mt-8 inline-flex min-h-[50px] items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[16px] font-semibold !text-white transition-colors hover:bg-[#4B2BB8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]"
+            className="mt-8 inline-flex min-h-[50px] items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[16px] font-semibold text-white! transition-colors hover:bg-[#4B2BB8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]"
           >
             Volver al inicio
           </a>

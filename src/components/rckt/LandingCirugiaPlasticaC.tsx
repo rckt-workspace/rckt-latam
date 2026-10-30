@@ -624,12 +624,12 @@ function LandingFooter() {
           <h3 className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">Contacto</h3>
           <ul className="mt-4 space-y-2 text-[14px]">
             <li>
-              <a href={`mailto:${contactConfig.sales.email}`} className="text-[#212121] transition-colors hover:text-[#005CFF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]">
+              <a href={`mailto:${contactConfig.sales.email}`} className="text-[#212121]! transition-colors hover:text-[#005CFF]! focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]">
                 {contactConfig.sales.email}
               </a>
             </li>
             <li>
-              <a href={WHATSAPP_URL} className="text-[#212121] transition-colors hover:text-[#005CFF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]">
+              <a href={WHATSAPP_URL} className="text-[#212121]! transition-colors hover:text-[#005CFF]! focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]">
                 WhatsApp
               </a>
             </li>
@@ -639,12 +639,12 @@ function LandingFooter() {
           <h3 className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">Redes</h3>
           <ul className="mt-4 space-y-2 text-[14px]">
             <li>
-              <a href={contactConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-[#212121] transition-colors hover:text-[#005CFF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]">
+              <a href={contactConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-[#212121]! transition-colors hover:text-[#005CFF]! focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]">
                 Instagram
               </a>
             </li>
             <li>
-              <a href={contactConfig.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#212121] transition-colors hover:text-[#005CFF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]">
+              <a href={contactConfig.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#212121]! transition-colors hover:text-[#005CFF]! focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]">
                 LinkedIn
               </a>
             </li>
@@ -654,12 +654,12 @@ function LandingFooter() {
           <h3 className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">Legal</h3>
           <ul className="mt-4 space-y-2 text-[14px]">
             <li>
-              <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer" className="text-[#212121] transition-colors hover:text-[#005CFF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]">
+              <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer" className="text-[#212121]! transition-colors hover:text-[#005CFF]! focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]">
                 Política de tratamiento de datos
               </a>
             </li>
             <li>
-              <a href="/legal/privacidad" className="text-[#212121] transition-colors hover:text-[#005CFF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]">
+              <a href="/legal/privacidad" className="text-[#212121]! transition-colors hover:text-[#005CFF]! focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]">
                 Aviso de privacidad
               </a>
             </li>
