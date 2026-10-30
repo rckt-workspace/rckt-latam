@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, MessageSquare, UserCheck, Lock } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { Check } from "lucide-react";
@@ -279,6 +279,153 @@ function OportunidadSection() {
           <p className="mt-4 text-[12px] leading-[1.5] text-white/80">
             Ejemplo conceptual: es una representación ilustrativa, no un formato confirmado ni una promesa de aparición para una consulta concreta.
           </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const contextoCifras = [
+  { num: "21.10.2026", text: "OpenAI anunció ChatGPT Ads para Colombia y otros 13 países de Latinoamérica." },
+  { num: "1.200 M", text: "personas usan ChatGPT cada semana." },
+  { num: "2 de cada 10", text: "colombianos ya usan ChatGPT para consultas de salud." },
+];
+
+const contextoFunciona = [
+  { icon: MessageSquare, text: "El anuncio aparece debajo de la respuesta y marcado como patrocinado." },
+  { icon: UserCheck, text: "Solo lo ven adultos que usan los planes gratuitos de ChatGPT." },
+  { icon: Lock, text: "OpenAI no comparte las conversaciones con los anunciantes." },
+];
+
+const contextoNoAplica = [
+  "Anuncios de servicios de salud fuera de Estados Unidos. Allí solo se permiten tratamientos estéticos sencillos, como toxina botulínica, rellenos o láser, con aprobación previa.",
+  "La cirugía plástica, que no se puede anunciar en ningún país.",
+  "Mensajes que exploten inseguridades sobre el cuerpo.",
+];
+
+const contextoSiPuede = [
+  "Preparar la cuenta, la medición y los permisos de tu clínica.",
+  "Trabajar tu visibilidad en las respuestas de la IA.",
+  "Tener tus campañas listas para activarlas cuando OpenAI abra la categoría de salud en Colombia.",
+];
+
+function ContextoPunto({ children }: { children: React.ReactNode }) {
+  return (
+    <li className="flex items-start gap-3 text-[15px] leading-[1.5] text-[#4B4366]">
+      <span className="mt-0.5 h-[6px] w-[6px] shrink-0 rounded-full bg-[#6A3FE0]" aria-hidden="true" />
+      <span>{children}</span>
+    </li>
+  );
+}
+
+function ContextoSection() {
+  return (
+    <section id="contexto" className="bg-[#FBFAFF] py-12 md:py-16">
+      <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
+        <span className="inline-block rounded-full bg-[#4B2BB8] px-4 py-1.5 text-[12px] font-semibold tracking-wide !text-white">
+          Contexto · Octubre 2026
+        </span>
+        <h2
+          className={`${fontDisplay} mt-5 max-w-[760px] font-bold text-[#212121]`}
+          style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
+        >
+          Lo que tu clínica debe saber sobre los anuncios en ChatGPT.
+        </h2>
+        <p className="mt-6 max-w-[720px] text-[16px] leading-[1.5] text-[#4B4366]">
+          La publicidad en ChatGPT llegó a Colombia el 21 de octubre de 2026, pero todavía no está abierta para los servicios de salud. Este es el momento de prepararse.
+        </p>
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-3">
+          {contextoCifras.map((cifra) => (
+            <article key={cifra.num} className="rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-6">
+              <p className={`${fontDisplay} text-[30px] font-bold leading-[1.1] text-[#6A3FE0] md:text-[34px]`}>{cifra.num}</p>
+              <p className="mt-2 text-[15px] leading-[1.5] text-[#4B4366]">{cifra.text}</p>
+            </article>
+          ))}
+        </div>
+        <p className="mt-10 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#4B2BB8]">Cómo funciona</p>
+        <ul className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
+          {contextoFunciona.map((punto) => (
+            <li key={punto.text} className="flex items-start gap-3 rounded-[24px] border border-[#DCD1FA] bg-white p-5">
+              <span className="mt-0.5 flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-[#F1ECFF]">
+                <punto.icon className="h-[18px] w-[18px] text-[#6A3FE0]" aria-hidden="true" />
+              </span>
+              <span className="text-[15px] leading-[1.5] text-[#4B4366]">{punto.text}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
+          <article className="rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-7">
+            <div className="flex items-center gap-3">
+              <span className="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-white">
+                <X className="h-[20px] w-[20px] text-[#4B2BB8]" aria-hidden="true" />
+              </span>
+              <h3 className={`${fontDisplay} text-[19px] font-bold leading-[1.2] text-[#212121]`}>Hoy no aplica</h3>
+            </div>
+            <ul className="mt-5 flex flex-col gap-3">
+              {contextoNoAplica.map((punto) => (
+                <ContextoPunto key={punto}>{punto}</ContextoPunto>
+              ))}
+            </ul>
+          </article>
+          <article className="rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-7">
+            <div className="flex items-center gap-3">
+              <span className="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-white">
+                <Check className="h-[20px] w-[20px] text-[#6A3FE0]" aria-hidden="true" />
+              </span>
+              <h3 className={`${fontDisplay} text-[19px] font-bold leading-[1.2] text-[#212121]`}>Lo que sí puedes hacer hoy</h3>
+            </div>
+            <ul className="mt-5 flex flex-col gap-3">
+              {contextoSiPuede.map((punto) => (
+                <ContextoPunto key={punto}>{punto}</ContextoPunto>
+              ))}
+            </ul>
+          </article>
+        </div>
+        <p className="mt-8 text-[12px] leading-[1.5] text-[#4B4366]">
+          Fuentes: OpenAI, política de anuncios y anuncio del 21 de octubre de 2026; ITBA, Índice de Innovación Regional 2026. Las políticas cambian con frecuencia y las verificamos en cada diagnóstico.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+const requisitos = [
+  { num: "01", title: "Identidad comercial verificable", text: "Empresa registrada en Colombia, verificación del negocio y correo corporativo. El país y la moneda de la cuenta no se pueden cambiar después." },
+  { num: "02", title: "Licencias y autorizaciones", text: "Habilitación de la clínica en el REPS y registro profesional de los especialistas. OpenAI puede pedir prueba de licencia." },
+  { num: "03", title: "Publicidad veraz", text: "Sin promesas de resultados, descuentos en procedimientos ni mensajes que exploten la imagen corporal." },
+  { num: "04", title: "Página de destino conforme", text: "La página debe coincidir con el anuncio, funcionar bien y explicar el servicio con claridad." },
+  { num: "05", title: "Revisión y aprobación final", text: "OpenAI revisa la cuenta, el anuncio y la página antes de publicar, y puede retirar anuncios después." },
+];
+
+function RequisitosSection() {
+  return (
+    <section id="requisitos" className="bg-white py-12 md:py-16">
+      <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
+        <div className="mx-auto flex max-w-[820px] flex-col items-center text-center">
+          <span className="inline-block rounded-full bg-[#4B2BB8] px-4 py-1.5 text-[12px] font-semibold tracking-wide !text-white">Requisitos</span>
+          <h2
+            className={`${fontDisplay} mt-5 font-bold text-[#212121]`}
+            style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
+          >
+            Lo que OpenAI le pide a una clínica para poder anunciarse.
+          </h2>
+          <p className="mt-6 text-[16px] leading-[1.5] text-[#4B4366]">
+            Cuando la categoría de salud se abra en Colombia, solo podrán pautar las clínicas que cumplan estos requisitos. En el diagnóstico revisamos cada uno contigo.
+          </p>
+        </div>
+        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-6">
+          {requisitos.map((req, index) => (
+            <article
+              key={req.num}
+              className={`rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-6 ${
+                index < 3 ? "lg:col-span-2" : "md:col-span-1 lg:col-span-2 lg:col-start-auto"
+              } ${index === 3 ? "lg:col-start-2" : ""} ${index === 4 ? "lg:col-start-4" : ""}`}
+            >
+              <span className={`${fontDisplay} text-[15px] font-bold text-[#6A3FE0]`}>{req.num}</span>
+              <h3 className={`${fontDisplay} mt-3 text-[19px] font-bold leading-[1.2] text-[#212121]`}>{req.title}</h3>
+              <p className="mt-2 text-[15px] leading-[1.5] text-[#4B4366]">{req.text}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
