@@ -222,6 +222,131 @@ function OportunidadSection() {
   );
 }
 
+const contextoCifras = [
+  { num: "21.10", text: "el día en que OpenAI anunció ChatGPT Ads para Colombia." },
+  { num: "89", text: "países donde ChatGPT Ads ya funciona." },
+  { num: "20 %", text: "de los colombianos ya consulta temas de salud en ChatGPT." },
+];
+
+const contextoFunciona = [
+  { num: "01", text: "El anuncio va separado de la respuesta y con la etiqueta \"Patrocinado\"." },
+  { num: "02", text: "Se muestra a adultos que usan los planes gratuitos." },
+  { num: "03", text: "La conversación del usuario nunca llega al anunciante." },
+];
+
+const contextoNo = [
+  "Pauta de servicios de salud en Colombia. Por ahora solo se permite en Estados Unidos, y allí únicamente para tratamientos estéticos sencillos.",
+  "Cirugía y procedimientos invasivos, en ningún país.",
+  "Promesas de resultados, descuentos o mensajes sobre el cuerpo.",
+];
+
+const contextoSi = [
+  "Cuenta, permisos y medición configurados.",
+  "Visibilidad en las respuestas de la IA.",
+  "Campañas listas para activar apenas se habilite.",
+];
+
+const labelClass = "inline-block w-fit rounded-full border border-[#FC5C1F] px-4 py-1.5 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#FC5C1F]";
+
+function ContextoSection() {
+  return (
+    <section id="contexto" className="bg-[#212121] py-16 md:py-24">
+      <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
+        <span className={labelClass}>Antes de invertir</span>
+        <h2 className="mt-6 max-w-[820px] font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(34px, 4vw, 54px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          ChatGPT Ads en Colombia: lo que está abierto y lo que todavía no.
+        </h2>
+        <p className="mt-6 max-w-[720px] text-[17px] leading-[1.5] text-[#D6D1CA]">
+          El canal ya llegó al país, pero todavía no para la salud. La ventaja la tendrá la clínica que conozca sus reglas antes que las demás.
+        </p>
+        <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3">
+          {contextoCifras.map((cifra) => (
+            <div key={cifra.num}>
+              <p className="font-extrabold text-[#FC5C1F]" style={{ fontSize: "clamp(64px, 7vw, 96px)", lineHeight: 1 }}>{cifra.num}</p>
+              <div className="mt-4 border-t border-dashed border-[#3A3A3A] pt-4">
+                <p className="text-[16px] font-semibold leading-[1.4] text-[#F5F2ED]">{cifra.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p className="mt-14 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#FC5C1F]">Cómo funciona</p>
+        <ul className="mt-2">
+          {contextoFunciona.map((punto) => (
+            <li key={punto.num} className="flex items-baseline gap-6 border-t border-[#3A3A3A] py-5 first:border-t-0">
+              <span className="shrink-0 text-[14px] font-bold text-[#FC5C1F]">{punto.num}</span>
+              <p className="text-[16px] leading-[1.5] text-[#F5F2ED]">{punto.text}</p>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-2">
+          <div>
+            <h3 className="text-[22px] font-bold text-[#F5F2ED]">Todavía no</h3>
+            <ul className="mt-4">
+              {contextoNo.map((punto) => (
+                <li key={punto} className="flex items-start gap-4 border-t border-[#3A3A3A] py-4">
+                  <span className="mt-0.5 shrink-0 text-[18px] font-bold leading-[1.3] text-[#FC5C1F]" aria-hidden="true">−</span>
+                  <p className="text-[15px] leading-[1.5] text-[#D6D1CA]">{punto}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-[22px] font-bold text-[#F5F2ED]">Desde ya</h3>
+            <ul className="mt-4">
+              {contextoSi.map((punto) => (
+                <li key={punto} className="flex items-start gap-4 border-t border-[#3A3A3A] py-4">
+                  <span className="mt-0.5 shrink-0 text-[18px] font-bold leading-[1.3] text-[#FC5C1F]" aria-hidden="true">+</span>
+                  <p className="text-[15px] leading-[1.5] text-[#D6D1CA]">{punto}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <p className="mt-12 text-[12px] leading-[1.5] text-[#BDB8B1]">
+          Fuentes: OpenAI, política de anuncios y anuncio del 21 de octubre de 2026; ITBA, Índice de Innovación Regional 2026. Las políticas cambian con frecuencia y las verificamos en cada diagnóstico.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+const requisitos = [
+  { num: "01", title: "Identidad verificable", text: "Tu clínica registrada en Colombia, con datos reales y correo de la empresa." },
+  { num: "02", title: "Licencias al día", text: "Habilitación en el REPS y especialistas con registro profesional." },
+  { num: "03", title: "Mensajes veraces", text: "Nada de garantías, superlativos ni promociones de procedimientos." },
+  { num: "04", title: "Landing alineada", text: "La página dice exactamente lo mismo que el anuncio." },
+  { num: "05", title: "Aprobación de OpenAI", text: "Revisión manual de la cuenta, el anuncio y la página, con monitoreo continuo." },
+];
+
+function RequisitosSection() {
+  return (
+    <section id="requisitos" className="bg-[#1A1A1A] py-16 md:py-24">
+      <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-12 px-5 md:px-8 lg:grid-cols-2">
+        <div>
+          <span className={labelClass}>Requisitos</span>
+          <h2 className="mt-6 font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(34px, 4vw, 54px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+            Cinco requisitos para estar lista antes que tu competencia.
+          </h2>
+          <p className="mt-6 max-w-[460px] text-[17px] leading-[1.5] text-[#D6D1CA]">
+            OpenAI revisa a cada anunciante de salud por separado. Tenerlos en orden desde ahora es lo que te permitirá activar primero.
+          </p>
+        </div>
+        <ul>
+          {requisitos.map((req) => (
+            <li key={req.num} className="flex items-start gap-6 border-t border-[#3A3A3A] py-6 first:border-t-0 first:pt-0">
+              <span className="shrink-0 font-extrabold text-[#FC5C1F]" style={{ fontSize: "40px", lineHeight: 1 }}>{req.num}</span>
+              <div>
+                <h3 className="text-[20px] font-bold leading-[1.2] text-[#F5F2ED]">{req.title}</h3>
+                <p className="mt-1 text-[15px] leading-[1.5] text-[#D6D1CA]">{req.text}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
 const beneficios = [
   { num: "01", title: "El momento", text: "El paciente conversa y compara, no solo busca palabras sueltas." },
   { num: "02", title: "La ubicación", text: "Debajo de una respuesta relacionada con tu tratamiento." },
