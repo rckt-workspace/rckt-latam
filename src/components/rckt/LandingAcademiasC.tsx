@@ -39,7 +39,7 @@ function CtaButton({ children, className = "" }: { children: React.ReactNode; cl
   return (
     <a
       href="#diagnostico"
-      className={`inline-flex min-h-[50px] items-center justify-center rounded-full bg-[#005CFF] px-8 text-[16px] font-semibold text-white transition-colors hover:bg-[#004AD0] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF] ${className}`}
+      className={`inline-flex min-h-[46px] items-center justify-center rounded-full bg-[#005CFF] px-8 text-[15px] font-semibold text-white transition-colors hover:bg-[#004AD0] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF] ${className}`}
     >
       {children}
     </a>
@@ -149,10 +149,10 @@ function HeroSection() {
             <span className="inline-block text-[13px] font-semibold uppercase tracking-[0.08em] text-[#005CFF]">
               Para academias y centros de formación
             </span>
-            <h1 className={`${serif} mt-5 text-[#212121]`} style={{ fontSize: "clamp(50px, 6.5vw, 92px)", lineHeight: 0.95 }}>
+            <h1 className={`${serif} mt-5 text-[#212121]`} style={{ fontSize: "clamp(38px, 4.6vw, 64px)", lineHeight: 0.95 }}>
               Tus próximos estudiantes ya le preguntan a ChatGPT dónde <em>estudiar</em>.
             </h1>
-            <p className="mt-6 text-[17px] leading-[1.5] text-[#4F4F4D] md:text-[18px]">
+            <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
               Desde octubre de 2026 las academias en Colombia pueden anunciarse en ChatGPT. Te ayudamos a aparecer justo cuando alguien compara cursos, horarios y precios.
             </p>
             <div className="mt-8 rounded-[4px] border border-[#D9DDE4] bg-white p-5 shadow-sm md:p-6">
@@ -206,28 +206,28 @@ const problemaCards = [
 
 function ProblemaSection() {
   return (
-    <section className="bg-[#FBFBFA] py-16 md:py-24">
+    <section className="bg-[#FBFBFA] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
+          <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
             Elegir dónde estudiar ya no empieza solo en <em>Google</em>.
           </h2>
-          <p className="text-[17px] leading-[1.5] text-[#4F4F4D] lg:pt-3">
+          <p className="text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px] lg:pt-3">
             Antes de pedir información, las personas comparan programas, horarios, precios y opiniones. Cada vez más lo hacen conversando con la IA.
           </p>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           <img src={imgC02Problema} alt="Joven comparando cursos en su celular" className="h-[280px] w-full rounded-[4px] object-cover sm:col-span-2 sm:row-span-2 sm:h-full" />
           {problemaCards.map((card) => (
             <article key={card.num} className="rounded-[4px] bg-[#EEF1F6] p-6">
               <span className="text-[14px] font-bold text-[#005CFF]">{card.num}</span>
-              <h3 className={`${serif} mt-3 text-[26px] leading-[1.1] text-[#212121]`}>{card.title}</h3>
-              <p className="mt-2 text-[15px] leading-[1.5] text-[#4F4F4D]">{card.text}</p>
+              <h3 className={`${serif} mt-3 text-[22px] leading-[1.1] text-[#212121]`}>{card.title}</h3>
+              <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{card.text}</p>
             </article>
           ))}
         </div>
-        <div className="mt-12 rounded-[4px] bg-[#EEF1F6] px-6 py-10 text-center md:py-14">
-          <p className={`${serif} mx-auto max-w-[820px] italic text-[#005CFF]`} style={{ fontSize: "clamp(26px, 3.2vw, 40px)", lineHeight: 1.15 }}>
+        <div className="mt-8 rounded-[4px] bg-[#EEF1F6] px-6 py-10 text-center md:py-14">
+          <p className={`${serif} mx-auto max-w-[820px] italic text-[#005CFF]`} style={{ fontSize: "clamp(22px, 2.4vw, 30px)", lineHeight: 1.15 }}>
             Tu academia necesita una estrategia que acompañe ese recorrido, no solo anuncios que generen clics.
           </p>
         </div>
@@ -247,13 +247,13 @@ function OportunidadSection() {
   const partClass = (part: number) =>
     `transition-opacity duration-300 ${active === part ? "rounded-[4px] border-2 border-[#005CFF]" : "border-2 border-transparent opacity-40"}`;
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className="bg-white py-12 md:py-16">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
-          <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
+          <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
             Así aparece tu academia en la <em>conversación</em>.
           </h2>
-          <p className="mt-6 text-[17px] leading-[1.5] text-[#4F4F4D]">
+          <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
             El anuncio no cambia lo que responde ChatGPT. Aparece debajo, marcado como patrocinado, cuando la conversación tiene relación con lo que ofreces.
           </p>
           <div className="mt-10 flex flex-col">
@@ -267,10 +267,10 @@ function OportunidadSection() {
               >
                 <span className="flex items-baseline gap-4">
                   <span className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "30px" }}>{parte.num}</span>
-                  <span className={`${serif} text-[26px] leading-[1.1] ${active === index ? "text-[#005CFF]" : "text-[#212121]"}`}>{parte.title}</span>
+                  <span className={`${serif} text-[22px] leading-[1.1] ${active === index ? "text-[#005CFF]" : "text-[#212121]"}`}>{parte.title}</span>
                 </span>
                 {active === index && (
-                  <span className="mt-2 block pl-12 text-[15px] leading-[1.5] text-[#4F4F4D]">{parte.text}</span>
+                  <span className="mt-2 block pl-12 text-[14px] leading-[1.5] text-[#4F4F4D]">{parte.text}</span>
                 )}
               </button>
             ))}
@@ -314,7 +314,7 @@ function OportunidadSection() {
   );
 }
 
-const h2Style = { fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 } as const;
+const h2Style = { fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 } as const;
 
 const contextoCifras = [
   { value: "21.10.2026", text: "Colombia entra a ChatGPT Ads." },
@@ -340,7 +340,7 @@ const noPermitido = [
 
 function ContextoSection() {
   return (
-    <section id="contexto" className="bg-[#FFFFFF] py-16 md:py-24">
+    <section id="contexto" className="bg-[#FFFFFF] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           <div>
@@ -349,34 +349,34 @@ function ContextoSection() {
               La publicidad en ChatGPT ya está abierta para la <em>educación</em>.
             </h2>
           </div>
-          <p className="text-[17px] leading-[1.5] text-[#4F4F4D] lg:pt-10">
+          <p className="text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px] lg:pt-10">
             Desde el 21 de octubre de 2026, las academias en Colombia pueden anunciarse en ChatGPT, directamente desde el Ads Manager o con un socio tecnológico.
           </p>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3">
           {contextoCifras.map((c) => (
             <div key={c.value} className="border-t border-[#D9DDE4] pt-6">
-              <p className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "clamp(44px, 5vw, 64px)", lineHeight: 1 }}>{c.value}</p>
-              <p className="mt-3 text-[15px] leading-[1.5] text-[#4F4F4D]">{c.text}</p>
+              <p className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "clamp(36px, 3.6vw, 48px)", lineHeight: 1 }}>{c.value}</p>
+              <p className="mt-3 text-[14px] leading-[1.5] text-[#4F4F4D]">{c.text}</p>
             </div>
           ))}
         </div>
-        <h3 className="mt-14 text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">Cómo funciona</h3>
+        <h3 className="mt-10 text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">Cómo funciona</h3>
         <ol className="mt-4">
           {contextoComo.map((t, i) => (
             <li key={t} className="flex gap-4 border-t border-[#D9DDE4] py-4 last:border-b">
               <span className="shrink-0 text-[14px] font-bold text-[#005CFF]">0{i + 1}</span>
-              <span className="text-[15px] leading-[1.5] text-[#212121]">{t}</span>
+              <span className="text-[14px] leading-[1.5] text-[#212121]">{t}</span>
             </li>
           ))}
         </ol>
-        <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2">
+        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
           {[{ title: "Permitido", items: permitido }, { title: "No permitido", items: noPermitido }].map((col) => (
             <div key={col.title} className="rounded-[4px] bg-[#EEF1F6] p-6 md:p-8">
-              <h3 className={`${serif} text-[28px] leading-[1.1] text-[#212121]`}>{col.title}</h3>
+              <h3 className={`${serif} text-[22px] leading-[1.1] text-[#212121]`}>{col.title}</h3>
               <ul className="mt-4 space-y-3">
                 {col.items.map((t) => (
-                  <li key={t} className="flex gap-3 text-[15px] leading-[1.5] text-[#4F4F4D]">
+                  <li key={t} className="flex gap-3 text-[14px] leading-[1.5] text-[#4F4F4D]">
                     <span className="font-bold text-[#005CFF]" aria-hidden="true">{col.title === "Permitido" ? "+" : "−"}</span>
                     <span>{t}</span>
                   </li>
@@ -394,8 +394,8 @@ function ContextoSection() {
 }
 
 const requisitos = [
-  { num: "01", title: "Identidad comercial verificable", text: "Academia registrada en Colombia, verificación del negocio y correo corporativo." },
-  { num: "02", title: "Licencias y autorizaciones", text: "Si ofreces programas de 160 horas o más, necesitas licencia de funcionamiento y registro de cada programa, y tus anuncios deben mostrar el número de registro y el tipo de certificado. Si son cursos cortos, debes aclarar que son educación informal y que no conducen a título." },
+  { num: "01", title: "Identidad comercial verificable", text: "Academia registrada en Colombia, con verificación del negocio y correo corporativo." },
+  { num: "02", title: "Licencias y autorizaciones", text: "Programas de 160 horas o más: licencia y número de registro visibles en el anuncio. Cursos cortos: aclarar que no conducen a título." },
   { num: "03", title: "Publicidad veraz", text: "Sin prometer empleos, salarios, títulos que no se otorgan ni resultados garantizados." },
   { num: "04", title: "Página de destino conforme", text: "Programa, horarios, precios y certificado explicados igual que en el anuncio." },
   { num: "05", title: "Revisión y aprobación final", text: "OpenAI aprueba la cuenta, el anuncio y la página, y puede retirar anuncios después." },
@@ -403,23 +403,23 @@ const requisitos = [
 
 function RequisitosSection() {
   return (
-    <section id="requisitos" className="bg-[#FBFBFA] py-16 md:py-24">
+    <section id="requisitos" className="bg-[#FBFBFA] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="mx-auto max-w-[760px] text-center">
           <span className="inline-block text-[13px] font-semibold uppercase tracking-[0.08em] text-[#005CFF]">Requisitos</span>
           <h2 className={`${serif} mt-4 text-[#212121]`} style={h2Style}>
             Lo que OpenAI le pide a tu <em>academia</em>.
           </h2>
-          <p className="mt-6 text-[17px] leading-[1.5] text-[#4F4F4D]">
+          <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
             La educación es una categoría permitida, pero cada anunciante pasa por una revisión. Esto es lo que revisamos contigo antes de lanzar.
           </p>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {requisitos.map((r) => (
-            <article key={r.num} className="border-t border-[#D9DDE4] pt-6">
-              <span className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "40px", lineHeight: 1 }}>{r.num}</span>
-              <h3 className="mt-4 text-[17px] font-semibold leading-[1.3] text-[#212121]">{r.title}</h3>
-              <p className="mt-2 text-[15px] leading-[1.5] text-[#4F4F4D]">{r.text}</p>
+            <article key={r.num} className="h-full rounded-[4px] border border-[#D9DDE4] bg-white p-6">
+              <span className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "32px", lineHeight: 1 }}>{r.num}</span>
+              <h3 className="mt-4 text-[15px] font-semibold leading-[1.3] text-[#212121]">{r.title}</h3>
+              <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{r.text}</p>
             </article>
           ))}
         </div>
@@ -437,20 +437,20 @@ const beneficios = [
 
 function BeneficiosSection() {
   return (
-    <section id="beneficios" className="bg-[#FBFBFA] py-16 md:py-24">
+    <section id="beneficios" className="bg-[#FBFBFA] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <h2 className={`${serif} max-w-[820px] text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
+        <h2 className={`${serif} max-w-[820px] text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
           Llega a tus futuros estudiantes en el momento <em>justo</em>.
         </h2>
-        <div className="mt-12 grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
+        <div className="mt-8 grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
           <img src={imgC03Beneficios} alt="Equipo de una academia en reunión" className="h-[320px] w-full rounded-[4px] object-cover md:h-[440px]" />
           <ul>
             {beneficios.map((item) => (
               <li key={item.num} className="flex gap-6 border-t border-[#D9DDE4] py-6 first:pt-0 lg:first:border-t-0">
-                <span className={`${serif} shrink-0 italic text-[#005CFF]`} style={{ fontSize: "34px", lineHeight: 1 }}>{item.num}</span>
+                <span className={`${serif} shrink-0 italic text-[#005CFF]`} style={{ fontSize: "28px", lineHeight: 1 }}>{item.num}</span>
                 <div>
-                  <h3 className="text-[18px] font-bold text-[#212121]">{item.title}</h3>
-                  <p className="mt-1 text-[15px] leading-[1.5] text-[#4F4F4D]">{item.text}</p>
+                  <h3 className="text-[16px] font-bold text-[#212121]">{item.title}</h3>
+                  <p className="mt-1 text-[14px] leading-[1.5] text-[#4F4F4D]">{item.text}</p>
                 </div>
               </li>
             ))}
@@ -470,12 +470,12 @@ const servicios = [
 
 function ServiciosSection() {
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className="bg-white py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <h2 className={`${serif} max-w-[760px] text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
+        <h2 className={`${serif} max-w-[760px] text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
           De la cuenta a la <em>inscripción</em>.
         </h2>
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {servicios.map((servicio) => (
             <article key={servicio.num}>
               <img src={servicio.image} alt={servicio.title} className="h-[240px] w-full rounded-[4px] object-cover" />
@@ -483,8 +483,8 @@ function ServiciosSection() {
                 <span className="text-[14px] font-bold text-[#005CFF]">{servicio.num}</span>
                 <span className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "18px" }}>· {servicio.tag} ·</span>
               </div>
-              <h3 className={`${serif} mt-2 text-[24px] leading-[1.1] text-[#212121]`}>{servicio.title}</h3>
-              <p className="mt-2 text-[15px] leading-[1.5] text-[#4F4F4D]">{servicio.text}</p>
+              <h3 className={`${serif} mt-2 text-[20px] leading-[1.1] text-[#212121]`}>{servicio.title}</h3>
+              <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{servicio.text}</p>
             </article>
           ))}
         </div>
@@ -497,20 +497,20 @@ const diferenciadorTags = ["Políticas de OpenAI", "Estatuto del Consumidor", "L
 
 function DiferenciadorSection() {
   return (
-    <section className="bg-[#212121] py-16 md:py-24">
+    <section className="bg-[#212121] py-12 md:py-16">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <img src={imgC09Diferenciador} alt="Campus de una academia" className="h-[300px] w-full rounded-[4px] object-cover md:h-[420px]" />
         <div>
-          <h2 className={`${serif} text-white`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
+          <h2 className={`${serif} text-white`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
             Publicidad <em>veraz</em> para educación.
           </h2>
-          <p className="mt-6 text-[17px] leading-[1.5] text-white/80">
+          <p className="mt-6 text-[15px] leading-[1.5] text-white/80 md:text-[16px]">
             No prometemos empleos, salarios ni resultados garantizados. Mostramos lo que tu academia ofrece de verdad: programas, horarios, certificados y precios claros. En Colombia, la SIC ya ha multado a academias y cursos por publicidad engañosa. Por eso revisamos cada anuncio antes de publicarlo.
           </p>
           <div className="mt-10 grid grid-cols-1 gap-x-8 sm:grid-cols-2">
             {diferenciadorTags.map((tag) => (
               <div key={tag} className="border-t border-white/20 py-4">
-                <span className="text-[15px] font-medium text-white">{tag}</span>
+                <span className="text-[14px] font-medium text-white">{tag}</span>
               </div>
             ))}
           </div>
@@ -528,19 +528,19 @@ const procesoPasos = [
 
 function ProcesoSection() {
   return (
-    <section id="proceso" className="bg-[#FBFBFA] py-16 md:py-24">
+    <section id="proceso" className="bg-[#FBFBFA] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <h2 className={`${serif} max-w-[700px] text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
+        <h2 className={`${serif} max-w-[700px] text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
           Tu campaña, en tres <em>pasos</em>.
         </h2>
-        <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-3">
           {procesoPasos.map((paso) => (
             <article key={paso.num} className="border-t border-[#D9DDE4] pt-8">
-              <span className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "clamp(48px, 5vw, 64px)", lineHeight: 1 }}>
+              <span className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "clamp(36px, 3.6vw, 48px)", lineHeight: 1 }}>
                 {paso.num}
               </span>
-              <h3 className="mt-5 text-[18px] font-bold leading-[1.3] text-[#212121]">{paso.title}</h3>
-              <p className="mt-2 text-[15px] leading-[1.5] text-[#4F4F4D]">{paso.text}</p>
+              <h3 className="mt-5 text-[16px] font-bold leading-[1.3] text-[#212121]">{paso.title}</h3>
+              <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{paso.text}</p>
             </article>
           ))}
         </div>
@@ -616,13 +616,13 @@ function FormularioSection() {
   }
 
   return (
-    <section id="diagnostico" className="bg-[#FBFBFA] py-16 md:py-24">
+    <section id="diagnostico" className="bg-[#FBFBFA] py-12 md:py-16">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
-          <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
+          <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
             Solicita el diagnóstico de tu <em>academia</em>.
           </h2>
-          <p className="mt-6 text-[17px] leading-[1.5] text-[#4F4F4D]">
+          <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
             Revisamos tus programas, tu página y tu competencia para definir cómo empezar a pautar en ChatGPT.
           </p>
           <img src={imgC04Formulario} alt="Director de una academia" className="mt-10 hidden! h-[280px] w-full rounded-[4px] object-cover lg:block!" />
@@ -713,18 +713,18 @@ const faqItems = [
 
 function FaqSectionLanding() {
   return (
-    <section className="bg-[#FBFBFA] py-16 md:py-24">
+    <section className="bg-[#FBFBFA] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[760px] px-5 md:px-8">
-        <h2 className={`${serif} text-center text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
+        <h2 className={`${serif} text-center text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
           Preguntas frecuentes
         </h2>
         <Accordion type="single" collapsible className="mt-10">
           {faqItems.map((item, index) => (
             <AccordionItem key={item.question} value={`faq-${index}`} className="border-b border-[#D9DDE4]">
-              <AccordionTrigger className="py-5 text-left text-[17px] font-semibold text-[#212121] hover:text-[#005CFF] [&>svg]:text-[#005CFF]">
+              <AccordionTrigger className="py-5 text-left text-[15px] font-semibold text-[#212121] hover:text-[#005CFF] [&>svg]:text-[#005CFF]">
                 {item.question}
               </AccordionTrigger>
-              <AccordionContent className="pb-5 text-[15px] leading-[1.6] text-[#4F4F4D]">
+              <AccordionContent className="pb-5 text-[14px] leading-[1.6] text-[#4F4F4D]">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>
@@ -740,10 +740,10 @@ function CierreSection() {
     <section className="bg-white">
       <div className="grid grid-cols-1 items-center lg:grid-cols-2">
         <div className="mx-auto w-full max-w-[600px] px-5 py-16 md:px-8 md:py-24 lg:ml-auto lg:pr-16">
-          <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
+          <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
             Tus futuros estudiantes ya están <em>preguntando</em>.
           </h2>
-          <p className="mt-6 text-[17px] leading-[1.5] text-[#4F4F4D]">
+          <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
             Asegúrate de que tu academia esté en esa respuesta.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -904,7 +904,7 @@ export function LandingAcademiasCThanks() {
           <h1 className={`${serif} mt-6 text-[#212121]`} style={{ fontSize: "clamp(38px, 4vw, 52px)", lineHeight: 1 }}>
             Recibimos tu solicitud.
           </h1>
-          <p className="mt-4 text-[17px] leading-[1.5] text-[#4F4F4D]">
+          <p className="mt-4 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
             Te contactaremos por WhatsApp para preparar el diagnóstico de tu academia.
           </p>
           <a
