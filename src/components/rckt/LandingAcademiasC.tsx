@@ -150,7 +150,7 @@ function HeroSection() {
           aria-hidden="true"
           style={{ background: "linear-gradient(to bottom, rgba(251,251,250,0.92) 0%, rgba(251,251,250,0.75) 50%, rgba(251,251,250,0.35) 100%)" }}
         />
-        <div className="relative z-10 mx-auto w-full max-w-[1200px] px-5 py-16 md:px-8 md:py-24">
+        <div className="relative z-10 col-start-1 row-start-1 mx-auto w-full max-w-[1200px] px-5 py-16 md:px-8 md:py-16">
           <div className="max-w-[640px]">
             <span className="inline-block text-[13px] font-semibold uppercase tracking-[0.08em] text-[#005CFF]">
               Para academias y centros de formación
