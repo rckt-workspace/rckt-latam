@@ -163,7 +163,7 @@ function ProblemaSection() {
     <section className="bg-[#212121] py-14 md:py-20">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
-          <h2 className="font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+          <h2 className="font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
             La conversación sobre dónde tratarse ya empezó en ChatGPT.
           </h2>
           <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
@@ -195,7 +195,7 @@ function OportunidadSection() {
     <section className="bg-[#F5F2ED] py-14 md:py-20">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <h2 className="font-bold text-[#212121]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+          <h2 className="font-semibold text-[#212121]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
             Así aparece tu clínica dentro de la conversación.
           </h2>
           <p className="text-[16px] leading-[1.5] text-[#4B4366] lg:pt-3">
@@ -278,7 +278,7 @@ function ContextoSection() {
     <section id="contexto" className="bg-[#212121] py-14 md:py-20">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <span className={labelClass}>Antes de invertir</span>
-        <h2 className="mt-6 max-w-[820px] font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+        <h2 className="mt-6 max-w-[820px] font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
           ChatGPT Ads en Colombia: lo que está abierto y lo que todavía no.
         </h2>
         <p className="mt-6 max-w-[720px] text-[16px] leading-[1.5] text-[#D6D1CA]">
@@ -349,7 +349,7 @@ function RequisitosSection() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <span className={labelClass}>Requisitos</span>
-          <h2 className="mt-6 font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+          <h2 className="mt-6 font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
             Cinco requisitos para estar lista antes que tu competencia.
           </h2>
           <p className="mt-6 max-w-[460px] text-[16px] leading-[1.5] text-[#D6D1CA]">
@@ -419,10 +419,10 @@ function ServiciosSection() {
   return (
     <section className="bg-[#212121] py-14 md:py-20">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <h2 className="max-w-[760px] font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+        <h2 className="max-w-[760px] font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
           Un servicio completo, de la cuenta a la cita agendada.
         </h2>
-        <Accordion type="single" collapsible defaultValue="servicio-0" className="mt-12">
+        <Accordion type="single" collapsible className="mt-12">
           {servicios.map((servicio, index) => (
             <AccordionItem key={servicio.num} value={`servicio-${index}`} className="border-b border-[#3A3A3A]">
               <AccordionTrigger className="py-6 text-left hover:no-underline [&>svg]:text-[#FC5C1F]">
@@ -457,7 +457,7 @@ function DiferenciadorSection() {
     <section className="bg-[#1A1A1A] py-14 md:py-20">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
-          <h2 className="font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+          <h2 className="font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
             Campañas que cuidan la reputación de tu clínica.
           </h2>
           <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
@@ -488,7 +488,7 @@ function ProcesoSection() {
   return (
     <section id="proceso" className="bg-[#212121] py-14 md:py-20">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <h2 className="max-w-[700px] font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+        <h2 className="max-w-[700px] font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
           De la auditoría al primer lead.
         </h2>
         <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-3">
@@ -511,7 +511,12 @@ const procedimientoOpciones = ["No quirúrgicos", "Quirúrgicos", "Ambos"] as co
 const sedesOpciones = ["1", "2 a 3", "4 o más"] as const;
 
 const inputClass =
-  "mt-2 w-full rounded-[12px] border border-[#3A3A3A] bg-[#212121] px-4 py-3 text-[15px] text-[#F5F2ED] placeholder:text-[#BDB8B1]/60 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#FC5C1F]";
+  "mt-2 w-full rounded-[12px] border border-[#3A3A3A] bg-[#212121] px-4 py-3 text-[15px] text-[#F5F2ED] placeholder:text-[#BDB8B1] focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#FC5C1F]";
+
+const selectClass =
+  "mt-2 w-full rounded-[12px] border border-[#3A3A3A] bg-[#2C2C2C] px-4 py-3 text-[15px] text-[#F5F2ED] placeholder:text-[#BDB8B1] focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#FC5C1F]";
+
+const labelFormClass = "text-[12px] font-semibold uppercase tracking-[0.08em] text-[#F5F2ED]";
 
 function FormularioSection() {
   const navigate = useNavigate();
@@ -578,7 +583,7 @@ function FormularioSection() {
     <section id="diagnostico" className="bg-[#212121] py-14 md:py-20">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
-          <h2 className="font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+          <h2 className="font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
             Agenda tu diagnóstico de preparación.
           </h2>
           <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
@@ -589,27 +594,27 @@ function FormularioSection() {
         <form onSubmit={onSubmit} className="rounded-[24px] border border-[#3A3A3A] bg-[#2C2C2C] p-6 shadow-lg md:p-9">
           <div className="grid grid-cols-1 gap-5">
             <div>
-              <label htmlFor="b-nombre" className="text-[14px] font-semibold text-[#F5F2ED]">Nombre completo</label>
+              <label htmlFor="b-nombre" className={labelFormClass}>Nombre completo</label>
               <input id="b-nombre" name="nombre" type="text" autoComplete="name" className={inputClass} placeholder="Nombre y apellidos" onInput={(e) => markStarted(e.currentTarget.value)} />
             </div>
             <div>
-              <label htmlFor="b-empresa" className="text-[14px] font-semibold text-[#F5F2ED]">Nombre de la clínica *</label>
+              <label htmlFor="b-empresa" className={labelFormClass}>Nombre de la clínica *</label>
               <input id="b-empresa" name="empresa" type="text" autoComplete="organization" required className={inputClass} placeholder="Nombre de la clínica" onInput={(e) => markStarted(e.currentTarget.value)} />
             </div>
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
-                <label htmlFor="b-ciudad" className="text-[14px] font-semibold text-[#F5F2ED]">Ciudad</label>
+                <label htmlFor="b-ciudad" className={labelFormClass}>Ciudad</label>
                 <input id="b-ciudad" name="ciudad" type="text" autoComplete="address-level2" className={inputClass} placeholder="Bogotá" />
               </div>
               <div>
-                <label htmlFor="b-telefono" className="text-[14px] font-semibold text-[#F5F2ED]">WhatsApp</label>
+                <label htmlFor="b-telefono" className={labelFormClass}>WhatsApp</label>
                 <input id="b-telefono" name="telefono" type="tel" autoComplete="tel" className={inputClass} placeholder="+57 300 000 0000" />
               </div>
             </div>
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
-                <label htmlFor="b-sector" className="text-[14px] font-semibold text-[#F5F2ED]">Tipo de procedimientos</label>
-                <select id="b-sector" name="sector" defaultValue="" className={inputClass} onChange={(e) => markStarted(e.currentTarget.value)}>
+                <label htmlFor="b-sector" className={labelFormClass}>Tipo de procedimientos</label>
+                <select id="b-sector" name="sector" defaultValue="" className={selectClass} onChange={(e) => markStarted(e.currentTarget.value)}>
                   <option value="">Selecciona una opción</option>
                   {procedimientoOpciones.map((opcion) => (
                     <option key={opcion} value={opcion}>{opcion}</option>
@@ -617,8 +622,8 @@ function FormularioSection() {
                 </select>
               </div>
               <div>
-                <label htmlFor="b-sedes" className="text-[14px] font-semibold text-[#F5F2ED]">Número de sedes</label>
-                <select id="b-sedes" name="numero_sedes" defaultValue="" className={inputClass}>
+                <label htmlFor="b-sedes" className={labelFormClass}>Número de sedes</label>
+                <select id="b-sedes" name="numero_sedes" defaultValue="" className={selectClass}>
                   <option value="">Selecciona una opción</option>
                   {sedesOpciones.map((opcion) => (
                     <option key={opcion} value={opcion}>{opcion}</option>
@@ -627,7 +632,7 @@ function FormularioSection() {
               </div>
             </div>
             <input type="hidden" name="pais" value="Colombia" />
-            <label htmlFor="b-consent" className="col-span-full grid w-full grid-cols-[20px_1fr] items-start gap-3 font-normal normal-case tracking-normal">
+            <label htmlFor="b-consent" className="col-span-full !grid !grid-cols-[20px_1fr] !items-start w-full gap-3 font-normal normal-case tracking-normal">
               <input
                 id="b-consent"
                 type="checkbox"
@@ -635,7 +640,7 @@ function FormularioSection() {
                 onChange={(e) => setConsent(e.target.checked)}
                 className="mt-[1px] h-[18px] w-[18px] accent-[#FC5C1F]"
               />
-              <span className="whitespace-normal break-normal text-[13px] font-normal normal-case leading-[1.5] tracking-normal text-[#BDB8B1]">
+              <span className="whitespace-normal break-normal text-[13px] font-normal normal-case leading-[1.5] tracking-normal text-[#D6D1CA]">
                 Autorizo el tratamiento de mis datos personales según la{" "}
                 <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#FC5C1F]! underline">
                   política de tratamiento de datos
@@ -672,7 +677,7 @@ function FaqSectionLanding() {
   return (
     <section className="bg-[#1A1A1A] py-14 md:py-20">
       <div className="mx-auto w-full max-w-[760px] px-5 md:px-8">
-        <h2 className="text-center font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+        <h2 className="text-center font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
           Preguntas frecuentes
         </h2>
         <Accordion type="single" collapsible className="mt-10">
@@ -694,27 +699,25 @@ function FaqSectionLanding() {
 
 function CierreSection() {
   return (
-    <section className="bg-[#212121] px-4 pb-6 md:px-8 md:pb-10">
-      <div className="relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-[28px]">
-        <ImagePlaceholder name="B-10-cierre-mujer-celular.jpg" className="absolute inset-0 h-full w-full rounded-none border-0" />
-        <div
-          className="absolute inset-0"
-          aria-hidden="true"
-          style={{ background: "linear-gradient(to left, rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.55) 45%, transparent 75%)" }}
-        />
-        <div className="absolute inset-0 bg-[#1A1A1A]/[0.72] md:hidden" aria-hidden="true" />
-        <div className="relative z-10 flex min-h-[480px] flex-col items-end justify-center px-6 py-16 text-right md:px-12">
-          <div className="md:max-w-[52%]">
-            <h2 className="font-extrabold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3.2vw, 46px)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-              El paciente ya no busca “clínica estética”. Le pregunta a la IA cuál le conviene.
-            </h2>
-            <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
-              Ahí es donde tu clínica tiene que estar.
-            </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-end">
-              <CtaButton>Quiero adelantarme</CtaButton>
-              <p className="text-[13px] text-[#BDB8B1]">Auditoría inicial para clínicas en Colombia.</p>
-            </div>
+    <section className="relative bg-[#212121]">
+      <ImagePlaceholder name="B-10-cierre-mujer-celular.jpg" className="absolute inset-0 h-full w-full rounded-none border-0" />
+      <div
+        className="absolute inset-0"
+        aria-hidden="true"
+        style={{ background: "linear-gradient(to left, rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.55) 45%, transparent 75%)" }}
+      />
+      <div className="absolute inset-0 bg-[#1A1A1A]/[0.72] md:hidden" aria-hidden="true" />
+      <div className="relative z-10 mx-auto flex min-h-[480px] w-full max-w-[1200px] flex-col items-end justify-center px-5 py-16 text-right md:px-8">
+        <div className="md:max-w-[52%]">
+          <h2 className="font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3.2vw, 46px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
+            El paciente ya no busca “clínica estética”. Le pregunta a la IA cuál le conviene.
+          </h2>
+          <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
+            Ahí es donde tu clínica tiene que estar.
+          </p>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-end">
+            <CtaButton>Quiero adelantarme</CtaButton>
+            <p className="text-[13px] text-[#BDB8B1]">Auditoría inicial para clínicas en Colombia.</p>
           </div>
         </div>
       </div>
