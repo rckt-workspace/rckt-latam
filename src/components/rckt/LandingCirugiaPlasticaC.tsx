@@ -7,6 +7,29 @@ import { saveDiagnosticLead } from "@/lib/leads-diagnostic.functions";
 import { getCampaignParams, saveCampaignParams, track } from "@/components/rckt/tracking";
 import { WHATSAPP_URL, contactConfig } from "@/config/contact";
 import logoDark from "@/assets/rckt-logo-dark.png";
+import imgC01 from "@/assets/C-01-hero-consulta.jpg";
+import imgC02 from "@/assets/C-02-problema-paciente-celular.jpg";
+import imgC03 from "@/assets/C-03-beneficios-equipo.jpg";
+import imgC04 from "@/assets/C-04-formulario-directora.jpg";
+import imgC05 from "@/assets/C-05-servicio-01-diagnostico.jpg";
+import imgC06 from "@/assets/C-06-servicio-02-estrategia.jpg";
+import imgC07 from "@/assets/C-07-servicio-03-landing.jpg";
+import imgC08 from "@/assets/C-08-servicio-04-seguimiento-y-anuncio.jpg";
+import imgC09 from "@/assets/C-09-diferenciador-ojo.jpg";
+import imgC10 from "@/assets/C-10-cierre-pantalla.jpg";
+
+const landingImages: Record<string, string> = {
+  "C-01-hero-consulta.jpg": imgC01,
+  "C-02-problema-paciente-celular.jpg": imgC02,
+  "C-03-beneficios-equipo.jpg": imgC03,
+  "C-04-formulario-directora.jpg": imgC04,
+  "C-05-servicio-01-diagnostico.jpg": imgC05,
+  "C-06-servicio-02-estrategia.jpg": imgC06,
+  "C-07-servicio-03-landing.jpg": imgC07,
+  "C-08-servicio-04-seguimiento-y-anuncio.jpg": imgC08,
+  "C-09-diferenciador-ojo.jpg": imgC09,
+  "C-10-cierre-pantalla.jpg": imgC10,
+};
 
 export const LANDING_C_TITLE = "ChatGPT y cirugía plástica: prepara tu clínica | RCKT";
 export const LANDING_C_DESCRIPTION =
@@ -17,15 +40,10 @@ const CONSENT_VERSION = "RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf";
 
 const serif = "font-['Instrument_Serif',serif]";
 
-function ImagePlaceholder({ name, className = "", tone = "pearl" }: { name: string; className?: string; tone?: "pearl" | "light" | "dark" }) {
-  const tones = {
-    pearl: "border-[#D9DDE4] bg-[#EEF1F6] text-[#4F4F4D]",
-    light: "border-[#D9DDE4] bg-[#F4F6FA] text-[#4F4F4D]",
-    dark: "border-[#3A3A3A] bg-[#2C2C2C] text-[#BDB8B1]",
-  } as const;
+function ImagePlaceholder({ name, className = "" }: { name: string; className?: string }) {
   return (
-    <div className={`flex items-center justify-center rounded-[4px] border ${tones[tone]} ${className}`} role="img" aria-label={name}>
-      <span className="px-3 text-center text-[12px] font-medium tracking-wide">{name}</span>
+    <div className={`overflow-hidden rounded-[4px] ${className}`}>
+      <img src={landingImages[name]} alt="" className="h-full w-full object-cover" loading="lazy" />
     </div>
   );
 }
@@ -105,7 +123,7 @@ function HeroSection() {
   return (
     <section id="top" className="relative bg-[#FBFBFA]">
       <div className="relative overflow-hidden">
-        <ImagePlaceholder name="C-01-hero-consulta.jpg" tone="light" className="absolute inset-0 h-full w-full rounded-none border-0" />
+        <ImagePlaceholder name="C-01-hero-consulta.jpg" className="absolute inset-0 h-full w-full rounded-none border-0" />
         <div
           className="absolute inset-0"
           aria-hidden="true"
@@ -353,7 +371,7 @@ function DiferenciadorSection() {
   return (
     <section className="bg-[#212121] py-16 md:py-24">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
-        <ImagePlaceholder name="C-09-diferenciador-ojo.jpg" tone="dark" className="h-[300px] md:h-[420px]" />
+        <ImagePlaceholder name="C-09-diferenciador-ojo.jpg" className="h-[300px] md:h-[420px]" />
         <div>
           <h2 className={`${serif} text-white`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
             Transparencia antes que <em>promesas</em>.
@@ -586,7 +604,7 @@ function CierreSection() {
             <p className="text-[13px] text-[#4F4F4D]">Conversemos sobre una estrategia diseñada para tu clínica.</p>
           </div>
         </div>
-        <ImagePlaceholder name="C-10-cierre-pantalla.jpg" tone="light" className="h-[320px] w-full rounded-none border-0 lg:h-full lg:min-h-[480px]" />
+        <ImagePlaceholder name="C-10-cierre-pantalla.jpg" className="h-[320px] w-full rounded-none border-0 lg:h-full lg:min-h-[480px]" />
       </div>
     </section>
   );

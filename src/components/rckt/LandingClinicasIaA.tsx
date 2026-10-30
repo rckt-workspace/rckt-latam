@@ -8,6 +8,29 @@ import { getCampaignParams, saveCampaignParams, track } from "@/components/rckt/
 import { WHATSAPP_URL, contactConfig } from "@/config/contact";
 import logoDark from "@/assets/rckt-logo-dark.png";
 import logoLight from "@/assets/rckt-logo-light.png";
+import imgA01 from "@/assets/A-01-hero-consulta.jpg";
+import imgA02 from "@/assets/A-02-problema-paciente-celular.jpg";
+import imgA03 from "@/assets/A-03-beneficios-equipo.jpg";
+import imgA04 from "@/assets/A-04-formulario-directora.jpg";
+import imgA05 from "@/assets/A-05-servicio-01-diagnostico.jpg";
+import imgA06 from "@/assets/A-06-servicio-02-estrategia.jpg";
+import imgA07 from "@/assets/A-07-servicio-03-landing.jpg";
+import imgA08 from "@/assets/A-08-servicio-04-seguimiento.jpg";
+import imgA09 from "@/assets/A-09-diferenciador-libreta.jpg";
+import imgA10 from "@/assets/A-10-cierre-ojo.jpg";
+
+const landingImages: Record<string, string> = {
+  "A-01-hero-consulta.jpg": imgA01,
+  "A-02-problema-paciente-celular.jpg": imgA02,
+  "A-03-beneficios-equipo.jpg": imgA03,
+  "A-04-formulario-directora.jpg": imgA04,
+  "A-05-servicio-01-diagnostico.jpg": imgA05,
+  "A-06-servicio-02-estrategia.jpg": imgA06,
+  "A-07-servicio-03-landing.jpg": imgA07,
+  "A-08-servicio-04-seguimiento.jpg": imgA08,
+  "A-09-diferenciador-libreta.jpg": imgA09,
+  "A-10-cierre-ojo.jpg": imgA10,
+};
 
 export const LANDING_TITLE = "Marketing e IA para clínicas estéticas en Colombia | RCKT";
 export const LANDING_DESCRIPTION =
@@ -20,12 +43,8 @@ const fontDisplay = "font-['Bricolage_Grotesque',sans-serif]";
 
 function ImagePlaceholder({ name, className = "" }: { name: string; className?: string }) {
   return (
-    <div
-      className={`flex items-center justify-center rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] ${className}`}
-      role="img"
-      aria-label={name}
-    >
-      <span className="px-3 text-center text-[12px] font-medium tracking-wide text-[#4B4366]">{name}</span>
+    <div className={`overflow-hidden rounded-[24px] ${className}`}>
+      <img src={landingImages[name]} alt="" className="h-full w-full object-cover" loading="lazy" />
     </div>
   );
 }
