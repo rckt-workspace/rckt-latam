@@ -168,7 +168,9 @@ function HeroSection() {
       <div
         className="absolute inset-0 md:hidden"
         style={{ background: "linear-gradient(to bottom, rgba(246,242,255,0.82) 0%, rgba(246,242,255,0.55) 50%, rgba(246,242,255,0.30) 100%)" }}
-...
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto flex w-full max-w-[1200px] items-center px-5 pb-16 pt-[120px] md:min-h-[680px] md:px-8 md:pb-20 md:pt-[140px]">
         <div className="max-w-[560px] [text-shadow:0_1px_12px_rgba(255,255,255,0.7)] md:[text-shadow:none]">
           <span className="inline-block rounded-full bg-[#4B2BB8] px-4 py-1.5 text-[12px] font-semibold tracking-wide !text-white">
             Marketing + inteligencia artificial
