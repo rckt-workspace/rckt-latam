@@ -7,43 +7,20 @@ import { saveDiagnosticLead } from "@/lib/leads-diagnostic.functions";
 import { getCampaignParams, saveCampaignParams, track } from "@/components/rckt/tracking";
 import { WHATSAPP_URL, contactConfig } from "@/config/contact";
 import logoDark from "@/assets/rckt-logo-dark.png";
-import imgC01 from "@/assets/C-01-hero-consulta.jpg";
-import imgC02 from "@/assets/C-02-problema-paciente-celular.jpg";
-import imgC03 from "@/assets/C-03-beneficios-equipo.jpg";
-import imgC04 from "@/assets/C-04-formulario-directora.jpg";
-import imgC05 from "@/assets/C-05-servicio-01-diagnostico.jpg";
-import imgC06 from "@/assets/C-06-servicio-02-estrategia.jpg";
-import imgC07 from "@/assets/C-07-servicio-03-landing.jpg";
-import imgC08 from "@/assets/C-08-servicio-04-seguimiento-y-anuncio.jpg";
-import imgC09 from "@/assets/C-09-diferenciador-ojo.jpg";
-import imgC10 from "@/assets/C-10-cierre-pantalla.jpg";
 
-const landingImages: Record<string, string> = {
-  "C-01-hero-consulta.jpg": imgC01,
-  "C-02-problema-paciente-celular.jpg": imgC02,
-  "C-03-beneficios-equipo.jpg": imgC03,
-  "C-04-formulario-directora.jpg": imgC04,
-  "C-05-servicio-01-diagnostico.jpg": imgC05,
-  "C-06-servicio-02-estrategia.jpg": imgC06,
-  "C-07-servicio-03-landing.jpg": imgC07,
-  "C-08-servicio-04-seguimiento-y-anuncio.jpg": imgC08,
-  "C-09-diferenciador-ojo.jpg": imgC09,
-  "C-10-cierre-pantalla.jpg": imgC10,
-};
-
-export const LANDING_C_TITLE = "ChatGPT y cirugía plástica: prepara tu clínica | RCKT";
+export const LANDING_C_TITLE = "ChatGPT Ads para academias y centros de formación | RCKT";
 export const LANDING_C_DESCRIPTION =
-  "Tus futuros pacientes ya le preguntan a ChatGPT dónde operarse. Posiciona tu clínica de cirugía plástica en las respuestas de IA y pauta lo que hoy sí es elegible.";
+  "Las academias en Colombia ya pueden anunciarse en ChatGPT. Te ayudamos a aparecer cuando tus futuros estudiantes comparan cursos, horarios y precios.";
 
-const LANDING = "chatgpt-ads-cirugia-plastica";
+const LANDING = "chatgpt-ads-academias";
 const CONSENT_VERSION = "RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf";
 
 const serif = "font-['Instrument_Serif',serif]";
 
 function ImagePlaceholder({ name, className = "" }: { name: string; className?: string }) {
   return (
-    <div className={`overflow-hidden rounded-[4px] ${className}`}>
-      <img src={landingImages[name]} alt="" className="h-full w-full object-cover" loading="lazy" />
+    <div className={`flex items-center justify-center overflow-hidden rounded-[4px] bg-[#EEF1F6] ${className}`}>
+      <span className="text-[12px] font-medium text-[#4F4F4D]">{name}</span>
     </div>
   );
 }
@@ -95,25 +72,25 @@ function LandingHeader() {
 
 const heroChats = [
   {
-    id: "cirujano",
-    label: "Elegir cirujano",
-    question: "¿Qué debo revisar antes de elegir cirujano plástico en Cali?",
-    answer: "Confirma que el cirujano esté certificado por la sociedad científica correspondiente, que opere en una institución habilitada y que te explique riesgos y recuperación.",
-    foot: "Fuente citada · [Tu clínica]",
+    id: "ingles",
+    label: "Cursos de inglés",
+    question: "¿Dónde puedo estudiar inglés en Bogotá con horario nocturno?",
+    answer: "Revisa el nivel de entrada, la intensidad horaria y si el certificado está alineado con el Marco Común Europeo de Referencia.",
+    foot: "Patrocinado · [Tu academia] · Agenda tu clase de prueba",
   },
   {
-    id: "rinoplastia",
-    label: "Recuperación de rinoplastia",
-    question: "¿Cuánto tiempo toma recuperarse de una rinoplastia?",
-    answer: "Depende de cada caso y de la técnica utilizada. Lo más importante es seguir las indicaciones de tu cirujano y asistir a los controles.",
-    foot: "Fuente citada · [Tu clínica]",
+    id: "preuniversitario",
+    label: "Preuniversitario",
+    question: "¿Qué preuniversitario le sirve a mi hija para el examen de Estado?",
+    answer: "Compara la cantidad de simulacros, el tamaño de los grupos y el acompañamiento que ofrecen.",
+    foot: "Patrocinado · [Tu academia] · Conoce el plan de estudio",
   },
   {
-    id: "no-quirurgicos",
-    label: "Tratamientos no quirúrgicos",
-    question: "¿Qué opciones no quirúrgicas hay para rejuvenecer el rostro?",
-    answer: "Existen alternativas como bioestimuladores, láser o toxina botulínica. Lo recomendable es una valoración con un profesional.",
-    foot: "Patrocinado · [Tu clínica] · Valoración estética profesional",
+    id: "programacion",
+    label: "Curso de programación",
+    question: "¿Qué curso corto de programación me recomiendas para empezar?",
+    answer: "Busca uno con proyectos prácticos, mentorías y un certificado que puedas mostrar.",
+    foot: "Patrocinado · [Tu academia] · Inscripciones abiertas",
   },
 ] as const;
 
@@ -123,7 +100,7 @@ function HeroSection() {
   return (
     <section id="top" className="relative bg-[#FBFBFA]">
       <div className="relative overflow-hidden">
-        <ImagePlaceholder name="C-01-hero-consulta.jpg" className="absolute inset-0 h-full w-full rounded-none border-0" />
+        <ImagePlaceholder name="C-01-hero.jpg" className="absolute inset-0 h-full w-full rounded-none border-0" />
         <div
           className="absolute inset-0"
           aria-hidden="true"
@@ -132,13 +109,13 @@ function HeroSection() {
         <div className="relative z-10 mx-auto w-full max-w-[1200px] px-5 py-16 md:px-8 md:py-24">
           <div className="max-w-[640px]">
             <span className="inline-block text-[13px] font-semibold uppercase tracking-[0.08em] text-[#005CFF]">
-              Para clínicas de cirugía plástica
+              Para academias y centros de formación
             </span>
             <h1 className={`${serif} mt-5 text-[#212121]`} style={{ fontSize: "clamp(50px, 6.5vw, 92px)", lineHeight: 0.95 }}>
-              Cuando ChatGPT abra la pauta para cirugía, tu clínica ya debería estar <em>lista</em>.
+              Tus próximos estudiantes ya le preguntan a ChatGPT dónde <em>estudiar</em>.
             </h1>
             <p className="mt-6 text-[17px] leading-[1.5] text-[#4F4F4D] md:text-[18px]">
-              Hoy OpenAI no aprueba anuncios de procedimientos quirúrgicos, pero tus futuros pacientes ya le preguntan a ChatGPT dónde operarse. Te ayudamos a aparecer en esas respuestas desde ahora.
+              Desde octubre de 2026 las academias en Colombia pueden anunciarse en ChatGPT. Te ayudamos a aparecer justo cuando alguien compara cursos, horarios y precios.
             </p>
             <div className="mt-8 rounded-[4px] border border-[#D9DDE4] bg-white p-5 shadow-sm md:p-6">
               <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#4F4F4D]">Ejemplo ilustrativo · elige una búsqueda</p>
@@ -172,8 +149,8 @@ function HeroSection() {
               </div>
             </div>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <CtaButton>Solicitar diagnóstico de visibilidad en IA</CtaButton>
-              <p className="text-[13px] text-[#4F4F4D]">Diagnóstico inicial · Clínicas de cirugía plástica en Colombia</p>
+              <CtaButton>Solicitar diagnóstico para mi academia</CtaButton>
+              <p className="text-[13px] text-[#4F4F4D]">Diagnóstico inicial · Academias en Colombia</p>
             </div>
           </div>
         </div>
@@ -183,10 +160,10 @@ function HeroSection() {
 }
 
 const problemaCards = [
-  { num: "01", title: "Permitido", text: "Procedimientos mínimamente invasivos, con revisión caso por caso." },
-  { num: "02", title: "Aún no", text: "La cirugía plástica no está en la lista aprobada y no hay fecha confirmada para que lo esté." },
-  { num: "03", title: "En movimiento", text: "OpenAI ha cambiado sus reglas varias veces en 2026." },
-  { num: "04", title: "Ya ocurre", text: "Tus pacientes ya consultan a la IA antes de elegir cirujano." },
+  { num: "01", title: "Comparan", text: "Programas, modalidades y duración." },
+  { num: "02", title: "Preguntan", text: "Horarios, precios y formas de pago." },
+  { num: "03", title: "Verifican", text: "Certificados, docentes y opiniones." },
+  { num: "04", title: "Se inscriben", text: "Cuando encuentran una opción clara y confiable." },
 ];
 
 function ProblemaSection() {
@@ -195,14 +172,14 @@ function ProblemaSection() {
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
-            Lo que otras agencias no te van a decir sobre ChatGPT <em>Ads</em>.
+            Elegir dónde estudiar ya no empieza solo en <em>Google</em>.
           </h2>
           <p className="text-[17px] leading-[1.5] text-[#4F4F4D] lg:pt-3">
-            Antes de invertir, conviene saber qué permite hoy OpenAI y qué no. Así tomas decisiones con información real.
+            Antes de pedir información, las personas comparan programas, horarios, precios y opiniones. Cada vez más lo hacen conversando con la IA.
           </p>
         </div>
         <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <ImagePlaceholder name="C-02-problema-paciente-celular.jpg" className="h-[280px] sm:col-span-2 sm:row-span-2 sm:h-full" />
+          <ImagePlaceholder name="C-02-problema.jpg" className="h-[280px] sm:col-span-2 sm:row-span-2 sm:h-full" />
           {problemaCards.map((card) => (
             <article key={card.num} className="rounded-[4px] bg-[#EEF1F6] p-6">
               <span className="text-[14px] font-bold text-[#005CFF]">{card.num}</span>
@@ -213,7 +190,7 @@ function ProblemaSection() {
         </div>
         <div className="mt-12 rounded-[4px] bg-[#EEF1F6] px-6 py-10 text-center md:py-14">
           <p className={`${serif} mx-auto max-w-[820px] italic text-[#005CFF]`} style={{ fontSize: "clamp(26px, 3.2vw, 40px)", lineHeight: 1.15 }}>
-            La ventaja no la tendrá quien pague primero, sino la clínica que la IA ya reconozca como referente.
+            Tu academia necesita estar en esa conversación, no solo en los buscadores.
           </p>
         </div>
       </div>
@@ -222,9 +199,9 @@ function ProblemaSection() {
 }
 
 const oportunidadPartes = [
-  { num: "1", title: "La respuesta", text: "ChatGPT cita fuentes confiables, y trabajamos para que tu clínica sea una de ellas." },
-  { num: "2", title: "El espacio patrocinado", text: "Mientras tanto, pautamos tus servicios no quirúrgicos elegibles." },
-  { num: "3", title: "La conversación", text: "El paciente llega a tu WhatsApp pidiendo una valoración." },
+  { num: "1", title: "La respuesta", text: "ChatGPT responde con información general y útil para quien pregunta." },
+  { num: "2", title: "El espacio patrocinado", text: "Debajo aparece tu curso, con un llamado a la acción claro." },
+  { num: "3", title: "La conversación", text: "El interesado te escribe por WhatsApp para pedir información." },
 ];
 
 function OportunidadSection() {
@@ -236,10 +213,10 @@ function OportunidadSection() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
-            Dos formas de estar en la <em>conversación</em>.
+            Así aparece tu academia en la <em>conversación</em>.
           </h2>
           <p className="mt-6 text-[17px] leading-[1.5] text-[#4F4F4D]">
-            Mientras se abre la pauta para cirugía, tu clínica puede ganar visibilidad en las respuestas y captar pacientes con los servicios que sí son elegibles.
+            El anuncio no cambia lo que responde ChatGPT. Aparece debajo, marcado como patrocinado, cuando la conversación tiene relación con lo que ofreces.
           </p>
           <div className="mt-10 flex flex-col">
             {oportunidadPartes.map((parte, index) => (
@@ -266,27 +243,26 @@ function OportunidadSection() {
             <div className={`${partClass(0)} p-1`}>
               <div className="flex justify-end">
                 <p className="max-w-[90%] rounded-[14px] rounded-br-[4px] bg-[#005CFF] px-4 py-3 text-[14px] leading-[1.5] text-white">
-                  Busco opciones para rejuvenecer el rostro sin cirugía.
+                  Busco un curso de inglés intensivo para adultos en Medellín.
                 </p>
               </div>
               <div className="mt-3 flex justify-start">
                 <p className="max-w-[95%] rounded-[14px] rounded-bl-[4px] bg-white px-4 py-3 text-[14px] leading-[1.5] text-[#212121]">
-                  Existen alternativas como bioestimuladores, láser o toxina botulínica. Lo recomendable es una valoración con un profesional.
+                  Te conviene revisar la intensidad semanal, el tamaño de los grupos y si el curso incluye certificación de nivel.
                 </p>
               </div>
-              <p className="mt-3 text-[12px] font-medium text-[#4F4F4D]">Fuente citada · [Tu clínica]</p>
             </div>
             <div className={`mt-4 ${partClass(1)} p-1`}>
               <div className="rounded-[4px] border border-[#D9DDE4] bg-white px-4 py-3">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#005CFF]">Patrocinado</p>
-                <p className="mt-1 text-[14px] font-semibold text-[#212121]">[Tu clínica]</p>
-                <p className="text-[13px] text-[#4F4F4D]">Valoración estética profesional</p>
+                <p className="mt-1 text-[14px] font-semibold text-[#212121]">[Tu academia]</p>
+                <p className="text-[13px] text-[#4F4F4D]">Inglés intensivo para adultos</p>
               </div>
             </div>
             <div className={`mt-4 ${partClass(2)} p-1`}>
               <div className="flex justify-end">
                 <p className="max-w-[90%] rounded-[14px] rounded-br-[4px] bg-[#212121] px-4 py-3 text-[14px] leading-[1.5] text-white">
-                  Hola, quiero agendar una valoración
+                  Hola, quiero información sobre horarios y precios
                 </p>
               </div>
             </div>
@@ -300,11 +276,124 @@ function OportunidadSection() {
   );
 }
 
+const h2Style = { fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 } as const;
+
+const contextoCifras = [
+  { value: "21.10.2026", text: "Colombia entra a ChatGPT Ads." },
+  { value: "1.200 M", text: "usuarios semanales de ChatGPT." },
+  { value: "10.000 COP", text: "inversión mínima diaria por campaña." },
+];
+const contextoComo = [
+  "Un espacio patrocinado aparece debajo de la respuesta.",
+  "Solo lo ven mayores de 18 años en los planes gratuitos, por eso le hablamos a adultos y a padres de familia.",
+  "El anunciante nunca ve las conversaciones.",
+];
+const permitido = [
+  "Universidades, institutos y centros de formación.",
+  "Cursos, diplomados, idiomas y preuniversitarios.",
+  "Academias de tecnología, arte, música y deportes.",
+];
+const noPermitido = [
+  "Anuncios dirigidos a menores de edad.",
+  "Promesas de empleo, salario o resultados garantizados.",
+  "Cursos que promocionen servicios médicos.",
+];
+
+function ContextoSection() {
+  return (
+    <section id="contexto" className="bg-[#FFFFFF] py-16 md:py-24">
+      <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div>
+            <span className="inline-block text-[13px] font-semibold uppercase tracking-[0.08em] text-[#005CFF]">El contexto</span>
+            <h2 className={`${serif} mt-4 text-[#212121]`} style={h2Style}>
+              La publicidad en ChatGPT ya está abierta para la <em>educación</em>.
+            </h2>
+          </div>
+          <p className="text-[17px] leading-[1.5] text-[#4F4F4D] lg:pt-10">
+            Desde el 21 de octubre de 2026, las academias en Colombia pueden anunciarse en ChatGPT, directamente desde el Ads Manager o con un socio tecnológico.
+          </p>
+        </div>
+        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+          {contextoCifras.map((c) => (
+            <div key={c.value} className="border-t border-[#D9DDE4] pt-6">
+              <p className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "clamp(44px, 5vw, 64px)", lineHeight: 1 }}>{c.value}</p>
+              <p className="mt-3 text-[15px] leading-[1.5] text-[#4F4F4D]">{c.text}</p>
+            </div>
+          ))}
+        </div>
+        <h3 className="mt-14 text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">Cómo funciona</h3>
+        <ol className="mt-4">
+          {contextoComo.map((t, i) => (
+            <li key={t} className="flex gap-4 border-t border-[#D9DDE4] py-4 last:border-b">
+              <span className="shrink-0 text-[14px] font-bold text-[#005CFF]">0{i + 1}</span>
+              <span className="text-[15px] leading-[1.5] text-[#212121]">{t}</span>
+            </li>
+          ))}
+        </ol>
+        <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2">
+          {[{ title: "Permitido", items: permitido }, { title: "No permitido", items: noPermitido }].map((col) => (
+            <div key={col.title} className="rounded-[4px] bg-[#EEF1F6] p-6 md:p-8">
+              <h3 className={`${serif} text-[28px] leading-[1.1] text-[#212121]`}>{col.title}</h3>
+              <ul className="mt-4 space-y-3">
+                {col.items.map((t) => (
+                  <li key={t} className="flex gap-3 text-[15px] leading-[1.5] text-[#4F4F4D]">
+                    <span className="font-bold text-[#005CFF]" aria-hidden="true">{col.title === "Permitido" ? "+" : "−"}</span>
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p className="mt-8 text-[12px] leading-[1.5] text-[#4F4F4D]">
+          Fuentes: OpenAI, política de anuncios, centro de ayuda y anuncio del 21 de octubre de 2026. Las políticas cambian con frecuencia y las verificamos en cada diagnóstico.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+const requisitos = [
+  { num: "01", title: "Identidad comercial verificable", text: "Academia registrada en Colombia, verificación del negocio y correo corporativo." },
+  { num: "02", title: "Licencias y autorizaciones", text: "Licencia de funcionamiento y registro de programas ante la secretaría de educación, cuando aplique." },
+  { num: "03", title: "Publicidad veraz", text: "Sin prometer empleos, salarios, títulos que no se otorgan ni resultados garantizados." },
+  { num: "04", title: "Página de destino conforme", text: "Programa, horarios, precios y certificado explicados igual que en el anuncio." },
+  { num: "05", title: "Revisión y aprobación final", text: "OpenAI aprueba la cuenta, el anuncio y la página, y puede retirar anuncios después." },
+];
+
+function RequisitosSection() {
+  return (
+    <section id="requisitos" className="bg-[#FBFBFA] py-16 md:py-24">
+      <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
+        <div className="mx-auto max-w-[760px] text-center">
+          <span className="inline-block text-[13px] font-semibold uppercase tracking-[0.08em] text-[#005CFF]">Requisitos</span>
+          <h2 className={`${serif} mt-4 text-[#212121]`} style={h2Style}>
+            Lo que OpenAI le pide a tu <em>academia</em>.
+          </h2>
+          <p className="mt-6 text-[17px] leading-[1.5] text-[#4F4F4D]">
+            La educación es una categoría permitida, pero cada anunciante pasa por una revisión. Esto es lo que revisamos contigo antes de lanzar.
+          </p>
+        </div>
+        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5">
+          {requisitos.map((r) => (
+            <article key={r.num} className="border-t border-[#D9DDE4] pt-6">
+              <span className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "40px", lineHeight: 1 }}>{r.num}</span>
+              <h3 className="mt-4 text-[17px] font-semibold leading-[1.3] text-[#212121]">{r.title}</h3>
+              <p className="mt-2 text-[15px] leading-[1.5] text-[#4F4F4D]">{r.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const beneficios = [
-  { num: "01", title: "Ser fuente de referencia", text: "Que la IA mencione a tu clínica cuando hablan de cirugía en tu ciudad." },
-  { num: "02", title: "Generar leads ya", text: "Con los tratamientos que hoy sí se pueden pautar." },
-  { num: "03", title: "Tener la cuenta lista", text: "Para activar campañas de cirugía apenas se aprueben." },
-  { num: "04", title: "Proteger tu reputación", text: "Sin promesas que no se pueden cumplir." },
+  { num: "01", title: "Momento de decisión", text: "Apareces cuando la persona está comparando opciones." },
+  { num: "02", title: "Le hablas a quien decide", text: "Adultos que estudian y padres que eligen por sus hijos." },
+  { num: "03", title: "Cada inscripción medida", text: "Sabes cuántos leads y matrículas llegan desde ChatGPT." },
+  { num: "04", title: "Antes que tu competencia", text: "El canal acaba de abrir y todavía hay pocos anunciantes." },
 ];
 
 function BeneficiosSection() {
@@ -312,10 +401,10 @@ function BeneficiosSection() {
     <section id="beneficios" className="bg-[#FBFBFA] py-16 md:py-24">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2 className={`${serif} max-w-[820px] text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
-          Prepararte hoy es llegar <em>primero</em> mañana.
+          Llega a tus futuros estudiantes en el momento <em>justo</em>.
         </h2>
         <div className="mt-12 grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
-          <ImagePlaceholder name="C-03-beneficios-equipo.jpg" className="h-[320px] md:h-[440px]" />
+          <ImagePlaceholder name="C-03-beneficios.jpg" className="h-[320px] md:h-[440px]" />
           <ul>
             {beneficios.map((item) => (
               <li key={item.num} className="flex gap-6 border-t border-[#D9DDE4] py-6 first:pt-0 lg:first:border-t-0">
@@ -334,10 +423,10 @@ function BeneficiosSection() {
 }
 
 const servicios = [
-  { num: "01", tag: "para ser citado", title: "Visibilidad orgánica en IA", text: "Contenido, perfiles y menciones que la IA usa como fuente.", image: "C-05-servicio-01-diagnostico.jpg" },
-  { num: "02", tag: "para captar hoy", title: "Pauta en lo elegible", text: "Campañas de tratamientos no quirúrgicos con leads directos a WhatsApp.", image: "C-06-servicio-02-estrategia.jpg" },
-  { num: "03", tag: "para activar rápido", title: "Cuenta lista para el día uno", text: "Ads Manager configurado, credenciales verificadas y anuncios preparados.", image: "C-07-servicio-03-landing.jpg" },
-  { num: "04", tag: "para no perder la ventana", title: "Monitoreo de políticas", text: "Revisamos cada cambio de OpenAI por ti.", image: "C-08-servicio-04-seguimiento-y-anuncio.jpg" },
+  { num: "01", tag: "para entrar bien", title: "Cuenta y verificación", text: "Abrimos tu cuenta con los datos de tu academia y la dejamos lista para la revisión de OpenAI.", image: "C-05-servicio-01.jpg" },
+  { num: "02", tag: "para que te encuentren", title: "Estrategia de intenciones", text: "Mapeamos cómo preguntan tus futuros estudiantes: programas, horarios, precios y ciudades.", image: "C-06-servicio-02.jpg" },
+  { num: "03", tag: "para convertir", title: "Anuncios y landing de inscripción", text: "Piezas claras y una página que convierte consultas en solicitudes.", image: "C-07-servicio-03.jpg" },
+  { num: "04", tag: "para no perder a nadie", title: "Seguimiento y reportes", text: "Cada lead llega a tu WhatsApp, con un reporte semanal de clics, leads e inscripciones.", image: "C-08-servicio-04.jpg" },
 ];
 
 function ServiciosSection() {
@@ -345,7 +434,7 @@ function ServiciosSection() {
     <section className="bg-white py-16 md:py-24">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2 className={`${serif} max-w-[760px] text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
-          Tres frentes y un <em>seguimiento</em> constante.
+          De la cuenta a la <em>matrícula</em>.
         </h2>
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {servicios.map((servicio) => (
@@ -365,19 +454,19 @@ function ServiciosSection() {
   );
 }
 
-const diferenciadorTags = ["Ley 1581 de 2012", "Ética médica", "Políticas de OpenAI", "Medición real"];
+const diferenciadorTags = ["Políticas de OpenAI", "Estatuto del Consumidor", "Ley 1581 de 2012", "Medición real"];
 
 function DiferenciadorSection() {
   return (
     <section className="bg-[#212121] py-16 md:py-24">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
-        <ImagePlaceholder name="C-09-diferenciador-ojo.jpg" className="h-[300px] md:h-[420px]" />
+        <ImagePlaceholder name="C-09-diferenciador.jpg" className="h-[300px] md:h-[420px]" />
         <div>
           <h2 className={`${serif} text-white`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
-            Transparencia antes que <em>promesas</em>.
+            Publicidad <em>veraz</em> para educación.
           </h2>
           <p className="mt-6 text-[17px] leading-[1.5] text-white/80">
-            No prometemos pauta para cirugía porque hoy OpenAI no la aprueba, y prometerla pondría en riesgo tu cuenta y tu reputación. Te decimos qué se puede hacer hoy y te preparamos para lo que viene.
+            No prometemos empleos, salarios ni resultados garantizados. Mostramos lo que tu academia ofrece de verdad: programas, horarios, certificados y precios claros.
           </p>
           <div className="mt-10 grid grid-cols-1 gap-x-8 sm:grid-cols-2">
             {diferenciadorTags.map((tag) => (
@@ -393,9 +482,9 @@ function DiferenciadorSection() {
 }
 
 const procesoPasos = [
-  { num: "1", title: "Cuéntanos sobre tu clínica", text: "Procedimientos, sedes y canales actuales." },
-  { num: "2", title: "Revisamos cómo apareces hoy en ChatGPT", text: "Qué dice la IA de tu clínica y de tu competencia." },
-  { num: "3", title: "Te entregamos el plan", text: "Qué pautar ya y qué preparar para cirugía." },
+  { num: "1", title: "Cuéntanos sobre tu academia", text: "Programas, sedes y cómo captas estudiantes hoy." },
+  { num: "2", title: "Preparamos la cuenta y la landing", text: "Verificación, medición y una página alineada con la política de OpenAI." },
+  { num: "3", title: "Lanzamos y optimizamos", text: "Ajustamos cada semana según leads e inscripciones reales." },
 ];
 
 function ProcesoSection() {
@@ -403,7 +492,7 @@ function ProcesoSection() {
     <section id="proceso" className="bg-[#FBFBFA] py-16 md:py-24">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2 className={`${serif} max-w-[700px] text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
-          Tu diagnóstico, en tres <em>pasos</em>.
+          Tu campaña, en tres <em>pasos</em>.
         </h2>
         <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-3">
           {procesoPasos.map((paso) => (
@@ -449,7 +538,7 @@ function FormularioSection() {
     const form = new FormData(event.currentTarget);
     const get = (key: string) => String(form.get(key) ?? "").trim();
     if (!get("nombre") || !get("empresa")) {
-      setError("Completa tu nombre y el nombre de la clínica.");
+      setError("Completa tu nombre y el nombre de la academia.");
       return;
     }
     setEnviando(true);
@@ -462,12 +551,11 @@ function FormularioSection() {
             nombre: get("nombre"),
             ciudad: get("ciudad"),
             telefono: get("telefono"),
-            tratamientos_principales: get("tratamientos_principales"),
+            sector: get("sector"),
             pais: "Colombia",
-            sector: "Cirugía plástica",
           },
           attribution: {
-            source: "lp-sales-flow-clinicas-bogota",
+            source: "lp-sales-flow",
             landing_path: window.location.pathname,
             referrer: document.referrer || undefined,
             ...campaign,
@@ -477,7 +565,7 @@ function FormularioSection() {
         },
       });
       track("lead_valido", { landing: LANDING, utm_content: LANDING });
-      void navigate({ to: "/lp/chatgpt-ads-cirugia-plastica/gracias" });
+      void navigate({ to: "/lp/chatgpt-ads-academias/gracias" });
     } catch (err) {
       setError(err instanceof Error ? err.message : "No pudimos enviar tu solicitud. Intenta de nuevo.");
     } finally {
@@ -490,12 +578,12 @@ function FormularioSection() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
-            Solicita tu diagnóstico de visibilidad en <em>IA</em>.
+            Solicita el diagnóstico de tu <em>academia</em>.
           </h2>
           <p className="mt-6 text-[17px] leading-[1.5] text-[#4F4F4D]">
-            Te mostramos cómo aparece hoy tu clínica en ChatGPT, qué servicios puedes pautar ya y qué falta para estar listo cuando se abra la categoría quirúrgica.
+            Revisamos tus programas, tu página y tu competencia para definir cómo empezar a pautar en ChatGPT.
           </p>
-          <ImagePlaceholder name="C-04-formulario-directora.jpg" className="mt-10 hidden h-[280px] lg:block" />
+          <ImagePlaceholder name="C-04-formulario.jpg" className="mt-10 hidden h-[280px] lg:block" />
         </div>
         <form onSubmit={onSubmit} className="rounded-[4px] bg-[#F4F6FA] p-6 md:p-9">
           <div className="grid grid-cols-1 gap-6">
@@ -504,8 +592,8 @@ function FormularioSection() {
               <input id="c-nombre" name="nombre" type="text" autoComplete="name" className={fieldClass} placeholder="Nombre y apellidos" onInput={(e) => markStarted(e.currentTarget.value)} />
             </div>
             <div>
-              <label htmlFor="c-empresa" className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">Nombre de la clínica *</label>
-              <input id="c-empresa" name="empresa" type="text" autoComplete="organization" required className={fieldClass} placeholder="Nombre de la clínica" onInput={(e) => markStarted(e.currentTarget.value)} />
+              <label htmlFor="c-empresa" className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">Nombre de la academia *</label>
+              <input id="c-empresa" name="empresa" type="text" autoComplete="organization" required className={fieldClass} placeholder="Nombre de la academia" onInput={(e) => markStarted(e.currentTarget.value)} />
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div>
@@ -518,11 +606,15 @@ function FormularioSection() {
               </div>
             </div>
             <div>
-              <label htmlFor="c-tratamientos" className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">Procedimientos quirúrgicos principales</label>
-              <input id="c-tratamientos" name="tratamientos_principales" type="text" className={fieldClass} placeholder="Ej.: rinoplastia, lipoescultura" />
+              <label htmlFor="c-sector" className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">Tipo de formación</label>
+              <select id="c-sector" name="sector" defaultValue="" className={fieldClass}>
+                <option value="" disabled>Selecciona una opción</option>
+                {["Idiomas", "Preuniversitario", "Cursos técnicos", "Programación y tecnología", "Arte y música", "Otro"].map((o) => (
+                  <option key={o} value={o}>{o}</option>
+                ))}
+              </select>
             </div>
             <input type="hidden" name="pais" value="Colombia" />
-            <input type="hidden" name="sector" value="Cirugía plástica" />
             <div className="flex items-start gap-3">
               <input
                 id="c-consent"
@@ -557,11 +649,11 @@ function FormularioSection() {
 }
 
 const faqItems = [
-  { question: "¿Por qué no prometen pauta para cirugía desde ya?", answer: "Porque hoy OpenAI no la aprueba, y prometerla pondría en riesgo tu cuenta y tu reputación." },
-  { question: "¿Qué pasa si OpenAI aprueba la categoría?", answer: "Activamos las campañas que ya dejamos preparadas, sin perder semanas en configuración." },
-  { question: "¿Qué es la visibilidad orgánica en IA?", answer: "Que ChatGPT mencione o cite a tu clínica en sus respuestas sin que sea un anuncio." },
+  { question: "¿Mi academia puede anunciarse en ChatGPT?", answer: "Sí. La educación es una categoría permitida en Colombia. Cada cuenta y cada anuncio pasan por la revisión de OpenAI." },
+  { question: "¿Puedo pautarle a estudiantes menores de edad?", answer: "No. OpenAI no muestra anuncios a menores de 18 años. Por eso las campañas le hablan a adultos y a padres de familia." },
+  { question: "¿Cuánto debo invertir?", answer: "El mínimo es de 10.000 COP diarios por campaña. Definimos el presupuesto según tus programas, tu ciudad y tus metas de inscripción." },
   { question: "¿Esto reemplaza Google o Meta?", answer: "No. Se suma a los canales que ya te funcionan." },
-  { question: "¿Cuánto cuesta?", answer: "Depende de tus procedimientos, tus sedes y tus objetivos. Lo definimos contigo en el diagnóstico." },
+  { question: "¿Garantizan inscripciones?", answer: "No. Medimos leads, solicitudes de información e inscripciones para que veas qué funciona." },
 ];
 
 function FaqSectionLanding() {
@@ -594,17 +686,17 @@ function CierreSection() {
       <div className="grid grid-cols-1 items-center lg:grid-cols-2">
         <div className="mx-auto w-full max-w-[600px] px-5 py-16 md:px-8 md:py-24 lg:ml-auto lg:pr-16">
           <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
-            Tus futuros pacientes ya le preguntan a la IA dónde <em>operarse</em>.
+            Tus futuros estudiantes ya están <em>preguntando</em>.
           </h2>
           <p className="mt-6 text-[17px] leading-[1.5] text-[#4F4F4D]">
-            Asegúrate de que tu clínica esté en esa respuesta.
+            Asegúrate de que tu academia esté en esa respuesta.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <CtaButton>Quiero preparar mi clínica</CtaButton>
-            <p className="text-[13px] text-[#4F4F4D]">Conversemos sobre una estrategia diseñada para tu clínica.</p>
+            <CtaButton>Quiero que encuentren mi academia</CtaButton>
+            <p className="text-[13px] text-[#4F4F4D]">Conversemos sobre una estrategia diseñada para tu academia.</p>
           </div>
         </div>
-        <ImagePlaceholder name="C-10-cierre-pantalla.jpg" className="h-[320px] w-full rounded-none border-0 lg:h-full lg:min-h-[480px]" />
+        <ImagePlaceholder name="C-10-cierre.jpg" className="h-[320px] w-full rounded-none border-0 lg:h-full lg:min-h-[480px]" />
       </div>
     </section>
   );
@@ -617,7 +709,7 @@ function LandingFooter() {
         <div>
           <img src={logoDark} alt="RCKT" className="h-7 w-auto" />
           <p className="mt-4 max-w-[260px] text-[14px] leading-[1.6] text-[#4F4F4D]">
-            Estrategia, publicidad y automatización para clínicas estéticas en Colombia.
+            Estrategia, publicidad y automatización para academias y centros de formación en Colombia.
           </p>
         </div>
         <div>
@@ -703,7 +795,7 @@ function useLightThemePin() {
   }, []);
 }
 
-export function LandingCirugiaPlasticaC() {
+export function LandingAcademiasC() {
   useLightThemePin();
   useEffect(() => {
     saveCampaignParams(window.location.search);
@@ -717,6 +809,8 @@ export function LandingCirugiaPlasticaC() {
         <HeroSection />
         <ProblemaSection />
         <OportunidadSection />
+        <ContextoSection />
+        <RequisitosSection />
         <BeneficiosSection />
         <ServiciosSection />
         <DiferenciadorSection />
@@ -731,7 +825,7 @@ export function LandingCirugiaPlasticaC() {
   );
 }
 
-export function LandingCirugiaPlasticaCThanks() {
+export function LandingAcademiasCThanks() {
   useLightThemePin();
   useEffect(() => {
     saveCampaignParams(window.location.search);
@@ -756,7 +850,7 @@ export function LandingCirugiaPlasticaCThanks() {
             Recibimos tu solicitud.
           </h1>
           <p className="mt-4 text-[17px] leading-[1.5] text-[#4F4F4D]">
-            Te contactaremos por WhatsApp para preparar el diagnóstico de visibilidad de tu clínica.
+            Te contactaremos por WhatsApp para preparar el diagnóstico de tu academia.
           </p>
           <a
             href="/"
