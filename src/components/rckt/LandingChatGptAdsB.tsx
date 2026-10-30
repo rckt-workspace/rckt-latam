@@ -594,7 +594,7 @@ function FormularioSection() {
         <form onSubmit={onSubmit} className="rounded-[24px] border border-[#3A3A3A] bg-[#2C2C2C] p-6 shadow-lg md:p-9">
           <div className="grid grid-cols-1 gap-5">
             <div>
-              <label htmlFor="b-nombre" className="text-[14px] font-semibold text-[#F5F2ED]">Nombre completo</label>
+              <label htmlFor="b-nombre" className={labelFormClass}>Nombre completo</label>
               <input id="b-nombre" name="nombre" type="text" autoComplete="name" className={inputClass} placeholder="Nombre y apellidos" onInput={(e) => markStarted(e.currentTarget.value)} />
             </div>
             <div>
