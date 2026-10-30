@@ -111,22 +111,41 @@ const heroGradient =
 
 function HeroSection() {
   return (
-    <section id="top" className="relative overflow-hidden" style={{ background: heroGradient }}>
-      <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-10 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[36%_64%] lg:gap-0">
-        <div className="relative z-10">
-          <span className="inline-block rounded-full bg-[#4B2BB8] px-4 py-1.5 text-[13px] font-semibold tracking-wide text-white">
+    <section id="top" className="relative overflow-hidden md:min-h-[680px]">
+      <img
+        src={imgA01}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(246,242,255,0.97) 0%, rgba(246,242,255,0.92) 30%, rgba(233,220,255,0.75) 48%, rgba(233,220,255,0) 68%)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 md:hidden"
+        style={{ background: "linear-gradient(to bottom, rgba(246,242,255,0.88), rgba(233,220,255,0.82))" }}
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto flex w-full max-w-[1200px] items-center px-5 pb-16 pt-[120px] md:min-h-[680px] md:px-8 md:pb-20 md:pt-[140px]">
+        <div className="max-w-[560px]">
+          <span className="inline-block rounded-full bg-[#4B2BB8] px-4 py-1.5 text-[12px] font-semibold tracking-wide !text-white">
             Marketing + inteligencia artificial
           </span>
           <h1
             className={`${fontDisplay} mt-6 font-bold text-[#212121]`}
-            style={{ fontSize: "clamp(46px, 6vw, 84px)", lineHeight: 0.98, letterSpacing: "-0.035em" }}
+            style={{ fontSize: "clamp(38px, 4.6vw, 64px)", lineHeight: 1, letterSpacing: "-0.03em" }}
           >
             Tus próximos pacientes podrían empezar su búsqueda en ChatGPT.
           </h1>
-          <p className="mt-6 text-[18px] leading-[1.5] text-[#212121] md:text-[20px]">
+          <p className="mt-6 text-[17px] leading-[1.5] text-[#212121]">
             Hoy las personas exploran nuevas formas de informarse sobre tratamientos estéticos. ¿Está tu clínica preparada para conectar con ellas?
           </p>
-          <p className="mt-4 text-[16px] leading-[1.5] text-[#4B4366]">
+          <p className="mt-4 text-[15px] leading-[1.5] text-[#4B4366]">
             Descubre cómo integrar las oportunidades de publicidad e inteligencia artificial en una estrategia de captación de pacientes.
           </p>
           <div className="mt-8">
@@ -134,24 +153,13 @@ function HeroSection() {
           </div>
           <p className="mt-4 text-[13px] text-[#4B4366]">Diagnóstico inicial · Enfoque para clínicas en Colombia</p>
         </div>
-        <div className="relative">
-          <div
-            className="relative h-[320px] mix-blend-multiply md:h-[460px]"
-            style={{
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 30%)",
-              maskImage: "linear-gradient(to right, transparent 0%, black 30%)",
-            }}
-          >
-            <ImagePlaceholder name="A-01-hero-consulta.jpg" className="h-full w-full rounded-none border-0 bg-transparent" />
-          </div>
-          <div className="absolute bottom-4 right-4 hidden w-[280px] rounded-[20px] border border-[#DCD1FA] bg-white p-4 shadow-lg md:block">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#4B4366]">Ejemplo ilustrativo</p>
-            <p className="mt-2 text-[14px] leading-[1.5] text-[#212121]">¿Qué opciones hay para rejuvenecimiento facial?</p>
-            <p className="mt-2 rounded-[12px] bg-[#F1ECFF] px-3 py-2 text-[12px] text-[#4B4366]">
-              Patrocinado · Valoración estética profesional
-            </p>
-          </div>
-        </div>
+      </div>
+      <div className="absolute bottom-6 right-6 z-10 hidden w-[280px] rounded-[20px] border border-[#DCD1FA] bg-white p-4 shadow-lg md:block">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#4B4366]">Ejemplo ilustrativo</p>
+        <p className="mt-2 text-[14px] leading-[1.5] text-[#212121]">¿Qué opciones hay para rejuvenecimiento facial?</p>
+        <p className="mt-2 rounded-[12px] bg-[#F1ECFF] px-3 py-2 text-[12px] text-[#4B4366]">
+          Patrocinado · Valoración estética profesional
+        </p>
       </div>
     </section>
   );
