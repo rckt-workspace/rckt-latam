@@ -61,7 +61,7 @@ function CtaButton({ children, className = "" }: { children: React.ReactNode; cl
   return (
     <a
       href="#diagnostico"
-      className={`inline-flex min-h-[50px] items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[16px] font-semibold text-white transition-colors hover:bg-[#4B2BB8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0] ${className}`}
+      className={`inline-flex min-h-[50px] items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[15px] font-semibold !text-white transition-colors hover:bg-[#4B2BB8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0] ${className}`}
     >
       {children}
     </a>
@@ -69,11 +69,28 @@ function CtaButton({ children, className = "" }: { children: React.ReactNode; cl
 }
 
 function LandingHeader() {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   return (
-    <header className="sticky top-0 z-40 border-b border-[#DCD1FA]/60 bg-white/80 backdrop-blur-md">
-      <div className="mx-auto flex h-[68px] w-full max-w-[1200px] items-center justify-between gap-4 px-5 md:px-8">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 px-4 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:px-6 ${
+        scrolled ? "pt-3" : "pt-0"
+      }`}
+    >
+      <div
+        className={`mx-auto flex w-full items-center justify-between gap-4 px-5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:px-8 ${
+          scrolled
+            ? "h-[60px] max-w-[1100px] rounded-full border border-[#DCD1FA] bg-white/75 shadow-[0_10px_30px_rgba(42,26,85,0.10)] backdrop-blur-md"
+            : "h-[68px] max-w-[1200px] border border-transparent bg-transparent"
+        }`}
+      >
         <a href="#top" aria-label="RCKT">
-          <img src={logoDark} alt="RCKT" className="h-7 w-auto" />
+          <img src={logoDark} alt="RCKT" className={`w-auto transition-all duration-500 ${scrolled ? "h-6" : "h-7"}`} />
         </a>
         <nav className="hidden items-center gap-8 md:flex" aria-label="Secciones">
           <a href="#beneficios" className="text-[15px] font-medium text-[#212121] transition-colors hover:text-[#6A3FE0] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]">
@@ -83,7 +100,7 @@ function LandingHeader() {
             Cómo funciona
           </a>
         </nav>
-        <CtaButton className="min-h-[44px] px-6 text-[15px]">Solicitar diagnóstico</CtaButton>
+        <CtaButton className="min-h-[42px] px-6 text-[14px]">Solicitar diagnóstico</CtaButton>
       </div>
     </header>
   );
