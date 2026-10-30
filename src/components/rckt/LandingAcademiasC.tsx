@@ -39,7 +39,7 @@ function CtaButton({ children, className = "" }: { children: React.ReactNode; cl
   return (
     <a
       href="#diagnostico"
-      className={`inline-flex min-h-[50px] items-center justify-center rounded-full bg-[#005CFF] px-8 text-[16px] font-semibold text-white transition-colors hover:bg-[#004AD0] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF] ${className}`}
+      className={`inline-flex min-h-[46px] items-center justify-center rounded-full bg-[#005CFF] px-8 text-[15px] font-semibold text-white transition-colors hover:bg-[#004AD0] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF] ${className}`}
     >
       {children}
     </a>
@@ -149,10 +149,10 @@ function HeroSection() {
             <span className="inline-block text-[13px] font-semibold uppercase tracking-[0.08em] text-[#005CFF]">
               Para academias y centros de formación
             </span>
-            <h1 className={`${serif} mt-5 text-[#212121]`} style={{ fontSize: "clamp(50px, 6.5vw, 92px)", lineHeight: 0.95 }}>
+            <h1 className={`${serif} mt-5 text-[#212121]`} style={{ fontSize: "clamp(38px, 4.6vw, 64px)", lineHeight: 0.95 }}>
               Tus próximos estudiantes ya le preguntan a ChatGPT dónde <em>estudiar</em>.
             </h1>
-            <p className="mt-6 text-[17px] leading-[1.5] text-[#4F4F4D] md:text-[18px]">
+            <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
               Desde octubre de 2026 las academias en Colombia pueden anunciarse en ChatGPT. Te ayudamos a aparecer justo cuando alguien compara cursos, horarios y precios.
             </p>
             <div className="mt-8 rounded-[4px] border border-[#D9DDE4] bg-white p-5 shadow-sm md:p-6">
@@ -206,28 +206,28 @@ const problemaCards = [
 
 function ProblemaSection() {
   return (
-    <section className="bg-[#FBFBFA] py-16 md:py-24">
+    <section className="bg-[#FBFBFA] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
+          <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
             Elegir dónde estudiar ya no empieza solo en <em>Google</em>.
           </h2>
-          <p className="text-[17px] leading-[1.5] text-[#4F4F4D] lg:pt-3">
+          <p className="text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px] lg:pt-3">
             Antes de pedir información, las personas comparan programas, horarios, precios y opiniones. Cada vez más lo hacen conversando con la IA.
           </p>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           <img src={imgC02Problema} alt="Joven comparando cursos en su celular" className="h-[280px] w-full rounded-[4px] object-cover sm:col-span-2 sm:row-span-2 sm:h-full" />
           {problemaCards.map((card) => (
             <article key={card.num} className="rounded-[4px] bg-[#EEF1F6] p-6">
               <span className="text-[14px] font-bold text-[#005CFF]">{card.num}</span>
-              <h3 className={`${serif} mt-3 text-[26px] leading-[1.1] text-[#212121]`}>{card.title}</h3>
-              <p className="mt-2 text-[15px] leading-[1.5] text-[#4F4F4D]">{card.text}</p>
+              <h3 className={`${serif} mt-3 text-[22px] leading-[1.1] text-[#212121]`}>{card.title}</h3>
+              <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{card.text}</p>
             </article>
           ))}
         </div>
-        <div className="mt-12 rounded-[4px] bg-[#EEF1F6] px-6 py-10 text-center md:py-14">
-          <p className={`${serif} mx-auto max-w-[820px] italic text-[#005CFF]`} style={{ fontSize: "clamp(26px, 3.2vw, 40px)", lineHeight: 1.15 }}>
+        <div className="mt-8 rounded-[4px] bg-[#EEF1F6] px-6 py-10 text-center md:py-14">
+          <p className={`${serif} mx-auto max-w-[820px] italic text-[#005CFF]`} style={{ fontSize: "clamp(22px, 2.4vw, 30px)", lineHeight: 1.15 }}>
             Tu academia necesita una estrategia que acompañe ese recorrido, no solo anuncios que generen clics.
           </p>
         </div>
@@ -247,13 +247,13 @@ function OportunidadSection() {
   const partClass = (part: number) =>
     `transition-opacity duration-300 ${active === part ? "rounded-[4px] border-2 border-[#005CFF]" : "border-2 border-transparent opacity-40"}`;
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className="bg-white py-12 md:py-16">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
-          <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
+          <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
             Así aparece tu academia en la <em>conversación</em>.
           </h2>
-          <p className="mt-6 text-[17px] leading-[1.5] text-[#4F4F4D]">
+          <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
             El anuncio no cambia lo que responde ChatGPT. Aparece debajo, marcado como patrocinado, cuando la conversación tiene relación con lo que ofreces.
           </p>
           <div className="mt-10 flex flex-col">
@@ -267,10 +267,10 @@ function OportunidadSection() {
               >
                 <span className="flex items-baseline gap-4">
                   <span className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "30px" }}>{parte.num}</span>
-                  <span className={`${serif} text-[26px] leading-[1.1] ${active === index ? "text-[#005CFF]" : "text-[#212121]"}`}>{parte.title}</span>
+                  <span className={`${serif} text-[22px] leading-[1.1] ${active === index ? "text-[#005CFF]" : "text-[#212121]"}`}>{parte.title}</span>
                 </span>
                 {active === index && (
-                  <span className="mt-2 block pl-12 text-[15px] leading-[1.5] text-[#4F4F4D]">{parte.text}</span>
+                  <span className="mt-2 block pl-12 text-[14px] leading-[1.5] text-[#4F4F4D]">{parte.text}</span>
                 )}
               </button>
             ))}
@@ -314,7 +314,7 @@ function OportunidadSection() {
   );
 }
 
-const h2Style = { fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 } as const;
+const h2Style = { fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 } as const;
 
 const contextoCifras = [
   { value: "21.10.2026", text: "Colombia entra a ChatGPT Ads." },
