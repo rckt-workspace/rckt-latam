@@ -488,7 +488,7 @@ function ProcesoSection() {
   return (
     <section id="proceso" className="bg-[#212121] py-14 md:py-20">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <h2 className="max-w-[700px] font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+        <h2 className="max-w-[700px] font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
           De la auditoría al primer lead.
         </h2>
         <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-3">
