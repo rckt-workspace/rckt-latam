@@ -18,6 +18,7 @@ import imgB07 from "@/assets/B-07-servicio-03-landing.jpg";
 import imgB08 from "@/assets/B-08-servicio-04-seguimiento.jpg";
 import imgB09 from "@/assets/B-09-diferenciador-rostro.jpg";
 import imgB10 from "@/assets/B-10-cierre-mujer-celular.jpg";
+import imgB01Movil from "@/assets/B-01-hero-movil.jpg";
 
 const landingImages: Record<string, string> = {
   "B-01-hero-consulta.jpg": imgB01,
@@ -123,14 +124,29 @@ function HeroSection() {
   return (
     <section id="top" className="bg-[#212121] px-4 pt-[80px] md:px-8 md:pt-[88px]">
       <div className="relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-[28px]">
-        <ImagePlaceholder name="B-01-hero-consulta.jpg" className="absolute inset-0 h-full w-full rounded-none border-0" />
+        <img
+          src={imgB01}
+          alt=""
+          className="absolute inset-0 hidden! h-full w-full object-cover object-center md:block!"
+          loading="eager"
+        />
+        <img
+          src={imgB01Movil}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-[50%_60%] md:hidden!"
+          loading="eager"
+        />
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 hidden md:block"
           aria-hidden="true"
           style={{ background: "linear-gradient(to right, rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.55) 45%, transparent 75%)" }}
         />
-        <div className="absolute inset-0 bg-[#1A1A1A]/[0.72] md:hidden" aria-hidden="true" />
-        <div className="relative z-10 flex min-h-[520px] flex-col justify-center px-6 py-16 md:min-h-[600px] md:max-w-[58%] md:px-12">
+        <div
+          className="absolute inset-0 md:hidden"
+          aria-hidden="true"
+          style={{ background: "linear-gradient(to bottom, rgba(26,26,26,0.80) 0%, rgba(26,26,26,0.45) 50%, rgba(26,26,26,0.85) 100%)" }}
+        />
+        <div className="relative z-10 flex min-h-[640px] flex-col justify-center px-6 py-16 md:min-h-[600px] md:max-w-[58%] md:px-12">
           <span className="inline-block w-fit rounded-full border border-[#FC5C1F] px-4 py-1.5 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#FC5C1F]">
             ChatGPT Ads ya llegó a Colombia
           </span>
