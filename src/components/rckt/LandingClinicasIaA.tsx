@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Menu, X } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { Check } from "lucide-react";
@@ -70,6 +71,7 @@ function CtaButton({ children, className = "" }: { children: React.ReactNode; cl
 
 function LandingHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
@@ -100,8 +102,45 @@ function LandingHeader() {
             Cómo funciona
           </a>
         </nav>
-        <CtaButton className="min-h-[42px] px-6 text-[14px]">Solicitar diagnóstico</CtaButton>
+        <div className="flex items-center gap-2 md:hidden">
+          <a
+            href="#diagnostico"
+            className="inline-flex h-[40px] items-center justify-center whitespace-nowrap rounded-full bg-[#6A3FE0] px-4 text-[13px] font-semibold text-white! transition-colors hover:bg-[#4B2BB8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]"
+          >
+            Solicitar diagnóstico
+          </a>
+          <button
+            type="button"
+            onClick={() => setMenuOpen((value) => !value)}
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            className="inline-flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full border border-[#DCD1FA] bg-white/75 text-[#212121] backdrop-blur-md transition-colors hover:text-[#6A3FE0] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]"
+          >
+            {menuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+          </button>
+        </div>
+        <div className="hidden md:block">
+          <CtaButton className="min-h-[42px] px-6 text-[14px]">Solicitar diagnóstico</CtaButton>
+        </div>
       </div>
+      {menuOpen && (
+        <div className="mx-auto mt-2 w-full max-w-[1100px] rounded-[24px] border border-[#DCD1FA] bg-white/90 p-2 shadow-[0_10px_30px_rgba(42,26,85,0.10)] backdrop-blur-md md:hidden">
+          <a
+            href="#beneficios"
+            onClick={() => setMenuOpen(false)}
+            className="flex min-h-[44px] items-center px-4 text-[16px] font-medium text-[#212121] transition-colors hover:text-[#6A3FE0]"
+          >
+            Beneficios
+          </a>
+          <a
+            href="#proceso"
+            onClick={() => setMenuOpen(false)}
+            className="flex min-h-[44px] items-center px-4 text-[16px] font-medium text-[#212121] transition-colors hover:text-[#6A3FE0]"
+          >
+            Cómo funciona
+          </a>
+        </div>
+      )}
     </header>
   );
 }
@@ -115,7 +154,7 @@ function HeroSection() {
       <img
         src={imgA01}
         alt=""
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover object-[72%_50%] md:object-center"
         loading="eager"
       />
       <div
@@ -538,9 +577,9 @@ function FormularioSection() {
                 type="checkbox"
                 checked={consent}
                 onChange={(e) => setConsent(e.target.checked)}
-                className="mt-1 h-4 w-4 accent-[#6A3FE0]"
+                className="mt-1 h-4 w-4 shrink-0 accent-[#6A3FE0]"
               />
-              <label htmlFor="ia-consent" className="text-[13px] leading-[1.5] text-[#4B4366]">
+              <label htmlFor="ia-consent" className="min-w-0 break-words text-[13px] leading-[1.5] text-[#4B4366]">
                 Autorizo el tratamiento de mis datos personales según la{" "}
                 <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#6A3FE0] underline">
                   política de tratamiento de datos
