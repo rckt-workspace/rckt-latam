@@ -677,7 +677,7 @@ function FaqSectionLanding() {
   return (
     <section className="bg-[#1A1A1A] py-14 md:py-20">
       <div className="mx-auto w-full max-w-[760px] px-5 md:px-8">
-        <h2 className="text-center font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+        <h2 className="text-center font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
           Preguntas frecuentes
         </h2>
         <Accordion type="single" collapsible className="mt-10">
