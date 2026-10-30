@@ -624,7 +624,7 @@ function CierreSection() {
           <p className="mt-4 text-[13px] text-[#4B4366]">Conversemos sobre una estrategia diseñada para tu negocio.</p>
         </div>
         <div className="mt-10 lg:hidden">
-          <ImagePlaceholder name="A-10-cierre-ojo.jpg" className="h-[260px]" />
+          <img src={imgA10} alt="" className="h-[260px] w-full rounded-[24px] object-cover" loading="lazy" />
         </div>
       </div>
     </section>
