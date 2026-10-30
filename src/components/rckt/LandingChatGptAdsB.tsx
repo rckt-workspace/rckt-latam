@@ -640,7 +640,7 @@ function FormularioSection() {
                 onChange={(e) => setConsent(e.target.checked)}
                 className="mt-[1px] h-[18px] w-[18px] accent-[#FC5C1F]"
               />
-              <span className="whitespace-normal break-normal text-[13px] font-normal normal-case leading-[1.5] tracking-normal text-[#BDB8B1]">
+              <span className="whitespace-normal break-normal text-[13px] font-normal normal-case leading-[1.5] tracking-normal text-[#D6D1CA]">
                 Autorizo el tratamiento de mis datos personales según la{" "}
                 <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#FC5C1F]! underline">
                   política de tratamiento de datos
