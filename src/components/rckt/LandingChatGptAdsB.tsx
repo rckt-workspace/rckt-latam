@@ -711,14 +711,13 @@ function CierreSection() {
         <div className="md:max-w-[52%]">
           <h2 className="font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3.2vw, 46px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
             El paciente ya no busca “clínica estética”. Le pregunta a la IA cuál le conviene.
-            </h2>
-            <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
-              Ahí es donde tu clínica tiene que estar.
-            </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-end">
-              <CtaButton>Quiero adelantarme</CtaButton>
-              <p className="text-[13px] text-[#BDB8B1]">Auditoría inicial para clínicas en Colombia.</p>
-            </div>
+          </h2>
+          <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
+            Ahí es donde tu clínica tiene que estar.
+          </p>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-end">
+            <CtaButton>Quiero adelantarme</CtaButton>
+            <p className="text-[13px] text-[#BDB8B1]">Auditoría inicial para clínicas en Colombia.</p>
           </div>
         </div>
       </div>
