@@ -111,14 +111,14 @@ function HeroSection() {
             className="mt-6 font-extrabold text-[#F5F2ED]"
             style={{ fontSize: "clamp(44px, 6vw, 84px)", lineHeight: 0.98, letterSpacing: "-0.04em" }}
           >
-            Adelántate a tu competencia: capta pacientes con ChatGPT Ads antes de que se sature el mercado.
+            Adelántate a tu competencia: prepara tu clínica para ChatGPT Ads antes de que se sature el mercado.
           </h1>
           <p className="mt-6 text-[17px] leading-[1.5] text-[#D6D1CA] md:text-[19px]">
-            Llegamos a la persona que ya está comparando dónde hacerse un tratamiento estético, justo cuando se lo pregunta a la IA.
+            ChatGPT Ads ya llegó a Colombia. Dejamos tu clínica lista y visible en las respuestas de la IA mientras OpenAI habilita la publicidad de salud en el país.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <CtaButton>Solicitar auditoría de canales IA</CtaButton>
-            <p className="text-[13px] text-[#BDB8B1]">Para clínicas de medicina estética no quirúrgica en Colombia</p>
+            <CtaButton>Solicitar diagnóstico de preparación</CtaButton>
+            <p className="text-[13px] text-[#BDB8B1]">Para clínicas de medicina estética en Colombia</p>
           </div>
         </div>
       </div>
@@ -174,7 +174,7 @@ function OportunidadSection() {
             Así aparece tu clínica dentro de la conversación.
           </h2>
           <p className="text-[17px] leading-[1.5] text-[#4B4366] lg:pt-3">
-            El anuncio va debajo de la respuesta, nunca dentro, y siempre marcado como patrocinado. OpenAI no comparte las conversaciones con los anunciantes: el anuncio se activa por el tema de la consulta.
+            El anuncio va debajo de la respuesta, nunca dentro, y siempre marcado como patrocinado. OpenAI no comparte las conversaciones con los anunciantes. Así funcionará para tu clínica cuando se habilite la categoría de salud en Colombia.
           </p>
         </div>
         <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-2">
@@ -222,6 +222,131 @@ function OportunidadSection() {
   );
 }
 
+const contextoCifras = [
+  { num: "21.10", text: "el día en que OpenAI anunció ChatGPT Ads para Colombia." },
+  { num: "89", text: "países donde ChatGPT Ads ya funciona." },
+  { num: "20 %", text: "de los colombianos ya consulta temas de salud en ChatGPT." },
+];
+
+const contextoFunciona = [
+  { num: "01", text: "El anuncio va separado de la respuesta y con la etiqueta \"Patrocinado\"." },
+  { num: "02", text: "Se muestra a adultos que usan los planes gratuitos." },
+  { num: "03", text: "La conversación del usuario nunca llega al anunciante." },
+];
+
+const contextoNo = [
+  "Pauta de servicios de salud en Colombia. Por ahora solo se permite en Estados Unidos, y allí únicamente para tratamientos estéticos sencillos.",
+  "Cirugía y procedimientos invasivos, en ningún país.",
+  "Promesas de resultados, descuentos o mensajes sobre el cuerpo.",
+];
+
+const contextoSi = [
+  "Cuenta, permisos y medición configurados.",
+  "Visibilidad en las respuestas de la IA.",
+  "Campañas listas para activar apenas se habilite.",
+];
+
+const labelClass = "inline-block w-fit rounded-full border border-[#FC5C1F] px-4 py-1.5 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#FC5C1F]";
+
+function ContextoSection() {
+  return (
+    <section id="contexto" className="bg-[#212121] py-16 md:py-24">
+      <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
+        <span className={labelClass}>Antes de invertir</span>
+        <h2 className="mt-6 max-w-[820px] font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(34px, 4vw, 54px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          ChatGPT Ads en Colombia: lo que está abierto y lo que todavía no.
+        </h2>
+        <p className="mt-6 max-w-[720px] text-[17px] leading-[1.5] text-[#D6D1CA]">
+          El canal ya llegó al país, pero todavía no para la salud. La ventaja la tendrá la clínica que conozca sus reglas antes que las demás.
+        </p>
+        <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3">
+          {contextoCifras.map((cifra) => (
+            <div key={cifra.num}>
+              <p className="font-extrabold text-[#FC5C1F]" style={{ fontSize: "clamp(64px, 7vw, 96px)", lineHeight: 1 }}>{cifra.num}</p>
+              <div className="mt-4 border-t border-dashed border-[#3A3A3A] pt-4">
+                <p className="text-[16px] font-semibold leading-[1.4] text-[#F5F2ED]">{cifra.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p className="mt-14 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#FC5C1F]">Cómo funciona</p>
+        <ul className="mt-2">
+          {contextoFunciona.map((punto) => (
+            <li key={punto.num} className="flex items-baseline gap-6 border-t border-[#3A3A3A] py-5 first:border-t-0">
+              <span className="shrink-0 text-[14px] font-bold text-[#FC5C1F]">{punto.num}</span>
+              <p className="text-[16px] leading-[1.5] text-[#F5F2ED]">{punto.text}</p>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-2">
+          <div>
+            <h3 className="text-[22px] font-bold text-[#F5F2ED]">Todavía no</h3>
+            <ul className="mt-4">
+              {contextoNo.map((punto) => (
+                <li key={punto} className="flex items-start gap-4 border-t border-[#3A3A3A] py-4">
+                  <span className="mt-0.5 shrink-0 text-[18px] font-bold leading-[1.3] text-[#FC5C1F]" aria-hidden="true">−</span>
+                  <p className="text-[15px] leading-[1.5] text-[#D6D1CA]">{punto}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-[22px] font-bold text-[#F5F2ED]">Desde ya</h3>
+            <ul className="mt-4">
+              {contextoSi.map((punto) => (
+                <li key={punto} className="flex items-start gap-4 border-t border-[#3A3A3A] py-4">
+                  <span className="mt-0.5 shrink-0 text-[18px] font-bold leading-[1.3] text-[#FC5C1F]" aria-hidden="true">+</span>
+                  <p className="text-[15px] leading-[1.5] text-[#D6D1CA]">{punto}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <p className="mt-12 text-[12px] leading-[1.5] text-[#BDB8B1]">
+          Fuentes: OpenAI, política de anuncios y anuncio del 21 de octubre de 2026; ITBA, Índice de Innovación Regional 2026. Las políticas cambian con frecuencia y las verificamos en cada diagnóstico.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+const requisitos = [
+  { num: "01", title: "Identidad verificable", text: "Tu clínica registrada en Colombia, con datos reales y correo de la empresa." },
+  { num: "02", title: "Licencias al día", text: "Habilitación en el REPS y especialistas con registro profesional." },
+  { num: "03", title: "Mensajes veraces", text: "Nada de garantías, superlativos ni promociones de procedimientos." },
+  { num: "04", title: "Landing alineada", text: "La página dice exactamente lo mismo que el anuncio." },
+  { num: "05", title: "Aprobación de OpenAI", text: "Revisión manual de la cuenta, el anuncio y la página, con monitoreo continuo." },
+];
+
+function RequisitosSection() {
+  return (
+    <section id="requisitos" className="bg-[#1A1A1A] py-16 md:py-24">
+      <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-12 px-5 md:px-8 lg:grid-cols-2">
+        <div>
+          <span className={labelClass}>Requisitos</span>
+          <h2 className="mt-6 font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(34px, 4vw, 54px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+            Cinco requisitos para estar lista antes que tu competencia.
+          </h2>
+          <p className="mt-6 max-w-[460px] text-[17px] leading-[1.5] text-[#D6D1CA]">
+            OpenAI revisa a cada anunciante de salud por separado. Tenerlos en orden desde ahora es lo que te permitirá activar primero.
+          </p>
+        </div>
+        <ul>
+          {requisitos.map((req) => (
+            <li key={req.num} className="flex items-start gap-6 border-t border-[#3A3A3A] py-6 first:border-t-0 first:pt-0">
+              <span className="shrink-0 font-extrabold text-[#FC5C1F]" style={{ fontSize: "40px", lineHeight: 1 }}>{req.num}</span>
+              <div>
+                <h3 className="text-[20px] font-bold leading-[1.2] text-[#F5F2ED]">{req.title}</h3>
+                <p className="mt-1 text-[15px] leading-[1.5] text-[#D6D1CA]">{req.text}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
 const beneficios = [
   { num: "01", title: "El momento", text: "El paciente conversa y compara, no solo busca palabras sueltas." },
   { num: "02", title: "La ubicación", text: "Debajo de una respuesta relacionada con tu tratamiento." },
@@ -254,9 +379,9 @@ function BeneficiosSection() {
 }
 
 const servicios = [
-  { num: "01", title: "Cuenta y verificación", text: "Creamos tu cuenta en Ads Manager y gestionamos la revisión de OpenAI para el sector salud.", image: "B-05-servicio-01-diagnostico.jpg" },
+  { num: "01", title: "Cuenta y verificación", text: "Abrimos tu cuenta con los datos correctos de tu clínica y la dejamos lista para cuando se habilite la categoría de salud.", image: "B-05-servicio-01-diagnostico.jpg" },
   { num: "02", title: "Estrategia de intenciones", text: "Mapeamos cómo pregunta tu paciente: tratamientos, ciudades, comparaciones y dudas de precio.", image: "B-06-servicio-02-estrategia.jpg" },
-  { num: "03", title: "Anuncios y landing", text: "Piezas sin promesas de resultados ni descuentos, y una página pensada para convertir consultas en valoraciones.", image: "B-07-servicio-03-landing.jpg" },
+  { num: "03", title: "Anuncios y landing", text: "Preparamos piezas sin promesas de resultados ni descuentos, y una página pensada para convertir consultas en valoraciones.", image: "B-07-servicio-03-landing.jpg" },
   { num: "04", title: "WhatsApp y reportes", text: "Cada lead llega a tu equipo comercial, con un reporte semanal de clics, leads y citas agendadas.", image: "B-08-servicio-04-seguimiento.jpg" },
 ];
 
@@ -325,8 +450,8 @@ function DiferenciadorSection() {
 
 const procesoPasos = [
   { num: "1", title: "Auditoría de canales IA", text: "Revisamos elegibilidad, tratamientos y competencia en tu ciudad." },
-  { num: "2", title: "Verificación y lanzamiento", text: "Gestionamos la revisión de OpenAI y activamos campaña, landing y WhatsApp." },
-  { num: "3", title: "Optimización semanal", text: "Ajustamos según leads y citas reales." },
+  { num: "2", title: "Preparación de cuenta y landing", text: "Dejamos lista tu cuenta, tu medición y una landing que cumple la política de OpenAI." },
+  { num: "3", title: "Activación y optimización", text: "Activamos apenas OpenAI habilite la salud en Colombia y ajustamos según leads y citas reales." },
 ];
 
 function ProcesoSection() {
@@ -424,7 +549,7 @@ function FormularioSection() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <h2 className="font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(34px, 4vw, 54px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
-            Agenda tu consultoría de viabilidad.
+            Agenda tu diagnóstico de preparación.
           </h2>
           <p className="mt-6 text-[17px] leading-[1.5] text-[#D6D1CA]">
             Revisamos si tu clínica es elegible, qué tratamientos conviene priorizar y qué inversión tiene sentido para tu ciudad.
@@ -496,7 +621,7 @@ function FormularioSection() {
               disabled={enviando}
               className="inline-flex min-h-[50px] w-full items-center justify-center rounded-full bg-[#FC5C1F] px-8 text-[16px] font-semibold text-[#1A1A1A] transition-colors hover:bg-[#ff7340] disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FC5C1F]"
             >
-              {enviando ? "Enviando…" : "Solicitar mi auditoría"}
+              {enviando ? "Enviando…" : "Solicitar mi diagnóstico"}
             </button>
           </div>
         </form>
@@ -506,11 +631,11 @@ function FormularioSection() {
 }
 
 const faqItems = [
-  { question: "¿Mi clínica puede anunciarse en ChatGPT?", answer: "Los procedimientos estéticos mínimamente invasivos están entre las categorías que OpenAI revisa caso por caso. Lo validamos contigo en la auditoría." },
+  { question: "¿Mi clínica puede anunciarse en ChatGPT?", answer: "Hoy OpenAI no permite anuncios de servicios de salud fuera de Estados Unidos. Preparamos tu clínica para activar campañas apenas se habilite y, mientras tanto, trabajamos su visibilidad en las respuestas." },
   { question: "¿OpenAI ve los datos de mis pacientes?", answer: "No. OpenAI no comparte las conversaciones con los anunciantes, y los leads llegan directo a tu equipo." },
   { question: "¿Debo dejar Google o Meta?", answer: "No. ChatGPT Ads se suma a los canales que ya te funcionan." },
   { question: "¿Cuánto debo invertir?", answer: "Depende de tu ciudad, tus tratamientos y tus objetivos. Lo definimos contigo en la auditoría." },
-  { question: "¿En cuánto tiempo veo resultados?", answer: "Depende de la aprobación de OpenAI y del volumen de consultas en tu ciudad. En la auditoría te damos un estimado." },
+  { question: "¿En cuánto tiempo veo resultados?", answer: "La visibilidad en las respuestas de la IA empieza a construirse desde el primer mes. La pauta depende de que OpenAI habilite la salud en Colombia." },
 ];
 
 function FaqSectionLanding() {
@@ -674,6 +799,8 @@ export function LandingChatGptAdsB() {
         <HeroSection />
         <ProblemaSection />
         <OportunidadSection />
+        <ContextoSection />
+        <RequisitosSection />
         <BeneficiosSection />
         <ServiciosSection />
         <DiferenciadorSection />
@@ -713,7 +840,7 @@ export function LandingChatGptAdsBThanks() {
             Recibimos tu solicitud.
           </h1>
           <p className="mt-4 text-[17px] leading-[1.5] text-[#D6D1CA]">
-            Te contactaremos por WhatsApp para agendar tu auditoría de canales IA.
+            Te contactaremos por WhatsApp para agendar tu diagnóstico de preparación.
           </p>
           <a
             href="/"
