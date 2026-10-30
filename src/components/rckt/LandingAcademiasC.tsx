@@ -307,7 +307,7 @@ const h2Style = { fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 } as const
 
 const contextoCifras = [
   { value: "21.10.2026", text: "Colombia entra a ChatGPT Ads." },
-  { value: "1.200 M", text: "usuarios semanales de ChatGPT." },
+  { value: "84 %", text: "de los estudiantes de educación superior en Colombia usa IA generativa de forma habitual." },
   { value: "10.000 COP", text: "inversión mínima diaria por campaña." },
 ];
 const contextoComo = [
@@ -319,6 +319,7 @@ const permitido = [
   "Universidades, institutos y centros de formación.",
   "Cursos, diplomados, idiomas y preuniversitarios.",
   "Academias de tecnología, arte, música y deportes.",
+  "Cursos de finanzas o de preparación en derecho, siempre que no ofrezcan servicios financieros ni legales.",
 ];
 const noPermitido = [
   "Anuncios dirigidos a menores de edad.",
@@ -374,7 +375,7 @@ function ContextoSection() {
           ))}
         </div>
         <p className="mt-8 text-[12px] leading-[1.5] text-[#4F4F4D]">
-          Fuentes: OpenAI, política de anuncios, centro de ayuda y anuncio del 21 de octubre de 2026. Las políticas cambian con frecuencia y las verificamos en cada diagnóstico.
+          Fuentes: OpenAI, política de anuncios y centro de ayuda, octubre de 2026; GAD3 para Planeta Formación y Universidades; Ministerio de Educación Nacional, Decreto 1075 de 2015. Las políticas cambian con frecuencia y las verificamos en cada diagnóstico.
         </p>
       </div>
     </section>
@@ -383,7 +384,7 @@ function ContextoSection() {
 
 const requisitos = [
   { num: "01", title: "Identidad comercial verificable", text: "Academia registrada en Colombia, verificación del negocio y correo corporativo." },
-  { num: "02", title: "Licencias y autorizaciones", text: "Licencia de funcionamiento y registro de programas ante la secretaría de educación, cuando aplique." },
+  { num: "02", title: "Licencias y autorizaciones", text: "Si ofreces programas de 160 horas o más, necesitas licencia de funcionamiento y registro de cada programa, y tus anuncios deben mostrar el número de registro y el tipo de certificado. Si son cursos cortos, debes aclarar que son educación informal y que no conducen a título." },
   { num: "03", title: "Publicidad veraz", text: "Sin prometer empleos, salarios, títulos que no se otorgan ni resultados garantizados." },
   { num: "04", title: "Página de destino conforme", text: "Programa, horarios, precios y certificado explicados igual que en el anuncio." },
   { num: "05", title: "Revisión y aprobación final", text: "OpenAI aprueba la cuenta, el anuncio y la página, y puede retirar anuncios después." },
@@ -493,7 +494,7 @@ function DiferenciadorSection() {
             Publicidad <em>veraz</em> para educación.
           </h2>
           <p className="mt-6 text-[17px] leading-[1.5] text-white/80">
-            No prometemos empleos, salarios ni resultados garantizados. Mostramos lo que tu academia ofrece de verdad: programas, horarios, certificados y precios claros.
+            No prometemos empleos, salarios ni resultados garantizados. Mostramos lo que tu academia ofrece de verdad: programas, horarios, certificados y precios claros. En Colombia, la SIC ya ha multado a academias y cursos por publicidad engañosa. Por eso revisamos cada anuncio antes de publicarlo.
           </p>
           <div className="mt-10 grid grid-cols-1 gap-x-8 sm:grid-cols-2">
             {diferenciadorTags.map((tag) => (
