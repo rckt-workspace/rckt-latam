@@ -613,8 +613,8 @@ function FormularioSection() {
             </div>
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
-                <label htmlFor="b-sector" className="text-[14px] font-semibold text-[#F5F2ED]">Tipo de procedimientos</label>
-                <select id="b-sector" name="sector" defaultValue="" className={inputClass} onChange={(e) => markStarted(e.currentTarget.value)}>
+                <label htmlFor="b-sector" className={labelFormClass}>Tipo de procedimientos</label>
+                <select id="b-sector" name="sector" defaultValue="" className={selectClass} onChange={(e) => markStarted(e.currentTarget.value)}>
                   <option value="">Selecciona una opción</option>
                   {procedimientoOpciones.map((opcion) => (
                     <option key={opcion} value={opcion}>{opcion}</option>
@@ -622,8 +622,8 @@ function FormularioSection() {
                 </select>
               </div>
               <div>
-                <label htmlFor="b-sedes" className="text-[14px] font-semibold text-[#F5F2ED]">Número de sedes</label>
-                <select id="b-sedes" name="numero_sedes" defaultValue="" className={inputClass}>
+                <label htmlFor="b-sedes" className={labelFormClass}>Número de sedes</label>
+                <select id="b-sedes" name="numero_sedes" defaultValue="" className={selectClass}>
                   <option value="">Selecciona una opción</option>
                   {sedesOpciones.map((opcion) => (
                     <option key={opcion} value={opcion}>{opcion}</option>
