@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { LandingCirugiaPlasticaCThanks } from "@/components/rckt/LandingCirugiaPlasticaC";
+import { LandingAcademiasCThanks } from "@/components/rckt/LandingAcademiasC";
 import { gtmHeadScripts } from "@/components/rckt/tracking";
-const title = "Solicitud recibida · ChatGPT cirugía plástica · RCKT";
-const description = "Gracias por solicitar el diagnóstico de visibilidad en IA de tu clínica con RCKT.";
-export const Route = createFileRoute("/lp/chatgpt-ads-cirugia-plastica/gracias")({
+const title = "Solicitud recibida · ChatGPT Ads academias · RCKT";
+const description = "Gracias por solicitar el diagnóstico de tu academia con RCKT.";
+export const Route = createFileRoute("/lp/chatgpt-ads-academias/gracias")({
   staticData: { sitemap: false },
   head: () => ({
     meta: [
@@ -17,5 +17,5 @@ export const Route = createFileRoute("/lp/chatgpt-ads-cirugia-plastica/gracias")
     ],
     scripts: gtmHeadScripts,
   }),
-  component: () => <LandingCirugiaPlasticaCThanks />,
+  component: () => <LandingAcademiasCThanks />,
 });

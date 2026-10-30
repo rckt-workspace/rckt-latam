@@ -133,7 +133,7 @@ function RootShell({ children }: { children: ReactNode }) {
 const LANDING_NO_BLOBS_PREFIXES = [
   "/lp/clinicas-esteticas-ia",
   "/lp/chatgpt-ads-clinicas-esteticas",
-  "/lp/chatgpt-ads-cirugia-plastica",
+  "/lp/chatgpt-ads-academias",
 ];
 
 function RootComponent() {

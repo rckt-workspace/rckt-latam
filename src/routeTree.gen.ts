@@ -26,7 +26,7 @@ import { Route as CasosIndexRouteImport } from './routes/casos.index'
 import { Route as LegalAvisoLegalRouteImport } from './routes/legal.aviso-legal'
 import { Route as LegalCookiesRouteImport } from './routes/legal.cookies'
 import { Route as LegalPrivacidadRouteImport } from './routes/legal.privacidad'
-import { Route as LpChatgptAdsCirugiaPlasticaRouteImport } from './routes/lp.chatgpt-ads-cirugia-plastica'
+import { Route as LpChatgptAdsAcademiasRouteImport } from './routes/lp.chatgpt-ads-academias'
 import { Route as LpChatgptAdsClinicasEsteticasRouteImport } from './routes/lp.chatgpt-ads-clinicas-esteticas'
 import { Route as LpClinicasEsteticasIaRouteImport } from './routes/lp.clinicas-esteticas-ia'
 import { Route as LpSalesFlowRouteImport } from './routes/lp.sales-flow'
@@ -65,8 +65,8 @@ import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
 import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
 import { Route as ApiAdminVerifyRouteImport } from './routes/api/admin/verify'
 import { Route as ApiAplicacionesEnviarRouteImport } from './routes/api/aplicaciones/enviar'
-import { Route as LpChatgptAdsCirugiaPlasticaIndexRouteImport } from './routes/lp.chatgpt-ads-cirugia-plastica.index'
-import { Route as LpChatgptAdsCirugiaPlasticaGraciasRouteImport } from './routes/lp.chatgpt-ads-cirugia-plastica.gracias'
+import { Route as LpChatgptAdsAcademiasIndexRouteImport } from './routes/lp.chatgpt-ads-academias.index'
+import { Route as LpChatgptAdsAcademiasGraciasRouteImport } from './routes/lp.chatgpt-ads-academias.gracias'
 import { Route as LpChatgptAdsClinicasEsteticasIndexRouteImport } from './routes/lp.chatgpt-ads-clinicas-esteticas.index'
 import { Route as LpChatgptAdsClinicasEsteticasGraciasRouteImport } from './routes/lp.chatgpt-ads-clinicas-esteticas.gracias'
 import { Route as LpClinicasEsteticasIaIndexRouteImport } from './routes/lp.clinicas-esteticas-ia.index'
@@ -173,12 +173,11 @@ const LegalPrivacidadRoute = LegalPrivacidadRouteImport.update({
   path: '/legal/privacidad',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LpChatgptAdsCirugiaPlasticaRoute =
-  LpChatgptAdsCirugiaPlasticaRouteImport.update({
-    id: '/lp/chatgpt-ads-cirugia-plastica',
-    path: '/lp/chatgpt-ads-cirugia-plastica',
-    getParentRoute: () => rootRouteImport,
-  } as any)
+const LpChatgptAdsAcademiasRoute = LpChatgptAdsAcademiasRouteImport.update({
+  id: '/lp/chatgpt-ads-academias',
+  path: '/lp/chatgpt-ads-academias',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LpChatgptAdsClinicasEsteticasRoute =
   LpChatgptAdsClinicasEsteticasRouteImport.update({
     id: '/lp/chatgpt-ads-clinicas-esteticas',
@@ -379,17 +378,17 @@ const ApiAplicacionesEnviarRoute = ApiAplicacionesEnviarRouteImport.update({
   path: '/api/aplicaciones/enviar',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LpChatgptAdsCirugiaPlasticaIndexRoute =
-  LpChatgptAdsCirugiaPlasticaIndexRouteImport.update({
+const LpChatgptAdsAcademiasIndexRoute =
+  LpChatgptAdsAcademiasIndexRouteImport.update({
     id: '/',
     path: '/',
-    getParentRoute: () => LpChatgptAdsCirugiaPlasticaRoute,
+    getParentRoute: () => LpChatgptAdsAcademiasRoute,
   } as any)
-const LpChatgptAdsCirugiaPlasticaGraciasRoute =
-  LpChatgptAdsCirugiaPlasticaGraciasRouteImport.update({
+const LpChatgptAdsAcademiasGraciasRoute =
+  LpChatgptAdsAcademiasGraciasRouteImport.update({
     id: '/gracias',
     path: '/gracias',
-    getParentRoute: () => LpChatgptAdsCirugiaPlasticaRoute,
+    getParentRoute: () => LpChatgptAdsAcademiasRoute,
   } as any)
 const LpChatgptAdsClinicasEsteticasIndexRoute =
   LpChatgptAdsClinicasEsteticasIndexRouteImport.update({
@@ -519,7 +518,7 @@ export interface FileRoutesByFullPath {
   '/legal/aviso-legal': typeof LegalAvisoLegalRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacidad': typeof LegalPrivacidadRoute
-  '/lp/chatgpt-ads-cirugia-plastica': typeof LpChatgptAdsCirugiaPlasticaRouteWithChildren
+  '/lp/chatgpt-ads-academias': typeof LpChatgptAdsAcademiasRouteWithChildren
   '/lp/chatgpt-ads-clinicas-esteticas': typeof LpChatgptAdsClinicasEsteticasRouteWithChildren
   '/lp/clinicas-esteticas-ia': typeof LpClinicasEsteticasIaRouteWithChildren
   '/lp/sales-flow': typeof LpSalesFlowRouteWithChildren
@@ -560,14 +559,14 @@ export interface FileRoutesByFullPath {
   '/api/admin/logout': typeof ApiAdminLogoutRoute
   '/api/admin/verify': typeof ApiAdminVerifyRoute
   '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
-  '/lp/chatgpt-ads-cirugia-plastica/gracias': typeof LpChatgptAdsCirugiaPlasticaGraciasRoute
+  '/lp/chatgpt-ads-academias/gracias': typeof LpChatgptAdsAcademiasGraciasRoute
   '/lp/chatgpt-ads-clinicas-esteticas/gracias': typeof LpChatgptAdsClinicasEsteticasGraciasRoute
   '/lp/clinicas-esteticas-ia/gracias': typeof LpClinicasEsteticasIaGraciasRoute
   '/lp/sales-flow-clinicas-bogota-b/gracias': typeof LpSalesFlowClinicasBogotaBGraciasRoute
   '/lp/sales-flow-clinicas-bogota/gracias': typeof LpSalesFlowClinicasBogotaGraciasRoute
   '/lp/sales-flow/gracias': typeof LpSalesFlowGraciasRoute
   '/trabaja-con-nosotros/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
-  '/lp/chatgpt-ads-cirugia-plastica/': typeof LpChatgptAdsCirugiaPlasticaIndexRoute
+  '/lp/chatgpt-ads-academias/': typeof LpChatgptAdsAcademiasIndexRoute
   '/lp/chatgpt-ads-clinicas-esteticas/': typeof LpChatgptAdsClinicasEsteticasIndexRoute
   '/lp/clinicas-esteticas-ia/': typeof LpClinicasEsteticasIaIndexRoute
   '/lp/sales-flow-clinicas-bogota-b/': typeof LpSalesFlowClinicasBogotaBIndexRoute
@@ -634,14 +633,14 @@ export interface FileRoutesByTo {
   '/api/admin/logout': typeof ApiAdminLogoutRoute
   '/api/admin/verify': typeof ApiAdminVerifyRoute
   '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
-  '/lp/chatgpt-ads-cirugia-plastica/gracias': typeof LpChatgptAdsCirugiaPlasticaGraciasRoute
+  '/lp/chatgpt-ads-academias/gracias': typeof LpChatgptAdsAcademiasGraciasRoute
   '/lp/chatgpt-ads-clinicas-esteticas/gracias': typeof LpChatgptAdsClinicasEsteticasGraciasRoute
   '/lp/clinicas-esteticas-ia/gracias': typeof LpClinicasEsteticasIaGraciasRoute
   '/lp/sales-flow-clinicas-bogota-b/gracias': typeof LpSalesFlowClinicasBogotaBGraciasRoute
   '/lp/sales-flow-clinicas-bogota/gracias': typeof LpSalesFlowClinicasBogotaGraciasRoute
   '/lp/sales-flow/gracias': typeof LpSalesFlowGraciasRoute
   '/trabaja-con-nosotros/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
-  '/lp/chatgpt-ads-cirugia-plastica': typeof LpChatgptAdsCirugiaPlasticaIndexRoute
+  '/lp/chatgpt-ads-academias': typeof LpChatgptAdsAcademiasIndexRoute
   '/lp/chatgpt-ads-clinicas-esteticas': typeof LpChatgptAdsClinicasEsteticasIndexRoute
   '/lp/clinicas-esteticas-ia': typeof LpClinicasEsteticasIaIndexRoute
   '/lp/sales-flow-clinicas-bogota-b': typeof LpSalesFlowClinicasBogotaBIndexRoute
@@ -674,7 +673,7 @@ export interface FileRoutesById {
   '/legal/aviso-legal': typeof LegalAvisoLegalRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacidad': typeof LegalPrivacidadRoute
-  '/lp/chatgpt-ads-cirugia-plastica': typeof LpChatgptAdsCirugiaPlasticaRouteWithChildren
+  '/lp/chatgpt-ads-academias': typeof LpChatgptAdsAcademiasRouteWithChildren
   '/lp/chatgpt-ads-clinicas-esteticas': typeof LpChatgptAdsClinicasEsteticasRouteWithChildren
   '/lp/clinicas-esteticas-ia': typeof LpClinicasEsteticasIaRouteWithChildren
   '/lp/sales-flow': typeof LpSalesFlowRouteWithChildren
@@ -715,14 +714,14 @@ export interface FileRoutesById {
   '/api/admin/logout': typeof ApiAdminLogoutRoute
   '/api/admin/verify': typeof ApiAdminVerifyRoute
   '/api/aplicaciones/enviar': typeof ApiAplicacionesEnviarRoute
-  '/lp/chatgpt-ads-cirugia-plastica/gracias': typeof LpChatgptAdsCirugiaPlasticaGraciasRoute
+  '/lp/chatgpt-ads-academias/gracias': typeof LpChatgptAdsAcademiasGraciasRoute
   '/lp/chatgpt-ads-clinicas-esteticas/gracias': typeof LpChatgptAdsClinicasEsteticasGraciasRoute
   '/lp/clinicas-esteticas-ia/gracias': typeof LpClinicasEsteticasIaGraciasRoute
   '/lp/sales-flow-clinicas-bogota-b/gracias': typeof LpSalesFlowClinicasBogotaBGraciasRoute
   '/lp/sales-flow-clinicas-bogota/gracias': typeof LpSalesFlowClinicasBogotaGraciasRoute
   '/lp/sales-flow/gracias': typeof LpSalesFlowGraciasRoute
   '/trabaja-con-nosotros_/aplicar/$id': typeof TrabajaConNosotrosAplicarIdRoute
-  '/lp/chatgpt-ads-cirugia-plastica/': typeof LpChatgptAdsCirugiaPlasticaIndexRoute
+  '/lp/chatgpt-ads-academias/': typeof LpChatgptAdsAcademiasIndexRoute
   '/lp/chatgpt-ads-clinicas-esteticas/': typeof LpChatgptAdsClinicasEsteticasIndexRoute
   '/lp/clinicas-esteticas-ia/': typeof LpClinicasEsteticasIaIndexRoute
   '/lp/sales-flow-clinicas-bogota-b/': typeof LpSalesFlowClinicasBogotaBIndexRoute
@@ -756,7 +755,7 @@ export interface FileRouteTypes {
     | '/legal/aviso-legal'
     | '/legal/cookies'
     | '/legal/privacidad'
-    | '/lp/chatgpt-ads-cirugia-plastica'
+    | '/lp/chatgpt-ads-academias'
     | '/lp/chatgpt-ads-clinicas-esteticas'
     | '/lp/clinicas-esteticas-ia'
     | '/lp/sales-flow'
@@ -797,14 +796,14 @@ export interface FileRouteTypes {
     | '/api/admin/logout'
     | '/api/admin/verify'
     | '/api/aplicaciones/enviar'
-    | '/lp/chatgpt-ads-cirugia-plastica/gracias'
+    | '/lp/chatgpt-ads-academias/gracias'
     | '/lp/chatgpt-ads-clinicas-esteticas/gracias'
     | '/lp/clinicas-esteticas-ia/gracias'
     | '/lp/sales-flow-clinicas-bogota-b/gracias'
     | '/lp/sales-flow-clinicas-bogota/gracias'
     | '/lp/sales-flow/gracias'
     | '/trabaja-con-nosotros/aplicar/$id'
-    | '/lp/chatgpt-ads-cirugia-plastica/'
+    | '/lp/chatgpt-ads-academias/'
     | '/lp/chatgpt-ads-clinicas-esteticas/'
     | '/lp/clinicas-esteticas-ia/'
     | '/lp/sales-flow-clinicas-bogota-b/'
@@ -871,14 +870,14 @@ export interface FileRouteTypes {
     | '/api/admin/logout'
     | '/api/admin/verify'
     | '/api/aplicaciones/enviar'
-    | '/lp/chatgpt-ads-cirugia-plastica/gracias'
+    | '/lp/chatgpt-ads-academias/gracias'
     | '/lp/chatgpt-ads-clinicas-esteticas/gracias'
     | '/lp/clinicas-esteticas-ia/gracias'
     | '/lp/sales-flow-clinicas-bogota-b/gracias'
     | '/lp/sales-flow-clinicas-bogota/gracias'
     | '/lp/sales-flow/gracias'
     | '/trabaja-con-nosotros/aplicar/$id'
-    | '/lp/chatgpt-ads-cirugia-plastica'
+    | '/lp/chatgpt-ads-academias'
     | '/lp/chatgpt-ads-clinicas-esteticas'
     | '/lp/clinicas-esteticas-ia'
     | '/lp/sales-flow-clinicas-bogota-b'
@@ -910,7 +909,7 @@ export interface FileRouteTypes {
     | '/legal/aviso-legal'
     | '/legal/cookies'
     | '/legal/privacidad'
-    | '/lp/chatgpt-ads-cirugia-plastica'
+    | '/lp/chatgpt-ads-academias'
     | '/lp/chatgpt-ads-clinicas-esteticas'
     | '/lp/clinicas-esteticas-ia'
     | '/lp/sales-flow'
@@ -951,14 +950,14 @@ export interface FileRouteTypes {
     | '/api/admin/logout'
     | '/api/admin/verify'
     | '/api/aplicaciones/enviar'
-    | '/lp/chatgpt-ads-cirugia-plastica/gracias'
+    | '/lp/chatgpt-ads-academias/gracias'
     | '/lp/chatgpt-ads-clinicas-esteticas/gracias'
     | '/lp/clinicas-esteticas-ia/gracias'
     | '/lp/sales-flow-clinicas-bogota-b/gracias'
     | '/lp/sales-flow-clinicas-bogota/gracias'
     | '/lp/sales-flow/gracias'
     | '/trabaja-con-nosotros_/aplicar/$id'
-    | '/lp/chatgpt-ads-cirugia-plastica/'
+    | '/lp/chatgpt-ads-academias/'
     | '/lp/chatgpt-ads-clinicas-esteticas/'
     | '/lp/clinicas-esteticas-ia/'
     | '/lp/sales-flow-clinicas-bogota-b/'
@@ -991,7 +990,7 @@ export interface RootRouteChildren {
   LegalAvisoLegalRoute: typeof LegalAvisoLegalRoute
   LegalCookiesRoute: typeof LegalCookiesRoute
   LegalPrivacidadRoute: typeof LegalPrivacidadRoute
-  LpChatgptAdsCirugiaPlasticaRoute: typeof LpChatgptAdsCirugiaPlasticaRouteWithChildren
+  LpChatgptAdsAcademiasRoute: typeof LpChatgptAdsAcademiasRouteWithChildren
   LpChatgptAdsClinicasEsteticasRoute: typeof LpChatgptAdsClinicasEsteticasRouteWithChildren
   LpClinicasEsteticasIaRoute: typeof LpClinicasEsteticasIaRouteWithChildren
   LpSalesFlowRoute: typeof LpSalesFlowRouteWithChildren
@@ -1165,11 +1164,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalPrivacidadRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lp/chatgpt-ads-cirugia-plastica': {
-      id: '/lp/chatgpt-ads-cirugia-plastica'
-      path: '/lp/chatgpt-ads-cirugia-plastica'
-      fullPath: '/lp/chatgpt-ads-cirugia-plastica'
-      preLoaderRoute: typeof LpChatgptAdsCirugiaPlasticaRouteImport
+    '/lp/chatgpt-ads-academias': {
+      id: '/lp/chatgpt-ads-academias'
+      path: '/lp/chatgpt-ads-academias'
+      fullPath: '/lp/chatgpt-ads-academias'
+      preLoaderRoute: typeof LpChatgptAdsAcademiasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lp/chatgpt-ads-clinicas-esteticas': {
@@ -1438,19 +1437,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAplicacionesEnviarRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lp/chatgpt-ads-cirugia-plastica/': {
-      id: '/lp/chatgpt-ads-cirugia-plastica/'
+    '/lp/chatgpt-ads-academias/': {
+      id: '/lp/chatgpt-ads-academias/'
       path: '/'
-      fullPath: '/lp/chatgpt-ads-cirugia-plastica/'
-      preLoaderRoute: typeof LpChatgptAdsCirugiaPlasticaIndexRouteImport
-      parentRoute: typeof LpChatgptAdsCirugiaPlasticaRoute
+      fullPath: '/lp/chatgpt-ads-academias/'
+      preLoaderRoute: typeof LpChatgptAdsAcademiasIndexRouteImport
+      parentRoute: typeof LpChatgptAdsAcademiasRoute
     }
-    '/lp/chatgpt-ads-cirugia-plastica/gracias': {
-      id: '/lp/chatgpt-ads-cirugia-plastica/gracias'
+    '/lp/chatgpt-ads-academias/gracias': {
+      id: '/lp/chatgpt-ads-academias/gracias'
       path: '/gracias'
-      fullPath: '/lp/chatgpt-ads-cirugia-plastica/gracias'
-      preLoaderRoute: typeof LpChatgptAdsCirugiaPlasticaGraciasRouteImport
-      parentRoute: typeof LpChatgptAdsCirugiaPlasticaRoute
+      fullPath: '/lp/chatgpt-ads-academias/gracias'
+      preLoaderRoute: typeof LpChatgptAdsAcademiasGraciasRouteImport
+      parentRoute: typeof LpChatgptAdsAcademiasRoute
     }
     '/lp/chatgpt-ads-clinicas-esteticas/': {
       id: '/lp/chatgpt-ads-clinicas-esteticas/'
@@ -1595,22 +1594,19 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface LpChatgptAdsCirugiaPlasticaRouteChildren {
-  LpChatgptAdsCirugiaPlasticaGraciasRoute: typeof LpChatgptAdsCirugiaPlasticaGraciasRoute
-  LpChatgptAdsCirugiaPlasticaIndexRoute: typeof LpChatgptAdsCirugiaPlasticaIndexRoute
+interface LpChatgptAdsAcademiasRouteChildren {
+  LpChatgptAdsAcademiasGraciasRoute: typeof LpChatgptAdsAcademiasGraciasRoute
+  LpChatgptAdsAcademiasIndexRoute: typeof LpChatgptAdsAcademiasIndexRoute
 }
 
-const LpChatgptAdsCirugiaPlasticaRouteChildren: LpChatgptAdsCirugiaPlasticaRouteChildren =
-  {
-    LpChatgptAdsCirugiaPlasticaGraciasRoute:
-      LpChatgptAdsCirugiaPlasticaGraciasRoute,
-    LpChatgptAdsCirugiaPlasticaIndexRoute:
-      LpChatgptAdsCirugiaPlasticaIndexRoute,
-  }
+const LpChatgptAdsAcademiasRouteChildren: LpChatgptAdsAcademiasRouteChildren = {
+  LpChatgptAdsAcademiasGraciasRoute: LpChatgptAdsAcademiasGraciasRoute,
+  LpChatgptAdsAcademiasIndexRoute: LpChatgptAdsAcademiasIndexRoute,
+}
 
-const LpChatgptAdsCirugiaPlasticaRouteWithChildren =
-  LpChatgptAdsCirugiaPlasticaRoute._addFileChildren(
-    LpChatgptAdsCirugiaPlasticaRouteChildren,
+const LpChatgptAdsAcademiasRouteWithChildren =
+  LpChatgptAdsAcademiasRoute._addFileChildren(
+    LpChatgptAdsAcademiasRouteChildren,
   )
 
 interface LpChatgptAdsClinicasEsteticasRouteChildren {
@@ -1710,8 +1706,7 @@ const rootRouteChildren: RootRouteChildren = {
   LegalAvisoLegalRoute: LegalAvisoLegalRoute,
   LegalCookiesRoute: LegalCookiesRoute,
   LegalPrivacidadRoute: LegalPrivacidadRoute,
-  LpChatgptAdsCirugiaPlasticaRoute:
-    LpChatgptAdsCirugiaPlasticaRouteWithChildren,
+  LpChatgptAdsAcademiasRoute: LpChatgptAdsAcademiasRouteWithChildren,
   LpChatgptAdsClinicasEsteticasRoute:
     LpChatgptAdsClinicasEsteticasRouteWithChildren,
   LpClinicasEsteticasIaRoute: LpClinicasEsteticasIaRouteWithChildren,
