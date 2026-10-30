@@ -158,7 +158,7 @@ function HeroSection() {
         loading="eager"
       />
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 hidden md:block"
         style={{
           background:
             "linear-gradient(to right, rgba(246,242,255,0.97) 0%, rgba(246,242,255,0.92) 30%, rgba(233,220,255,0.75) 48%, rgba(233,220,255,0) 68%)",
