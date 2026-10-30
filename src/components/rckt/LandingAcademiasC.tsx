@@ -217,7 +217,7 @@ function ProblemaSection() {
         </div>
         <div className="mt-12 rounded-[4px] bg-[#EEF1F6] px-6 py-10 text-center md:py-14">
           <p className={`${serif} mx-auto max-w-[820px] italic text-[#005CFF]`} style={{ fontSize: "clamp(26px, 3.2vw, 40px)", lineHeight: 1.15 }}>
-            Tu academia necesita estar en esa conversación, no solo en los buscadores.
+            Tu academia necesita una estrategia que acompañe ese recorrido, no solo anuncios que generen clics.
           </p>
         </div>
       </div>
@@ -316,7 +316,7 @@ const contextoComo = [
   "El anunciante nunca ve las conversaciones.",
 ];
 const permitido = [
-  "Universidades, institutos y centros de formación.",
+  "Academias, institutos y centros de formación.",
   "Cursos, diplomados, idiomas y preuniversitarios.",
   "Academias de tecnología, arte, música y deportes.",
   "Cursos de finanzas o de preparación en derecho, siempre que no ofrezcan servicios financieros ni legales.",
@@ -420,7 +420,7 @@ function RequisitosSection() {
 const beneficios = [
   { num: "01", title: "Momento de decisión", text: "Apareces cuando la persona está comparando opciones." },
   { num: "02", title: "Le hablas a quien decide", text: "Adultos que estudian y padres que eligen por sus hijos." },
-  { num: "03", title: "Cada inscripción medida", text: "Sabes cuántos leads y matrículas llegan desde ChatGPT." },
+  { num: "03", title: "Cada inscripción medida", text: "Sabes cuántas solicitudes e inscripciones llegan desde ChatGPT." },
   { num: "04", title: "Antes que tu competencia", text: "El canal acaba de abrir y todavía hay pocos anunciantes." },
 ];
 
@@ -462,7 +462,7 @@ function ServiciosSection() {
     <section className="bg-white py-16 md:py-24">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2 className={`${serif} max-w-[760px] text-[#212121]`} style={{ fontSize: "clamp(38px, 4.5vw, 62px)", lineHeight: 1 }}>
-          De la cuenta a la <em>matrícula</em>.
+          De la cuenta a la <em>inscripción</em>.
         </h2>
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {servicios.map((servicio) => (
@@ -582,6 +582,7 @@ function FormularioSection() {
             telefono: get("telefono"),
             sector: get("sector"),
             pais: "Colombia",
+            tratamientos_principales: get("cursos") || undefined,
             problema_principal: registro ? `Registro de programas: ${registro}` : undefined,
           },
           attribution: {
@@ -643,6 +644,10 @@ function FormularioSection() {
                   <option key={o} value={o}>{o}</option>
                 ))}
               </select>
+            </div>
+            <div>
+              <label htmlFor="c-cursos" className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">¿Qué cursos quieres llenar?</label>
+              <input id="c-cursos" name="cursos" type="text" maxLength={120} placeholder="Ej.: inglés para adultos, preicfes, programación" className={fieldClass} />
             </div>
             <div>
               <label htmlFor="c-registro" className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">¿Tus programas tienen registro ante la secretaría de educación?</label>
