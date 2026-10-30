@@ -10,6 +10,7 @@ import { WHATSAPP_URL, contactConfig } from "@/config/contact";
 import logoDark from "@/assets/rckt-logo-dark.png";
 import logoLight from "@/assets/rckt-logo-light.png";
 import imgA01 from "@/assets/A-01-hero-consulta.jpg";
+import imgA01Movil from "@/assets/A-01-hero-movil.jpg";
 import imgA02 from "@/assets/A-02-problema-paciente-celular.jpg";
 import imgA03 from "@/assets/A-03-beneficios-equipo.jpg";
 import imgA04 from "@/assets/A-04-formulario-directora.jpg";
@@ -150,11 +151,17 @@ const heroGradient =
 
 function HeroSection() {
   return (
-    <section id="top" className="relative overflow-hidden md:min-h-[680px]">
+    <section id="top" className="relative flex min-h-[max(100svh,720px)] flex-col overflow-hidden md:block md:min-h-[680px]">
       <img
         src={imgA01}
         alt=""
-        className="absolute inset-0 h-full w-full object-cover object-[72%_50%] md:object-center"
+        className="absolute inset-0 hidden h-full w-full object-cover object-[72%_50%] md:block md:object-center"
+        loading="eager"
+      />
+      <img
+        src={imgA01Movil}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover object-[50%_100%] md:hidden"
         loading="eager"
       />
       <div
