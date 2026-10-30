@@ -174,14 +174,14 @@ const problemaCards = [
 
 function ProblemaSection() {
   return (
-    <section className="bg-[#FBFAFF] py-16 md:py-24">
+    <section className="bg-[#FBFAFF] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
           <div>
-            <h2 className={`${fontDisplay} font-bold text-[#212121]`} style={{ fontSize: "clamp(34px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+            <h2 className={`${fontDisplay} font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
               La decisión de un tratamiento estético comienza mucho antes de agendar una cita.
             </h2>
-            <p className="mt-6 text-[17px] leading-[1.5] text-[#4B4366]">
+            <p className="mt-6 text-[16px] leading-[1.5] text-[#4B4366]">
               Antes de contactar una clínica, una persona puede investigar procedimientos, comparar alternativas, consultar dudas y buscar información sobre seguridad, recuperación y resultados. Las herramientas de IA están ampliando las formas de acceder a esa información.
             </p>
           </div>
@@ -191,14 +191,14 @@ function ProblemaSection() {
           {problemaCards.map((card) => (
             <article key={card.num} className="rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-6">
               <span className={`${fontDisplay} text-[15px] font-bold text-[#6A3FE0]`}>{card.num}</span>
-              <h3 className={`${fontDisplay} mt-3 text-[22px] font-bold text-[#212121]`}>{card.title}</h3>
+              <h3 className={`${fontDisplay} mt-3 text-[19px] font-bold text-[#212121]`}>{card.title}</h3>
               <p className="mt-2 text-[15px] leading-[1.5] text-[#4B4366]">{card.text}</p>
             </article>
           ))}
         </div>
         <p
           className={`${fontDisplay} mt-14 max-w-[820px] font-bold text-[#4B2BB8]`}
-          style={{ fontSize: "clamp(24px, 3vw, 36px)", lineHeight: 1.15, letterSpacing: "-0.01em" }}
+          style={{ fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: 1.2, letterSpacing: "-0.01em" }}
         >
           Tu clínica necesita una estrategia que acompañe ese recorrido, no solamente anuncios que generen clics.
         </p>
@@ -209,13 +209,13 @@ function ProblemaSection() {
 
 function OportunidadSection() {
   return (
-    <section className="bg-[#6A3FE0] py-16 md:py-24">
+    <section className="bg-[#6A3FE0] py-12 md:py-16">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
-          <h2 className={`${fontDisplay} font-bold text-white`} style={{ fontSize: "clamp(34px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          <h2 className={`${fontDisplay} font-bold text-white`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             Tu clínica, presente en nuevas experiencias de descubrimiento.
           </h2>
-          <p className="mt-6 text-[17px] leading-[1.5] text-white/90">
+          <p className="mt-6 text-[16px] leading-[1.5] text-white/90">
             La publicidad en entornos de inteligencia artificial abre una posibilidad para que las marcas exploren nuevas formas de conectar con personas interesadas en sus servicios. Pero una estrategia efectiva requiere más que aparecer en un espacio publicitario: necesita un mensaje relevante, una página que genere confianza y un proceso comercial capaz de atender las consultas.
           </p>
         </div>
@@ -255,11 +255,11 @@ const beneficios = [
 
 function BeneficiosSection() {
   return (
-    <section id="beneficios" className="bg-[#FBFAFF] py-16 md:py-24">
+    <section id="beneficios" className="bg-[#FBFAFF] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2
           className={`${fontDisplay} max-w-[900px] font-bold text-[#212121]`}
-          style={{ fontSize: "clamp(34px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}
+          style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
         >
           No se trata de estar en todas partes. Se trata de invertir donde tenga sentido para tu clínica.
         </h2>
@@ -268,7 +268,7 @@ function BeneficiosSection() {
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             {beneficios.map((item) => (
               <article key={item.title} className="rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-6">
-                <h3 className={`${fontDisplay} text-[20px] font-bold leading-[1.2] text-[#212121]`}>{item.title}</h3>
+                <h3 className={`${fontDisplay} text-[19px] font-bold leading-[1.2] text-[#212121]`}>{item.title}</h3>
                 <p className="mt-2 text-[15px] leading-[1.5] text-[#4B4366]">{item.text}</p>
               </article>
             ))}
@@ -322,7 +322,7 @@ function ServicioCard({ servicio }: { servicio: (typeof servicios)[number] }) {
         <div className="absolute inset-0 flex flex-col justify-between rounded-[24px] bg-[#4B2BB8] p-7 [backface-visibility:hidden] [transform:rotateY(180deg)]">
           <div>
             <span className={`${fontDisplay} text-[15px] font-bold text-white/70`}>{servicio.num}</span>
-            <h3 className={`${fontDisplay} mt-3 text-[24px] font-bold leading-[1.15] text-white`}>{servicio.title}</h3>
+            <h3 className={`${fontDisplay} mt-3 text-[20px] font-bold leading-[1.15] text-white`}>{servicio.title}</h3>
             <p className="mt-3 text-[15px] leading-[1.5] text-white/90">{servicio.text}</p>
           </div>
           <a
@@ -340,10 +340,10 @@ function ServicioCard({ servicio }: { servicio: (typeof servicios)[number] }) {
 
 function ServiciosSection() {
   return (
-    <section className="bg-[#FBFAFF] py-16 md:py-24">
+    <section className="bg-[#FBFAFF] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
-          <h2 className={`${fontDisplay} max-w-[640px] font-bold text-[#212121]`} style={{ fontSize: "clamp(34px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          <h2 className={`${fontDisplay} max-w-[640px] font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             De la oportunidad tecnológica a una estrategia comercial.
           </h2>
           <p className="text-[13px] text-[#4B4366] md:pb-2">Pasa el cursor por cada tarjeta para ver qué incluye.</p>
@@ -367,14 +367,14 @@ const diferenciadorTags = [
 
 function DiferenciadorSection() {
   return (
-    <section className="bg-[#2A1A55] py-16 md:py-24">
+    <section className="bg-[#2A1A55] py-12 md:py-16">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <ImagePlaceholder name="A-09-diferenciador-libreta.jpg" className="h-[300px] md:h-[400px]" />
         <div>
-          <h2 className={`${fontDisplay} font-bold text-white`} style={{ fontSize: "clamp(34px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          <h2 className={`${fontDisplay} font-bold text-white`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             La tecnología cambia. Una buena estrategia sigue siendo esencial.
           </h2>
-          <p className="mt-6 text-[17px] leading-[1.5] text-white/85">
+          <p className="mt-6 text-[16px] leading-[1.5] text-white/85">
             No proponemos invertir en IA simplemente porque es tendencia. Evaluamos cómo puede integrarse a la realidad comercial de tu clínica, considerando capacidad de atención, servicios, presupuesto y objetivos.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -398,9 +398,9 @@ const procesoPasos = [
 
 function ProcesoSection() {
   return (
-    <section id="proceso" className="bg-[#FBFAFF] py-16 md:py-24">
+    <section id="proceso" className="bg-[#FBFAFF] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <h2 className={`${fontDisplay} max-w-[700px] font-bold text-[#212121]`} style={{ fontSize: "clamp(34px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+        <h2 className={`${fontDisplay} max-w-[700px] font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
           Tu siguiente paso puede ser más sencillo de lo que imaginas.
         </h2>
         <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
@@ -409,7 +409,7 @@ function ProcesoSection() {
               <span className={`${fontDisplay} flex h-[44px] w-[44px] items-center justify-center rounded-full bg-[#6A3FE0] text-[18px] font-bold text-white`}>
                 {paso.num}
               </span>
-              <h3 className={`${fontDisplay} mt-5 text-[22px] font-bold leading-[1.2] text-[#212121]`}>{paso.title}</h3>
+              <h3 className={`${fontDisplay} mt-5 text-[19px] font-bold leading-[1.2] text-[#212121]`}>{paso.title}</h3>
               <p className="mt-2 text-[15px] leading-[1.5] text-[#4B4366]">{paso.text}</p>
             </article>
           ))}
@@ -491,13 +491,13 @@ function FormularioSection() {
   }
 
   return (
-    <section id="diagnostico" className="bg-[#F1ECFF] py-16 md:py-24">
+    <section id="diagnostico" className="bg-[#F1ECFF] py-12 md:py-16">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
-          <h2 className={`${fontDisplay} font-bold text-[#212121]`} style={{ fontSize: "clamp(34px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          <h2 className={`${fontDisplay} font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             Descubre si tu clínica está preparada para nuevas oportunidades con IA.
           </h2>
-          <p className="mt-6 text-[17px] leading-[1.5] text-[#4B4366]">
+          <p className="mt-6 text-[16px] leading-[1.5] text-[#4B4366]">
             Déjanos tus datos y conversemos sobre cómo fortalecer tu estrategia digital.
           </p>
           <ImagePlaceholder name="A-04-formulario-directora.jpg" className="mt-10 hidden h-[280px] lg:block" />
@@ -575,9 +575,9 @@ const faqItems = [
 
 function FaqSectionLanding() {
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className="bg-white py-12 md:py-16">
       <div className="mx-auto w-full max-w-[760px] px-5 md:px-8">
-        <h2 className={`${fontDisplay} text-center font-bold text-[#212121]`} style={{ fontSize: "clamp(34px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+        <h2 className={`${fontDisplay} text-center font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
           Preguntas frecuentes
         </h2>
         <Accordion type="single" collapsible className="mt-10">
@@ -602,10 +602,10 @@ function CierreSection() {
     <section className="relative overflow-hidden" style={{ background: heroGradient }}>
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-10 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-2">
         <div className="relative z-10">
-          <h2 className={`${fontDisplay} font-bold text-[#212121]`} style={{ fontSize: "clamp(34px, 4.5vw, 60px)", lineHeight: 1.02, letterSpacing: "-0.03em" }}>
+          <h2 className={`${fontDisplay} font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 48px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             El futuro del marketing también se está construyendo con inteligencia artificial.
           </h2>
-          <p className="mt-6 text-[17px] leading-[1.5] text-[#4B4366]">
+          <p className="mt-6 text-[16px] leading-[1.5] text-[#4B4366]">
             Tu clínica no necesita perseguir cada tendencia. Necesita identificar cuáles pueden convertirse en oportunidades reales para su crecimiento.
           </p>
           <div className="mt-8">
@@ -769,10 +769,10 @@ export function LandingClinicasIaAThanks() {
           <span className="mx-auto flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[#6A3FE0] text-white">
             <Check strokeWidth={2.5} className="h-7 w-7" aria-hidden="true" />
           </span>
-          <h1 className={`${fontDisplay} mt-6 font-bold text-[#212121]`} style={{ fontSize: "clamp(34px, 4vw, 48px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          <h1 className={`${fontDisplay} mt-6 font-bold text-[#212121]`} style={{ fontSize: "clamp(34px, 4vw, 48px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             Recibimos tu solicitud.
           </h1>
-          <p className="mt-4 text-[17px] leading-[1.5] text-[#4B4366]">
+          <p className="mt-4 text-[16px] leading-[1.5] text-[#4B4366]">
             Te contactaremos por WhatsApp para conversar sobre el diagnóstico de tu clínica.
           </p>
           <a
