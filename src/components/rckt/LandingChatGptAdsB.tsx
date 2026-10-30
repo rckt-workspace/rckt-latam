@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { Check } from "lucide-react";
+import { Check, Menu, X } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { saveDiagnosticLead } from "@/lib/leads-diagnostic.functions";
 import { getCampaignParams, saveCampaignParams, track } from "@/components/rckt/tracking";
@@ -67,34 +67,59 @@ function CtaButton({ children, className = "" }: { children: React.ReactNode; cl
 }
 
 function LandingHeader() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  const linkClass = "text-[15px] font-medium text-[#F5F2ED]! transition-colors hover:text-[#FC5C1F]! focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FC5C1F]";
+  const btnClass = "inline-flex items-center justify-center rounded-full bg-[#F5F2ED] font-semibold text-[#1A1A1A]! transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FC5C1F]";
   return (
-    <header className="sticky top-0 z-40 border-b border-[#3A3A3A] bg-[#212121]/90 backdrop-blur-md">
-      <div className="mx-auto flex h-[68px] w-full max-w-[1200px] items-center justify-between gap-4 px-5 md:px-8">
+    <header className={`fixed inset-x-0 top-0 z-50 px-4 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:px-6 ${scrolled ? "pt-3" : "pt-0"}`}>
+      <div
+        className={`mx-auto flex w-full items-center justify-between gap-4 px-5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:px-8 ${
+          scrolled
+            ? "h-[60px] max-w-[1100px] rounded-full border border-[#3A3A3A] bg-[rgba(33,33,33,0.75)] shadow-[0_10px_30px_rgba(0,0,0,0.12)] backdrop-blur-md"
+            : "h-[68px] max-w-[1200px] border border-transparent bg-transparent"
+        }`}
+      >
         <a href="#top" aria-label="RCKT">
-          <img src={logoLight} alt="RCKT" className="h-7 w-auto" />
+          <img src={logoLight} alt="RCKT" className={`w-auto transition-all duration-500 ${scrolled ? "h-6" : "h-7"}`} />
         </a>
         <nav className="hidden items-center gap-8 md:flex" aria-label="Secciones">
-          <a href="#beneficios" className="text-[15px] font-medium text-[#F5F2ED] transition-colors hover:text-[#FC5C1F] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FC5C1F]">
-            Beneficios
-          </a>
-          <a href="#proceso" className="text-[15px] font-medium text-[#F5F2ED] transition-colors hover:text-[#FC5C1F] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FC5C1F]">
-            Cómo funciona
-          </a>
+          <a href="#beneficios" className={linkClass}>Beneficios</a>
+          <a href="#proceso" className={linkClass}>Cómo funciona</a>
         </nav>
-        <a
-          href="#diagnostico"
-          className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-[#F5F2ED] px-6 text-[15px] font-semibold text-[#1A1A1A] transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FC5C1F]"
-        >
-          Agendar consultoría
-        </a>
+        <div className="flex items-center gap-2 md:hidden">
+          <a href="#diagnostico" className={`${btnClass} h-[40px] whitespace-nowrap px-4 text-[13px]`}>Solicitar diagnóstico</a>
+          <button
+            type="button"
+            onClick={() => setMenuOpen((value) => !value)}
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            className="inline-flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full border border-[#3A3A3A] bg-[rgba(33,33,33,0.75)] text-[#F5F2ED]! backdrop-blur-md transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FC5C1F]"
+          >
+            {menuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+          </button>
+        </div>
+        <a href="#diagnostico" className={`${btnClass} hidden min-h-[42px] px-6 text-[14px] md:inline-flex`}>Solicitar diagnóstico</a>
       </div>
+      {menuOpen && (
+        <div className="mx-auto mt-2 w-full max-w-[1100px] rounded-[24px] border border-[#3A3A3A] bg-[rgba(33,33,33,0.92)] p-2 shadow-[0_10px_30px_rgba(0,0,0,0.12)] backdrop-blur-md md:hidden">
+          <a href="#beneficios" onClick={() => setMenuOpen(false)} className="flex min-h-[44px] items-center px-4 text-[16px] font-medium text-[#F5F2ED]! transition-colors hover:text-[#FC5C1F]!">Beneficios</a>
+          <a href="#proceso" onClick={() => setMenuOpen(false)} className="flex min-h-[44px] items-center px-4 text-[16px] font-medium text-[#F5F2ED]! transition-colors hover:text-[#FC5C1F]!">Cómo funciona</a>
+        </div>
+      )}
     </header>
   );
 }
 
 function HeroSection() {
   return (
-    <section id="top" className="bg-[#212121] px-4 pt-6 md:px-8 md:pt-10">
+    <section id="top" className="bg-[#212121] px-4 pt-[80px] md:px-8 md:pt-[88px]">
       <div className="relative mx-auto w-full max-w-[1200px] overflow-hidden rounded-[28px]">
         <ImagePlaceholder name="B-01-hero-consulta.jpg" className="absolute inset-0 h-full w-full rounded-none border-0" />
         <div
@@ -109,11 +134,11 @@ function HeroSection() {
           </span>
           <h1
             className="mt-6 font-extrabold text-[#F5F2ED]"
-            style={{ fontSize: "clamp(44px, 6vw, 84px)", lineHeight: 0.98, letterSpacing: "-0.04em" }}
+            style={{ fontSize: "clamp(36px, 4.4vw, 60px)", lineHeight: 1.02, letterSpacing: "-0.03em" }}
           >
             Adelántate a tu competencia: prepara tu clínica para ChatGPT Ads antes de que se sature el mercado.
           </h1>
-          <p className="mt-6 text-[17px] leading-[1.5] text-[#D6D1CA] md:text-[19px]">
+          <p className="mt-6 text-[17px] leading-[1.5] text-[#D6D1CA]">
             ChatGPT Ads ya llegó a Colombia. Dejamos tu clínica lista y visible en las respuestas de la IA mientras OpenAI habilita la publicidad de salud en el país.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -135,13 +160,13 @@ const problemaItems = [
 
 function ProblemaSection() {
   return (
-    <section className="bg-[#212121] py-16 md:py-24">
+    <section className="bg-[#212121] py-14 md:py-20">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
-          <h2 className="font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(34px, 4vw, 54px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          <h2 className="font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             La conversación sobre dónde tratarse ya empezó en ChatGPT.
           </h2>
-          <p className="mt-6 text-[17px] leading-[1.5] text-[#D6D1CA]">
+          <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
             Cada vez más personas le preguntan a la IA qué tratamiento les conviene, cuánto cuesta y en qué clínica hacérselo. Ahora las clínicas colombianas pueden estar presentes en ese momento.
           </p>
           <ImagePlaceholder name="B-02-problema-paciente-celular.jpg" className="mt-10 h-[280px] md:h-[340px]" />
@@ -151,12 +176,12 @@ function ProblemaSection() {
             {problemaItems.map((item) => (
               <li key={item.num} className="border-t border-[#3A3A3A] py-7 first:border-t-0 first:pt-0">
                 <span className="text-[14px] font-bold text-[#FC5C1F]">{item.num}</span>
-                <h3 className="mt-2 text-[24px] font-bold leading-[1.15] text-[#F5F2ED] md:text-[28px]">{item.title}</h3>
+                <h3 className="mt-2 font-bold leading-[1.15] text-[#F5F2ED]" style={{ fontSize: "clamp(22px, 2.2vw, 28px)" }}>{item.title}</h3>
                 <p className="mt-2 text-[15px] leading-[1.5] text-[#BDB8B1]">{item.text}</p>
               </li>
             ))}
           </ul>
-          <p className="mt-8 border-t border-[#3A3A3A] pt-8 text-[20px] font-bold leading-[1.3] text-[#F5F2ED] md:text-[24px]">
+          <p className="mt-8 border-t border-[#3A3A3A] pt-8 text-[19px] font-bold leading-[1.3] text-[#F5F2ED] md:text-[22px]">
             Las primeras clínicas en llegar compiten con menos anunciantes y aprenden antes qué funciona.
           </p>
         </div>
@@ -167,27 +192,27 @@ function ProblemaSection() {
 
 function OportunidadSection() {
   return (
-    <section className="bg-[#F5F2ED] py-16 md:py-24">
+    <section className="bg-[#F5F2ED] py-14 md:py-20">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <h2 className="font-bold text-[#212121]" style={{ fontSize: "clamp(34px, 4vw, 54px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          <h2 className="font-bold text-[#212121]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             Así aparece tu clínica dentro de la conversación.
           </h2>
-          <p className="text-[17px] leading-[1.5] text-[#4B4366] lg:pt-3">
+          <p className="text-[16px] leading-[1.5] text-[#4B4366] lg:pt-3">
             El anuncio va debajo de la respuesta, nunca dentro, y siempre marcado como patrocinado. OpenAI no comparte las conversaciones con los anunciantes. Así funcionará para tu clínica cuando se habilite la categoría de salud en Colombia.
           </p>
         </div>
         <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-2">
           <div className="flex flex-col gap-10">
             <div>
-              <p className="font-extrabold text-[#FC5C1F]" style={{ fontSize: "clamp(64px, 7vw, 96px)", lineHeight: 1 }}>21.10</p>
+              <p className="font-extrabold text-[#FC5C1F]" style={{ fontSize: "clamp(44px, 5vw, 64px)", lineHeight: 1 }}>21.10</p>
               <div className="mt-4 border-t border-dashed border-[#BDB8B1] pt-4">
                 <p className="text-[16px] font-semibold text-[#212121]">OpenAI anunció ChatGPT Ads para Colombia.</p>
                 <p className="mt-1 text-[12px] text-[#4B4366]">Fuente: OpenAI, octubre de 2026</p>
               </div>
             </div>
             <div>
-              <p className="font-extrabold text-[#FC5C1F]" style={{ fontSize: "clamp(64px, 7vw, 96px)", lineHeight: 1 }}>1.200 M</p>
+              <p className="font-extrabold text-[#FC5C1F]" style={{ fontSize: "clamp(44px, 5vw, 64px)", lineHeight: 1 }}>1.200 M</p>
               <div className="mt-4 border-t border-dashed border-[#BDB8B1] pt-4">
                 <p className="text-[16px] font-semibold text-[#212121]">personas usan ChatGPT cada semana.</p>
                 <p className="mt-1 text-[12px] text-[#4B4366]">Fuente: OpenAI, octubre de 2026</p>
@@ -250,19 +275,19 @@ const labelClass = "inline-block w-fit rounded-full border border-[#FC5C1F] px-4
 
 function ContextoSection() {
   return (
-    <section id="contexto" className="bg-[#212121] py-16 md:py-24">
+    <section id="contexto" className="bg-[#212121] py-14 md:py-20">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <span className={labelClass}>Antes de invertir</span>
-        <h2 className="mt-6 max-w-[820px] font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(34px, 4vw, 54px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+        <h2 className="mt-6 max-w-[820px] font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
           ChatGPT Ads en Colombia: lo que está abierto y lo que todavía no.
         </h2>
-        <p className="mt-6 max-w-[720px] text-[17px] leading-[1.5] text-[#D6D1CA]">
+        <p className="mt-6 max-w-[720px] text-[16px] leading-[1.5] text-[#D6D1CA]">
           El canal ya llegó al país, pero todavía no para la salud. La ventaja la tendrá la clínica que conozca sus reglas antes que las demás.
         </p>
         <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3">
           {contextoCifras.map((cifra) => (
             <div key={cifra.num}>
-              <p className="font-extrabold text-[#FC5C1F]" style={{ fontSize: "clamp(64px, 7vw, 96px)", lineHeight: 1 }}>{cifra.num}</p>
+              <p className="font-extrabold text-[#FC5C1F]" style={{ fontSize: "clamp(44px, 5vw, 64px)", lineHeight: 1 }}>{cifra.num}</p>
               <div className="mt-4 border-t border-dashed border-[#3A3A3A] pt-4">
                 <p className="text-[16px] font-semibold leading-[1.4] text-[#F5F2ED]">{cifra.text}</p>
               </div>
@@ -280,7 +305,7 @@ function ContextoSection() {
         </ul>
         <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-2">
           <div>
-            <h3 className="text-[22px] font-bold text-[#F5F2ED]">Todavía no</h3>
+            <h3 className="text-[19px] font-bold text-[#F5F2ED]">Todavía no</h3>
             <ul className="mt-4">
               {contextoNo.map((punto) => (
                 <li key={punto} className="flex items-start gap-4 border-t border-[#3A3A3A] py-4">
@@ -291,7 +316,7 @@ function ContextoSection() {
             </ul>
           </div>
           <div>
-            <h3 className="text-[22px] font-bold text-[#F5F2ED]">Desde ya</h3>
+            <h3 className="text-[19px] font-bold text-[#F5F2ED]">Desde ya</h3>
             <ul className="mt-4">
               {contextoSi.map((punto) => (
                 <li key={punto} className="flex items-start gap-4 border-t border-[#3A3A3A] py-4">
@@ -320,23 +345,23 @@ const requisitos = [
 
 function RequisitosSection() {
   return (
-    <section id="requisitos" className="bg-[#1A1A1A] py-16 md:py-24">
+    <section id="requisitos" className="bg-[#1A1A1A] py-14 md:py-20">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <span className={labelClass}>Requisitos</span>
-          <h2 className="mt-6 font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(34px, 4vw, 54px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          <h2 className="mt-6 font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             Cinco requisitos para estar lista antes que tu competencia.
           </h2>
-          <p className="mt-6 max-w-[460px] text-[17px] leading-[1.5] text-[#D6D1CA]">
+          <p className="mt-6 max-w-[460px] text-[16px] leading-[1.5] text-[#D6D1CA]">
             OpenAI revisa a cada anunciante de salud por separado. Tenerlos en orden desde ahora es lo que te permitirá activar primero.
           </p>
         </div>
         <ul>
           {requisitos.map((req) => (
             <li key={req.num} className="flex items-start gap-6 border-t border-[#3A3A3A] py-6 first:border-t-0 first:pt-0">
-              <span className="shrink-0 font-extrabold text-[#FC5C1F]" style={{ fontSize: "40px", lineHeight: 1 }}>{req.num}</span>
+              <span className="shrink-0 font-extrabold text-[#FC5C1F]" style={{ fontSize: "30px", lineHeight: 1 }}>{req.num}</span>
               <div>
-                <h3 className="text-[20px] font-bold leading-[1.2] text-[#F5F2ED]">{req.title}</h3>
+                <h3 className="text-[19px] font-bold leading-[1.2] text-[#F5F2ED]">{req.title}</h3>
                 <p className="mt-1 text-[15px] leading-[1.5] text-[#D6D1CA]">{req.text}</p>
               </div>
             </li>
@@ -356,10 +381,10 @@ const beneficios = [
 
 function BeneficiosSection() {
   return (
-    <section id="beneficios" className="bg-[#212121] py-16 md:py-24">
+    <section id="beneficios" className="bg-[#212121] py-14 md:py-20">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <ImagePlaceholder name="B-03-beneficios-equipo.jpg" className="h-[260px] w-full md:h-[380px]" />
-        <h2 className="mt-12 max-w-[900px] font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(34px, 4vw, 54px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+        <h2 className="mt-12 max-w-[900px] font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
           No reemplaza a Google ni a Meta. Llega a un momento que ellos no cubren.
         </h2>
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -367,7 +392,7 @@ function BeneficiosSection() {
             <article key={item.num}>
               <span className="text-[15px] font-bold text-[#FC5C1F]">{item.num}</span>
               <div className="mt-3 border-t border-dashed border-[#3A3A3A] pt-4">
-                <h3 className="text-[22px] font-bold text-[#F5F2ED]">{item.title}</h3>
+                <h3 className="text-[19px] font-bold text-[#F5F2ED]">{item.title}</h3>
                 <p className="mt-2 text-[15px] leading-[1.5] text-[#BDB8B1]">{item.text}</p>
               </div>
             </article>
@@ -387,9 +412,9 @@ const servicios = [
 
 function ServiciosSection() {
   return (
-    <section className="bg-[#212121] py-16 md:py-24">
+    <section className="bg-[#212121] py-14 md:py-20">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <h2 className="max-w-[760px] font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(34px, 4vw, 54px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+        <h2 className="max-w-[760px] font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
           Un servicio completo, de la cuenta a la cita agendada.
         </h2>
         <Accordion type="single" collapsible defaultValue="servicio-0" className="mt-12">
@@ -398,7 +423,7 @@ function ServiciosSection() {
               <AccordionTrigger className="py-6 text-left hover:no-underline [&>svg]:text-[#FC5C1F]">
                 <span className="flex items-baseline gap-5">
                   <span className="text-[15px] font-bold text-[#FC5C1F]">{servicio.num}</span>
-                  <span className="text-[24px] font-bold leading-[1.15] text-[#F5F2ED] md:text-[30px]">{servicio.title}</span>
+                  <span className="font-bold leading-[1.15] text-[#F5F2ED]" style={{ fontSize: "clamp(22px, 2.4vw, 30px)" }}>{servicio.title}</span>
                 </span>
               </AccordionTrigger>
               <AccordionContent className="pb-8">
@@ -424,13 +449,13 @@ const diferenciadorTags = [
 
 function DiferenciadorSection() {
   return (
-    <section className="bg-[#1A1A1A] py-16 md:py-24">
+    <section className="bg-[#1A1A1A] py-14 md:py-20">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
-          <h2 className="font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(34px, 4vw, 54px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          <h2 className="font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             Campañas que cuidan la reputación de tu clínica.
           </h2>
-          <p className="mt-6 text-[17px] leading-[1.5] text-[#D6D1CA]">
+          <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
             Trabajamos alineados con la Ley 1581 de protección de datos personales, la ética médica colombiana y las políticas publicitarias de OpenAI para el sector salud.
           </p>
           <div className="mt-10 grid grid-cols-1 gap-x-8 sm:grid-cols-2">
@@ -456,18 +481,18 @@ const procesoPasos = [
 
 function ProcesoSection() {
   return (
-    <section id="proceso" className="bg-[#212121] py-16 md:py-24">
+    <section id="proceso" className="bg-[#212121] py-14 md:py-20">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <h2 className="max-w-[700px] font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(34px, 4vw, 54px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+        <h2 className="max-w-[700px] font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
           De la auditoría al primer lead.
         </h2>
         <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-3">
           {procesoPasos.map((paso) => (
             <article key={paso.num} className="border-t border-[#3A3A3A] pt-8">
-              <span className="font-extrabold text-[#FC5C1F]" style={{ fontSize: "clamp(64px, 6vw, 96px)", lineHeight: 1 }}>
+              <span className="font-extrabold text-[#FC5C1F]" style={{ fontSize: "clamp(48px, 5vw, 64px)", lineHeight: 1 }}>
                 {paso.num}
               </span>
-              <h3 className="mt-5 text-[22px] font-bold leading-[1.2] text-[#F5F2ED]">{paso.title}</h3>
+              <h3 className="mt-5 text-[19px] font-bold leading-[1.2] text-[#F5F2ED]">{paso.title}</h3>
               <p className="mt-2 text-[15px] leading-[1.5] text-[#BDB8B1]">{paso.text}</p>
             </article>
           ))}
@@ -545,13 +570,13 @@ function FormularioSection() {
   }
 
   return (
-    <section id="diagnostico" className="bg-[#212121] py-16 md:py-24">
+    <section id="diagnostico" className="bg-[#212121] py-14 md:py-20">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
-          <h2 className="font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(34px, 4vw, 54px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          <h2 className="font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             Agenda tu diagnóstico de preparación.
           </h2>
-          <p className="mt-6 text-[17px] leading-[1.5] text-[#D6D1CA]">
+          <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
             Revisamos si tu clínica es elegible, qué tratamientos conviene priorizar y qué inversión tiene sentido para tu ciudad.
           </p>
           <ImagePlaceholder name="B-04-formulario-director.jpg" className="mt-10 hidden h-[280px] lg:block" />
@@ -597,22 +622,22 @@ function FormularioSection() {
               </div>
             </div>
             <input type="hidden" name="pais" value="Colombia" />
-            <div className="flex items-start gap-3">
+            <label htmlFor="b-consent" className="col-span-full grid w-full grid-cols-[20px_1fr] items-start gap-3 font-normal normal-case tracking-normal">
               <input
                 id="b-consent"
                 type="checkbox"
                 checked={consent}
                 onChange={(e) => setConsent(e.target.checked)}
-                className="mt-1 h-4 w-4 accent-[#FC5C1F]"
+                className="mt-[1px] h-[18px] w-[18px] accent-[#FC5C1F]"
               />
-              <label htmlFor="b-consent" className="text-[13px] leading-[1.5] text-[#BDB8B1]">
+              <span className="whitespace-normal break-normal text-[13px] font-normal normal-case leading-[1.5] tracking-normal text-[#BDB8B1]">
                 Autorizo el tratamiento de mis datos personales según la{" "}
-                <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#FC5C1F] underline">
+                <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#FC5C1F]! underline">
                   política de tratamiento de datos
                 </a>
                 .
-              </label>
-            </div>
+              </span>
+            </label>
             {error && (
               <p role="alert" className="text-[14px] font-medium text-[#FC5C1F]">{error}</p>
             )}
@@ -640,9 +665,9 @@ const faqItems = [
 
 function FaqSectionLanding() {
   return (
-    <section className="bg-[#1A1A1A] py-16 md:py-24">
+    <section className="bg-[#1A1A1A] py-14 md:py-20">
       <div className="mx-auto w-full max-w-[760px] px-5 md:px-8">
-        <h2 className="text-center font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(34px, 4vw, 54px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+        <h2 className="text-center font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
           Preguntas frecuentes
         </h2>
         <Accordion type="single" collapsible className="mt-10">
@@ -675,10 +700,10 @@ function CierreSection() {
         <div className="absolute inset-0 bg-[#1A1A1A]/[0.72] md:hidden" aria-hidden="true" />
         <div className="relative z-10 flex min-h-[480px] flex-col items-end justify-center px-6 py-16 text-right md:px-12">
           <div className="md:max-w-[52%]">
-            <h2 className="font-extrabold text-[#F5F2ED]" style={{ fontSize: "clamp(36px, 4.5vw, 60px)", lineHeight: 1.02, letterSpacing: "-0.03em" }}>
+            <h2 className="font-extrabold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3.2vw, 46px)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
               El paciente ya no busca “clínica estética”. Le pregunta a la IA cuál le conviene.
             </h2>
-            <p className="mt-6 text-[17px] leading-[1.5] text-[#D6D1CA]">
+            <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
               Ahí es donde tu clínica tiene que estar.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-end">
@@ -839,7 +864,7 @@ export function LandingChatGptAdsBThanks() {
           <h1 className="mt-6 font-extrabold text-[#F5F2ED]" style={{ fontSize: "clamp(34px, 4vw, 48px)", lineHeight: 1.05, letterSpacing: "-0.03em" }}>
             Recibimos tu solicitud.
           </h1>
-          <p className="mt-4 text-[17px] leading-[1.5] text-[#D6D1CA]">
+          <p className="mt-4 text-[16px] leading-[1.5] text-[#D6D1CA]">
             Te contactaremos por WhatsApp para agendar tu diagnóstico de preparación.
           </p>
           <a
