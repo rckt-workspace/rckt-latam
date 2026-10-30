@@ -61,7 +61,7 @@ function CtaButton({ children, className = "" }: { children: React.ReactNode; cl
   return (
     <a
       href="#diagnostico"
-      className={`inline-flex min-h-[50px] items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[16px] font-semibold text-white transition-colors hover:bg-[#4B2BB8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0] ${className}`}
+      className={`inline-flex min-h-[50px] items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[15px] font-semibold !text-white transition-colors hover:bg-[#4B2BB8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0] ${className}`}
     >
       {children}
     </a>
@@ -69,11 +69,28 @@ function CtaButton({ children, className = "" }: { children: React.ReactNode; cl
 }
 
 function LandingHeader() {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   return (
-    <header className="sticky top-0 z-40 border-b border-[#DCD1FA]/60 bg-white/80 backdrop-blur-md">
-      <div className="mx-auto flex h-[68px] w-full max-w-[1200px] items-center justify-between gap-4 px-5 md:px-8">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 px-4 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:px-6 ${
+        scrolled ? "pt-3" : "pt-0"
+      }`}
+    >
+      <div
+        className={`mx-auto flex w-full items-center justify-between gap-4 px-5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:px-8 ${
+          scrolled
+            ? "h-[60px] max-w-[1100px] rounded-full border border-[#DCD1FA] bg-white/75 shadow-[0_10px_30px_rgba(42,26,85,0.10)] backdrop-blur-md"
+            : "h-[68px] max-w-[1200px] border border-transparent bg-transparent"
+        }`}
+      >
         <a href="#top" aria-label="RCKT">
-          <img src={logoDark} alt="RCKT" className="h-7 w-auto" />
+          <img src={logoDark} alt="RCKT" className={`w-auto transition-all duration-500 ${scrolled ? "h-6" : "h-7"}`} />
         </a>
         <nav className="hidden items-center gap-8 md:flex" aria-label="Secciones">
           <a href="#beneficios" className="text-[15px] font-medium text-[#212121] transition-colors hover:text-[#6A3FE0] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]">
@@ -83,7 +100,7 @@ function LandingHeader() {
             Cómo funciona
           </a>
         </nav>
-        <CtaButton className="min-h-[44px] px-6 text-[15px]">Solicitar diagnóstico</CtaButton>
+        <CtaButton className="min-h-[42px] px-6 text-[14px]">Solicitar diagnóstico</CtaButton>
       </div>
     </header>
   );
@@ -94,22 +111,41 @@ const heroGradient =
 
 function HeroSection() {
   return (
-    <section id="top" className="relative overflow-hidden" style={{ background: heroGradient }}>
-      <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-10 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[36%_64%] lg:gap-0">
-        <div className="relative z-10">
-          <span className="inline-block rounded-full bg-[#4B2BB8] px-4 py-1.5 text-[13px] font-semibold tracking-wide text-white">
+    <section id="top" className="relative overflow-hidden md:min-h-[680px]">
+      <img
+        src={imgA01}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(246,242,255,0.97) 0%, rgba(246,242,255,0.92) 30%, rgba(233,220,255,0.75) 48%, rgba(233,220,255,0) 68%)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 md:hidden"
+        style={{ background: "linear-gradient(to bottom, rgba(246,242,255,0.88), rgba(233,220,255,0.82))" }}
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto flex w-full max-w-[1200px] items-center px-5 pb-16 pt-[120px] md:min-h-[680px] md:px-8 md:pb-20 md:pt-[140px]">
+        <div className="max-w-[560px]">
+          <span className="inline-block rounded-full bg-[#4B2BB8] px-4 py-1.5 text-[12px] font-semibold tracking-wide !text-white">
             Marketing + inteligencia artificial
           </span>
           <h1
             className={`${fontDisplay} mt-6 font-bold text-[#212121]`}
-            style={{ fontSize: "clamp(46px, 6vw, 84px)", lineHeight: 0.98, letterSpacing: "-0.035em" }}
+            style={{ fontSize: "clamp(38px, 4.6vw, 64px)", lineHeight: 1, letterSpacing: "-0.03em" }}
           >
             Tus próximos pacientes podrían empezar su búsqueda en ChatGPT.
           </h1>
-          <p className="mt-6 text-[18px] leading-[1.5] text-[#212121] md:text-[20px]">
+          <p className="mt-6 text-[17px] leading-[1.5] text-[#212121]">
             Hoy las personas exploran nuevas formas de informarse sobre tratamientos estéticos. ¿Está tu clínica preparada para conectar con ellas?
           </p>
-          <p className="mt-4 text-[16px] leading-[1.5] text-[#4B4366]">
+          <p className="mt-4 text-[15px] leading-[1.5] text-[#4B4366]">
             Descubre cómo integrar las oportunidades de publicidad e inteligencia artificial en una estrategia de captación de pacientes.
           </p>
           <div className="mt-8">
@@ -117,24 +153,13 @@ function HeroSection() {
           </div>
           <p className="mt-4 text-[13px] text-[#4B4366]">Diagnóstico inicial · Enfoque para clínicas en Colombia</p>
         </div>
-        <div className="relative">
-          <div
-            className="relative h-[320px] mix-blend-multiply md:h-[460px]"
-            style={{
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 30%)",
-              maskImage: "linear-gradient(to right, transparent 0%, black 30%)",
-            }}
-          >
-            <ImagePlaceholder name="A-01-hero-consulta.jpg" className="h-full w-full rounded-none border-0 bg-transparent" />
-          </div>
-          <div className="absolute bottom-4 right-4 hidden w-[280px] rounded-[20px] border border-[#DCD1FA] bg-white p-4 shadow-lg md:block">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#4B4366]">Ejemplo ilustrativo</p>
-            <p className="mt-2 text-[14px] leading-[1.5] text-[#212121]">¿Qué opciones hay para rejuvenecimiento facial?</p>
-            <p className="mt-2 rounded-[12px] bg-[#F1ECFF] px-3 py-2 text-[12px] text-[#4B4366]">
-              Patrocinado · Valoración estética profesional
-            </p>
-          </div>
-        </div>
+      </div>
+      <div className="absolute bottom-6 right-6 z-10 hidden w-[280px] rounded-[20px] border border-[#DCD1FA] bg-white p-4 shadow-lg md:block">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#4B4366]">Ejemplo ilustrativo</p>
+        <p className="mt-2 text-[14px] leading-[1.5] text-[#212121]">¿Qué opciones hay para rejuvenecimiento facial?</p>
+        <p className="mt-2 rounded-[12px] bg-[#F1ECFF] px-3 py-2 text-[12px] text-[#4B4366]">
+          Patrocinado · Valoración estética profesional
+        </p>
       </div>
     </section>
   );
@@ -149,31 +174,31 @@ const problemaCards = [
 
 function ProblemaSection() {
   return (
-    <section className="bg-[#FBFAFF] py-16 md:py-24">
+    <section className="bg-[#FBFAFF] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
           <div>
-            <h2 className={`${fontDisplay} font-bold text-[#212121]`} style={{ fontSize: "clamp(34px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+            <h2 className={`${fontDisplay} font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
               La decisión de un tratamiento estético comienza mucho antes de agendar una cita.
             </h2>
-            <p className="mt-6 text-[17px] leading-[1.5] text-[#4B4366]">
+            <p className="mt-6 text-[16px] leading-[1.5] text-[#4B4366]">
               Antes de contactar una clínica, una persona puede investigar procedimientos, comparar alternativas, consultar dudas y buscar información sobre seguridad, recuperación y resultados. Las herramientas de IA están ampliando las formas de acceder a esa información.
             </p>
           </div>
-          <ImagePlaceholder name="A-02-problema-paciente-celular.jpg" className="h-[300px] md:h-[380px]" />
+          <ImagePlaceholder name="A-02-problema-paciente-celular.jpg" className="h-[280px] md:h-[340px]" />
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {problemaCards.map((card) => (
             <article key={card.num} className="rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-6">
               <span className={`${fontDisplay} text-[15px] font-bold text-[#6A3FE0]`}>{card.num}</span>
-              <h3 className={`${fontDisplay} mt-3 text-[22px] font-bold text-[#212121]`}>{card.title}</h3>
+              <h3 className={`${fontDisplay} mt-3 text-[19px] font-bold text-[#212121]`}>{card.title}</h3>
               <p className="mt-2 text-[15px] leading-[1.5] text-[#4B4366]">{card.text}</p>
             </article>
           ))}
         </div>
         <p
-          className={`${fontDisplay} mt-14 max-w-[820px] font-bold text-[#4B2BB8]`}
-          style={{ fontSize: "clamp(24px, 3vw, 36px)", lineHeight: 1.15, letterSpacing: "-0.01em" }}
+          className={`${fontDisplay} mt-10 max-w-[820px] font-bold text-[#4B2BB8]`}
+          style={{ fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: 1.2, letterSpacing: "-0.01em" }}
         >
           Tu clínica necesita una estrategia que acompañe ese recorrido, no solamente anuncios que generen clics.
         </p>
@@ -184,13 +209,13 @@ function ProblemaSection() {
 
 function OportunidadSection() {
   return (
-    <section className="bg-[#6A3FE0] py-16 md:py-24">
+    <section className="bg-[#6A3FE0] py-12 md:py-16">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
-          <h2 className={`${fontDisplay} font-bold text-white`} style={{ fontSize: "clamp(34px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          <h2 className={`${fontDisplay} font-bold text-white`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             Tu clínica, presente en nuevas experiencias de descubrimiento.
           </h2>
-          <p className="mt-6 text-[17px] leading-[1.5] text-white/90">
+          <p className="mt-6 text-[16px] leading-[1.5] text-white/90">
             La publicidad en entornos de inteligencia artificial abre una posibilidad para que las marcas exploren nuevas formas de conectar con personas interesadas en sus servicios. Pero una estrategia efectiva requiere más que aparecer en un espacio publicitario: necesita un mensaje relevante, una página que genere confianza y un proceso comercial capaz de atender las consultas.
           </p>
         </div>
@@ -230,20 +255,20 @@ const beneficios = [
 
 function BeneficiosSection() {
   return (
-    <section id="beneficios" className="bg-[#FBFAFF] py-16 md:py-24">
+    <section id="beneficios" className="bg-[#FBFAFF] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2
           className={`${fontDisplay} max-w-[900px] font-bold text-[#212121]`}
-          style={{ fontSize: "clamp(34px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}
+          style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
         >
           No se trata de estar en todas partes. Se trata de invertir donde tenga sentido para tu clínica.
         </h2>
-        <div className="mt-12 grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
-          <ImagePlaceholder name="A-03-beneficios-equipo.jpg" className="h-[320px] md:h-[420px]" />
+        <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
+          <ImagePlaceholder name="A-03-beneficios-equipo.jpg" className="h-[280px] md:h-[360px]" />
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             {beneficios.map((item) => (
               <article key={item.title} className="rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-6">
-                <h3 className={`${fontDisplay} text-[20px] font-bold leading-[1.2] text-[#212121]`}>{item.title}</h3>
+                <h3 className={`${fontDisplay} text-[19px] font-bold leading-[1.2] text-[#212121]`}>{item.title}</h3>
                 <p className="mt-2 text-[15px] leading-[1.5] text-[#4B4366]">{item.text}</p>
               </article>
             ))}
@@ -265,7 +290,7 @@ function ServicioCard({ servicio }: { servicio: (typeof servicios)[number] }) {
   const [flipped, setFlipped] = useState(false);
   return (
     <div
-      className="group h-[420px] cursor-pointer [perspective:1200px]"
+      className="group h-[360px] cursor-pointer [perspective:1200px]"
       onClick={() => setFlipped((value) => !value)}
       onKeyDown={(event) => {
         if (event.key === "Enter" || event.key === " ") {
@@ -297,7 +322,7 @@ function ServicioCard({ servicio }: { servicio: (typeof servicios)[number] }) {
         <div className="absolute inset-0 flex flex-col justify-between rounded-[24px] bg-[#4B2BB8] p-7 [backface-visibility:hidden] [transform:rotateY(180deg)]">
           <div>
             <span className={`${fontDisplay} text-[15px] font-bold text-white/70`}>{servicio.num}</span>
-            <h3 className={`${fontDisplay} mt-3 text-[24px] font-bold leading-[1.15] text-white`}>{servicio.title}</h3>
+            <h3 className={`${fontDisplay} mt-3 text-[20px] font-bold leading-[1.15] text-white`}>{servicio.title}</h3>
             <p className="mt-3 text-[15px] leading-[1.5] text-white/90">{servicio.text}</p>
           </div>
           <a
@@ -315,15 +340,15 @@ function ServicioCard({ servicio }: { servicio: (typeof servicios)[number] }) {
 
 function ServiciosSection() {
   return (
-    <section className="bg-[#FBFAFF] py-16 md:py-24">
+    <section className="bg-[#FBFAFF] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
-          <h2 className={`${fontDisplay} max-w-[640px] font-bold text-[#212121]`} style={{ fontSize: "clamp(34px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          <h2 className={`${fontDisplay} max-w-[640px] font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             De la oportunidad tecnológica a una estrategia comercial.
           </h2>
           <p className="text-[13px] text-[#4B4366] md:pb-2">Pasa el cursor por cada tarjeta para ver qué incluye.</p>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {servicios.map((servicio) => (
             <ServicioCard key={servicio.num} servicio={servicio} />
           ))}
@@ -342,14 +367,14 @@ const diferenciadorTags = [
 
 function DiferenciadorSection() {
   return (
-    <section className="bg-[#2A1A55] py-16 md:py-24">
+    <section className="bg-[#2A1A55] py-12 md:py-16">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
-        <ImagePlaceholder name="A-09-diferenciador-libreta.jpg" className="h-[300px] md:h-[400px]" />
+        <ImagePlaceholder name="A-09-diferenciador-libreta.jpg" className="h-[260px] md:h-[340px]" />
         <div>
-          <h2 className={`${fontDisplay} font-bold text-white`} style={{ fontSize: "clamp(34px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          <h2 className={`${fontDisplay} font-bold text-white`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             La tecnología cambia. Una buena estrategia sigue siendo esencial.
           </h2>
-          <p className="mt-6 text-[17px] leading-[1.5] text-white/85">
+          <p className="mt-6 text-[16px] leading-[1.5] text-white/85">
             No proponemos invertir en IA simplemente porque es tendencia. Evaluamos cómo puede integrarse a la realidad comercial de tu clínica, considerando capacidad de atención, servicios, presupuesto y objetivos.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -373,18 +398,18 @@ const procesoPasos = [
 
 function ProcesoSection() {
   return (
-    <section id="proceso" className="bg-[#FBFAFF] py-16 md:py-24">
+    <section id="proceso" className="bg-[#FBFAFF] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <h2 className={`${fontDisplay} max-w-[700px] font-bold text-[#212121]`} style={{ fontSize: "clamp(34px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+        <h2 className={`${fontDisplay} max-w-[700px] font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
           Tu siguiente paso puede ser más sencillo de lo que imaginas.
         </h2>
-        <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
           {procesoPasos.map((paso) => (
             <article key={paso.num} className="rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-7">
               <span className={`${fontDisplay} flex h-[44px] w-[44px] items-center justify-center rounded-full bg-[#6A3FE0] text-[18px] font-bold text-white`}>
                 {paso.num}
               </span>
-              <h3 className={`${fontDisplay} mt-5 text-[22px] font-bold leading-[1.2] text-[#212121]`}>{paso.title}</h3>
+              <h3 className={`${fontDisplay} mt-5 text-[19px] font-bold leading-[1.2] text-[#212121]`}>{paso.title}</h3>
               <p className="mt-2 text-[15px] leading-[1.5] text-[#4B4366]">{paso.text}</p>
             </article>
           ))}
@@ -466,13 +491,13 @@ function FormularioSection() {
   }
 
   return (
-    <section id="diagnostico" className="bg-[#F1ECFF] py-16 md:py-24">
+    <section id="diagnostico" className="bg-[#F1ECFF] py-12 md:py-16">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
-          <h2 className={`${fontDisplay} font-bold text-[#212121]`} style={{ fontSize: "clamp(34px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          <h2 className={`${fontDisplay} font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             Descubre si tu clínica está preparada para nuevas oportunidades con IA.
           </h2>
-          <p className="mt-6 text-[17px] leading-[1.5] text-[#4B4366]">
+          <p className="mt-6 text-[16px] leading-[1.5] text-[#4B4366]">
             Déjanos tus datos y conversemos sobre cómo fortalecer tu estrategia digital.
           </p>
           <ImagePlaceholder name="A-04-formulario-directora.jpg" className="mt-10 hidden h-[280px] lg:block" />
@@ -529,7 +554,7 @@ function FormularioSection() {
             <button
               type="submit"
               disabled={enviando}
-              className="inline-flex min-h-[50px] w-full items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[16px] font-semibold text-white transition-colors hover:bg-[#4B2BB8] disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]"
+              className="inline-flex min-h-[50px] w-full items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[16px] font-semibold !text-white transition-colors hover:bg-[#4B2BB8] disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]"
             >
               {enviando ? "Enviando…" : "Solicitar mi diagnóstico"}
             </button>
@@ -550,9 +575,9 @@ const faqItems = [
 
 function FaqSectionLanding() {
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className="bg-white py-12 md:py-16">
       <div className="mx-auto w-full max-w-[760px] px-5 md:px-8">
-        <h2 className={`${fontDisplay} text-center font-bold text-[#212121]`} style={{ fontSize: "clamp(34px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+        <h2 className={`${fontDisplay} text-center font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
           Preguntas frecuentes
         </h2>
         <Accordion type="single" collapsible className="mt-10">
@@ -575,12 +600,22 @@ function FaqSectionLanding() {
 function CierreSection() {
   return (
     <section className="relative overflow-hidden" style={{ background: heroGradient }}>
-      <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-10 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-2">
-        <div className="relative z-10">
-          <h2 className={`${fontDisplay} font-bold text-[#212121]`} style={{ fontSize: "clamp(34px, 4.5vw, 60px)", lineHeight: 1.02, letterSpacing: "-0.03em" }}>
+      <div
+        className="absolute inset-y-0 right-0 hidden w-[55%] lg:block"
+        style={{
+          WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 38%)",
+          maskImage: "linear-gradient(to right, transparent 0%, black 38%)",
+        }}
+        aria-hidden="true"
+      >
+        <img src={imgA10} alt="" className="h-full w-full object-cover" loading="lazy" />
+      </div>
+      <div className="relative mx-auto w-full max-w-[1200px] px-5 py-16 md:px-8 md:py-20">
+        <div className="max-w-[520px]">
+          <h2 className={`${fontDisplay} font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 48px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             El futuro del marketing también se está construyendo con inteligencia artificial.
           </h2>
-          <p className="mt-6 text-[17px] leading-[1.5] text-[#4B4366]">
+          <p className="mt-6 text-[16px] leading-[1.5] text-[#4B4366]">
             Tu clínica no necesita perseguir cada tendencia. Necesita identificar cuáles pueden convertirse en oportunidades reales para su crecimiento.
           </p>
           <div className="mt-8">
@@ -588,14 +623,8 @@ function CierreSection() {
           </div>
           <p className="mt-4 text-[13px] text-[#4B4366]">Conversemos sobre una estrategia diseñada para tu negocio.</p>
         </div>
-        <div
-          className="relative h-[300px] mix-blend-multiply md:h-[420px]"
-          style={{
-            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 30%)",
-            maskImage: "linear-gradient(to right, transparent 0%, black 30%)",
-          }}
-        >
-          <ImagePlaceholder name="A-10-cierre-ojo.jpg" className="h-full w-full rounded-none border-0 bg-transparent" />
+        <div className="mt-10 lg:hidden">
+          <ImagePlaceholder name="A-10-cierre-ojo.jpg" className="h-[260px]" />
         </div>
       </div>
     </section>
@@ -608,50 +637,50 @@ function LandingFooter() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-10 px-5 sm:grid-cols-2 md:px-8 lg:grid-cols-4">
         <div>
           <img src={logoLight} alt="RCKT" className="h-7 w-auto" />
-          <p className="mt-4 max-w-[260px] text-[14px] leading-[1.6] text-white/80">
+          <p className="mt-4 max-w-[260px] text-[14px] leading-[1.6] text-white">
             Estrategia, publicidad y automatización para clínicas estéticas en Colombia.
           </p>
         </div>
         <div>
-          <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white/60">Contacto</h3>
+          <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white">Contacto</h3>
           <ul className="mt-4 space-y-2 text-[14px]">
             <li>
-              <a href={`mailto:${contactConfig.sales.email}`} className="text-white/85 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href={`mailto:${contactConfig.sales.email}`} className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 {contactConfig.sales.email}
               </a>
             </li>
             <li>
-              <a href={WHATSAPP_URL} className="text-white/85 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href={WHATSAPP_URL} className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 WhatsApp
               </a>
             </li>
           </ul>
         </div>
         <div>
-          <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white/60">Redes</h3>
+          <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white">Redes</h3>
           <ul className="mt-4 space-y-2 text-[14px]">
             <li>
-              <a href={contactConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-white/85 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href={contactConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 Instagram
               </a>
             </li>
             <li>
-              <a href={contactConfig.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-white/85 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href={contactConfig.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 LinkedIn
               </a>
             </li>
           </ul>
         </div>
         <div>
-          <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white/60">Legal</h3>
+          <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white">Legal</h3>
           <ul className="mt-4 space-y-2 text-[14px]">
             <li>
-              <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer" className="text-white/85 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer" className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 Política de tratamiento de datos
               </a>
             </li>
             <li>
-              <a href="/legal/privacidad" className="text-white/85 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <a href="/legal/privacidad" className="text-white transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 Aviso de privacidad
               </a>
             </li>
@@ -744,15 +773,15 @@ export function LandingClinicasIaAThanks() {
           <span className="mx-auto flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[#6A3FE0] text-white">
             <Check strokeWidth={2.5} className="h-7 w-7" aria-hidden="true" />
           </span>
-          <h1 className={`${fontDisplay} mt-6 font-bold text-[#212121]`} style={{ fontSize: "clamp(34px, 4vw, 48px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          <h1 className={`${fontDisplay} mt-6 font-bold text-[#212121]`} style={{ fontSize: "clamp(34px, 4vw, 48px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             Recibimos tu solicitud.
           </h1>
-          <p className="mt-4 text-[17px] leading-[1.5] text-[#4B4366]">
+          <p className="mt-4 text-[16px] leading-[1.5] text-[#4B4366]">
             Te contactaremos por WhatsApp para conversar sobre el diagnóstico de tu clínica.
           </p>
           <a
             href="/"
-            className="mt-8 inline-flex min-h-[50px] items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[16px] font-semibold text-white transition-colors hover:bg-[#4B2BB8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]"
+            className="mt-8 inline-flex min-h-[50px] items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[16px] font-semibold !text-white transition-colors hover:bg-[#4B2BB8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]"
           >
             Volver al inicio
           </a>
