@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { LandingCirugiaPlasticaC, LANDING_C_TITLE, LANDING_C_DESCRIPTION } from "@/components/rckt/LandingCirugiaPlasticaC";
+import { LandingAcademiasC, LANDING_C_TITLE, LANDING_C_DESCRIPTION } from "@/components/rckt/LandingAcademiasC";
 import { gtmHeadScripts } from "@/components/rckt/tracking";
-export const Route = createFileRoute("/lp/chatgpt-ads-cirugia-plastica/")({
+export const Route = createFileRoute("/lp/chatgpt-ads-academias/")({
   staticData: { sitemap: false },
   head: () => ({
     meta: [
@@ -21,5 +21,5 @@ export const Route = createFileRoute("/lp/chatgpt-ads-cirugia-plastica/")({
     ],
     scripts: gtmHeadScripts,
   }),
-  component: () => <LandingCirugiaPlasticaC />,
+  component: () => <LandingAcademiasC />,
 });
