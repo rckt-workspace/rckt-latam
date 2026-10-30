@@ -132,7 +132,7 @@ function HeroSection() {
         <img
           src={imgC01Hero}
           alt="Asesora de una academia orientando a un estudiante"
-          className="absolute! inset-0 h-full w-full rounded-none border-0 object-cover object-[75%_50%] md:object-center"
+          className="absolute! inset-0 h-full w-full rounded-none border-0 object-cover object-[72%_50%] md:object-[50%_50%]"
         />
         <div
           className="absolute inset-0 hidden! md:block!"
@@ -217,7 +217,7 @@ function ProblemaSection() {
           </p>
         </div>
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <img src={imgC02Problema} alt="Joven comparando cursos en su celular" className="h-[280px] w-full rounded-[4px] object-cover sm:col-span-2 sm:row-span-2 sm:h-full" />
+          <img src={imgC02Problema} alt="Joven comparando cursos en su celular" className="h-[280px] w-full rounded-[4px] object-cover object-[50%_30%] sm:col-span-2 sm:row-span-2 sm:h-full" />
           {problemaCards.map((card) => (
             <article key={card.num} className="rounded-[4px] bg-[#EEF1F6] p-6">
               <span className="text-[14px] font-bold text-[#005CFF]">{card.num}</span>
@@ -625,7 +625,7 @@ function FormularioSection() {
           <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
             Revisamos tus programas, tu página y tu competencia para definir cómo empezar a pautar en ChatGPT.
           </p>
-          <img src={imgC04Formulario} alt="Director de una academia" className="mt-10 hidden! h-[280px] w-full rounded-[4px] object-cover lg:block!" />
+          <img src={imgC04Formulario} alt="Director de una academia" className="mt-10 hidden! h-[280px] w-full rounded-[4px] object-cover object-[50%_20%] lg:block!" />
         </div>
         <form onSubmit={onSubmit} className="rounded-[4px] bg-[#F4F6FA] p-6 md:p-9">
           <div className="grid grid-cols-1 gap-6">
