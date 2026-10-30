@@ -93,8 +93,7 @@ function LandingHeader() {
         }`}
       >
         <a href="#top" aria-label="RCKT">
-          <img src={logoDark} alt="RCKT" className={`w-auto transition-all duration-500 ${scrolled ? "h-6" : "hidden h-7 md:block"}`} />
-          {!scrolled && <img src={logoLight} alt="RCKT" className="h-7 w-auto md:hidden" />}
+          <img src={logoDark} alt="RCKT" className={`w-auto transition-all duration-500 ${scrolled ? "h-6" : "h-7"}`} />
         </a>
         <nav className="hidden items-center gap-8 md:flex" aria-label="Secciones">
           <a href="#beneficios" className="text-[15px] font-medium text-[#212121] transition-colors hover:text-[#6A3FE0] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]">
@@ -162,7 +161,7 @@ function HeroSection() {
       <img
         src={imgA01Movil}
         alt=""
-        className="absolute inset-0 h-full w-full object-cover object-[50%_100%] md:hidden"
+        className="absolute inset-0 h-full w-full object-cover object-[50%_100%] brightness-90 saturate-90 md:hidden"
         loading="eager"
       />
       <div
@@ -175,30 +174,30 @@ function HeroSection() {
       />
       <div
         className="absolute inset-0 md:hidden"
-        style={{ background: "linear-gradient(to bottom, rgba(42,26,85,0.60) 0%, rgba(42,26,85,0.70) 50%, rgba(42,26,85,0.88) 100%)" }}
+        style={{ background: "linear-gradient(to bottom, rgba(240,237,247,0.72) 0%, rgba(240,237,247,0.45) 50%, rgba(240,237,247,0.15) 100%)" }}
         aria-hidden="true"
       />
       <div className="relative mx-auto flex w-full max-w-[1200px] items-center px-5 pb-16 pt-[120px] md:min-h-[680px] md:px-8 md:pb-20 md:pt-[140px]">
-        <div className="max-w-[560px] [text-shadow:0_1px_8px_rgba(0,0,0,0.25)] md:[text-shadow:none]">
+        <div className="max-w-[560px] [text-shadow:0_1px_8px_rgba(255,255,255,0.5)] md:[text-shadow:none]">
           <span className="inline-block rounded-full bg-[#4B2BB8] px-4 py-1.5 text-[12px] font-semibold tracking-wide !text-white">
             Marketing + inteligencia artificial
           </span>
           <h1
-            className={`${fontDisplay} mt-6 font-bold text-white md:text-[#212121]`}
+            className={`${fontDisplay} mt-6 font-bold text-[#212121]`}
             style={{ fontSize: "clamp(38px, 4.6vw, 64px)", lineHeight: 1, letterSpacing: "-0.03em" }}
           >
             Tus próximos pacientes podrían empezar su búsqueda en ChatGPT.
           </h1>
-          <p className="mt-6 text-[17px] leading-[1.5] text-white/92 md:text-[#212121]">
+          <p className="mt-6 text-[17px] leading-[1.5] text-[#212121]">
             Hoy las personas exploran nuevas formas de informarse sobre tratamientos estéticos. ¿Está tu clínica preparada para conectar con ellas?
           </p>
-          <p className="mt-4 text-[15px] leading-[1.5] text-white/80 md:text-[#4B4366]">
+          <p className="mt-4 text-[15px] leading-[1.5] text-[#4B4366]">
             Descubre cómo integrar las oportunidades de publicidad e inteligencia artificial en una estrategia de captación de pacientes.
           </p>
           <div className="mt-8">
             <CtaButton>Quiero explorar esta oportunidad</CtaButton>
           </div>
-          <p className="mt-4 text-[13px] text-white/80 md:text-[#4B4366]">Diagnóstico inicial · Enfoque para clínicas en Colombia</p>
+          <p className="mt-4 text-[13px] text-[#4B4366]">Diagnóstico inicial · Enfoque para clínicas en Colombia</p>
         </div>
       </div>
       <div className="absolute bottom-6 right-6 z-10 hidden w-[280px] rounded-[20px] border border-[#DCD1FA] bg-white p-4 shadow-lg md:block">
