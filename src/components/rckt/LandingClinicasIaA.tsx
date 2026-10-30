@@ -167,11 +167,11 @@ function HeroSection() {
       />
       <div
         className="absolute inset-0 md:hidden"
-        style={{ background: "linear-gradient(to bottom, rgba(246,242,255,0.88), rgba(233,220,255,0.82))" }}
+        style={{ background: "linear-gradient(to bottom, rgba(246,242,255,0.82) 0%, rgba(246,242,255,0.55) 50%, rgba(246,242,255,0.30) 100%)" }}
         aria-hidden="true"
       />
       <div className="relative mx-auto flex w-full max-w-[1200px] items-center px-5 pb-16 pt-[120px] md:min-h-[680px] md:px-8 md:pb-20 md:pt-[140px]">
-        <div className="max-w-[560px]">
+        <div className="max-w-[560px] [text-shadow:0_1px_12px_rgba(255,255,255,0.7)] md:[text-shadow:none]">
           <span className="inline-block rounded-full bg-[#4B2BB8] px-4 py-1.5 text-[12px] font-semibold tracking-wide !text-white">
             Marketing + inteligencia artificial
           </span>
@@ -718,22 +718,22 @@ function FormularioSection() {
               </select>
             </div>
             <input type="hidden" name="pais" value="Colombia" />
-            <div className="flex items-start gap-3">
+            <label htmlFor="ia-consent" className="col-span-full grid w-full grid-cols-[20px_1fr] items-start gap-3 normal-case tracking-normal font-normal">
               <input
                 id="ia-consent"
                 type="checkbox"
                 checked={consent}
                 onChange={(e) => setConsent(e.target.checked)}
-                className="mt-1 h-4 w-4 shrink-0 accent-[#6A3FE0]"
+                className="mt-[1px] h-[18px] w-[18px] accent-[#6A3FE0]"
               />
-              <label htmlFor="ia-consent" className="min-w-0 break-words text-[13px] leading-[1.5] text-[#4B4366]">
+              <span className="whitespace-normal break-normal text-[13px] font-normal normal-case leading-[1.5] tracking-normal text-[#4B4366]">
                 Autorizo el tratamiento de mis datos personales según la{" "}
-                <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#6A3FE0] underline">
+                <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#6A3FE0]! underline">
                   política de tratamiento de datos
                 </a>
                 .
-              </label>
-            </div>
+              </span>
+            </label>
             {error && (
               <p role="alert" className="text-[14px] font-medium text-[#B3261E]">{error}</p>
             )}
