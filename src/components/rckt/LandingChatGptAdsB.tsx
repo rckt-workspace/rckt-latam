@@ -603,11 +603,11 @@ function FormularioSection() {
             </div>
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
-                <label htmlFor="b-ciudad" className="text-[14px] font-semibold text-[#F5F2ED]">Ciudad</label>
+                <label htmlFor="b-ciudad" className={labelFormClass}>Ciudad</label>
                 <input id="b-ciudad" name="ciudad" type="text" autoComplete="address-level2" className={inputClass} placeholder="Bogotá" />
               </div>
               <div>
-                <label htmlFor="b-telefono" className="text-[14px] font-semibold text-[#F5F2ED]">WhatsApp</label>
+                <label htmlFor="b-telefono" className={labelFormClass}>WhatsApp</label>
                 <input id="b-telefono" name="telefono" type="tel" autoComplete="tel" className={inputClass} placeholder="+57 300 000 0000" />
               </div>
             </div>
