@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { Check } from "lucide-react";
+import { Check, Menu, X } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { saveDiagnosticLead } from "@/lib/leads-diagnostic.functions";
 import { getCampaignParams, saveCampaignParams, track } from "@/components/rckt/tracking";
@@ -45,27 +45,52 @@ function CtaButton({ children, className = "" }: { children: React.ReactNode; cl
 }
 
 function LandingHeader() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  const linkClass = "text-[15px] font-medium text-[#212121]! transition-colors hover:text-[#005CFF]! focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]";
+  const btnClass = "inline-flex items-center justify-center rounded-full bg-[#212121] font-semibold text-white! transition-colors hover:bg-[#005CFF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]";
   return (
-    <header className="sticky top-0 z-40 border-b border-[#D9DDE4] bg-[#FBFBFA]/90 backdrop-blur-md">
-      <div className="mx-auto flex h-[68px] w-full max-w-[1200px] items-center justify-between gap-4 px-5 md:px-8">
+    <header className={`fixed inset-x-0 top-0 z-50 px-4 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:px-6 ${scrolled ? "pt-3" : "pt-0"}`}>
+      <div
+        className={`mx-auto flex w-full items-center justify-between gap-4 px-5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:px-8 ${
+          scrolled
+            ? "h-[60px] max-w-[1100px] rounded-full border border-[#D9DDE4] bg-white/75 shadow-[0_10px_30px_rgba(0,0,0,0.12)] backdrop-blur-md"
+            : "h-[68px] max-w-[1200px] border border-transparent bg-[#FBFBFA]"
+        }`}
+      >
         <a href="#top" aria-label="RCKT">
-          <img src={logoDark} alt="RCKT" className="h-7 w-auto" />
+          <img src={logoDark} alt="RCKT" className={`w-auto transition-all duration-500 ${scrolled ? "h-6" : "h-7"}`} />
         </a>
         <nav className="hidden items-center gap-8 md:flex" aria-label="Secciones">
-          <a href="#beneficios" className="text-[15px] font-medium text-[#212121] transition-colors hover:text-[#005CFF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]">
-            Beneficios
-          </a>
-          <a href="#proceso" className="text-[15px] font-medium text-[#212121] transition-colors hover:text-[#005CFF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]">
-            Cómo funciona
-          </a>
+          <a href="#beneficios" className={linkClass}>Beneficios</a>
+          <a href="#proceso" className={linkClass}>Cómo funciona</a>
         </nav>
-        <a
-          href="#diagnostico"
-          className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-[#212121] px-6 text-[15px] font-semibold text-white transition-colors hover:bg-[#005CFF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]"
-        >
-          Solicitar diagnóstico
-        </a>
+        <div className="flex items-center gap-2 md:hidden">
+          <a href="#diagnostico" className={`${btnClass} h-[40px] whitespace-nowrap px-4 text-[13px]`}>Solicitar diagnóstico</a>
+          <button
+            type="button"
+            onClick={() => setMenuOpen((value) => !value)}
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            className="inline-flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full border border-[#D9DDE4] bg-white/75 text-[#212121]! backdrop-blur-md transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]"
+          >
+            {menuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+          </button>
+        </div>
+        <a href="#diagnostico" className={`${btnClass} hidden min-h-[42px] px-6 text-[14px] md:inline-flex`}>Solicitar diagnóstico</a>
       </div>
+      {menuOpen && (
+        <div className="mx-auto mt-2 w-full max-w-[1100px] rounded-[24px] border border-[#D9DDE4] bg-white/90 p-2 shadow-[0_10px_30px_rgba(0,0,0,0.12)] backdrop-blur-md md:hidden">
+          <a href="#beneficios" onClick={() => setMenuOpen(false)} className="flex min-h-[44px] items-center px-4 text-[16px] font-medium text-[#212121]! transition-colors hover:text-[#005CFF]!">Beneficios</a>
+          <a href="#proceso" onClick={() => setMenuOpen(false)} className="flex min-h-[44px] items-center px-4 text-[16px] font-medium text-[#212121]! transition-colors hover:text-[#005CFF]!">Cómo funciona</a>
+        </div>
+      )}
     </header>
   );
 }
@@ -98,7 +123,7 @@ function HeroSection() {
   const [active, setActive] = useState(0);
   const chat = heroChats[active];
   return (
-    <section id="top" className="relative bg-[#FBFBFA]">
+    <section id="top" className="relative bg-[#FBFBFA] pt-[68px]">
       <div className="relative overflow-hidden">
         <ImagePlaceholder name="C-01-hero.jpg" className="absolute inset-0 h-full w-full rounded-none border-0" />
         <div
@@ -615,22 +640,22 @@ function FormularioSection() {
               </select>
             </div>
             <input type="hidden" name="pais" value="Colombia" />
-            <div className="flex items-start gap-3">
+            <label htmlFor="c-consent" className="col-span-full grid w-full grid-cols-[20px_1fr] items-start gap-3 font-normal normal-case tracking-normal">
               <input
                 id="c-consent"
                 type="checkbox"
                 checked={consent}
                 onChange={(e) => setConsent(e.target.checked)}
-                className="mt-1 h-4 w-4 accent-[#005CFF]"
+                className="mt-[1px] h-[18px] w-[18px] accent-[#005CFF]"
               />
-              <label htmlFor="c-consent" className="text-[13px] leading-[1.5] text-[#4F4F4D]">
+              <span className="whitespace-normal break-normal text-[13px] font-normal normal-case leading-[1.5] tracking-normal text-[#4F4F4D]">
                 Autorizo el tratamiento de mis datos personales según la{" "}
-                <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#005CFF] underline">
+                <a href="/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#005CFF]! underline">
                   política de tratamiento de datos
                 </a>
                 .
-              </label>
-            </div>
+              </span>
+            </label>
             {error && (
               <p role="alert" className="text-[14px] font-medium text-[#B3261E]">{error}</p>
             )}
