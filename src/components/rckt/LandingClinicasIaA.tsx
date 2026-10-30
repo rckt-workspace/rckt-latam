@@ -924,6 +924,8 @@ export function LandingClinicasIaA() {
         <HeroSection />
         <ProblemaSection />
         <OportunidadSection />
+        <ContextoSection />
+        <RequisitosSection />
         <BeneficiosSection />
         <ServiciosSection />
         <DiferenciadorSection />
