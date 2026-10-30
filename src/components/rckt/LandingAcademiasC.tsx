@@ -625,7 +625,7 @@ function FormularioSection() {
           <p className="mt-6 text-[17px] leading-[1.5] text-[#4F4F4D]">
             Revisamos tus programas, tu página y tu competencia para definir cómo empezar a pautar en ChatGPT.
           </p>
-          <img src={imgC04Formulario} alt="Director de una academia" className="mt-10 hidden! h-[280px] w-full rounded-[4px] object-cover lg:block" />
+          <img src={imgC04Formulario} alt="Director de una academia" className="mt-10 hidden! h-[280px] w-full rounded-[4px] object-cover lg:block!" />
         </div>
         <form onSubmit={onSubmit} className="rounded-[4px] bg-[#F4F6FA] p-6 md:p-9">
           <div className="grid grid-cols-1 gap-6">
