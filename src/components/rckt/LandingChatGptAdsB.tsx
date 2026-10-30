@@ -144,7 +144,7 @@ function HeroSection() {
             ChatGPT Ads ya llegó a Colombia. Dejamos tu clínica lista y visible en las respuestas de la IA mientras OpenAI habilita la publicidad de salud en el país.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <CtaButton>Solicitar diagnóstico de preparación</CtaButton>
+            <CtaButton className="w-full sm:w-auto">Solicitar diagnóstico de preparación</CtaButton>
             <p className="text-[13px] text-[#BDB8B1]">Para clínicas de medicina estética en Colombia</p>
           </div>
         </div>
