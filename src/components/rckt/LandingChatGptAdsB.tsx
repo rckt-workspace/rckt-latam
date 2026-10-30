@@ -254,7 +254,7 @@ function BeneficiosSection() {
 }
 
 const servicios = [
-  { num: "01", title: "Cuenta y verificación", text: "Creamos tu cuenta en Ads Manager y gestionamos la revisión de OpenAI para el sector salud.", image: "B-05-servicio-01-diagnostico.jpg" },
+  { num: "01", title: "Cuenta y verificación", text: "Abrimos tu cuenta con los datos correctos de tu clínica y la dejamos lista para cuando se habilite la categoría de salud.", image: "B-05-servicio-01-diagnostico.jpg" },
   { num: "02", title: "Estrategia de intenciones", text: "Mapeamos cómo pregunta tu paciente: tratamientos, ciudades, comparaciones y dudas de precio.", image: "B-06-servicio-02-estrategia.jpg" },
   { num: "03", title: "Anuncios y landing", text: "Piezas sin promesas de resultados ni descuentos, y una página pensada para convertir consultas en valoraciones.", image: "B-07-servicio-03-landing.jpg" },
   { num: "04", title: "WhatsApp y reportes", text: "Cada lead llega a tu equipo comercial, con un reporte semanal de clics, leads y citas agendadas.", image: "B-08-servicio-04-seguimiento.jpg" },
@@ -325,8 +325,8 @@ function DiferenciadorSection() {
 
 const procesoPasos = [
   { num: "1", title: "Auditoría de canales IA", text: "Revisamos elegibilidad, tratamientos y competencia en tu ciudad." },
-  { num: "2", title: "Verificación y lanzamiento", text: "Gestionamos la revisión de OpenAI y activamos campaña, landing y WhatsApp." },
-  { num: "3", title: "Optimización semanal", text: "Ajustamos según leads y citas reales." },
+  { num: "2", title: "Preparación de cuenta y landing", text: "Dejamos lista tu cuenta, tu medición y una landing que cumple la política de OpenAI." },
+  { num: "3", title: "Activación y optimización", text: "Activamos apenas OpenAI habilite la salud en Colombia y ajustamos según leads y citas reales." },
 ];
 
 function ProcesoSection() {
@@ -424,7 +424,7 @@ function FormularioSection() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <h2 className="font-bold text-[#F5F2ED]" style={{ fontSize: "clamp(34px, 4vw, 54px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
-            Agenda tu consultoría de viabilidad.
+            Agenda tu diagnóstico de preparación.
           </h2>
           <p className="mt-6 text-[17px] leading-[1.5] text-[#D6D1CA]">
             Revisamos si tu clínica es elegible, qué tratamientos conviene priorizar y qué inversión tiene sentido para tu ciudad.
@@ -496,7 +496,7 @@ function FormularioSection() {
               disabled={enviando}
               className="inline-flex min-h-[50px] w-full items-center justify-center rounded-full bg-[#FC5C1F] px-8 text-[16px] font-semibold text-[#1A1A1A] transition-colors hover:bg-[#ff7340] disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FC5C1F]"
             >
-              {enviando ? "Enviando…" : "Solicitar mi auditoría"}
+              {enviando ? "Enviando…" : "Solicitar mi diagnóstico"}
             </button>
           </div>
         </form>
@@ -506,11 +506,11 @@ function FormularioSection() {
 }
 
 const faqItems = [
-  { question: "¿Mi clínica puede anunciarse en ChatGPT?", answer: "Los procedimientos estéticos mínimamente invasivos están entre las categorías que OpenAI revisa caso por caso. Lo validamos contigo en la auditoría." },
+  { question: "¿Mi clínica puede anunciarse en ChatGPT?", answer: "Hoy OpenAI no permite anuncios de servicios de salud fuera de Estados Unidos. Preparamos tu clínica para activar campañas apenas se habilite y, mientras tanto, trabajamos su visibilidad en las respuestas." },
   { question: "¿OpenAI ve los datos de mis pacientes?", answer: "No. OpenAI no comparte las conversaciones con los anunciantes, y los leads llegan directo a tu equipo." },
   { question: "¿Debo dejar Google o Meta?", answer: "No. ChatGPT Ads se suma a los canales que ya te funcionan." },
   { question: "¿Cuánto debo invertir?", answer: "Depende de tu ciudad, tus tratamientos y tus objetivos. Lo definimos contigo en la auditoría." },
-  { question: "¿En cuánto tiempo veo resultados?", answer: "Depende de la aprobación de OpenAI y del volumen de consultas en tu ciudad. En la auditoría te damos un estimado." },
+  { question: "¿En cuánto tiempo veo resultados?", answer: "La visibilidad en las respuestas de la IA empieza a construirse desde el primer mes. La pauta depende de que OpenAI habilite la salud en Colombia." },
 ];
 
 function FaqSectionLanding() {
@@ -713,7 +713,7 @@ export function LandingChatGptAdsBThanks() {
             Recibimos tu solicitud.
           </h1>
           <p className="mt-4 text-[17px] leading-[1.5] text-[#D6D1CA]">
-            Te contactaremos por WhatsApp para agendar tu auditoría de canales IA.
+            Te contactaremos por WhatsApp para agendar tu diagnóstico de preparación.
           </p>
           <a
             href="/"
