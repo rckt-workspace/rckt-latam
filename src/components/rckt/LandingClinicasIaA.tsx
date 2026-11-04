@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, MessageSquare, UserCheck, Lock } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { Check } from "lucide-react";
@@ -186,13 +186,16 @@ function HeroSection() {
             className={`${fontDisplay} mt-6 font-bold text-[#212121]`}
             style={{ fontSize: "clamp(38px, 4.6vw, 64px)", lineHeight: 1, letterSpacing: "-0.03em" }}
           >
-            Tus próximos pacientes podrían empezar su búsqueda en ChatGPT.
+            Tus futuros pacientes ya consultan sobre tratamientos estéticos con IA. ¿Tu clínica está preparada?
           </h1>
           <p className="mt-6 text-[17px] leading-[1.5] text-[#212121]">
-            Hoy las personas exploran nuevas formas de informarse sobre tratamientos estéticos. ¿Está tu clínica preparada para conectar con ellas?
+            La forma de buscar información sobre tratamientos estéticos está evolucionando. En RCKT te ayudamos a preparar la estrategia digital de tu clínica para las nuevas oportunidades publicitarias de ChatGPT, mientras OpenAI habilita publicidad para anunciar servicios de salud en Colombia.
           </p>
-          <p className="mt-4 text-[15px] leading-[1.5] text-[#4B4366]">
-            Descubre cómo integrar las oportunidades de publicidad e inteligencia artificial en una estrategia de captación de pacientes.
+          <p className="mt-4 text-[15px] font-semibold leading-[1.5] text-[#212121]">
+            Prepárate con una estrategia, no con suposiciones.
+          </p>
+          <p className="mt-1 text-[15px] leading-[1.5] text-[#4B4366]">
+            Analizamos tu presencia digital, tus tratamientos y los requisitos que podrían aplicar a tu clínica.
           </p>
           <div className="mt-8">
             <CtaButton>Quiero explorar esta oportunidad</CtaButton>
@@ -212,10 +215,9 @@ function HeroSection() {
 }
 
 const problemaCards = [
-  { num: "01", title: "Investigan", text: "Exploran procedimientos y posibles soluciones." },
-  { num: "02", title: "Preguntan", text: "Buscan respuestas claras antes de contactar." },
-  { num: "03", title: "Comparan", text: "Evalúan opciones, condiciones y confianza." },
-  { num: "04", title: "Deciden", text: "Solicitan una valoración cuando están preparados." },
+  { num: "01", title: "Investigan", text: "Buscan información sobre procedimientos, beneficios y riesgos." },
+  { num: "02", title: "Comparan", text: "Exploran alternativas y preparan preguntas antes de consultar." },
+  { num: "03", title: "Consultan", text: "Contactan clínicas para conocer disponibilidad y solicitar valoraciones." },
 ];
 
 function ProblemaSection() {
@@ -225,15 +227,21 @@ function ProblemaSection() {
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
           <div>
             <h2 className={`${fontDisplay} font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-              La decisión de un tratamiento estético comienza mucho antes de agendar una cita.
+              La búsqueda de un tratamiento estético ya no empieza siempre en Google.
             </h2>
             <p className="mt-6 text-[16px] leading-[1.5] text-[#4B4366]">
-              Antes de contactar una clínica, una persona puede investigar procedimientos, comparar alternativas, consultar dudas y buscar información sobre seguridad, recuperación y resultados. Las herramientas de IA están ampliando las formas de acceder a esa información.
+              Antes de solicitar una valoración, muchas personas quieren entender qué tratamientos existen, cuáles son sus diferencias, qué cuidados requieren y qué deberían preguntar a un profesional.
+            </p>
+            <p className="mt-4 text-[16px] leading-[1.5] text-[#4B4366]">
+              Hoy, herramientas de inteligencia artificial como ChatGPT también pueden formar parte de ese proceso de información.
+            </p>
+            <p className="mt-4 text-[16px] leading-[1.5] text-[#4B4366]">
+              Esto no significa que la IA reemplace una valoración médica. Significa que las clínicas necesitan comprender cómo están evolucionando los canales digitales por los que las personas investigan y toman decisiones.
             </p>
           </div>
           <ImagePlaceholder name="A-02-problema-paciente-celular.jpg" className="h-[280px] md:h-[340px]" />
         </div>
-        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
           {problemaCards.map((card) => (
             <article key={card.num} className="rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-6">
               <span className={`${fontDisplay} text-[15px] font-bold text-[#6A3FE0]`}>{card.num}</span>
@@ -246,7 +254,7 @@ function ProblemaSection() {
           className={`${fontDisplay} mt-10 max-w-[820px] font-bold text-[#4B2BB8]`}
           style={{ fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: 1.2, letterSpacing: "-0.01em" }}
         >
-          Tu clínica necesita una estrategia que acompañe ese recorrido, no solamente anuncios que generen clics.
+          Tu clínica no necesita perseguir cada tendencia. Necesita entender cuáles pueden convertirse en oportunidades reales para sus pacientes y su negocio.
         </p>
       </div>
     </section>
@@ -259,10 +267,13 @@ function OportunidadSection() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <h2 className={`${fontDisplay} font-bold text-white`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-            Tu clínica, presente en nuevas experiencias de descubrimiento.
+            Así podría verse tu experiencia publicitaria cuando el servicio esté autorizado.
           </h2>
           <p className="mt-6 text-[16px] leading-[1.5] text-white/90">
-            La publicidad en entornos de inteligencia artificial abre una posibilidad para que las marcas exploren nuevas formas de conectar con personas interesadas en sus servicios. Pero una estrategia efectiva requiere más que aparecer en un espacio publicitario: necesita un mensaje relevante, una página que genere confianza y un proceso comercial capaz de atender las consultas.
+            Imagina que una persona está investigando opciones de medicina estética. Antes de contactar una clínica, puede consultar dudas sobre procedimientos, cuidados, seguridad y criterios para elegir un profesional.
+          </p>
+          <p className="mt-4 text-[16px] leading-[1.5] text-white/90">
+            En un escenario donde la publicidad de servicios de salud esté autorizada, los anuncios patrocinados podrían convertirse en una nueva forma de dar visibilidad a las clínicas.
           </p>
         </div>
         <div>
@@ -292,39 +303,6 @@ function OportunidadSection() {
   );
 }
 
-const contextoCifras = [
-  { num: "21.10.2026", text: "OpenAI anunció ChatGPT Ads para Colombia y otros 13 países de Latinoamérica." },
-  { num: "1.200 M", text: "personas usan ChatGPT cada semana." },
-  { num: "2 de cada 10", text: "colombianos ya usan ChatGPT para consultas de salud." },
-];
-
-const contextoFunciona = [
-  { icon: MessageSquare, text: "El anuncio aparece debajo de la respuesta y marcado como patrocinado." },
-  { icon: UserCheck, text: "Solo lo ven adultos que usan los planes gratuitos de ChatGPT." },
-  { icon: Lock, text: "OpenAI no comparte las conversaciones con los anunciantes." },
-];
-
-const contextoNoAplica = [
-  "Anuncios de servicios de salud fuera de Estados Unidos. Allí solo se permiten tratamientos estéticos sencillos, como toxina botulínica, rellenos o láser, con aprobación previa.",
-  "La cirugía plástica, que no se puede anunciar en ningún país.",
-  "Mensajes que exploten inseguridades sobre el cuerpo.",
-];
-
-const contextoSiPuede = [
-  "Preparar la cuenta, la medición y los permisos de tu clínica.",
-  "Trabajar tu visibilidad en las respuestas de la IA.",
-  "Tener tus campañas listas para activarlas cuando OpenAI abra la categoría de salud en Colombia.",
-];
-
-function ContextoPunto({ children }: { children: React.ReactNode }) {
-  return (
-    <li className="flex items-start gap-3 text-[15px] leading-[1.5] text-[#4B4366]">
-      <span className="mt-0.5 h-[6px] w-[6px] shrink-0 rounded-full bg-[#6A3FE0]" aria-hidden="true" />
-      <span>{children}</span>
-    </li>
-  );
-}
-
 function ContextoSection() {
   return (
     <section id="contexto" className="bg-[#FBFAFF] py-12 md:py-16">
@@ -333,106 +311,36 @@ function ContextoSection() {
           Contexto · Octubre 2026
         </span>
         <h2
-          className={`${fontDisplay} mt-5 max-w-[760px] font-bold text-[#212121]`}
+          className={`${fontDisplay} mt-5 max-w-[820px] font-bold text-[#212121]`}
           style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
         >
-          Lo que tu clínica debe saber sobre los anuncios en ChatGPT.
+          ChatGPT Ads llegó a Colombia. ¿Qué significa para el sector de la medicina estética?
         </h2>
         <p className="mt-6 max-w-[720px] text-[16px] leading-[1.5] text-[#4B4366]">
-          La publicidad en ChatGPT llegó a Colombia el 21 de octubre de 2026, pero todavía no está abierta para los servicios de salud. Este es el momento de prepararse.
+          La llegada de formatos publicitarios a ChatGPT abre nuevas posibilidades para las marcas. Sin embargo, las clínicas estéticas pertenecen a un sector regulado, por lo que no deben asumir que todos sus servicios y tratamientos pueden anunciarse de inmediato.
         </p>
-        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-3">
-          {contextoCifras.map((cifra) => (
-            <article key={cifra.num} className="rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-6">
-              <p className={`${fontDisplay} text-[30px] font-bold leading-[1.1] text-[#6A3FE0] md:text-[34px]`}>{cifra.num}</p>
-              <p className="mt-2 text-[15px] leading-[1.5] text-[#4B4366]">{cifra.text}</p>
-            </article>
-          ))}
-        </div>
-        <p className="mt-10 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#4B2BB8]">Cómo funciona</p>
-        <ul className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
-          {contextoFunciona.map((punto) => (
-            <li key={punto.text} className="flex items-start gap-3 rounded-[24px] border border-[#DCD1FA] bg-white p-5">
-              <span className="mt-0.5 flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-[#F1ECFF]">
-                <punto.icon className="h-[18px] w-[18px] text-[#6A3FE0]" aria-hidden="true" />
-              </span>
-              <span className="text-[15px] leading-[1.5] text-[#4B4366]">{punto.text}</span>
-            </li>
-          ))}
-        </ul>
+        <p
+          className={`${fontDisplay} mt-8 max-w-[820px] font-bold text-[#4B2BB8]`}
+          style={{ fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: 1.2, letterSpacing: "-0.01em" }}
+        >
+          La disponibilidad de anuncios no equivale a la autorización de cualquier campaña de salud.
+        </p>
+        <p className="mt-6 max-w-[720px] text-[16px] leading-[1.5] text-[#4B4366]">
+          Por eso, antes de invertir, es importante conocer las políticas publicitarias, revisar los requisitos aplicables y preparar una estrategia responsable.
+        </p>
         <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
-          <article className="rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-7">
-            <div className="flex items-center gap-3">
-              <span className="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-white">
-                <X className="h-[20px] w-[20px] text-[#4B2BB8]" aria-hidden="true" />
-              </span>
-              <h3 className={`${fontDisplay} text-[19px] font-bold leading-[1.2] text-[#212121]`}>Hoy no aplica</h3>
-            </div>
-            <ul className="mt-5 flex flex-col gap-3">
-              {contextoNoAplica.map((punto) => (
-                <ContextoPunto key={punto}>{punto}</ContextoPunto>
-              ))}
-            </ul>
+          <article className="rounded-[24px] border border-[#DCD1FA] bg-white p-7">
+            <h3 className={`${fontDisplay} text-[19px] font-bold leading-[1.2] text-[#212121]`}>Qué puedes hacer desde ahora</h3>
+            <p className="mt-3 text-[15px] leading-[1.5] text-[#4B4366]">
+              Revisar tu presencia digital, optimizar la página web, mejorar la información de tus servicios, organizar el seguimiento de contactos y evaluar la preparación de tu clínica.
+            </p>
           </article>
           <article className="rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-7">
-            <div className="flex items-center gap-3">
-              <span className="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-white">
-                <Check className="h-[20px] w-[20px] text-[#6A3FE0]" aria-hidden="true" />
-              </span>
-              <h3 className={`${fontDisplay} text-[19px] font-bold leading-[1.2] text-[#212121]`}>Lo que sí puedes hacer hoy</h3>
-            </div>
-            <ul className="mt-5 flex flex-col gap-3">
-              {contextoSiPuede.map((punto) => (
-                <ContextoPunto key={punto}>{punto}</ContextoPunto>
-              ))}
-            </ul>
+            <h3 className={`${fontDisplay} text-[19px] font-bold leading-[1.2] text-[#212121]`}>Qué depende de la plataforma</h3>
+            <p className="mt-3 text-[15px] leading-[1.5] text-[#4B4366]">
+              La disponibilidad de campañas para servicios de salud, la aprobación de anuncios y las condiciones de segmentación y publicación.
+            </p>
           </article>
-        </div>
-        <p className="mt-8 text-[12px] leading-[1.5] text-[#4B4366]">
-          Fuentes: OpenAI, política de anuncios y anuncio del 21 de octubre de 2026; ITBA, Índice de Innovación Regional 2026. Las políticas cambian con frecuencia y las verificamos en cada diagnóstico.
-        </p>
-      </div>
-    </section>
-  );
-}
-
-const requisitos = [
-  { num: "01", title: "Identidad comercial verificable", text: "Empresa registrada en Colombia, verificación del negocio y correo corporativo. El país y la moneda de la cuenta no se pueden cambiar después." },
-  { num: "02", title: "Licencias y autorizaciones", text: "Habilitación de la clínica en el REPS y registro profesional de los especialistas. OpenAI puede pedir prueba de licencia." },
-  { num: "03", title: "Publicidad veraz", text: "Sin promesas de resultados, descuentos en procedimientos ni mensajes que exploten la imagen corporal." },
-  { num: "04", title: "Página de destino conforme", text: "La página debe coincidir con el anuncio, funcionar bien y explicar el servicio con claridad." },
-  { num: "05", title: "Revisión y aprobación final", text: "OpenAI revisa la cuenta, el anuncio y la página antes de publicar, y puede retirar anuncios después." },
-];
-
-function RequisitosSection() {
-  return (
-    <section id="requisitos" className="bg-white py-12 md:py-16">
-      <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <div className="mx-auto flex max-w-[820px] flex-col items-center text-center">
-          <span className="inline-block rounded-full bg-[#4B2BB8] px-4 py-1.5 text-[12px] font-semibold tracking-wide !text-white">Requisitos</span>
-          <h2
-            className={`${fontDisplay} mt-5 font-bold text-[#212121]`}
-            style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
-          >
-            Lo que OpenAI le pide a una clínica para poder anunciarse.
-          </h2>
-          <p className="mt-6 text-[16px] leading-[1.5] text-[#4B4366]">
-            Cuando la categoría de salud se abra en Colombia, solo podrán pautar las clínicas que cumplan estos requisitos. En el diagnóstico revisamos cada uno contigo.
-          </p>
-        </div>
-        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-6">
-          {requisitos.map((req, index) => (
-            <article
-              key={req.num}
-              className={`rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-6 lg:col-span-2 ${
-                index < 3 ? "" : "md:col-span-2 lg:col-span-2"
-              } ${index === 3 ? "lg:col-start-2" : ""} ${index === 4 ? "lg:col-start-4" : ""}`}
-            >
-              <span className={`${fontDisplay} text-[15px] font-bold text-[#6A3FE0]`}>{req.num}</span>
-              <h3 className={`${fontDisplay} mt-3 text-[19px] font-bold leading-[1.2] text-[#212121]`}>{req.title}</h3>
-              <p className="mt-2 text-[15px] leading-[1.5] text-[#4B4366]">{req.text}</p>
-            </article>
-          ))}
         </div>
       </div>
     </section>
@@ -440,10 +348,10 @@ function RequisitosSection() {
 }
 
 const beneficios = [
-  { title: "Explorar nuevas oportunidades de captación", text: "Evaluar canales emergentes para complementar tu estrategia actual." },
-  { title: "Fortalecer la confianza", text: "Comunicar tus servicios, tu equipo profesional y tus diferenciales con claridad." },
-  { title: "Invertir con criterio", text: "Analizar costos, calidad de oportunidades y resultados antes de escalar." },
-  { title: "Conectar marketing y atención comercial", text: "Facilitar el seguimiento de cada solicitud hasta la valoración." },
+  { title: "Fortalece tu credibilidad", text: "Presenta tus profesionales, servicios, habilitaciones e información de manera clara y verificable." },
+  { title: "Mejora tu presencia digital", text: "Optimiza tu web para que las personas encuentren información útil y puedan solicitar una valoración." },
+  { title: "Organiza tus oportunidades", text: "Facilita la atención por WhatsApp y el seguimiento de las solicitudes recibidas." },
+  { title: "Prepárate con información", text: "Evalúa los requisitos y la viabilidad de futuros canales publicitarios antes de comprometer presupuesto." },
 ];
 
 function BeneficiosSection() {
@@ -454,7 +362,7 @@ function BeneficiosSection() {
           className={`${fontDisplay} max-w-[900px] font-bold text-[#212121]`}
           style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
         >
-          No se trata de estar en todas partes. Se trata de invertir donde tenga sentido para tu clínica.
+          Tu clínica no necesita esperar para fortalecer su estrategia digital.
         </h2>
         <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
           <ImagePlaceholder name="A-03-beneficios-equipo.jpg" className="h-[280px] md:h-[360px]" />
@@ -473,10 +381,10 @@ function BeneficiosSection() {
 }
 
 const servicios = [
-  { num: "01", title: "Diagnóstico estratégico", text: "Analizamos tus servicios, objetivos, presencia digital y oportunidades de mejora.", image: "A-05-servicio-01-diagnostico.jpg" },
-  { num: "02", title: "Estrategia publicitaria", text: "Evaluamos la viabilidad de los espacios publicitarios, tu propuesta de valor y tus mensajes.", image: "A-06-servicio-02-estrategia.jpg" },
-  { num: "03", title: "Landing de conversión", text: "Diseñamos una experiencia clara y profesional para facilitar solicitudes de valoración.", image: "A-07-servicio-03-landing.jpg" },
-  { num: "04", title: "Automatización y seguimiento", text: "Revisamos conexiones con WhatsApp, CRM y atención comercial cuando sea apropiado.", image: "A-08-servicio-04-seguimiento.jpg" },
+  { num: "01", title: "Diagnóstico de presencia digital", text: "Analizamos tu sitio web, servicios, canales de captación y proceso de atención para identificar oportunidades de mejora.", image: "A-05-servicio-01-diagnostico.jpg" },
+  { num: "02", title: "Estrategia de marketing e IA", text: "Diseñamos una hoja de ruta para fortalecer la visibilidad de tu clínica y evaluar nuevos canales publicitarios conforme a su disponibilidad.", image: "A-06-servicio-02-estrategia.jpg" },
+  { num: "03", title: "Optimización de landing y mensajes", text: "Mejoramos la presentación de tus servicios, la claridad de la información y los puntos de contacto con pacientes potenciales.", image: "A-07-servicio-03-landing.jpg" },
+  { num: "04", title: "Seguimiento de oportunidades", text: "Organizamos la medición de consultas, contactos y citas, respetando la privacidad de los pacientes.", image: "A-08-servicio-04-seguimiento.jpg" },
 ];
 
 function ServicioCard({ servicio }: { servicio: (typeof servicios)[number] }) {
@@ -537,7 +445,7 @@ function ServiciosSection() {
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <h2 className={`${fontDisplay} max-w-[640px] font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-            De la oportunidad tecnológica a una estrategia comercial.
+            De la estrategia digital a una clínica mejor preparada para captar pacientes.
           </h2>
           <p className="text-[13px] text-[#4B4366] md:pb-2">Pasa el cursor por cada tarjeta para ver qué incluye.</p>
         </div>
@@ -551,11 +459,12 @@ function ServiciosSection() {
   );
 }
 
-const diferenciadorTags = [
-  "Estrategia de marketing digital",
-  "Inteligencia artificial aplicada al negocio",
-  "Optimización de conversiones",
-  "Medición de oportunidades comerciales",
+const aspectosRevisamos = [
+  "Habilitaciones y registros que correspondan al servicio.",
+  "Información verificable de los profesionales.",
+  "Mensajes publicitarios responsables.",
+  "Tratamiento adecuado de datos personales.",
+  "Coherencia entre anuncios, web y servicios ofrecidos.",
 ];
 
 function DiferenciadorSection() {
@@ -565,18 +474,23 @@ function DiferenciadorSection() {
         <ImagePlaceholder name="A-09-diferenciador-libreta.jpg" className="h-[260px] md:h-[340px]" />
         <div>
           <h2 className={`${fontDisplay} font-bold text-white`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-            La tecnología cambia. Una buena estrategia sigue siendo esencial.
+            En salud, la confianza es tan importante como la visibilidad.
           </h2>
           <p className="mt-6 text-[16px] leading-[1.5] text-white/85">
-            No proponemos invertir en IA simplemente porque es tendencia. Evaluamos cómo puede integrarse a la realidad comercial de tu clínica, considerando capacidad de atención, servicios, presupuesto y objetivos.
+            La publicidad de servicios estéticos requiere especial cuidado. Una estrategia responsable debe comunicar información verificable, respetar la privacidad de los pacientes y evitar promesas sobre resultados médicos.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            {diferenciadorTags.map((tag) => (
-              <span key={tag} className="rounded-full bg-[#6A3FE0] px-4 py-2 text-[13px] font-medium text-white">
-                {tag}
-              </span>
+          <p className="mt-4 text-[16px] leading-[1.5] text-white/85">
+            En RCKT revisamos los requisitos aplicables antes de recomendar campañas, porque una buena estrategia de marketing no debería poner en riesgo la reputación de tu clínica.
+          </p>
+          <p className="mt-8 text-[15px] font-semibold text-white">Aspectos que revisamos</p>
+          <ul className="mt-4 flex flex-col gap-3">
+            {aspectosRevisamos.map((aspecto) => (
+              <li key={aspecto} className="flex items-start gap-3">
+                <Check className="mt-0.5 h-[18px] w-[18px] shrink-0 text-[#DCD1FA]" aria-hidden="true" />
+                <span className="text-[15px] leading-[1.5] text-white">{aspecto}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </section>
@@ -688,10 +602,10 @@ function FormularioSection() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <h2 className={`${fontDisplay} font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-            Descubre si tu clínica está preparada para nuevas oportunidades con IA.
+            Descubre qué tan preparada está tu clínica para las nuevas oportunidades del marketing con IA.
           </h2>
           <p className="mt-6 text-[16px] leading-[1.5] text-[#4B4366]">
-            Déjanos tus datos y conversemos sobre cómo fortalecer tu estrategia digital.
+            Solicita una revisión inicial de tu presencia digital y conoce qué acciones podrían ayudarte a mejorar tu estrategia de captación.
           </p>
           <ImagePlaceholder name="A-04-formulario-directora.jpg" className="mt-10 hidden h-[280px] lg:block" />
         </div>
@@ -749,7 +663,7 @@ function FormularioSection() {
               disabled={enviando}
               className="inline-flex min-h-[50px] w-full items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[16px] font-semibold text-white! transition-colors hover:bg-[#4B2BB8] disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]"
             >
-              {enviando ? "Enviando…" : "Solicitar mi diagnóstico"}
+              {enviando ? "Enviando…" : "Solicitar diagnóstico de mi clínica"}
             </button>
           </div>
         </form>
@@ -809,7 +723,7 @@ function CierreSection() {
             El futuro del marketing también se está construyendo con inteligencia artificial.
           </h2>
           <p className="mt-6 text-[16px] leading-[1.5] text-[#4B4366]">
-            Tu clínica no necesita perseguir cada tendencia. Necesita identificar cuáles pueden convertirse en oportunidades reales para su crecimiento.
+            La inteligencia artificial está transformando la forma de buscar información y explorar servicios. Tu clínica puede empezar a prepararse con una estrategia digital clara, responsable y medible.
           </p>
           <div className="mt-8">
             <CtaButton>Quiero preparar mi clínica</CtaButton>
@@ -930,9 +844,8 @@ export function LandingClinicasIaA() {
       <main>
         <HeroSection />
         <ProblemaSection />
-        <OportunidadSection />
         <ContextoSection />
-        <RequisitosSection />
+        <OportunidadSection />
         <BeneficiosSection />
         <ServiciosSection />
         <DiferenciadorSection />
