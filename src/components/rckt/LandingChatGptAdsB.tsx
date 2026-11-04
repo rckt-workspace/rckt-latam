@@ -379,11 +379,12 @@ function ServiciosSection() {
   );
 }
 
-const diferenciadorTags = [
-  "Ley 1581 de 2012",
-  "Ética publicitaria en salud",
-  "Políticas de OpenAI",
-  "Sin promesas de resultados",
+const aspectosRevisamos = [
+  "Habilitaciones y registros de cada servicio.",
+  "Datos comprobables de tus profesionales.",
+  "Mensajes publicitarios responsables.",
+  "Manejo adecuado de los datos personales.",
+  "Coherencia entre el anuncio, la web y los servicios.",
 ];
 
 function DiferenciadorSection() {
@@ -392,19 +393,23 @@ function DiferenciadorSection() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <h2 className="font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
-            Campañas que cuidan la reputación de tu clínica.
+            Una clínica visible tiene que ser, ante todo, una clínica confiable.
           </h2>
           <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
-            Trabajamos alineados con la Ley 1581 de protección de datos personales, la ética médica colombiana y las políticas publicitarias de OpenAI para el sector salud.
+            Anunciar servicios estéticos exige cuidado: información comprobable, respeto por la privacidad de los pacientes y cero promesas sobre resultados médicos.
           </p>
-          <div className="mt-10 grid grid-cols-1 gap-x-8 sm:grid-cols-2">
-            {diferenciadorTags.map((tag) => (
-              <div key={tag} className="flex items-center gap-3 border-t border-[#3A3A3A] py-4">
+          <p className="mt-4 text-[16px] leading-[1.5] text-[#D6D1CA]">
+            Por eso, antes de recomendar cualquier campaña, revisamos los requisitos que aplican a tu clínica. Ninguna estrategia de marketing debería arriesgar su reputación.
+          </p>
+          <p className="mt-10 text-[15px] font-semibold text-[#F5F2ED]">Lo que revisamos</p>
+          <ul className="mt-2">
+            {aspectosRevisamos.map((aspecto) => (
+              <li key={aspecto} className="flex items-center gap-3 border-t border-[#3A3A3A] py-4">
                 <span className="text-[20px] font-bold text-[#FC5C1F]" aria-hidden="true">+</span>
-                <span className="text-[15px] font-medium text-[#F5F2ED]">{tag}</span>
-              </div>
+                <span className="text-[15px] font-medium text-[#F5F2ED]">{aspecto}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
         <ImagePlaceholder name="B-09-diferenciador-rostro.jpg" className="h-[300px] md:h-[420px]" />
       </div>
@@ -518,10 +523,10 @@ function FormularioSection() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <h2 className="font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
-            Agenda tu diagnóstico de preparación.
+            ¿Qué tan lista está tu clínica para el marketing con IA? Descúbrelo.
           </h2>
           <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
-            Revisamos si tu clínica es elegible, qué tratamientos conviene priorizar y qué inversión tiene sentido para tu ciudad.
+            Pide una revisión inicial de tu presencia digital y conoce qué acciones pueden mejorar la forma en que captas pacientes.
           </p>
           <ImagePlaceholder name="B-04-formulario-director.jpg" className="mt-10 hidden h-[280px] lg:block" />
         </div>
@@ -590,7 +595,7 @@ function FormularioSection() {
               disabled={enviando}
               className="inline-flex min-h-[50px] w-full items-center justify-center rounded-full bg-[#FC5C1F] px-8 text-[16px] font-semibold text-[#1A1A1A] transition-colors hover:bg-[#ff7340] disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FC5C1F]"
             >
-              {enviando ? "Enviando…" : "Solicitar mi diagnóstico"}
+              {enviando ? "Enviando…" : "Quiero el diagnóstico de mi clínica"}
             </button>
           </div>
         </form>
@@ -647,7 +652,7 @@ function CierreSection() {
             El paciente ya no busca “clínica estética”. Le pregunta a la IA cuál le conviene.
           </h2>
           <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
-            Ahí es donde tu clínica tiene que estar.
+            La IA está cambiando la forma en que las personas buscan información y eligen servicios. Tu clínica puede prepararse desde ya con una estrategia digital clara, responsable y medible.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-end">
             <CtaButton>Quiero adelantarme</CtaButton>
@@ -765,9 +770,8 @@ export function LandingChatGptAdsB() {
       <main>
         <HeroSection />
         <ProblemaSection />
-        <OportunidadSection />
         <ContextoSection />
-        <RequisitosSection />
+        <OportunidadSection />
         <BeneficiosSection />
         <ServiciosSection />
         <DiferenciadorSection />
