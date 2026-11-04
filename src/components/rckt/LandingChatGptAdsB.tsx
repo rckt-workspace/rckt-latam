@@ -154,10 +154,16 @@ function HeroSection() {
             className="mt-6 font-extrabold text-[#F5F2ED]"
             style={{ fontSize: "clamp(36px, 4.4vw, 60px)", lineHeight: 1.02, letterSpacing: "-0.03em" }}
           >
-            Adelántate a tu competencia: prepara tu clínica para ChatGPT Ads antes de que se sature el mercado.
+            Cada vez más pacientes le preguntan a la IA por tratamientos estéticos. Prepara tu clínica desde hoy.
           </h1>
           <p className="mt-6 text-[17px] leading-[1.5] text-[#D6D1CA]">
-            ChatGPT Ads ya llegó a Colombia. Dejamos tu clínica lista y visible en las respuestas de la IA mientras OpenAI habilita la publicidad de salud en el país.
+            ChatGPT ya tiene publicidad en Colombia, pero OpenAI todavía no habilita los anuncios de servicios de salud en el país. En RCKT dejamos lista la estrategia digital de tu clínica para ese momento.
+          </p>
+          <p className="mt-4 text-[15px] font-semibold leading-[1.5] text-[#F5F2ED]">
+            Primero estrategia, después pauta.
+          </p>
+          <p className="mt-1 text-[15px] leading-[1.5] text-[#D6D1CA]">
+            Revisamos tu presencia digital, tus tratamientos y los requisitos que aplican a tu clínica.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
             <CtaButton className="w-full sm:w-auto">Solicitar diagnóstico de preparación</CtaButton>
@@ -170,10 +176,9 @@ function HeroSection() {
 }
 
 const problemaItems = [
-  { num: "01", title: "Canal recién abierto", text: "Menos anunciantes que en Google o Meta." },
-  { num: "02", title: "Intención real", text: "El anuncio aparece cuando la persona compara opciones." },
-  { num: "03", title: "Aprendizaje temprano", text: "Quien llega primero sabe antes qué funciona." },
-  { num: "04", title: "Cumplimiento desde el inicio", text: "Campañas alineadas con la normativa de salud." },
+  { num: "01", title: "Se informan", text: "Leen sobre procedimientos, beneficios y riesgos." },
+  { num: "02", title: "Contrastan", text: "Revisan alternativas y anotan sus dudas antes de la consulta." },
+  { num: "03", title: "Agendan", text: "Escriben a las clínicas para preguntar disponibilidad y pedir su valoración." },
 ];
 
 function ProblemaSection() {
@@ -182,10 +187,16 @@ function ProblemaSection() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <h2 className="font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
-            La conversación sobre dónde tratarse ya empezó en ChatGPT.
+            Antes de pedir una cita, el paciente ya investigó por su cuenta.
           </h2>
           <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
-            Cada vez más personas le preguntan a la IA qué tratamiento les conviene, cuánto cuesta y en qué clínica hacérselo. Ahora las clínicas colombianas pueden estar presentes en ese momento.
+            Quien piensa en un tratamiento estético quiere saber qué opciones tiene, en qué se diferencian, qué cuidados exigen y qué preguntarle al especialista.
+          </p>
+          <p className="mt-4 text-[16px] leading-[1.5] text-[#D6D1CA]">
+            Ese proceso, que antes empezaba en Google, hoy también pasa por herramientas de IA como ChatGPT.
+          </p>
+          <p className="mt-4 text-[16px] leading-[1.5] text-[#D6D1CA]">
+            La IA no sustituye la valoración médica. Pero sí cambia los canales por los que tus pacientes se informan, y tu clínica necesita entenderlos.
           </p>
           <ImagePlaceholder name="B-02-problema-paciente-celular.jpg" className="mt-10 h-[280px] md:h-[340px]" />
         </div>
@@ -200,7 +211,7 @@ function ProblemaSection() {
             ))}
           </ul>
           <p className="mt-8 border-t border-[#3A3A3A] pt-8 text-[19px] font-bold leading-[1.3] text-[#F5F2ED] md:text-[22px]">
-            Las primeras clínicas en llegar compiten con menos anunciantes y aprenden antes qué funciona.
+            No se trata de seguir todas las tendencias, sino de identificar las que de verdad pueden traerle pacientes a tu clínica.
           </p>
         </div>
       </div>
