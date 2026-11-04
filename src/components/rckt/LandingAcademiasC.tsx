@@ -204,10 +204,10 @@ function HeroSection() {
 }
 
 const problemaCards = [
-  { num: "01", title: "Comparan", text: "Programas, modalidades y duración." },
-  { num: "02", title: "Preguntan", text: "Horarios, precios y formas de pago." },
-  { num: "03", title: "Verifican", text: "Certificados, docentes y opiniones." },
-  { num: "04", title: "Se inscriben", text: "Cuando encuentran una opción clara y confiable." },
+  { num: "01", title: "Comparan", text: "Programas, modalidades y duración.", image: "C-11-etapa-comparan.jpg" },
+  { num: "02", title: "Preguntan", text: "Horarios, precios y formas de pago.", image: "C-12-etapa-preguntan.jpg" },
+  { num: "03", title: "Verifican", text: "Certificados, docentes y opiniones.", image: "C-13-etapa-verifican.jpg" },
+  { num: "04", title: "Se inscriben", text: "Cuando encuentran una opción clara y confiable.", image: "C-14-etapa-inscriben.jpg" },
 ];
 
 function ProblemaSection() {
@@ -216,17 +216,23 @@ function ProblemaSection() {
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
-            Elegir dónde estudiar ya no empieza solo en <em>Google</em>.
+            Hoy, elegir dónde estudiar también empieza con una <em>conversación</em> con IA.
           </h2>
-          <p className="text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px] lg:pt-3">
-            Antes de pedir información, las personas comparan programas, horarios, precios y opiniones. Cada vez más lo hacen conversando con la IA.
-          </p>
+          <div className="lg:pt-3">
+            <p className="text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
+              Antes de inscribirse, una persona puede buscar opciones, comparar precios, preguntar por horarios y explorar qué programa se adapta mejor a sus necesidades.
+            </p>
+            <p className="mt-4 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
+              Tu academia puede tener excelentes profesores, programas y resultados, pero si los estudiantes potenciales no la descubren, esa oportunidad puede terminar en otra institución.
+            </p>
+          </div>
         </div>
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <img src={imgC02Problema} alt="Joven comparando cursos en su celular" className="h-[280px] w-full rounded-[4px] object-cover object-[50%_30%] sm:col-span-2 sm:row-span-2 sm:h-full" />
           {problemaCards.map((card) => (
             <article key={card.num} className="rounded-[4px] bg-[#EEF1F6] p-6">
-              <span className="text-[14px] font-bold text-[#005CFF]">{card.num}</span>
+              {/* Imagen futura: {card.image} */}
+              <div className="h-[180px] w-full rounded-[4px] bg-[#D9DDE4]" aria-hidden="true" />
+              <span className="mt-4 block text-[14px] font-bold text-[#005CFF]">{card.num}</span>
               <h3 className={`${serif} mt-3 text-[22px] leading-[1.1] text-[#212121]`}>{card.title}</h3>
               <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{card.text}</p>
             </article>
@@ -234,7 +240,7 @@ function ProblemaSection() {
         </div>
         <div className="mt-8 rounded-[4px] bg-[#EEF1F6] px-6 py-10 text-center md:py-14">
           <p className={`${serif} mx-auto max-w-[820px] italic text-[#005CFF]`} style={{ fontSize: "clamp(22px, 2.4vw, 30px)", lineHeight: 1.15 }}>
-            Tu academia necesita una estrategia que acompañe ese recorrido, no solo anuncios que generen clics.
+            No se trata de reemplazar Google, Instagram o WhatsApp. Se trata de evaluar un nuevo canal para llegar a personas que están explorando opciones de formación.
           </p>
         </div>
       </div>
