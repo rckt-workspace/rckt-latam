@@ -263,10 +263,10 @@ function OportunidadSection() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
-            Así aparece tu academia en la <em>conversación</em>.
+            Así podría descubrir un estudiante tu academia en <em>ChatGPT</em>.
           </h2>
           <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
-            El anuncio no cambia lo que responde ChatGPT. Aparece debajo, marcado como patrocinado, cuando la conversación tiene relación con lo que ofreces.
+            Imagina que alguien busca un curso como el que ofreces. Un anuncio relevante puede ayudarle a conocer tu institución y visitar tu página para solicitar información.
           </p>
           <div className="mt-10 flex flex-col">
             {oportunidadPartes.map((parte, index) => (
@@ -412,10 +412,10 @@ function RequisitosSection() {
 }
 
 const beneficios = [
-  { num: "01", title: "Momento de decisión", text: "Apareces cuando la persona está comparando opciones." },
-  { num: "02", title: "Le hablas a quien decide", text: "Adultos que estudian y padres que eligen por sus hijos." },
-  { num: "03", title: "Cada inscripción medida", text: "Sabes cuántas solicitudes e inscripciones llegan desde ChatGPT." },
-  { num: "04", title: "Antes que tu competencia", text: "El canal acaba de abrir y todavía hay pocos anunciantes." },
+  { num: "01", title: "Haz visible tu oferta", text: "Presenta tus cursos y programas ante personas que están explorando opciones de formación." },
+  { num: "02", title: "Conecta con intereses relevantes", text: "Diseña mensajes alineados con lo que buscan tus potenciales estudiantes." },
+  { num: "03", title: "Convierte el interés en consultas", text: "Dirige a los interesados a una landing clara, con información y opciones de contacto." },
+  { num: "04", title: "Mide y mejora tus campañas", text: "Evalúa visitas, solicitudes y matrículas atribuibles cuando exista una medición adecuada." },
 ];
 
 function BeneficiosSection() {
@@ -423,7 +423,7 @@ function BeneficiosSection() {
     <section id="beneficios" className="bg-[#FBFBFA] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2 className={`${serif} max-w-[820px] text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
-          Llega a tus futuros estudiantes en el momento <em>justo</em>.
+          Más que aparecer en un nuevo canal, se trata de generar <em>oportunidades</em> para tu academia.
         </h2>
         <div className="mt-8 grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
           <img src={imgC03Beneficios} alt="Equipo de una academia en reunión" className="h-[320px] w-full rounded-[4px] object-cover md:h-[440px]" />
@@ -438,6 +438,14 @@ function BeneficiosSection() {
               </li>
             ))}
           </ul>
+        </div>
+        <div className="mt-10">
+          <a
+            href="#diagnostico"
+            className="inline-flex min-h-[46px] items-center justify-center rounded-full border border-[#005CFF] bg-transparent px-8 text-[15px] font-semibold text-[#005CFF]! transition-colors hover:bg-[#005CFF] hover:text-white! focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]"
+          >
+            Descubre si ChatGPT Ads es una oportunidad para tu academia
+          </a>
         </div>
       </div>
     </section>
