@@ -328,26 +328,10 @@ function OportunidadSection() {
 
 const h2Style = { fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 } as const;
 
-const contextoCifras = [
-  { value: "21.10.2026", text: "Colombia entra a ChatGPT Ads." },
-  { value: "84 %", text: "de los estudiantes de educación superior en Colombia usa IA generativa de forma habitual." },
-  { value: "10.000 COP", text: "inversión mínima diaria por campaña." },
-];
-const contextoComo = [
-  "Un espacio patrocinado aparece debajo de la respuesta.",
-  "Solo lo ven mayores de 18 años en los planes gratuitos, por eso le hablamos a adultos y a padres de familia.",
-  "El anunciante nunca ve las conversaciones.",
-];
-const permitido = [
-  "Academias, institutos y centros de formación.",
-  "Cursos, diplomados, idiomas y preuniversitarios.",
-  "Academias de tecnología, arte, música y deportes.",
-  "Cursos de finanzas o de preparación en derecho, siempre que no ofrezcan servicios financieros ni legales.",
-];
-const noPermitido = [
-  "Anuncios dirigidos a menores de edad.",
-  "Promesas de empleo, salario o resultados garantizados.",
-  "Cursos que promocionen servicios médicos.",
+const contextoTarjetas = [
+  { title: "Un nuevo canal en Colombia", text: "La publicidad en ChatGPT amplía las alternativas digitales que pueden evaluar las empresas colombianas." },
+  { title: "Una experiencia basada en conversaciones", text: "Los usuarios pueden explorar necesidades, resolver dudas y comparar alternativas mediante preguntas en lenguaje natural." },
+  { title: "Publicidad identificada y diferenciada", text: "Los anuncios se presentan como contenido patrocinado y no deben confundirse con las respuestas de ChatGPT." },
 ];
 
 function ContextoSection() {
@@ -358,48 +342,35 @@ function ContextoSection() {
           <div>
             <span className="inline-block text-[13px] font-semibold uppercase tracking-[0.08em] text-[#005CFF]">El contexto</span>
             <h2 className={`${serif} mt-4 text-[#212121]`} style={h2Style}>
-              La publicidad en ChatGPT ya está abierta para la <em>educación</em>.
+              La forma de buscar dónde estudiar está cambiando. Y la <em>publicidad</em> también.
             </h2>
           </div>
-          <p className="text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px] lg:pt-10">
-            Desde el 21 de octubre de 2026, las academias en Colombia pueden anunciarse en ChatGPT, directamente desde el Ads Manager o con un socio tecnológico.
+          <div className="lg:pt-10">
+            <p className="text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
+              Durante años, las academias han utilizado Google, redes sociales y otros canales digitales para llegar a nuevos estudiantes. Hoy, la inteligencia artificial está sumando otra forma de descubrir y comparar opciones educativas.
+            </p>
+            <p className="mt-4 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
+              En lugar de realizar varias búsquedas, una persona puede preguntarle directamente a ChatGPT qué curso le conviene, qué aspectos debería comparar o qué opciones de formación existen según sus necesidades.
+            </p>
+            <p className="mt-4 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
+              Con la llegada de la publicidad a ChatGPT en Colombia, las instituciones educativas tienen un nuevo canal que pueden evaluar para dar a conocer sus programas mediante anuncios patrocinados, diferenciados de las respuestas del asistente.
+            </p>
+          </div>
+        </div>
+        <div className="mt-8 rounded-[4px] bg-[#EEF1F6] p-6 md:p-8">
+          <h3 className={`${serif} text-[22px] leading-[1.1] text-[#212121]`}>¿Qué significa esto para tu academia?</h3>
+          <p className="mt-3 max-w-[860px] text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
+            Que vale la pena explorar nuevas formas de conectar tu oferta educativa con personas interesadas en aprender, sin depender exclusivamente de los canales publicitarios tradicionales.
           </p>
         </div>
-        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3">
-          {contextoCifras.map((c) => (
-            <div key={c.value} className="border-t border-[#D9DDE4] pt-6">
-              <p className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "clamp(36px, 3.6vw, 48px)", lineHeight: 1 }}>{c.value}</p>
-              <p className="mt-3 text-[14px] leading-[1.5] text-[#4F4F4D]">{c.text}</p>
-            </div>
+        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
+          {contextoTarjetas.map((card) => (
+            <article key={card.title} className="h-full rounded-[4px] border border-[#D9DDE4] bg-white p-6">
+              <h3 className="text-[16px] font-semibold leading-[1.3] text-[#212121]">{card.title}</h3>
+              <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{card.text}</p>
+            </article>
           ))}
         </div>
-        <h3 className="mt-10 text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">Cómo funciona</h3>
-        <ol className="mt-4">
-          {contextoComo.map((t, i) => (
-            <li key={t} className="flex gap-4 border-t border-[#D9DDE4] py-4 last:border-b">
-              <span className="shrink-0 text-[14px] font-bold text-[#005CFF]">0{i + 1}</span>
-              <span className="text-[14px] leading-[1.5] text-[#212121]">{t}</span>
-            </li>
-          ))}
-        </ol>
-        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
-          {[{ title: "Permitido", items: permitido }, { title: "No permitido", items: noPermitido }].map((col) => (
-            <div key={col.title} className="rounded-[4px] bg-[#EEF1F6] p-6 md:p-8">
-              <h3 className={`${serif} text-[22px] leading-[1.1] text-[#212121]`}>{col.title}</h3>
-              <ul className="mt-4 space-y-3">
-                {col.items.map((t) => (
-                  <li key={t} className="flex gap-3 text-[14px] leading-[1.5] text-[#4F4F4D]">
-                    <span className="font-bold text-[#005CFF]" aria-hidden="true">{col.title === "Permitido" ? "+" : "−"}</span>
-                    <span>{t}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <p className="mt-8 text-[12px] leading-[1.5] text-[#4F4F4D]">
-          Fuentes: OpenAI, política de anuncios y centro de ayuda, octubre de 2026; GAD3 para Planeta Formación y Universidades; Ministerio de Educación Nacional, Decreto 1075 de 2015. Las políticas cambian con frecuencia y las verificamos en cada diagnóstico.
-        </p>
       </div>
     </section>
   );
