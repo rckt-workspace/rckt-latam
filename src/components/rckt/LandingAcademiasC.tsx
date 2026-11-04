@@ -8,7 +8,6 @@ import { getCampaignParams, saveCampaignParams, track } from "@/components/rckt/
 import { WHATSAPP_URL, contactConfig } from "@/config/contact";
 import logoDark from "@/assets/rckt-logo-dark.png";
 import imgC01Hero from "@/assets/C-01-hero.jpg";
-import imgC02Problema from "@/assets/C-02-problema.jpg";
 import imgC03Beneficios from "@/assets/C-03-beneficios.jpg";
 import imgC04Formulario from "@/assets/C-04-formulario.jpg";
 import imgC05Servicio01 from "@/assets/C-05-servicio-01.jpg";
@@ -153,13 +152,13 @@ function HeroSection() {
         <div className="relative z-10 col-start-1 row-start-1 mx-auto w-full max-w-[1200px] px-5 py-16 md:px-8 md:py-16">
           <div className="max-w-[640px]">
             <span className="inline-block text-[13px] font-semibold uppercase tracking-[0.08em] text-[#005CFF]">
-              Para academias y centros de formación
+              Nuevo canal publicitario en Colombia
             </span>
             <h1 className={`${serif} mt-5 text-[#212121]`} style={{ fontSize: "clamp(38px, 4.6vw, 64px)", lineHeight: 0.95 }}>
-              Tus próximos estudiantes ya le preguntan a ChatGPT dónde <em>estudiar</em>.
+              Tus próximos estudiantes están buscando dónde estudiar. Haz que descubran tu academia en <em>ChatGPT</em>.
             </h1>
             <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
-              Desde octubre de 2026 las academias en Colombia pueden anunciarse en ChatGPT. Te ayudamos a aparecer justo cuando alguien compara cursos, horarios y precios.
+              ChatGPT ya cuenta con publicidad en Colombia. En RCKT te ayudamos a preparar, lanzar y optimizar campañas para que más personas conozcan tus programas y puedan solicitar información.
             </p>
             <div className="mt-8 rounded-[4px] border border-[#D9DDE4] bg-white p-5 shadow-sm md:p-6">
               <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#4F4F4D]">Ejemplo ilustrativo · elige una búsqueda</p>
@@ -194,7 +193,7 @@ function HeroSection() {
             </div>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
               <CtaButton>Solicitar diagnóstico para mi academia</CtaButton>
-              <p className="text-[13px] text-[#4F4F4D]">Diagnóstico inicial · Academias en Colombia</p>
+              <p className="text-[13px] text-[#4F4F4D]">Evaluamos tus programas, tu presencia digital y las oportunidades de este canal.</p>
             </div>
           </div>
         </div>
@@ -204,10 +203,10 @@ function HeroSection() {
 }
 
 const problemaCards = [
-  { num: "01", title: "Comparan", text: "Programas, modalidades y duración." },
-  { num: "02", title: "Preguntan", text: "Horarios, precios y formas de pago." },
-  { num: "03", title: "Verifican", text: "Certificados, docentes y opiniones." },
-  { num: "04", title: "Se inscriben", text: "Cuando encuentran una opción clara y confiable." },
+  { num: "01", title: "Comparan", text: "Programas, modalidades y duración.", image: "C-11-etapa-comparan.jpg" },
+  { num: "02", title: "Preguntan", text: "Horarios, precios y formas de pago.", image: "C-12-etapa-preguntan.jpg" },
+  { num: "03", title: "Verifican", text: "Certificados, docentes y opiniones.", image: "C-13-etapa-verifican.jpg" },
+  { num: "04", title: "Se inscriben", text: "Cuando encuentran una opción clara y confiable.", image: "C-14-etapa-inscriben.jpg" },
 ];
 
 function ProblemaSection() {
@@ -216,17 +215,23 @@ function ProblemaSection() {
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
-            Elegir dónde estudiar ya no empieza solo en <em>Google</em>.
+            Hoy, elegir dónde estudiar también empieza con una <em>conversación</em> con IA.
           </h2>
-          <p className="text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px] lg:pt-3">
-            Antes de pedir información, las personas comparan programas, horarios, precios y opiniones. Cada vez más lo hacen conversando con la IA.
-          </p>
+          <div className="lg:pt-3">
+            <p className="text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
+              Antes de inscribirse, una persona puede buscar opciones, comparar precios, preguntar por horarios y explorar qué programa se adapta mejor a sus necesidades.
+            </p>
+            <p className="mt-4 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
+              Tu academia puede tener excelentes profesores, programas y resultados, pero si los estudiantes potenciales no la descubren, esa oportunidad puede terminar en otra institución.
+            </p>
+          </div>
         </div>
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <img src={imgC02Problema} alt="Joven comparando cursos en su celular" className="h-[280px] w-full rounded-[4px] object-cover object-[50%_30%] sm:col-span-2 sm:row-span-2 sm:h-full" />
           {problemaCards.map((card) => (
             <article key={card.num} className="rounded-[4px] bg-[#EEF1F6] p-6">
-              <span className="text-[14px] font-bold text-[#005CFF]">{card.num}</span>
+              {/* Imagen futura: {card.image} */}
+              <div className="h-[180px] w-full rounded-[4px] bg-[#D9DDE4]" aria-hidden="true" />
+              <span className="mt-4 block text-[14px] font-bold text-[#005CFF]">{card.num}</span>
               <h3 className={`${serif} mt-3 text-[22px] leading-[1.1] text-[#212121]`}>{card.title}</h3>
               <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{card.text}</p>
             </article>
@@ -234,7 +239,7 @@ function ProblemaSection() {
         </div>
         <div className="mt-8 rounded-[4px] bg-[#EEF1F6] px-6 py-10 text-center md:py-14">
           <p className={`${serif} mx-auto max-w-[820px] italic text-[#005CFF]`} style={{ fontSize: "clamp(22px, 2.4vw, 30px)", lineHeight: 1.15 }}>
-            Tu academia necesita una estrategia que acompañe ese recorrido, no solo anuncios que generen clics.
+            No se trata de reemplazar Google, Instagram o WhatsApp. Se trata de evaluar un nuevo canal para llegar a personas que están explorando opciones de formación.
           </p>
         </div>
       </div>
@@ -257,10 +262,10 @@ function OportunidadSection() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
-            Así aparece tu academia en la <em>conversación</em>.
+            Así podría descubrir un estudiante tu academia en <em>ChatGPT</em>.
           </h2>
           <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
-            El anuncio no cambia lo que responde ChatGPT. Aparece debajo, marcado como patrocinado, cuando la conversación tiene relación con lo que ofreces.
+            Imagina que alguien busca un curso como el que ofreces. Un anuncio relevante puede ayudarle a conocer tu institución y visitar tu página para solicitar información.
           </p>
           <div className="mt-10 flex flex-col">
             {oportunidadPartes.map((parte, index) => (
@@ -322,26 +327,10 @@ function OportunidadSection() {
 
 const h2Style = { fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 } as const;
 
-const contextoCifras = [
-  { value: "21.10.2026", text: "Colombia entra a ChatGPT Ads." },
-  { value: "84 %", text: "de los estudiantes de educación superior en Colombia usa IA generativa de forma habitual." },
-  { value: "10.000 COP", text: "inversión mínima diaria por campaña." },
-];
-const contextoComo = [
-  "Un espacio patrocinado aparece debajo de la respuesta.",
-  "Solo lo ven mayores de 18 años en los planes gratuitos, por eso le hablamos a adultos y a padres de familia.",
-  "El anunciante nunca ve las conversaciones.",
-];
-const permitido = [
-  "Academias, institutos y centros de formación.",
-  "Cursos, diplomados, idiomas y preuniversitarios.",
-  "Academias de tecnología, arte, música y deportes.",
-  "Cursos de finanzas o de preparación en derecho, siempre que no ofrezcan servicios financieros ni legales.",
-];
-const noPermitido = [
-  "Anuncios dirigidos a menores de edad.",
-  "Promesas de empleo, salario o resultados garantizados.",
-  "Cursos que promocionen servicios médicos.",
+const contextoTarjetas = [
+  { title: "Un nuevo canal en Colombia", text: "La publicidad en ChatGPT amplía las alternativas digitales que pueden evaluar las empresas colombianas." },
+  { title: "Una experiencia basada en conversaciones", text: "Los usuarios pueden explorar necesidades, resolver dudas y comparar alternativas mediante preguntas en lenguaje natural." },
+  { title: "Publicidad identificada y diferenciada", text: "Los anuncios se presentan como contenido patrocinado y no deben confundirse con las respuestas de ChatGPT." },
 ];
 
 function ContextoSection() {
@@ -352,48 +341,35 @@ function ContextoSection() {
           <div>
             <span className="inline-block text-[13px] font-semibold uppercase tracking-[0.08em] text-[#005CFF]">El contexto</span>
             <h2 className={`${serif} mt-4 text-[#212121]`} style={h2Style}>
-              La publicidad en ChatGPT ya está abierta para la <em>educación</em>.
+              La forma de buscar dónde estudiar está cambiando. Y la <em>publicidad</em> también.
             </h2>
           </div>
-          <p className="text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px] lg:pt-10">
-            Desde el 21 de octubre de 2026, las academias en Colombia pueden anunciarse en ChatGPT, directamente desde el Ads Manager o con un socio tecnológico.
+          <div className="lg:pt-10">
+            <p className="text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
+              Durante años, las academias han utilizado Google, redes sociales y otros canales digitales para llegar a nuevos estudiantes. Hoy, la inteligencia artificial está sumando otra forma de descubrir y comparar opciones educativas.
+            </p>
+            <p className="mt-4 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
+              En lugar de realizar varias búsquedas, una persona puede preguntarle directamente a ChatGPT qué curso le conviene, qué aspectos debería comparar o qué opciones de formación existen según sus necesidades.
+            </p>
+            <p className="mt-4 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
+              Con la llegada de la publicidad a ChatGPT en Colombia, las instituciones educativas tienen un nuevo canal que pueden evaluar para dar a conocer sus programas mediante anuncios patrocinados, diferenciados de las respuestas del asistente.
+            </p>
+          </div>
+        </div>
+        <div className="mt-8 rounded-[4px] bg-[#EEF1F6] p-6 md:p-8">
+          <h3 className={`${serif} text-[22px] leading-[1.1] text-[#212121]`}>¿Qué significa esto para tu academia?</h3>
+          <p className="mt-3 max-w-[860px] text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
+            Que vale la pena explorar nuevas formas de conectar tu oferta educativa con personas interesadas en aprender, sin depender exclusivamente de los canales publicitarios tradicionales.
           </p>
         </div>
-        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3">
-          {contextoCifras.map((c) => (
-            <div key={c.value} className="border-t border-[#D9DDE4] pt-6">
-              <p className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "clamp(36px, 3.6vw, 48px)", lineHeight: 1 }}>{c.value}</p>
-              <p className="mt-3 text-[14px] leading-[1.5] text-[#4F4F4D]">{c.text}</p>
-            </div>
+        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
+          {contextoTarjetas.map((card) => (
+            <article key={card.title} className="h-full rounded-[4px] border border-[#D9DDE4] bg-white p-6">
+              <h3 className="text-[16px] font-semibold leading-[1.3] text-[#212121]">{card.title}</h3>
+              <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{card.text}</p>
+            </article>
           ))}
         </div>
-        <h3 className="mt-10 text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">Cómo funciona</h3>
-        <ol className="mt-4">
-          {contextoComo.map((t, i) => (
-            <li key={t} className="flex gap-4 border-t border-[#D9DDE4] py-4 last:border-b">
-              <span className="shrink-0 text-[14px] font-bold text-[#005CFF]">0{i + 1}</span>
-              <span className="text-[14px] leading-[1.5] text-[#212121]">{t}</span>
-            </li>
-          ))}
-        </ol>
-        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
-          {[{ title: "Permitido", items: permitido }, { title: "No permitido", items: noPermitido }].map((col) => (
-            <div key={col.title} className="rounded-[4px] bg-[#EEF1F6] p-6 md:p-8">
-              <h3 className={`${serif} text-[22px] leading-[1.1] text-[#212121]`}>{col.title}</h3>
-              <ul className="mt-4 space-y-3">
-                {col.items.map((t) => (
-                  <li key={t} className="flex gap-3 text-[14px] leading-[1.5] text-[#4F4F4D]">
-                    <span className="font-bold text-[#005CFF]" aria-hidden="true">{col.title === "Permitido" ? "+" : "−"}</span>
-                    <span>{t}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <p className="mt-8 text-[12px] leading-[1.5] text-[#4F4F4D]">
-          Fuentes: OpenAI, política de anuncios y centro de ayuda, octubre de 2026; GAD3 para Planeta Formación y Universidades; Ministerio de Educación Nacional, Decreto 1075 de 2015. Las políticas cambian con frecuencia y las verificamos en cada diagnóstico.
-        </p>
       </div>
     </section>
   );
@@ -407,20 +383,30 @@ const requisitos = [
   { num: "05", title: "Revisión y aprobación final", text: "OpenAI aprueba la cuenta, el anuncio y la página, y puede retirar anuncios después." },
 ];
 
-function RequisitosSection() {
+const tiposAcademia = [
+  { title: "Academias de idiomas", text: "Inglés, francés, portugués y otros idiomas." },
+  { title: "Preuniversitarios", text: "Preparación para exámenes y admisiones universitarias." },
+  { title: "Institutos de formación", text: "Programas técnicos, laborales y de capacitación." },
+  { title: "Academias digitales", text: "Programación, diseño, marketing y tecnología." },
+];
+
+function ParaQueAcademiasSection() {
   return (
     <section id="requisitos" className="bg-[#FBFBFA] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <div className="mx-auto max-w-[760px] text-center">
-          <span className="inline-block text-[13px] font-semibold uppercase tracking-[0.08em] text-[#005CFF]">Requisitos</span>
-          <h2 className={`${serif} mt-4 text-[#212121]`} style={h2Style}>
-            Lo que OpenAI le pide a tu <em>academia</em>.
-          </h2>
-          <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
-            La educación es una categoría permitida, pero cada anunciante pasa por una revisión. Esto es lo que revisamos contigo antes de lanzar.
-          </p>
+        <h2 className={`${serif} max-w-[860px] text-[#212121]`} style={h2Style}>
+          Si tu academia ofrece formación, podemos evaluar cómo darla a conocer en <em>ChatGPT</em>.
+        </h2>
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {tiposAcademia.map((tipo) => (
+            <article key={tipo.title} className="h-full rounded-[4px] border border-[#D9DDE4] bg-white p-6">
+              <h3 className="text-[16px] font-semibold leading-[1.3] text-[#212121]">{tipo.title}</h3>
+              <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{tipo.text}</p>
+            </article>
+          ))}
         </div>
-        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <h3 className="mt-10 text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">Requisitos para anunciarte</h3>
+        <div className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {requisitos.map((r) => (
             <article key={r.num} className="h-full rounded-[4px] border border-[#D9DDE4] bg-white p-6">
               <span className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "32px", lineHeight: 1 }}>{r.num}</span>
@@ -429,16 +415,19 @@ function RequisitosSection() {
             </article>
           ))}
         </div>
+        <p className="mt-8 max-w-[860px] text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
+          No todas las academias necesitan la misma estrategia. Analizamos el tipo de formación, el perfil de los estudiantes y la capacidad comercial antes de recomendar una inversión.
+        </p>
       </div>
     </section>
   );
 }
 
 const beneficios = [
-  { num: "01", title: "Momento de decisión", text: "Apareces cuando la persona está comparando opciones." },
-  { num: "02", title: "Le hablas a quien decide", text: "Adultos que estudian y padres que eligen por sus hijos." },
-  { num: "03", title: "Cada inscripción medida", text: "Sabes cuántas solicitudes e inscripciones llegan desde ChatGPT." },
-  { num: "04", title: "Antes que tu competencia", text: "El canal acaba de abrir y todavía hay pocos anunciantes." },
+  { num: "01", title: "Haz visible tu oferta", text: "Presenta tus cursos y programas ante personas que están explorando opciones de formación." },
+  { num: "02", title: "Conecta con intereses relevantes", text: "Diseña mensajes alineados con lo que buscan tus potenciales estudiantes." },
+  { num: "03", title: "Convierte el interés en consultas", text: "Dirige a los interesados a una landing clara, con información y opciones de contacto." },
+  { num: "04", title: "Mide y mejora tus campañas", text: "Evalúa visitas, solicitudes y matrículas atribuibles cuando exista una medición adecuada." },
 ];
 
 function BeneficiosSection() {
@@ -446,7 +435,7 @@ function BeneficiosSection() {
     <section id="beneficios" className="bg-[#FBFBFA] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2 className={`${serif} max-w-[820px] text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
-          Llega a tus futuros estudiantes en el momento <em>justo</em>.
+          Más que aparecer en un nuevo canal, se trata de generar <em>oportunidades</em> para tu academia.
         </h2>
         <div className="mt-8 grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
           <img src={imgC03Beneficios} alt="Equipo de una academia en reunión" className="h-[320px] w-full rounded-[4px] object-cover md:h-[440px]" />
@@ -462,16 +451,24 @@ function BeneficiosSection() {
             ))}
           </ul>
         </div>
+        <div className="mt-10">
+          <a
+            href="#diagnostico"
+            className="inline-flex min-h-[46px] items-center justify-center rounded-full border border-[#005CFF] bg-transparent px-8 text-[15px] font-semibold text-[#005CFF]! transition-colors hover:bg-[#005CFF] hover:text-white! focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005CFF]"
+          >
+            Descubre si ChatGPT Ads es una oportunidad para tu academia
+          </a>
+        </div>
       </div>
     </section>
   );
 }
 
 const servicios = [
-  { num: "01", tag: "para entrar bien", title: "Cuenta y verificación", text: "Abrimos tu cuenta con los datos de tu academia y la dejamos lista para la revisión de OpenAI.", image: imgC05Servicio01 },
-  { num: "02", tag: "para que te encuentren", title: "Estrategia de intenciones", text: "Mapeamos cómo preguntan tus futuros estudiantes: programas, horarios, precios y ciudades.", image: imgC06Servicio02 },
-  { num: "03", tag: "para convertir", title: "Anuncios y landing de inscripción", text: "Piezas claras y una página que convierte consultas en solicitudes.", image: imgC07Servicio03 },
-  { num: "04", tag: "para no perder a nadie", title: "Seguimiento y reportes", text: "Cada lead llega a tu WhatsApp, con un reporte semanal de clics, leads e inscripciones.", image: imgC08Servicio04 },
+  { num: "01", title: "Analizamos tu academia", text: "Revisamos tus programas, público objetivo, ciudades, oferta comercial y canales actuales para identificar oportunidades de captación.", image: imgC05Servicio01 },
+  { num: "02", title: "Diseñamos tu estrategia publicitaria", text: "Definimos los mensajes, anuncios y páginas de destino que mejor comunican el valor de tu oferta educativa.", image: imgC06Servicio02 },
+  { num: "03", title: "Preparamos el recorrido de inscripción", text: "Optimizamos la página a la que llegan los interesados y facilitamos el contacto con tu equipo de admisiones.", image: imgC07Servicio03 },
+  { num: "04", title: "Medimos y optimizamos", text: "Hacemos seguimiento a los resultados disponibles y revisamos qué oportunidades se convierten en conversaciones, solicitudes e inscripciones.", image: imgC08Servicio04 },
 ];
 
 function ServiciosSection() {
@@ -479,15 +476,17 @@ function ServiciosSection() {
     <section className="bg-white py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2 className={`${serif} max-w-[760px] text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
-          De la cuenta a la <em>inscripción</em>.
+          Nosotros nos encargamos de la estrategia. Tú te enfocas en formar <em>estudiantes</em>.
         </h2>
+        <p className="mt-6 max-w-[760px] text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
+          En RCKT conectamos publicidad, tecnología y seguimiento comercial para que una campaña no termine simplemente en un clic.
+        </p>
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {servicios.map((servicio) => (
             <article key={servicio.num}>
               <img src={servicio.image} alt={servicio.title} className="h-[240px] w-full rounded-[4px] object-cover" />
               <div className="mt-4 flex items-baseline gap-2">
                 <span className="text-[14px] font-bold text-[#005CFF]">{servicio.num}</span>
-                <span className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "18px" }}>· {servicio.tag} ·</span>
               </div>
               <h3 className={`${serif} mt-2 text-[20px] leading-[1.1] text-[#212121]`}>{servicio.title}</h3>
               <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{servicio.text}</p>
@@ -508,10 +507,13 @@ function DiferenciadorSection() {
         <img src={imgC09Diferenciador} alt="Campus de una academia" className="h-[300px] w-full rounded-[4px] object-cover md:h-[420px]" />
         <div>
           <h2 className={`${serif} text-white`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
-            Publicidad <em>veraz</em> para educación.
+            Publicidad para educación, con estrategia y <em>responsabilidad</em>.
           </h2>
           <p className="mt-6 text-[15px] leading-[1.5] text-white/80 md:text-[16px]">
-            No prometemos empleos, salarios ni resultados garantizados. Mostramos lo que tu academia ofrece de verdad: programas, horarios, certificados y precios claros. En Colombia, la SIC ya ha multado a academias y cursos por publicidad engañosa. Por eso revisamos cada anuncio antes de publicarlo.
+            Sabemos que la confianza es fundamental cuando una persona elige dónde estudiar. Por eso, diseñamos campañas con información clara sobre programas, modalidades, horarios, precios y condiciones de inscripción.
+          </p>
+          <p className="mt-4 text-[15px] leading-[1.5] text-white/80 md:text-[16px]">
+            Revisamos los requisitos aplicables a cada institución y evitamos promesas de empleo, títulos o resultados que no puedan sustentarse.
           </p>
           <div className="mt-10 grid grid-cols-1 gap-x-8 sm:grid-cols-2">
             {diferenciadorTags.map((tag) => (
@@ -527,9 +529,9 @@ function DiferenciadorSection() {
 }
 
 const procesoPasos = [
-  { num: "1", title: "Cuéntanos sobre tu academia", text: "Programas, sedes y cómo captas estudiantes hoy." },
-  { num: "2", title: "Preparamos la cuenta y la landing", text: "Verificación, medición y una página alineada con la política de OpenAI." },
-  { num: "3", title: "Lanzamos y optimizamos", text: "Ajustamos cada semana según leads e inscripciones reales." },
+  { num: "01", title: "Cuéntanos sobre tu academia", text: "Completa un formulario breve con tus programas, ubicación y objetivos de captación." },
+  { num: "02", title: "Revisamos las oportunidades", text: "Evaluamos tu oferta y las condiciones para anunciarte en ChatGPT, junto con los requisitos de implementación." },
+  { num: "03", title: "Te presentamos una propuesta", text: "Definimos el alcance recomendado, los pasos de implementación y cómo medir el desempeño." },
 ];
 
 function ProcesoSection() {
@@ -537,7 +539,7 @@ function ProcesoSection() {
     <section id="proceso" className="bg-[#FBFBFA] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2 className={`${serif} max-w-[700px] text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
-          Tu campaña, en tres <em>pasos</em>.
+          Empezar es más sencillo de lo que <em>imaginas</em>.
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-3">
           {procesoPasos.map((paso) => (
@@ -549,6 +551,9 @@ function ProcesoSection() {
               <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{paso.text}</p>
             </article>
           ))}
+        </div>
+        <div className="mt-10">
+          <CtaButton>Quiero evaluar mi academia</CtaButton>
         </div>
       </div>
     </section>
@@ -626,10 +631,10 @@ function FormularioSection() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
-            Solicita el diagnóstico de tu <em>academia</em>.
+            Descubre cómo tu <em>academia</em> puede aprovechar la publicidad en ChatGPT.
           </h2>
           <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
-            Revisamos tus programas, tu página y tu competencia para definir cómo empezar a pautar en ChatGPT.
+            Déjanos tus datos y revisaremos tu oferta educativa, tu presencia digital y las oportunidades de implementar este nuevo canal.
           </p>
           <img src={imgC04Formulario} alt="Director de una academia" className="mt-10 hidden! h-[280px] w-full rounded-[4px] object-cover object-[50%_20%] lg:block!" />
         </div>
@@ -750,7 +755,7 @@ function CierreSection() {
             Tus futuros estudiantes ya están <em>preguntando</em>.
           </h2>
           <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
-            Asegúrate de que tu academia esté en esa respuesta.
+            En RCKT te ayudamos a evaluar este nuevo canal y convertirlo en una estrategia de captación medible.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
             <CtaButton>Quiero que encuentren mi academia</CtaButton>
@@ -869,13 +874,13 @@ export function LandingAcademiasC() {
       <main>
         <HeroSection />
         <ProblemaSection />
-        <OportunidadSection />
         <ContextoSection />
-        <RequisitosSection />
+        <OportunidadSection />
         <BeneficiosSection />
         <ServiciosSection />
-        <DiferenciadorSection />
+        <ParaQueAcademiasSection />
         <ProcesoSection />
+        <DiferenciadorSection />
         <FormularioSection />
         <FaqSectionLanding />
         <CierreSection />
