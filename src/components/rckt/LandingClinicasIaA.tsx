@@ -186,13 +186,16 @@ function HeroSection() {
             className={`${fontDisplay} mt-6 font-bold text-[#212121]`}
             style={{ fontSize: "clamp(38px, 4.6vw, 64px)", lineHeight: 1, letterSpacing: "-0.03em" }}
           >
-            Tus próximos pacientes podrían empezar su búsqueda en ChatGPT.
+            Tus futuros pacientes ya consultan sobre tratamientos estéticos con IA. ¿Tu clínica está preparada?
           </h1>
           <p className="mt-6 text-[17px] leading-[1.5] text-[#212121]">
-            Hoy las personas exploran nuevas formas de informarse sobre tratamientos estéticos. ¿Está tu clínica preparada para conectar con ellas?
+            La forma de buscar información sobre tratamientos estéticos está evolucionando. En RCKT te ayudamos a preparar la estrategia digital de tu clínica para las nuevas oportunidades publicitarias de ChatGPT, mientras OpenAI habilita publicidad para anunciar servicios de salud en Colombia.
           </p>
-          <p className="mt-4 text-[15px] leading-[1.5] text-[#4B4366]">
-            Descubre cómo integrar las oportunidades de publicidad e inteligencia artificial en una estrategia de captación de pacientes.
+          <p className="mt-4 text-[15px] font-semibold leading-[1.5] text-[#212121]">
+            Prepárate con una estrategia, no con suposiciones.
+          </p>
+          <p className="mt-1 text-[15px] leading-[1.5] text-[#4B4366]">
+            Analizamos tu presencia digital, tus tratamientos y los requisitos que podrían aplicar a tu clínica.
           </p>
           <div className="mt-8">
             <CtaButton>Quiero explorar esta oportunidad</CtaButton>
@@ -212,10 +215,9 @@ function HeroSection() {
 }
 
 const problemaCards = [
-  { num: "01", title: "Investigan", text: "Exploran procedimientos y posibles soluciones." },
-  { num: "02", title: "Preguntan", text: "Buscan respuestas claras antes de contactar." },
-  { num: "03", title: "Comparan", text: "Evalúan opciones, condiciones y confianza." },
-  { num: "04", title: "Deciden", text: "Solicitan una valoración cuando están preparados." },
+  { num: "01", title: "Investigan", text: "Buscan información sobre procedimientos, beneficios y riesgos." },
+  { num: "02", title: "Comparan", text: "Exploran alternativas y preparan preguntas antes de consultar." },
+  { num: "03", title: "Consultan", text: "Contactan clínicas para conocer disponibilidad y solicitar valoraciones." },
 ];
 
 function ProblemaSection() {
@@ -225,15 +227,21 @@ function ProblemaSection() {
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
           <div>
             <h2 className={`${fontDisplay} font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-              La decisión de un tratamiento estético comienza mucho antes de agendar una cita.
+              La búsqueda de un tratamiento estético ya no empieza siempre en Google.
             </h2>
             <p className="mt-6 text-[16px] leading-[1.5] text-[#4B4366]">
-              Antes de contactar una clínica, una persona puede investigar procedimientos, comparar alternativas, consultar dudas y buscar información sobre seguridad, recuperación y resultados. Las herramientas de IA están ampliando las formas de acceder a esa información.
+              Antes de solicitar una valoración, muchas personas quieren entender qué tratamientos existen, cuáles son sus diferencias, qué cuidados requieren y qué deberían preguntar a un profesional.
+            </p>
+            <p className="mt-4 text-[16px] leading-[1.5] text-[#4B4366]">
+              Hoy, herramientas de inteligencia artificial como ChatGPT también pueden formar parte de ese proceso de información.
+            </p>
+            <p className="mt-4 text-[16px] leading-[1.5] text-[#4B4366]">
+              Esto no significa que la IA reemplace una valoración médica. Significa que las clínicas necesitan comprender cómo están evolucionando los canales digitales por los que las personas investigan y toman decisiones.
             </p>
           </div>
           <ImagePlaceholder name="A-02-problema-paciente-celular.jpg" className="h-[280px] md:h-[340px]" />
         </div>
-        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
           {problemaCards.map((card) => (
             <article key={card.num} className="rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-6">
               <span className={`${fontDisplay} text-[15px] font-bold text-[#6A3FE0]`}>{card.num}</span>
@@ -246,7 +254,7 @@ function ProblemaSection() {
           className={`${fontDisplay} mt-10 max-w-[820px] font-bold text-[#4B2BB8]`}
           style={{ fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: 1.2, letterSpacing: "-0.01em" }}
         >
-          Tu clínica necesita una estrategia que acompañe ese recorrido, no solamente anuncios que generen clics.
+          Tu clínica no necesita perseguir cada tendencia. Necesita entender cuáles pueden convertirse en oportunidades reales para sus pacientes y su negocio.
         </p>
       </div>
     </section>
