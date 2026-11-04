@@ -8,7 +8,6 @@ import { getCampaignParams, saveCampaignParams, track } from "@/components/rckt/
 import { WHATSAPP_URL, contactConfig } from "@/config/contact";
 import logoDark from "@/assets/rckt-logo-dark.png";
 import imgC01Hero from "@/assets/C-01-hero.jpg";
-import imgC02Problema from "@/assets/C-02-problema.jpg";
 import imgC03Beneficios from "@/assets/C-03-beneficios.jpg";
 import imgC04Formulario from "@/assets/C-04-formulario.jpg";
 import imgC05Servicio01 from "@/assets/C-05-servicio-01.jpg";
@@ -632,10 +631,10 @@ function FormularioSection() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
-            Solicita el diagnóstico de tu <em>academia</em>.
+            Descubre cómo tu <em>academia</em> puede aprovechar la publicidad en ChatGPT.
           </h2>
           <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
-            Revisamos tus programas, tu página y tu competencia para definir cómo empezar a pautar en ChatGPT.
+            Déjanos tus datos y revisaremos tu oferta educativa, tu presencia digital y las oportunidades de implementar este nuevo canal.
           </p>
           <img src={imgC04Formulario} alt="Director de una academia" className="mt-10 hidden! h-[280px] w-full rounded-[4px] object-cover object-[50%_20%] lg:block!" />
         </div>
@@ -756,7 +755,7 @@ function CierreSection() {
             Tus futuros estudiantes ya están <em>preguntando</em>.
           </h2>
           <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
-            Asegúrate de que tu academia esté en esa respuesta.
+            En RCKT te ayudamos a evaluar este nuevo canal y convertirlo en una estrategia de captación medible.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
             <CtaButton>Quiero que encuentren mi academia</CtaButton>
@@ -875,13 +874,13 @@ export function LandingAcademiasC() {
       <main>
         <HeroSection />
         <ProblemaSection />
-        <OportunidadSection />
         <ContextoSection />
-        <RequisitosSection />
+        <OportunidadSection />
         <BeneficiosSection />
         <ServiciosSection />
-        <DiferenciadorSection />
+        <ParaQueAcademiasSection />
         <ProcesoSection />
+        <DiferenciadorSection />
         <FormularioSection />
         <FaqSectionLanding />
         <CierreSection />
