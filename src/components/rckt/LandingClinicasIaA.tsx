@@ -347,54 +347,11 @@ function ContextoSection() {
   );
 }
 
-const requisitos = [
-  { num: "01", title: "Identidad comercial verificable", text: "Empresa registrada en Colombia, verificación del negocio y correo corporativo. El país y la moneda de la cuenta no se pueden cambiar después." },
-  { num: "02", title: "Licencias y autorizaciones", text: "Habilitación de la clínica en el REPS y registro profesional de los especialistas. OpenAI puede pedir prueba de licencia." },
-  { num: "03", title: "Publicidad veraz", text: "Sin promesas de resultados, descuentos en procedimientos ni mensajes que exploten la imagen corporal." },
-  { num: "04", title: "Página de destino conforme", text: "La página debe coincidir con el anuncio, funcionar bien y explicar el servicio con claridad." },
-  { num: "05", title: "Revisión y aprobación final", text: "OpenAI revisa la cuenta, el anuncio y la página antes de publicar, y puede retirar anuncios después." },
-];
-
-function RequisitosSection() {
-  return (
-    <section id="requisitos" className="bg-white py-12 md:py-16">
-      <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <div className="mx-auto flex max-w-[820px] flex-col items-center text-center">
-          <span className="inline-block rounded-full bg-[#4B2BB8] px-4 py-1.5 text-[12px] font-semibold tracking-wide !text-white">Requisitos</span>
-          <h2
-            className={`${fontDisplay} mt-5 font-bold text-[#212121]`}
-            style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
-          >
-            Lo que OpenAI le pide a una clínica para poder anunciarse.
-          </h2>
-          <p className="mt-6 text-[16px] leading-[1.5] text-[#4B4366]">
-            Cuando la categoría de salud se abra en Colombia, solo podrán pautar las clínicas que cumplan estos requisitos. En el diagnóstico revisamos cada uno contigo.
-          </p>
-        </div>
-        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-6">
-          {requisitos.map((req, index) => (
-            <article
-              key={req.num}
-              className={`rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-6 lg:col-span-2 ${
-                index < 3 ? "" : "md:col-span-2 lg:col-span-2"
-              } ${index === 3 ? "lg:col-start-2" : ""} ${index === 4 ? "lg:col-start-4" : ""}`}
-            >
-              <span className={`${fontDisplay} text-[15px] font-bold text-[#6A3FE0]`}>{req.num}</span>
-              <h3 className={`${fontDisplay} mt-3 text-[19px] font-bold leading-[1.2] text-[#212121]`}>{req.title}</h3>
-              <p className="mt-2 text-[15px] leading-[1.5] text-[#4B4366]">{req.text}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 const beneficios = [
-  { title: "Explorar nuevas oportunidades de captación", text: "Evaluar canales emergentes para complementar tu estrategia actual." },
-  { title: "Fortalecer la confianza", text: "Comunicar tus servicios, tu equipo profesional y tus diferenciales con claridad." },
-  { title: "Invertir con criterio", text: "Analizar costos, calidad de oportunidades y resultados antes de escalar." },
-  { title: "Conectar marketing y atención comercial", text: "Facilitar el seguimiento de cada solicitud hasta la valoración." },
+  { title: "Fortalece tu credibilidad", text: "Presenta tus profesionales, servicios, habilitaciones e información de manera clara y verificable." },
+  { title: "Mejora tu presencia digital", text: "Optimiza tu web para que las personas encuentren información útil y puedan solicitar una valoración." },
+  { title: "Organiza tus oportunidades", text: "Facilita la atención por WhatsApp y el seguimiento de las solicitudes recibidas." },
+  { title: "Prepárate con información", text: "Evalúa los requisitos y la viabilidad de futuros canales publicitarios antes de comprometer presupuesto." },
 ];
 
 function BeneficiosSection() {
@@ -405,7 +362,7 @@ function BeneficiosSection() {
           className={`${fontDisplay} max-w-[900px] font-bold text-[#212121]`}
           style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
         >
-          No se trata de estar en todas partes. Se trata de invertir donde tenga sentido para tu clínica.
+          Tu clínica no necesita esperar para fortalecer su estrategia digital.
         </h2>
         <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
           <ImagePlaceholder name="A-03-beneficios-equipo.jpg" className="h-[280px] md:h-[360px]" />
@@ -424,10 +381,10 @@ function BeneficiosSection() {
 }
 
 const servicios = [
-  { num: "01", title: "Diagnóstico estratégico", text: "Analizamos tus servicios, objetivos, presencia digital y oportunidades de mejora.", image: "A-05-servicio-01-diagnostico.jpg" },
-  { num: "02", title: "Estrategia publicitaria", text: "Evaluamos la viabilidad de los espacios publicitarios, tu propuesta de valor y tus mensajes.", image: "A-06-servicio-02-estrategia.jpg" },
-  { num: "03", title: "Landing de conversión", text: "Diseñamos una experiencia clara y profesional para facilitar solicitudes de valoración.", image: "A-07-servicio-03-landing.jpg" },
-  { num: "04", title: "Automatización y seguimiento", text: "Revisamos conexiones con WhatsApp, CRM y atención comercial cuando sea apropiado.", image: "A-08-servicio-04-seguimiento.jpg" },
+  { num: "01", title: "Diagnóstico de presencia digital", text: "Analizamos tu sitio web, servicios, canales de captación y proceso de atención para identificar oportunidades de mejora.", image: "A-05-servicio-01-diagnostico.jpg" },
+  { num: "02", title: "Estrategia de marketing e IA", text: "Diseñamos una hoja de ruta para fortalecer la visibilidad de tu clínica y evaluar nuevos canales publicitarios conforme a su disponibilidad.", image: "A-06-servicio-02-estrategia.jpg" },
+  { num: "03", title: "Optimización de landing y mensajes", text: "Mejoramos la presentación de tus servicios, la claridad de la información y los puntos de contacto con pacientes potenciales.", image: "A-07-servicio-03-landing.jpg" },
+  { num: "04", title: "Seguimiento de oportunidades", text: "Organizamos la medición de consultas, contactos y citas, respetando la privacidad de los pacientes.", image: "A-08-servicio-04-seguimiento.jpg" },
 ];
 
 function ServicioCard({ servicio }: { servicio: (typeof servicios)[number] }) {
