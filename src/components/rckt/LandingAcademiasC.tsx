@@ -508,10 +508,13 @@ function DiferenciadorSection() {
         <img src={imgC09Diferenciador} alt="Campus de una academia" className="h-[300px] w-full rounded-[4px] object-cover md:h-[420px]" />
         <div>
           <h2 className={`${serif} text-white`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
-            Publicidad <em>veraz</em> para educación.
+            Publicidad para educación, con estrategia y <em>responsabilidad</em>.
           </h2>
           <p className="mt-6 text-[15px] leading-[1.5] text-white/80 md:text-[16px]">
-            No prometemos empleos, salarios ni resultados garantizados. Mostramos lo que tu academia ofrece de verdad: programas, horarios, certificados y precios claros. En Colombia, la SIC ya ha multado a academias y cursos por publicidad engañosa. Por eso revisamos cada anuncio antes de publicarlo.
+            Sabemos que la confianza es fundamental cuando una persona elige dónde estudiar. Por eso, diseñamos campañas con información clara sobre programas, modalidades, horarios, precios y condiciones de inscripción.
+          </p>
+          <p className="mt-4 text-[15px] leading-[1.5] text-white/80 md:text-[16px]">
+            Revisamos los requisitos aplicables a cada institución y evitamos promesas de empleo, títulos o resultados que no puedan sustentarse.
           </p>
           <div className="mt-10 grid grid-cols-1 gap-x-8 sm:grid-cols-2">
             {diferenciadorTags.map((tag) => (
@@ -527,9 +530,9 @@ function DiferenciadorSection() {
 }
 
 const procesoPasos = [
-  { num: "1", title: "Cuéntanos sobre tu academia", text: "Programas, sedes y cómo captas estudiantes hoy." },
-  { num: "2", title: "Preparamos la cuenta y la landing", text: "Verificación, medición y una página alineada con la política de OpenAI." },
-  { num: "3", title: "Lanzamos y optimizamos", text: "Ajustamos cada semana según leads e inscripciones reales." },
+  { num: "01", title: "Cuéntanos sobre tu academia", text: "Completa un formulario breve con tus programas, ubicación y objetivos de captación." },
+  { num: "02", title: "Revisamos las oportunidades", text: "Evaluamos tu oferta y las condiciones para anunciarte en ChatGPT, junto con los requisitos de implementación." },
+  { num: "03", title: "Te presentamos una propuesta", text: "Definimos el alcance recomendado, los pasos de implementación y cómo medir el desempeño." },
 ];
 
 function ProcesoSection() {
@@ -537,7 +540,7 @@ function ProcesoSection() {
     <section id="proceso" className="bg-[#FBFBFA] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2 className={`${serif} max-w-[700px] text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
-          Tu campaña, en tres <em>pasos</em>.
+          Empezar es más sencillo de lo que <em>imaginas</em>.
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-3">
           {procesoPasos.map((paso) => (
@@ -549,6 +552,9 @@ function ProcesoSection() {
               <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{paso.text}</p>
             </article>
           ))}
+        </div>
+        <div className="mt-10">
+          <CtaButton>Quiero evaluar mi academia</CtaButton>
         </div>
       </div>
     </section>
