@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, MessageSquare, UserCheck, Lock } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { Check } from "lucide-react";
@@ -445,7 +445,7 @@ function ServiciosSection() {
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <h2 className={`${fontDisplay} max-w-[640px] font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-            De la oportunidad tecnológica a una estrategia comercial.
+            De la estrategia digital a una clínica mejor preparada para captar pacientes.
           </h2>
           <p className="text-[13px] text-[#4B4366] md:pb-2">Pasa el cursor por cada tarjeta para ver qué incluye.</p>
         </div>
@@ -459,11 +459,12 @@ function ServiciosSection() {
   );
 }
 
-const diferenciadorTags = [
-  "Estrategia de marketing digital",
-  "Inteligencia artificial aplicada al negocio",
-  "Optimización de conversiones",
-  "Medición de oportunidades comerciales",
+const aspectosRevisamos = [
+  "Habilitaciones y registros que correspondan al servicio.",
+  "Información verificable de los profesionales.",
+  "Mensajes publicitarios responsables.",
+  "Tratamiento adecuado de datos personales.",
+  "Coherencia entre anuncios, web y servicios ofrecidos.",
 ];
 
 function DiferenciadorSection() {
@@ -473,18 +474,23 @@ function DiferenciadorSection() {
         <ImagePlaceholder name="A-09-diferenciador-libreta.jpg" className="h-[260px] md:h-[340px]" />
         <div>
           <h2 className={`${fontDisplay} font-bold text-white`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-            La tecnología cambia. Una buena estrategia sigue siendo esencial.
+            En salud, la confianza es tan importante como la visibilidad.
           </h2>
           <p className="mt-6 text-[16px] leading-[1.5] text-white/85">
-            No proponemos invertir en IA simplemente porque es tendencia. Evaluamos cómo puede integrarse a la realidad comercial de tu clínica, considerando capacidad de atención, servicios, presupuesto y objetivos.
+            La publicidad de servicios estéticos requiere especial cuidado. Una estrategia responsable debe comunicar información verificable, respetar la privacidad de los pacientes y evitar promesas sobre resultados médicos.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            {diferenciadorTags.map((tag) => (
-              <span key={tag} className="rounded-full bg-[#6A3FE0] px-4 py-2 text-[13px] font-medium text-white">
-                {tag}
-              </span>
+          <p className="mt-4 text-[16px] leading-[1.5] text-white/85">
+            En RCKT revisamos los requisitos aplicables antes de recomendar campañas, porque una buena estrategia de marketing no debería poner en riesgo la reputación de tu clínica.
+          </p>
+          <p className="mt-8 text-[15px] font-semibold text-white">Aspectos que revisamos</p>
+          <ul className="mt-4 flex flex-col gap-3">
+            {aspectosRevisamos.map((aspecto) => (
+              <li key={aspecto} className="flex items-start gap-3">
+                <Check className="mt-0.5 h-[18px] w-[18px] shrink-0 text-[#DCD1FA]" aria-hidden="true" />
+                <span className="text-[15px] leading-[1.5] text-white">{aspecto}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </section>
@@ -596,10 +602,10 @@ function FormularioSection() {
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <h2 className={`${fontDisplay} font-bold text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-            Descubre si tu clínica está preparada para nuevas oportunidades con IA.
+            Descubre qué tan preparada está tu clínica para las nuevas oportunidades del marketing con IA.
           </h2>
           <p className="mt-6 text-[16px] leading-[1.5] text-[#4B4366]">
-            Déjanos tus datos y conversemos sobre cómo fortalecer tu estrategia digital.
+            Solicita una revisión inicial de tu presencia digital y conoce qué acciones podrían ayudarte a mejorar tu estrategia de captación.
           </p>
           <ImagePlaceholder name="A-04-formulario-directora.jpg" className="mt-10 hidden h-[280px] lg:block" />
         </div>
@@ -657,7 +663,7 @@ function FormularioSection() {
               disabled={enviando}
               className="inline-flex min-h-[50px] w-full items-center justify-center rounded-full bg-[#6A3FE0] px-8 text-[16px] font-semibold text-white! transition-colors hover:bg-[#4B2BB8] disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6A3FE0]"
             >
-              {enviando ? "Enviando…" : "Solicitar mi diagnóstico"}
+              {enviando ? "Enviando…" : "Solicitar diagnóstico de mi clínica"}
             </button>
           </div>
         </form>
@@ -717,7 +723,7 @@ function CierreSection() {
             El futuro del marketing también se está construyendo con inteligencia artificial.
           </h2>
           <p className="mt-6 text-[16px] leading-[1.5] text-[#4B4366]">
-            Tu clínica no necesita perseguir cada tendencia. Necesita identificar cuáles pueden convertirse en oportunidades reales para su crecimiento.
+            La inteligencia artificial está transformando la forma de buscar información y explorar servicios. Tu clínica puede empezar a prepararse con una estrategia digital clara, responsable y medible.
           </p>
           <div className="mt-8">
             <CtaButton>Quiero preparar mi clínica</CtaButton>
@@ -838,9 +844,8 @@ export function LandingClinicasIaA() {
       <main>
         <HeroSection />
         <ProblemaSection />
-        <OportunidadSection />
         <ContextoSection />
-        <RequisitosSection />
+        <OportunidadSection />
         <BeneficiosSection />
         <ServiciosSection />
         <DiferenciadorSection />
