@@ -384,20 +384,30 @@ const requisitos = [
   { num: "05", title: "Revisión y aprobación final", text: "OpenAI aprueba la cuenta, el anuncio y la página, y puede retirar anuncios después." },
 ];
 
-function RequisitosSection() {
+const tiposAcademia = [
+  { title: "Academias de idiomas", text: "Inglés, francés, portugués y otros idiomas." },
+  { title: "Preuniversitarios", text: "Preparación para exámenes y admisiones universitarias." },
+  { title: "Institutos de formación", text: "Programas técnicos, laborales y de capacitación." },
+  { title: "Academias digitales", text: "Programación, diseño, marketing y tecnología." },
+];
+
+function ParaQueAcademiasSection() {
   return (
     <section id="requisitos" className="bg-[#FBFBFA] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <div className="mx-auto max-w-[760px] text-center">
-          <span className="inline-block text-[13px] font-semibold uppercase tracking-[0.08em] text-[#005CFF]">Requisitos</span>
-          <h2 className={`${serif} mt-4 text-[#212121]`} style={h2Style}>
-            Lo que OpenAI le pide a tu <em>academia</em>.
-          </h2>
-          <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
-            La educación es una categoría permitida, pero cada anunciante pasa por una revisión. Esto es lo que revisamos contigo antes de lanzar.
-          </p>
+        <h2 className={`${serif} max-w-[860px] text-[#212121]`} style={h2Style}>
+          Si tu academia ofrece formación, podemos evaluar cómo darla a conocer en <em>ChatGPT</em>.
+        </h2>
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {tiposAcademia.map((tipo) => (
+            <article key={tipo.title} className="h-full rounded-[4px] border border-[#D9DDE4] bg-white p-6">
+              <h3 className="text-[16px] font-semibold leading-[1.3] text-[#212121]">{tipo.title}</h3>
+              <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{tipo.text}</p>
+            </article>
+          ))}
         </div>
-        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <h3 className="mt-10 text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">Requisitos para anunciarte</h3>
+        <div className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {requisitos.map((r) => (
             <article key={r.num} className="h-full rounded-[4px] border border-[#D9DDE4] bg-white p-6">
               <span className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "32px", lineHeight: 1 }}>{r.num}</span>
@@ -406,6 +416,9 @@ function RequisitosSection() {
             </article>
           ))}
         </div>
+        <p className="mt-8 max-w-[860px] text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
+          No todas las academias necesitan la misma estrategia. Analizamos el tipo de formación, el perfil de los estudiantes y la capacidad comercial antes de recomendar una inversión.
+        </p>
       </div>
     </section>
   );
@@ -453,10 +466,10 @@ function BeneficiosSection() {
 }
 
 const servicios = [
-  { num: "01", tag: "para entrar bien", title: "Cuenta y verificación", text: "Abrimos tu cuenta con los datos de tu academia y la dejamos lista para la revisión de OpenAI.", image: imgC05Servicio01 },
-  { num: "02", tag: "para que te encuentren", title: "Estrategia de intenciones", text: "Mapeamos cómo preguntan tus futuros estudiantes: programas, horarios, precios y ciudades.", image: imgC06Servicio02 },
-  { num: "03", tag: "para convertir", title: "Anuncios y landing de inscripción", text: "Piezas claras y una página que convierte consultas en solicitudes.", image: imgC07Servicio03 },
-  { num: "04", tag: "para no perder a nadie", title: "Seguimiento y reportes", text: "Cada lead llega a tu WhatsApp, con un reporte semanal de clics, leads e inscripciones.", image: imgC08Servicio04 },
+  { num: "01", title: "Analizamos tu academia", text: "Revisamos tus programas, público objetivo, ciudades, oferta comercial y canales actuales para identificar oportunidades de captación.", image: imgC05Servicio01 },
+  { num: "02", title: "Diseñamos tu estrategia publicitaria", text: "Definimos los mensajes, anuncios y páginas de destino que mejor comunican el valor de tu oferta educativa.", image: imgC06Servicio02 },
+  { num: "03", title: "Preparamos el recorrido de inscripción", text: "Optimizamos la página a la que llegan los interesados y facilitamos el contacto con tu equipo de admisiones.", image: imgC07Servicio03 },
+  { num: "04", title: "Medimos y optimizamos", text: "Hacemos seguimiento a los resultados disponibles y revisamos qué oportunidades se convierten en conversaciones, solicitudes e inscripciones.", image: imgC08Servicio04 },
 ];
 
 function ServiciosSection() {
@@ -464,15 +477,17 @@ function ServiciosSection() {
     <section className="bg-white py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2 className={`${serif} max-w-[760px] text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
-          De la cuenta a la <em>inscripción</em>.
+          Nosotros nos encargamos de la estrategia. Tú te enfocas en formar <em>estudiantes</em>.
         </h2>
+        <p className="mt-6 max-w-[760px] text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
+          En RCKT conectamos publicidad, tecnología y seguimiento comercial para que una campaña no termine simplemente en un clic.
+        </p>
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {servicios.map((servicio) => (
             <article key={servicio.num}>
               <img src={servicio.image} alt={servicio.title} className="h-[240px] w-full rounded-[4px] object-cover" />
               <div className="mt-4 flex items-baseline gap-2">
                 <span className="text-[14px] font-bold text-[#005CFF]">{servicio.num}</span>
-                <span className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "18px" }}>· {servicio.tag} ·</span>
               </div>
               <h3 className={`${serif} mt-2 text-[20px] leading-[1.1] text-[#212121]`}>{servicio.title}</h3>
               <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{servicio.text}</p>
