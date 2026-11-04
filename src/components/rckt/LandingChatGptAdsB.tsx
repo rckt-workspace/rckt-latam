@@ -306,48 +306,11 @@ function ContextoSection() {
   );
 }
 
-const requisitos = [
-  { num: "01", title: "Identidad verificable", text: "Tu clínica registrada en Colombia, con datos reales y correo de la empresa." },
-  { num: "02", title: "Licencias al día", text: "Habilitación en el REPS y especialistas con registro profesional." },
-  { num: "03", title: "Mensajes veraces", text: "Nada de garantías, superlativos ni promociones de procedimientos." },
-  { num: "04", title: "Landing alineada", text: "La página dice exactamente lo mismo que el anuncio." },
-  { num: "05", title: "Aprobación de OpenAI", text: "Revisión manual de la cuenta, el anuncio y la página, con monitoreo continuo." },
-];
-
-function RequisitosSection() {
-  return (
-    <section id="requisitos" className="bg-[#1A1A1A] py-14 md:py-20">
-      <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-12 px-5 md:px-8 lg:grid-cols-2">
-        <div>
-          <span className={labelClass}>Requisitos</span>
-          <h2 className="mt-6 font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
-            Cinco requisitos para estar lista antes que tu competencia.
-          </h2>
-          <p className="mt-6 max-w-[460px] text-[16px] leading-[1.5] text-[#D6D1CA]">
-            OpenAI revisa a cada anunciante de salud por separado. Tenerlos en orden desde ahora es lo que te permitirá activar primero.
-          </p>
-        </div>
-        <ul>
-          {requisitos.map((req) => (
-            <li key={req.num} className="flex items-start gap-6 border-t border-[#3A3A3A] py-6 first:border-t-0 first:pt-0">
-              <span className="shrink-0 font-extrabold text-[#FC5C1F]" style={{ fontSize: "30px", lineHeight: 1 }}>{req.num}</span>
-              <div>
-                <h3 className="text-[19px] font-bold leading-[1.2] text-[#F5F2ED]">{req.title}</h3>
-                <p className="mt-1 text-[15px] leading-[1.5] text-[#D6D1CA]">{req.text}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
 const beneficios = [
-  { num: "01", title: "El momento", text: "El paciente conversa y compara, no solo busca palabras sueltas." },
-  { num: "02", title: "La ubicación", text: "Debajo de una respuesta relacionada con tu tratamiento." },
-  { num: "03", title: "La competencia", text: "Baja, porque el canal acaba de abrir en Colombia." },
-  { num: "04", title: "La medición", text: "Cada lead queda registrado con su origen para comparar su costo con tus otros canales." },
+  { num: "01", title: "Genera confianza", text: "Muestra tus especialistas, servicios y habilitaciones con información clara y comprobable." },
+  { num: "02", title: "Ordena tu web", text: "Que quien llegue encuentre información útil y pueda pedir su valoración fácilmente." },
+  { num: "03", title: "No pierdas solicitudes", text: "Atiende por WhatsApp y haz seguimiento a cada contacto que llega." },
+  { num: "04", title: "Decide con datos", text: "Conoce los requisitos y la viabilidad de los nuevos canales antes de invertir." },
 ];
 
 function BeneficiosSection() {
@@ -361,7 +324,7 @@ function BeneficiosSection() {
       />
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2 className="mt-12 max-w-[900px] font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(24px, 2.4vw, 34px)", lineHeight: 1.2, letterSpacing: "-0.01em" }}>
-          No reemplaza a Google ni a Meta. Llega a un momento que ellos no cubren.
+          No tienes que esperar a la pauta para mejorar la estrategia digital de tu clínica.
         </h2>
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {beneficios.map((item) => (
@@ -380,10 +343,10 @@ function BeneficiosSection() {
 }
 
 const servicios = [
-  { num: "01", title: "Cuenta y verificación", text: "Abrimos tu cuenta con los datos correctos de tu clínica y la dejamos lista para cuando se habilite la categoría de salud.", image: "B-05-servicio-01-diagnostico.jpg" },
-  { num: "02", title: "Estrategia de intenciones", text: "Mapeamos cómo pregunta tu paciente: tratamientos, ciudades, comparaciones y dudas de precio.", image: "B-06-servicio-02-estrategia.jpg" },
-  { num: "03", title: "Anuncios y landing", text: "Preparamos piezas sin promesas de resultados ni descuentos, y una página pensada para convertir consultas en valoraciones.", image: "B-07-servicio-03-landing.jpg" },
-  { num: "04", title: "WhatsApp y reportes", text: "Cada lead llega a tu equipo comercial, con un reporte semanal de clics, leads y citas agendadas.", image: "B-08-servicio-04-seguimiento.jpg" },
+  { num: "01", title: "Revisión de tu presencia digital", text: "Evaluamos tu web, tus servicios, tus canales de captación y cómo atiendes cada solicitud, para encontrar qué mejorar.", image: "B-05-servicio-01-diagnostico.jpg" },
+  { num: "02", title: "Plan de marketing con IA", text: "Trazamos una ruta para que tu clínica gane visibilidad y pueda sumar nuevos canales publicitarios a medida que se habiliten.", image: "B-06-servicio-02-estrategia.jpg" },
+  { num: "03", title: "Landing y mensajes", text: "Presentamos tus servicios con claridad y mejoramos los puntos de contacto con quienes buscan un tratamiento.", image: "B-07-servicio-03-landing.jpg" },
+  { num: "04", title: "Medición de oportunidades", text: "Organizamos el registro de consultas, contactos y citas, cuidando la privacidad de tus pacientes.", image: "B-08-servicio-04-seguimiento.jpg" },
 ];
 
 function ServiciosSection() {
@@ -391,7 +354,7 @@ function ServiciosSection() {
     <section className="bg-[#212121] py-14 md:py-20">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2 className="max-w-[760px] font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
-          Un servicio completo, de la cuenta a la cita agendada.
+          Preparamos tu clínica para captar más y mejores pacientes.
         </h2>
         <Accordion type="single" collapsible className="mt-12">
           {servicios.map((servicio, index) => (
