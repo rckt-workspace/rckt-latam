@@ -153,13 +153,13 @@ function HeroSection() {
         <div className="relative z-10 col-start-1 row-start-1 mx-auto w-full max-w-[1200px] px-5 py-16 md:px-8 md:py-16">
           <div className="max-w-[640px]">
             <span className="inline-block text-[13px] font-semibold uppercase tracking-[0.08em] text-[#005CFF]">
-              Para academias y centros de formación
+              Nuevo canal publicitario en Colombia
             </span>
             <h1 className={`${serif} mt-5 text-[#212121]`} style={{ fontSize: "clamp(38px, 4.6vw, 64px)", lineHeight: 0.95 }}>
-              Tus próximos estudiantes ya le preguntan a ChatGPT dónde <em>estudiar</em>.
+              Tus próximos estudiantes están buscando dónde estudiar. Haz que descubran tu academia en <em>ChatGPT</em>.
             </h1>
             <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
-              Desde octubre de 2026 las academias en Colombia pueden anunciarse en ChatGPT. Te ayudamos a aparecer justo cuando alguien compara cursos, horarios y precios.
+              ChatGPT ya cuenta con publicidad en Colombia. En RCKT te ayudamos a preparar, lanzar y optimizar campañas para que más personas conozcan tus programas y puedan solicitar información.
             </p>
             <div className="mt-8 rounded-[4px] border border-[#D9DDE4] bg-white p-5 shadow-sm md:p-6">
               <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#4F4F4D]">Ejemplo ilustrativo · elige una búsqueda</p>
@@ -194,7 +194,7 @@ function HeroSection() {
             </div>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
               <CtaButton>Solicitar diagnóstico para mi academia</CtaButton>
-              <p className="text-[13px] text-[#4F4F4D]">Diagnóstico inicial · Academias en Colombia</p>
+              <p className="text-[13px] text-[#4F4F4D]">Evaluamos tus programas, tu presencia digital y las oportunidades de este canal.</p>
             </div>
           </div>
         </div>
