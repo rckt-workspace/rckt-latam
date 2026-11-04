@@ -225,28 +225,17 @@ function OportunidadSection() {
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           <h2 className="font-semibold text-[#212121]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
-            Así aparece tu clínica dentro de la conversación.
+            Así podrían encontrar tu clínica en ChatGPT cuando se habilite la publicidad de salud.
           </h2>
           <p className="text-[16px] leading-[1.5] text-[#4B4366] lg:pt-3">
-            El anuncio va debajo de la respuesta, nunca dentro, y siempre marcado como patrocinado. OpenAI no comparte las conversaciones con los anunciantes. Así funcionará para tu clínica cuando se habilite la categoría de salud en Colombia.
+            Piensa en alguien que está evaluando un tratamiento de medicina estética. Antes de escribirle a una clínica, le pregunta a la IA sobre procedimientos, cuidados, seguridad y cómo elegir al profesional.
           </p>
         </div>
         <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-2">
-          <div className="flex flex-col gap-10">
-            <div>
-              <p className="font-extrabold text-[#FC5C1F]" style={{ fontSize: "clamp(44px, 5vw, 64px)", lineHeight: 1 }}>21.10</p>
-              <div className="mt-4 border-t border-dashed border-[#BDB8B1] pt-4">
-                <p className="text-[16px] font-semibold text-[#212121]">OpenAI anunció ChatGPT Ads para Colombia.</p>
-                <p className="mt-1 text-[12px] text-[#4B4366]">Fuente: OpenAI, octubre de 2026</p>
-              </div>
-            </div>
-            <div>
-              <p className="font-extrabold text-[#FC5C1F]" style={{ fontSize: "clamp(44px, 5vw, 64px)", lineHeight: 1 }}>1.200 M</p>
-              <div className="mt-4 border-t border-dashed border-[#BDB8B1] pt-4">
-                <p className="text-[16px] font-semibold text-[#212121]">personas usan ChatGPT cada semana.</p>
-                <p className="mt-1 text-[12px] text-[#4B4366]">Fuente: OpenAI, octubre de 2026</p>
-              </div>
-            </div>
+          <div className="flex flex-col justify-center">
+            <p className="max-w-[460px] text-[16px] leading-[1.5] text-[#4B4366]">
+              Cuando la publicidad de servicios de salud esté permitida, un anuncio patrocinado junto a esa conversación puede darle visibilidad a tu clínica.
+            </p>
           </div>
           <div>
             <div className="rounded-[24px] bg-[#212121] p-6 shadow-xl md:p-8">
@@ -276,30 +265,6 @@ function OportunidadSection() {
   );
 }
 
-const contextoCifras = [
-  { num: "21.10", text: "el día en que OpenAI anunció ChatGPT Ads para Colombia." },
-  { num: "89", text: "países donde ChatGPT Ads ya funciona." },
-  { num: "20 %", text: "de los colombianos ya consulta temas de salud en ChatGPT." },
-];
-
-const contextoFunciona = [
-  { num: "01", text: "El anuncio va separado de la respuesta y con la etiqueta \"Patrocinado\"." },
-  { num: "02", text: "Se muestra a adultos que usan los planes gratuitos." },
-  { num: "03", text: "La conversación del usuario nunca llega al anunciante." },
-];
-
-const contextoNo = [
-  "Pauta de servicios de salud en Colombia. Por ahora solo se permite en Estados Unidos, y allí únicamente para tratamientos estéticos sencillos.",
-  "Cirugía y procedimientos invasivos, en ningún país.",
-  "Promesas de resultados, descuentos o mensajes sobre el cuerpo.",
-];
-
-const contextoSi = [
-  "Cuenta, permisos y medición configurados.",
-  "Visibilidad en las respuestas de la IA.",
-  "Campañas listas para activar apenas se habilite.",
-];
-
 const labelClass = "inline-block w-fit rounded-full border border-[#FC5C1F] px-4 py-1.5 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#FC5C1F]";
 
 function ContextoSection() {
@@ -308,57 +273,34 @@ function ContextoSection() {
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <span className={labelClass}>Antes de invertir</span>
         <h2 className="mt-6 max-w-[820px] font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
-          ChatGPT Ads en Colombia: lo que está abierto y lo que todavía no.
+          La publicidad en ChatGPT ya está en Colombia. Esto es lo que cambia para la medicina estética.
         </h2>
         <p className="mt-6 max-w-[720px] text-[16px] leading-[1.5] text-[#D6D1CA]">
-          El canal ya llegó al país, pero todavía no para la salud. La ventaja la tendrá la clínica que conozca sus reglas antes que las demás.
+          Los nuevos formatos publicitarios de ChatGPT abren oportunidades para muchas marcas. Pero la medicina estética es un sector regulado y no todos sus servicios se pueden anunciar todavía.
         </p>
-        <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3">
-          {contextoCifras.map((cifra) => (
-            <div key={cifra.num}>
-              <p className="font-extrabold text-[#FC5C1F]" style={{ fontSize: "clamp(44px, 5vw, 64px)", lineHeight: 1 }}>{cifra.num}</p>
-              <div className="mt-4 border-t border-dashed border-[#3A3A3A] pt-4">
-                <p className="text-[16px] font-semibold leading-[1.4] text-[#F5F2ED]">{cifra.text}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <p className="mt-14 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#FC5C1F]">Cómo funciona</p>
-        <ul className="mt-2">
-          {contextoFunciona.map((punto) => (
-            <li key={punto.num} className="flex items-baseline gap-6 border-t border-[#3A3A3A] py-5 first:border-t-0">
-              <span className="shrink-0 text-[14px] font-bold text-[#FC5C1F]">{punto.num}</span>
-              <p className="text-[16px] leading-[1.5] text-[#F5F2ED]">{punto.text}</p>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-2">
-          <div>
-            <h3 className="text-[19px] font-bold text-[#F5F2ED]">Todavía no</h3>
-            <ul className="mt-4">
-              {contextoNo.map((punto) => (
-                <li key={punto} className="flex items-start gap-4 border-t border-[#3A3A3A] py-4">
-                  <span className="mt-0.5 shrink-0 text-[18px] font-bold leading-[1.3] text-[#FC5C1F]" aria-hidden="true">−</span>
-                  <p className="text-[15px] leading-[1.5] text-[#D6D1CA]">{punto}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-[19px] font-bold text-[#F5F2ED]">Desde ya</h3>
-            <ul className="mt-4">
-              {contextoSi.map((punto) => (
-                <li key={punto} className="flex items-start gap-4 border-t border-[#3A3A3A] py-4">
-                  <span className="mt-0.5 shrink-0 text-[18px] font-bold leading-[1.3] text-[#FC5C1F]" aria-hidden="true">+</span>
-                  <p className="text-[15px] leading-[1.5] text-[#D6D1CA]">{punto}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <p className="mt-12 text-[12px] leading-[1.5] text-[#BDB8B1]">
-          Fuentes: OpenAI, política de anuncios y anuncio del 21 de octubre de 2026; ITBA, Índice de Innovación Regional 2026. Las políticas cambian con frecuencia y las verificamos en cada diagnóstico.
+        <p
+          className="mt-10 max-w-[820px] font-bold text-[#FC5C1F]"
+          style={{ fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: 1.2, letterSpacing: "-0.01em" }}
+        >
+          Que el canal exista no significa que cualquier campaña de salud esté permitida.
         </p>
+        <p className="mt-6 max-w-[720px] text-[16px] leading-[1.5] text-[#D6D1CA]">
+          Antes de destinar presupuesto, conviene conocer las políticas de la plataforma, revisar qué requisitos aplican a tu clínica y armar una estrategia responsable.
+        </p>
+        <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
+          <article className="rounded-[24px] border border-[#3A3A3A] bg-[#2C2C2C] p-7">
+            <h3 className="text-[19px] font-bold leading-[1.2] text-[#F5F2ED]">Lo que depende de ti</h3>
+            <p className="mt-3 text-[15px] leading-[1.5] text-[#D6D1CA]">
+              Ordenar tu presencia digital, mejorar tu página web, explicar mejor tus servicios, organizar el seguimiento de contactos y medir qué tan preparada está tu clínica.
+            </p>
+          </article>
+          <article className="rounded-[24px] border border-[#3A3A3A] bg-[#1A1A1A] p-7">
+            <h3 className="text-[19px] font-bold leading-[1.2] text-[#F5F2ED]">Lo que depende de OpenAI</h3>
+            <p className="mt-3 text-[15px] leading-[1.5] text-[#D6D1CA]">
+              Cuándo se habilitan las campañas de servicios de salud, qué anuncios se aprueban y con qué condiciones de segmentación y publicación.
+            </p>
+          </article>
+        </div>
       </div>
     </section>
   );
