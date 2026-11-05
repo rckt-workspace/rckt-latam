@@ -16,6 +16,10 @@ import imgC07Servicio03 from "@/assets/C-07-servicio-03.jpg";
 import imgC08Servicio04 from "@/assets/C-08-servicio-04.jpg";
 import imgC09Diferenciador from "@/assets/C-09-diferenciador.jpg";
 import imgC10Cierre from "@/assets/C-10-cierre.jpg";
+import imgC11EtapaComparan from "@/assets/C-11-etapa-comparan.jpg";
+import imgC12EtapaPreguntan from "@/assets/C-12-etapa-preguntan.jpg";
+import imgC13EtapaVerifican from "@/assets/C-13-etapa-verifican.jpg";
+import imgC14EtapaInscriben from "@/assets/C-14-etapa-inscriben.jpg";
 
 export const LANDING_C_TITLE = "ChatGPT Ads para academias y centros de formación | RCKT";
 export const LANDING_C_DESCRIPTION =
@@ -137,7 +141,7 @@ function HeroSection() {
           src={imgC01Hero}
           alt=""
           aria-hidden="true"
-          className="absolute! inset-0 h-full w-full rounded-none border-0 object-cover object-[72%_50%] md:hidden!"
+          className="absolute! inset-0 h-full w-full rounded-none border-0 object-cover object-[60%_50%] md:hidden!"
         />
         <div
           className="absolute inset-0 hidden! md:block!"
@@ -203,10 +207,10 @@ function HeroSection() {
 }
 
 const problemaCards = [
-  { num: "01", title: "Comparan", text: "Programas, modalidades y duración.", image: "C-11-etapa-comparan.jpg" },
-  { num: "02", title: "Preguntan", text: "Horarios, precios y formas de pago.", image: "C-12-etapa-preguntan.jpg" },
-  { num: "03", title: "Verifican", text: "Certificados, docentes y opiniones.", image: "C-13-etapa-verifican.jpg" },
-  { num: "04", title: "Se inscriben", text: "Cuando encuentran una opción clara y confiable.", image: "C-14-etapa-inscriben.jpg" },
+  { num: "01", title: "Comparan", text: "Programas, modalidades y duración.", image: imgC11EtapaComparan, alt: "Estudiante comparando opciones de cursos en su celular" },
+  { num: "02", title: "Preguntan", text: "Horarios, precios y formas de pago.", image: imgC12EtapaPreguntan, alt: "Estudiante preguntando sobre horarios y precios de un curso" },
+  { num: "03", title: "Verifican", text: "Certificados, docentes y opiniones.", image: imgC13EtapaVerifican, alt: "Estudiante verificando certificados y opiniones de una academia" },
+  { num: "04", title: "Se inscriben", text: "Cuando encuentran una opción clara y confiable.", image: imgC14EtapaInscriben, alt: "Estudiante completando la inscripción en un curso" },
 ];
 
 function ProblemaSection() {
@@ -229,8 +233,7 @@ function ProblemaSection() {
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {problemaCards.map((card) => (
             <article key={card.num} className="rounded-[4px] bg-[#EEF1F6] p-6">
-              {/* Imagen futura: {card.image} */}
-              <div className="h-[180px] w-full rounded-[4px] bg-[#D9DDE4]" aria-hidden="true" />
+              <img src={card.image} alt={card.alt} className="h-[180px] w-full rounded-[4px] object-cover" />
               <span className="mt-4 block text-[14px] font-bold text-[#005CFF]">{card.num}</span>
               <h3 className={`${serif} mt-3 text-[22px] leading-[1.1] text-[#212121]`}>{card.title}</h3>
               <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{card.text}</p>
@@ -636,7 +639,7 @@ function FormularioSection() {
           <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
             Déjanos tus datos y revisaremos tu oferta educativa, tu presencia digital y las oportunidades de implementar este nuevo canal.
           </p>
-          <img src={imgC04Formulario} alt="Director de una academia" className="mt-10 hidden! h-[280px] w-full rounded-[4px] object-cover object-[50%_20%] lg:block!" />
+          <img src={imgC04Formulario} alt="Director de una academia" className="mt-10 hidden! h-[280px] w-full rounded-[4px] object-cover object-[50%_40%] lg:block!" />
         </div>
         <form onSubmit={onSubmit} className="rounded-[4px] bg-[#F4F6FA] p-6 md:p-9">
           <div className="grid grid-cols-1 gap-6">
