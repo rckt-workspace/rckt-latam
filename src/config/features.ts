@@ -6,7 +6,7 @@
 export const featureConfig = {
   // AI Chat features
   chat: {
-    enabled: true,
+    enabled: false,
     streaming: true,
     multiLanguage: true,
   },

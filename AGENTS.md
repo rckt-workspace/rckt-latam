@@ -16,3 +16,5 @@ Campaign routes under /lp/ stay outside shared site navigation and the sitemap; 
 Sales Flow campaign card reveals and number counts use a route-local, one-shot IntersectionObserver so shared site cards and form behavior remain untouched.
 
 Clinic campaign A/B share one presentation component and their own route leaves; keep the existing diagnostic submission untouched to preserve lead integration.
+
+Use featureConfig.chat.enabled as the single master switch for advisor endpoints and the AI control page; check it before request parsing, service calls, or mounting the data-loading panel so disabling chat cannot reach AI or lead storage.

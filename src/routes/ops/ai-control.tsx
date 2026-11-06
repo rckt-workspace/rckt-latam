@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { featureConfig } from "@/config/features";
 
 interface RuntimeConfig {
   // Agent & Routing
@@ -58,6 +59,12 @@ export const Route = createFileRoute("/ops/ai-control")({
   component: AIControlPage,
   head: () => ({
     meta: [
+      { title: "Control de IA — RCKT LATAM" },
+      { name: "description", content: "Panel interno de control del agente de IA de RCKT LATAM." },
+      { property: "og:title", content: "Control de IA — RCKT LATAM" },
+      { property: "og:description", content: "Panel interno de control del agente de IA de RCKT LATAM." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
       {
         name: "robots",
         content: "noindex, nofollow",
@@ -94,6 +101,19 @@ function getFallbackModelForProvider(provider: string, config: RuntimeConfig): s
 }
 
 function AIControlPage() {
+  if (!featureConfig.chat.enabled) {
+    return (
+      <div className="min-h-screen bg-background p-8 text-foreground">
+        <p>El agente de IA está desactivado</p>
+        <a href="/rckt-equipo" className="text-primary underline">Ir a RCKT Equipo</a>
+      </div>
+    );
+  }
+
+  return <EnabledAIControlPage />;
+}
+
+function EnabledAIControlPage() {
   const [config, setConfig] = useState<RuntimeConfig | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
