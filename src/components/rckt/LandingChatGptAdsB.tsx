@@ -158,7 +158,7 @@ function HeroSection() {
         <div
           className="absolute inset-0 md:hidden"
           aria-hidden="true"
-          style={{ background: "linear-gradient(to bottom, rgba(26,26,26,0.80) 0%, rgba(26,26,26,0.45) 50%, rgba(26,26,26,0.85) 100%)" }}
+          style={{ background: "linear-gradient(to bottom, rgba(26,26,26,0.95) 0%, rgba(26,26,26,0.85) 40%, rgba(26,26,26,0.25) 70%, rgba(26,26,26,0.10) 100%)" }}
         />
         <div className="relative z-10 flex min-h-[640px] flex-col justify-center px-6 py-16 md:min-h-[600px] md:max-w-[58%] md:px-12">
           <span className="inline-block w-fit rounded-full border border-[#FC5C1F] px-4 py-1.5 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#FC5C1F]">
@@ -170,7 +170,7 @@ function HeroSection() {
           >
             Cada vez más pacientes le preguntan a la IA por tratamientos estéticos. Prepara tu clínica desde hoy.
           </h1>
-          <p className="mt-6 text-[17px] leading-[1.5] text-[#D6D1CA]">
+          <p className="mt-6 text-[17px] leading-[1.5] text-[#F5F2ED] md:text-[#D6D1CA]">
             ChatGPT ya tiene publicidad en Colombia, pero OpenAI todavía no habilita los anuncios de servicios de salud en el país. En RCKT dejamos lista la estrategia digital de tu clínica para ese momento.
           </p>
           <p className="mt-4 text-[15px] font-semibold leading-[1.5] text-[#F5F2ED]">
@@ -469,7 +469,7 @@ const inputClass =
 const selectClass =
   "mt-2 w-full rounded-[12px] border border-[#3A3A3A] bg-[#2C2C2C] px-4 py-3 text-[15px] text-[#F5F2ED] placeholder:text-[#BDB8B1] focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#FC5C1F]";
 
-const labelFormClass = "text-[12px] font-semibold uppercase tracking-[0.08em] text-[#F5F2ED]";
+const labelFormClass = "text-[12px] font-semibold uppercase tracking-[0.08em] text-[#F5F2ED]!";
 
 function FormularioSection() {
   const navigate = useNavigate();

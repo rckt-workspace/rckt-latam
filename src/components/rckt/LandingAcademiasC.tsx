@@ -134,7 +134,7 @@ function HeroSection() {
   const chat = heroChats[active];
   return (
     <section id="top" className="relative bg-[#FBFBFA] pt-[68px]">
-      <div className="relative grid overflow-hidden md:items-start">
+      <div className="relative grid min-h-[720px] overflow-hidden md:min-h-0 md:items-start">
         <img
           src={imgC01Hero}
           alt="Asesora de una academia orientando a un estudiante"
@@ -154,7 +154,7 @@ function HeroSection() {
         <div
           className="absolute inset-0 md:hidden!"
           aria-hidden="true"
-          style={{ background: "linear-gradient(to bottom, rgba(251,251,250,0.92) 0%, rgba(251,251,250,0.75) 50%, rgba(251,251,250,0.35) 100%)" }}
+          style={{ background: "linear-gradient(to bottom, rgba(251,251,250,0.96) 0%, rgba(251,251,250,0.88) 40%, rgba(251,251,250,0.25) 70%, rgba(251,251,250,0) 100%)" }}
         />
         <div className="relative z-10 col-start-1 row-start-1 mx-auto w-full max-w-[1200px] px-5 py-16 md:px-8 md:py-16">
           <div className="max-w-[640px]">
@@ -164,10 +164,10 @@ function HeroSection() {
             <h1 className={`${serif} mt-5 text-[#212121]`} style={{ fontSize: "clamp(38px, 4.6vw, 64px)", lineHeight: 0.95 }}>
               Tus próximos estudiantes están buscando dónde estudiar. Haz que descubran tu academia en <em>ChatGPT</em>.
             </h1>
-            <p className="mt-6 text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
+            <p className="mt-6 text-[15px] leading-[1.5] text-[#212121] md:text-[#4F4F4D] md:text-[16px]">
               ChatGPT ya cuenta con publicidad en Colombia. En RCKT te ayudamos a preparar, lanzar y optimizar campañas para que más personas conozcan tus programas y puedan solicitar información.
             </p>
-            <div className="mt-8 rounded-[4px] border border-[#D9DDE4] bg-white p-5 shadow-sm md:p-6">
+            <div className="mt-8 hidden rounded-[4px] border border-[#D9DDE4] bg-white p-5 shadow-sm md:block md:p-6">
               <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#4F4F4D]">Ejemplo ilustrativo · elige una búsqueda</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {heroChats.map((item, index) => (
