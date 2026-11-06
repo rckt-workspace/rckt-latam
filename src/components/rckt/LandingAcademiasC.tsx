@@ -215,7 +215,7 @@ const problemaCards = [
 
 function ProblemaSection() {
   return (
-    <section className="bg-[#FBFBFA] py-12 md:py-16">
+    <section className="bg-white py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
@@ -338,7 +338,7 @@ const contextoTarjetas = [
 
 function ContextoSection() {
   return (
-    <section id="contexto" className="bg-[#FFFFFF] py-12 md:py-16">
+    <section id="contexto" className="bg-[#EEF1F6] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           <div>
@@ -359,7 +359,7 @@ function ContextoSection() {
             </p>
           </div>
         </div>
-        <div className="mt-8 rounded-[4px] bg-[#EEF1F6] p-6 md:p-8">
+        <div className="mt-8 rounded-[4px] bg-white p-6 md:p-8">
           <h3 className={`${serif} text-[22px] leading-[1.1] text-[#212121]`}>¿Qué significa esto para tu academia?</h3>
           <p className="mt-3 max-w-[860px] text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
             Que vale la pena explorar nuevas formas de conectar tu oferta educativa con personas interesadas en aprender, sin depender exclusivamente de los canales publicitarios tradicionales.
@@ -395,7 +395,7 @@ const tiposAcademia = [
 
 function ParaQueAcademiasSection() {
   return (
-    <section id="requisitos" className="bg-[#FBFBFA] py-12 md:py-16">
+    <section id="requisitos" className="bg-[#EEF1F6] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2 className={`${serif} max-w-[860px] text-[#212121]`} style={h2Style}>
           Si tu academia ofrece formación, podemos evaluar cómo darla a conocer en <em>ChatGPT</em>.
@@ -435,7 +435,7 @@ const beneficios = [
 
 function BeneficiosSection() {
   return (
-    <section id="beneficios" className="bg-[#FBFBFA] py-12 md:py-16">
+    <section id="beneficios" className="bg-[#E8F0FF] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2 className={`${serif} max-w-[820px] text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
           Más que aparecer en un nuevo canal, se trata de generar <em>oportunidades</em> para tu academia.
@@ -507,7 +507,7 @@ function DiferenciadorSection() {
   return (
     <section className="bg-[#212121] py-12 md:py-16">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
-        <img src={imgC09Diferenciador} alt="Campus de una academia" className="h-[300px] w-full rounded-[4px] object-cover md:h-[420px]" />
+        <img src={imgC09Diferenciador} alt="Apretón de manos entre una academia y un estudiante" className="w-full h-auto rounded-[4px] border-0" />
         <div>
           <h2 className={`${serif} text-white`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
             Publicidad para educación, con estrategia y <em>responsabilidad</em>.
@@ -539,24 +539,29 @@ const procesoPasos = [
 
 function ProcesoSection() {
   return (
-    <section id="proceso" className="bg-[#FBFBFA] py-12 md:py-16">
+    <section id="proceso" className="bg-[#005CFF] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <h2 className={`${serif} max-w-[700px] text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
+        <h2 className={`${serif} max-w-[700px] text-white`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
           Empezar es más sencillo de lo que <em>imaginas</em>.
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-3">
           {procesoPasos.map((paso) => (
-            <article key={paso.num} className="border-t border-[#D9DDE4] pt-8">
-              <span className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "clamp(36px, 3.6vw, 48px)", lineHeight: 1 }}>
+            <article key={paso.num} className="border-t border-white/30 pt-8">
+              <span className={`${serif} italic text-white`} style={{ fontSize: "clamp(36px, 3.6vw, 48px)", lineHeight: 1 }}>
                 {paso.num}
               </span>
-              <h3 className="mt-5 text-[16px] font-bold leading-[1.3] text-[#212121]">{paso.title}</h3>
-              <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{paso.text}</p>
+              <h3 className="mt-5 text-[16px] font-bold leading-[1.3] text-white">{paso.title}</h3>
+              <p className="mt-2 text-[14px] leading-[1.5] text-white/85">{paso.text}</p>
             </article>
           ))}
         </div>
         <div className="mt-10">
-          <CtaButton>Quiero evaluar mi academia</CtaButton>
+          <a
+            href="#diagnostico"
+            className="inline-flex min-h-[46px] items-center justify-center rounded-full bg-white px-8 text-[15px] font-semibold text-[#005CFF]! transition-colors hover:bg-[#EEF1F6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            Quiero evaluar mi academia
+          </a>
         </div>
       </div>
     </section>
@@ -630,7 +635,7 @@ function FormularioSection() {
   }
 
   return (
-    <section id="diagnostico" className="bg-[#FBFBFA] py-12 md:py-16">
+    <section id="diagnostico" className="bg-[#E8F0FF] py-12 md:py-16">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
         <div>
           <h2 className={`${serif} text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
@@ -641,7 +646,7 @@ function FormularioSection() {
           </p>
           <img src={imgC04Formulario} alt="Director de una academia" className="mt-10 hidden! h-[280px] w-full rounded-[4px] object-cover object-[50%_40%] lg:block!" />
         </div>
-        <form onSubmit={onSubmit} className="rounded-[4px] bg-[#F4F6FA] p-6 md:p-9">
+        <form onSubmit={onSubmit} className="rounded-[4px] bg-white p-6 md:p-9">
           <div className="grid grid-cols-1 gap-6">
             <div>
               <label htmlFor="c-nombre" className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">Nombre completo</label>
@@ -727,7 +732,7 @@ const faqItems = [
 
 function FaqSectionLanding() {
   return (
-    <section className="bg-[#FBFBFA] py-12 md:py-16">
+    <section className="bg-white py-12 md:py-16">
       <div className="mx-auto w-full max-w-[760px] px-5 md:px-8">
         <h2 className={`${serif} text-center text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
           Preguntas frecuentes
