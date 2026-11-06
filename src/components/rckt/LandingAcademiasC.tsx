@@ -141,10 +141,10 @@ function HeroSection() {
           className="hidden! md:col-start-1 md:row-start-1 md:block! h-auto w-full self-start rounded-none border-0"
         />
         <img
-          src={imgC01Hero}
+          src={imgC01HeroMovil}
           alt=""
           aria-hidden="true"
-          className="absolute! inset-0 h-full w-full rounded-none border-0 object-cover object-[60%_50%] md:hidden!"
+          className="absolute! inset-0 h-full w-full rounded-none border-0 object-cover object-[50%_60%] md:hidden!"
         />
         <div
           className="absolute inset-0 hidden! md:block!"
