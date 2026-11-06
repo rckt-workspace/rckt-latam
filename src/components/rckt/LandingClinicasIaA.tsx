@@ -43,10 +43,24 @@ const CONSENT_VERSION = "RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf";
 
 const fontDisplay = "font-['Bricolage_Grotesque',sans-serif]";
 
-function ImagePlaceholder({ name, className = "" }: { name: string; className?: string }) {
+function ImagePlaceholder({
+  name,
+  className = "",
+  position = "50% 25%",
+}: {
+  name: string;
+  className?: string;
+  position?: string;
+}) {
   return (
     <div className={`overflow-hidden rounded-[24px] ${className}`}>
-      <img src={landingImages[name]} alt="" className="h-full w-full object-cover" loading="lazy" />
+      <img
+        src={landingImages[name]}
+        alt=""
+        className="h-full w-full object-cover"
+        style={{ objectPosition: position }}
+        loading="lazy"
+      />
     </div>
   );
 }
@@ -155,13 +169,13 @@ function HeroSection() {
       <img
         src={imgA01}
         alt=""
-        className="absolute inset-0 hidden! h-full w-full object-cover object-[70%_50%] md:block!"
+        className="absolute inset-0 hidden! h-full w-full object-cover object-[70%_30%] md:block!"
         loading="eager"
       />
       <img
         src={imgA01Movil}
         alt=""
-        className="absolute inset-0 h-full w-full object-cover object-[50%_20%] brightness-90 saturate-90 md:hidden!"
+        className="absolute inset-0 h-full w-full object-cover object-[50%_15%] brightness-90 saturate-90 md:hidden!"
         loading="eager"
       />
       <div
@@ -239,7 +253,7 @@ function ProblemaSection() {
               Esto no significa que la IA reemplace una valoración médica. Significa que las clínicas necesitan comprender cómo están evolucionando los canales digitales por los que las personas investigan y toman decisiones.
             </p>
           </div>
-          <ImagePlaceholder name="A-02-problema-paciente-celular.jpg" className="h-[280px] md:h-[340px]" />
+          <ImagePlaceholder name="A-02-problema-paciente-celular.jpg" className="h-[280px] md:h-[340px]" position="50% 15%" />
         </div>
         <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
           {problemaCards.map((card) => (
@@ -365,7 +379,7 @@ function BeneficiosSection() {
           Tu clínica no necesita esperar para fortalecer su estrategia digital.
         </h2>
         <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
-          <ImagePlaceholder name="A-03-beneficios-equipo.jpg" className="h-[280px] md:h-[360px]" />
+          <ImagePlaceholder name="A-03-beneficios-equipo.jpg" className="h-[280px] md:h-[360px]" position="50% 25%" />
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             {beneficios.map((item) => (
               <article key={item.title} className="rounded-[24px] border border-[#DCD1FA] bg-[#F1ECFF] p-6">
@@ -418,7 +432,7 @@ function ServicioCard({ servicio }: { servicio: (typeof servicios)[number] }) {
               {servicio.title}
             </span>
           </div>
-          <ImagePlaceholder name={servicio.image} className="m-4 flex-1" />
+          <ImagePlaceholder name={servicio.image} className="m-4 flex-1" position="50% 30%" />
         </div>
         <div className="absolute inset-0 flex flex-col justify-between rounded-[24px] bg-[#4B2BB8] p-7 [backface-visibility:hidden] [transform:rotateY(180deg)]">
           <div>
@@ -471,7 +485,7 @@ function DiferenciadorSection() {
   return (
     <section className="bg-[#2A1A55] py-12 md:py-16">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
-        <ImagePlaceholder name="A-09-diferenciador-libreta.jpg" className="h-[260px] md:h-[340px]" />
+        <ImagePlaceholder name="A-09-diferenciador-libreta.jpg" className="h-[260px] md:h-[340px]" position="50% 30%" />
         <div>
           <h2 className={`${fontDisplay} font-bold text-white`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             En salud, la confianza es tan importante como la visibilidad.
@@ -607,7 +621,7 @@ function FormularioSection() {
           <p className="mt-6 text-[16px] leading-[1.5] text-[#4B4366]">
             Solicita una revisión inicial de tu presencia digital y conoce qué acciones podrían ayudarte a mejorar tu estrategia de captación.
           </p>
-          <ImagePlaceholder name="A-04-formulario-directora.jpg" className="mt-10 hidden h-[280px] lg:block" />
+          <ImagePlaceholder name="A-04-formulario-directora.jpg" className="mt-10 hidden h-[380px] lg:block" position="50% 12%" />
         </div>
         <form onSubmit={onSubmit} className="rounded-[24px] border border-[#DCD1FA] bg-white p-6 shadow-lg md:p-9">
           <div className="grid grid-cols-1 gap-5">

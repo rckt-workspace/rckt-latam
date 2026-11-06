@@ -40,10 +40,24 @@ export const LANDING_B_DESCRIPTION =
 const LANDING = "chatgpt-ads-clinicas-esteticas";
 const CONSENT_VERSION = "RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf";
 
-function ImagePlaceholder({ name, className = "" }: { name: string; className?: string }) {
+function ImagePlaceholder({
+  name,
+  className = "",
+  position = "50% 25%",
+}: {
+  name: string;
+  className?: string;
+  position?: string;
+}) {
   return (
     <div className={`overflow-hidden rounded-[24px] ${className}`}>
-      <img src={landingImages[name]} alt="" className="h-full w-full object-cover" loading="lazy" />
+      <img
+        src={landingImages[name]}
+        alt=""
+        className="h-full w-full object-cover"
+        style={{ objectPosition: position }}
+        loading="lazy"
+      />
     </div>
   );
 }
@@ -133,7 +147,7 @@ function HeroSection() {
         <img
           src={imgB01Movil}
           alt=""
-          className="absolute inset-0 h-full w-full object-cover object-[50%_25%] md:hidden!"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_20%] md:hidden!"
           loading="eager"
         />
         <div
@@ -198,7 +212,7 @@ function ProblemaSection() {
           <p className="mt-4 text-[16px] leading-[1.5] text-[#D6D1CA]">
             La IA no sustituye la valoración médica. Pero sí cambia los canales por los que tus pacientes se informan, y tu clínica necesita entenderlos.
           </p>
-          <ImagePlaceholder name="B-02-problema-paciente-celular.jpg" className="mt-10 h-[280px] md:h-[340px]" />
+          <ImagePlaceholder name="B-02-problema-paciente-celular.jpg" className="mt-10 h-[280px] md:h-[340px]" position="50% 25%" />
         </div>
         <div>
           <ul>
@@ -320,7 +334,7 @@ function BeneficiosSection() {
         src={landingImages["B-03-beneficios-equipo.jpg"]}
         alt=""
         loading="lazy"
-        className="block h-[320px] w-full object-cover object-[50%_40%] md:h-[clamp(380px,42vw,620px)]"
+        className="block h-[320px] w-full object-cover object-[50%_35%] md:h-[clamp(380px,42vw,620px)]"
       />
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2 className="mt-12 max-w-[900px] font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(24px, 2.4vw, 34px)", lineHeight: 1.2, letterSpacing: "-0.01em" }}>
@@ -368,7 +382,7 @@ function ServiciosSection() {
               <AccordionContent className="pb-8">
                 <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
                   <p className="max-w-[460px] text-[16px] leading-[1.6] text-[#D6D1CA] md:pl-12">{servicio.text}</p>
-                  <ImagePlaceholder name={servicio.image} className="h-[220px] md:h-[260px]" />
+                  <ImagePlaceholder name={servicio.image} className="h-[220px] md:h-[260px]" position="50% 30%" />
                 </div>
               </AccordionContent>
             </AccordionItem>
@@ -411,7 +425,7 @@ function DiferenciadorSection() {
             ))}
           </ul>
         </div>
-        <ImagePlaceholder name="B-09-diferenciador-rostro.jpg" className="h-[300px] md:h-[420px]" />
+        <ImagePlaceholder name="B-09-diferenciador-rostro.jpg" className="h-[300px] md:h-[420px]" position="50% 25%" />
       </div>
     </section>
   );
@@ -528,7 +542,7 @@ function FormularioSection() {
           <p className="mt-6 text-[16px] leading-[1.5] text-[#D6D1CA]">
             Pide una revisión inicial de tu presencia digital y conoce qué acciones pueden mejorar la forma en que captas pacientes.
           </p>
-          <ImagePlaceholder name="B-04-formulario-director.jpg" className="mt-10 hidden h-[280px] lg:block" />
+          <ImagePlaceholder name="B-04-formulario-director.jpg" className="mt-10 hidden h-[360px] lg:block" position="60% 25%" />
         </div>
         <form onSubmit={onSubmit} className="rounded-[24px] border border-[#3A3A3A] bg-[#2C2C2C] p-6 shadow-lg md:p-9">
           <div className="grid grid-cols-1 gap-5">
