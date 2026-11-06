@@ -19,6 +19,7 @@ import imgB08 from "@/assets/B-08-servicio-04-seguimiento.jpg";
 import imgB09 from "@/assets/B-09-diferenciador-rostro.jpg";
 import imgB10 from "@/assets/B-10-cierre-mujer-celular.jpg";
 import imgB01Movil from "@/assets/B-01-hero-movil.jpg";
+import imgB11 from "@/assets/B-11-oportunidad.jpg";
 
 const landingImages: Record<string, string> = {
   "B-01-hero-consulta.jpg": imgB01,
@@ -246,10 +247,16 @@ function OportunidadSection() {
           </p>
         </div>
         <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-2">
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col">
             <p className="max-w-[460px] text-[16px] leading-[1.5] text-[#4B4366]">
               Cuando la publicidad de servicios de salud esté permitida, un anuncio patrocinado junto a esa conversación puede darle visibilidad a tu clínica.
             </p>
+            <img
+              src={imgB11}
+              alt="Equipo de una clínica revisando la preparación de sus campañas"
+              className="mt-8 h-[280px] w-full rounded-[24px] object-cover md:h-[360px]"
+              style={{ objectPosition: "50% 30%" }}
+            />
           </div>
           <div>
             <div className="rounded-[24px] bg-[#212121] p-6 shadow-xl md:p-8">
