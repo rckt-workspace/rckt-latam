@@ -8,6 +8,7 @@ import { getCampaignParams, saveCampaignParams, track } from "@/components/rckt/
 import { WHATSAPP_URL, contactConfig } from "@/config/contact";
 import logoDark from "@/assets/rckt-logo-dark.png";
 import imgC01Hero from "@/assets/C-01-hero.jpg";
+import imgC01HeroMovil from "@/assets/C-01-hero-movil.jpg";
 import imgC03Beneficios from "@/assets/C-03-beneficios.jpg";
 import imgC04Formulario from "@/assets/C-04-formulario.jpg";
 import imgC05Servicio01 from "@/assets/C-05-servicio-01.jpg";
@@ -140,10 +141,10 @@ function HeroSection() {
           className="hidden! md:col-start-1 md:row-start-1 md:block! h-auto w-full self-start rounded-none border-0"
         />
         <img
-          src={imgC01Hero}
+          src={imgC01HeroMovil}
           alt=""
           aria-hidden="true"
-          className="absolute! inset-0 h-full w-full rounded-none border-0 object-cover object-[60%_50%] md:hidden!"
+          className="absolute! inset-0 h-full w-full rounded-none border-0 object-cover object-[50%_60%] md:hidden!"
         />
         <div
           className="absolute inset-0 hidden! md:block!"
