@@ -133,7 +133,7 @@ function HeroSection() {
         <img
           src={imgB01Movil}
           alt=""
-          className="absolute inset-0 h-full w-full object-cover object-[50%_60%] md:hidden!"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_25%] md:hidden!"
           loading="eager"
         />
         <div
@@ -320,7 +320,7 @@ function BeneficiosSection() {
         src={landingImages["B-03-beneficios-equipo.jpg"]}
         alt=""
         loading="lazy"
-        className="block h-[320px] w-full object-cover object-[50%_25%] md:h-[clamp(380px,42vw,620px)]"
+        className="block h-[320px] w-full object-cover object-[50%_40%] md:h-[clamp(380px,42vw,620px)]"
       />
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
         <h2 className="mt-12 max-w-[900px] font-semibold text-[#F5F2ED]" style={{ fontSize: "clamp(24px, 2.4vw, 34px)", lineHeight: 1.2, letterSpacing: "-0.01em" }}>
