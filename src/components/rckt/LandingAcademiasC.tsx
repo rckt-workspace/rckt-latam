@@ -539,24 +539,29 @@ const procesoPasos = [
 
 function ProcesoSection() {
   return (
-    <section id="proceso" className="bg-[#FBFBFA] py-12 md:py-16">
+    <section id="proceso" className="bg-[#005CFF] py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <h2 className={`${serif} max-w-[700px] text-[#212121]`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
+        <h2 className={`${serif} max-w-[700px] text-white`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1 }}>
           Empezar es más sencillo de lo que <em>imaginas</em>.
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-3">
           {procesoPasos.map((paso) => (
-            <article key={paso.num} className="border-t border-[#D9DDE4] pt-8">
-              <span className={`${serif} italic text-[#005CFF]`} style={{ fontSize: "clamp(36px, 3.6vw, 48px)", lineHeight: 1 }}>
+            <article key={paso.num} className="border-t border-white/30 pt-8">
+              <span className={`${serif} italic text-white`} style={{ fontSize: "clamp(36px, 3.6vw, 48px)", lineHeight: 1 }}>
                 {paso.num}
               </span>
-              <h3 className="mt-5 text-[16px] font-bold leading-[1.3] text-[#212121]">{paso.title}</h3>
-              <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{paso.text}</p>
+              <h3 className="mt-5 text-[16px] font-bold leading-[1.3] text-white">{paso.title}</h3>
+              <p className="mt-2 text-[14px] leading-[1.5] text-white/85">{paso.text}</p>
             </article>
           ))}
         </div>
         <div className="mt-10">
-          <CtaButton>Quiero evaluar mi academia</CtaButton>
+          <a
+            href="#diagnostico"
+            className="inline-flex min-h-[46px] items-center justify-center rounded-full bg-white px-8 text-[15px] font-semibold text-[#005CFF]! transition-colors hover:bg-[#EEF1F6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            Quiero evaluar mi academia
+          </a>
         </div>
       </div>
     </section>
