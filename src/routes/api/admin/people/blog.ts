@@ -15,8 +15,13 @@ export const Route = createFileRoute("/api/admin/people/blog")({
           return Response.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        const { supabaseAdmin: typedSupabaseAdmin } =
-          await import("@/integrations/supabase/client.server");
+        const { getDbConfig, dbFetch } = await import("@/lib/db-config.server");
+          const { createClient } = await import("@supabase/supabase-js");
+          const { url, serviceRoleKey } = getDbConfig();
+          const typedSupabaseAdmin = createClient(url, serviceRoleKey, {
+            auth: { persistSession: false, autoRefreshToken: false },
+            global: { fetch: dbFetch(serviceRoleKey) },
+          });
 
         // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
         const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
@@ -65,8 +70,13 @@ export const Route = createFileRoute("/api/admin/people/blog")({
           return Response.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        const { supabaseAdmin: typedSupabaseAdmin } =
-          await import("@/integrations/supabase/client.server");
+        const { getDbConfig, dbFetch } = await import("@/lib/db-config.server");
+          const { createClient } = await import("@supabase/supabase-js");
+          const { url, serviceRoleKey } = getDbConfig();
+          const typedSupabaseAdmin = createClient(url, serviceRoleKey, {
+            auth: { persistSession: false, autoRefreshToken: false },
+            global: { fetch: dbFetch(serviceRoleKey) },
+          });
         // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
         const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
 
@@ -168,8 +178,13 @@ export const Route = createFileRoute("/api/admin/people/blog")({
           return Response.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        const { supabaseAdmin: typedSupabaseAdmin } =
-          await import("@/integrations/supabase/client.server");
+        const { getDbConfig, dbFetch } = await import("@/lib/db-config.server");
+          const { createClient } = await import("@supabase/supabase-js");
+          const { url, serviceRoleKey } = getDbConfig();
+          const typedSupabaseAdmin = createClient(url, serviceRoleKey, {
+            auth: { persistSession: false, autoRefreshToken: false },
+            global: { fetch: dbFetch(serviceRoleKey) },
+          });
         // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
         const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
 
@@ -268,8 +283,13 @@ export const Route = createFileRoute("/api/admin/people/blog")({
           return Response.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        const { supabaseAdmin: typedSupabaseAdmin } =
-          await import("@/integrations/supabase/client.server");
+        const { getDbConfig, dbFetch } = await import("@/lib/db-config.server");
+          const { createClient } = await import("@supabase/supabase-js");
+          const { url, serviceRoleKey } = getDbConfig();
+          const typedSupabaseAdmin = createClient(url, serviceRoleKey, {
+            auth: { persistSession: false, autoRefreshToken: false },
+            global: { fetch: dbFetch(serviceRoleKey) },
+          });
         // Esquema de la base por delante/detrás de los tipos generados: acceso sin tipar.
         const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
 

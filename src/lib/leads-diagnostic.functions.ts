@@ -63,7 +63,13 @@ export const saveDiagnosticLead = createServerFn({ method: "POST" })
   .validator((payload: unknown) => SaveDiagnosticPayloadSchema.parse(payload))
   .handler(async ({ data: payload }) => {
     const { data: formData, attribution } = payload;
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { getDbConfig, dbFetch } = await import("@/lib/db-config.server");
+          const { createClient } = await import("@supabase/supabase-js");
+          const { url, serviceRoleKey } = getDbConfig();
+          const supabaseAdmin = createClient(url, serviceRoleKey, {
+            auth: { persistSession: false, autoRefreshToken: false },
+            global: { fetch: dbFetch(serviceRoleKey) },
+          });
 
     // Build form values for scoring
     const formValues: DiagnosticFormValues = {

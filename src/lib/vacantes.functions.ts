@@ -16,13 +16,9 @@ function nullableText(value: unknown): string | null {
   return typeof value === "string" && value.trim() ? value : null;
 }
 
-function serverSupabaseConfig() {
-  const url = process.env["SUPABASE_URL"] || process.env["VITE_SUPABASE_URL"];
-  const publishableKey =
-    process.env["SUPABASE_PUBLISHABLE_KEY"] ||
-    process.env["SUPABASE_ANON_KEY"] ||
-    process.env["VITE_SUPABASE_PUBLISHABLE_KEY"];
-  return { url, publishableKey };
+async function serverSupabaseConfig() {
+  const { getDbConfig, dbFetch } = await import("@/lib/db-config.server");
+  return { ...getDbConfig(), dbFetch };
 }
 
 /**
@@ -30,7 +26,7 @@ function serverSupabaseConfig() {
  * even when the production bundle was built without the VITE_ variables.
  */
 export const getPublicSupabaseConfig = createServerFn({ method: "GET" }).handler(async () => {
-  const { url, publishableKey } = serverSupabaseConfig();
+  const { url, publishableKey } = await serverSupabaseConfig();
   if (!url || !publishableKey) {
     throw new Error("La configuración pública no está disponible.");
   }
@@ -45,12 +41,13 @@ export const getVacancyById = createServerFn({ method: "GET" })
     return { id: data.id };
   })
   .handler(async ({ data }) => {
-    const { url, publishableKey } = serverSupabaseConfig();
+    const { url, publishableKey, dbFetch } = await serverSupabaseConfig();
     if (!url || !publishableKey) {
       throw new Error("La configuración de vacantes no está disponible.");
     }
 
     const client = createClient<Database>(url, publishableKey, {
+      global: { fetch: dbFetch(publishableKey) },
       auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
     });
 
@@ -78,17 +75,14 @@ export const getVacancyById = createServerFn({ method: "GET" })
   });
 
 export const getActiveVacancies = createServerFn({ method: "GET" }).handler(async () => {
-  const url = process.env["SUPABASE_URL"] || process.env["VITE_SUPABASE_URL"];
-  const publishableKey =
-    process.env["SUPABASE_PUBLISHABLE_KEY"] ||
-    process.env["SUPABASE_ANON_KEY"] ||
-    process.env["VITE_SUPABASE_PUBLISHABLE_KEY"];
+  const { url, publishableKey, dbFetch } = await serverSupabaseConfig();
 
   if (!url || !publishableKey) {
     throw new Error("La configuración de vacantes no está disponible.");
   }
 
   const client = createClient<Database>(url, publishableKey, {
+      global: { fetch: dbFetch(publishableKey) },
     auth: {
       storage: undefined,
       persistSession: false,

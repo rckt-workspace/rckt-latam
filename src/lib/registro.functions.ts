@@ -17,7 +17,13 @@ export const registrarEquipo = createServerFn({ method: "POST" })
       return { ok: false as const, error: "El registro está restringido al equipo de RCKT." };
     }
 
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { getDbConfig, dbFetch } = await import("@/lib/db-config.server");
+          const { createClient } = await import("@supabase/supabase-js");
+          const { url, serviceRoleKey } = getDbConfig();
+          const supabaseAdmin = createClient(url, serviceRoleKey, {
+            auth: { persistSession: false, autoRefreshToken: false },
+            global: { fetch: dbFetch(serviceRoleKey) },
+          });
     const { error } = await supabaseAdmin.auth.admin.createUser({
       email,
       password: data.password,

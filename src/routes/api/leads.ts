@@ -30,7 +30,13 @@ export const Route = createFileRoute("/api/leads")({
             );
           }
 
-          const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+          const { getDbConfig, dbFetch } = await import("@/lib/db-config.server");
+          const { createClient } = await import("@supabase/supabase-js");
+          const { url, serviceRoleKey } = getDbConfig();
+          const supabaseAdmin = createClient(url, serviceRoleKey, {
+            auth: { persistSession: false, autoRefreshToken: false },
+            global: { fetch: dbFetch(serviceRoleKey) },
+          });
           const user_agent = request.headers.get("user-agent")?.slice(0, 500) ?? null;
 
           const { error } = await supabaseAdmin.from("leads").insert({
