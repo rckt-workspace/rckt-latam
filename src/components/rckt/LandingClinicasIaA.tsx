@@ -188,11 +188,11 @@ function HeroSection() {
       />
       <div
         className="absolute inset-0 md:hidden"
-        style={{ background: "linear-gradient(to bottom, rgba(251,251,250,0.97) 0%, rgba(251,251,250,0.92) 45%, rgba(251,251,250,0.30) 75%, rgba(251,251,250,0) 100%)" }}
+        style={{ background: "linear-gradient(to bottom, rgba(251,251,250,0.80) 0%, rgba(251,251,250,0.55) 40%, rgba(251,251,250,0.15) 70%, rgba(251,251,250,0) 100%)" }}
         aria-hidden="true"
       />
       <div className="relative mx-auto flex w-full max-w-[1200px] items-center px-5 pb-16 pt-[120px] md:min-h-[680px] md:px-8 md:pb-20 md:pt-[140px]">
-        <div className="max-w-[560px]">
+        <div className="max-w-[560px] max-md:[text-shadow:0_0_12px_rgba(255,255,255,0.9)]">
           <span className="inline-block rounded-full bg-[#4B2BB8] px-4 py-1.5 text-[12px] font-semibold tracking-wide !text-white max-md:text-[#000000]!">
             Marketing + inteligencia artificial
           </span>
