@@ -144,40 +144,45 @@ function HeroSection() {
           className="absolute inset-0 hidden! h-full w-full object-cover object-center md:block!"
           loading="eager"
         />
+        <img
+          src={imgB01Movil}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-[50%_100%] md:hidden!"
+          loading="eager"
+        />
         <div
           className="absolute inset-0 hidden md:block"
           aria-hidden="true"
           style={{ background: "linear-gradient(to right, rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.55) 45%, transparent 75%)" }}
         />
-        <div className="relative z-10 flex flex-col justify-center px-6 py-16 md:min-h-[600px] md:max-w-[58%] md:px-12">
+        <div
+          className="absolute inset-0 md:hidden"
+          aria-hidden="true"
+          style={{ background: "linear-gradient(to bottom, rgba(26,26,26,0.95) 0%, rgba(26,26,26,0.85) 40%, rgba(26,26,26,0.25) 70%, rgba(26,26,26,0.10) 100%)" }}
+        />
+        <div className="relative z-10 flex min-h-[640px] flex-col justify-center px-6 py-16 md:min-h-[600px] md:max-w-[58%] md:px-12">
           <span className="inline-block w-fit rounded-full border border-[#FC5C1F] px-4 py-1.5 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#FC5C1F]">
             ChatGPT Ads ya llegó a Colombia
           </span>
           <h1
-            className="mt-6 font-extrabold text-[#F5F2ED]"
+            className="mt-6 font-extrabold text-[#F5F2ED] max-md:text-[#FFFFFF]!"
             style={{ fontSize: "clamp(36px, 4.4vw, 60px)", lineHeight: 1.02, letterSpacing: "-0.03em" }}
           >
             Cada vez más pacientes le preguntan a la IA por tratamientos estéticos. Prepara tu clínica desde hoy.
           </h1>
-          <p className="mt-6 text-[17px] leading-[1.5] text-[#F5F2ED] md:text-[#D6D1CA]">
+          <p className="mt-6 text-[17px] leading-[1.5] text-[#F5F2ED] md:text-[#D6D1CA] max-md:text-[#FFFFFF]! max-md:font-medium">
             ChatGPT ya tiene publicidad en Colombia, pero OpenAI todavía no habilita los anuncios de servicios de salud en el país. En RCKT dejamos lista la estrategia digital de tu clínica para ese momento.
           </p>
-          <p className="mt-4 text-[15px] font-semibold leading-[1.5] text-[#F5F2ED]">
+          <p className="mt-4 text-[15px] font-semibold leading-[1.5] text-[#F5F2ED] max-md:text-[#FFFFFF]! max-md:font-medium">
             Primero estrategia, después pauta.
           </p>
-          <p className="mt-1 text-[15px] leading-[1.5] text-[#D6D1CA]">
+          <p className="mt-1 text-[15px] leading-[1.5] text-[#D6D1CA] max-md:text-[#FFFFFF]! max-md:font-medium">
             Revisamos tu presencia digital, tus tratamientos y los requisitos que aplican a tu clínica.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
             <CtaButton className="w-full sm:w-auto">Solicitar diagnóstico de preparación</CtaButton>
-            <p className="text-[13px] text-[#BDB8B1]">Para clínicas de medicina estética en Colombia</p>
+            <p className="text-[13px] text-[#BDB8B1] max-md:text-[#FFFFFF]! max-md:font-medium">Para clínicas de medicina estética en Colombia</p>
           </div>
-          <img
-            src={imgB01Movil}
-            alt="Profesionales de una clínica de medicina estética"
-            className="mt-8 aspect-[4/5] w-full rounded-[24px] object-cover object-[50%_85%] md:hidden!"
-            loading="eager"
-          />
         </div>
       </div>
     </section>

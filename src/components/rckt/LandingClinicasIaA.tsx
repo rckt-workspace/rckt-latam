@@ -165,11 +165,17 @@ const heroGradient =
 
 function HeroSection() {
   return (
-    <section id="top" className="relative flex flex-col overflow-hidden max-md:bg-[#FBFAFF] md:block md:min-h-[680px]">
+    <section id="top" className="relative flex min-h-[max(100svh,720px)] flex-col overflow-hidden md:block md:min-h-[680px]">
       <img
         src={imgA01}
         alt=""
         className="absolute inset-0 hidden! h-full w-full object-cover object-[70%_30%] md:block!"
+        loading="eager"
+      />
+      <img
+        src={imgA01Movil}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover object-[50%_100%] brightness-90 saturate-90 md:hidden!"
         loading="eager"
       />
       <div
@@ -180,36 +186,35 @@ function HeroSection() {
         }}
         aria-hidden="true"
       />
+      <div
+        className="absolute inset-0 md:hidden"
+        style={{ background: "linear-gradient(to bottom, rgba(251,251,250,0.97) 0%, rgba(251,251,250,0.92) 45%, rgba(251,251,250,0.30) 75%, rgba(251,251,250,0) 100%)" }}
+        aria-hidden="true"
+      />
       <div className="relative mx-auto flex w-full max-w-[1200px] items-center px-5 pb-16 pt-[120px] md:min-h-[680px] md:px-8 md:pb-20 md:pt-[140px]">
         <div className="max-w-[560px]">
-          <span className="inline-block rounded-full bg-[#4B2BB8] px-4 py-1.5 text-[12px] font-semibold tracking-wide !text-white">
+          <span className="inline-block rounded-full bg-[#4B2BB8] px-4 py-1.5 text-[12px] font-semibold tracking-wide !text-white max-md:text-[#000000]!">
             Marketing + inteligencia artificial
           </span>
           <h1
-            className={`${fontDisplay} mt-6 font-bold text-[#212121]`}
+            className={`${fontDisplay} mt-6 font-bold text-[#212121] max-md:text-[#000000]!`}
             style={{ fontSize: "clamp(38px, 4.6vw, 64px)", lineHeight: 1, letterSpacing: "-0.03em" }}
           >
             Tus futuros pacientes ya consultan sobre tratamientos estéticos con IA. ¿Tu clínica está preparada?
           </h1>
-          <p className="mt-6 text-[17px] leading-[1.5] text-[#212121]">
+          <p className="mt-6 text-[17px] leading-[1.5] text-[#212121] max-md:text-[#000000]! max-md:font-medium">
             La forma de buscar información sobre tratamientos estéticos está evolucionando. En RCKT te ayudamos a preparar la estrategia digital de tu clínica para las nuevas oportunidades publicitarias de ChatGPT, mientras OpenAI habilita publicidad para anunciar servicios de salud en Colombia.
           </p>
-          <p className="mt-4 text-[15px] font-semibold leading-[1.5] text-[#212121]">
+          <p className="mt-4 text-[15px] font-semibold leading-[1.5] text-[#212121] max-md:text-[#000000]! max-md:font-medium">
             Prepárate con una estrategia, no con suposiciones.
           </p>
-          <p className="mt-1 text-[15px] leading-[1.5] text-[#4B4366]">
+          <p className="mt-1 text-[15px] leading-[1.5] text-[#4B4366] max-md:text-[#000000]! max-md:font-medium">
             Analizamos tu presencia digital, tus tratamientos y los requisitos que podrían aplicar a tu clínica.
           </p>
           <div className="mt-8">
             <CtaButton>Quiero explorar esta oportunidad</CtaButton>
           </div>
-          <p className="mt-4 text-[13px] text-[#4B4366]">Diagnóstico inicial · Enfoque para clínicas en Colombia</p>
-          <img
-            src={imgA01Movil}
-            alt="Profesionales de una clínica estética conversando"
-            className="mt-8 aspect-[4/5] w-full rounded-[24px] object-cover object-[50%_85%] md:hidden!"
-            loading="eager"
-          />
+          <p className="mt-4 text-[13px] text-[#4B4366] max-md:text-[#000000]! max-md:font-medium">Diagnóstico inicial · Enfoque para clínicas en Colombia</p>
         </div>
       </div>
       <div className="absolute bottom-6 right-6 z-10 hidden w-[280px] rounded-[20px] border border-[#DCD1FA] bg-white p-4 shadow-lg md:block">
