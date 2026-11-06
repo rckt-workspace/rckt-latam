@@ -65,3 +65,4 @@
 - [x] Actualizar el contenido oficial de Sales Flow, la puntuación y medición; validar cuatro capturas y compilación. Las opciones exclusivas del formulario siguen pendientes por la restricción de no cambiar su lógica/campos.
 - [x] Centrar las tarjetas de Sales Flow y añadir animaciones de entrada, línea, números e iconos sin afectar al formulario ni otras páginas.
 - [x] Crear campañas clínicas A/B y sus páginas de gracias con textos, atribución y variante flotante; validar escritorio/móvil y compilación.
+- [ ] Desactivar agente con featureConfig.chat.enabled, bloquear handlers y panel IA, ajustar destino de login y validar compilación.
