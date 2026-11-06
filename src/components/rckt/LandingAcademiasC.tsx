@@ -20,6 +20,8 @@ import imgC11EtapaComparan from "@/assets/C-11-etapa-comparan.jpg";
 import imgC12EtapaPreguntan from "@/assets/C-12-etapa-preguntan.jpg";
 import imgC13EtapaVerifican from "@/assets/C-13-etapa-verifican.jpg";
 import imgC14EtapaInscriben from "@/assets/C-14-etapa-inscriben.jpg";
+import imgC15Contexto from "@/assets/C-15-contexto.jpg";
+import imgC16TiposAcademia from "@/assets/C-16-tipos-academia.jpg";
 
 export const LANDING_C_TITLE = "ChatGPT Ads para academias y centros de formación | RCKT";
 export const LANDING_C_DESCRIPTION =
@@ -346,6 +348,11 @@ function ContextoSection() {
             <h2 className={`${serif} mt-4 text-[#212121]`} style={h2Style}>
               La forma de buscar dónde estudiar está cambiando. Y la <em>publicidad</em> también.
             </h2>
+            <img
+              src={imgC15Contexto}
+              alt="Orientadora explicando a un estudiante un diagrama impreso en el mostrador de una academia"
+              className="mt-6 h-[240px] w-full rounded-[4px] object-cover object-[50%_30%] md:h-[320px]"
+            />
           </div>
           <div className="lg:pt-10">
             <p className="text-[15px] leading-[1.5] text-[#4F4F4D] md:text-[16px]">
@@ -400,13 +407,20 @@ function ParaQueAcademiasSection() {
         <h2 className={`${serif} max-w-[860px] text-[#212121]`} style={h2Style}>
           Si tu academia ofrece formación, podemos evaluar cómo darla a conocer en <em>ChatGPT</em>.
         </h2>
-        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {tiposAcademia.map((tipo) => (
-            <article key={tipo.title} className="h-full rounded-[4px] border border-[#D9DDE4] bg-white p-6">
-              <h3 className="text-[16px] font-semibold leading-[1.3] text-[#212121]">{tipo.title}</h3>
-              <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{tipo.text}</p>
-            </article>
-          ))}
+        <div className="mt-8 grid grid-cols-1 gap-5 lg:grid-cols-2">
+          <img
+            src={imgC16TiposAcademia}
+            alt="Docente y estudiante revisando juntos documentos y gráficos sobre una mesa"
+            className="h-[240px] w-full self-stretch rounded-[4px] object-cover object-[50%_30%] lg:h-full"
+          />
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            {tiposAcademia.map((tipo) => (
+              <article key={tipo.title} className="h-full rounded-[4px] border border-[#D9DDE4] bg-white p-6">
+                <h3 className="text-[16px] font-semibold leading-[1.3] text-[#212121]">{tipo.title}</h3>
+                <p className="mt-2 text-[14px] leading-[1.5] text-[#4F4F4D]">{tipo.text}</p>
+              </article>
+            ))}
+          </div>
         </div>
         <h3 className="mt-10 text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4F4F4D]">Requisitos para anunciarte</h3>
         <div className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
