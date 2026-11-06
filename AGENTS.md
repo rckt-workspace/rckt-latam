@@ -18,3 +18,5 @@ Sales Flow campaign card reveals and number counts use a route-local, one-shot I
 Clinic campaign A/B share one presentation component and their own route leaves; keep the existing diagnostic submission untouched to preserve lead integration.
 
 Use featureConfig.chat.enabled as the single master switch for advisor endpoints and the AI control page; check it before request parsing, service calls, or mounting the data-loading panel so disabling chat cannot reach AI or lead storage.
+
+Application database connections use getDbConfig inside server-only execution boundaries with no managed-database fallback; browsers fetch only public configuration through getPublicSupabaseConfig, which auth middleware skips to avoid bootstrap recursion. Preserve generated integration files unused by application data paths.
