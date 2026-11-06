@@ -9,7 +9,13 @@ const BASE_URL = "https://rckt.lat";
  *  Se consulta la base directamente desde el servidor (no con el cliente del navegador). */
 async function blogEntries(): Promise<SitemapEntry[]> {
   try {
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { getDbConfig, dbFetch } = await import("@/lib/db-config.server");
+    const { createClient } = await import("@supabase/supabase-js");
+    const { url, publishableKey } = getDbConfig();
+    const supabaseAdmin = createClient(url, publishableKey, {
+      auth: { persistSession: false, autoRefreshToken: false },
+      global: { fetch: dbFetch(publishableKey) },
+    });
     const { data, error } = await (supabaseAdmin as unknown as {
       from: (t: string) => {
         select: (c: string) => {

@@ -85,8 +85,13 @@ export const Route = createFileRoute("/api/admin/people/blog-media")({
           const path = `posts/${safeSlug}/${uuid}.${ext}`;
 
           // 6. Importar cliente Supabase
-          const { supabaseAdmin: typedSupabaseAdmin } =
-            await import("@/integrations/supabase/client.server");
+          const { getDbConfig, dbFetch } = await import("@/lib/db-config.server");
+          const { createClient } = await import("@supabase/supabase-js");
+          const { url, serviceRoleKey } = getDbConfig();
+          const typedSupabaseAdmin = createClient(url, serviceRoleKey, {
+            auth: { persistSession: false, autoRefreshToken: false },
+            global: { fetch: dbFetch(serviceRoleKey) },
+          });
           const supabaseAdmin = typedSupabaseAdmin as unknown as LooseSupabaseClient;
 
           // 7. Subir archivo

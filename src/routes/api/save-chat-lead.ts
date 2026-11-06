@@ -72,17 +72,14 @@ export const Route = createFileRoute("/api/save-chat-lead")({
           };
 
           // Call Supabase Edge Function to save chat lead
-          const supabaseUrl = process.env.SUPABASE_URL;
-          if (!supabaseUrl) {
-            console.error("save-chat-lead: SUPABASE_URL not configured");
-            return Response.json({ error: "Configuración incompleta." }, { status: 503 });
-          }
+          const { getDbConfig, dbFetch } = await import("@/lib/db-config.server");
+          const { url: supabaseUrl, publishableKey } = getDbConfig();
 
-          const response = await fetch(`${supabaseUrl}/functions/v1/rckt-ai-db`, {
+          const response = await dbFetch(publishableKey)(`${supabaseUrl}/functions/v1/rckt-ai-db`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${process.env.SUPABASE_ANON_KEY}`,
+              Authorization: `Bearer ${publishableKey}`,
             },
             body: JSON.stringify({
               action: "save_chat_lead",

@@ -1,11 +1,11 @@
-import { supabase as typedSupabase } from "@/integrations/supabase/client";
+import { getBrowserSupabase } from "@/lib/supabase-browser";
 import type { SupabaseClient } from "@supabase/supabase-js";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type LooseSupabaseClient = SupabaseClient<any, "public", any>;
 
 // Las tablas del blog aún no están en los tipos generados: acceso sin tipar.
-const supabase = typedSupabase as unknown as LooseSupabaseClient;
+
 import type {
   BlogRepository,
   BlogPost,
@@ -65,6 +65,7 @@ export class SupabaseBlogRepository implements BlogRepository {
    * Get all posts (published only for public)
    */
   async getAllPosts(): Promise<BlogPost[]> {
+    const supabase = await getBrowserSupabase() as unknown as LooseSupabaseClient;
     const { data, error } = await supabase
       .from("blog_posts")
       .select("*, blog_categories(id, name, slug)")
@@ -91,6 +92,7 @@ export class SupabaseBlogRepository implements BlogRepository {
    * Get post by slug
    */
   async getPostBySlug(slug: string): Promise<BlogPost | null> {
+    const supabase = await getBrowserSupabase() as unknown as LooseSupabaseClient;
     const { data, error } = await supabase
       .from("blog_posts")
       .select("*, blog_categories(id, name, slug)")
@@ -114,6 +116,7 @@ export class SupabaseBlogRepository implements BlogRepository {
       return this.getPublishedPosts();
     }
 
+    const supabase = await getBrowserSupabase() as unknown as LooseSupabaseClient;
     // First, get the category to find its ID
     const { data: categoryData, error: catError } = await supabase
       .from("blog_categories")
@@ -185,6 +188,7 @@ export class SupabaseBlogRepository implements BlogRepository {
    * Get all active categories
    */
   async getCategories(): Promise<BlogCategory[]> {
+    const supabase = await getBrowserSupabase() as unknown as LooseSupabaseClient;
     const { data, error } = await supabase
       .from("blog_categories")
       .select("id, name, slug")
