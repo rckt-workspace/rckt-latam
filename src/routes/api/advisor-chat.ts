@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { config } from "@/config";
+import { featureConfig } from "@/config/features";
 
 const SYSTEM_PROMPT = `Eres un asesor estratégico senior de RCKT LATAM, una firma de marketing digital basada en tecnología que compite en innovación y excelencia operativa.
 
@@ -19,6 +20,9 @@ export const Route = createFileRoute("/api/advisor-chat")({
   server: {
     handlers: {
       POST: async ({ request }) => {
+        if (!featureConfig.chat.enabled) {
+          return Response.json({ ok: false, error: "El agente está desactivado" }, { status: 503 });
+        }
         try {
           // Guard contre payloads abusivos antes de parsear.
           const contentLength = Number(request.headers.get("content-length") ?? 0);

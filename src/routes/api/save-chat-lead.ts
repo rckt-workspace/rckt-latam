@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { featureConfig } from "@/config/features";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -27,6 +28,9 @@ export const Route = createFileRoute("/api/save-chat-lead")({
   server: {
     handlers: {
       POST: async ({ request }) => {
+        if (!featureConfig.chat.enabled) {
+          return Response.json({ ok: false, error: "El agente está desactivado" }, { status: 503 });
+        }
         try {
           const body = (await request.json()) as {
             session_id?: string;

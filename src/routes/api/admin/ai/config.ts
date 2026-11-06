@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { featureConfig } from "@/config/features";
 import { verifyAdminSessionFromRequest } from "@/lib/admin-auth";
 import { proxyUpstreamResponse, fetchWithTimeout, handleFetchError } from "@/lib/admin-proxy";
 
@@ -7,6 +8,9 @@ export const Route = createFileRoute("/api/admin/ai/config")({
   server: {
     handlers: {
       GET: async ({ request }) => {
+        if (!featureConfig.chat.enabled) {
+          return Response.json({ ok: false, error: "El agente está desactivado" }, { status: 503 });
+        }
         try {
           const sessionSecret = process.env.ADMIN_SESSION_SECRET;
           if (!sessionSecret) {
@@ -43,6 +47,9 @@ export const Route = createFileRoute("/api/admin/ai/config")({
       },
 
       PUT: async ({ request }) => {
+        if (!featureConfig.chat.enabled) {
+          return Response.json({ ok: false, error: "El agente está desactivado" }, { status: 503 });
+        }
         try {
           const sessionSecret = process.env.ADMIN_SESSION_SECRET;
           if (!sessionSecret) {

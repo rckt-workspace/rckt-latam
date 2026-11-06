@@ -1,5 +1,6 @@
 import { createFileRoute, useSearch } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { featureConfig } from "@/config/features";
 
 interface SearchParams {
   next?: string;
@@ -68,7 +69,8 @@ function LoginPage() {
       });
 
       if (response.ok) {
-        const redirectTo = next && isAllowedRedirect(next) ? next : "/ops/ai-control";
+        const defaultRedirect = featureConfig.chat.enabled ? "/ops/ai-control" : "/rckt-equipo";
+        const redirectTo = next && isAllowedRedirect(next) ? next : defaultRedirect;
         window.location.href = redirectTo;
         return;
       }
