@@ -2,7 +2,7 @@ import { afterEach, expect, mock, test } from "bun:test";
 import { featureConfig } from "./features";
 
 mock.module("@tanstack/react-router", () => ({
-  createFileRoute: () => (options: unknown) => options,
+  createFileRoute: () => (options) => options,
 }));
 
 const externalCall = mock(() => {
@@ -33,15 +33,13 @@ const cases = [
   ["admin/ai/models", "GET", () => import("../routes/api/admin/ai/models")],
   ["admin/ai/usage", "GET", () => import("../routes/api/admin/ai/usage")],
   ["admin/ai/test-provider", "POST", () => import("../routes/api/admin/ai/test-provider")],
-] as const;
+];
 
 for (const [path, method, load] of cases) {
   test(`${method} ${path} returns 503 before parsing or calling services`, async () => {
-    globalThis.fetch = externalCall as unknown as typeof fetch;
+    globalThis.fetch = externalCall;
     const { Route } = await load();
-    const options = Route as unknown as {
-      server: { handlers: Record<string, (args: { request: Request }) => Promise<Response>> };
-    };
+    const options = Route;
     const request = new Request(`https://rckt.lat/api/${path}`, { method });
     const parseBody = mock(() => { throw new Error("Body must not be parsed"); });
     request.json = parseBody;
