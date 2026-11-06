@@ -165,17 +165,11 @@ const heroGradient =
 
 function HeroSection() {
   return (
-    <section id="top" className="relative flex min-h-[max(100svh,720px)] flex-col overflow-hidden md:block md:min-h-[680px]">
+    <section id="top" className="relative flex flex-col overflow-hidden max-md:bg-[#FBFAFF] md:block md:min-h-[680px]">
       <img
         src={imgA01}
         alt=""
         className="absolute inset-0 hidden! h-full w-full object-cover object-[70%_30%] md:block!"
-        loading="eager"
-      />
-      <img
-        src={imgA01Movil}
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover object-[50%_100%] brightness-90 saturate-90 md:hidden!"
         loading="eager"
       />
       <div
@@ -184,11 +178,6 @@ function HeroSection() {
           background:
             "linear-gradient(to right, rgba(246,242,255,0.97) 0%, rgba(246,242,255,0.92) 30%, rgba(233,220,255,0.75) 48%, rgba(233,220,255,0) 68%)",
         }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0 md:hidden"
-        style={{ background: "linear-gradient(to bottom, rgba(251,251,250,0.96) 0%, rgba(251,251,250,0.88) 40%, rgba(251,251,250,0.25) 70%, rgba(251,251,250,0) 100%)" }}
         aria-hidden="true"
       />
       <div className="relative mx-auto flex w-full max-w-[1200px] items-center px-5 pb-16 pt-[120px] md:min-h-[680px] md:px-8 md:pb-20 md:pt-[140px]">
@@ -215,6 +204,12 @@ function HeroSection() {
             <CtaButton>Quiero explorar esta oportunidad</CtaButton>
           </div>
           <p className="mt-4 text-[13px] text-[#4B4366]">Diagnóstico inicial · Enfoque para clínicas en Colombia</p>
+          <img
+            src={imgA01Movil}
+            alt="Profesionales de una clínica estética conversando"
+            className="mt-8 aspect-[4/5] w-full rounded-[24px] object-cover object-[50%_85%] md:hidden!"
+            loading="eager"
+          />
         </div>
       </div>
       <div className="absolute bottom-6 right-6 z-10 hidden w-[280px] rounded-[20px] border border-[#DCD1FA] bg-white p-4 shadow-lg md:block">
