@@ -66,3 +66,4 @@
 - [x] Centrar las tarjetas de Sales Flow y añadir animaciones de entrada, línea, números e iconos sin afectar al formulario ni otras páginas.
 - [x] Crear campañas clínicas A/B y sus páginas de gracias con textos, atribución y variante flotante; validar escritorio/móvil y compilación.
 - [x] Desactivar agente con featureConfig.chat.enabled, bloquear handlers y panel IA, ajustar destino de login y validar compilación.
+- [ ] Conectar todos los accesos de datos de la aplicación a producción externa sin migraciones, datos ni cambios visuales; validar compilación.
