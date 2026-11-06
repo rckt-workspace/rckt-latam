@@ -485,7 +485,7 @@ function DiferenciadorSection() {
   return (
     <section className="bg-[#2A1A55] py-12 md:py-16">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-2">
-        <ImagePlaceholder name="A-09-diferenciador-libreta.jpg" className="h-[260px] md:h-[340px]" position="50% 30%" />
+        <ImagePlaceholder name="A-09-diferenciador-libreta.jpg" className="h-[260px] md:h-[340px]" position="50% 35%" />
         <div>
           <h2 className={`${fontDisplay} font-bold text-white`} style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             En salud, la confianza es tan importante como la visibilidad.
