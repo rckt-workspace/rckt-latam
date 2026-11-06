@@ -132,42 +132,8 @@ const heroChats = [
 function HeroSection() {
   const [active, setActive] = useState(0);
   const chat = heroChats[active];
-  return (
-    <section id="top" className="relative bg-[#FBFBFA] pt-[68px]">
-      <div className="relative grid min-h-[720px] overflow-hidden md:min-h-0 md:items-start">
-        <img
-          src={imgC01Hero}
-          alt="Asesora de una academia orientando a un estudiante"
-          className="hidden! md:col-start-1 md:row-start-1 md:block! h-auto w-full self-start rounded-none border-0"
-        />
-        <img
-          src={imgC01HeroMovil}
-          alt=""
-          aria-hidden="true"
-          className="absolute! inset-0 h-full w-full rounded-none border-0 object-cover object-[50%_60%] md:hidden!"
-        />
-        <div
-          className="absolute inset-0 hidden! md:block!"
-          aria-hidden="true"
-          style={{ background: "linear-gradient(to right, rgba(251,251,250,0.97) 0%, rgba(251,251,250,0.85) 40%, rgba(251,251,250,0.25) 70%, transparent 100%)" }}
-        />
-        <div
-          className="absolute inset-0 md:hidden!"
-          aria-hidden="true"
-          style={{ background: "linear-gradient(to bottom, rgba(251,251,250,0.96) 0%, rgba(251,251,250,0.88) 40%, rgba(251,251,250,0.25) 70%, rgba(251,251,250,0) 100%)" }}
-        />
-        <div className="relative z-10 col-start-1 row-start-1 mx-auto w-full max-w-[1200px] px-5 py-16 md:px-8 md:py-16">
-          <div className="max-w-[640px]">
-            <span className="inline-block text-[13px] font-semibold uppercase tracking-[0.08em] text-[#005CFF]">
-              Nuevo canal publicitario en Colombia
-            </span>
-            <h1 className={`${serif} mt-5 text-[#212121]`} style={{ fontSize: "clamp(38px, 4.6vw, 64px)", lineHeight: 0.95 }}>
-              Tus próximos estudiantes están buscando dónde estudiar. Haz que descubran tu academia en <em>ChatGPT</em>.
-            </h1>
-            <p className="mt-6 text-[15px] leading-[1.5] text-[#212121] md:text-[#4F4F4D] md:text-[16px]">
-              ChatGPT ya cuenta con publicidad en Colombia. En RCKT te ayudamos a preparar, lanzar y optimizar campañas para que más personas conozcan tus programas y puedan solicitar información.
-            </p>
-            <div className="mt-8 hidden rounded-[4px] border border-[#D9DDE4] bg-white p-5 shadow-sm md:block md:p-6">
+  const chatCard = (
+    <div className="mt-8 max-md:mt-6 rounded-[4px] border border-[#D9DDE4] bg-white p-5 shadow-sm md:p-6">
               <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#4F4F4D]">Ejemplo ilustrativo · elige una búsqueda</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {heroChats.map((item, index) => (
@@ -198,10 +164,43 @@ function HeroSection() {
                 <p className="mt-3 text-[12px] font-medium text-[#4F4F4D]">{chat.foot}</p>
               </div>
             </div>
+  );
+  return (
+    <section id="top" className="relative bg-[#FBFBFA] pt-[68px]">
+      <div className="relative grid overflow-hidden md:min-h-0 md:items-start">
+        <img
+          src={imgC01Hero}
+          alt="Asesora de una academia orientando a un estudiante"
+          className="hidden! md:col-start-1 md:row-start-1 md:block! h-auto w-full self-start rounded-none border-0"
+        />
+        <div
+          className="absolute inset-0 hidden! md:block!"
+          aria-hidden="true"
+          style={{ background: "linear-gradient(to right, rgba(251,251,250,0.97) 0%, rgba(251,251,250,0.85) 40%, rgba(251,251,250,0.25) 70%, transparent 100%)" }}
+        />
+        <div className="relative z-10 col-start-1 row-start-1 mx-auto w-full max-w-[1200px] px-5 py-16 md:px-8 md:py-16">
+          <div className="max-w-[640px]">
+            <span className="inline-block text-[13px] font-semibold uppercase tracking-[0.08em] text-[#005CFF]">
+              Nuevo canal publicitario en Colombia
+            </span>
+            <h1 className={`${serif} mt-5 text-[#212121]`} style={{ fontSize: "clamp(38px, 4.6vw, 64px)", lineHeight: 0.95 }}>
+              Tus próximos estudiantes están buscando dónde estudiar. Haz que descubran tu academia en <em>ChatGPT</em>.
+            </h1>
+            <p className="mt-6 text-[15px] leading-[1.5] text-[#212121] md:text-[#4F4F4D] md:text-[16px]">
+              ChatGPT ya cuenta con publicidad en Colombia. En RCKT te ayudamos a preparar, lanzar y optimizar campañas para que más personas conozcan tus programas y puedan solicitar información.
+            </p>
+            <div className="hidden md:block">{chatCard}</div>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
               <CtaButton>Solicitar diagnóstico para mi academia</CtaButton>
               <p className="text-[13px] text-[#4F4F4D]">Evaluamos tus programas, tu presencia digital y las oportunidades de este canal.</p>
             </div>
+            <img
+              src={imgC01HeroMovil}
+              alt="Asesora de una academia orientando a un estudiante"
+              className="mt-8 aspect-[4/5] w-full rounded-[4px] object-cover object-[50%_55%] md:hidden!"
+              loading="eager"
+            />
+            <div className="md:hidden">{chatCard}</div>
           </div>
         </div>
       </div>
