@@ -147,7 +147,7 @@ function HeroSection() {
         <img
           src={imgB01Movil}
           alt=""
-          className="absolute inset-0 h-full w-full object-cover object-[50%_20%] md:hidden!"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_100%] md:hidden!"
           loading="eager"
         />
         <div
