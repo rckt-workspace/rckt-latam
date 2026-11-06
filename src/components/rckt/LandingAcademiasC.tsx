@@ -154,10 +154,10 @@ function HeroSection() {
         <div
           className="absolute inset-0 md:hidden!"
           aria-hidden="true"
-          style={{ background: "linear-gradient(to bottom, rgba(251,251,250,0.97) 0%, rgba(251,251,250,0.92) 45%, rgba(251,251,250,0.30) 75%, rgba(251,251,250,0) 100%)" }}
+          style={{ background: "linear-gradient(to bottom, rgba(251,251,250,0.80) 0%, rgba(251,251,250,0.55) 40%, rgba(251,251,250,0.15) 70%, rgba(251,251,250,0) 100%)" }}
         />
         <div className="relative z-10 col-start-1 row-start-1 mx-auto w-full max-w-[1200px] px-5 py-16 md:px-8 md:py-16">
-          <div className="flex max-w-[640px] flex-col md:block">
+          <div className="flex max-w-[640px] flex-col md:block max-md:[text-shadow:0_0_12px_rgba(255,255,255,0.9)]">
             <span className="inline-block text-[13px] font-semibold uppercase tracking-[0.08em] text-[#005CFF] max-md:text-[#000000]!">
               Nuevo canal publicitario en Colombia
             </span>
