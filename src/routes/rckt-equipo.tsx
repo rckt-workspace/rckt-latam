@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { BlogAdmin } from "@/components/blog/BlogAdmin";
 import { BlogCalendar } from "@/components/blog/BlogCalendar";
 import { BlogImporter } from "@/components/blog/BlogImporter";
+import { RegistroFormularios } from "@/components/rckt/RegistroFormularios";
 
 export const Route = createFileRoute("/rckt-equipo")({
   staticData: { sitemap: false },
@@ -134,7 +135,7 @@ const vacanteVacia = {
 };
 
 function Dashboard() {
-  const [tab, setTab] = useState<"vacantes" | "postulaciones" | "blog" | "calendario" | "importar">("vacantes");
+  const [tab, setTab] = useState<"vacantes" | "postulaciones" | "blog" | "calendario" | "importar" | "formularios">("vacantes");
   const [vacantes, setVacantes] = useState<Vacante[]>([]);
   const [postulaciones, setPostulaciones] = useState<Postulacion[]>([]);
   const [editando, setEditando] = useState<(typeof vacanteVacia & { id?: string }) | null>(null);
@@ -328,7 +329,7 @@ function Dashboard() {
 
         {/* Tabs */}
         <div style={{ display: "flex", gap: "12px", marginBottom: "32px", paddingBottom: "16px", borderBottom: "1px solid var(--line)", flexWrap: "wrap" }}>
-          {(["vacantes", "postulaciones", "blog", "calendario", "importar"] as const).map((t) => (
+          {(["vacantes", "postulaciones", "blog", "calendario", "importar", "formularios"] as const).map((t) => (
             <button
               key={t}
               type="button"
@@ -349,7 +350,9 @@ function Dashboard() {
                     ? "Blog"
                     : t === "calendario"
                       ? "Calendario"
-                      : "Importar plan"}
+                      : t === "importar"
+                        ? "Importar plan"
+                        : "Registro formularios"}
             </button>
           ))}
         </div>
@@ -381,6 +384,21 @@ function Dashboard() {
               </p>
             </div>
             <BlogImporter onDone={() => setTab("calendario")} />
+          </div>
+        )}
+
+        {/* Registro formularios */}
+        {tab === "formularios" && (
+          <div style={{ marginBottom: "40px" }}>
+            <div style={{ marginBottom: "24px", paddingBottom: "16px", borderBottom: "1px solid var(--line)" }}>
+              <h2 style={{ fontSize: "24px", fontWeight: 800, color: "var(--carbon)", margin: "0 0 6px 0" }}>
+                Registro formularios
+              </h2>
+              <p style={{ fontSize: "14px", color: "var(--carbon-soft)", margin: 0 }}>
+                Leads de las landings, separados por landing
+              </p>
+            </div>
+            <RegistroFormularios />
           </div>
         )}
 
