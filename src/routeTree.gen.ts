@@ -85,6 +85,7 @@ import { Route as ApiAdminAiUsageRouteImport } from './routes/api/admin/ai/usage
 import { Route as ApiAdminPeopleBlogRouteImport } from './routes/api/admin/people/blog'
 import { Route as ApiAdminPeopleBlogMediaRouteImport } from './routes/api/admin/people/blog-media'
 import { Route as ApiAdminPeopleCvSignedUrlRouteImport } from './routes/api/admin/people/cv-signed-url'
+import { Route as ApiAdminPeopleFormulariosRouteImport } from './routes/api/admin/people/formularios'
 import { Route as ApiAdminPeoplePostulacionesRouteImport } from './routes/api/admin/people/postulaciones'
 import { Route as ApiAdminPeopleVacantesRouteImport } from './routes/api/admin/people/vacantes'
 
@@ -490,6 +491,12 @@ const ApiAdminPeopleCvSignedUrlRoute =
     path: '/api/admin/people/cv-signed-url',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiAdminPeopleFormulariosRoute =
+  ApiAdminPeopleFormulariosRouteImport.update({
+    id: '/api/admin/people/formularios',
+    path: '/api/admin/people/formularios',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiAdminPeoplePostulacionesRoute =
   ApiAdminPeoplePostulacionesRouteImport.update({
     id: '/api/admin/people/postulaciones',
@@ -579,6 +586,7 @@ export interface FileRoutesByFullPath {
   '/api/admin/people/blog': typeof ApiAdminPeopleBlogRoute
   '/api/admin/people/blog-media': typeof ApiAdminPeopleBlogMediaRoute
   '/api/admin/people/cv-signed-url': typeof ApiAdminPeopleCvSignedUrlRoute
+  '/api/admin/people/formularios': typeof ApiAdminPeopleFormulariosRoute
   '/api/admin/people/postulaciones': typeof ApiAdminPeoplePostulacionesRoute
   '/api/admin/people/vacantes': typeof ApiAdminPeopleVacantesRoute
 }
@@ -653,6 +661,7 @@ export interface FileRoutesByTo {
   '/api/admin/people/blog': typeof ApiAdminPeopleBlogRoute
   '/api/admin/people/blog-media': typeof ApiAdminPeopleBlogMediaRoute
   '/api/admin/people/cv-signed-url': typeof ApiAdminPeopleCvSignedUrlRoute
+  '/api/admin/people/formularios': typeof ApiAdminPeopleFormulariosRoute
   '/api/admin/people/postulaciones': typeof ApiAdminPeoplePostulacionesRoute
   '/api/admin/people/vacantes': typeof ApiAdminPeopleVacantesRoute
 }
@@ -734,6 +743,7 @@ export interface FileRoutesById {
   '/api/admin/people/blog': typeof ApiAdminPeopleBlogRoute
   '/api/admin/people/blog-media': typeof ApiAdminPeopleBlogMediaRoute
   '/api/admin/people/cv-signed-url': typeof ApiAdminPeopleCvSignedUrlRoute
+  '/api/admin/people/formularios': typeof ApiAdminPeopleFormulariosRoute
   '/api/admin/people/postulaciones': typeof ApiAdminPeoplePostulacionesRoute
   '/api/admin/people/vacantes': typeof ApiAdminPeopleVacantesRoute
 }
@@ -816,6 +826,7 @@ export interface FileRouteTypes {
     | '/api/admin/people/blog'
     | '/api/admin/people/blog-media'
     | '/api/admin/people/cv-signed-url'
+    | '/api/admin/people/formularios'
     | '/api/admin/people/postulaciones'
     | '/api/admin/people/vacantes'
   fileRoutesByTo: FileRoutesByTo
@@ -890,6 +901,7 @@ export interface FileRouteTypes {
     | '/api/admin/people/blog'
     | '/api/admin/people/blog-media'
     | '/api/admin/people/cv-signed-url'
+    | '/api/admin/people/formularios'
     | '/api/admin/people/postulaciones'
     | '/api/admin/people/vacantes'
   id:
@@ -970,6 +982,7 @@ export interface FileRouteTypes {
     | '/api/admin/people/blog'
     | '/api/admin/people/blog-media'
     | '/api/admin/people/cv-signed-url'
+    | '/api/admin/people/formularios'
     | '/api/admin/people/postulaciones'
     | '/api/admin/people/vacantes'
   fileRoutesById: FileRoutesById
@@ -1039,6 +1052,7 @@ export interface RootRouteChildren {
   ApiAdminPeopleBlogRoute: typeof ApiAdminPeopleBlogRoute
   ApiAdminPeopleBlogMediaRoute: typeof ApiAdminPeopleBlogMediaRoute
   ApiAdminPeopleCvSignedUrlRoute: typeof ApiAdminPeopleCvSignedUrlRoute
+  ApiAdminPeopleFormulariosRoute: typeof ApiAdminPeopleFormulariosRoute
   ApiAdminPeoplePostulacionesRoute: typeof ApiAdminPeoplePostulacionesRoute
   ApiAdminPeopleVacantesRoute: typeof ApiAdminPeopleVacantesRoute
 }
@@ -1577,6 +1591,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAdminPeopleCvSignedUrlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/admin/people/formularios': {
+      id: '/api/admin/people/formularios'
+      path: '/api/admin/people/formularios'
+      fullPath: '/api/admin/people/formularios'
+      preLoaderRoute: typeof ApiAdminPeopleFormulariosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/admin/people/postulaciones': {
       id: '/api/admin/people/postulaciones'
       path: '/api/admin/people/postulaciones'
@@ -1756,6 +1777,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAdminPeopleBlogRoute: ApiAdminPeopleBlogRoute,
   ApiAdminPeopleBlogMediaRoute: ApiAdminPeopleBlogMediaRoute,
   ApiAdminPeopleCvSignedUrlRoute: ApiAdminPeopleCvSignedUrlRoute,
+  ApiAdminPeopleFormulariosRoute: ApiAdminPeopleFormulariosRoute,
   ApiAdminPeoplePostulacionesRoute: ApiAdminPeoplePostulacionesRoute,
   ApiAdminPeopleVacantesRoute: ApiAdminPeopleVacantesRoute,
 }
