@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useRouter } from "@tanstack/react-router";
 
 type Lead = {
   id: string;
@@ -195,6 +196,7 @@ function formatoFechaCorta(iso: string): string {
 }
 
 export function RegistroFormularios() {
+  const router = useRouter();
   const [leads, setLeads] = useState<Lead[]>([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -227,6 +229,17 @@ export function RegistroFormularios() {
     void cargar();
   }, [cargar]);
 
+  const rutasLandings = useMemo(() => {
+    const rutas = new Set<string>();
+    for (const path of Object.keys(router.routesByPath)) {
+      if (!path.startsWith("/lp/") || path.endsWith("/gracias")) continue;
+      const normalizada = normalizarLandingPath(path);
+      if (normalizada) rutas.add(normalizada);
+    }
+    rutas.add("/contacto");
+    return rutas;
+  }, [router]);
+
   const grupos = useMemo(() => {
     const mapa = new Map<string, Lead[]>();
     for (const lead of leads) {
@@ -235,18 +248,29 @@ export function RegistroFormularios() {
       lista.push(lead);
       mapa.set(clave, lista);
     }
-    return Array.from(mapa.entries())
-      .map(([clave, registros]) => ({
-        clave,
-        registros,
-        total: registros.length,
-        ultimo: registros.reduce(
-          (max, r) => (r.created_at > max ? r.created_at : max),
-          registros[0]?.created_at ?? "",
-        ),
-      }))
-      .sort((a, b) => (a.ultimo < b.ultimo ? 1 : -1));
-  }, [leads]);
+    const claves = new Set<string>([...rutasLandings, ...mapa.keys()]);
+    return Array.from(claves)
+      .map((clave) => {
+        const registros = mapa.get(clave) ?? [];
+        return {
+          clave,
+          registros,
+          total: registros.length,
+          ultimo: registros.length
+            ? registros.reduce(
+                (max, r) => (r.created_at > max ? r.created_at : max),
+                registros[0]?.created_at ?? "",
+              )
+            : null,
+        };
+      })
+      .sort((a, b) => {
+        if (a.total > 0 && b.total > 0) return (a.ultimo ?? "") < (b.ultimo ?? "") ? 1 : -1;
+        if (a.total > 0) return -1;
+        if (b.total > 0) return 1;
+        return nombreGrupo(a.clave).localeCompare(nombreGrupo(b.clave), "es");
+      });
+  }, [leads, rutasLandings]);
 
   const registrosLanding = useMemo(() => {
     if (!landingActiva) return [];
@@ -316,10 +340,6 @@ export function RegistroFormularios() {
     );
   }
 
-  if (leads.length === 0) {
-    return <p style={{ color: "var(--carbon-soft)" }}>Aún no hay registros.</p>;
-  }
-
   // Vista 2 · Registros de una landing
   if (landingActiva) {
     return (
@@ -338,6 +358,10 @@ export function RegistroFormularios() {
           </div>
         </div>
 
+        {registrosLanding.length === 0 ? (
+          <p style={{ color: "var(--carbon-soft)" }}>Aún no hay registros en esta landing.</p>
+        ) : (
+          <>
         <div style={{ display: "flex", gap: "12px", marginBottom: "20px", flexWrap: "wrap", alignItems: "center" }}>
           <input
             type="search"
@@ -428,6 +452,8 @@ export function RegistroFormularios() {
             </div>
           </div>
         )}
+          </>
+        )}
 
         {detalle && (
           <div
@@ -517,7 +543,8 @@ export function RegistroFormularios() {
                 {g.clave}
               </p>
               <p style={{ fontSize: "13px", color: "var(--carbon-soft)", margin: "8px 0 0 0" }}>
-                {g.total} {g.total === 1 ? "registro" : "registros"} · Último: {formatoFechaCorta(g.ultimo)}
+                {g.total} {g.total === 1 ? "registro" : "registros"} ·{" "}
+                {g.ultimo ? `Último: ${formatoFechaCorta(g.ultimo)}` : "Sin registros aún"}
               </p>
             </div>
             <button className={btnGhost} type="button" onClick={() => setLandingActiva(g.clave)}>
