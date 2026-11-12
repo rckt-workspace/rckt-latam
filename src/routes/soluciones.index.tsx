@@ -4,6 +4,7 @@ import GeneralCta from "@/components/rckt/GeneralCta";
 import SiteFooter from "@/components/rckt/SiteFooter";
 import SiteNav from "@/components/rckt/SiteNav";
 import SystemPageHero from "@/components/rckt/SystemPageHero";
+import { useLanguage } from "@/i18n/LanguageProvider";
 import solucionCaptacionImg from "@/assets/solucion-captacion.jpg";
 import solucionEcommerceImg from "@/assets/solucion-ecommerce.jpg";
 import solucionOperacionImg from "@/assets/solucion-operacion.jpg";
@@ -37,42 +38,19 @@ export const Route = createFileRoute("/soluciones/")({
 });
 
 const SOLUCIONES = [
-  {
-    badge: "01",
-    titulo: "Pagas por leads y no sabes cuáles compran.",
-    subtitulo: "Meta te muestra cuántas personas escribieron. Nadie te muestra cuántas compraron.",
-    label: "Sistema recomendado · Revenue Engine",
-    botonLabel: "Ver captación y cierre →",
-    href: "/soluciones/captacion-y-cierre" as const,
-    image: solucionCaptacionImg,
-  },
-  {
-    badge: "02",
-    titulo: "Inviertes en pauta y no crece con margen.",
-    subtitulo: "La plataforma celebra el ROAS; el banco no ve el margen.",
-    label: "Sistema recomendado · Demand System",
-    botonLabel: "Ver ecommerce rentable →",
-    href: "/soluciones/ecommerce-rentable" as const,
-    image: solucionEcommerceImg,
-  },
-  {
-    badge: "03",
-    titulo: "Tu equipo hace lo mismo cien veces por semana.",
-    subtitulo:
-      "La misma cotización armada a mano, los mismos datos pasados de un sistema a otro y un Excel que hace de proceso.",
-    label: "Sistema recomendado · Operations System",
-    botonLabel: "Ver operación →",
-    href: "/soluciones/operacion" as const,
-    image: solucionOperacionImg,
-  },
+  { badge: "01", href: "/soluciones/captacion-y-cierre" as const, image: solucionCaptacionImg },
+  { badge: "02", href: "/soluciones/ecommerce-rentable" as const, image: solucionEcommerceImg },
+  { badge: "03", href: "/soluciones/operacion" as const, image: solucionOperacionImg },
 ];
 
 function Cards() {
+  const { t } = useLanguage();
+  const cards = t.soluciones.index.cards;
   return (
     <section className="relative isolate overflow-hidden py-16 md:py-24" style={{ background: "var(--kraft)" }}>
       <div className="relative z-10 mx-auto max-w-6xl px-6">
         <div className="grid items-stretch gap-5 md:grid-cols-3">
-          {SOLUCIONES.map((s) => (
+          {SOLUCIONES.map((base, i) => { const s = { ...base, ...cards[i] }; return (
             <article key={s.badge} className="card-kraft flex flex-col overflow-hidden p-0">
               <div className="relative h-40 w-full overflow-hidden">
                 <img src={s.image} alt="" className="h-full w-full object-cover object-center" />
@@ -101,20 +79,20 @@ function Cards() {
                     to={s.href}
                     className="btn-orange font-display inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[14px] font-semibold"
                   >
-                    {s.botonLabel}
+                    {s.boton}
                   </Link>
                   <div className="mt-4 text-center">
                     <a
                       href={DIAGNOSTIC_HREF}
                       className="font-display text-[13.5px] font-semibold text-orange underline-offset-4 hover:underline"
                     >
-                      Revisar mi proceso comercial
+                      {t.shared.reviewPlain}
                     </a>
                   </div>
                 </div>
               </div>
             </article>
-          ))}
+          ); })}
         </div>
       </div>
     </section>
@@ -122,19 +100,21 @@ function Cards() {
 }
 
 function SolucionesPage() {
+  const { t } = useLanguage();
+  const c = t.soluciones.index;
   return (
     <div className="rckt-site bg-background text-foreground antialiased">
       <SiteNav />
       <main>
         <SystemPageHero
-          label="Soluciones"
+          label={c.label}
           title={
             <>
-              Cuéntanos qué te pasa; el sistema viene <span className="hero-hand">después</span>.
+              {c.titleBefore}<span className="hero-hand">{c.hand}</span>{c.titleAfter}
             </>
           }
-          context="No necesitas saber qué es Sales Flow ni Revenue Engine. Elige la frase que se parece a lo que te pasa: cada puerta empieza con un Revenue Diagnostic y, si encajas en dos, entras por la que te hace perder más dinero."
-          ctaLabel="Revisar mi proceso comercial →"
+          context={c.context}
+          ctaLabel={t.shared.reviewCta}
           ctaHref={DIAGNOSTIC_HREF}
         />
         <Cards />

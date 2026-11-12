@@ -7,7 +7,7 @@ import { SectionHeader } from "@/components/rckt/SectionHeader";
 import SiteFooter from "@/components/rckt/SiteFooter";
 import SiteNav from "@/components/rckt/SiteNav";
 import { WHATSAPP_URL, WHATSAPP_CONFIGURED } from "@/config/contact";
-import { SystemCards, SISTEMAS_CARDS } from "@/components/rckt/SystemCards";
+import { SystemCards, useSistemasCards } from "@/components/rckt/SystemCards";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 const SITE_URL = "https://rckt.lat";
@@ -128,11 +128,12 @@ function Problems() {
 
 function Systems() {
   const s = useLanguage().t.home.systems;
+  const sistemasCards = useSistemasCards();
   return (
     <section id="sistema" className="home-system-section relative isolate overflow-clip scroll-mt-28 py-14 md:py-20">
       <div className="relative z-10 mx-auto max-w-6xl px-6">
         <SectionHeader num="02." label={s.label} title={s.title} phrase={s.phrase} />
-        <div className="mt-14"><SystemCards systems={SISTEMAS_CARDS} /></div>
+        <div className="mt-14"><SystemCards systems={sistemasCards} /></div>
         <div className="band-orange-sistema relative mt-10 overflow-hidden rounded-3xl px-8 py-10 md:px-12">
           <h3 className="relative font-display text-2xl leading-tight font-semibold text-paper-fixed md:text-3xl">{s.bandBefore}<span className="text-paper-fixed/60 text-xl md:text-2xl">{s.bandMuted}</span></h3>
           <p className="text-paper-fixed/90 relative mt-3 max-w-2xl text-sm leading-relaxed md:text-base">{s.bandText}</p>

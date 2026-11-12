@@ -19,16 +19,11 @@ import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/Sy
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
 import SiteNav from "@/components/rckt/SiteNav";
+import { useLanguage } from "@/i18n/LanguageProvider";
+import { es } from "@/i18n/es";
+
 const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
 const SITE_URL = "https://rckt.lat";
-
-const REVENUE_ENGINE_FAQS = [
-  { question: "¿Podemos contratar todo de una vez?", answer: "Growth OS es para cuentas que ya llevan un tiempo con nosotros. Arrancar con todo a la vez es la manera más rápida de no medir nada: empezamos por Revenue Engine y crecemos con datos." },
-  { question: "Son más caros que otros.", answer: "Comparado con una agencia de pauta, sí. Comparado con pagar pauta, web, CRM, chatbot y consultor por separado sin que nadie responda por el resultado, no. Y el Diagnostic te dice si el sistema se paga solo antes de comprometerte." },
-  { question: "¿Cuál es el compromiso mínimo?", answer: "6 meses. El sistema necesita un ciclo completo para demostrar." },
-  { question: "¿Qué voy a ver y cuándo?", answer: "El día 30, el sistema operativo con su fuente de verdad. El día 90, la revisión de la línea base frente al resultado." },
-  { question: "¿Me garantizan resultados?", answer: "No garantizamos ventas porque no controlamos tu cierre, tu stock ni tus precios. Garantizamos que en 30 días vas a ver tu embudo completo con datos reales, y que cada decisión que tomemos esté medida hasta la venta." },
-];
 
 export const Route = createFileRoute("/sistemas/revenue-engine")({
   staticData: { sitemap: true },
@@ -50,12 +45,12 @@ export const Route = createFileRoute("/sistemas/revenue-engine")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: SITE_URL + "/sistemas/revenue-engine" }],
-    scripts: [faqJsonLd(REVENUE_ENGINE_FAQS)],
+    scripts: [faqJsonLd(es.sistemas.revenueEngine.faqs)],
   }),
   component: RevenueEnginePage,
 });
 
-const STATS = [
+const STATS_BASE = [
   {
     label: "Para quién",
     Icono: Users,
@@ -78,7 +73,7 @@ const STATS = [
   },
 ];
 
-const INCLUYE: {
+const INCLUYE_BASE: {
   Icono: typeof Megaphone;
   titulo: string;
   detalle: string;
@@ -123,13 +118,6 @@ const INCLUYE: {
   },
 ];
 
-const ESCALERA = [
-  { hito: "0–3", label: "Semanas", texto: "Revenue Diagnostic" },
-  { hito: "1–6", label: "Meses", texto: "Demand o Revenue Engine" },
-  { hito: "6–12", label: "Meses", texto: "+ Operations" },
-  { hito: "12+", label: "Meses", texto: "Growth OS: destino de cuentas maduras" },
-];
-
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 flex items-center gap-3">
@@ -140,20 +128,25 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function RevenueEnginePage() {
+  const { t } = useLanguage();
+  const c = t.sistemas.revenueEngine;
+  const STATS = STATS_BASE.map((s, i) => ({ ...s, ...c.stats[i] }));
+  const INCLUYE = INCLUYE_BASE.map((s, i) => ({ ...s, ...c.includes[i], linkLabel: t.shared.seeSystem }));
+  const ESCALERA = c.ladder;
   return (
     <div className="rckt-site bg-background text-foreground antialiased">
       <SiteNav />
       <main className="sys-page">
         <SystemPageHero
           label="Revenue Engine"
-          descriptor="Demand System + Sales Flow · nuestro producto principal"
+          descriptor={c.descriptor}
           title={
             <>
-              Pauta, WhatsApp y CRM como un solo <span className="hero-hand">sistema</span>.
+              {c.titleBefore}<span className="hero-hand">{c.hand}</span>{c.titleAfter}
             </>
           }
-          quote="Hoy una persona maneja la pauta, otra atiende el WhatsApp desde su celular y nadie cruza esos datos con el CRM. Revenue Engine junta el recorrido completo, pauta → WhatsApp → CRM → venta, bajo un solo responsable. Tú ves una cifra: cuánto te cuesta cada cliente nuevo."
-          ctaLabel="Revisar mi proceso comercial →"
+          quote={c.quote}
+          ctaLabel={t.shared.reviewCta}
           ctaHref={DIAGNOSTIC_HREF}
         />
 
@@ -193,12 +186,12 @@ function RevenueEnginePage() {
         {/* Qué incluye */}
         <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="tr">
           <div className="relative z-10 mx-auto max-w-6xl px-6">
-            <SectionLabel>Qué incluye</SectionLabel>
+            <SectionLabel>{c.includesLabel}</SectionLabel>
             <div className="md:flex md:items-end md:justify-between md:gap-10">
               <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
-                Todo el sistema, un solo responsable.
+                {c.includesTitle}
               </h2>
-              <span className="text-sm font-semibold text-orange">un solo responsable</span>
+              <span className="text-sm font-semibold text-orange">{c.includesTag}</span>
             </div>
 
             <CapabilityCards compact items={INCLUYE} />
@@ -207,18 +200,18 @@ function RevenueEnginePage() {
 
         <section id="escalera" className="relative isolate overflow-hidden py-16 md:py-24 sys-sec">
           <div className="relative z-10 mx-auto max-w-6xl px-6">
-            <SectionLabel>Cómo empieza</SectionLabel>
+            <SectionLabel>{c.ladderLabel}</SectionLabel>
             <div className="md:flex md:items-end md:justify-between md:gap-10">
               <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
-                Cómo crece una cuenta.
+                {c.ladderTitle}
               </h2>
-              <span className="text-sm font-semibold text-orange">Cada cuenta sube un peldaño cada 3–6 meses.</span>
+              <span className="text-sm font-semibold text-orange">{c.ladderTag}</span>
             </div>
-            <AcceptanceSteps plazo="Escalera de cuenta" items={ESCALERA} />
+            <AcceptanceSteps plazo={c.ladderPlazo} items={ESCALERA} />
           </div>
         </section>
 
-        <FaqSection items={REVENUE_ENGINE_FAQS} />
+        <FaqSection items={c.faqs} title={t.shared.faqTitle} label={t.shared.faqLabel} />
 
         <GeneralCta />
       </main>

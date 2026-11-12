@@ -7,17 +7,11 @@ import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/Sy
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
 import SiteNav from "@/components/rckt/SiteNav";
+import { useLanguage } from "@/i18n/LanguageProvider";
+import { es } from "@/i18n/es";
+
 const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
 const SITE_URL = "https://rckt.lat";
-
-const OPERATIONS_SYSTEM_FAQS = [
-  { question: "Quiero un chatbot con IA.", answer: "No vendemos chatbots. Si tienes un proceso que tu equipo repite muchas veces, lo medimos y lo automatizamos con supervisión. Si es curiosidad por la IA, hay herramientas gratis para probar." },
-  { question: "¿Cuánto tiempo toma?", answer: "Entre 6 y 8 semanas por proceso. En la semana 2 firmamos contigo qué significa que funcione; después queda soporte mensual." },
-  { question: "¿Qué pasa si el piloto no mejora el proceso?", answer: "Comparamos el piloto con la línea base. Si el costo por ejecución no baja, no seguimos." },
-  { question: "¿Quedamos amarrados a una herramienta de IA?", answer: "No. Si hace falta cambiar de proveedor, el sistema no se rehace: lo que construimos es el diseño del proceso." },
-  { question: "¿Qué necesitan de mí?", answer: "Alguien de tu equipo a cargo del proceso, acceso a los sistemas y datos, ejemplos reales para las pruebas y tiempo para validar durante el piloto." },
-  { question: "¿Y si la IA no nos da retorno?", answer: "Por eso se mide el costo por ejecución correcta frente a la línea base desde el piloto. Si no baja, no seguimos." },
-];
 
 export const Route = createFileRoute("/sistemas/operations-system")({
   staticData: { sitemap: true },
@@ -39,12 +33,12 @@ export const Route = createFileRoute("/sistemas/operations-system")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: SITE_URL + "/sistemas/operations-system" }],
-    scripts: [faqJsonLd(OPERATIONS_SYSTEM_FAQS)],
+    scripts: [faqJsonLd(es.sistemas.operations.faqs)],
   }),
   component: OperationsSystemPage,
 });
 
-const STATS = [
+const STATS_BASE = [
   {
     label: "Para quién",
     Icono: Users,
@@ -68,58 +62,6 @@ const STATS = [
   },
 ];
 
-const SPRINT = [
-  { rango: "Semanas 1–2", titulo: "Mapa del proceso", detalle: "Volumen, tiempo, errores, costo" },
-  { rango: "Semanas 3–6", titulo: "Construcción e integración", detalle: "Con pruebas de casos reales" },
-  { rango: "Semanas 7–8", titulo: "Piloto controlado", detalle: "Medición contra línea base, transferencia" },
-  { rango: "Después", titulo: "Soporte mensual", detalle: "Monitoreo, excepciones, mejora" },
-];
-
-const CATALOGO = [
-  {
-    proceso: "Cotizaciones desde WhatsApp o correo",
-    agente: "Extrae la solicitud, consulta catálogo y precios, redacta la cotización",
-    humano: "Envío y condiciones especiales",
-  },
-  {
-    proceso: "Clasificación y respuesta de solicitudes",
-    agente: "Clasifica, prioriza y responde lo repetitivo",
-    humano: "Casos fuera de patrón",
-  },
-  {
-    proceso: "Generación y verificación de documentos",
-    agente: "Genera desde plantillas, verifica campos y coherencia",
-    humano: "Firma y excepciones",
-  },
-  {
-    proceso: "Sincronización CRM ↔ ERP u hojas",
-    agente: "Mantiene datos consistentes entre sistemas",
-    humano: "Conflictos de datos",
-  },
-  {
-    proceso: "Reporting comercial",
-    agente: "Consolida fuentes y publica el reporte en la cadencia acordada",
-    humano: "Interpretación y decisiones",
-  },
-  {
-    proceso: "Atención post-venta de primer nivel",
-    agente: "Resuelve consultas frecuentes, escala el resto",
-    humano: "Reclamaciones y devoluciones",
-  },
-];
-
-const REGLAS = [
-  "Un proceso por sprint; el siguiente aprovecha lo que ya construimos",
-  "Si hay que cambiar el proveedor de IA, no se rehace el sistema",
-  "Sin línea base no empezamos el sprint",
-];
-
-const ACEPTACION = [
-  "Ejecuciones correctas sin intervención por encima del umbral acordado (típicamente 85–90% en piloto)",
-  "Costo por ejecución correcta documentado frente a la línea base",
-  "Cada excepción con su ruta hacia una persona",
-];
-
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 flex items-center gap-3">
@@ -130,6 +72,12 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function OperationsSystemPage() {
+  const { t } = useLanguage();
+  const c = t.sistemas.operations;
+  const k = t.sistemas.common;
+  const STATS = STATS_BASE.map((s, i) => ({ ...s, ...c.stats[i] }));
+  const SPRINT = c.sprint;
+  const CATALOGO = c.catalog;
   return (
     <div className="rckt-site bg-background text-foreground antialiased">
       <SiteNav />
@@ -138,11 +86,11 @@ function OperationsSystemPage() {
           label="Operations System"
           title={
             <>
-              Un proceso a la vez, funcionando solo y con alguien <span className="hero-hand">aprobando</span>.
+              {c.titleBefore}<span className="hero-hand">{c.hand}</span>{c.titleAfter}
             </>
           }
-          quote="6 de cada 10 pymes no ven retorno de la IA. Por eso no empezamos por la herramienta: empezamos por una cotización o un documento que tu equipo arma cien veces por semana, medimos cuánto cuesta hoy y lo dejamos funcionando con supervisión. Si no baja el costo por ejecución, no seguimos."
-          ctaLabel="Revisar mi proceso comercial →"
+          quote={c.quote}
+          ctaLabel={t.shared.reviewCta}
           ctaHref={DIAGNOSTIC_HREF}
         />
 
@@ -182,12 +130,12 @@ function OperationsSystemPage() {
         {/* Sprint timeline */}
         <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="tr">
           <div className="relative z-10 mx-auto max-w-6xl px-6">
-            <SectionLabel>El sprint</SectionLabel>
+            <SectionLabel>{c.sprintLabel}</SectionLabel>
             <div className="md:flex md:items-end md:justify-between md:gap-10">
               <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
-                El Sprint, semana a semana.
+                {c.sprintTitle}
               </h2>
-              <span className="text-sm font-semibold text-orange">criterios firmados en la semana 2</span>
+              <span className="text-sm font-semibold text-orange">{c.sprintTag}</span>
             </div>
 
             {/* Desktop: horizontal */}
@@ -244,7 +192,7 @@ function OperationsSystemPage() {
               className="mt-12 max-w-2xl text-[17px] leading-relaxed md:text-[19px]"
               style={{ fontFamily: '"Newsreader", Georgia, serif', fontStyle: "italic" }}
             >
-              Lo que significa que funcione se firma en la semana 2, antes de construir.
+              {c.sprintNote}
             </p>
           </div>
         </section>
@@ -252,16 +200,15 @@ function OperationsSystemPage() {
         {/* Catálogo de procesos */}
         <section className="relative py-16 md:py-24 sys-sec">
           <div className="mx-auto max-w-6xl px-6">
-            <SectionLabel>Catálogo</SectionLabel>
+            <SectionLabel>{c.catalogLabel}</SectionLabel>
             <div className="md:flex md:items-end md:justify-between md:gap-10">
               <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
-                Catálogo de procesos.
+                {c.catalogTitle}
               </h2>
-              <span className="text-sm font-semibold text-orange">acotado a propósito</span>
+              <span className="text-sm font-semibold text-orange">{c.catalogTag}</span>
             </div>
             <p className="mt-4 max-w-2xl text-[15.5px] leading-relaxed text-muted-foreground">
-              Acotado a propósito: si el proceso que necesitas no está aquí, se evalúa con dirección antes de
-              cotizar.
+              {c.catalogIntro}
             </p>
 
             {/* Desktop: tabla */}
@@ -270,9 +217,9 @@ function OperationsSystemPage() {
                 className="grid grid-cols-[1.1fr_1.3fr_1fr] gap-8 pb-4 font-mono text-[11px] tracking-[0.16em] uppercase text-orange"
                 style={{ borderBottom: "1px solid var(--line)" }}
               >
-                <span>Proceso</span>
-                <span>Qué hace el agente</span>
-                <span>Qué aprueba el humano</span>
+                <span>{c.colProcess}</span>
+                <span>{c.colAgent}</span>
+                <span>{c.colHuman}</span>
               </div>
               {CATALOGO.map((r) => (
                 <div
@@ -295,11 +242,11 @@ function OperationsSystemPage() {
                     {r.proceso}
                   </h3>
                   <p className="mt-3 text-[14.5px] leading-relaxed text-muted-foreground">
-                    <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-orange">Agente: </span>
+                    <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-orange">{c.agentPrefix}</span>
                     {r.agente}
                   </p>
                   <p className="mt-2 text-[14.5px] leading-relaxed text-muted-foreground">
-                    <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-orange">Humano: </span>
+                    <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-orange">{c.humanPrefix}</span>
                     {r.humano}
                   </p>
                 </div>
@@ -309,12 +256,12 @@ function OperationsSystemPage() {
             <div
               className="band--orange mt-10 md:mt-14 rounded-[28px] px-8 py-10 md:px-12 md:py-12"
             >
-              <p className="label-on-orange">Qué no incluye</p>
+              <p className="label-on-orange">{k.notIncluded}</p>
               <p
                 className="font-display mt-5 max-w-3xl text-[22px] leading-[1.3] font-semibold tracking-tight md:text-[30px]"
                 style={{ color: "#f5f2ed" }}
               >
-                No es una transformación completa de la empresa ni un ERP o software a medida. Tampoco tomamos procesos críticos sin un responsable de tu lado ni procesos sin datos disponibles.
+                {c.notIncludedText}
               </p>
             </div>
           </div>
@@ -323,26 +270,26 @@ function OperationsSystemPage() {
         {/* Reglas */}
         <section className="relative py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="bl">
           <div className="mx-auto max-w-6xl px-6">
-            <SectionLabel>Reglas</SectionLabel>
+            <SectionLabel>{k.rulesLabel}</SectionLabel>
             <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
-              Cómo trabajamos aquí
+              {k.rulesTitle}
             </h2>
-            <RuleList items={REGLAS} />
+            <RuleList items={c.rules} />
           </div>
         </section>
 
         {/* Aceptación */}
         <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec">
           <div className="relative z-10 mx-auto max-w-6xl px-6">
-            <SectionLabel>Aceptación</SectionLabel>
+            <SectionLabel>{k.acceptanceLabel}</SectionLabel>
             <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
-              Cuándo damos el sistema por aceptado
+              {k.acceptanceTitle}
             </h2>
-            <AcceptanceSteps items={ACEPTACION.map((texto) => ({ texto }))} />
+            <AcceptanceSteps items={c.acceptance.map((texto) => ({ texto }))} />
           </div>
         </section>
 
-        <FaqSection items={OPERATIONS_SYSTEM_FAQS} />
+        <FaqSection items={c.faqs} title={t.shared.faqTitle} label={t.shared.faqLabel} />
 
         <GeneralCta />
       </main>

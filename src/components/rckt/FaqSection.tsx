@@ -18,14 +18,14 @@ export function faqJsonLd(items: FaqItem[]) {
   };
 }
 
-export default function FaqSection({ items, title = "Lo que nos preguntan." }: { items: FaqItem[]; title?: string }) {
+export default function FaqSection({ items, title = "Lo que nos preguntan.", label = "Preguntas frecuentes" }: { items: FaqItem[]; title?: string; label?: string }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const baseId = useId();
 
   return (
     <section className="relative isolate py-16 md:py-24" id="faq">
       <div className="relative z-10 mx-auto max-w-6xl px-6">
-        <SectionHeader num="FAQ." label="Preguntas frecuentes" title={title} />
+        <SectionHeader num="FAQ." label={label} title={title} />
         <div className="mt-10 border-b" style={{ borderColor: "var(--line)" }}>
           {items.map((item, index) => { const isOpen = openIndex === index; const triggerId = `${baseId}-trigger-${index}`; const panelId = `${baseId}-panel-${index}`; return (
             <div key={item.question} className="border-t" style={{ borderColor: "var(--line)" }}>

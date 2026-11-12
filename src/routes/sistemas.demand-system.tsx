@@ -17,17 +17,11 @@ import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/Sy
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
 import SiteNav from "@/components/rckt/SiteNav";
+import { useLanguage } from "@/i18n/LanguageProvider";
+import { es } from "@/i18n/es";
+
 const DIAGNOSTIC_FORM = "/sistemas/revenue-diagnostic#formulario";
 const SITE_URL = "https://rckt.lat";
-
-const DEMAND_SYSTEM_FAQS = [
-  { question: "Solo quiero que me manejen la pauta.", answer: "Podemos, si ya tienes CRM y proceso comercial funcionando. Si no, vas a pagar leads que se pierden después. Empecemos por el Diagnostic y te decimos con datos qué necesitas." },
-  { question: "Mi agencia actual me da leads a la mitad de precio.", answer: "¿Y cuántos de esos leads compran? Si no lo sabes, ese es el problema, no el precio del lead. Optimizamos por venta, no por lead, y por eso el costo por lead puede ser mayor." },
-  { question: "¿Cuál es el compromiso mínimo?", answer: "3 meses. La pauta se paga aparte, en tus propias cuentas publicitarias." },
-  { question: "¿Qué necesitan de mí para empezar?", answer: "Acceso de administrador a tus cuentas publicitarias, GTM y GA4, aprobación de creatividades en menos de 48 horas y acceso a los datos de ventas para cerrar el ciclo." },
-  { question: "¿Cuándo está funcionando?", answer: "En un máximo de 21 días: tracking validado de extremo a extremo, estructura de campañas activa y primer reporte por etapa entregado." },
-  { question: "¿Por qué no optimizan por costo por lead?", answer: "Porque te hace comprar barato lo que no compra: las plataformas aprenden a traerte a quien llena formularios, no a quien compra." },
-];
 
 export const Route = createFileRoute("/sistemas/demand-system")({
   staticData: { sitemap: true },
@@ -49,12 +43,12 @@ export const Route = createFileRoute("/sistemas/demand-system")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: SITE_URL + "/sistemas/demand-system" }],
-    scripts: [faqJsonLd(DEMAND_SYSTEM_FAQS)],
+    scripts: [faqJsonLd(es.sistemas.demand.faqs)],
   }),
   component: DemandSystemPage,
 });
 
-const STATS = [
+const STATS_BASE = [
   {
     label: "Para quién",
     valor: null as string | null,
@@ -83,7 +77,7 @@ const STATS = [
   },
 ];
 
-const CAPACIDADES = [
+const CAPACIDADES_BASE = [
   {
     Icono: Megaphone,
     titulo: "Performance Media",
@@ -111,7 +105,7 @@ const CAPACIDADES = [
   },
 ];
 
-const TIERS = [
+const TIERS_BASE = [
   {
     nombre: "Core",
     alcance: "1–2 canales, inversión baja-media",
@@ -132,18 +126,6 @@ const TIERS = [
   },
 ];
 
-const CONDICIONES = [
-  "Si tu proceso comercial y tu CRM todavía no funcionan, no te conviene solo Demand: necesitas Revenue Engine, y te lo decimos.",
-  "Tiene un precio mínimo: por debajo de él dejaría de ser un sistema.",
-  "Nunca optimizamos por costo por lead, aunque nos lo pidas: la unidad es la oportunidad aceptada o la venta.",
-];
-
-const ACEPTACION = [
-  "Tracking probado de punta a punta",
-  "Campañas estructuradas y activas",
-  "Primer reporte por etapa en tus manos",
-];
-
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 flex items-center gap-3">
@@ -154,6 +136,12 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function DemandSystemPage() {
+  const { t } = useLanguage();
+  const c = t.sistemas.demand;
+  const k = t.sistemas.common;
+  const STATS = STATS_BASE.map((s, i) => ({ ...s, ...c.stats[i], valor: c.stats[i].valor || null }));
+  const CAPACIDADES = CAPACIDADES_BASE.map((s, i) => ({ ...s, ...c.capabilities[i] }));
+  const TIERS = TIERS_BASE.map((s, i) => ({ ...s, ...c.tiers[i] }));
   return (
     <div className="rckt-site bg-background text-foreground antialiased">
       <SiteNav />
@@ -162,11 +150,11 @@ function DemandSystemPage() {
           label="Demand System"
           title={
             <>
-              Pauta que se mide por <span className="hero-hand">ventas</span>, no por leads.
+              {c.titleBefore}<span className="hero-hand">{c.hand}</span>{c.titleAfter}
             </>
           }
-          quote="Cuando optimizas por costo por lead, las plataformas aprenden a traerte a quien llena formularios, no a quien compra: el número baja y las ventas no suben. Manejamos tu pauta por las oportunidades que tu equipo acepta y por las que terminan en venta, y cada semana ves el embudo completo."
-          ctaLabel="Revisar mi proceso comercial →"
+          quote={c.quote}
+          ctaLabel={t.shared.reviewCta}
           ctaHref={DIAGNOSTIC_FORM}
         />
 
@@ -206,9 +194,9 @@ function DemandSystemPage() {
         {/* Capacidades */}
         <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="tr">
           <div className="relative z-10 mx-auto max-w-6xl px-6">
-            <SectionLabel>Capacidades</SectionLabel>
+            <SectionLabel>{c.capLabel}</SectionLabel>
             <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
-              Qué hacemos
+              {k.whatWeDo}
             </h2>
             <CapabilityCards items={CAPACIDADES} />
           </div>
@@ -217,31 +205,31 @@ function DemandSystemPage() {
         {/* Tiers */}
         <section className="relative py-16 md:py-24 sys-sec">
           <div className="mx-auto max-w-6xl px-6">
-            <SectionLabel>Niveles</SectionLabel>
+            <SectionLabel>{c.tiersLabel}</SectionLabel>
             <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
-              Tres niveles
+              {c.tiersTitle}
             </h2>
             <div className="mt-10 grid gap-5 md:grid-cols-3">
-              {TIERS.map((t) => (
+              {TIERS.map((tier) => (
                 <article
-                  key={t.nombre}
+                  key={tier.nombre}
                   className="relative flex flex-col rounded-2xl p-7"
                   style={{
-                    background: t.destacado ? "var(--orange-bg)" : "rgba(245,242,237,0.6)",
-                    border: t.destacado
+                    background: tier.destacado ? "var(--orange-bg)" : "rgba(245,242,237,0.6)",
+                    border: tier.destacado
                       ? "1.5px solid var(--orange)"
                       : "1px solid rgba(252, 92, 31,0.18)",
                   }}
                 >
                   <div className="md:flex md:items-start md:justify-between md:gap-4">
                     <h3 className="font-display text-[22px] leading-none font-semibold tracking-tight md:text-[26px]">
-                      {t.nombre}
+                      {tier.nombre}
                     </h3>
                   </div>
                   <p className="mt-3 font-mono text-[11px] tracking-[0.14em] uppercase text-muted-foreground">
-                    {t.alcance}
+                    {tier.alcance}
                   </p>
-                  <p className="mt-5 text-[15px] leading-relaxed">{t.detalle}</p>
+                  <p className="mt-5 text-[15px] leading-relaxed">{tier.detalle}</p>
                 </article>
               ))}
             </div>
@@ -249,12 +237,12 @@ function DemandSystemPage() {
             <div
               className="band--orange mt-10 md:mt-14 rounded-[28px] px-8 py-10 md:px-12 md:py-12"
             >
-              <p className="label-on-orange">Qué no incluye</p>
+              <p className="label-on-orange">{k.notIncluded}</p>
               <p
                 className="font-display mt-5 max-w-3xl text-[22px] leading-[1.3] font-semibold tracking-tight md:text-[30px]"
                 style={{ color: "#f5f2ed" }}
               >
-                La inversión en pauta, desarrollo web, CRM y RevOps, agentes conversacionales, community management y branding.
+                {c.notIncludedText}
               </p>
             </div>
           </div>
@@ -263,28 +251,28 @@ function DemandSystemPage() {
         {/* Condiciones de venta */}
         <section className="relative py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="bl">
           <div className="mx-auto max-w-6xl px-6">
-            <SectionLabel>Condiciones</SectionLabel>
+            <SectionLabel>{c.conditionsLabel}</SectionLabel>
             <div className="md:flex md:items-end md:justify-between md:gap-10">
               <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
-                Condiciones de venta
+                {c.conditionsTitle}
               </h2>
             </div>
-            <RuleList items={CONDICIONES} />
+            <RuleList items={c.conditions} />
           </div>
         </section>
 
         {/* Aceptación */}
         <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec">
           <div className="relative z-10 mx-auto max-w-6xl px-6">
-            <SectionLabel>Aceptación</SectionLabel>
+            <SectionLabel>{k.acceptanceLabel}</SectionLabel>
             <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
-              Cuándo damos el sistema por aceptado
+              {k.acceptanceTitle}
             </h2>
-            <AcceptanceSteps plazo="Sistema aceptado en máximo 21 días" items={ACEPTACION.map((texto) => ({ texto }))} />
+            <AcceptanceSteps plazo={c.acceptancePlazo} items={c.acceptance.map((texto) => ({ texto }))} />
           </div>
         </section>
 
-        <FaqSection items={DEMAND_SYSTEM_FAQS} />
+        <FaqSection items={c.faqs} title={t.shared.faqTitle} label={t.shared.faqLabel} />
 
         <GeneralCta />
       </main>

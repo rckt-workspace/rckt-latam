@@ -5,6 +5,7 @@ import type { CSSProperties } from "react";
 import demandImg from "@/assets/sistema-demand.jpg";
 import salesFlowImg from "@/assets/sistema-sales-flow.jpg";
 import operationsImg from "@/assets/sistema-operations.jpg";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 const SISTEMA_FOTOS = { radar: demandImg, flow: salesFlowImg, cycle: operationsImg } as const;
 
@@ -47,6 +48,12 @@ export const SISTEMAS_CARDS: SystemCardData[] = [
     art: "cycle",
   },
 ];
+
+/** SISTEMAS_CARDS with kicker/desc from the active language dictionary. */
+export function useSistemasCards(): SystemCardData[] {
+  const { t } = useLanguage();
+  return SISTEMAS_CARDS.map((card, i) => ({ ...card, ...t.shared.systemCards[i] }));
+}
 
 export function SistemaArt({ kind }: { kind: "radar" | "flow" | "cycle" }) {
   if (kind === "radar") {

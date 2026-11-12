@@ -21,17 +21,11 @@ import { useState } from "react";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
 import SiteNav from "@/components/rckt/SiteNav";
 import { WHATSAPP_URL, WHATSAPP_CONFIGURED } from "@/config/contact";
+import { useLanguage } from "@/i18n/LanguageProvider";
+import { es } from "@/i18n/es";
+
 
 const SITE_URL = "https://rckt.lat";
-
-const REVENUE_DIAGNOSTIC_FAQS = [
-  { question: "¿Es gratis?", answer: "No. Es trabajo real de tres semanas con tus datos, y se descuenta del sistema si sigues con nosotros. Si no estás seguro de querer saber dónde pierdes dinero, quizá no es el momento." },
-  { question: "¿Cuánto dura?", answer: "De 2 a 3 semanas, y cierra con una sesión de 90 minutos con quienes deciden." },
-  { question: "¿Qué pasa después?", answer: "Decides con datos: seguir con el sistema recomendado o no. Si sigues, lo que pagaste se descuenta." },
-  { question: "¿Cuánto cuesta?", answer: "Depende de dónde esté tu fuga, y eso es justo lo que mide el Diagnostic. Lo que sí te podemos decir es cómo funciona y qué incluye." },
-  { question: "¿Por qué necesitan tanto acceso y tantos datos?", answer: "Porque sin ellos no podemos medir hasta la venta, y sin medir hasta la venta seríamos una agencia más. Los accesos son de lectura donde se pueda y quedan documentados." },
-  { question: "Quiero pagar solo por resultados.", answer: "Trabajamos con una parte variable, pero después de 90 días con línea base, porque antes ninguno de los dos sabe qué es un resultado. Y nunca cobramos 100% variable cuando el cierre depende de tu equipo, tu stock o tus precios." },
-];
 
 export const Route = createFileRoute("/sistemas/revenue-diagnostic")({
   staticData: { sitemap: true },
@@ -54,12 +48,12 @@ export const Route = createFileRoute("/sistemas/revenue-diagnostic")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: SITE_URL + "/sistemas/revenue-diagnostic" }],
-    scripts: [faqJsonLd(REVENUE_DIAGNOSTIC_FAQS)],
+    scripts: [faqJsonLd(es.sistemas.diagnostic.faqs)],
   }),
   component: RevenueDiagnostic,
 });
 
-const STATS = [
+const STATS_BASE = [
   {
     label: "Duración",
     valor: "2–3 semanas",
@@ -86,7 +80,7 @@ const STATS = [
   },
 ];
 
-const INCLUYE = [
+const INCLUYE_BASE = [
   {
     Icono: Map,
     titulo: "Mapa de fugas",
@@ -120,14 +114,6 @@ const INCLUYE = [
   },
 ];
 
-const NECESITAMOS = [
-  "Acceso de lectura a Meta, Google, GA4 y GTM",
-  "CRM o exportación",
-  "Datos de venta del último trimestre",
-  "2–3 entrevistas (comercial, mercadeo, operaciones)",
-  "Acceso a WhatsApp Business o una muestra de conversaciones",
-];
-
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 flex items-center gap-3">
@@ -139,16 +125,21 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function RevenueDiagnostic() {
   const [, setSent] = useState(false);
+  const { t } = useLanguage();
+  const c = t.sistemas.diagnostic;
+  const k = t.sistemas.common;
+  const STATS = STATS_BASE.map((s, i) => ({ ...s, ...c.stats[i], valor: c.stats[i].valor || null }));
+  const INCLUYE = INCLUYE_BASE.map((s, i) => ({ ...s, ...c.includes[i] }));
   return (
     <div className="rckt-site bg-background text-foreground antialiased">
       <SiteNav />
       <main className="sys-page">
         <SystemPageHero
           label="Revenue Diagnostic"
-          title={<>En tres semanas sabrás dónde se te va la <span className="hero-hand">venta</span>.</>}
-          descriptor="Diagnóstico de ingresos"
-          quote="Antes de tocar tu pauta, medimos. Te mostramos cuántos prospectos se pierden entre el anuncio, el WhatsApp y la venta, en qué punto exacto, y qué haríamos en 90 días. Si sigues con nosotros, lo que pagas se descuenta del sistema."
-          ctaLabel="Revisar mi proceso comercial →"
+          title={<>{c.titleBefore}<span className="hero-hand">{c.hand}</span>{c.titleAfter}</>}
+          descriptor={c.descriptor}
+          quote={c.quote}
+          ctaLabel={t.shared.reviewCta}
           ctaHref="#formulario"
         />
 
@@ -190,7 +181,7 @@ function RevenueDiagnostic() {
           <div className="relative z-10 mx-auto max-w-6xl px-6">
             <div className="md:flex md:items-end md:justify-between md:gap-10">
               <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
-                Qué incluye
+                {c.includesTitle}
               </h2>
             </div>
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -220,12 +211,12 @@ function RevenueDiagnostic() {
             <div
               className="band--orange mt-10 md:mt-14 rounded-[28px] px-8 py-10 md:px-12 md:py-12"
             >
-              <p className="label-on-orange">Qué no incluye</p>
+              <p className="label-on-orange">{k.notIncluded}</p>
               <p
                 className="font-display mt-5 max-w-3xl text-[22px] leading-[1.3] font-semibold tracking-tight md:text-[30px]"
                 style={{ color: "#f5f2ed" }}
               >
-                Durante el diagnóstico no implementamos: ni cambios en campañas, ni desarrollo, ni configuración de CRM, ni creatividades.
+                {c.notIncludedText}
               </p>
             </div>
           </div>
@@ -235,18 +226,18 @@ function RevenueDiagnostic() {
         <section className="relative py-16 md:py-24 sys-sec">
           <div className="mx-auto max-w-6xl px-6">
             <h2 className="diagnostic-needs-title font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
-              Qué necesitamos de ti
+              {c.needsTitle}
             </h2>
             <ul className="diagnostic-needs-list grid gap-5 md:grid-cols-2">
-              {NECESITAMOS.map((t) => (
-                <li key={t} className="flex items-start gap-4">
+              {c.needs.map((need) => (
+                <li key={need} className="flex items-start gap-4">
                   <span
                     className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
                     style={{ background: "var(--orange-bg)" }}
                   >
                     <Check className="h-4 w-4 text-orange" strokeWidth={2.2} aria-hidden="true" />
                   </span>
-                  <span className="text-[15.5px] leading-relaxed">{t}</span>
+                  <span className="text-[15.5px] leading-relaxed">{need}</span>
                 </li>
               ))}
             </ul>
@@ -260,12 +251,12 @@ function RevenueDiagnostic() {
             style={{ background: "linear-gradient(110deg, #fc5c1f 0%, #fc5c1f 100%)" }}
           >
             <div className="relative z-10 mx-auto max-w-6xl px-6 py-16 md:py-20">
-              <p className="label-orange !text-white/80">Regla</p>
+              <p className="label-orange !text-white/80">{c.ruleLabel}</p>
               <p
                 className="mt-5 max-w-4xl text-[24px] leading-[1.25] md:text-[38px]"
                 style={{ fontFamily: '"Newsreader", Georgia, serif', fontStyle: "italic", color: "#f5f2ed" }}
               >
-                Sin línea base no arrancamos ningún sistema: primero medimos, después decidimos contigo.
+                {c.ruleText}
               </p>
             </div>
           </div>
@@ -276,20 +267,20 @@ function RevenueDiagnostic() {
           id="formulario"
           className="relative isolate overflow-hidden scroll-mt-28 py-20 md:py-28 sys-sec sys-sec--warm section--glow" data-corner="bl">
           <div className="relative z-10 mx-auto max-w-4xl px-6">
-            <SectionLabel>Formulario</SectionLabel>
+            <SectionLabel>{c.formLabel}</SectionLabel>
             <div className="md:flex md:items-end md:justify-between md:gap-10">
               <h2 className="font-display text-[30px] leading-tight font-semibold tracking-tight md:text-[46px]">
-                Revisar mi proceso comercial
+                {c.formTitle}
               </h2>
             </div>
             <div className="mt-10">
               <DiagnosticForm source="revenue-diagnostic" consentVersion="RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf" whatsappUrl={WHATSAPP_URL} submitLabel="Revisar mi proceso comercial →" onSent={() => setSent(true)} />
-              {WHATSAPP_CONFIGURED && <p className="mt-5 text-sm text-muted-foreground">¿Prefieres WhatsApp? <a className="text-orange hover:underline" href={WHATSAPP_URL}>Escríbenos y te hacemos las mismas preguntas.</a></p>}
+              {WHATSAPP_CONFIGURED && <p className="mt-5 text-sm text-muted-foreground">{c.whatsappBefore}<a className="text-orange hover:underline" href={WHATSAPP_URL}>{c.whatsappLink}</a></p>}
             </div>
           </div>
         </section>
 
-        <FaqSection items={REVENUE_DIAGNOSTIC_FAQS} />
+        <FaqSection items={c.faqs} title={t.shared.faqTitle} label={t.shared.faqLabel} />
 
         <GeneralCta />
       </main>

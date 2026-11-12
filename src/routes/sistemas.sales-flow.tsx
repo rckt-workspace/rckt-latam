@@ -7,18 +7,11 @@ import { AcceptanceSteps, CapabilityCards, RuleList } from "@/components/rckt/Sy
 import SystemPageHero from "@/components/rckt/SystemPageHero";
 import FaqSection, { faqJsonLd } from "@/components/rckt/FaqSection";
 import SiteNav from "@/components/rckt/SiteNav";
+import { useLanguage } from "@/i18n/LanguageProvider";
+import { es } from "@/i18n/es";
+
 const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic";
 const SITE_URL = "https://rckt.lat";
-
-const SALES_FLOW_FAQS = [
-  { question: "¿Hay que cambiar el CRM que ya usamos?", answer: "No siempre. Tu CRM sigue siendo la fuente de verdad: lo ordenamos y lo conectamos a la pauta y a WhatsApp. Si todavía no tienes uno, te recomendamos cuál y hacemos la migración." },
-  { question: "¿Un sistema automático va a atender a mis clientes?", answer: "Responde lo que se repite mil veces (horarios, sedes, disponibilidad) y entrega la conversación a tu asesora en cuanto hay intención de agendar. Lo que hace y lo que no, queda por escrito." },
-  { question: "¿Las licencias están incluidas?", answer: "No. El CRM y WhatsApp Business API los contratas tú, a tu nombre." },
-  { question: "¿Qué necesitan de mí?", answer: "Un número de WhatsApp Business API verificado, un CRM, una persona de tu equipo comercial que sea responsable, tiempos de respuesta acordados y acceso a tus datos de ventas." },
-  { question: "¿En cuánto tiempo queda funcionando?", answer: "En máximo 30 días desde que empieza el setup, probado con leads reales y con cada conversación entrando al CRM con su origen." },
-  { question: "¿Qué pasa con el dato de venta?", answer: "Vive en tu CRM y las plataformas nunca lo ven. Cuando vuelve, Meta y Google empiezan a buscar personas parecidas a las que sí te compran." },
-  { question: "¿Necesito más pauta?", answer: "No para empezar. El tiempo de primera respuesta es la variable más barata de arreglar y la que más cambia el resultado." },
-];
 
 export const Route = createFileRoute("/sistemas/sales-flow")({
   staticData: { sitemap: true },
@@ -40,12 +33,12 @@ export const Route = createFileRoute("/sistemas/sales-flow")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: SITE_URL + "/sistemas/sales-flow" }],
-    scripts: [faqJsonLd(SALES_FLOW_FAQS)],
+    scripts: [faqJsonLd(es.sistemas.salesFlow.faqs)],
   }),
   component: SalesFlowPage,
 });
 
-const STATS = [
+const STATS_BASE = [
   {
     label: "Para quién",
     valor: null as string | null,
@@ -73,7 +66,7 @@ const STATS = [
   },
 ];
 
-const COMPONENTES = [
+const COMPONENTES_BASE = [
   {
     Icono: Workflow,
     titulo: "Sales Flow núcleo",
@@ -99,19 +92,6 @@ const COMPONENTES = [
   },
 ];
 
-const REGLAS = [
-  "La web nunca se vende sola: sin tracking y CRM conectados no hay web de RCKT",
-  "El sistema responde lo que se repite mil veces; en cuanto hay intención de agendar o una decisión de venta, la conversación pasa a tu asesora.",
-  "Tu CRM manda: lo ordenamos y lo conectamos, no lo reemplazamos por una herramienta nuestra.",
-];
-
-const ACEPTACION = [
-  "Flujo probado con leads reales",
-  "Cada lead en el CRM con su origen",
-  "Tiempos de respuesta visibles en el dashboard",
-  "Eventos de venta enviándose a Meta y Google",
-];
-
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 flex items-center gap-3">
@@ -122,6 +102,11 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function SalesFlowPage() {
+  const { t } = useLanguage();
+  const c = t.sistemas.salesFlow;
+  const k = t.sistemas.common;
+  const STATS = STATS_BASE.map((s, i) => ({ ...s, ...c.stats[i] }));
+  const COMPONENTES = COMPONENTES_BASE.map((s, i) => ({ ...s, ...c.components[i] }));
   return (
     <div className="rckt-site bg-background text-foreground antialiased">
       <SiteNav />
@@ -130,12 +115,12 @@ function SalesFlowPage() {
           label="Sales Flow"
           title={
             <>
-              Del WhatsApp a la venta, sin perder a <span className="hero-hand">nadie</span>.
+              {c.titleBefore}<span className="hero-hand">{c.hand}</span>{c.titleAfter}
             </>
           }
-          descriptor="Núcleo de Conversion System"
-          quote="Una persona no puede atender a quien tiene enfrente y responder en quince minutos a los que escriben. Por eso, con Sales Flow, la primera respuesta deja de depender de quién esté libre: tu pauta, WhatsApp y CRM quedan conectados, cada conversación tiene seguimiento y dueño, y la venta vuelve a Meta y Google."
-          ctaLabel="Revisar mi proceso comercial →"
+          descriptor={c.descriptor}
+          quote={c.quote}
+          ctaLabel={t.shared.reviewCta}
           ctaHref={DIAGNOSTIC_HREF}
         />
 
@@ -176,15 +161,15 @@ function SalesFlowPage() {
         <section className="relative py-16 md:py-20 sys-sec">
           <div className="mx-auto max-w-6xl px-6">
             <div className="band--orange rounded-[28px] px-8 py-10 md:px-12 md:py-12">
-              <p className="label-on-orange">Para clínicas</p>
+              <p className="label-on-orange">{c.clinicsLabel}</p>
               <h3 className="font-display mt-5 max-w-3xl text-[22px] leading-[1.3] font-semibold tracking-tight md:text-[28px]" style={{ color: "#f5f2ed" }}>
-                ¿Tienes una clínica? Hay una versión de Sales Flow pensada para tu operación.
+                {c.clinicsTitle}
               </h3>
               <p className="mt-4 max-w-3xl text-[15px] leading-[1.6]" style={{ color: "#f5f2ed" }}>
-                Seguimiento de pacientes, respuesta por WhatsApp, agenda, recordatorios y trazabilidad desde la campaña hasta el tratamiento.
+                {c.clinicsText}
               </p>
               <a className="btn-on-orange font-display inline-block mt-6 rounded-full px-8 py-3 text-[15px] font-semibold" href="/lp/sales-flow-clinicas-bogota">
-                Ver Sales Flow para clínicas →
+                {c.clinicsCta}
               </a>
             </div>
           </div>
@@ -193,26 +178,24 @@ function SalesFlowPage() {
         {/* Componentes */}
         <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="tr">
           <div className="relative z-10 mx-auto max-w-6xl px-6">
-            <SectionLabel>Componentes</SectionLabel>
+            <SectionLabel>{c.componentsLabel}</SectionLabel>
             <div className="md:flex md:items-end md:justify-between md:gap-10">
               <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
-                Qué hacemos
+                {k.whatWeDo}
               </h2>
-              <span className="text-sm font-semibold text-orange">cada conversación con dueño</span>
+              <span className="text-sm font-semibold text-orange">{c.componentsTag}</span>
             </div>
             <CapabilityCards items={COMPONENTES} />
             {/* Qué no incluye — integrada en la sección anterior */}
             <div
               className="band--orange mt-10 md:mt-14 rounded-[28px] px-8 py-10 md:px-12 md:py-12"
             >
-              <p className="label-on-orange">Qué no incluye</p>
+              <p className="label-on-orange">{k.notIncluded}</p>
               <p
                 className="font-display mt-5 max-w-3xl text-[22px] leading-[1.3] font-semibold tracking-tight md:text-[30px]"
                 style={{ color: "#f5f2ed" }}
               >
-                Inversión en pauta ni gestión de campañas (eso es Demand) · licencias de CRM y WhatsApp API (las paga
-                el cliente) · redacción de contenidos editoriales · procesos internos no comerciales (eso es
-                Operations).
+                {c.notIncludedText}
               </p>
             </div>
           </div>
@@ -221,29 +204,29 @@ function SalesFlowPage() {
         {/* Reglas */}
         <section className="relative py-16 md:py-24 sys-sec">
           <div className="mx-auto max-w-6xl px-6">
-            <SectionLabel>Reglas</SectionLabel>
+            <SectionLabel>{k.rulesLabel}</SectionLabel>
             <div className="md:flex md:items-end md:justify-between md:gap-10">
               <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
-                Cómo trabajamos aquí
+                {k.rulesTitle}
               </h2>
-              <span className="text-sm font-semibold text-orange">tu CRM es la fuente de verdad</span>
+              <span className="text-sm font-semibold text-orange">{c.rulesTag}</span>
             </div>
-            <RuleList items={REGLAS} />
+            <RuleList items={c.rules} />
           </div>
         </section>
 
         {/* Aceptación */}
         <section className="relative isolate overflow-hidden py-16 md:py-24 sys-sec sys-sec--warm section--glow" data-corner="bl">
           <div className="relative z-10 mx-auto max-w-6xl px-6">
-            <SectionLabel>Aceptación</SectionLabel>
+            <SectionLabel>{k.acceptanceLabel}</SectionLabel>
             <h2 className="font-display text-[28px] leading-tight font-semibold tracking-tight md:text-[40px]">
-              Cuándo damos el sistema por aceptado
+              {k.acceptanceTitle}
             </h2>
-            <AcceptanceSteps plazo="Sistema aceptado en máximo 30 días desde el inicio del setup" items={ACEPTACION.map((texto) => ({ texto }))} />
+            <AcceptanceSteps plazo={c.acceptancePlazo} items={c.acceptance.map((texto) => ({ texto }))} />
           </div>
         </section>
 
-        <FaqSection items={SALES_FLOW_FAQS} />
+        <FaqSection items={c.faqs} title={t.shared.faqTitle} label={t.shared.faqLabel} />
 
         <GeneralCta />
       </main>

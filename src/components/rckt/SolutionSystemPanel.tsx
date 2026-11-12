@@ -9,12 +9,16 @@ export default function SolutionSystemPanel({
   summary,
   href,
   children,
+  eyebrow = "El sistema",
+  linkLabel,
 }: {
   features: SolutionFeature[];
   system: string;
   summary: string;
   href: string;
   children?: ReactNode;
+  eyebrow?: string;
+  linkLabel?: string;
 }) {
   return (
     <div className="solution-system-panel">
@@ -32,12 +36,12 @@ export default function SolutionSystemPanel({
         ))}
       </ul>
       <aside className="solution-system-card">
-        <span className="label-orange">El sistema</span>
+        <span className="label-orange">{eyebrow}</span>
         <p className="solution-system-card__name">{system}</p>
         <p>{summary}</p>
         {children}
         <a className="btn btn-primary" href={href}>
-          Ver {system} →
+          {linkLabel ?? `Ver ${system} →`}
         </a>
       </aside>
     </div>

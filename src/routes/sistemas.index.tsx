@@ -7,6 +7,7 @@ import SystemPageHero from "@/components/rckt/SystemPageHero";
 import { SystemCards, type SystemCardData } from "@/components/rckt/SystemCards";
 import { useInView } from "@/hooks/use-in-view";
 import SiteNav from "@/components/rckt/SiteNav";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 
 const SISTEMAS_CARDS: SystemCardData[] = [
@@ -29,6 +30,7 @@ const BASE_COMUN = [
 const SITE_URL = "https://rckt.lat";
 
 function Arquitectura() {
+  const c = useLanguage().t.sistemas.index;
   const { ref, inView } = useInView<HTMLDivElement>({ fallbackMs: 1200 });
 
   return (
@@ -36,7 +38,7 @@ function Arquitectura() {
       <div className="relative z-10 mx-auto max-w-6xl px-6">
         <div ref={ref} className="mb-10 flex items-center gap-3">
           <span className="inline-block h-4 w-[2px] bg-orange" />
-          <span className="label-orange">Arquitectura</span>
+          <span className="label-orange">{c.archLabel}</span>
         </div>
 
         <div
@@ -50,7 +52,7 @@ function Arquitectura() {
               className="font-display inline-flex items-center rounded-full px-4 py-1.5 text-[12px] font-semibold"
               style={{ border: "1px solid var(--orange)", color: "var(--orange)" }}
             >
-              Tu problema
+              {c.yourProblem}
             </span>
           </div>
           <span className="arch-line" style={{ ["--arch-line-h" as string]: "32px", transitionDelay: "80ms" }} aria-hidden="true" />
@@ -62,7 +64,7 @@ function Arquitectura() {
                 Revenue Diagnostic
               </p>
               <p className="mt-1 text-[12.5px]" style={{ color: "rgba(245,242,237,0.85)" }}>
-                Toda cuenta empieza aquí
+                {c.diagnosticNote}
               </p>
             </div>
           </div>
@@ -109,7 +111,7 @@ function Arquitectura() {
                 className="font-display inline-flex rounded-full px-4 py-1.5 text-[12px] font-semibold md:ml-[16%]"
                 style={{ background: "var(--orange)", color: "#f5f2ed" }}
               >
-                Revenue Engine · Demand + Sales Flow
+                {c.revenueEnginePill}
               </span>
             </div>
             <div className="mt-6 hidden md:block arch-bracket arch-bracket--dashed" aria-hidden="true" />
@@ -118,7 +120,7 @@ function Arquitectura() {
                 className="font-display inline-flex rounded-full px-4 py-1.5 text-[12px] font-semibold"
                 style={{ border: "1.5px dashed var(--orange)", color: "var(--orange)" }}
               >
-                Growth OS · los tres sistemas
+                {c.growthOsPill}
               </span>
             </div>
           </div>
@@ -126,10 +128,10 @@ function Arquitectura() {
           {/* Capa 5 — la base */}
           <div className="arch-layer mt-10" style={{ transitionDelay: "480ms" }}>
             <p className="font-mono text-[11px] tracking-[0.18em] uppercase" style={{ color: "var(--ink-soft)" }}>
-              La base común
+              {c.baseTitle}
             </p>
             <div className="arch-base mt-3 grid grid-cols-1 rounded-2xl md:grid-cols-3">
-              {BASE_COMUN.map(({ label, Icon }, i) => (
+              {BASE_COMUN.map(({ Icon }, i) => { const label = c.base[i]; return (
                 <div
                   key={label}
                   className={`flex items-center justify-center gap-2 px-5 py-5 ${
@@ -144,7 +146,7 @@ function Arquitectura() {
                     {label}
                   </span>
                 </div>
-              ))}
+              ); })}
             </div>
           </div>
         </div>
@@ -154,22 +156,25 @@ function Arquitectura() {
 }
 
 function Cards() {
+  const cards = useLanguage().t.sistemas.index.cards;
+  const systems = SISTEMAS_CARDS.map((card, i) => ({ ...card, ...cards[i] }));
   return (
     <section className="relative isolate overflow-hidden py-14 md:py-20" style={{ background: "var(--kraft-2)" }}>
       <div className="relative z-10 mx-auto max-w-6xl px-6">
-        <SystemCards systems={SISTEMAS_CARDS} />
+        <SystemCards systems={systems} />
       </div>
     </section>
   );
 }
 
 function Combos() {
+  const c = useLanguage().t.sistemas.index;
   return (
     <section className="relative isolate overflow-hidden py-14 md:py-20" style={{ background: "var(--kraft)" }}>
       <div className="relative z-10 mx-auto max-w-6xl px-6">
         <div className="mb-8 flex items-center gap-3">
           <span className="inline-block h-4 w-[2px] bg-orange" />
-          <span className="label-orange">Los dos combos</span>
+          <span className="label-orange">{c.combosLabel}</span>
         </div>
 
         <div className="grid items-stretch gap-5 md:grid-cols-2">
@@ -182,7 +187,7 @@ function Combos() {
                 className="font-mono inline-flex w-fit rounded-full px-3 py-1 text-[11px] tracking-[0.16em] uppercase"
                 style={{ background: "rgba(245,242,237,0.2)", color: "#f5f2ed" }}
               >
-                Producto principal
+                {c.mainProduct}
               </span>
               <h3 className="font-display mt-5 text-[40px] leading-tight font-semibold" style={{ color: "#f5f2ed" }}>
                 Revenue Engine
@@ -205,14 +210,14 @@ function Combos() {
                 </span>
               </div>
               <p className="mt-5 max-w-md text-[15px] leading-relaxed text-left" data-align="left" style={{ color: "rgba(245,242,237,0.9)" }}>
-                Pauta, WhatsApp y CRM bajo un solo responsable: la pauta que trae la conversación y el proceso que la convierte en venta.
+                {c.revenueEngineText}
               </p>
               <Link
                 to="/sistemas/revenue-engine"
                 className="font-display mt-auto inline-flex w-fit items-center gap-2 rounded-full bg-[#f5f2ed] px-7 py-3.5 pt-3.5 text-[14px] font-semibold"
                 style={{ color: "#fc5c1f", marginTop: "32px" }}
               >
-                Ver Revenue Engine →
+                {c.revenueEngineCta}
               </Link>
             </div>
           </div>
@@ -225,20 +230,20 @@ function Combos() {
                 className="font-mono inline-flex w-fit rounded-full px-3 py-1 text-[11px] tracking-[0.16em] uppercase"
                 style={{ border: "1px solid var(--orange)", color: "var(--orange)" }}
               >
-                Etapa posterior
+                {c.laterStage}
               </span>
               <h3 className="font-display mt-5 text-[40px] leading-tight font-semibold" style={{ color: "var(--ink)" }}>
                 Growth OS
               </h3>
               <p className="mt-5 max-w-md text-[15px] leading-relaxed text-left" data-align="left" style={{ color: "var(--ink-soft)" }}>
-                Para cuentas con Revenue Engine maduro y al menos un proceso operativo que automatizar. A Growth OS se llega por la escalera, nunca de entrada.
+                {c.growthOsText}
               </p>
               <a
                 href="/sistemas/revenue-engine#escalera"
                 className="font-display inline-flex w-fit items-center gap-2 text-[14px] font-semibold"
                 style={{ color: "var(--orange)", marginTop: "32px" }}
               >
-                Ver cómo crece una cuenta →
+                {c.growthOsCta}
               </a>
             </div>
           </div>
@@ -274,19 +279,21 @@ export const Route = createFileRoute("/sistemas/")({
 });
 
 function SistemasIndex() {
+  const { t } = useLanguage();
+  const c = t.sistemas.index;
   return (
     <div className="rckt-site min-h-screen bg-background text-foreground">
       <SiteNav />
       <main>
         <SystemPageHero
-          label="Sistemas"
+          label={c.label}
           title={
             <>
-              Del anuncio a la venta, en tres <span className="hero-hand">sistemas</span>.
+              {c.titleBefore}<span className="hero-hand">{c.hand}</span>{c.titleAfter}
             </>
           }
-          descriptor="Todo empieza por tu problema y por un Revenue Diagnostic. Con tus números sobre la mesa decidimos qué sistema construir primero: el que consigue clientes, el que los cierra por WhatsApp o el que atiende sin fricción."
-          ctaLabel="Revisar mi proceso comercial →"
+          descriptor={c.descriptor}
+          ctaLabel={t.shared.reviewCta}
           ctaHref="/sistemas/revenue-diagnostic#formulario"
         />
         <Arquitectura />
