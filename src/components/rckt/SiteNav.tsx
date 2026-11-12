@@ -3,6 +3,7 @@ import { useRouterState } from "@tanstack/react-router";
 import ThemeToggle from "@/components/rckt/ThemeToggle";
 import logoDark from "@/assets/rckt-logo-dark.png";
 import logoLight from "@/assets/rckt-logo-light.png";
+import { LanguageSwitcher, useLanguage } from "@/i18n/LanguageProvider";
 export const NAV_LINKS = [
   { href: "/soluciones/", label: "Soluciones" },
   { href: "/sistemas/", label: "Sistemas" },
@@ -13,8 +14,10 @@ export const NAV_LINKS = [
   { href: "/contacto", label: "Contacto" },
 ];
 export const DIAGNOSTIC_HREF = "/sistemas/revenue-diagnostic#formulario";
-const CTA_LABEL = "Revisar mi proceso comercial";
 export default function SiteNav() {
+  const { t } = useLanguage();
+  const CTA_LABEL = t.nav.cta;
+  const label = (i: number, fallback: string) => t.nav.links[i] ?? fallback;
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
@@ -35,13 +38,14 @@ export default function SiteNav() {
           <div className={`nav-bg ${scrolled ? "nav-bg-off" : ""}`} />
           {logo}
           <div className="relative flex items-center gap-4 pl-8 text-sm text-ink/70 dark:text-paper/70 xl:gap-5">
-            {NAV_LINKS.map((l) => (<a key={l.href} href={l.href} aria-current={isActive(l.href) ? "page" : undefined} className={`font-display transition-colors duration-200 ${isActive(l.href) ? "text-orange" : "hover:text-ink dark:hover:text-paper"}`}>{l.label}</a>))}
+            {NAV_LINKS.map((l, i) => (<a key={l.href} href={l.href} aria-current={isActive(l.href) ? "page" : undefined} className={`font-display transition-colors duration-200 ${isActive(l.href) ? "text-orange" : "hover:text-ink dark:hover:text-paper"}`}>{label(i, l.label)}</a>))}
           </div>
         </div>
         <div className={`relative mx-6 h-7 w-px bg-ink/15 transition-opacity duration-600 dark:bg-paper/15 ${scrolled ? "opacity-100" : "opacity-0"}`} />
         <div className={`relative flex items-center gap-3 transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] ${scrolled ? "" : "px-4 py-2"}`}>
           <div className={`nav-bg ${scrolled ? "nav-bg-off" : ""}`} />
           <div className="relative flex items-center gap-3">
+            <LanguageSwitcher />
             <ThemeToggle />
             <a href={DIAGNOSTIC_HREF} className="btn-signal font-display inline-flex items-center justify-center rounded-full px-[22px] py-2.5 text-sm font-semibold whitespace-nowrap transition-all duration-600">{CTA_LABEL}</a>
           </div>
@@ -53,7 +57,7 @@ export default function SiteNav() {
           <div className="flex items-center gap-1 sm:gap-2">
             <ThemeToggle />
             <a href={DIAGNOSTIC_HREF} className="btn-signal font-display inline-flex items-center justify-center rounded-full px-1.5 py-2 text-[9px] font-semibold whitespace-nowrap transition-all duration-600 sm:px-[18px] sm:py-2.5 sm:text-sm">{CTA_LABEL}</a>
-            <button type="button" aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"} aria-expanded={menuOpen} onClick={() => setMenuOpen((v) => !v)} className={`inline-flex cursor-pointer items-center justify-center rounded-full border border-ink/15 text-ink transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-ink/5 dark:border-paper/20 dark:text-paper ${scrolled ? "h-8 w-8" : "h-9 w-9"} sm:h-10 sm:w-10`}>
+            <button type="button" aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu} aria-expanded={menuOpen} onClick={() => setMenuOpen((v) => !v)} className={`inline-flex cursor-pointer items-center justify-center rounded-full border border-ink/15 text-ink transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-ink/5 dark:border-paper/20 dark:text-paper ${scrolled ? "h-8 w-8" : "h-9 w-9"} sm:h-10 sm:w-10`}>
               <svg viewBox="0 0 24 24" className={`transition-all duration-600 ${scrolled ? "h-4 w-4" : "h-5 w-5"}`} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
                 {menuOpen ? (<><path d="M6 6l12 12" /><path d="M18 6L6 18" /></>) : (<><path d="M4 7h16" /><path d="M4 12h16" /><path d="M4 17h16" /></>)}
               </svg>
@@ -62,7 +66,8 @@ export default function SiteNav() {
         </div>
         {menuOpen && (
           <div className="nav-pill nav-drawer mt-2 flex flex-col gap-1 p-3">
-            {NAV_LINKS.map((l) => (<a key={l.href} href={l.href} onClick={() => setMenuOpen(false)} aria-current={isActive(l.href) ? "page" : undefined} className={`font-display rounded-xl px-3 py-2.5 text-base transition-colors ${isActive(l.href) ? "text-orange" : "text-ink/80 hover:bg-ink/5 hover:text-ink dark:text-paper/80 dark:hover:bg-paper/10 dark:hover:text-paper"}`}>{l.label}</a>))}
+            {NAV_LINKS.map((l, i) => (<a key={l.href} href={l.href} onClick={() => setMenuOpen(false)} aria-current={isActive(l.href) ? "page" : undefined} className={`font-display rounded-xl px-3 py-2.5 text-base transition-colors ${isActive(l.href) ? "text-orange" : "text-ink/80 hover:bg-ink/5 hover:text-ink dark:text-paper/80 dark:hover:bg-paper/10 dark:hover:text-paper"}`}>{label(i, l.label)}</a>))}
+            <LanguageSwitcher className="px-3 py-2.5 text-sm" />
             <a href={DIAGNOSTIC_HREF} onClick={() => setMenuOpen(false)} className="btn-signal font-display mt-2 inline-flex items-center justify-center rounded-full px-[22px] py-3 text-sm font-semibold whitespace-nowrap">{CTA_LABEL}</a>
           </div>
         )}

@@ -8,9 +8,9 @@ import SiteFooter from "@/components/rckt/SiteFooter";
 import SiteNav from "@/components/rckt/SiteNav";
 import { WHATSAPP_URL, WHATSAPP_CONFIGURED } from "@/config/contact";
 import { SystemCards, SISTEMAS_CARDS } from "@/components/rckt/SystemCards";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 const SITE_URL = "https://rckt.lat";
-const HERO_HAND = "humano";
 const META_DESCRIPTION = "Diseñamos y operamos sistemas que convierten demanda en ventas: campañas, conversaciones de WhatsApp, CRM e IA supervisada, medidos hasta el ingreso.";
 
 export const Route = createFileRoute("/")({
@@ -40,7 +40,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-function HeroTypewriter() {
+function HeroTypewriter({ word: HERO_HAND }: { word: string }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -55,7 +55,7 @@ function HeroTypewriter() {
       if (index >= HERO_HAND.length) window.clearInterval(id);
     }, 45);
     return () => window.clearInterval(id);
-  }, []);
+  }, [HERO_HAND]);
 
   return (
     <span className="hero-hand">
@@ -66,6 +66,7 @@ function HeroTypewriter() {
 }
 
 function Hero() {
+  const h = useLanguage().t.home.hero;
   return (
     <section className="section-light relative overflow-clip" id="top">
       <div className="hero-photo" aria-hidden="true">
@@ -73,19 +74,19 @@ function Hero() {
         <div className="hero-photo-fade" />
       </div>
       <p className="hero-tagline font-display absolute right-5 bottom-6 z-10 text-right text-[10px] tracking-[0.22em] uppercase md:right-10 md:bottom-10 md:text-xs">
-        Less noise.<br />More growth.
+        {h.tagline1}<br />{h.tagline2}
       </p>
       <div className="relative z-10 mx-auto max-w-6xl px-5 pt-32 pb-24 md:px-6 md:pt-40 md:pb-32">
-        <p className="label-orange rckt-reveal">Technology with a human pulse.</p>
+        <p className="label-orange rckt-reveal">{h.label}</p>
         <h1 className="mt-6 max-w-4xl font-display text-[34px] leading-[1.05] font-semibold text-paper md:text-[58px]">
-          Un sistema más <HeroTypewriter /><br />para lo que ya está aquí.
+          {h.titleBefore}<HeroTypewriter word={h.hand} /><br />{h.titleAfter}
         </h1>
         <p className="rckt-reveal mt-6 max-w-xl text-base leading-relaxed text-paper/60 md:text-lg" style={{ animationDelay: "160ms" }}>
-          Convierte las conversaciones de WhatsApp en un proceso comercial medible.
+          {h.subtitle}
         </p>
         <div className="rckt-reveal mt-5 flex flex-wrap items-center gap-4" style={{ animationDelay: "240ms" }}>
-          <a href="/sistemas/revenue-diagnostic" className="btn-orange inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-medium">Revisar mi proceso comercial →</a>
-          {WHATSAPP_CONFIGURED && <a href={WHATSAPP_URL} className="hero-whatsapp-btn inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-medium">Escribir por WhatsApp</a>}
+          <a href="/sistemas/revenue-diagnostic" className="btn-orange inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-medium">{h.cta}</a>
+          {WHATSAPP_CONFIGURED && <a href={WHATSAPP_URL} className="hero-whatsapp-btn inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-medium">{h.whatsapp}</a>}
         </div>
       </div>
     </section>
@@ -99,21 +100,22 @@ const PROBLEMS = [
 ];
 
 function Problems() {
+  const p = useLanguage().t.home.problems;
   return (
     <section id="problemas" className="relative isolate overflow-clip scroll-mt-28 py-20 md:py-32">
       <div className="relative z-10 mx-auto max-w-6xl px-6">
-        <SectionHeader num="01." label="Tres problemas" title={<>Empiezas por lo que te duele, no por el nombre de un <em className="font-serif-accent">sistema</em>.</>} phrase="Si puedes responder con datos cuántos prospectos atendiste en menos de 15 minutos y qué campaña trajo a los que compraron, tu proceso está mejor que el promedio. Si no, ahí está la fuga." />
+        <SectionHeader num="01." label={p.label} title={<>{p.titleBefore}<em className="font-serif-accent">{p.titleEm}</em>{p.titleAfter}</>} phrase={p.phrase} />
         <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
-          {PROBLEMS.map((problem) => (
+          {PROBLEMS.map((problem, i) => (
             <article key={problem.num} className="relative pl-5">
               <span className="absolute top-1 left-0 h-full w-px bg-[var(--line)]" />
               <div className="space-y-2">
                 <span className="num-orange">{problem.num}</span>
-                <h3 className="text-[15px] leading-snug font-semibold">«{problem.title}»</h3>
-                <p className="text-[13.5px] leading-relaxed text-muted-foreground">{problem.signals.join(" · ")}</p>
+                <h3 className="text-[15px] leading-snug font-semibold">«{p.items[i]?.title ?? problem.title}»</h3>
+                <p className="text-[13.5px] leading-relaxed text-muted-foreground">{(p.items[i]?.signals ?? problem.signals).join(" · ")}</p>
                 <div className="flex flex-wrap items-center gap-3 pt-1">
-                  <Link to={problem.href} className="text-orange text-[13px] font-medium hover:underline">Ver solución →</Link>
-                  <a href="/sistemas/revenue-diagnostic" className="btn-orange inline-flex items-center justify-center rounded-full px-3 py-1 text-[12px] font-medium">Revisar mi proceso comercial</a>
+                  <Link to={problem.href} className="text-orange text-[13px] font-medium hover:underline">{p.seeSolution}</Link>
+                  <a href="/sistemas/revenue-diagnostic" className="btn-orange inline-flex items-center justify-center rounded-full px-3 py-1 text-[12px] font-medium">{p.cta}</a>
                 </div>
               </div>
             </article>
@@ -125,15 +127,16 @@ function Problems() {
 }
 
 function Systems() {
+  const s = useLanguage().t.home.systems;
   return (
     <section id="sistema" className="home-system-section relative isolate overflow-clip scroll-mt-28 py-14 md:py-20">
       <div className="relative z-10 mx-auto max-w-6xl px-6">
-        <SectionHeader num="02." label="Un sistema operativo de crecimiento" title="Tres sistemas, un solo recorrido." phrase="Conseguir clientes, cerrarlos y atenderlos sin fricción: Demand, Sales Flow y Operations siguen ese orden, del anuncio a la operación." />
+        <SectionHeader num="02." label={s.label} title={s.title} phrase={s.phrase} />
         <div className="mt-14"><SystemCards systems={SISTEMAS_CARDS} /></div>
         <div className="band-orange-sistema relative mt-10 overflow-hidden rounded-3xl px-8 py-10 md:px-12">
-          <h3 className="relative font-display text-2xl leading-tight font-semibold text-paper-fixed md:text-3xl">Luego, el <span className="text-paper-fixed/60 text-xl md:text-2xl">recorrido completo.</span></h3>
-          <p className="text-paper-fixed/90 relative mt-3 max-w-2xl text-sm leading-relaxed md:text-base">Pauta → WhatsApp → CRM → venta bajo un solo responsable: eso es Revenue Engine, nuestro producto principal.</p>
-          <Link to="/sistemas/revenue-engine" className="band-revenue-btn relative mt-6 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">Ver Revenue Engine →</Link>
+          <h3 className="relative font-display text-2xl leading-tight font-semibold text-paper-fixed md:text-3xl">{s.bandBefore}<span className="text-paper-fixed/60 text-xl md:text-2xl">{s.bandMuted}</span></h3>
+          <p className="text-paper-fixed/90 relative mt-3 max-w-2xl text-sm leading-relaxed md:text-base">{s.bandText}</p>
+          <Link to="/sistemas/revenue-engine" className="band-revenue-btn relative mt-6 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">{s.bandCta}</Link>
         </div>
       </div>
     </section>
@@ -152,14 +155,15 @@ const METHOD_FIELDS: MethodField[] = [
 ];
 
 function Proof() {
+  const pr = useLanguage().t.home.proof;
   return (
     <section id="prueba" className="home-proof-section relative isolate overflow-clip scroll-mt-28 py-20 md:py-28">
       <div className="relative z-10 mx-auto max-w-6xl px-6">
-        <SectionHeader num="03." label="Prueba" title="Ningún resultado sin ficha." phrase="Si una cifra no dice desde dónde se midió ni con cuánta pauta, no sirve para decidir." />
+        <SectionHeader num="03." label={pr.label} title={pr.title} phrase={pr.phrase} />
         <figure className="relative mt-12 max-w-3xl text-left md:mt-16">
-          <blockquote className="home-proof-quote">“47 conversaciones este mes. 2 clientes nuevos.” La diferencia está entre las dos pantallas.</blockquote>
+          <blockquote className="home-proof-quote">{pr.quote}</blockquote>
         </figure>
-        <MethodCard fields={METHOD_FIELDS} className="mt-10 md:mt-12" />
+        <MethodCard fields={pr.fields.length ? pr.fields : METHOD_FIELDS} className="mt-10 md:mt-12" />
       </div>
     </section>
   );

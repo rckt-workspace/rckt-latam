@@ -14,6 +14,7 @@ import { useEffect, type ReactNode } from "react";
 import "../styles.css";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import GlobalSectionBlobs from "@/components/rckt/GlobalSectionBlobs";
+import { LanguageProvider } from "@/i18n/LanguageProvider";
 
 function NotFoundComponent() {
   return (
@@ -144,8 +145,10 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
-      {!hideBlobs && <GlobalSectionBlobs />}
+      <LanguageProvider>
+        <Outlet />
+        {!hideBlobs && <GlobalSectionBlobs />}
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }
