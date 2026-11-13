@@ -15,6 +15,7 @@ import "../styles.css";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import GlobalSectionBlobs from "@/components/rckt/GlobalSectionBlobs";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
+import { CookieConsentBanner, SiteAnalytics } from "@/components/rckt/SiteMeasurement";
 
 function NotFoundComponent() {
   return (
@@ -106,6 +107,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [
       {
+        children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});(function(){var choice=null;try{var saved=localStorage.getItem('rckt-cookie-consent');if(saved==='granted'||saved==='denied')choice=saved;var a=JSON.parse(localStorage.getItem('cookie_consent_analytics')||'null');var m=JSON.parse(localStorage.getItem('cookie_consent_advertising')||'null');if(a&&m&&a.choice===m.choice&&(a.choice==='granted'||a.choice==='denied')&&typeof a.at==='number'&&(a.choice==='denied'||Date.now()-a.at<365*86400000))choice=a.choice;}catch(e){}if(navigator.globalPrivacyControl===true)choice='denied';if(choice)gtag('consent','update',{analytics_storage:choice,ad_storage:choice,ad_user_data:choice,ad_personalization:choice});})();`,
+      },
+      {
         children: `(function(){var d=false;try{var t=localStorage.getItem('rckt-theme');if(t==='dark'){d=true;}else if(t!=='light'){d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;}}catch(e){d=false;}var r=document.documentElement;r.classList.toggle('dark',!!d);r.setAttribute('data-theme',d?'dark':'light');})();`,
       },
     ],
@@ -141,6 +145,7 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useLocation({ select: (l) => l.pathname });
   const hideBlobs = LANDING_NO_BLOBS_PREFIXES.some((p) => pathname.startsWith(p));
+  const isInternalRoute = pathname === "/rckt-equipo" || pathname.startsWith("/ops");
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -148,6 +153,8 @@ function RootComponent() {
       <LanguageProvider>
         <Outlet />
         {!hideBlobs && <GlobalSectionBlobs />}
+        <SiteAnalytics />
+        {!isInternalRoute && <CookieConsentBanner />}
       </LanguageProvider>
     </QueryClientProvider>
   );

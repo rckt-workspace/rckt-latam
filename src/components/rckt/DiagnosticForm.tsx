@@ -1,6 +1,7 @@
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { saveDiagnosticLead } from "@/lib/leads-diagnostic.functions";
+import { trackSuccessfulLead } from "@/lib/analytics";
 
 const problemas = ["Captación y cierre", "Ecommerce rentable", "Operación"] as const;
 
@@ -240,6 +241,7 @@ export default function DiagnosticForm({
       const result = await enviar({
         data: payload,
       });
+      trackSuccessfulLead();
       setListo(true);
       onSent?.();
       onSuccess?.(result, values);

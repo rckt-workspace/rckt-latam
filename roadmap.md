@@ -67,3 +67,4 @@
 - [x] Crear campañas clínicas A/B y sus páginas de gracias con textos, atribución y variante flotante; validar escritorio/móvil y compilación.
 - [x] Desactivar agente con featureConfig.chat.enabled, bloquear handlers y panel IA, ajustar destino de login y validar compilación.
 - [x] Conectar todos los accesos de datos de la aplicación a producción externa sin migraciones, datos ni cambios visuales; validar compilación.
+- [x] Implementar consentimiento y medición GA4, Clarity y Meta en todo el sitio, con eventos de navegación, interacción y leads; validar compilación.

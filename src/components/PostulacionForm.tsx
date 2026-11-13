@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { trackSuccessfulLead } from "@/lib/analytics";
 
 const MAX_MB = 10;
 
@@ -104,6 +105,7 @@ export function PostulacionForm({
         throw new Error(result.error || "No pudimos procesar tu solicitud");
       }
 
+      trackSuccessfulLead();
       setListo(true);
       form.reset();
       setArchivo(null);

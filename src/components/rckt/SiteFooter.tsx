@@ -2,6 +2,7 @@ import ThemeToggle from "@/components/rckt/ThemeToggle";
 import logoDark from "@/assets/rckt-logo-dark.png";
 import logoLight from "@/assets/rckt-logo-light.png";
 import { useLanguage } from "@/i18n/LanguageProvider";
+import { COOKIE_PREFERENCES_EVENT } from "@/lib/meta-pixel";
 
 const FOOTER_NAV = [
   { href: "/soluciones/", label: "Soluciones" },
@@ -21,7 +22,6 @@ const FOOTER_LEGAL = [
   { href: "/legal/privacidad", label: "Aviso de privacidad" },
   { href: "/RCKT-SAS-Politica-de-Tratamiento-de-Datos.pdf", label: "Política de Tratamiento de Datos", external: true },
   { href: "/legal/cookies", label: "Cookies" },
-  // PENDIENTE: abrir panel de consentimiento, lo conecta backend.
   { href: "#preferencias-cookies", label: "Preferencias de cookies" },
 ];
 
@@ -61,7 +61,7 @@ export default function SiteFooter() {
             <p className="label-orange !text-[10px]">{t.footer.legalTitle}</p>
             <ul className="mt-4 space-y-2.5 text-sm">
               {FOOTER_LEGAL.map((link, i) => (
-                  <li key={link.href}><a href={link.href} target={"external" in link ? "_blank" : undefined} rel={"external" in link ? "noopener noreferrer" : undefined} className="font-display text-paper/55 transition-colors hover:text-paper">{t.footer.legal[i] ?? link.label}</a></li>
+                  <li key={link.href}><a href={link.href} target={"external" in link ? "_blank" : undefined} rel={"external" in link ? "noopener noreferrer" : undefined} onClick={link.href === "#preferencias-cookies" ? (event) => { event.preventDefault(); window.dispatchEvent(new Event(COOKIE_PREFERENCES_EVENT)); } : undefined} className="font-display text-paper/55 transition-colors hover:text-paper">{t.footer.legal[i] ?? link.label}</a></li>
               ))}
             </ul>
           </nav>

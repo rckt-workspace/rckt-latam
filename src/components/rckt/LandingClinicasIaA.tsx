@@ -5,6 +5,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { Check } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { saveDiagnosticLead } from "@/lib/leads-diagnostic.functions";
+import { trackSuccessfulLead } from "@/lib/analytics";
 import { getCampaignParams, saveCampaignParams, track } from "@/components/rckt/tracking";
 import { WHATSAPP_URL, contactConfig } from "@/config/contact";
 import logoDark from "@/assets/rckt-logo-dark.png";
@@ -603,6 +604,7 @@ function FormularioSection() {
         },
       });
       track("lead_valido", { landing: LANDING, utm_content: LANDING });
+      trackSuccessfulLead();
       void navigate({ to: "/lp/clinicas-esteticas-ia/gracias" });
     } catch (err) {
       setError(err instanceof Error ? err.message : "No pudimos enviar tu solicitud. Intenta de nuevo.");
